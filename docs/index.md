@@ -24,11 +24,11 @@ and how to reproduce common workflows.
 - **How‑tos**: small, focused tasks
 - **Reference**: API notes and links to upstream docs
 
+## Browse the notebooks
+
 ```{toctree}
 :maxdepth: 2
-:hidden:
+:glob:
+:caption: Tutorial Notebooks
 
-getting-started
-notebooks/index
-how-tos/index
-reference/index
+notebooks/*
