@@ -35,17 +35,38 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Options for HTML output -------------------------------------------------
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
+html_css_files = [
+    "custom.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+]
+html_js_files = [
+    "theme-toggle.js"
+]
 html_title = "pySNT"
 html_logo = "_static/snt-logo.png"
 
 html_theme_options = {
-    "github_url": "https://github.com/morphonets/pysnt",
+    "logo": {
+        "image_light": "_static/snt-logo.png",
+        "image_dark": "_static/snt-logo.png",
+    },
     "navigation_with_keys": True,
     "show_prev_next": True,
+    "navbar_start": ["navbar-logo"],
+    "navbar_center": [],
+    "navbar_end": [],
+    "show_toc_level": 2,
+    "navigation_depth": 3,
+    "show_version_warning_banner": False,
+    "article_header_start": [],
+    "article_header_end": [],
+    "article_footer_items": [],
+    "content_footer_items": [],
+    "secondary_sidebar_items": [],
+    "primary_sidebar_end": [],
+    # Work in progress banner
+    "announcement": "🚧 Documentation in progress - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>!"
 }
 
 # Images produced by notebooks
 nb_render_image_options = {"align": "center"}
-
-# If you use relative links to notebooks, ensure paths are correct:
-# (We keep notebooks under docs/notebooks/)
