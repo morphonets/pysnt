@@ -5,7 +5,7 @@ PySNT brings [SNT](https://github.com/morphonets/SNT)'s tracing tools and neuroa
 
 ```{raw} html
 <div class="hero-buttons">
-    <a href="notebooks/1_overview.html" class="btn-secondary-custom">Get Started</a>
+    <a href="install.html" class="btn-secondary-custom">Get Started</a>
     <a target="_blank" href="https://imagej.net/plugins/snt/#overview" class="btn-secondary-custom"> See Gallery</a>
 </div>
 <a href="api.html" class="api-link">
@@ -76,14 +76,11 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
     <a href="api.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
         <i class="fas fa-code"></i> Python API Reference
     </a>
-    <a href="java_class_access.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
-        <i class="fas fa-coffee"></i> Java Class Access Guide
-    </a>
     <a href="notebooks/index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
-        <i class="fas fa-book"></i> Example Notebooks
+        <i class="fas fa-book"></i> Tutorials
     </a>
     <a href="https://javadoc.scijava.org/SNT" target="_blank" style="text-decoration: none; color: #2980b9; font-weight: 500;">
-        <i class="fas fa-external-link-alt"></i> SNT Java API
+        <i class="fas fa-coffee"></i> SNT Java API
     </a>
 </div>
 ```
@@ -95,5 +92,4 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
 install
 notebooks/index
 api
-java_class_access
 ```

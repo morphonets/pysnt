@@ -1,6 +1,8 @@
-# Notebooks Gallery
+# <i class="fas fa-book"></i>&hairsp;Tutorials
 
-Explore our collection of interactive notebooks that demonstrate various aspects of neuronal morphology analysis with pySNT.
+```{important}
+This collection of notebooks is outdated.
+```
 
 ## Available Notebooks
 

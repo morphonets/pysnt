@@ -34,77 +34,55 @@
         flex-shrink: 0 !important;
     }
 
-    /* Custom navbar center - centered with spacers */
-    .pysnt-navbar-center {
-        display: flex !important;
-        align-items: center !important;
-        gap: 1.5rem !important;
-        flex-shrink: 0 !important;
-        justify-content: center !important;
-    }
-
-    /* Navigation links styling */
-    .pysnt-navbar-center .nav-link {
-        color: #2c3e50 !important;
-        text-decoration: none !important;
-        font-weight: 500 !important;
-        padding: 0.5rem 0.75rem !important;
+    /* Theme toggle button styling */
+    .pysnt-theme-toggle {
+        color: var(--pst-color-text-base) !important;
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 0.5rem !important;
         border-radius: 0.25rem !important;
         transition: all 0.2s !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.4rem !important;
-        white-space: nowrap !important;
-        font-size: 0.9rem !important;
-        height: 40px !important;
-    }
-
-    .pysnt-navbar-center .nav-link:hover {
-        color: #2980b9 !important;
-        background-color: rgba(41, 128, 185, 0.1) !important;
-        text-decoration: none !important;
-    }
-
-    /* Right side elements */
-    .navbar-header-items__end .navbar-item {
-        display: flex !important;
-        align-items: right !important;
-    }
-
-    .navbar-header-items__end .pysnt-nav-link,
-    .navbar-header-items__end .pysnt-theme-toggle {
-        color: #2c3e50 !important;
-        padding: 0.5rem !important;
-        border-radius: 50% !important;
-        width: 40px !important;
-        height: 40px !important;
-        display: flex !important;
-        align-items: center !important;
         justify-content: center !important;
-        font-size: 1.1rem !important;
-        transition: all 0.2s !important;
-        text-decoration: none !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
     }
 
-    .navbar-header-items__end .pysnt-nav-link:hover,
-    .navbar-header-items__end .pysnt-theme-toggle:hover {
-        color: #2980b9 !important;
-        background-color: rgba(41, 128, 185, 0.1) !important;
+    .pysnt-theme-toggle:hover {
+        background-color: var(--pst-color-surface) !important;
     }
 
-    /* Ensure all navbar elements are properly aligned */
-    .bd-header__inner>* {
-        align-self: center !important;
+    /* Add spacing between FontAwesome icons and text in navigation */
+    .navbar-nav .nav-link i[class*="fa-"]:not(:last-child),
+    .navbar-nav .nav-link i[class*="fas"]:not(:last-child),
+    .navbar-nav .nav-link i[class*="fab"]:not(:last-child),
+    .navbar-nav .nav-link i[class*="far"]:not(:last-child) {
+        margin-right: 0.4rem !important;
     }
 
-    /* Fix search button alignment */
-    .navbar-header-items__end .navbar-persistent--container {
-        display: flex !important;
-        align-items: center !important;
-        height: 40px !important;
+    /* Also apply to dropdown items */
+    .dropdown-item i[class*="fa-"]:not(:last-child),
+    .dropdown-item i[class*="fas"]:not(:last-child),
+    .dropdown-item i[class*="fab"]:not(:last-child),
+    .dropdown-item i[class*="far"]:not(:last-child) {
+        margin-right: 0.4rem !important;
+    }
+
+    /* Hide main navigation items on mobile when hamburger menu is active */
+    @media (max-width: 959px) {
+        .navbar-nav:not(.navbar-nav-scroll) {
+            display: none !important;
+        }
+        
+        /* Keep only the icon links visible on mobile */
+        .navbar-icon-links {
+            display: flex !important;
+        }
+        
+        /* Ensure hamburger menu button is visible */
+        .navbar-toggler {
+            display: block !important;
+        }
     }
 
     /* Dark theme adjustments */
@@ -123,25 +101,44 @@
         border-bottom: 1px solid #404040 !important;
     }
 
-    [data-theme="dark"] .pysnt-navbar-center .nav-link {
+    [data-theme="dark"] .pysnt-theme-toggle {
         color: #e0e0e0 !important;
     }
 
-    [data-theme="dark"] .pysnt-navbar-center .nav-link:hover {
+    [data-theme="dark"] .pysnt-theme-toggle:hover {
         color: #64b5f6 !important;
         background-color: rgba(100, 181, 246, 0.1) !important;
     }
 
-    [data-theme="dark"] .navbar-header-items__end .pysnt-nav-link,
-    [data-theme="dark"] .navbar-header-items__end .pysnt-theme-toggle {
-        color: #e0e0e0 !important;
+    /* Logo styling with home icon */
+    .bd-navbar .navbar-brand {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .bd-navbar .navbar-brand img {
+        height: 40px;
+        width: auto;
+    }
+    
+    /* Add home icon to logo */
+    .bd-navbar .navbar-brand::before {
+        content: "\f015";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin-right: 0.3rem;
+    }
+    
+    /* Dark theme support for logo home icon */
+    [data-theme="dark"] .bd-navbar .navbar-brand::before {
+        color: #e0e0e0;
     }
 
-    [data-theme="dark"] .navbar-header-items__end .pysnt-nav-link:hover,
-    [data-theme="dark"] .navbar-header-items__end .pysnt-theme-toggle:hover {
-        color: #64b5f6 !important;
-        background-color: rgba(100, 181, 246, 0.1) !important;
-    }
+
 
     /* Dark theme for hero section */
     [data-theme="dark"] .hero-title {
@@ -178,86 +175,30 @@
 </style>
 
 <script>
-    // Embedded JavaScript for proper navbar integration
+    // Simple theme toggle setup
     document.addEventListener('DOMContentLoaded', function () {
-        //console.log('Integrating pySNT navigation into existing navbar...');
-
-        const navbar = document.querySelector('.bd-header__inner');
-        if (!navbar) {
-            console.log('Navbar not found, retrying...');
-            return;
-        }
-
-        // Find the main navbar items container
-        const navbarItems = navbar.querySelector('.navbar-header-items');
-        const endContainer = navbar.querySelector('.navbar-header-items__end');
-
-        if (!navbarItems || !endContainer) {
-            console.log('Navbar containers not found');
-            return;
-        }
-
-        // Create left spacer (horizontal glue)
-        const leftSpacer = document.createElement('div');
-        leftSpacer.style.cssText = 'flex: 1;';
-
-        // Create center navigation
-        const centerNav = document.createElement('div');
-        centerNav.className = 'pysnt-navbar-center';
-        centerNav.innerHTML = `
-        <a class="nav-link" href="{{ pathto('install') }}">
-            <i class="fas fa-download"></i> Install
-        </a>
-        <a class="nav-link" href="{{ pathto('notebooks/index') }}">
-            <i class="fas fa-book"></i> Notebooks
-        </a>
-        <a class="nav-link" href="https://forum.image.sc/tag/snt" target="_blank">
-            <i class="fas fa-question-circle"></i> Ask a Question
-        </a>
-        <a class="nav-link" href="https://imagej.net/plugins/snt/contribute" target="_blank">
-            <i class="fas fa-hands-helping"></i> Contribute
-        </a>
-        <a class="nav-link" href="https://imagej.net/plugins/snt/" target="_blank">
-            <i class="fas fa-book-open"></i> User Manual
-        </a>
-    `;
-
-        // Create right spacer (horizontal glue)
-        const rightSpacer = document.createElement('div');
-        rightSpacer.style.cssText = 'flex: 1;';
-
-        // Insert: leftSpacer -> centerNav -> rightSpacer -> endContainer
-        navbarItems.insertBefore(leftSpacer, endContainer);
-        navbarItems.insertBefore(centerNav, endContainer);
-        navbarItems.insertBefore(rightSpacer, endContainer);
-
-        // Add GitHub link and theme toggle to end container
-        const githubContainer = document.createElement('div');
-        githubContainer.className = 'navbar-item';
-        githubContainer.innerHTML = `
-        <a class="pysnt-nav-link" href="https://github.com/morphonets/pysnt" target="_blank" title="GitHub Repository">
-            <i class="fab fa-github"></i>
-        </a>
-    `;
-
-        const themeContainer = document.createElement('div');
-        themeContainer.className = 'navbar-item';
-        themeContainer.innerHTML = `
-        <button class="pysnt-theme-toggle" id="pysnt-theme-toggle" title="Switch between light and dark mode">
-            <i class="fas fa-sun" id="pysnt-theme-icon"></i>
-        </button>
-    `;
-
-        // Add theme toggle and GitHub after the search button
-        endContainer.appendChild(themeContainer);
-        endContainer.appendChild(githubContainer);
-
-        // Setup theme toggle
-        setupThemeToggle();
-
-        console.log('pySNT navigation integrated successfully!');
-
+        // Wait for theme to fully load
+        setTimeout(function() {
+            addThemeToggleToNavbar();
+            setupThemeToggle();
+        }, 100);
     });
+
+    function addThemeToggleToNavbar() {
+        // Find the navbar icon links container
+        const iconLinks = document.querySelector('.navbar-icon-links');
+        if (!iconLinks) return;
+
+        // Add theme toggle button to the icon links
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'pysnt-theme-toggle navbar-icon-links__item';
+        themeToggle.id = 'pysnt-theme-toggle';
+        themeToggle.title = 'Switch between light and dark mode';
+        themeToggle.innerHTML = '<i class="fas fa-sun" id="pysnt-theme-icon"></i>';
+        
+        // Insert before the first icon link (GitHub)
+        iconLinks.insertBefore(themeToggle, iconLinks.firstChild);
+    }
 
     function setupThemeToggle() {
         const themeToggle = document.getElementById('pysnt-theme-toggle');
@@ -265,7 +206,9 @@
         const body = document.body;
 
         if (!themeToggle || !themeIcon) {
-            console.log('Theme toggle elements not found');
+            console.log('Theme toggle elements not found, retrying...');
+            // Retry after a short delay if elements aren't found
+            setTimeout(setupThemeToggle, 200);
             return;
         }
 
@@ -275,9 +218,11 @@
         // Apply the saved theme
         if (currentTheme === 'dark') {
             body.setAttribute('data-theme', 'dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.className = 'fas fa-moon';
         } else {
             body.setAttribute('data-theme', 'light');
+            document.documentElement.setAttribute('data-theme', 'light');
             themeIcon.className = 'fas fa-sun';
         }
 
@@ -303,5 +248,119 @@
 
         console.log('Theme toggle setup complete');
     }
+
+    // Add API Overview link to auto-generated API pages
+    function addApiOverviewLink() {
+        // Check if we're on an auto-generated API page
+        const currentPath = window.location.pathname;
+        if (!currentPath.includes('/api_auto/')) {
+            return;
+        }
+
+        // Find the sidebar navigation
+        const sidebarNav = document.querySelector('.bd-docs-nav .bd-toc-item');
+        if (!sidebarNav) {
+            console.log('Sidebar navigation not found');
+            return;
+        }
+
+        // Create the API Overview link
+        const apiOverviewItem = document.createElement('div');
+        apiOverviewItem.className = 'api-overview-link';
+        apiOverviewItem.style.cssText = `
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        `;
+
+        // Determine the correct path to api.html based on current location
+        const pathSegments = currentPath.split('/');
+        const apiPath = '../api.html'; // Go up one level from api_auto/
+
+        apiOverviewItem.innerHTML = `
+            <a href="${apiPath}" class="api-overview-btn" style="
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.4rem 0.8rem;
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 0.375rem;
+                color: #495057;
+                text-decoration: none;
+                font-size: 0.875rem;
+                font-weight: 500;
+                transition: all 0.2s;
+                width: 100%;
+                justify-content: center;
+            ">
+                <i class="fas fa-home"></i>
+                API Overview
+            </a>
+        `;
+
+        // Add hover effects
+        const link = apiOverviewItem.querySelector('.api-overview-btn');
+        link.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#e9ecef';
+            this.style.borderColor = '#adb5bd';
+            this.style.color = '#212529';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '#f8f9fa';
+            this.style.borderColor = '#dee2e6';
+            this.style.color = '#495057';
+        });
+
+        // Insert at the beginning of the sidebar navigation
+        sidebarNav.insertBefore(apiOverviewItem, sidebarNav.firstChild);
+
+        console.log('API Overview link added to sidebar');
+    }
+
+    // Add dark theme support for API Overview link
+    function updateApiOverviewLinkTheme() {
+        const apiLink = document.querySelector('.api-overview-btn');
+        if (!apiLink) return;
+
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        
+        if (isDark) {
+            apiLink.style.backgroundColor = '#2d2d2d';
+            apiLink.style.borderColor = '#404040';
+            apiLink.style.color = '#e0e0e0';
+            
+            apiLink.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#404040';
+                this.style.borderColor = '#64b5f6';
+                this.style.color = '#64b5f6';
+            });
+            
+            apiLink.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#2d2d2d';
+                this.style.borderColor = '#404040';
+                this.style.color = '#e0e0e0';
+            });
+        } else {
+            apiLink.style.backgroundColor = '#f8f9fa';
+            apiLink.style.borderColor = '#dee2e6';
+            apiLink.style.color = '#495057';
+        }
+    }
+
+    // Initialize API navigation enhancement
+    document.addEventListener('DOMContentLoaded', function() {
+        addApiOverviewLink();
+        updateApiOverviewLinkTheme();
+        
+        // Update theme when theme toggle is clicked
+        const themeToggle = document.getElementById('pysnt-theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                setTimeout(updateApiOverviewLinkTheme, 100);
+            });
+        }
+    });
 </script>
 {% endblock %}
