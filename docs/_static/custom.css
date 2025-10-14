@@ -1,4 +1,4 @@
-/* Custom styles for pySNT documentation */
+/* Custom styles for PySNT documentation */
 
 /* Import Font Awesome */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
@@ -32,7 +32,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* pySNT Navigation Styling */
+/* Navigation Styling */
 #pysnt-navbar,
 #pysnt-controls {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
@@ -344,4 +344,109 @@
     height: 200px;
     object-fit: cover;
     border-radius: 0.375rem 0.375rem 0 0;
+}/* Custom
+ infobox styles */
+.custom-info {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.custom-info .admonition-title {
+    color: #1976d2;
+    font-weight: 600;
+}
+
+/* Enhanced admonitions with icons */
+.admonition.note .admonition-title::before {
+    content: "\f05a";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+}
+
+.admonition.tip .admonition-title::before {
+    content: "\f0eb";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+}
+
+.admonition.warning .admonition-title::before {
+    content: "\f071";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+}
+
+/* Dark theme support for custom infoboxes */
+[data-theme="dark"] .custom-info {
+    background-color: #1e3a5f;
+    border-left-color: #64b5f6;
+}
+
+[data-theme="dark"] .custom-info .admonition-title {
+    color: #64b5f6;
+}/* Copy b
+utton styling */
+.copybtn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    opacity: 0;
+    transition: opacity 0.3s, color 0.3s, background-color 0.3s;
+    border: none;
+    background-color: transparent;
+    color: #6c757d;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copybtn:hover {
+    color: #2980b9;
+    background-color: rgba(41, 128, 185, 0.1);
+}
+
+.copybtn.success {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* Show copy button on hover */
+.highlight:hover .copybtn,
+div[class*="highlight-"]:hover .copybtn {
+    opacity: 1;
+}
+
+/* Dark theme copy button */
+[data-theme="dark"] .copybtn {
+    color: #adb5bd;
+}
+
+[data-theme="dark"] .copybtn:hover {
+    color: #64b5f6;
+    background-color: rgba(100, 181, 246, 0.1);
+}
+
+[data-theme="dark"] .copybtn.success {
+    color: #20c997;
+    background-color: rgba(32, 201, 151, 0.1);
+}
+
+/* Ensure code blocks have relative positioning for absolute copy button */
+.highlight,
+div[class*="highlight-"] {
+    position: relative;
+}
+
+/* Add some padding to code blocks to make room for copy button */
+.highlight pre,
+div[class*="highlight-"] pre {
+    padding-right: 3rem;
 }

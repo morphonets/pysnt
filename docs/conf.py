@@ -14,9 +14,48 @@ extensions = [
     "sphinx_copybutton",            # Copy-to-clipboard buttons for code blocks
 ]
 
+# Mock imports for Read the Docs (avoid importing heavy dependencies)
+import sys
+from unittest.mock import MagicMock
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+MOCK_MODULES = [
+    'scyjava',
+    'imagej', 
+    'pyimagej',
+    'jdk',
+    'jpype',
+    'jpype1',
+    'numpy',
+    'psutil',
+]
+
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
+# Autodoc configuration
+autodoc_mock_imports = MOCK_MODULES
+autodoc_default_options = {
+    'members': True,
+    'member-order': 'bysource',
+    'special-members': '__init__',
+    'undoc-members': True,
+    'exclude-members': '__weakref__'
+}
+
+# Add the source directory to the path for autodoc
+import os
+sys.path.insert(0, os.path.abspath('../src'))
+
 # Do NOT execute notebooks on RTD builds; use stored outputs instead
 # To pre-execute notebooks via CI switch to "cache" and commit cached artifacts so RTD renders them instantly
 nb_execution_mode = "off"
+nb_execution_timeout = 30
+nb_execution_allow_errors = True
+nb_execution_excludepatterns = ["*"]  # Exclude all notebooks from execution
 
 # MyST configuration
 myst_enable_extensions = [
