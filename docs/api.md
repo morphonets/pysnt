@@ -30,8 +30,8 @@ pysnt.initialize_snt()  # Required first step
 
 # Method 1: Direct import (curated classes - recommended)
 # Covers most common tasks
-from pysnt import SNTService, SNTUtils, Tree, Path  # Root sc.fiji.snt classes
-from pysnt.analysis import TreeStatistics, MultiTreeStatistics, ConvexHull
+from pysnt import SNTService, SNTUtils, Tree, Path
+from pysnt.analysis import TreeStatistics, MultiTreeStatistics, ConvexHull3D
 from pysnt.util import PointInImage, SWCPoint
 
 # Method 2: Discoverable classes
@@ -40,7 +40,6 @@ import pysnt.analysis as analysis
 NodeStats = analysis.get_class("NodeStatistics")
 ShollAnalyzer = analysis.get_class("ShollAnalyzer")
 
-# Method 3: Discoverable classes
 # Method 3: Direct Java access (expert users)
 import scyjava
 CustomClass = scyjava.jimport("sc.fiji.snt.CustomClass")
