@@ -3,16 +3,12 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  # Python
+  # Conda dependencies
   - python>=3.8
-  
-  # Java (OpenJDK 21 - guaranteed through conda)
   - openjdk=21
-  
-  # Core Python dependencies
   - numpy>=1.20.0
   
-  # Pip dependencies (not available in conda)
+  # Pip dependencies
   - pip
   - pip:
     - scyjava>=1.8.0

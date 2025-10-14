@@ -46,6 +46,12 @@ autodoc_default_options = {
     'exclude-members': '__weakref__'
 }
 
+# More compact API documentation
+autodoc_typehints = 'signature'  # Show type hints in signature, not description
+autodoc_typehints_format = 'short'  # Use short form of type hints
+autodoc_preserve_defaults = True  # Show actual default values
+add_module_names = False  # Don't show module names in API docs
+
 # Add the source directory to the path for autodoc
 import os
 sys.path.insert(0, os.path.abspath('../src'))
@@ -92,13 +98,15 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = "pydata_sphinx_theme"
+
+# Ensure proper navigation structure
+master_doc = 'index'
+
+# Global toctree for navigation - let theme handle it automatically
 html_static_path = ["_static"]
 html_css_files = [
     "custom.css",
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-]
-html_js_files = [
-    "theme-toggle.js"
 ]
 html_title = "PySNT"
 html_logo = "_static/snt-logo.png"
@@ -111,8 +119,9 @@ html_theme_options = {
     "navigation_with_keys": True,
     "show_prev_next": True,
     "navbar_start": ["navbar-logo"],
-    "navbar_center": [],
-    "navbar_end": [],
+    "navbar_center": ["navbar-nav"],
+    "navbar_end": ["navbar-icon-links"],
+    "header_links_before_dropdown": 7,
     "show_toc_level": 2,
     "navigation_depth": 3,
     "show_version_warning_banner": False,
@@ -126,6 +135,30 @@ html_theme_options = {
         "index": [],  # No TOC on index page
     },
     "primary_sidebar_end": [],
+    # External links for navbar
+    "external_links": [
+        {
+            "name": '<i class="fas fa-book-open"></i>&hairsp;Guide',
+            "url": "https://imagej.net/plugins/snt/",
+        },
+        {
+            "name": '<i class="fa-solid fa-comment"></i>&hairsp;Forum',
+            "url": "https://forum.image.sc/tag/snt",
+        },
+        {
+            "name": '<i class="fas fa-hands-helping"></i>&hairsp;Contribute', 
+            "url": "https://imagej.net/plugins/snt/contribute",
+        },
+    ],
+    # Icon links for navbar end
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/morphonets/pysnt",
+            "icon": "fab fa-github-square",
+            "type": "fontawesome",
+        },
+    ],
     # Work in progress banner
     "announcement": "🚧 Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>! 🚧"
 }
