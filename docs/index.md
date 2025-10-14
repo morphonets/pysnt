@@ -8,8 +8,8 @@ PySNT brings [SNT](https://github.com/morphonets/SNT)'s tracing tools and neuroa
     <a href="notebooks/1_overview.html" class="btn-secondary-custom">Get Started</a>
     <a target="_blank" href="https://imagej.net/plugins/snt/#overview" class="btn-secondary-custom"> See Gallery</a>
 </div>
-<a target="_blank" href="https://javadoc.scijava.org/SNT" class="api-link">
-    See API Reference →
+<a href="api.html" class="api-link">
+    <i class="fas fa-code"></i> See API Reference →
 </a>
 ```
 ---
@@ -66,3 +66,34 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
 ::::
 
 :::::
+
+---
+
+## Quick Links
+
+```{raw} html
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+    <a href="api.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fas fa-code"></i> Python API Reference
+    </a>
+    <a href="java_class_access.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fas fa-coffee"></i> Java Class Access Guide
+    </a>
+    <a href="notebooks/index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fas fa-book"></i> Example Notebooks
+    </a>
+    <a href="https://javadoc.scijava.org/SNT" target="_blank" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fas fa-external-link-alt"></i> SNT Java API
+    </a>
+</div>
+```
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+install
+notebooks/index
+api
+java_class_access
+```

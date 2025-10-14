@@ -22,7 +22,9 @@ Here we only summarize the _easiest_ way to install pysnt. For other (advanced) 
    mamba config set channel_priority strict
    ```
 
-2. Install the provided `environment.yml`
+2. [Clone](https://github.com/morphonets/pysnt.git) or [download](https://github.com/morphonets/pysnt/archive/refs/heads/main.zip) pysnt
+
+2. Create a new environment using the provided `environment.yml`
 
    ```bash
    cd to/pysnt/root/directory/
@@ -41,7 +43,7 @@ Here we only summarize the _easiest_ way to install pysnt. For other (advanced) 
 4. Test that PySNT has been successfully installed, by displaying its version:
 
    ```bash
-   mamba activate pysnt # activate the newly created environment
+   mamba activate pysnt
    python -c 'import pysnt; print(f"Using PySNT version: {pysnt.version()}")'
    ```
    Which should print:
@@ -174,7 +176,6 @@ Because SNT is running headless, the tree is displayed as ascii art in the conso
 ########################################  ######################################
 ########################################  ######################################
 ```
-
 
 
 ## Troubleshooting

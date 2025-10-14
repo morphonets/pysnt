@@ -120,7 +120,11 @@ html_theme_options = {
     "article_header_end": [],
     "article_footer_items": [],
     "content_footer_items": [],
-    "secondary_sidebar_items": [],
+    # Enable secondary sidebar (right TOC) for all pages except index
+    "secondary_sidebar_items": {
+        "**": ["page-toc", "edit-this-page"],
+        "index": [],  # No TOC on index page
+    },
     "primary_sidebar_end": [],
     # Work in progress banner
     "announcement": "🚧 Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>! 🚧"
