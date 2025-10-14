@@ -1,0 +1,34 @@
+name: pysnt
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python>=3.8
+  
+  # Java (OpenJDK 21 - guaranteed through conda)
+  - openjdk=21
+  
+  # Core Python dependencies
+  - numpy>=1.20.0
+  
+  # Pip dependencies (not available in conda)
+  - pip
+  - pip:
+    - scyjava>=1.8.0
+    - pyimagej>=1.4.0
+    - install-jdk>=1.1.0
+    
+    # Development dependencies
+    - pytest>=6.0
+    - pytest-cov
+    - black
+    - flake8
+    - mypy
+    
+    # Documentation dependencies
+    - sphinx>=4.0
+    - sphinx-design
+    - myst-nb
+    - sphinx-copybutton
+    - pydata-sphinx-theme

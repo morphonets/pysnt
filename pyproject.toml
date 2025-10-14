@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysnt"
+version = "0.0.1"
+authors = [
+    {name = "SNT contributors"},
+]
+description = "Python interface for SNT, the ImageJ framework for neuroanatomy"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "scyjava>=1.8.0",
+    "pyimagej>=1.4.0",
+    "numpy>=1.20.0",
+    "install-jdk>=1.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "mypy",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-design",
+    "myst-nb",
+    "sphinx-copybutton",
+    "pydata-sphinx-theme",
+]
+
+[project.scripts]
+pysnt = "pysnt.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/morphonets/pysnt"
+Repository = "https://github.com/morphonets/pysnt"
+Documentation = "https://pysnt.readthedocs.io"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
