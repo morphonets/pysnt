@@ -18,11 +18,11 @@ api_auto/pysnt.setup_utils
 
 There are three ways to import SNT classes:
 
-| Method              | Coverage                      | Use Case       | Comments         |
-|---------------------|-------------------------------|----------------|------------------|
-| Direct Import       | Restricted to curated classes | Common tasks   | Fast, convenient |
-| `get_class()`       | Discoverable classes          | Advanced tasks | Slower on first access, then cached |
-| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | Fast. May require a priori knowlege of SNT's architecture |
+| Method              | Coverage                      | Use Case       | Comments                                                   |
+|---------------------|-------------------------------|----------------|------------------------------------------------------------|
+| Direct Import       | Restricted to curated classes | Common tasks   | Fast, convenient                                           |
+| `get_class()`       | Discoverable classes          | Advanced tasks | Slower on first access, then cached                        |
+| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | Fast. May require a priori knowledge of SNT's architecture |
 
 ```python
 import pysnt
@@ -34,11 +34,13 @@ from pysnt import SNTService, SNTUtils, Tree, Path
 from pysnt.analysis import TreeStatistics, MultiTreeStatistics, ConvexHull3D
 from pysnt.util import PointInImage, SWCPoint
 
-# Method 2: Discoverable classes
-# Covers advanced functionality beyond the preset list of direct imports 
-import pysnt.analysis as analysis
-NodeStats = analysis.get_class("NodeStatistics")
-ShollAnalyzer = analysis.get_class("ShollAnalyzer")
+# Method 2: Discoverable classes via get_class()
+# Covers advanced functionality beyond the preset list of direct imports
+Tree = pysnt.get_class("Tree")                           # Root package
+NodeStats = pysnt.analysis.get_class("NodeStatistics")   # Analysis package
+Viewer2D = pysnt.viewer.get_class("Viewer2D")            # Viewer package
+SearchThread = pysnt.tracing.get_class("SearchThread")   # Tracing package
+LinAlgUtils = pysnt.util.get_class("LinAlgUtils")        # Util package
 
 # Method 3: Direct Java access (expert users)
 import scyjava
@@ -74,25 +76,25 @@ print(f"Extended: {extended}")
 
 ## Quick Reference
 
-| Module | Description | SNT API Match |
-|-------|--------------|---------------|
-| {doc}`api_auto/pysnt` | main package interface with root classes and core functionality | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/package-summary.html) |
-| {doc}`api_auto/pysnt.analysis` | neuronal morphology analysis tools and statistics | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/package-summary.html) |
-| {doc}`api_auto/pysnt.tracing` | tracing tools | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/package-summary.html) |
-| {doc}`api_auto/pysnt.util` | Utility classes and helper functions | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/package-summary.html) |
-| {doc}`api_auto/pysnt.viewer` | 2D and 3D visualization utilities | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/package-summary.html) |
-| | |
-| {doc}`api_auto/pysnt.core` | handles initialization and setup functions | |
-| | |
-| {doc}`api_auto/pysnt.java_utils` | Java environment management utilities | |
-| {doc}`api_auto/pysnt.setup_utils` | Setup and configuration helpers | |
+| Module                            | Description                                                     | SNT API Match                                                                                                             |
+|-----------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| {doc}`api_auto/pysnt`             | main package interface with root classes and core functionality | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/package-summary.html)          |
+| {doc}`api_auto/pysnt.analysis`    | neuronal morphology analysis tools and statistics               | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/package-summary.html) |
+| {doc}`api_auto/pysnt.tracing`     | tracing tools                                                   | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/package-summary.html)  |
+| {doc}`api_auto/pysnt.util`        | Utility classes and helper functions                            | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/package-summary.html)     |
+| {doc}`api_auto/pysnt.viewer`      | 2D and 3D visualization utilities                               | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/package-summary.html)   |
+|                                   |                                                                 |
+| {doc}`api_auto/pysnt.core`        | handles initialization and setup functions                      |                                                                                                                           |
+|                                   |                                                                 |
+| {doc}`api_auto/pysnt.java_utils`  | Java environment management utilities                           |                                                                                                                           |
+| {doc}`api_auto/pysnt.setup_utils` | Setup and configuration helpers                                 |                                                                                                                           |
 
-### Core Functions
-- {func}`pysnt.initialize_snt` - Initialize the SNT environment
+## Core Functions
+- {func}`pysnt.initialize_snt` - Initialize the SNT bridge
 - {func}`pysnt.version` - Get version information  
 - {func}`pysnt.info` - Show detailed system information
 
-### Exploration
+## Exploration
 ```python
 # Discover what's available
 import pysnt.analysis as analysis

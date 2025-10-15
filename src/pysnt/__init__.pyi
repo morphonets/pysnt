@@ -98,10 +98,21 @@ def info() -> None:
     """Show detailed pySNT information (alias for print_version(detailed=True))."""
     ...
 
-# Root class access functions
-def get_root_class(class_name: str) -> JavaClass:
+# Class access functions - consistent with submodules
+def get_available_classes() -> List[str]:
     """
-    Get a specific root SNT class by name.
+    Get list of all available classes from the root SNT package.
+    
+    Returns
+    -------
+    List[str]
+        List of available class names.
+    """
+    ...
+
+def get_class(class_name: str) -> JavaClass:
+    """
+    Get a specific SNT class by name from the root package.
     
     Parameters
     ----------
@@ -111,7 +122,7 @@ def get_root_class(class_name: str) -> JavaClass:
     Returns
     -------
     JavaClass
-        The requested SNT root class.
+        The requested SNT class.
         
     Raises
     ------
@@ -122,15 +133,30 @@ def get_root_class(class_name: str) -> JavaClass:
     """
     ...
 
-def get_curated_root_classes() -> List[str]:
+def get_curated_classes() -> List[str]:
     """
-    Get list of curated root classes that are always available for direct import.
+    Get list of curated classes that are always available for direct import.
     
     Returns
     -------
     List[str]
-        List of curated root class names.
+        List of curated class names from the root SNT package.
     """
+    ...
+
+def get_extended_classes() -> List[str]:
+    """
+    Get list of extended classes available via get_class().
+    
+    Returns
+    -------
+    List[str]
+        Empty list (root package discovers classes dynamically).
+    """
+    ...
+
+def list_classes() -> None:
+    """Print all available root SNT classes organized by tier."""
     ...
 
 # Submodules - these are actual module objects

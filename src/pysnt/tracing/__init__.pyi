@@ -5,10 +5,18 @@ This file provides type hints for the tracing module,
 covering automated and manual neurite tracing classes.
 """
 
-from typing import Any, List
+from typing import Any, List, Optional
 
 # Type alias for Java classes
 JavaClass = Any
+
+# Constants
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]
+
+# Curated classes - always available for direct import
+SearchThread: Optional[JavaClass]
+TracerThread: Optional[JavaClass]
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:
@@ -46,7 +54,31 @@ def get_class(class_name: str) -> JavaClass:
     ...
 
 def list_classes() -> None:
-    """Print all available tracing classes with their descriptions."""
+    """Print all available tracing classes organized by tier."""
+    ...
+
+def get_curated_classes() -> List[str]:
+    """
+    Get list of curated classes that are always available for direct import.
+    
+    Returns
+    -------
+    List[str]
+        List of curated class names.
+    """
+    ...
+
+def get_extended_classes() -> List[str]:
+    """
+    Get list of extended classes available via get_class().
+    
+    This will trigger discovery if not already done.
+    
+    Returns
+    -------
+    List[str]
+        List of extended class names.
+    """
     ...
 
 # Dynamic attribute access support

@@ -5,10 +5,19 @@ This file provides type hints for the viewer module,
 covering 2D and 3D visualization classes.
 """
 
-from typing import Any, List
+from typing import Any, List, Optional
 
 # Type alias for Java classes
 JavaClass = Any
+
+# Constants
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]
+
+# Curated classes - always available for direct import
+Viewer2D: Optional[JavaClass]
+Viewer3D: Optional[JavaClass]
+MultiViewer: Optional[JavaClass]
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:
@@ -46,7 +55,31 @@ def get_class(class_name: str) -> JavaClass:
     ...
 
 def list_classes() -> None:
-    """Print all available viewer classes with their descriptions."""
+    """Print all available viewer classes organized by tier."""
+    ...
+
+def get_curated_classes() -> List[str]:
+    """
+    Get list of curated classes that are always available for direct import.
+    
+    Returns
+    -------
+    List[str]
+        List of curated class names.
+    """
+    ...
+
+def get_extended_classes() -> List[str]:
+    """
+    Get list of extended classes available via get_class().
+    
+    This will trigger discovery if not already done.
+    
+    Returns
+    -------
+    List[str]
+        List of extended class names.
+    """
     ...
 
 # Dynamic attribute access support

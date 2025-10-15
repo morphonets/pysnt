@@ -3,7 +3,7 @@
 ## Requirements
 
 
-The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5 pre-relase](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
+The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5 pre-release](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
 since Conda can be painfully slow with complex environments. If you do not have Mamba installed you can do
 so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
 
@@ -29,7 +29,7 @@ Here we only summarize the _easiest_ way to install pysnt. For other (advanced) 
    git clone https://github.com/morphonets/pysnt.git
    ```
 
-3. Create a new `pysnt` environment using the provided `environment.yml`. This will install all of the key dependencies:
+3. Create a new `pysnt` environment using the provided `environment.yml`. This will install all the key dependencies:
 
    ```bash
    cd ./pysnt # cd to pysnt root directory
@@ -90,25 +90,105 @@ it is best to point pyimagej to a SNT pre-release bundle:
    pysnt.initialize_snt(fiji_path="~/Downloads/Fiji-SNTv5_pre-release_macOS") # Specify path directly
    ```
 
+#### Interactive Setup
+When you initialize pysnt using default options...
+
+```python
+import pysnt
+pysnt.initialize_snt()
+```
+... The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
+
+```terminaloutput
+Fiji Installation Not Found
+========================================
+PySNT requires Fiji to be installed:
+
+Common installation locations checked:
+  - /Applications/Fiji.app
+  - C:/Fiji.app
+  - ~/Fiji.app
+  - ~/Applications/Fiji.app
+  - ~/Desktop/Fiji.app
+  - ~/Downloads/Fiji.app
+
+If Fiji is installed in a different location, please provide the path.
+If Fiji is not installed, you can:
+  1. Set FIJI_PATH environment variable
+  2. Pass fiji_path parameter to initialize_snt()
+
+📍Enter Fiji installation path (or 'skip' to continue without): /Users/user/Downloads/Fiji-SNTv5_pre-release_macOS
+✅ Using Fiji installation: /Users/user/Downloads/Fiji-SNTv5_pre-release_macOS
+❓Save this path to FIJI_PATH environment variable for future use? (y/N): y
+✅ FIJI_PATH set for current session.
+👉 To make permanent, add this to your shell profile:
+   export FIJI_PATH='/Users/user/Downloads/Fiji-SNTv5_pre-release_macOS'
+```
 
 ## Verify Installation
 
-Test your installation is fully functional by running:
+To check version and system info:
+
+```python
+import pysnt
+print(f"PySNT version: {pysnt.version()}")
+print("System info:")
+pysnt.info()
+```
+
+```terminaloutput
+PySNT version: 0.0.1
+System info:
+PySNT Version Information
+===================================
+PySNT version: 0.0.1
+Author: SNT contributors
+
+Python Environment:
+Python version: 3.12.12
+Python executable: /Users/ferreirat/miniforge3/envs/pysnt-dev/bin/python
+Platform: macOS-26.0.1-arm64-arm-64bit
+Architecture: arm64
+
+📦 Core Dependencies:
+  ✅ scyjava      1.12.1       (SciJava Python bridge)
+  ✅ imagej       1.7.0        (PyImageJ)
+  ✅ numpy        2.3.3        (NumPy)
+  ✅ jdk          1.1.0        (install-jdk library (OpenJDK installer))
+
+☕ Java Environment:
+  ✅ Java version: 24 (OpenJDK)
+  📍 Java executable: /Users/ferreirat/miniforge3/envs/pysnt-dev/lib/jvm/bin/java
+  🏠 JAVA_HOME: /Users/ferreirat/miniforge3/envs/pysnt-dev/lib/jvm
+
+🔬 SNT/Fiji Environment:
+  ✅ PySNT initialized: Yes
+  ℹ️ ImageJ version: 2.17.0/1.54p
+  ℹ️ SNT version: 4.9.9-SNAPSHOT-4896c9da7f9ebc6db367ec4fd8c222232f00b2ed
+
+📁 Installation:
+  📍 PySNT location: /Users/ferreirat/code/pysnt/src/pysnt
+
+💻 System Information:
+  OS: Darwin 25.0.0
+  CPU: arm
+  Memory: 48 GB total, 22 GB available
+```
+
+Now you can test that SNT access is fully functional:
 
 ```python
 import pysnt
 from pysnt import SNTService, Tree
-pysnt.initialize_snt('~/Downloads/Fiji-SNTv5_pre-release_macOS/')
+pysnt.initialize_snt('~/Downloads/Fiji-SNTv5_pre-release_macOS/') # or simply pysnt.initialize_snt() if FIJI_PATH is set
 
-snt_service = SNTService() # Scijava service associated with SNT
+snt_service = SNTService() # SNT's Scijava service
 tree = snt_service.demoTree('fractal') # retrieve a toy neuron
-tree.show() # display it
+tree.show() # display reconstruction
 ```
 
-Because SNT is running headless, the tree is displayed as ascii art in the console:
-```python
->>> tree.show()
-
+Because SNT is running headless, the reconstruction is displayed as ascii art in the console:
+```
 ################################################################################
 ###########################  ######  #######  ######  ##########################
 #######################  ##  ######  ##   ##  ######  ##  ######################
@@ -176,9 +256,7 @@ Because SNT is running headless, the tree is displayed as ascii art in the conso
 ########################################  ######################################
 ########################################  ######################################
 ########################################  ######################################
-########################################  ######################################
 ```
-
 
 ## Troubleshooting
 

@@ -148,7 +148,7 @@ def _prompt_for_fiji_path() -> Optional[str]:
     """
     logger = logging.getLogger(__name__)
     
-    print("\n Fiji Installation Not Found")
+    print("\nFiji Installation Not Found")
     print("=" * 40)
     print("PySNT requires Fiji to be installed:")
     print()
@@ -173,7 +173,7 @@ def _prompt_for_fiji_path() -> Optional[str]:
                 print(f"\nAttempt {attempt + 1}/{max_attempts}")
             
             # Prompt for path
-            fiji_path = input("Enter Fiji installation path (or 'skip' to continue without): ").strip()
+            fiji_path = input("📍Enter Fiji installation path (or 'skip' to continue without): ").strip()
             
             # Handle special inputs
             if fiji_path.lower() in ['skip', 'cancel', 'quit', 'exit', '']:
@@ -217,13 +217,13 @@ def _prompt_for_fiji_path() -> Optional[str]:
             logger.info(f"User provided Fiji path: {fiji_path}")
             
             # Optionally save to environment for future use
-            save_env = input("Save this path to FIJI_PATH environment variable for future use? (y/N): ").strip().lower()
+            save_env = input("❓Save this path to FIJI_PATH environment variable for future use? (y/N): ").strip().lower()
             if save_env in ['y', 'yes']:
                 try:
                     # Note: This only sets for current session
                     os.environ['FIJI_PATH'] = fiji_path
                     print("✅ FIJI_PATH set for current session.")
-                    print("To make permanent, add this to your shell profile:")
+                    print("👉 To make permanent, add this to your shell profile:")
                     print(f"   export FIJI_PATH='{fiji_path}'")
                 except Exception as e:
                     print(f"⚠️  Could not set environment variable: {e}")
@@ -269,8 +269,8 @@ def _validate_fiji_path(fiji_path: str) -> bool:
     
     # Check for key Fiji/ImageJ components
     required_indicators = [
-        "config/environment.yml",
-        "jars",
+        "/config/environment.yml",
+        "/jars",
     ]
     
     for indicator_group in required_indicators:

@@ -1,14 +1,13 @@
 """
 Utility classes for SNT data structures.
 
-This module provides convenient access to core SNT classes
-like Tree and Path for neuronal morphology representation.
+This module provides convenient access to SNT utility classes.
 
 Curated classes are always available for direct import:
-    from pysnt.util import Tree, Path, PointInImage, SWCPoint
+    from pysnt.util import PointInImage, SWCPoint
 
 Additional classes can be accessed on-demand:
-    TreeUtils = util.get_class("TreeUtils")
+    LinAlgUtils = util.get_class("LinAlgUtils")
 """
 
 import logging
@@ -19,35 +18,19 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "Tree", 
-    "Path",
+    "BoundingBox",
+    "ColorMaps",
+    "ImpUtils",
     "PointInImage",
-    "SWCPoint",
+    "SNTColor", "SNTPoint", "SWCPoint"
 ]
 
 # Extended classes - available via get_class() after discovery
-EXTENDED_CORE_CLASSES = [
-    "SNTService",
-    "PathAndFillManager",
-    "SNTUI",
-    "TreeColorMapper",
-    "SNTUtils",
-    "PathManagerUI",
-    "FillManagerUI",
-]
-
-EXTENDED_UTIL_CLASSES = [
-    "BoundingBox",
-    "Logger",
-    "SNTPoint",
-    "ColorRGB",
-    "ImpUtils",
-    "PathUtils",
-    "TreeUtils",
-    "SWCUtils",
-    "PointInCanvas",
-    "ShollUtils",
-    "AnalysisUtils",
+EXTENDED_CLASSES = [
+    "CircleCursor3D", "CrossoverFinder",
+    "DiskCursor3D",
+    "LinAlgUtils",
+    "PathCursor", "PointInCanvas"
 ]
 
 # Global registries
@@ -57,8 +40,6 @@ _discovery_completed: bool = False
 
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
-Tree: Optional[Any] = None
-Path: Optional[Any] = None
 PointInImage: Optional[Any] = None
 SWCPoint: Optional[Any] = None
 
@@ -73,7 +54,7 @@ def _java_setup():
     Do not call this directly; use scyjava.start_jvm() instead.
     This function is automatically called when the JVM starts.
     """
-    global _curated_classes, Tree, Path, PointInImage, SWCPoint
+    global _curated_classes, PointInImage, SWCPoint
     
     try:
         # Import curated classes immediately
@@ -99,9 +80,6 @@ def _java_setup():
                 # Set to None so users get clear error messages
                 globals()[class_name] = None
         
-        # Update module-level variables for IDE support
-        Tree = _curated_classes.get("Tree")
-        Path = _curated_classes.get("Path")
         PointInImage = _curated_classes.get("PointInImage")
         SWCPoint = _curated_classes.get("SWCPoint")
         
@@ -127,16 +105,17 @@ def _discover_extended_classes():
         from ..core import discover_java_classes
         
         # Discover classes from both packages
+        all_classes = CURATED_CLASSES + EXTENDED_CLASSES
         core_discovered = discover_java_classes(
             "sc.fiji.snt", 
-            known_classes=EXTENDED_CORE_CLASSES,
+            known_classes=all_classes,
             include_abstract=False,
             include_interfaces=False
         )
         
         util_discovered = discover_java_classes(
             "sc.fiji.snt.util",
-            known_classes=EXTENDED_UTIL_CLASSES, 
+            known_classes=all_classes, 
             include_abstract=False,
             include_interfaces=False
         )
@@ -220,14 +199,6 @@ def get_class(class_name: str) -> Any:
         If the class is not available.
     RuntimeError
         If the JVM has not been started.
-        
-    Examples
-    --------
-    >>> # Get a curated class (always available)
-    >>> Tree = get_class("Tree")
-    >>> 
-    >>> # Get an extended class (discovered on-demand)
-    >>> TreeUtils = get_class("TreeUtils")
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
@@ -321,7 +292,7 @@ def get_extended_classes() -> List[str]:
         _discover_extended_classes()
         return list(_extended_classes.keys())
     else:
-        return EXTENDED_CORE_CLASSES + EXTENDED_UTIL_CLASSES
+        return EXTENDED_CLASSES.copy()
 
 
 # Dynamic __getattr__ to provide access to extended classes
@@ -369,14 +340,11 @@ def __dir__() -> List[str]:
         "get_extended_classes",
         # Constants
         "CURATED_CLASSES",
-        "EXTENDED_CORE_CLASSES",
-        "EXTENDED_UTIL_CLASSES",
+        "EXTENDED_CLASSES",
     ]
     
     # Always include curated classes for IDE autocompletion
     curated_attrs = [
-        "Tree", 
-        "Path",
         "PointInImage",
         "SWCPoint",
     ]
@@ -400,11 +368,8 @@ __all__ = [
     "get_extended_classes",
     # Constants
     "CURATED_CLASSES",
-    "EXTENDED_CORE_CLASSES", 
-    "EXTENDED_UTIL_CLASSES",
+    "EXTENDED_CLASSES",
     # Curated classes (always available for direct import)
-    "Tree", 
-    "Path",
     "PointInImage",
     "SWCPoint",
 ]

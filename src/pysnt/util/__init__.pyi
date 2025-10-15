@@ -12,8 +12,7 @@ JavaClass = Any
 
 # Constants
 CURATED_CLASSES: List[str]
-EXTENDED_CORE_CLASSES: List[str]
-EXTENDED_UTIL_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]
 
 # Curated classes - always available for direct import
 # Note: Tree and Path are now imported from root pysnt package
