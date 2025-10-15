@@ -1,6 +1,6 @@
 """
 This module provides convenient access to
-`SNT's viewer classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/package-summary.html>`__.
+`SNT's classes for statistical analysis of Sholl data <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/package-summary.html>`__.
 """
 
 import logging
@@ -11,16 +11,15 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "MultiViewer", "MultiViewer2D", "MultiViewer3D",
-    "Viewer2D", "Viewer3D"
+    "LinearProfileStats",
+    "NormalizedProfileStats",
+    "PolarProfileStats",
+    "ShollStats"
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "Annotation3D",
-    "Bvv",
-    "ColorTableMapper",
-    "GraphViewer"
+    "CommonStats", "Comparator"
 ]
 
 # Global registries
@@ -31,28 +30,37 @@ _discovery_completed: bool = False
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
 
-class Viewer2D:
+class LinearProfileStats:
     """
-    SNT's Reconstruction Plotter.
-    """
-    pass
-
-class Viewer3D:
-    """
-    SNT's Reconstruction Viewer.
+    Computes descriptive statistics and Sholl Metrics from sampled Sholl profiles,
+    including those relying on polynomial fitting
     """
     pass
 
-class MultiViewer:
+class NormalizedProfileStats:
     """
-    SNT's Multipanel Viewers.
+    Computes Sholl Metrics from normalized profiles, including Sholl decay and
+    methods for determination of 'optimal' normalization.
+    """
+    pass
+
+class PolarProfileStats:
+    """
+    Computes angle-resolved (‘Polar Sholl’) metrics, providing methods for analysis
+    of directional patterns in Sholl profiles.
+    """
+    pass
+
+class ShollStats:
+    """
+    Methods and constants common to all Profile analyzers.
     """
     pass
 
 
 def _java_setup():
     """
-    Lazy initialization function for Java-dependent viewer classes.
+    Lazy initialization function for Java-dependent Sholl math classes.
     
     This loads curated classes immediately and prepares extended classes
     for on-demand loading.
@@ -60,10 +68,10 @@ def _java_setup():
     Do not call this directly; use scyjava.start_jvm() instead.
     This function is automatically called when the JVM starts.
     """
-    global _curated_classes, Viewer2D, Viewer3D, MultiViewer
+    global _curated_classes, LinearProfileStats, NormalizedProfileStats, ProfileStats, ShollStats
     
     try:
-        package_name = "sc.fiji.snt.viewer"
+        package_name = "sc.fiji.snt.analysis.sholl.math"
         
         # Import curated classes immediately
         for class_name in CURATED_CLASSES:
@@ -72,7 +80,7 @@ def _java_setup():
                 java_class = scyjava.jimport(full_class_name)
                 _curated_classes[class_name] = java_class
                 
-                # Replace placeholder class with actual Java class
+                # Make available at module level for direct import
                 globals()[class_name] = java_class
                 
                 logger.debug(f"Loaded curated class: {class_name}")
@@ -81,17 +89,22 @@ def _java_setup():
                 logger.warning(f"Failed to load curated class {class_name}: {e}")
                 # Set to None so users get clear error messages
                 globals()[class_name] = None
+
+        # Replace placeholder classes with actual Java classes
+        if "LinearProfileStats" in _curated_classes:
+            globals()["LinearProfileStats"] = _curated_classes["LinearProfileStats"]
+        if "NormalizedProfileStats" in _curated_classes:
+            globals()["NormalizedProfileStats"] = _curated_classes["NormalizedProfileStats"]
+        if "PolarProfileStats" in _curated_classes:
+            globals()["PolarProfileStats"] = _curated_classes["PolarProfileStats"]
+        if "ShollStats" in _curated_classes:
+            globals()["ShollStats"] = _curated_classes["ShollStats"]
         
-        # Update module-level variables for IDE support
-        Viewer2D = _curated_classes.get("Viewer2D")
-        Viewer3D = _curated_classes.get("Viewer3D")
-        MultiViewer = _curated_classes.get("MultiViewer")
-        
-        logger.info(f"Successfully loaded {len(_curated_classes)} curated viewer classes")
+        logger.info(f"Successfully loaded {len(_curated_classes)} curated Sholl math classes")
         
     except Exception as e:
-        logger.error(f"Failed to load curated viewer classes: {e}")
-        raise ImportError(f"Could not load curated viewer classes: {e}") from e
+        logger.error(f"Failed to load curated Sholl math classes: {e}")
+        raise ImportError(f"Could not load curated Sholl math classes: {e}") from e
 
 
 def _discover_extended_classes():
@@ -106,9 +119,9 @@ def _discover_extended_classes():
         return
     
     try:
-        from ..core import discover_java_classes
+        from ....core import discover_java_classes
         
-        package_name = "sc.fiji.snt.viewer"
+        package_name = "sc.fiji.snt.analysis.sholl.math"
         
         # Discover all available classes
         all_classes = CURATED_CLASSES + EXTENDED_CLASSES
@@ -132,7 +145,7 @@ def _discover_extended_classes():
                     logger.warning(f"Failed to load extended class {class_name}: {e}")
         
         _discovery_completed = True
-        logger.info(f"Discovered {len(_extended_classes)} extended viewer classes")
+        logger.info(f"Discovered {len(_extended_classes)} extended Sholl math classes")
         
     except Exception as e:
         logger.error(f"Failed to discover extended classes: {e}")
@@ -145,7 +158,7 @@ scyjava.when_jvm_starts(_java_setup)
 
 def get_available_classes() -> List[str]:
     """
-    Get list of all available viewer classes.
+    Get list of all available Sholl math classes.
     
     This includes both curated classes (always loaded) and extended classes
     (loaded on-demand). Extended classes are discovered if not already loaded.
@@ -167,8 +180,8 @@ def get_available_classes() -> List[str]:
 
 def get_class(class_name: str) -> Any:
     """
-    Get a specific viewer class by name.
-    
+    Get a specific Sholl math class by name.
+
     This method provides access to both curated and extended classes.
     Extended classes are discovered and loaded on first access.
     
@@ -180,7 +193,7 @@ def get_class(class_name: str) -> Any:
     Returns
     -------
     Java class
-        The requested SNT viewer class.
+        The requested SNT Sholl math class.
         
     Raises
     ------
@@ -188,14 +201,6 @@ def get_class(class_name: str) -> Any:
         If the class is not available.
     RuntimeError
         If the JVM has not been started.
-        
-    Examples
-    --------
-    >>> # Get a curated class (always available)
-    >>> Viewer2D = get_class("Viewer2D")
-    >>> 
-    >>> # Get an extended class (discovered on-demand)
-    >>> GraphViewer = get_class("GraphViewer")
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
@@ -232,7 +237,7 @@ def get_class(class_name: str) -> Any:
 
 def list_classes():
     """
-    Print all available viewer classes organized by tier.
+    Print all available Sholl math classes organized by tier.
     """
     if not scyjava.jvm_started():
         print("JVM not started. Only curated classes listed.")
@@ -242,7 +247,7 @@ def list_classes():
             print(f"  • {class_name}")
         return
     
-    print("Available SNT Viewer Classes:")
+    print("Available SNT Sholl Math Classes:")
     print("=" * 40)
     
     # Show curated classes
@@ -295,7 +300,7 @@ def get_extended_classes() -> List[str]:
 # Dynamic __getattr__ to provide access to extended classes
 def __getattr__(name: str) -> Any:
     """
-    Provide dynamic access to viewer classes.
+    Provide dynamic access to Sholl math classes.
     
     This allows importing extended classes that were discovered at runtime,
     but prioritizes curated classes for performance.
@@ -342,9 +347,10 @@ def __dir__() -> List[str]:
     
     # Always include curated classes for IDE autocompletion
     curated_attrs = [
-        "Viewer2D",
-        "Viewer3D",
-        "MultiViewer",
+        "LinearProfileStats",
+        "NormalizedProfileStats",
+        "PolarProfileStats",
+        "ShollStats"
     ]
     
     # If JVM is started and extended classes are discovered, include them too
@@ -368,7 +374,8 @@ __all__ = [
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",
     # Curated classes (always available for direct import)
-    "Viewer2D",
-    "Viewer3D",
-    "MultiViewer",
+    "LinearProfileStats",
+    "NormalizedProfileStats",
+    "PolarProfileStats",
+    "ShollStats"
 ]

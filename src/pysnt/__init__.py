@@ -33,32 +33,24 @@ _root_classes: Dict[str, Any] = {}
 class SNTService:
     """
     SNT's Scijava Service
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class SNTUtils:
     """
     SNT's main utility class with helper functions and constants.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class Tree:
     """
     SNT's core class for representing neuronal trees
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class Path:
     """
     SNT's core class for representing traced segments.
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 

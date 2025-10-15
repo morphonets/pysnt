@@ -40,8 +40,6 @@ _discovery_completed: bool = False
 class TreeStatistics:
     """
     This class provides comprehensive statistical analysis of neuronal trees.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
@@ -49,40 +47,30 @@ class MultiTreeStatistics:
     """
     This class is a TreeStatistics variant providing comparison
     capabilities for collections of neuronal trees.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class ConvexHull2D:
     """
     This class computes and analyzes the convex hull of a 2D Tree
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class ConvexHull3D:
     """
     This class computes and analyzes the convex hull of a 3D Tree
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class SNTChart:
     """
     Class for creating analysis charts and plots.
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class SNTTable:
     """
     Class for table creation, manipulation, and display of tabular data.
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 

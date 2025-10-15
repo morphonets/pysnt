@@ -1,6 +1,6 @@
 """
 This module provides convenient access to
-`SNT's viewer classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/package-summary.html>`__.
+`SNT's graph analysis classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/package-summary.html>`__.
 """
 
 import logging
@@ -11,16 +11,16 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "MultiViewer", "MultiViewer2D", "MultiViewer3D",
-    "Viewer2D", "Viewer3D"
+    "AnnotationGraph",
+    "DirectedWeightedGraph", "DirectedWeightedSubgraph",
+    "SNTGraph"
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "Annotation3D",
-    "Bvv",
-    "ColorTableMapper",
-    "GraphViewer"
+    "AnnotationWeightedEdge", "AnnotationGraphUtils",
+    "GraphColorMapper", "GraphUtils"
+    "SNTPseudograph", "SWCWeightedEdge"
 ]
 
 # Global registries
@@ -31,28 +31,34 @@ _discovery_completed: bool = False
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
 
-class Viewer2D:
+class AnnotationGraph:
     """
-    SNT's Reconstruction Plotter.
-    """
-    pass
-
-class Viewer3D:
-    """
-    SNT's Reconstruction Viewer.
+    A graph implementation for brain (neuropil) annotations
     """
     pass
 
-class MultiViewer:
+class DirectedWeightedGraph:
     """
-    SNT's Multipanel Viewers.
+    Class for accessing a reconstruction as a graph structure.
+    """
+    pass
+
+class DirectedWeightedSubgraph:
+    """
+    Class for accessing sub-graphs of a reconstruction.
+    """
+    pass
+
+class SNTGraph:
+    """
+    Class providing color mapping functionality for graph visualization.
     """
     pass
 
 
 def _java_setup():
     """
-    Lazy initialization function for Java-dependent viewer classes.
+    Lazy initialization function for Java-dependent graph analysis classes.
     
     This loads curated classes immediately and prepares extended classes
     for on-demand loading.
@@ -60,10 +66,10 @@ def _java_setup():
     Do not call this directly; use scyjava.start_jvm() instead.
     This function is automatically called when the JVM starts.
     """
-    global _curated_classes, Viewer2D, Viewer3D, MultiViewer
-    
+    global _curated_classes, AnnotationGraph, DirectedWeightedGraph, DirectedWeightedSubgraph, SNTGraph
+
     try:
-        package_name = "sc.fiji.snt.viewer"
+        package_name = "sc.fiji.snt.analysis.graph"
         
         # Import curated classes immediately
         for class_name in CURATED_CLASSES:
@@ -72,7 +78,7 @@ def _java_setup():
                 java_class = scyjava.jimport(full_class_name)
                 _curated_classes[class_name] = java_class
                 
-                # Replace placeholder class with actual Java class
+                # Make available at module level for direct import
                 globals()[class_name] = java_class
                 
                 logger.debug(f"Loaded curated class: {class_name}")
@@ -82,17 +88,21 @@ def _java_setup():
                 # Set to None so users get clear error messages
                 globals()[class_name] = None
         
-        # Update module-level variables for IDE support
-        Viewer2D = _curated_classes.get("Viewer2D")
-        Viewer3D = _curated_classes.get("Viewer3D")
-        MultiViewer = _curated_classes.get("MultiViewer")
+        # Replace placeholder classes with actual Java classes
+        if "AnnotationGraph" in _curated_classes:
+            globals()["AnnotationGraph"] = _curated_classes["AnnotationGraph"]
+        if "DirectedWeightedGraph" in _curated_classes:
+            globals()["DirectedWeightedGraph"] = _curated_classes["DirectedWeightedGraph"]
+        if "DirectedWeightedSubgraph" in _curated_classes:
+            globals()["DirectedWeightedSubgraph"] = _curated_classes["DirectedWeightedSubgraph"]
+        if "SNTGraph" in _curated_classes:
+            globals()["SNTGraph"] = _curated_classes["GraphUtils"]
         
-        logger.info(f"Successfully loaded {len(_curated_classes)} curated viewer classes")
+        logger.info(f"Successfully loaded {len(_curated_classes)} curated graph analysis classes")
         
     except Exception as e:
-        logger.error(f"Failed to load curated viewer classes: {e}")
-        raise ImportError(f"Could not load curated viewer classes: {e}") from e
-
+        logger.error(f"Failed to load curated graph analysis classes: {e}")
+        raise ImportError(f"Could not load curated graph analysis classes: {e}") from e
 
 def _discover_extended_classes():
     """
@@ -106,9 +116,9 @@ def _discover_extended_classes():
         return
     
     try:
-        from ..core import discover_java_classes
+        from ...core import discover_java_classes
         
-        package_name = "sc.fiji.snt.viewer"
+        package_name = "sc.fiji.snt.analysis.graph"
         
         # Discover all available classes
         all_classes = CURATED_CLASSES + EXTENDED_CLASSES
@@ -132,7 +142,7 @@ def _discover_extended_classes():
                     logger.warning(f"Failed to load extended class {class_name}: {e}")
         
         _discovery_completed = True
-        logger.info(f"Discovered {len(_extended_classes)} extended viewer classes")
+        logger.info(f"Discovered {len(_extended_classes)} extended graph analysis classes")
         
     except Exception as e:
         logger.error(f"Failed to discover extended classes: {e}")
@@ -145,7 +155,7 @@ scyjava.when_jvm_starts(_java_setup)
 
 def get_available_classes() -> List[str]:
     """
-    Get list of all available viewer classes.
+    Get list of all available graph analysis classes.
     
     This includes both curated classes (always loaded) and extended classes
     (loaded on-demand). Extended classes are discovered if not already loaded.
@@ -167,8 +177,8 @@ def get_available_classes() -> List[str]:
 
 def get_class(class_name: str) -> Any:
     """
-    Get a specific viewer class by name.
-    
+    Get a specific graph analysis class by name.
+
     This method provides access to both curated and extended classes.
     Extended classes are discovered and loaded on first access.
     
@@ -180,7 +190,7 @@ def get_class(class_name: str) -> Any:
     Returns
     -------
     Java class
-        The requested SNT viewer class.
+        The requested SNT graph analysis class.
         
     Raises
     ------
@@ -188,14 +198,6 @@ def get_class(class_name: str) -> Any:
         If the class is not available.
     RuntimeError
         If the JVM has not been started.
-        
-    Examples
-    --------
-    >>> # Get a curated class (always available)
-    >>> Viewer2D = get_class("Viewer2D")
-    >>> 
-    >>> # Get an extended class (discovered on-demand)
-    >>> GraphViewer = get_class("GraphViewer")
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
@@ -232,7 +234,7 @@ def get_class(class_name: str) -> Any:
 
 def list_classes():
     """
-    Print all available viewer classes organized by tier.
+    Print all available graph analysis classes organized by tier.
     """
     if not scyjava.jvm_started():
         print("JVM not started. Only curated classes listed.")
@@ -242,7 +244,7 @@ def list_classes():
             print(f"  • {class_name}")
         return
     
-    print("Available SNT Viewer Classes:")
+    print("Available SNT Graph Analysis Classes:")
     print("=" * 40)
     
     # Show curated classes
@@ -295,7 +297,7 @@ def get_extended_classes() -> List[str]:
 # Dynamic __getattr__ to provide access to extended classes
 def __getattr__(name: str) -> Any:
     """
-    Provide dynamic access to viewer classes.
+    Provide dynamic access to graph analysis classes.
     
     This allows importing extended classes that were discovered at runtime,
     but prioritizes curated classes for performance.
@@ -342,9 +344,9 @@ def __dir__() -> List[str]:
     
     # Always include curated classes for IDE autocompletion
     curated_attrs = [
-        "Viewer2D",
-        "Viewer3D",
-        "MultiViewer",
+        "AnnotationGraph",
+        "DirectedWeightedGraph", "DirectedWeightedSubgraph",
+        "SNTGraph"
     ]
     
     # If JVM is started and extended classes are discovered, include them too
@@ -368,7 +370,8 @@ __all__ = [
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",
     # Curated classes (always available for direct import)
-    "Viewer2D",
-    "Viewer3D",
-    "MultiViewer",
+    "AnnotationGraph",
+    "DirectedWeightedGraph",
+    "DirectedWeightedSubgraph",
+    "SNTGraph",
 ]

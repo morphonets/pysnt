@@ -36,16 +36,12 @@ _discovery_completed: bool = False
 class SearchThread:
     """
     SNT's SearchThread class for pathfinding algorithms.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class TracerThread:
     """
     SNT's TracerThread class for pathfinding algorithms.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 

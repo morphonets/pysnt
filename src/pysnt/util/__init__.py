@@ -37,16 +37,12 @@ _discovery_completed: bool = False
 class PointInImage:
     """
     SNT's PointInImage class for representing 3D points in image space.
-    
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
 class SWCPoint:
     """
     SNT's SWCPoint class for representing points in standardized SWC format.
-
-    NB: Only available after calling pysnt.initialize_snt().
     """
     pass
 
