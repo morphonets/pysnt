@@ -1,4 +1,4 @@
-<p align="center"><img src="https://imagej.net/media/icons/snt.png" alt="SNT" width="150"></p>
+<p align="center"><img src="./docs/_static/snt_logo.svg" alt="SNT" width="150"></p>
 <h1 align="center">PySNT</h1>
 <h2 align="center">Python wrapper for SNT, the ImageJ framework  for Neuroanatomy</h2>
 <div align="center">

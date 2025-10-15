@@ -1,263 +1,79 @@
 {% extends "pydata_sphinx_theme/layout.html" %}
 
-
-
 {% block extrahead %}
 {{ super() }}
 <style>
-    /* Navbar layout adjustments */
-    .bd-header__inner {
-        display: flex !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 1200px !important;
-        margin: 0 auto !important;
-        padding: 0 1rem !important;
-        gap: 1rem !important;
-        position: relative !important;
+    /* Icon spacing in navigation */
+    .navbar-nav .nav-link i[class*="fa-"]:not(:last-child) {
+        margin-right: 0.4rem;
     }
 
-    .navbar-header-items {
-        display: flex !important;
-        align-items: center !important;
-        flex: 1 !important;
-        width: 100% !important;
-        gap: 1rem !important;
+    /* Fix duplicate search icons on mobile */
+    @media (min-width: 960px) {
+        .navbar-persistent--mobile {
+            display: none;
+        }
     }
 
-    .navbar-header-items__start {
-        flex-shrink: 0 !important;
-    }
-
-    .navbar-header-items__end {
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* Theme toggle button styling */
-    .pysnt-theme-toggle {
-        color: var(--pst-color-text-base) !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        padding: 0.5rem !important;
-        border-radius: 0.25rem !important;
-        transition: all 0.2s !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .pysnt-theme-toggle:hover {
-        background-color: var(--pst-color-surface) !important;
-    }
-
-    /* Add spacing between FontAwesome icons and text in navigation */
-    .navbar-nav .nav-link i[class*="fa-"]:not(:last-child),
-    .navbar-nav .nav-link i[class*="fas"]:not(:last-child),
-    .navbar-nav .nav-link i[class*="fab"]:not(:last-child),
-    .navbar-nav .nav-link i[class*="far"]:not(:last-child) {
-        margin-right: 0.4rem !important;
-    }
-
-    /* Also apply to dropdown items */
-    .dropdown-item i[class*="fa-"]:not(:last-child),
-    .dropdown-item i[class*="fas"]:not(:last-child),
-    .dropdown-item i[class*="fab"]:not(:last-child),
-    .dropdown-item i[class*="far"]:not(:last-child) {
-        margin-right: 0.4rem !important;
-    }
-
-    /* Hide main navigation items on mobile when hamburger menu is active */
     @media (max-width: 959px) {
-        .navbar-nav:not(.navbar-nav-scroll) {
-            display: none !important;
+        .navbar-persistent--container {
+            display: none;
         }
         
-        /* Keep only the icon links visible on mobile */
-        .navbar-icon-links {
-            display: flex !important;
-        }
-        
-        /* Ensure hamburger menu button is visible */
-        .navbar-toggler {
-            display: block !important;
+        .navbar-header-items__center {
+            display: none;
         }
     }
 
-    /* Dark theme adjustments */
-    [data-theme="dark"],
-    [data-theme="dark"] body,
-    [data-theme="dark"] .bd-main,
-    [data-theme="dark"] .bd-content,
-    [data-theme="dark"] .bd-article-container {
-        background-color: #1a1a1a !important;
-        color: #e0e0e0 !important;
-    }
-
-    [data-theme="dark"] .bd-navbar,
-    [data-theme="dark"] .bd-header {
-        background-color: #2d2d2d !important;
-        border-bottom: 1px solid #404040 !important;
-    }
-
-    [data-theme="dark"] .pysnt-theme-toggle {
-        color: #e0e0e0 !important;
-    }
-
-    [data-theme="dark"] .pysnt-theme-toggle:hover {
-        color: #64b5f6 !important;
-        background-color: rgba(100, 181, 246, 0.1) !important;
-    }
-
-    /* Logo styling with home icon */
-    .bd-navbar .navbar-brand {
-        position: relative !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
-    }
-    
-    .bd-navbar .navbar-brand img {
-        height: 40px;
-        width: auto;
-    }
-    
-    /* Add home icon to logo */
+    /* Home icon only - hide text */
     .bd-navbar .navbar-brand::before {
         content: "\f015";
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
         font-size: 1.2rem;
-        color: #2c3e50;
-        margin-right: 0.3rem;
+        color: var(--pst-color-text-base);
     }
     
-    /* Dark theme support for logo home icon */
-    [data-theme="dark"] .bd-navbar .navbar-brand::before {
-        color: #e0e0e0;
+    .bd-navbar .navbar-brand .title {
+        display: none;
     }
 
-
-
-    /* Dark theme for hero section */
-    [data-theme="dark"] .hero-title {
-        color: #e0e0e0 !important;
+    /* Theme toggle button styling */
+    .theme-toggle-btn {
+        background: none;
+        border: none;
+        color: var(--pst-color-text-base);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
     }
 
-    [data-theme="dark"] .hero-subtitle {
-        color: #b0b0b0 !important;
+    .theme-toggle-btn:hover {
+        background-color: var(--pst-color-surface);
+        color: var(--pst-color-primary);
     }
 
-    [data-theme="dark"] .hero-description {
-        color: #a0a0a0 !important;
+    /* Hide mobile theme toggle on desktop */
+    @media (min-width: 960px) {
+        .mobile-theme-toggle {
+            display: none !important;
+        }
     }
-
-    [data-theme="dark"] .gallery-card {
-        background: #2d2d2d !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-    }
-
-    [data-theme="dark"] .btn-primary-custom {
-        background-color: #64b5f6 !important;
-        color: #1a1a1a !important;
-    }
-
-    [data-theme="dark"] .btn-secondary-custom {
-        color: #64b5f6 !important;
-        border-color: #64b5f6 !important;
-    }
-
-    [data-theme="dark"] .btn-secondary-custom:hover {
-        background-color: #64b5f6 !important;
-        color: #1a1a1a !important;
-    }
-
-
 </style>
 
 <script>
-    // Simple theme toggle setup
-    document.addEventListener('DOMContentLoaded', function () {
-        // Wait for theme to fully load
-        setTimeout(function() {
-            addThemeToggleToNavbar();
-            setupThemeToggle();
-        }, 100);
-    });
-
-    function addThemeToggleToNavbar() {
-        // Find the navbar icon links container
-        const iconLinks = document.querySelector('.navbar-icon-links');
-        if (!iconLinks) return;
-
-        // Add theme toggle button to the icon links
-        const themeToggle = document.createElement('button');
-        themeToggle.className = 'pysnt-theme-toggle navbar-icon-links__item';
-        themeToggle.id = 'pysnt-theme-toggle';
-        themeToggle.title = 'Switch between light and dark mode';
-        themeToggle.innerHTML = '<i class="fas fa-sun" id="pysnt-theme-icon"></i>';
-        
-        // Insert before the first icon link (GitHub)
-        iconLinks.insertBefore(themeToggle, iconLinks.firstChild);
-    }
-
-    function setupThemeToggle() {
-        const themeToggle = document.getElementById('pysnt-theme-toggle');
-        const themeIcon = document.getElementById('pysnt-theme-icon');
-        const body = document.body;
-
-        if (!themeToggle || !themeIcon) {
-            console.log('Theme toggle elements not found, retrying...');
-            // Retry after a short delay if elements aren't found
-            setTimeout(setupThemeToggle, 200);
-            return;
-        }
-
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-
-        // Apply the saved theme
-        if (currentTheme === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-moon';
-        } else {
-            body.setAttribute('data-theme', 'light');
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.className = 'fas fa-sun';
-        }
-
-        // Theme switch event listener
-        themeToggle.addEventListener('click', function () {
-            const currentTheme = body.getAttribute('data-theme');
-            console.log('Theme toggle clicked! Current theme:', currentTheme);
-
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'light');
-                console.log('Switched to light theme');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'dark');
-                console.log('Switched to dark theme');
-            }
-        });
-
-        console.log('Theme toggle setup complete');
-    }
-
-    // Add link to main pysnt package on API auto pages
     document.addEventListener('DOMContentLoaded', function() {
-        const currentPath = window.location.pathname;
+        // Add theme toggle to navbar with a delay to ensure DOM is ready
+        setTimeout(addThemeToggle, 500);
         
         // Add compact styling to API landing page
+        const currentPath = window.location.pathname;
+        
         if (currentPath.endsWith('/api.html') || currentPath.endsWith('/api/')) {
             document.body.classList.add('api-landing-page');
         }
@@ -277,5 +93,66 @@
         }
     });
 
+    function addThemeToggle() {
+        // Add to navbar icon links (desktop)
+        const iconLinks = document.querySelector('.navbar-icon-links');
+        if (iconLinks) {
+            const themeToggle = document.createElement('li');
+            themeToggle.className = 'nav-item';
+            themeToggle.innerHTML = `
+                <button class="theme-toggle-btn" title="Toggle light/dark theme" aria-label="Toggle theme">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
+            `;
+            iconLinks.insertBefore(themeToggle, iconLinks.firstChild);
+        }
+
+        // Add to mobile sidebar - be more specific to avoid TOC sidebars
+        // Only target the main navigation sidebar, not content TOC sidebars
+        const mobileContainer = document.querySelector('.bd-sidebar-primary .bd-sidenav:not(.bd-toc)');
+        
+        if (mobileContainer && !mobileContainer.closest('.bd-toc')) {
+            const mobileThemeToggle = document.createElement('li');
+            mobileThemeToggle.className = 'nav-item mobile-theme-toggle';
+            mobileThemeToggle.innerHTML = `
+                <a class="nav-link theme-toggle-btn" href="#" title="Toggle light/dark theme" aria-label="Toggle theme" style="cursor: pointer;">
+                    <i class="fa-solid fa-circle-half-stroke" style="margin-right: 0.5rem;"></i>
+                    <span>Toggle Theme</span>
+                </a>
+            `;
+            
+            const link = mobileThemeToggle.querySelector('a');
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleTheme();
+            });
+            
+            mobileContainer.insertBefore(mobileThemeToggle, mobileContainer.firstChild);
+        }
+
+        setupThemeToggle();
+    }
+
+    function setupThemeToggle() {
+        // Get current theme from localStorage or default to light
+        const currentTheme = localStorage.getItem('pst-color-scheme') || 'light';
+        
+        // Apply current theme
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Add click handlers to desktop theme toggle buttons
+        const desktopThemeToggleButtons = document.querySelectorAll('.navbar-icon-links .theme-toggle-btn');
+        desktopThemeToggleButtons.forEach(button => {
+            button.addEventListener('click', toggleTheme);
+        });
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('pst-color-scheme', newTheme);
+    }
 </script>
 {% endblock %}

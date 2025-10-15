@@ -109,19 +109,14 @@ html_css_files = [
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 ]
 html_title = "PySNT"
-html_logo = "_static/snt-logo.png"
 
 html_theme_options = {
-    "logo": {
-        "image_light": "_static/snt-logo.png",
-        "image_dark": "_static/snt-logo.png",
-    },
     "navigation_with_keys": True,
     "show_prev_next": True,
     "navbar_start": ["navbar-logo"],
     "navbar_center": ["navbar-nav"],
     "navbar_end": ["navbar-icon-links"],
-    "header_links_before_dropdown": 7,
+    "header_links_before_dropdown": 6,
     "show_toc_level": 2,
     "navigation_depth": 3,
     "show_version_warning_banner": False,
@@ -146,7 +141,7 @@ html_theme_options = {
             "url": "https://forum.image.sc/tag/snt",
         },
         {
-            "name": '<i class="fas fa-hands-helping"></i>&hairsp;Contribute', 
+            "name": '<i class="fas fa-hands-helping"></i>&hairsp;Extend',
             "url": "https://imagej.net/plugins/snt/contribute",
         },
     ],

@@ -1,7 +1,48 @@
-# PySNT
-## Trace, analyze, and quantify neuronal morphology — from Python.
+```{raw} html
+<div class="hero-header" style="margin: 2rem 0;">
+    <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+        <div style="flex-shrink: 0;">
+            <img src="_static/snt_logo.svg" alt="SNT Logo" class="hero-logo" style="height: 120px; width: auto;">
+        </div>
+        <div style="flex: 1;">
+            <h1 style="margin: 0 0 0.5rem 0; font-size: 3rem; font-weight: 700;">PySNT</h1>
+            <h2 style="margin: 0; font-size: 1.5rem; font-weight: 300; color: #666;">Trace, analyze, and quantify neuronal morphology — from Python.</h2>
+        </div>
+    </div>
+    <p style="margin: 0; font-size: 1.1rem; line-height: 1.6;">PySNT brings <a href="https://github.com/morphonets/SNT" target="_blank">SNT</a>'s tracing tools and neuroanatomy analytics to Python. Use it interactively in notebooks or to automate large-scale studies.</p>
+</div>
 
-PySNT brings [SNT](https://github.com/morphonets/SNT)'s tracing tools and neuroanatomy analytics to Python. Use it interactively in notebooks or to automate large-scale studies.
+<style>
+/* Logo styling for dark mode compatibility */
+.hero-logo {
+    background: transparent !important;
+    mix-blend-mode: multiply;
+}
+
+/* Dark theme logo adjustments */
+[data-theme="dark"] .hero-logo {
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: normal;
+}
+
+@media (max-width: 768px) {
+    .hero-header > div:first-child {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1rem !important;
+    }
+    .hero-header h1 {
+        font-size: 2.5rem !important;
+    }
+    .hero-header h2 {
+        font-size: 1.3rem !important;
+    }
+    .hero-header img {
+        height: 100px !important;
+    }
+}
+</style>
+```
 
 ```{raw} html
 <div class="hero-buttons">
@@ -17,7 +58,7 @@ PySNT brings [SNT](https://github.com/morphonets/SNT)'s tracing tools and neuroa
 :::::{grid} 1 2 2 3
 :gutter: 3
 
-::::{grid-item-card} 🚀 Getting Started
+::::{grid-item-card} <i class="fa-solid fa-rocket"></i> Getting Started
 :link: install
 :link-type: doc
 :img-top: _static/AA0100skel2d.png
@@ -25,7 +66,7 @@ PySNT brings [SNT](https://github.com/morphonets/SNT)'s tracing tools and neuroa
 Set up your environment and launch your first script with step-by-step guidance.
 ::::
 
-::::{grid-item-card} 📊 Analysis Tools  
+::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Analysis Tools  
 :link: notebooks/2_convex_hull
 :link-type: doc
 :img-top: _static/convexhull.png
@@ -33,7 +74,7 @@ Set up your environment and launch your first script with step-by-step guidance.
 Comprehensive morphological analysis.
 ::::
 
-::::{grid-item-card} 🎨 Visualizations
+::::{grid-item-card} <i class="fa-solid fa-chart-bar"></i> Visualizations
 :link: notebooks/index
 :link-type: doc
 :img-top: _static/intersection-overview.png
@@ -41,7 +82,7 @@ Comprehensive morphological analysis.
 Create publication-ready plots and interactive visualizations of neuronal data.
 ::::
 
-::::{grid-item-card} ⚡ Performance
+::::{grid-item-card} <i class="fa-solid fa-gauge-high"></i> Performance
 :link: notebooks/index
 :link-type: doc
 :img-top: _static/AA0100annot.png
@@ -49,7 +90,7 @@ Create publication-ready plots and interactive visualizations of neuronal data.
 Optimized algorithms for large-scale morphological analysis and batch processing.
 ::::
 
-::::{grid-item-card} 🧠 Atlas Analysis
+::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
 :link: notebooks/index 
 :link-type: doc
 :img-top: _static/group0exemplars.png
@@ -57,7 +98,7 @@ Optimized algorithms for large-scale morphological analysis and batch processing
 Specialized tools for public datasets.
 ::::
 
-::::{grid-item-card} 💪 Much More
+::::{grid-item-card} <i class="fa-solid fa-boxes-stacked"></i> Much More
 :link: notebooks/index
 :link-type: doc
 :img-top: _static/snt-growth-analysis.png
