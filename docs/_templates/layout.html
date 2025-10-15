@@ -1,5 +1,7 @@
 {% extends "pydata_sphinx_theme/layout.html" %}
 
+
+
 {% block extrahead %}
 {{ super() }}
 <style>
@@ -172,6 +174,8 @@
         background-color: #64b5f6 !important;
         color: #1a1a1a !important;
     }
+
+
 </style>
 
 <script>
@@ -249,118 +253,29 @@
         console.log('Theme toggle setup complete');
     }
 
-    // Add API Overview link to auto-generated API pages
-    function addApiOverviewLink() {
-        // Check if we're on an auto-generated API page
-        const currentPath = window.location.pathname;
-        if (!currentPath.includes('/api_auto/')) {
-            return;
-        }
-
-        // Find the sidebar navigation
-        const sidebarNav = document.querySelector('.bd-docs-nav .bd-toc-item');
-        if (!sidebarNav) {
-            console.log('Sidebar navigation not found');
-            return;
-        }
-
-        // Create the API Overview link
-        const apiOverviewItem = document.createElement('div');
-        apiOverviewItem.className = 'api-overview-link';
-        apiOverviewItem.style.cssText = `
-            margin-bottom: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e9ecef;
-        `;
-
-        // Determine the correct path to api.html based on current location
-        const pathSegments = currentPath.split('/');
-        const apiPath = '../api.html'; // Go up one level from api_auto/
-
-        apiOverviewItem.innerHTML = `
-            <a href="${apiPath}" class="api-overview-btn" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.4rem 0.8rem;
-                background-color: #f8f9fa;
-                border: 1px solid #dee2e6;
-                border-radius: 0.375rem;
-                color: #495057;
-                text-decoration: none;
-                font-size: 0.875rem;
-                font-weight: 500;
-                transition: all 0.2s;
-                width: 100%;
-                justify-content: center;
-            ">
-                <i class="fas fa-home"></i>
-                API Overview
-            </a>
-        `;
-
-        // Add hover effects
-        const link = apiOverviewItem.querySelector('.api-overview-btn');
-        link.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#e9ecef';
-            this.style.borderColor = '#adb5bd';
-            this.style.color = '#212529';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = '#f8f9fa';
-            this.style.borderColor = '#dee2e6';
-            this.style.color = '#495057';
-        });
-
-        // Insert at the beginning of the sidebar navigation
-        sidebarNav.insertBefore(apiOverviewItem, sidebarNav.firstChild);
-
-        console.log('API Overview link added to sidebar');
-    }
-
-    // Add dark theme support for API Overview link
-    function updateApiOverviewLinkTheme() {
-        const apiLink = document.querySelector('.api-overview-btn');
-        if (!apiLink) return;
-
-        const isDark = document.body.getAttribute('data-theme') === 'dark';
-        
-        if (isDark) {
-            apiLink.style.backgroundColor = '#2d2d2d';
-            apiLink.style.borderColor = '#404040';
-            apiLink.style.color = '#e0e0e0';
-            
-            apiLink.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = '#404040';
-                this.style.borderColor = '#64b5f6';
-                this.style.color = '#64b5f6';
-            });
-            
-            apiLink.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = '#2d2d2d';
-                this.style.borderColor = '#404040';
-                this.style.color = '#e0e0e0';
-            });
-        } else {
-            apiLink.style.backgroundColor = '#f8f9fa';
-            apiLink.style.borderColor = '#dee2e6';
-            apiLink.style.color = '#495057';
-        }
-    }
-
-    // Initialize API navigation enhancement
+    // Add link to main pysnt package on API auto pages
     document.addEventListener('DOMContentLoaded', function() {
-        addApiOverviewLink();
-        updateApiOverviewLinkTheme();
+        const currentPath = window.location.pathname;
         
-        // Update theme when theme toggle is clicked
-        const themeToggle = document.getElementById('pysnt-theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', function() {
-                setTimeout(updateApiOverviewLinkTheme, 100);
-            });
+        // Add compact styling to API landing page
+        if (currentPath.endsWith('/api.html') || currentPath.endsWith('/api/')) {
+            document.body.classList.add('api-landing-page');
+        }
+        
+        // Add parent link to API auto pages
+        if (currentPath.includes('/api_auto/') && !currentPath.includes('/pysnt.html')) {
+            const nav = document.querySelector('.bd-docs-nav .bd-toc-item');
+            if (nav) {
+                const parentLink = document.createElement('ul');
+                parentLink.className = 'nav bd-sidenav';
+                parentLink.style.marginBottom = '1rem';
+                parentLink.style.paddingBottom = '0.5rem';
+                parentLink.style.borderBottom = '1px solid var(--pst-color-border)';
+                parentLink.innerHTML = '<li class="toctree-l1"><a class="reference internal" href="pysnt.html"><span class="doc">← pysnt package</span></a></li>';
+                nav.insertBefore(parentLink, nav.firstChild);
+            }
         }
     });
+
 </script>
 {% endblock %}

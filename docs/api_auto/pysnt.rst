@@ -1,11 +1,6 @@
 pysnt package
 =============
 
-.. automodule:: pysnt
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 Subpackages
 -----------
 
@@ -26,3 +21,11 @@ Submodules
    pysnt.core
    pysnt.java_utils
    pysnt.setup_utils
+
+Module contents
+---------------
+
+.. automodule:: pysnt
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,6 +1,6 @@
 """
 This module provides convenient access to
-`SNT's tracing classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/package-summary.html>`__.
+`SNT's util classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/package-summary.html>`__.
 """
 
 import logging

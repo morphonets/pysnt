@@ -8,7 +8,7 @@ since Conda can be painfully slow with complex environments. If you do not have 
 so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
 
 ```{important}
-In the future, PySNT will automatically download OpenJDK and SNT if they're not found. For now, you'll need to download them manually (see installation instructions below).
+In the future, PySNT will automatically download SNT if it is not found. For now, you'll need to download it manually (see installation instructions below).
 ```
 
 Here we only summarize the _easiest_ way to install pysnt. For other (advanced) install options (via pip, condacolab, dynamic install, etc.) you should be able to adapt the advanced install documentation of [pyimagej][pyimagejdocs].
