@@ -5,7 +5,7 @@ This file provides comprehensive type hints for IDEs and static type checkers
 for better autocompletion and type checking support.
 """
 
-from typing import Any, List, Optional, Union, Literal
+from typing import Any, List, Optional, Literal
 from types import ModuleType
 
 # Type aliases for better type hints
@@ -22,10 +22,21 @@ CURATED_ROOT_CLASSES: List[str]
 
 # Root SNT classes - always available for direct import
 # These are Java classes from sc.fiji.snt package
-SNTService: Optional[JavaClass]
-SNTUtils: Optional[JavaClass]
-Tree: Optional[JavaClass]
-Path: Optional[JavaClass]
+class SNTService:
+    """SNT's main service class for ImageJ integration."""
+    pass
+
+class SNTUtils:
+    """SNT's utility class with helper functions and constants."""
+    pass
+
+class Tree:
+    """SNT's Tree class for neuronal morphology representation."""
+    pass
+
+class Path:
+    """SNT's Path class for representing individual neurite traces."""
+    pass
 
 # Submodule classes (backward compatibility imports)
 # These are imported from submodules for convenience

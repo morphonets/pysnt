@@ -18,7 +18,10 @@ EXTENDED_CLASSES: List[str]
 # These are the most commonly used analysis classes from sc.fiji.snt.analysis
 TreeStatistics: Optional[JavaClass]
 MultiTreeStatistics: Optional[JavaClass]
-ConvexHull: Optional[JavaClass]
+ConvexHull2D: Optional[JavaClass]
+ConvexHull3D: Optional[JavaClass]
+SNTChart: Optional[JavaClass]
+SNTTable: Optional[JavaClass]
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:

@@ -15,9 +15,17 @@ CURATED_CLASSES: List[str]
 EXTENDED_CLASSES: List[str]
 
 # Curated classes - always available for direct import
-Viewer2D: Optional[JavaClass]
-Viewer3D: Optional[JavaClass]
-MultiViewer: Optional[JavaClass]
+class Viewer2D:
+    """SNT's Viewer2D class for 2D visualization of neuronal morphologies."""
+    pass
+
+class Viewer3D:
+    """SNT's Viewer3D class for 3D visualization of neuronal morphologies."""
+    pass
+
+class MultiViewer:
+    """SNT's MultiViewer class for displaying multiple views simultaneously."""
+    pass
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:

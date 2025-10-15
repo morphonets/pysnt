@@ -1,19 +1,11 @@
 """
-Analysis utilities for neuronal morphology.
-
-This module provides convenient access to SNT's analysis classes
-for computing morphological statistics and measurements.
-
-Curated classes are always available for direct import:
-    from pysnt.analysis import TreeStatistics, MultiTreeStatistics
-
-Additional classes can be accessed on-demand:
-    NodeStats = analysis.get_class("NodeStatistics")
+This module provides convenient access to
+`SNT's analysis classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/package-summary.html>`__.
 """
 
 import logging
 import scyjava
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
@@ -44,9 +36,55 @@ _discovery_completed: bool = False
 
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
-TreeStatistics: Optional[Any] = None
-MultiTreeStatistics: Optional[Any] = None  
-ConvexHull: Optional[Any] = None
+
+class TreeStatistics:
+    """
+    This class provides comprehensive statistical analysis of neuronal trees.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class MultiTreeStatistics:
+    """
+    This class is a TreeStatistics variant providing comparison
+    capabilities for collections of neuronal trees.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class ConvexHull2D:
+    """
+    This class computes and analyzes the convex hull of a 2D Tree
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class ConvexHull3D:
+    """
+    This class computes and analyzes the convex hull of a 3D Tree
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class SNTChart:
+    """
+    Class for creating analysis charts and plots.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class SNTTable:
+    """
+    Class for table creation, manipulation, and display of tabular data.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
 
 
 def _java_setup():
@@ -59,7 +97,7 @@ def _java_setup():
     Do not call this directly; use scyjava.start_jvm() instead.
     This function is automatically called when the JVM starts.
     """
-    global _curated_classes, TreeStatistics, MultiTreeStatistics, ConvexHull
+    global _curated_classes, TreeStatistics, MultiTreeStatistics, ConvexHull2D, ConvexHull3D, SNTChart, SNTTable
     
     try:
         package_name = "sc.fiji.snt.analysis"
@@ -81,10 +119,19 @@ def _java_setup():
                 # Set to None so users get clear error messages
                 globals()[class_name] = None
         
-        # Update module-level variables for IDE support
-        TreeStatistics = _curated_classes.get("TreeStatistics")
-        MultiTreeStatistics = _curated_classes.get("MultiTreeStatistics")
-        ConvexHull = _curated_classes.get("ConvexHull")
+        # Replace placeholder classes with actual Java classes
+        if "TreeStatistics" in _curated_classes:
+            globals()["TreeStatistics"] = _curated_classes["TreeStatistics"]
+        if "MultiTreeStatistics" in _curated_classes:
+            globals()["MultiTreeStatistics"] = _curated_classes["MultiTreeStatistics"]
+        if "ConvexHull2D" in _curated_classes:
+            globals()["ConvexHull2D"] = _curated_classes["ConvexHull2D"]
+        if "ConvexHull3D" in _curated_classes:
+            globals()["ConvexHull3D"] = _curated_classes["ConvexHull3D"]
+        if "SNTChart" in _curated_classes:
+            globals()["SNTChart"] = _curated_classes["SNTChart"]
+        if "SNTTable" in _curated_classes:
+            globals()["SNTTable"] = _curated_classes["SNTTable"]
         
         logger.info(f"Successfully loaded {len(_curated_classes)} curated analysis classes")
         
@@ -167,7 +214,7 @@ def get_available_classes() -> List[str]:
 def get_class(class_name: str) -> Any:
     """
     Get a specific analysis class by name.
-    
+
     This method provides access to both curated and extended classes.
     Extended classes are discovered and loaded on first access.
     
@@ -343,7 +390,10 @@ def __dir__() -> List[str]:
     curated_attrs = [
         "TreeStatistics",
         "MultiTreeStatistics", 
-        "ConvexHull",
+        "ConvexHull2D",
+        "ConvexHull3D",
+        "SNTChart",
+        "SNTTable",
     ]
     
     # If JVM is started and extended classes are discovered, include them too
@@ -369,5 +419,8 @@ __all__ = [
     # Curated classes (always available for direct import)
     "TreeStatistics",
     "MultiTreeStatistics", 
-    "ConvexHull",
+    "ConvexHull2D",
+    "ConvexHull3D",
+    "SNTChart",
+    "SNTTable",
 ]

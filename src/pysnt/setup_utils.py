@@ -6,10 +6,9 @@ including Fiji path configuration and environment setup.
 """
 
 import os
-import sys
 import platform
 from pathlib import Path
-from typing import Optional, List
+from typing import List
 
 
 def setup_fiji_environment(fiji_path: str, permanent: bool = False) -> bool:

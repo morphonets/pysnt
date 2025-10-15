@@ -4,12 +4,12 @@ Java utilities for PySNT.
 This module handles Java/OpenJDK installation and configuration.
 """
 
-import os
-import sys
-import subprocess
 import logging
+import os
+import subprocess
+import sys
 from pathlib import Path
-from typing import Optional, Tuple, Dict, Any
+from typing import Optional, Dict, Any
 
 logger = logging.getLogger(__name__)
 

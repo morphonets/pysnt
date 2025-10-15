@@ -1,7 +1,8 @@
 """
 PySNT: Python interface for SNT
 
-This package provides convenient Python access to SNT's Java classes through scyjava et al.
+This package provides convenient Python access to SNT's Java classes, including
+`core classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/package-summary.html>`__.
 """
 
 __version__ = "0.0.1"
@@ -9,7 +10,7 @@ __author__ = "SNT contributors"
 
 import logging
 import scyjava
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
@@ -28,10 +29,38 @@ CURATED_ROOT_CLASSES = [
 _root_classes: Dict[str, Any] = {}
 
 # Make root classes None initially (will be set by _java_setup)
-SNTService: Optional[Any] = None
-SNTUtils: Optional[Any] = None
-Tree: Optional[Any] = None
-Path: Optional[Any] = None
+
+class SNTService:
+    """
+    SNT's Scijava Service
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class SNTUtils:
+    """
+    SNT's main utility class with helper functions and constants.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class Tree:
+    """
+    SNT's core class for representing neuronal trees
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class Path:
+    """
+    SNT's core class for representing traced segments.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
 
 # Import submodules for easy access
 from . import analysis
@@ -61,7 +90,7 @@ def _java_setup():
                 java_class = scyjava.jimport(full_class_name)
                 _root_classes[class_name] = java_class
                 
-                # Make available at module level for direct import
+                # Replace placeholder class with actual Java class
                 globals()[class_name] = java_class
                 
                 logger.debug(f"Loaded root class: {class_name}")
@@ -363,13 +392,13 @@ def _get_detailed_version_info() -> str:
     lines.append(f"\n🔬 SNT/Fiji Environment:")
     
     try:
-        from .core import is_initialized, get_imagej
+        from .core import is_initialized, get_ij
         
         if is_initialized():
             lines.append(f"  ✅ PySNT initialized: Yes")
             
             try:
-                ij = get_imagej()
+                ij = get_ij()
                 ij_version = ij.getVersion() if ij else "Unknown"
                 lines.append(f"  ℹ️ ImageJ version: {ij_version}")
                 

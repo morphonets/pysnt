@@ -8,7 +8,7 @@ including version information and system diagnostics.
 
 import sys
 import argparse
-from . import version, print_version, info
+from . import print_version, info
 
 
 def main():

@@ -285,7 +285,7 @@ def _validate_fiji_path(fiji_path: str) -> bool:
     return True
 
 
-def get_imagej():
+def get_ij():
     """
     Get the ImageJ instance.
     

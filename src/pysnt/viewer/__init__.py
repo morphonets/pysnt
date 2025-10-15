@@ -1,18 +1,11 @@
 """
-Viewer utilities for 2D and 3D visualization.
-
-This module provides convenient access to SNT's viewer classes.
-
-Curated classes are always available for direct import:
-    from pysnt.viewer import Viewer2D, Viewer3D, MultiViewer
-
-Additional classes can be accessed on-demand:
-    GraphViewer = viewer.get_class("GraphViewer")
+This module provides convenient access to
+`SNT's tracing classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/package-summary.html>`__.
 """
 
 import logging
 import scyjava
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
@@ -37,9 +30,30 @@ _discovery_completed: bool = False
 
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
-Viewer2D: Optional[Any] = None
-Viewer3D: Optional[Any] = None
-MultiViewer: Optional[Any] = None
+
+class Viewer2D:
+    """
+    SNT's Reconstruction Plotter.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class Viewer3D:
+    """
+    SNT's Reconstruction Viewer.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class MultiViewer:
+    """
+    SNT's Multipanel Viewers.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
 
 
 def _java_setup():
@@ -64,7 +78,7 @@ def _java_setup():
                 java_class = scyjava.jimport(full_class_name)
                 _curated_classes[class_name] = java_class
                 
-                # Make available at module level for direct import
+                # Replace placeholder class with actual Java class
                 globals()[class_name] = java_class
                 
                 logger.debug(f"Loaded curated class: {class_name}")

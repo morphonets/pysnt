@@ -17,8 +17,13 @@ EXTENDED_CLASSES: List[str]
 # Curated classes - always available for direct import
 # Note: Tree and Path are now imported from root pysnt package
 # These are the utility-specific curated classes
-PointInImage: Optional[JavaClass]
-SWCPoint: Optional[JavaClass]
+class PointInImage:
+    """SNT's PointInImage class for representing 3D points in image space."""
+    pass
+
+class SWCPoint:
+    """SNT's SWCPoint class for representing points in SWC format."""
+    pass
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:

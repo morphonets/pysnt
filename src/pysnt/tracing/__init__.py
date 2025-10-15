@@ -1,19 +1,11 @@
 """
-Tracing utilities for automated and manual neurite tracing.
-
-This module provides convenient access to SNT's tracing classes
-for automated pathfinding and manual tracing operations.
-
-Curated classes are always available for direct import:
-    from pysnt.tracing import SearchThread, TracerThread
-
-Additional classes can be accessed on-demand:
-    BiSearch = tracing.get_class("BiSearch")
+This module provides convenient access to
+`SNT's tracing classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/package-summary.html>`__.
 """
 
 import logging
 import scyjava
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
@@ -40,8 +32,22 @@ _discovery_completed: bool = False
 
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
-SearchThread: Optional[Any] = None
-TracerThread: Optional[Any] = None
+
+class SearchThread:
+    """
+    SNT's SearchThread class for pathfinding algorithms.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class TracerThread:
+    """
+    SNT's TracerThread class for pathfinding algorithms.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
 
 
 def _java_setup():
@@ -66,7 +72,7 @@ def _java_setup():
                 java_class = scyjava.jimport(full_class_name)
                 _curated_classes[class_name] = java_class
                 
-                # Make available at module level for direct import
+                # Replace placeholder class with actual Java class
                 globals()[class_name] = java_class
                 
                 logger.debug(f"Loaded curated class: {class_name}")

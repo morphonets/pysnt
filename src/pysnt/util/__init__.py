@@ -1,18 +1,11 @@
 """
-Utility classes for SNT data structures.
-
-This module provides convenient access to SNT utility classes.
-
-Curated classes are always available for direct import:
-    from pysnt.util import PointInImage, SWCPoint
-
-Additional classes can be accessed on-demand:
-    LinAlgUtils = util.get_class("LinAlgUtils")
+This module provides convenient access to
+`SNT's tracing classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/package-summary.html>`__.
 """
 
 import logging
 import scyjava
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
@@ -40,8 +33,22 @@ _discovery_completed: bool = False
 
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
-PointInImage: Optional[Any] = None
-SWCPoint: Optional[Any] = None
+
+class PointInImage:
+    """
+    SNT's PointInImage class for representing 3D points in image space.
+    
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
+
+class SWCPoint:
+    """
+    SNT's SWCPoint class for representing points in standardized SWC format.
+
+    NB: Only available after calling pysnt.initialize_snt().
+    """
+    pass
 
 
 def _java_setup():
@@ -73,7 +80,7 @@ def _java_setup():
             
             if java_class is not None:
                 _curated_classes[class_name] = java_class
-                # Make available at module level for direct import
+                # Replace placeholder class with actual Java class
                 globals()[class_name] = java_class
             else:
                 logger.warning(f"Failed to load curated class {class_name}")

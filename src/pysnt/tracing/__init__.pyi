@@ -15,8 +15,13 @@ CURATED_CLASSES: List[str]
 EXTENDED_CLASSES: List[str]
 
 # Curated classes - always available for direct import
-SearchThread: Optional[JavaClass]
-TracerThread: Optional[JavaClass]
+class SearchThread:
+    """SNT's SearchThread class for automated pathfinding algorithms."""
+    pass
+
+class TracerThread:
+    """SNT's TracerThread class for manual and semi-automated tracing."""
+    pass
 
 # Class discovery and access functions
 def get_available_classes() -> List[str]:
