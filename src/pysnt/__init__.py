@@ -27,6 +27,9 @@ from .setup_utils import (
     is_fiji_valid, get_fiji_status
 )
 
+# Import common module functionality
+from .common_module import setup_module_classes
+
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
     "Fill",
@@ -35,11 +38,10 @@ CURATED_ROOT_CLASSES = [
     "TracerCanvas", "Tree", "TreeProperties"
 ]
 
-# Global registries for root classes
-_root_classes: Dict[str, Any] = {}
+# Extended classes - available via get_class() (root package discovers dynamically)
+EXTENDED_ROOT_CLASSES = []
 
-# Make root classes None initially (will be set by _java_setup)
-
+# Placeholder classes for IDE support - will be replaced with Java classes
 class SNTService:
     """
     SNT's Scijava Service
@@ -202,216 +204,30 @@ from . import util
 from . import viewer
 from . import tracing
 
+# Setup common module functionality
+_module_funcs = setup_module_classes(
+    package_name="sc.fiji.snt",
+    curated_classes=CURATED_ROOT_CLASSES,
+    extended_classes=EXTENDED_ROOT_CLASSES,
+    globals_dict=globals(),
+    placeholder_classes={
+        'SNTService': SNTService,
+        'SNTUtils': SNTUtils,
+        'Tree': Tree,
+        'Path': Path
+    }
+)
 
-def _java_setup():
-    """
-    Lazy initialization function for root SNT classes.
-    
-    This loads curated classes from sc.fiji.snt package immediately.
-    
-    Do not call this directly; use scyjava.start_jvm() instead.
-    This function is automatically called when the JVM starts.
-    """
-    global _root_classes, SNTService, SNTUtils, Tree, Path
-    
-    try:
-        package_name = "sc.fiji.snt"
-        
-        # Import curated root classes immediately
-        for class_name in CURATED_ROOT_CLASSES:
-            try:
-                full_class_name = f"{package_name}.{class_name}"
-                java_class = scyjava.jimport(full_class_name)
-                _root_classes[class_name] = java_class
-                
-                # Replace placeholder class with actual Java class
-                globals()[class_name] = java_class
-                
-                logger.debug(f"Loaded root class: {class_name}")
-                
-            except Exception as e:
-                logger.warning(f"Failed to load root class {class_name}: {e}")
-                # Set to None so users get clear error messages
-                globals()[class_name] = None
-        
-        # Update module-level variables for IDE support
-        SNTService = _root_classes.get("SNTService")
-        SNTUtils = _root_classes.get("SNTUtils")
-        Tree = _root_classes.get("Tree")
-        Path = _root_classes.get("Path")
-        
-        logger.info(f"Successfully loaded {len(_root_classes)} root SNT classes")
-        
-    except Exception as e:
-        logger.error(f"Failed to load root SNT classes: {e}")
-        raise ImportError(f"Could not load root SNT classes: {e}") from e
+# Import functions into module namespace
+get_class = _module_funcs['get_class']
+get_available_classes = _module_funcs['get_available_classes']
+get_curated_classes = _module_funcs['get_curated_classes']
+get_extended_classes = _module_funcs['get_extended_classes']
+list_classes = _module_funcs['list_classes']
 
-
-# Register the setup function to run when JVM starts
-scyjava.when_jvm_starts(_java_setup)
-
-
-def get_class(class_name: str) -> Any:
-    """
-    Get a specific SNT class by name from the root package.
-    
-    This method provides access to classes from the sc.fiji.snt package.
-    For classes from subpackages, use the respective module's get_class() method.
-    
-    Parameters
-    ----------
-    class_name : str
-        Name of the class to retrieve from sc.fiji.snt package.
-        
-    Returns
-    -------
-    Java class
-        The requested SNT class.
-        
-    Raises
-    ------
-    KeyError
-        If the class is not available.
-    RuntimeError
-        If the JVM has not been started.
-        
-    Examples
-    --------
-    >>> # Get curated root classes
-    >>> SNTService = get_class("SNTService")
-    >>> Tree = get_class("Tree")
-    >>> 
-    >>> # Get other root package classes
-    >>> PathFitter = get_class("PathFitter")
-    """
-    if not scyjava.jvm_started():
-        raise RuntimeError(
-            "JVM not started. Call pysnt.initialize() first."
-        )
-    
-    # Check curated root classes first (fast path)
-    if class_name in _root_classes:
-        return _root_classes[class_name]
-    
-    # Try to import directly if not in curated list
-    try:
-        full_class_name = f"sc.fiji.snt.{class_name}"
-        java_class = scyjava.jimport(full_class_name)
-        return java_class
-    except Exception:
-        pass
-    
-    # Class not found - provide helpful error
-    available = list(_root_classes.keys())
-    if available:
-        available_str = ", ".join(sorted(available))
-        raise KeyError(f"Class '{class_name}' not found. Available: {available_str}")
-    else:
-        raise KeyError(f"Class '{class_name}' not found. No classes loaded.")
-
-
-def get_available_classes() -> List[str]:
-    """
-    Get list of all available classes from the root SNT package.
-    
-    This includes curated classes that are always loaded. Unlike submodules,
-    the root package doesn't have extended classes since all root classes
-    are discovered dynamically via direct import.
-    
-    Returns
-    -------
-    List[str]
-        List of available class names.
-    """
-    if not scyjava.jvm_started():
-        return CURATED_ROOT_CLASSES.copy()
-    
-    return sorted(_root_classes.keys())
-
-
-def get_curated_classes() -> List[str]:
-    """
-    Get list of curated classes that are always available for direct import.
-    
-    Returns
-    -------
-    List[str]
-        List of curated class names from the root SNT package.
-    """
-    return CURATED_ROOT_CLASSES.copy()
-
-
-def get_extended_classes() -> List[str]:
-    """
-    Get list of extended classes available via get_class().
-    
-    Note: The root package doesn't pre-define extended classes like submodules do.
-    Any class from sc.fiji.snt package can be accessed via get_class() even if
-    not in the curated list.
-    
-    Returns
-    -------
-    List[str]
-        Empty list (root package discovers classes dynamically).
-    """
-    return []
-
-
-def list_classes():
-    """
-    Print all available root SNT classes organized by tier.
-    """
-    if not scyjava.jvm_started():
-        print("JVM not started. Only curated classes listed.")
-        print("\nCurated Classes (always available):")
-        print("=" * 40)
-        for class_name in CURATED_ROOT_CLASSES:
-            print(f"  • {class_name}")
-        return
-    
-    print("Available SNT Root Classes:")
-    print("=" * 40)
-    
-    # Show curated classes
-    print("\n📌 Curated Classes (direct import):")
-    for class_name in sorted(_root_classes.keys()):
-        status = "✅" if _root_classes[class_name] is not None else "❌"
-        print(f"  {status} {class_name}")
-    
-    print(f"\n💡 Extended Classes:")
-    print("  Any class from sc.fiji.snt package can be accessed via get_class()")
-    print("  even if not in the curated list above.")
-    
-    total = len(_root_classes)
-    print(f"\nTotal curated: {total} classes")
-
-
-# Dynamic __getattr__ to provide access to root classes
-def __getattr__(name: str) -> Any:
-    """
-    Provide dynamic access to root SNT classes.
-    
-    This allows importing root classes that were discovered at runtime,
-    but prioritizes curated classes for performance.
-    """
-    # Check if it's a curated root class that failed to load
-    if name in CURATED_ROOT_CLASSES:
-        if name in _root_classes:
-            return _root_classes[name]
-        else:
-            raise AttributeError(f"Curated root class '{name}' failed to load. Check SNT installation.")
-    
-    # Try to get root class directly
-    try:
-        return get_class(name)
-    except (KeyError, RuntimeError):
-        # Provide helpful error message
-        available_curated = ", ".join(CURATED_ROOT_CLASSES)
-        raise AttributeError(
-            f"Class '{name}' not found. "
-            f"Curated classes: {available_curated}. "
-            f"Use get_class('{name}') for other root classes."
-        )
+# Create module-level __getattr__ and __dir__
+__getattr__ = _module_funcs['create_getattr']('pysnt')
+__dir__ = _module_funcs['create_dir']()
 
 def version(detailed: bool = False) -> str:
     """
@@ -644,6 +460,7 @@ __all__ = [
     "get_fiji_status",
     # Constants
     "CURATED_ROOT_CLASSES",
+    "EXTENDED_ROOT_CLASSES",
     # Root SNT classes (sc.fiji.snt.*)
     "SNTService",
     "SNTUtils",
