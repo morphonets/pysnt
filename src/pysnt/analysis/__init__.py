@@ -39,9 +39,46 @@ _discovery_completed: bool = False
 
 class TreeStatistics:
     """
-    This class provides comprehensive statistical analysis of neuronal trees.
     """
-    pass
+    def getCableLength(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getSummaryStats(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getHistogram(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getBranchPoints(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getTips(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getNodes(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getDepth(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getWidth(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getHeight(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for additional Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class MultiTreeStatistics:
     """
@@ -233,7 +270,7 @@ def get_class(class_name: str) -> Any:
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
-            "JVM not started. Call pysnt.initialize_snt() first."
+            "JVM not started. Call pysnt.initialize() first."
         )
     
     # Check curated classes first (fast path)

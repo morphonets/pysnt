@@ -205,7 +205,7 @@ def get_class(class_name: str) -> Any:
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
-            "JVM not started. Call pysnt.initialize_snt() first."
+            "JVM not started. Call pysnt.initialize() first."
         )
     
     # Check curated classes first (fast path)

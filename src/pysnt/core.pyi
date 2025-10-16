@@ -1,0 +1,33 @@
+"""
+Type stubs for core.py
+
+Auto-generated stub file.
+"""
+
+from typing import Any
+
+logger: Any
+_ij: Any
+_jvm_started: Any
+class FijiNotFoundError:
+    pass
+
+def initialize(fiji_path: Optional[str], interactive: bool, ensure_java: bool, mode: str) -> None: ...
+
+def _find_fiji(interactive: bool) -> Optional[str]: ...
+
+def _prompt_for_fiji_path() -> Optional[str]: ...
+
+def _validate_fiji_path(fiji_path: str) -> bool: ...
+
+def get_ij() -> Any: ...
+
+def is_initialized() -> bool: ...
+
+def discover_java_classes(package_name: str, known_classes: Optional[List[str]], include_abstract: bool, include_interfaces: bool) -> List[str]: ...
+
+def _scan_package_from_jars(package_name: str, logger: Any) -> List[str]: ...
+
+def _generate_common_class_names(package_name: str) -> List[str]: ...
+
+def setup_dynamic_imports(module_globals: Dict[str, Any], package_name: str, known_classes: Optional[List[str]], include_abstract: bool, include_interfaces: bool) -> Dict[str, Any]: ...

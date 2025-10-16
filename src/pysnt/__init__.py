@@ -15,7 +15,17 @@ from typing import Dict, Any, List
 logger = logging.getLogger(__name__)
 
 # Import main initialization
-from .core import initialize_snt
+from .core import initialize, FijiNotFoundError
+
+# Import Java utilities
+from .java_utils import inspect
+
+# Import setup utilities for Fiji configuration
+from .setup_utils import (
+    set_fiji_path, get_fiji_path, clear_fiji_path, reset_fiji_path,
+    get_config_info, show_config_status, auto_detect_and_configure,
+    is_fiji_valid, get_fiji_status
+)
 
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
@@ -33,26 +43,158 @@ _root_classes: Dict[str, Any] = {}
 class SNTService:
     """
     SNT's Scijava Service
+    
+    NB: Only available after calling pysnt.initialize().
     """
     pass
 
 class SNTUtils:
     """
-    SNT's main utility class with helper functions and constants.
     """
-    pass
+    @staticmethod
+    def getVersion():
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    @staticmethod
+    def isDebugMode():
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    @staticmethod
+    def setDebugMode(arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for additional Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Tree:
     """
-    SNT's core class for representing neuronal trees
     """
-    pass
+    def size(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def isEmpty(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getNodes(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getPaths(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getBoundingBox(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getRoot(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getTips(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getBranchPoints(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getCableLength(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getSWCTypes(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getLabel(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def setLabel(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getColor(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def setColor(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def translate(self, arg0, arg1, arg2):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def scale(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def rotate(self, arg0, arg1):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def save(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def saveAsSWC(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for additional Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Path:
     """
-    SNT's core class for representing traced segments.
     """
-    pass
+    def size(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getNodes(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getLength(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getStartRadius(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getEndRadius(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getSWCType(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def setSWCType(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def getChannel(self):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def setChannel(self, arg0):
+        """Placeholder method. Call pysnt.initialize() first."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for additional Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Import submodules for easy access
 from . import analysis
@@ -144,7 +286,7 @@ def get_class(class_name: str) -> Any:
     """
     if not scyjava.jvm_started():
         raise RuntimeError(
-            "JVM not started. Call pysnt.initialize_snt() first."
+            "JVM not started. Call pysnt.initialize() first."
         )
     
     # Check curated root classes first (fast path)
@@ -293,7 +435,7 @@ def version(detailed: bool = False) -> str:
     '0.1.0'
     >>> 
     >>> pysnt.version(detailed=True)
-    # Displays comprehensive version information
+    # Displays detailed version information
     """
     if not detailed:
         return __version__
@@ -314,25 +456,25 @@ def _get_detailed_version_info() -> str:
     import platform
     from pathlib import Path
     
-    lines = []
+    lines = [
+        "PySNT Version Information", "=" * 35,
+        f"PySNT version: {__version__}",
+        f"Author: {__author__}",
+        f"\nPython Environment:",
+        f"Python version: {sys.version.split()[0]}",
+        f"Python executable: {sys.executable}",
+        f"Platform: {platform.platform()}",
+        f"Architecture: {platform.machine()}",
+        f"\n📦 Core Dependencies:"
+    ]
     
     # Header
-    lines.append("PySNT Version Information")
-    lines.append("=" * 35)
 
     # pysnt version
-    lines.append(f"PySNT version: {__version__}")
-    lines.append(f"Author: {__author__}")
 
     # Python environment
-    lines.append(f"\nPython Environment:")
-    lines.append(f"Python version: {sys.version.split()[0]}")
-    lines.append(f"Python executable: {sys.executable}")
-    lines.append(f"Platform: {platform.platform()}")
-    lines.append(f"Architecture: {platform.machine()}")
 
     # Core dependencies
-    lines.append(f"\n📦 Core Dependencies:")
 
     dependencies = [
         ("scyjava", "SciJava Python bridge"),
@@ -409,7 +551,7 @@ def _get_detailed_version_info() -> str:
             except Exception as e:
                 lines.append(f"  ⚠️  ImageJ access failed: {e}")
         else:
-            lines.append(f"  ❌ PySNT initialized: No (call pysnt.initialize_snt())")
+            lines.append(f"  ❌ PySNT initialized: No (call pysnt.initialize())")
             
     except Exception as e:
         lines.append(f"  ⚠️  Initialization check failed: {e}")
@@ -456,7 +598,7 @@ def print_version(detailed: bool = False):
     pysnt version: 0.1.0
     >>> 
     >>> pysnt.print_version(detailed=True)
-    # Displays comprehensive version information
+    # Displays detailed version information
     """
     if detailed:
         print(_get_detailed_version_info())
@@ -477,7 +619,10 @@ def info():
 
 __all__ = [
     # Functions
-    "initialize_snt",
+    "initialize",
+    "inspect",
+    # Exceptions
+    "FijiNotFoundError",
     "version",
     "print_version", 
     "show_version",
@@ -487,6 +632,16 @@ __all__ = [
     "get_curated_classes",
     "get_extended_classes",
     "list_classes",
+    # Setup utilities
+    "set_fiji_path",
+    "get_fiji_path", 
+    "clear_fiji_path",
+    "reset_fiji_path",
+    "get_config_info",
+    "show_config_status",
+    "auto_detect_and_configure",
+    "is_fiji_valid",
+    "get_fiji_status",
     # Constants
     "CURATED_ROOT_CLASSES",
     # Root SNT classes (sc.fiji.snt.*)

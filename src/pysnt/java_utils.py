@@ -1,7 +1,8 @@
 """
 Java utilities for PySNT.
 
-This module handles Java/OpenJDK installation and configuration.
+This module handles Java/OpenJDK installation and configuration,
+as well as Java class introspection utilities.
 """
 
 import logging
@@ -9,7 +10,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union
 
 logger = logging.getLogger(__name__)
 
@@ -270,19 +271,13 @@ def install_openjdk(version: int = REQUIRED_JAVA_VERSION) -> bool:
     except ImportError:
         logger.error("install-jdk package not available. Install with: pip install install-jdk")
         print("❌ Automatic Java installation not available.")
-        print("Please install Java manually:")
-        print(f"  1. Download OpenJDK {version} from: https://adoptium.net/")
-        print("  2. Set JAVA_HOME environment variable")
-        print("  3. Add Java to PATH")
+        print(f"Please install OpenJDK {version} manually")
         return False
         
     except Exception as e:
         logger.error(f"Failed to install OpenJDK: {e}")
         print(f"❌ Failed to install OpenJDK {version}: {e}")
-        print("Please install Java manually:")
-        print(f"  1. Download OpenJDK {version} from: https://adoptium.net/")
-        print("  2. Set JAVA_HOME environment variable")
-        print("  3. Add Java to PATH")
+        print(f"Please install OpenJDK {version} manually")
         return False
 
 
@@ -313,11 +308,7 @@ def print_java_status():
             else:
                 print(f"❌ Version check: {java_info['version']} < {MIN_JAVA_VERSION} (too old)")
     else:
-        print("❌ Java not available")
-        print("\n💡 To install Java:")
-        print("  1. Automatic: Call ensure_java_available()")
-        print("  2. Manual: Download from https://adoptium.net/")
-        print("  3. Package manager: brew install openjdk@21 (macOS)")
+        print("❌ Java not available. Call ensure_java_available()")
 
 
 def setup_java_environment() -> bool:
@@ -347,7 +338,7 @@ def setup_java_environment() -> bool:
     
     # Offer installation
     print(f"\nWould you like to install OpenJDK {REQUIRED_JAVA_VERSION}?")
-    print("This will download and install Java automatically.")
+    print("This will download and install OpenJDK automatically.")
     
     try:
         choice = input("Install OpenJDK? (Y/n): ").strip().lower()
@@ -369,6 +360,325 @@ def setup_java_environment() -> bool:
     except KeyboardInterrupt:
         print("\nSetup cancelled.")
         return False
+
+
+def inspect(class_or_object: Union[str, Any], 
+           keyword: str = "", 
+           methods: bool = True, 
+           fields: bool = True,
+           constructors: bool = False,
+           static_only: bool = False,
+           case_sensitive: bool = False,
+           max_results: int = 50) -> None:
+    """
+    Inspect a Java class or object, listing methods and fields matching a keyword.
+    
+    This function uses Java reflection to introspect classes and display
+    their public methods and fields. Useful for exploring SNT classes
+    and discovering available functionality.
+    
+    Parameters
+    ----------
+    class_or_object : str or Java object
+        Either a string class name (e.g., 'TreeStatistics') or a Java class/object
+    keyword : str, default ""
+        Filter results to only show items containing this keyword (case-insensitive by default)
+    methods : bool, default True
+        Whether to show methods
+    fields : bool, default True
+        Whether to show fields
+    constructors : bool, default False
+        Whether to show constructors
+    static_only : bool, default False
+        Whether to show only static members
+    case_sensitive : bool, default False
+        Whether keyword matching should be case-sensitive
+    max_results : int, default 50
+        Maximum number of results to display per category
+        
+    Examples
+    --------
+    >>> # Inspect TreeStatistics class
+    >>> inspect('TreeStatistics')
+    
+    >>> # Look for methods containing 'length'
+    >>> inspect('TreeStatistics', 'length', fields=False)
+    
+    >>> # Inspect an instance
+    >>> from pysnt.analysis import TreeStatistics
+    >>> stats = TreeStatistics()
+    >>> inspect(stats, 'get')
+    
+    >>> # Show only static methods
+    >>> inspect('TreeStatistics', static_only=True, fields=False)
+    """
+    
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            print("❌ JVM not started. Call pysnt.initialize() first.")
+            return
+        
+        # Get the Java class
+        java_class = _resolve_java_class(class_or_object)
+        if java_class is None:
+            return
+        
+        # Display header
+        class_name = str(java_class.getSimpleName())
+        full_name = str(java_class.getName())
+        
+        print(f"\n🔍 Inspecting: {class_name}")
+        print(f"📦 Package: {java_class.getPackage().getName()}")
+        print(f"Full name: {full_name}")
+        
+        if keyword:
+            keyword_display = f" matching '{keyword}'"
+            if not case_sensitive:
+                keyword_display += " (case-insensitive)"
+        else:
+            keyword_display = ""
+        
+        print(f"Showing: ", end="")
+        shown = []
+        if constructors:
+            shown.append("constructors")
+        if methods:
+            shown.append("methods")
+        if fields:
+            shown.append("fields")
+        print(", ".join(shown) + keyword_display)
+        
+        if static_only:
+            print("Static members only")
+        
+        print("=" * 60)
+        
+        # Show constructors
+        if constructors:
+            _show_constructors(java_class, keyword, case_sensitive, max_results)
+        
+        # Show methods
+        if methods:
+            _show_methods(java_class, keyword, case_sensitive, static_only, max_results)
+        
+        # Show fields
+        if fields:
+            _show_fields(java_class, keyword, case_sensitive, static_only, max_results)
+        
+        print()
+        
+    except ImportError:
+        print("❌ scyjava not available. Make sure pysnt is properly installed.")
+    except Exception as e:
+        print(f"❌ Error during inspection: {e}")
+        logger.debug(f"Inspection error details: {e}", exc_info=True)
+
+
+def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
+    """Resolve a class name or object to a Java Class object."""
+    
+    if isinstance(class_or_object, str):
+        # String class name - try to resolve it
+        class_name = class_or_object
+        
+        # Try to import from common pysnt modules
+        modules_to_try = [
+            'pysnt.analysis',
+            'pysnt.analysis.graph', 
+            'pysnt.analysis.growth',
+            'pysnt.analysis.sholl',
+            'pysnt.analysis.sholl.gui',
+            'pysnt.analysis.sholl.math',
+            'pysnt.analysis.sholl.parsers',
+            'pysnt.tracing',
+            'pysnt.viewer'
+        ]
+        
+        for module_name in modules_to_try:
+            try:
+                module = __import__(module_name, fromlist=[class_name])
+                java_class = getattr(module, class_name, None)
+                if java_class is not None:
+                    return java_class
+            except:
+                continue
+        
+        print(f"❌ Could not find class '{class_name}' in common pysnt modules")
+        print("Try using the actual Java class object instead")
+        return None
+    
+    else:
+        # Assume it's already a Java class or object
+        try:
+            # If it's an instance, get its class
+            if hasattr(class_or_object, 'getClass'):
+                return class_or_object.getClass()
+            else:
+                # Assume it's already a Class object
+                return class_or_object
+        except:
+            print(f"❌ Could not resolve Java class from: {type(class_or_object)}")
+            return None
+
+
+def _matches_keyword(name: str, keyword: str, case_sensitive: bool) -> bool:
+    """Check if a name matches the keyword filter."""
+    if not keyword:
+        return True
+    
+    if case_sensitive:
+        return keyword in name
+    else:
+        return keyword.lower() in name.lower()
+
+
+def _show_constructors(java_class, keyword: str, case_sensitive: bool, max_results: int):
+    """Show constructors matching the keyword."""
+    try:
+        constructors = java_class.getConstructors()
+        class_name = str(java_class.getSimpleName())
+        
+        matching_constructors = []
+        for constructor in constructors:
+            if _matches_keyword(class_name, keyword, case_sensitive):
+                param_types = [str(p.getSimpleName()) for p in constructor.getParameterTypes()]
+                matching_constructors.append(param_types)
+        
+        if matching_constructors:
+            print(f"\n🏗️  Constructors ({len(matching_constructors)}):")
+            for i, params in enumerate(matching_constructors[:max_results]):
+                params_str = ', '.join(params) if params else ''
+                print(f"  {i+1}. {class_name}({params_str})")
+            
+            if len(matching_constructors) > max_results:
+                print(f"  ... and {len(matching_constructors) - max_results} more")
+        else:
+            print(f"\n🏗️  Constructors: No matches for '{keyword}'")
+            
+    except Exception as e:
+        print(f"❌ Error getting constructors: {e}")
+
+
+def _show_methods(java_class, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
+    """Show methods matching the keyword."""
+    try:
+        methods = java_class.getMethods()
+        
+        # Filter methods
+        matching_methods = []
+        for method in methods:
+            method_name = str(method.getName())
+            
+            # Skip Object methods
+            if method_name in ['equals', 'hashCode', 'toString', 'getClass', 'notify', 'notifyAll', 'wait']:
+                continue
+            
+            # Check keyword match
+            if not _matches_keyword(method_name, keyword, case_sensitive):
+                continue
+            
+            # Check static filter
+            modifiers = method.getModifiers()
+            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            
+            if static_only and not is_static:
+                continue
+            
+            # Get method info
+            param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
+            return_type = str(method.getReturnType().getSimpleName())
+            
+            matching_methods.append({
+                'name': method_name,
+                'params': param_types,
+                'return_type': return_type,
+                'is_static': is_static
+            })
+        
+        if matching_methods:
+            # Sort by name
+            matching_methods.sort(key=lambda m: m['name'])
+            
+            static_suffix = " (static only)" if static_only else ""
+            print(f"\n⚙️  Methods ({len(matching_methods)}){static_suffix}:")
+            
+            for i, method in enumerate(matching_methods[:max_results]):
+                params_str = ', '.join(method['params']) if method['params'] else ''
+                static_marker = "static " if method['is_static'] else ""
+                print(f"  • {static_marker}{method['name']}({params_str}) -> {method['return_type']}")
+            
+            if len(matching_methods) > max_results:
+                print(f"  ... and {len(matching_methods) - max_results} more")
+        else:
+            filter_desc = f"'{keyword}'" if keyword else "criteria"
+            print(f"\n⚙️  Methods: No matches for {filter_desc}")
+            
+    except Exception as e:
+        print(f"❌ Error getting methods: {e}")
+
+
+def _show_fields(java_class, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
+    """Show fields matching the keyword."""
+    try:
+        fields = java_class.getFields()
+        
+        # Filter fields
+        matching_fields = []
+        for field in fields:
+            field_name = str(field.getName())
+            
+            # Check keyword match
+            if not _matches_keyword(field_name, keyword, case_sensitive):
+                continue
+            
+            # Check static filter
+            modifiers = field.getModifiers()
+            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            is_final = bool(modifiers & 0x0010)   # Modifier.FINAL
+            
+            if static_only and not is_static:
+                continue
+            
+            # Get field info
+            field_type = str(field.getType().getSimpleName())
+            
+            matching_fields.append({
+                'name': field_name,
+                'type': field_type,
+                'is_static': is_static,
+                'is_final': is_final
+            })
+        
+        if matching_fields:
+            # Sort by name
+            matching_fields.sort(key=lambda f: f['name'])
+            
+            static_suffix = " (static only)" if static_only else ""
+            print(f"\n📊 Fields ({len(matching_fields)}){static_suffix}:")
+            
+            for i, field in enumerate(matching_fields[:max_results]):
+                modifiers = []
+                if field['is_static']:
+                    modifiers.append('static')
+                if field['is_final']:
+                    modifiers.append('final')
+                
+                mod_str = ' '.join(modifiers)
+                if mod_str:
+                    mod_str += ' '
+                
+                print(f"  • {mod_str}{field['name']}: {field['type']}")
+            
+            if len(matching_fields) > max_results:
+                print(f"  ... and {len(matching_fields) - max_results} more")
+        else:
+            filter_desc = f"'{keyword}'" if keyword else "criteria"
+            print(f"\n📊 Fields: No matches for {filter_desc}")
+            
+    except Exception as e:
+        print(f"❌ Error getting fields: {e}")
 
 
 if __name__ == "__main__":

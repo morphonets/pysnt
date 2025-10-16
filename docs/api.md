@@ -61,17 +61,17 @@ has a direct Python mirror in {func}`pysnt.analysis`
 
 ```python
 import pysnt
-pysnt.initialize_snt()  # Required first step
+pysnt.initialize()  # Required first step
 ```
 
 ### Import Strategies
 Three ways to import SNT classes:
 
-| Method              | Coverage                      | Use Case       | Comments                                                   |
-|---------------------|-------------------------------|----------------|------------------------------------------------------------|
-| Direct Import       | Restricted to curated classes | Common tasks   | Fast, convenient                                           |
-| `get_class()`       | Discoverable classes          | Advanced tasks | Slower on first access, then cached                        |
-| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | Fast. May require a priori knowledge of SNT's architecture |
+| Method              | Coverage                      | Use Case       | Autocompletion | Comments                                                   |
+|---------------------|-------------------------------|----------------|----------------|------------------------------------------------------------|
+| Direct Import       | Restricted to curated classes | Common tasks   | ✅              | Fast, convenient                                           |
+| `get_class()`       | Discoverable classes          | Advanced tasks | ❌              | Slower on first access, then cached                        |
+| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | ❌              | Fast. May require a priori knowledge of SNT's architecture |
 
 ```python
 # Method 1: Direct import (curated classes - recommended)

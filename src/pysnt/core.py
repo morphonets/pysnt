@@ -24,7 +24,14 @@ _ij = None
 _jvm_started = False
 
 
-def initialize_snt(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None:
+class FijiNotFoundError(RuntimeError):
+    """
+    Exception raised when Fiji installation cannot be found or configured.
+    """
+    pass
+
+
+def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None:
     """
     Initialize the SNT environment with ImageJ/Fiji.
     
@@ -40,12 +47,14 @@ def initialize_snt(fiji_path: Optional[str] = None, interactive: bool = True, en
         Set to False for non-interactive environments (CI, scripts, etc.).
     ensure_java : bool, default True
         Whether to check and ensure Java is available. If True, will attempt
-        to install OpenJDK 21 if Java is not found or version is too old.
+        to install OpenJDK if Java is not found or version is too old.
         
     Raises
     ------
+    FijiNotFoundError
+        If Fiji installation cannot be found or configured.
     RuntimeError
-        If initialization fails or Fiji is not found.
+        If initialization fails for other reasons (Java issues, etc.).
     """
     global _ij, _jvm_started
     
@@ -70,11 +79,71 @@ def initialize_snt(fiji_path: Optional[str] = None, interactive: bool = True, en
             elif not _validate_fiji_path(fiji_path):
                 logger.warning(f"Path may not be a valid Fiji installation: {fiji_path}")
         else:
-            raise RuntimeError(
-                "Fiji installation not found. Please:\n"
-                "  1. Set the FIJI_PATH environment variable, or\n"
-                "  2. Pass the fiji_path parameter to initialize_snt()"
-            )
+            # Create an error message with helpful instructions
+            from . import setup_utils
+            
+            error_msg = [
+                "❌ Fiji installation not found!",
+                "",
+                "PySNT requires Fiji to function. Here's how to fix this:",
+                "",
+                "🔧 Quick Solutions:",
+            ]
+            
+            # Check if we're in interactive mode
+            if interactive:
+                error_msg.extend([
+                    "  1. Run the interactive setup:",
+                    "     python -m pysnt.setup_utils",
+                    "",
+                    "  2. Auto-detect Fiji installation:",
+                    "     python -m pysnt.setup_utils --auto-detect",
+                ])
+            else:
+                error_msg.extend([
+                    "  1. Auto-detect Fiji installation:",
+                    "     python -m pysnt.setup_utils --auto-detect",
+                    "",
+                    "  2. Set Fiji path manually:",
+                    "     python -m pysnt.setup_utils --set /path/to/Fiji.app",
+                ])
+            
+            error_msg.extend([
+                "",
+                "📋 Alternative Methods:",
+                "  • Set environment variable: export FIJI_PATH='/path/to/Fiji.app'",
+                "  • Pass path directly: pysnt.initialize(fiji_path='/path/to/Fiji.app')",
+                "  • Use pysnt.set_fiji_path('/path/to/Fiji.app')",
+                "",
+            ])
+            
+            # Add platform-specific common locations
+            try:
+                common_paths = setup_utils.find_fiji_installations()
+                if common_paths:
+                    error_msg.extend([
+                        "🔍 We checked these common locations:",
+                        *[f"  ✗ {path}" for path in common_paths[:5]],  # Show first 5
+                    ])
+                    if len(common_paths) > 5:
+                        error_msg.append(f"  ... and {len(common_paths) - 5} more locations")
+                else:
+                    error_msg.extend([
+                        "🔍 No Fiji installations found in common locations for your platform.",
+                    ])
+            except Exception:
+                # Don't let setup_utils errors break the main error message
+                pass
+            
+            error_msg.extend([
+                "",
+                "💡 Need help? Check configuration status:",
+                "   python -m pysnt.setup_utils --status",
+                "",
+                "For more information, see: https://github.com/morphonets/pysnt"
+            ])
+            
+            raise FijiNotFoundError("\n".join(error_msg))
             
         # Initialize PyImageJ from local Fiji
         logger.info(f"Initializing ImageJ with Fiji at: {fiji_path}")
@@ -87,6 +156,9 @@ def initialize_snt(fiji_path: Optional[str] = None, interactive: bool = True, en
         _jvm_started = True
         logger.info("SNT initialization complete")
         
+    except FijiNotFoundError:
+        # Re-raise FijiNotFoundError as-is (it already has helpful messages)
+        raise
     except Exception as e:
         logger.error(f"Failed to initialize SNT: {e}")
         raise RuntimeError(f"SNT initialization failed: {e}") from e
@@ -94,7 +166,15 @@ def initialize_snt(fiji_path: Optional[str] = None, interactive: bool = True, en
 
 def _find_fiji(interactive: bool = True) -> Optional[str]:
     """
-    Attempt to auto-detect Fiji installation with interactive fallback.
+    Multi-level Fiji path discovery strategy with persistent configuration.
+    
+    Uses the setup_utils module for configuration management.
+    
+    Discovery priority order:
+    1. Environment variable (FIJI_PATH) - highest priority
+    2. Config file - stored in platform-specific location
+    3. Common installation locations - platform-specific defaults
+    4. Interactive prompt - ask user on first run
     
     Parameters
     ----------
@@ -106,34 +186,47 @@ def _find_fiji(interactive: bool = True) -> Optional[str]:
     str or None
         Path to Fiji if found, None otherwise.
     """
-    logger = logging.getLogger(__name__)
-
-    # Check environment variable first
+    from . import setup_utils
+    
+    # 1. Check environment variable first (highest priority)
     fiji_env = os.environ.get("FIJI_PATH")
     if fiji_env and Path(fiji_env).exists():
         logger.info(f"Found Fiji via FIJI_PATH environment variable: {fiji_env}")
         return fiji_env
+    
+    # 2. Check config file
+    config = setup_utils.load_config()
+    fiji_config = config.get("fiji_path")
+    if fiji_config and Path(fiji_config).exists():
+        logger.info(f"Found Fiji via config file: {fiji_config}")
+        return fiji_config
+    elif fiji_config:
+        logger.warning(f"Config file contains invalid Fiji path: {fiji_config}")
+        # Remove invalid path from config
+        config.pop("fiji_path", None)
+        setup_utils.save_config(config)
         
-    # Check common paths
-    common_paths = [
-        "/Applications/Fiji.app",  # macOS
-        "C:/Fiji.app",
-        "/opt/Fiji.app",
-        os.path.expanduser("~/Fiji.app"),  # User home
-        os.path.expanduser("~/Applications/Fiji.app"),  # macOS user
-        os.path.expanduser("~/Desktop/Fiji.app"),  # Desktop
-        os.path.expanduser("~/Downloads/Fiji.app"),  # Downloads
-    ]
+    # 3. Check common installation locations
+    common_paths = setup_utils.find_fiji_installations()
     for path in common_paths:
         if Path(path).exists():
             logger.info(f"Found Fiji at common location: {path}")
+            # Save to config for future use
+            if setup_utils.set_fiji_path(path):
+                logger.info(f"Saved Fiji path to config: {path}")
             return path
     
-    # If not found and interactive mode is enabled, ask user
+    # 4. Interactive prompt if enabled
     if interactive:
-        return _prompt_for_fiji_path()
+        fiji_path = _prompt_for_fiji_path()
+        if fiji_path:
+            # Save to config for future use
+            if setup_utils.set_fiji_path(fiji_path, validate=False):
+                logger.info(f"Saved user-provided Fiji path to config: {fiji_path}")
+        return fiji_path
     else:
-        logger.warning("Fiji not found in common locations. Please specify fiji_path or set FIJI_PATH environment variable.")
+        # In non-interactive mode, return None and let the caller handle the error
+        logger.debug("Fiji not found in any location (non-interactive mode)")
         return None
 
 
@@ -163,7 +256,7 @@ def _prompt_for_fiji_path() -> Optional[str]:
     print("If Fiji is installed in a different location, please provide the path.")
     print("If Fiji is not installed, you can:")
     print("  1. Set FIJI_PATH environment variable")
-    print("  2. Pass fiji_path parameter to initialize_snt()")
+    print("  2. Pass fiji_path parameter to initialize()")
     print()
     
     max_attempts = 3
@@ -216,18 +309,6 @@ def _prompt_for_fiji_path() -> Optional[str]:
             print(f"✅ Using Fiji installation: {fiji_path}")
             logger.info(f"User provided Fiji path: {fiji_path}")
             
-            # Optionally save to environment for future use
-            save_env = input("❓Save this path to FIJI_PATH environment variable for future use? (y/N): ").strip().lower()
-            if save_env in ['y', 'yes']:
-                try:
-                    # Note: This only sets for current session
-                    os.environ['FIJI_PATH'] = fiji_path
-                    print("✅ FIJI_PATH set for current session.")
-                    print("👉 To make permanent, add this to your shell profile:")
-                    print(f"   export FIJI_PATH='{fiji_path}'")
-                except Exception as e:
-                    print(f"⚠️  Could not set environment variable: {e}")
-            
             return fiji_path
             
         except KeyboardInterrupt:
@@ -242,7 +323,7 @@ def _prompt_for_fiji_path() -> Optional[str]:
     
     print(f"\n❌ Maximum attempts ({max_attempts}) reached. Continuing without Fiji path.")
     print("You can specify the path later using:")
-    print("  - pysnt.initialize_snt(fiji_path='/path/to/Fiji.app')")
+    print("  - pysnt.initialize(fiji_path='/path/to/Fiji.app')")
     print("  - Set FIJI_PATH environment variable")
     
     return None
@@ -250,8 +331,8 @@ def _prompt_for_fiji_path() -> Optional[str]:
 
 def _validate_fiji_path(fiji_path: str) -> bool:
     """
-    Validate that a path points to a valid Fiji installation.
-    
+    Validate that a path points to a valid Fiji installation serving SNT.
+
     Parameters
     ----------
     fiji_path : str
@@ -260,34 +341,19 @@ def _validate_fiji_path(fiji_path: str) -> bool:
     Returns
     -------
     bool
-        True if path appears to be a valid Fiji installation
+        True if path appears to be a valid Fiji installation with SNT
     """
     if not fiji_path or not os.path.exists(fiji_path):
         return False
     
-    fiji_path_obj = Path(fiji_path)
-    
-    # Check for key Fiji/ImageJ components
-    required_indicators = [
-        "/config/environment.yml",
-        "/jars",
-    ]
-    
-    for indicator_group in required_indicators:
-        found = False
-        for indicator in indicator_group:
-            if (fiji_path_obj / indicator).exists():
-                found = True
-                break
-        if not found:
-            return False
-    
-    return True
+    from . import setup_utils
+    status = setup_utils.check_fiji_installation(fiji_path)
+    return status["is_fiji"]
 
 
 def get_ij():
     """
-    Get the ImageJ instance.
+    Get the ImageJ instance associated with this wrapper
     
     Returns
     -------
@@ -300,7 +366,7 @@ def get_ij():
         If SNT has not been initialized.
     """
     if _ij is None:
-        raise RuntimeError("SNT not initialized. Call initialize_snt() first.")
+        raise RuntimeError("SNT not initialized. Call initialize() first.")
     return _ij
 
 
@@ -314,7 +380,6 @@ def is_initialized() -> bool:
         True if initialized, False otherwise.
     """
     return _jvm_started and _ij is not None
-
 
 def discover_java_classes(
     package_name: str, 

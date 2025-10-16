@@ -1,111 +1,36 @@
 """
-Type stubs for pysnt.util module.
+Type stubs for __init__.py
 
-This file provides comprehensive type hints for the util module,
-covering both core SNT classes and utility classes.
+Auto-generated stub file.
 """
 
-from typing import Any, List, Optional
+from typing import Any
 
-# Type alias for Java classes
-JavaClass = Any
-
-# Constants
-CURATED_CLASSES: List[str]
-EXTENDED_CLASSES: List[str]
-
-# Curated classes - always available for direct import
-# Note: Tree and Path are now imported from root pysnt package
-# These are the utility-specific curated classes
+logger: Any
+CURATED_CLASSES: Any
+EXTENDED_CLASSES: Any
 class PointInImage:
-    """SNT's PointInImage class for representing 3D points in image space."""
     pass
 
 class SWCPoint:
-    """SNT's SWCPoint class for representing points in SWC format."""
     pass
 
-# Class discovery and access functions
-def get_available_classes() -> List[str]:
-    """
-    Get list of all available utility classes.
-    
-    This includes both curated classes (always loaded) and extended classes
-    (loaded on-demand). Extended classes are discovered if not already loaded.
-    
-    Returns
-    -------
-    List[str]
-        List of available class names.
-    """
-    ...
+def _java_setup() -> Any: ...
 
-def get_class(class_name: str) -> JavaClass:
-    """
-    Get a specific utility class by name.
-    
-    This method provides access to both curated and extended classes.
-    Extended classes are discovered and loaded on first access.
-    
-    Parameters
-    ----------
-    class_name : str
-        Name of the class to retrieve.
-        
-    Returns
-    -------
-    JavaClass
-        The requested SNT utility class.
-        
-    Raises
-    ------
-    KeyError
-        If the class is not available.
-    RuntimeError
-        If the JVM has not been started.
-    """
-    ...
+def _discover_extended_classes() -> Any: ...
 
-def list_classes() -> None:
-    """Print all available utility classes organized by tier."""
-    ...
+def get_available_classes() -> List[str]: ...
 
-def get_curated_classes() -> List[str]:
-    """
-    Get list of curated classes that are always available for direct import.
-    
-    Returns
-    -------
-    List[str]
-        List of curated class names.
-    """
-    ...
+def get_class(class_name: str) -> Any: ...
 
-def get_extended_classes() -> List[str]:
-    """
-    Get list of extended classes available via get_class().
-    
-    This will trigger discovery if not already done.
-    
-    Returns
-    -------
-    List[str]
-        List of extended class names.
-    """
-    ...
+def list_classes() -> Any: ...
 
-# Dynamic attribute access support
-def __getattr__(name: str) -> JavaClass:
-    """
-    Provide dynamic access to utility classes.
-    
-    This allows importing classes that were discovered at runtime.
-    """
-    ...
+def get_curated_classes() -> List[str]: ...
 
-def __dir__() -> List[str]:
-    """Return list of available attributes for IDE autocompletion."""
-    ...
+def get_extended_classes() -> List[str]: ...
 
-# Module attributes
-__all__: List[str]
+def __getattr__(name: str) -> Any: ...
+
+def __dir__() -> List[str]: ...
+
+__all__: Any

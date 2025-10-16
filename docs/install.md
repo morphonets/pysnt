@@ -83,19 +83,14 @@ it is best to point pyimagej to a SNT pre-release bundle:
 1. Download a pre-release bundle from the [SNT Release Page](https://github.com/morphonets/SNT/releases).
    Unzip it to a local directory, e.g., `~/Downloads/`
 
-2. Point pysnt to the bundle:
-
-   ```python
-   import pysnt
-   pysnt.initialize_snt(fiji_path="~/Downloads/Fiji-SNTv5_pre-release_macOS") # Specify path directly
-   ```
+2. Provide the installer with the path to the unzipped directory
 
 #### Interactive Setup
 When you initialize pysnt using default options...
 
 ```python
 import pysnt
-pysnt.initialize_snt()
+pysnt.initialize()
 ```
 ... The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
 
@@ -180,7 +175,7 @@ Now you can test that SNT access is fully functional:
 ```python
 import pysnt
 from pysnt import SNTService, Tree
-pysnt.initialize_snt('~/Downloads/Fiji-SNTv5_pre-release_macOS/') # or simply pysnt.initialize_snt() if FIJI_PATH is set
+pysnt.initialize()
 
 snt_service = SNTService() # SNT's Scijava service
 tree = snt_service.demoTree('fractal') # retrieve a toy neuron
@@ -269,7 +264,7 @@ print_java_status() # check Java installation status
 
 ```python
 import pysnt
-pysnt.initialize_snt() # check Java installation and install OpenJDK if needed
+pysnt.initialize() # check Java installation and install OpenJDK if needed
 ```
 
 ### Manual Java Setup
