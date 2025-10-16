@@ -21,32 +21,57 @@ EXTENDED_CLASSES = [
     "NeuriteGrowthData"
 ]
 
-# Placeholder classes for IDE support - will be replaced with Java classes
 
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
 class GrowthAnalyzer:
     """
-    Core analyzer for time-lapse growth analysis of neuronal paths
+    Curated SNT class from analysis/growth package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalyzer.html
     """
-    pass
-
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class GrowthAnalysisResults:
     """
-    Container class for growth analysis results from GrowthAnalyzer
+    Curated SNT class from analysis/growth package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalysisResults.html
     """
-    pass
-
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.analysis.growth",
     curated_classes=CURATED_CLASSES,
     extended_classes=EXTENDED_CLASSES,
-    globals_dict=globals(),
-    placeholder_classes={
-        'GrowthAnalyzer': GrowthAnalyzer,
-        'GrowthAnalysisResults': GrowthAnalysisResults
-    }
+    globals_dict=globals()
 )
 
 # Import functions into module namespace

@@ -41,161 +41,247 @@ CURATED_ROOT_CLASSES = [
 # Extended classes - available via get_class() (root package discovers dynamically)
 EXTENDED_ROOT_CLASSES = []
 
+
+
 # Placeholder classes for IDE support - will be replaced with Java classes
-class SNTService:
+class Fill:
     """
-    SNT's Scijava Service
+    Curated SNT class from root package with method signatures.
     
-    NB: Only available after calling pysnt.initialize().
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/Fill.html
     """
-    pass
-
-class SNTUtils:
-    """
-    """
-    @staticmethod
-    def getVersion():
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    @staticmethod
-    def isDebugMode():
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    @staticmethod
-    def setDebugMode(arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
+    
     def __getattr__(self, name: str):
-        """Dynamic attribute access for additional Java methods."""
+        """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class Tree:
-    """
-    """
-    def size(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def isEmpty(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getNodes(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getPaths(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getBoundingBox(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getRoot(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getTips(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getBranchPoints(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getCableLength(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getSWCTypes(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getLabel(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def setLabel(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getColor(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def setColor(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def translate(self, arg0, arg1, arg2):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def scale(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def rotate(self, arg0, arg1):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def save(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def saveAsSWC(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for additional Java methods."""
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Path:
     """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/Path.html
     """
-    def size(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getNodes(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getLength(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getStartRadius(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getEndRadius(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getSWCType(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def setSWCType(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getChannel(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def setChannel(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
+    
     def __getattr__(self, name: str):
-        """Dynamic attribute access for additional Java methods."""
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class PathAndFillManager:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathAndFillManager.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class PathFitter:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathFitter.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class PathManagerUI:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathManagerUI.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNT:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SNT.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTService:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SNTService.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTUI:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SNTUI.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTUtils:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SNTUtils.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TracerCanvas:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/TracerCanvas.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class Tree:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/Tree.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeProperties:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/TreeProperties.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Import submodules for easy access
@@ -209,13 +295,7 @@ _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt",
     curated_classes=CURATED_ROOT_CLASSES,
     extended_classes=EXTENDED_ROOT_CLASSES,
-    globals_dict=globals(),
-    placeholder_classes={
-        'SNTService': SNTService,
-        'SNTUtils': SNTUtils,
-        'Tree': Tree,
-        'Path': Path
-    }
+    globals_dict=globals()
 )
 
 # Import functions into module namespace

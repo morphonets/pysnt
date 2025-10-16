@@ -31,97 +31,137 @@ EXTENDED_CLASSES = [
     "TreeColorMapper"
 ]
 
+
+
+
+
 # Placeholder classes for IDE support - will be replaced with Java classes
+class ConvexHull2D:
+    """
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/ConvexHull2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ConvexHull3D:
+    """
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/ConvexHull3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class TreeStatistics:
     """
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/TreeStatistics.html
     """
-    def getCableLength(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getSummaryStats(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getHistogram(self, arg0):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getBranchPoints(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getTips(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getNodes(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getDepth(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getWidth(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-    def getHeight(self):
-        """Placeholder method. Call pysnt.initialize() first."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
+    
     def __getattr__(self, name: str):
-        """Dynamic attribute access for additional Java methods."""
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class MultiTreeStatistics:
     """
-    This class is a TreeStatistics variant providing comparison
-    capabilities for collections of neuronal trees.
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/MultiTreeStatistics.html
     """
-    pass
-
-class ConvexHull2D:
-    """
-    This class computes and analyzes the convex hull of a 2D Tree
-    """
-    pass
-
-class ConvexHull3D:
-    """
-    This class computes and analyzes the convex hull of a 3D Tree
-    """
-    pass
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTChart:
     """
-    Class for creating analysis charts and plots.
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/SNTChart.html
     """
-    pass
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTTable:
     """
-    Class for table creation, manipulation, and display of tabular data.
+    Curated SNT class from analysis package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/SNTTable.html
     """
-    pass
-
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.analysis",
     curated_classes=CURATED_CLASSES,
     extended_classes=EXTENDED_CLASSES,
-    globals_dict=globals(),
-    placeholder_classes={
-        'TreeStatistics': TreeStatistics,
-        'MultiTreeStatistics': MultiTreeStatistics,
-        'ConvexHull2D': ConvexHull2D,
-        'ConvexHull3D': ConvexHull3D,
-        'SNTChart': SNTChart,
-        'SNTTable': SNTTable
-    }
+    globals_dict=globals()
 )
 
 # Import functions into module namespace

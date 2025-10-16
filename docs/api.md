@@ -69,9 +69,9 @@ Three ways to import SNT classes:
 
 | Method              | Coverage                      | Use Case       | Autocompletion | Comments                                                   |
 |---------------------|-------------------------------|----------------|----------------|------------------------------------------------------------|
-| Direct Import       | Restricted to curated classes | Common tasks   | ✅              | Fast, convenient                                           |
-| `get_class()`       | Discoverable classes          | Advanced tasks | ❌              | Slower on first access, then cached                        |
-| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | ❌              | Fast. May require a priori knowledge of SNT's architecture |
+| Direct Import       | Restricted to curated classes | Common tasks   | Detailed       | Fast, convenient                                           |
+| `get_class()`       | Discoverable classes          | Advanced tasks | Basic          | Slower on first access, then cached                        |
+| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | N/A            | Fast. May require a priori knowledge of SNT's architecture |
 
 ```python
 # Method 1: Direct import (curated classes - recommended)

@@ -75,6 +75,17 @@ def main():
     success_count = 0
     total_tasks = 0
 
+    # 0. Generate placeholder classes (first step)
+    total_tasks += 1
+    cmd = [sys.executable, str(script_dir / "generate_placeholders.py")]
+    if args.verbose:
+        cmd.append("--verbose")
+    
+    if run_command(cmd, "Generating placeholder classes with Javadoc links"):
+        success_count += 1
+    else:
+        print("⚠️ Placeholder generation failed, but continuing...")
+
     # 1. Generate stubs (Python + Java with some fallback strategies)
     if not args.skip_java:
         total_tasks += 1

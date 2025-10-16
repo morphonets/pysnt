@@ -32,6 +32,7 @@ setup.clear_fiji_path(reset_env=True)  # Same as above
 ### `deploy.py`
 
 **Scope:**
+  - Generates placeholder classes with Javadoc links
   - Generates stub files (`.pyi`) for Java classes: Type definitions for IDE support
   - Syncs Python classes with stub files with placeholder methods
   - Generates API files (`.rst`): Sphinx documentation files
@@ -43,6 +44,23 @@ setup.clear_fiji_path(reset_env=True)  # Same as above
 python scripts/deploy.py [--skip-docs]
 ```
 
+### `generate_placeholders.py`
+
+**Scope:**
+  - First step in deployment process 
+  - Generates placeholder classes with Javadoc links for all PySNT modules
+  - Parses `CURATED_CLASSES` and `EXTENDED_CLASSES` from `__init__.py` files
+  - Creates docstrings (reStructuredText formatting)
+
+**Options:**
+  - `--dry-run`: Preview changes without modifying files
+  - `--extended`: Include extended classes in placeholders
+  - `--reset`: Remove existing placeholders (useful for debugging)
+  - `--verbose`: Enable detailed logging
+
+```bash
+python scripts/generate_placeholders.py [--dry-run] [--extended] [--reset] [--verbose]
+```
 
 ### `generate_stubs.py`
 
@@ -95,6 +113,12 @@ python -m pysnt.setup_utils --set /Applications/Fiji.app
 python -m pysnt.setup_utils --clear
 python -m pysnt.setup_utils --reset
 python -m pysnt.setup_utils --check
+# Generate placeholders only
+python scripts/generate_placeholders.py
+# Preview placeholder changes
+python scripts/generate_placeholders.py --dry-run
+# Reset placeholders for debugging
+python scripts/generate_placeholders.py --reset
 # Quick build without docs
 python scripts/deploy.py --skip-docs
 # Complete build with documentation
@@ -105,4 +129,24 @@ python scripts/generate_stubs.py --verbose
 python scripts/sync_python_classes.py
 # Generate docs only
 python scripts/generate_api_docs.py
+```
+
+## Development Tools
+
+See the [`dev/`](../dev/) directory for development tools and templates:
+
+- **`dev/placeholder_template.py`**: Template for creating new PySNT module `__init__.py` files
+- **`dev/create_module.py`**: Script to quickly create new modules from template
+- **`dev/README.md`**: Comprehensive guide for adding new SNT packages
+
+### Quick Module Creation
+
+```bash
+# Create a new module
+python dev/create_module.py analysis.morphology
+
+# Create with predefined classes
+python dev/create_module.py analysis.morphology \
+  --curated MorphologyAnalyzer ShapeMetrics \
+  --extended AdvancedMorphology DetailedMetrics
 ```

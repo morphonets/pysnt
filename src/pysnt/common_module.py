@@ -17,7 +17,6 @@ def setup_module_classes(
     curated_classes: List[str],
     extended_classes: List[str],
     globals_dict: Dict[str, Any],
-    placeholder_classes: Optional[Dict[str, type]] = None,
     discovery_packages: Optional[List[str]] = None,
     include_interfaces: bool = False
 ) -> Dict[str, Any]:
@@ -40,9 +39,7 @@ def setup_module_classes(
     extended_classes : List[str]
         Classes that are loaded on-demand via get_class()
     globals_dict : Dict[str, Any]
-        The module's globals() dict to update with placeholder classes
-    placeholder_classes : Dict[str, type], optional
-        Custom placeholder classes to replace with Java classes
+        The module's globals() dict to update with Java classes
     discovery_packages : List[str], optional
         Additional packages to search for classes (defaults to [package_name])
     include_interfaces : bool, default False
@@ -96,11 +93,7 @@ def setup_module_classes(
                     # Set to None so users get clear error messages
                     globals_dict[class_name] = None
             
-            # Update any specific placeholder classes
-            if placeholder_classes:
-                for class_name, placeholder_class in placeholder_classes.items():
-                    if class_name in _curated_classes:
-                        globals_dict[class_name] = _curated_classes[class_name]
+
             
             logger.info(f"Successfully loaded {len(_curated_classes)} curated classes for {package_name}")
             
@@ -369,8 +362,10 @@ def setup_module_classes(
             """
             Return list of available attributes for IDE autocompletion.
             
-            This ensures that IDEs can discover both functions and curated classes
-            for autocompletion, even before the JVM is started.
+            This ensures that IDEs can discover both functions, curated classes,
+            and extended classes for autocompletion, even before the JVM is started.
+            Extended classes are included to improve IDE experience, though they
+            will only work after JVM initialization.
             """
             base_attrs = [
                 # Functions
@@ -387,10 +382,18 @@ def setup_module_classes(
             # Always include curated classes for IDE autocompletion
             curated_attrs = curated_classes.copy()
             
-            # If JVM is started and extended classes are discovered, include them too
-            extended_attrs = []
+            # Always include extended classes for IDE autocompletion
+            # This improves IDE experience by showing all available class names
+            # even before JVM starts, though the classes won't work until initialized
+            extended_attrs = extended_classes.copy()
+            
+            # If JVM is started and additional classes were discovered, include them too
             if scyjava.jvm_started() and _discovery_completed:
-                extended_attrs = list(_extended_classes.keys())
+                # Add any dynamically discovered classes not in the predefined list
+                discovered_extended = list(_extended_classes.keys())
+                for class_name in discovered_extended:
+                    if class_name not in extended_attrs:
+                        extended_attrs.append(class_name)
             
             return sorted(base_attrs + curated_attrs + extended_attrs)
         
