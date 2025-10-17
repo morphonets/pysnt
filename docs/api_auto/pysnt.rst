@@ -23,6 +23,7 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
+   pysnt.common_module
    pysnt.core
    pysnt.java_utils
    pysnt.setup_utils
