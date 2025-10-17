@@ -13,22 +13,23 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
+    "BiSearch",
+    "BiSearchNode",
+    "DefaultSearchNode",
+    "FillerThread",
+    "PathResult",
+    "SearchNode",
     "SearchThread",
-    "TracerThread"
+    "TracerThread",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
     "AbstractSearch",
-    "BiSearch", "BiSearchNode",
-    "DefaultSearchNode",
-    "FillerThread",
     "ManualTracerThread",
-    "SearchNode"
+    "SearchInterface",
+    "TubularGeodesicsTracer",
 ]
-
-
-
 
 
 # Placeholder classes for IDE support - will be replaced with Java classes
@@ -82,15 +83,15 @@ _module_funcs = setup_module_classes(
 )
 
 # Import functions into module namespace
-get_available_classes = _module_funcs['get_available_classes']
-get_class = _module_funcs['get_class']
-list_classes = _module_funcs['list_classes']
-get_curated_classes = _module_funcs['get_curated_classes']
-get_extended_classes = _module_funcs['get_extended_classes']
+get_available_classes = _module_funcs["get_available_classes"]
+get_class = _module_funcs["get_class"]
+list_classes = _module_funcs["list_classes"]
+get_curated_classes = _module_funcs["get_curated_classes"]
+get_extended_classes = _module_funcs["get_extended_classes"]
 
 # Create module-level __getattr__ and __dir__
-__getattr__ = _module_funcs['create_getattr']('pysnt.tracing')
-__dir__ = _module_funcs['create_dir']()
+__getattr__ = _module_funcs["create_getattr"]("pysnt.tracing", submodules=["artist", "cost", "heuristic", "image"])
+__dir__ = _module_funcs["create_dir"]()
 
 
 # Static __all__ with curated classes always available
@@ -108,4 +109,12 @@ __all__ = [
     # Curated classes (always available for direct import)
     "SearchThread",
     "TracerThread",
+    # Submodules
+    "artist",
+    "cost", 
+    "heuristic",
+    "image",
 ]
+
+# Submodule imports
+from . import artist, cost, heuristic, image
