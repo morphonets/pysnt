@@ -38,7 +38,7 @@ import logging
 import scyjava
 from typing import Dict, Any, List
 
-from ..common_module import setup_module_classes  # Adjust import path as needed
+from ..common_module import setup_module_classes  # Import depth will be auto-fixed by generate_placeholders.py
 
 logger = logging.getLogger(__name__)
 

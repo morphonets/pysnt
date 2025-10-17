@@ -101,6 +101,19 @@ class PlaceholderGenerator:
         parts = relative_path.parts[:-1]  # Remove __init__.py
         return "/".join(parts) if parts else ""
     
+    def _get_import_depth(self, init_file: Path) -> int:
+        """
+        Calculate the correct import depth for common_module import.
+        
+        Examples:
+            src/pysnt/__init__.py -> 1 (from .common_module)
+            src/pysnt/analysis/__init__.py -> 2 (from ..common_module)
+            src/pysnt/analysis/growth/__init__.py -> 3 (from ...common_module)
+        """
+        relative_path = init_file.relative_to(self.src_root)
+        parts = relative_path.parts[:-1]  # Remove __init__.py
+        return len(parts) + 1  # +1 because we need to go up to pysnt level
+    
     def generate_javadoc_url(self, class_name: str, package_path: str) -> str:
         """Generate Javadoc URL for a class."""
         if package_path:
@@ -291,6 +304,198 @@ class PlaceholderGenerator:
             logger.error(f"Failed to remove placeholders from {init_file}: {e}")
             return False
     
+    def generate_template_with_correct_imports(self, init_file: Path) -> str:
+        """
+        Generate template content with correct import depth for common_module.
+        
+        This can be used to fix existing templates or create new ones.
+        """
+        import_depth = self._get_import_depth(init_file)
+        dots = "." * import_depth
+        
+        # Read the current file to preserve existing content structure
+        try:
+            content = init_file.read_text(encoding='utf-8')
+            
+            # Fix the import statement
+            import re
+            pattern = r'from \.+common_module import setup_module_classes'
+            replacement = f'from {dots}common_module import setup_module_classes'
+            
+            if re.search(pattern, content):
+                new_content = re.sub(pattern, replacement, content)
+                return new_content
+            else:
+                logger.warning(f"Could not find common_module import in {init_file}")
+                return content
+                
+        except Exception as e:
+            logger.error(f"Failed to read {init_file}: {e}")
+            return ""
+    
+    def fix_import_depths(self, dry_run: bool = False) -> Dict[str, int]:
+        """
+        Fix import depths in all __init__.py files.
+        
+        Args:
+            dry_run: If True, don't actually modify files
+            
+        Returns:
+            Dictionary with statistics
+        """
+        init_files = self.find_init_files()
+        stats = {
+            'total_files': len(init_files),
+            'modified_files': 0,
+        }
+        
+        logger.info(f"Fixing import depths in {len(init_files)} __init__.py files")
+        
+        for init_file in init_files:
+            try:
+                content = init_file.read_text(encoding='utf-8')
+                original_content = content
+                
+                # Calculate correct import depth
+                import_depth = self._get_import_depth(init_file)
+                dots = "." * import_depth
+                
+                # Fix the import statement
+                import re
+                pattern = r'from \.+common_module import setup_module_classes'
+                replacement = f'from {dots}common_module import setup_module_classes'
+                
+                if re.search(pattern, content):
+                    new_content = re.sub(pattern, replacement, content)
+                    
+                    if new_content != original_content:
+                        if not dry_run:
+                            init_file.write_text(new_content, encoding='utf-8')
+                            logger.info(f"Fixed import depth in {init_file.relative_to(self.project_root)} (depth: {import_depth})")
+                        else:
+                            logger.info(f"Would fix import depth in {init_file.relative_to(self.project_root)} (depth: {import_depth})")
+                        stats['modified_files'] += 1
+                    else:
+                        logger.debug(f"Import depth already correct in {init_file.relative_to(self.project_root)}")
+                else:
+                    logger.debug(f"No common_module import found in {init_file.relative_to(self.project_root)}")
+                    
+            except Exception as e:
+                logger.error(f"Failed to fix import depth in {init_file}: {e}")
+        
+        return stats
+    
+    def find_pyi_files(self) -> List[Path]:
+        """Find all .pyi files in the pysnt package."""
+        pyi_files = []
+        for pyi_file in self.src_root.rglob("*.pyi"):
+            # Skip __pycache__ and other non-source directories
+            if "__pycache__" not in str(pyi_file):
+                pyi_files.append(pyi_file)
+        return sorted(pyi_files)
+    
+    def clean_unused_typing_imports(self, dry_run: bool = False) -> Dict[str, int]:
+        """
+        Clean up unused typing imports in .pyi files.
+        
+        Args:
+            dry_run: If True, don't actually modify files
+            
+        Returns:
+            Dictionary with statistics
+        """
+        pyi_files = self.find_pyi_files()
+        stats = {
+            'total_files': len(pyi_files),
+            'modified_files': 0,
+            'imports_removed': 0,
+        }
+        
+        logger.info(f"Cleaning unused typing imports in {len(pyi_files)} .pyi files")
+        
+        # Common typing imports to check
+        typing_imports = [
+            'Any', 'List', 'Dict', 'Optional', 'Union', 'overload', 'Set', 
+            'Tuple', 'Callable', 'Iterator', 'Iterable', 'Sequence', 'Mapping'
+        ]
+        
+        for pyi_file in pyi_files:
+            try:
+                content = pyi_file.read_text(encoding='utf-8')
+                original_content = content
+                
+                # Find the typing import line
+                import re
+                typing_import_pattern = r'^from typing import (.+)$'
+                
+                lines = content.split('\n')
+                modified = False
+                
+                for i, line in enumerate(lines):
+                    match = re.match(typing_import_pattern, line.strip())
+                    if match:
+                        imports_str = match.group(1)
+                        
+                        # Parse the imports (handle both comma-separated and multi-line)
+                        current_imports = []
+                        if imports_str.strip():
+                            # Split by comma and clean up
+                            for imp in imports_str.split(','):
+                                imp = imp.strip()
+                                if imp:
+                                    current_imports.append(imp)
+                        
+                        # Check which imports are actually used in the file
+                        # Exclude the import line itself from the search
+                        content_without_import = content.replace(line, "")
+                        used_imports = []
+                        
+                        for imp in current_imports:
+                            # Check if the import is used in the file (excluding the import line)
+                            # Look for the import name as a standalone word
+                            if re.search(rf'\b{re.escape(imp)}\b', content_without_import):
+                                used_imports.append(imp)
+                        
+                        # If we have unused imports, update the line
+                        if len(used_imports) != len(current_imports):
+                            removed_count = len(current_imports) - len(used_imports)
+                            stats['imports_removed'] += removed_count
+                            
+                            if used_imports:
+                                # Create new import line with only used imports
+                                new_import_line = f"from typing import {', '.join(sorted(used_imports))}"
+                                lines[i] = new_import_line
+                                logger.debug(f"Updated typing imports in {pyi_file.relative_to(self.project_root)}: {', '.join(sorted(used_imports))}")
+                            else:
+                                # Remove the entire import line if no imports are used
+                                lines[i] = ""
+                                logger.debug(f"Removed unused typing import line from {pyi_file.relative_to(self.project_root)}")
+                            
+                            modified = True
+                        else:
+                            logger.debug(f"All typing imports used in {pyi_file.relative_to(self.project_root)}")
+                        
+                        break  # Only process the first typing import line
+                
+                if modified:
+                    new_content = '\n'.join(lines)
+                    # Clean up multiple consecutive empty lines
+                    new_content = re.sub(r'\n\n\n+', '\n\n', new_content)
+                    
+                    if not dry_run:
+                        pyi_file.write_text(new_content, encoding='utf-8')
+                        logger.info(f"Cleaned typing imports in {pyi_file.relative_to(self.project_root)}")
+                    else:
+                        logger.info(f"Would clean typing imports in {pyi_file.relative_to(self.project_root)}")
+                    stats['modified_files'] += 1
+                else:
+                    logger.debug(f"No unused typing imports in {pyi_file.relative_to(self.project_root)}")
+                    
+            except Exception as e:
+                logger.error(f"Failed to clean typing imports in {pyi_file}: {e}")
+        
+        return stats
+
     def generate_placeholders_for_file(self, init_file: Path, include_extended: bool = False) -> str:
         """Generate all placeholder classes for a single __init__.py file."""
         curated_classes, extended_classes, package_path = self.parse_class_lists(init_file)
@@ -321,6 +526,7 @@ class PlaceholderGenerator:
     def update_init_file(self, init_file: Path, include_extended: bool = False, dry_run: bool = False) -> bool:
         """
         Update an __init__.py file with generated placeholder classes.
+        Also fixes import depth for common_module if needed.
         
         Returns:
             True if file was modified, False otherwise
@@ -329,12 +535,34 @@ class PlaceholderGenerator:
             content = init_file.read_text(encoding='utf-8')
             original_content = content
             
+            # First, fix import depth if needed
+            import_depth = self._get_import_depth(init_file)
+            dots = "." * import_depth
+            
+            import re
+            pattern = r'from \.+common_module import setup_module_classes'
+            replacement = f'from {dots}common_module import setup_module_classes'
+            
+            if re.search(pattern, content):
+                content = re.sub(pattern, replacement, content)
+                if content != original_content:
+                    logger.debug(f"Fixed import depth in {init_file.relative_to(self.project_root)} (depth: {import_depth})")
+            
             # Generate new placeholders
             new_placeholders = self.generate_placeholders_for_file(init_file, include_extended)
             
             if not new_placeholders:
-                logger.info(f"No classes found in {init_file.relative_to(self.project_root)}")
-                return False
+                # Even if no placeholders, we might have fixed imports
+                if content != original_content:
+                    if not dry_run:
+                        init_file.write_text(content, encoding='utf-8')
+                        logger.info(f"Fixed imports in {init_file.relative_to(self.project_root)}")
+                    else:
+                        logger.info(f"Would fix imports in {init_file.relative_to(self.project_root)}")
+                    return True
+                else:
+                    logger.info(f"No classes found in {init_file.relative_to(self.project_root)}")
+                    return False
             
             # Find existing placeholder section
             start_idx, end_idx = self.find_placeholder_section(content)
@@ -435,6 +663,12 @@ def main():
                        help='Enable verbose logging')
     parser.add_argument('--reset', action='store_true',
                        help='Remove existing placeholders without generating new ones (useful for debugging)')
+    parser.add_argument('--fix-imports', action='store_true',
+                       help='Fix import depths for common_module imports in all __init__.py files')
+    parser.add_argument('--clean-pyi-imports', action='store_true',
+                       help='Clean up unused typing imports in .pyi files')
+    parser.add_argument('--with-pyi-cleanup', action='store_true',
+                       help='Include .pyi import cleanup when generating placeholders')
     
     args = parser.parse_args()
     
@@ -452,7 +686,44 @@ def main():
     # Generate or reset placeholders
     generator = PlaceholderGenerator(project_root)
     
-    if args.reset:
+    if args.fix_imports:
+        logger.info("Fixing import depths for common_module imports...")
+        if args.dry_run:
+            logger.info("DRY RUN MODE - No files will be modified")
+        
+        stats = generator.fix_import_depths(dry_run=args.dry_run)
+        
+        # Print summary
+        logger.info("=" * 50)
+        logger.info("IMPORT DEPTH FIX SUMMARY:")
+        logger.info(f"  Files processed: {stats['total_files']}")
+        logger.info(f"  Files modified: {stats['modified_files']}")
+        
+        if args.dry_run:
+            logger.info("\nRun without --dry-run to apply changes")
+        else:
+            logger.info("\n✅ Import depth fixing complete!")
+    
+    elif args.clean_pyi_imports:
+        logger.info("Cleaning unused typing imports in .pyi files...")
+        if args.dry_run:
+            logger.info("DRY RUN MODE - No files will be modified")
+        
+        stats = generator.clean_unused_typing_imports(dry_run=args.dry_run)
+        
+        # Print summary
+        logger.info("=" * 50)
+        logger.info("TYPING IMPORT CLEANUP SUMMARY:")
+        logger.info(f"  Files processed: {stats['total_files']}")
+        logger.info(f"  Files modified: {stats['modified_files']}")
+        logger.info(f"  Imports removed: {stats['imports_removed']}")
+        
+        if args.dry_run:
+            logger.info("\nRun without --dry-run to apply changes")
+        else:
+            logger.info("\n✅ Typing import cleanup complete!")
+    
+    elif args.reset:
         logger.info("Removing existing placeholder classes from PySNT modules...")
         if args.dry_run:
             logger.info("DRY RUN MODE - No files will be modified")
@@ -502,6 +773,13 @@ def main():
             logger.info("\nRun without --dry-run to apply changes")
         else:
             logger.info("\n✅ Placeholder generation complete!")
+            
+            # Optional .pyi cleanup step
+            if args.with_pyi_cleanup:
+                logger.info("\n🧹 Running .pyi import cleanup...")
+                pyi_stats = generator.clean_unused_typing_imports(dry_run=False)
+                logger.info(f"   Cleaned {pyi_stats['imports_removed']} unused imports from {pyi_stats['modified_files']} files")
+            
             logger.info("💡 Use --reset to remove placeholders for debugging")
     
     return 0
