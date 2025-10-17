@@ -3,15 +3,19 @@
 Utility script to generate placeholder classes for PySNT modules.
 
 1. Parses all __init__.py files to extract CURATED_CLASSES and EXTENDED_CLASSES
-2. Generates placeholder classes with proper docstrings and Javadoc links
-3. Updates the __init__.py files with the generated placeholders
+2. Runs quality control validation (detects duplicate classes, etc.)
+3. Generates placeholder classes with proper docstrings and Javadoc links
+4. Updates the __init__.py files with the generated placeholders
+5. Optionally cleans up unused typing imports in .pyi files
 
 Usage:
-    python scripts/generate_placeholders.py                    # Generate placeholders
+    python scripts/generate_placeholders.py                    # Generate placeholders with QC
     python scripts/generate_placeholders.py --dry-run          # Preview changes only
     python scripts/generate_placeholders.py --extended         # Include extended classes too
+    python scripts/generate_placeholders.py --skip-qc          # Skip quality control validation
     python scripts/generate_placeholders.py --reset            # Remove existing placeholders
-    python scripts/generate_placeholders.py --reset --dry-run  # Preview placeholder removal
+    python scripts/generate_placeholders.py --clean-pyi-imports # Clean unused typing imports
+    python scripts/generate_placeholders.py --with-pyi-cleanup  # Generate + clean .pyi imports
 """
 
 import ast
@@ -27,12 +31,78 @@ logger = logging.getLogger(__name__)
 # Base Javadoc URL
 JAVADOC_BASE_URL = "https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt"
 
+
+class QualityControlError(Exception):
+    """Exception raised when QC validation fails."""
+    pass
+
+
+class QualityController:
+    """Quality control validation for PySNT module configurations."""
+    
+    def __init__(self):
+        self.validation_rules = [
+            self._validate_no_duplicate_classes,
+            # Add more validation rules here in the future
+        ]
+    
+    def validate_module(self, init_file: Path, curated_classes: List[str], 
+                       extended_classes: List[str], package_path: str) -> None:
+        """
+        Run all QC validation rules on a module.
+        
+        Args:
+            init_file: Path to the __init__.py file
+            curated_classes: List of curated class names
+            extended_classes: List of extended class names  
+            package_path: Java package path
+            
+        Raises:
+            QualityControlError: If any validation rule fails
+        """
+        for rule in self.validation_rules:
+            rule(init_file, curated_classes, extended_classes, package_path)
+    
+    def _validate_no_duplicate_classes(self, init_file: Path, curated_classes: List[str],
+                                     extended_classes: List[str], package_path: str) -> None:
+        """
+        Validate that CURATED_CLASSES and EXTENDED_CLASSES don't share common entries.
+        
+        Args:
+            init_file: Path to the __init__.py file
+            curated_classes: List of curated class names
+            extended_classes: List of extended class names
+            package_path: Java package path (unused in this validation)
+            
+        Raises:
+            QualityControlError: If duplicate classes are found
+        """
+        curated_set = set(curated_classes)
+        extended_set = set(extended_classes)
+        duplicates = curated_set.intersection(extended_set)
+        
+        if duplicates:
+            relative_path = init_file.relative_to(Path.cwd()) if init_file.is_absolute() else init_file
+            raise QualityControlError(
+                f"QC FAILURE in {relative_path}: "
+                f"Classes appear in both CURATED_CLASSES and EXTENDED_CLASSES: {sorted(duplicates)}\n"
+                f"Each class should only appear in one list. Move duplicates to either CURATED_CLASSES "
+                f"(for commonly used classes) or EXTENDED_CLASSES (for less common classes)."
+            )
+    
+    # Future validation rules can be added here:
+    # def _validate_class_naming_convention(self, ...):
+    # def _validate_package_path_consistency(self, ...):
+    # def _validate_javadoc_urls(self, ...):
+
+
 class PlaceholderGenerator:
     """Generates placeholder classes for PySNT modules."""
     
     def __init__(self, project_root: Path):
         self.project_root = project_root
         self.src_root = project_root / "src" / "pysnt"
+        self.qc = QualityController()
         
     def find_init_files(self) -> List[Path]:
         """Find all __init__.py files in the pysnt package."""
@@ -43,12 +113,19 @@ class PlaceholderGenerator:
                 init_files.append(init_file)
         return sorted(init_files)
     
-    def parse_class_lists(self, init_file: Path) -> Tuple[List[str], List[str], str]:
+    def parse_class_lists(self, init_file: Path, validate: bool = True) -> Tuple[List[str], List[str], str]:
         """
         Parse CURATED_CLASSES and EXTENDED_CLASSES from an __init__.py file.
         
+        Args:
+            init_file: Path to the __init__.py file
+            validate: Whether to run QC validation on the parsed data
+        
         Returns:
             Tuple of (curated_classes, extended_classes, package_path)
+            
+        Raises:
+            QualityControlError: If validation fails and validate=True
         """
         try:
             content = init_file.read_text(encoding='utf-8')
@@ -72,8 +149,15 @@ class PlaceholderGenerator:
             # Determine package path from file location
             package_path = self._get_package_path(init_file)
             
+            # Run QC validation if requested
+            if validate:
+                self.qc.validate_module(init_file, curated_classes, extended_classes, package_path)
+            
             return curated_classes, extended_classes, package_path
             
+        except QualityControlError:
+            # Re-raise QC errors without modification
+            raise
         except Exception as e:
             logger.error(f"Failed to parse {init_file}: {e}")
             return [], [], ""
@@ -496,9 +580,9 @@ class PlaceholderGenerator:
         
         return stats
 
-    def generate_placeholders_for_file(self, init_file: Path, include_extended: bool = False) -> str:
+    def generate_placeholders_for_file(self, init_file: Path, include_extended: bool = False, skip_qc: bool = False) -> str:
         """Generate all placeholder classes for a single __init__.py file."""
-        curated_classes, extended_classes, package_path = self.parse_class_lists(init_file)
+        curated_classes, extended_classes, package_path = self.parse_class_lists(init_file, validate=not skip_qc)
         
         if not curated_classes and not extended_classes:
             return ""
@@ -523,7 +607,7 @@ class PlaceholderGenerator:
         
         return "\n".join(placeholders)
     
-    def update_init_file(self, init_file: Path, include_extended: bool = False, dry_run: bool = False) -> bool:
+    def update_init_file(self, init_file: Path, include_extended: bool = False, dry_run: bool = False, skip_qc: bool = False) -> bool:
         """
         Update an __init__.py file with generated placeholder classes.
         Also fixes import depth for common_module if needed.
@@ -549,7 +633,7 @@ class PlaceholderGenerator:
                     logger.debug(f"Fixed import depth in {init_file.relative_to(self.project_root)} (depth: {import_depth})")
             
             # Generate new placeholders
-            new_placeholders = self.generate_placeholders_for_file(init_file, include_extended)
+            new_placeholders = self.generate_placeholders_for_file(init_file, include_extended, skip_qc)
             
             if not new_placeholders:
                 # Even if no placeholders, we might have fixed imports
@@ -609,7 +693,7 @@ class PlaceholderGenerator:
         # Default to end of file
         return len(lines)
     
-    def process_all_files(self, include_extended: bool = False, dry_run: bool = False, reset_only: bool = False) -> Dict[str, int]:
+    def process_all_files(self, include_extended: bool = False, dry_run: bool = False, reset_only: bool = False, skip_qc: bool = False) -> Dict[str, int]:
         """
         Process all __init__.py files and generate placeholders or reset them.
         
@@ -634,10 +718,14 @@ class PlaceholderGenerator:
         for init_file in init_files:
             logger.info(f"Processing {init_file.relative_to(self.project_root)}...")
             
-            # Count classes
-            curated, extended, _ = self.parse_class_lists(init_file)
-            stats['total_curated_classes'] += len(curated)
-            stats['total_extended_classes'] += len(extended)
+            # Count classes and run QC validation
+            try:
+                curated, extended, _ = self.parse_class_lists(init_file, validate=not skip_qc)
+                stats['total_curated_classes'] += len(curated)
+                stats['total_extended_classes'] += len(extended)
+            except QualityControlError as e:
+                logger.error(f"Quality Control validation failed: {e}")
+                raise
             
             # Process file based on mode
             if reset_only:
@@ -646,7 +734,7 @@ class PlaceholderGenerator:
                     stats['modified_files'] += 1
             else:
                 # Generate/update placeholders
-                if self.update_init_file(init_file, include_extended, dry_run):
+                if self.update_init_file(init_file, include_extended, dry_run, skip_qc):
                     stats['modified_files'] += 1
         
         return stats
@@ -669,6 +757,8 @@ def main():
                        help='Clean up unused typing imports in .pyi files')
     parser.add_argument('--with-pyi-cleanup', action='store_true',
                        help='Include .pyi import cleanup when generating placeholders')
+    parser.add_argument('--skip-qc', action='store_true',
+                       help='Skip quality control validation checks (e.g., duplicate class detection)')
     
     args = parser.parse_args()
     
@@ -731,7 +821,8 @@ def main():
         stats = generator.process_all_files(
             include_extended=False,  # Not relevant for reset
             dry_run=args.dry_run,
-            reset_only=True
+            reset_only=True,
+            skip_qc=args.skip_qc
         )
         
         # Print summary
@@ -758,7 +849,8 @@ def main():
         stats = generator.process_all_files(
             include_extended=args.extended,
             dry_run=args.dry_run,
-            reset_only=False
+            reset_only=False,
+            skip_qc=args.skip_qc
         )
         
         # Print summary

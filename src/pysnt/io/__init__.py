@@ -27,7 +27,6 @@ CURATED_CLASSES = [
 # These are less commonly used classes that are loaded on-demand
 EXTENDED_CLASSES = [
     "NDFImporter",
-    "RemoteSWCLoader",
     "SWCExportException",
     "TracesFileFormatException",
 ]
