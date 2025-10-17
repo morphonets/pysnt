@@ -33,6 +33,126 @@ EXTENDED_CLASSES = [
 
 
 # Placeholder classes for IDE support - will be replaced with Java classes
+class BiSearch:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/BiSearch.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class BiSearchNode:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/BiSearchNode.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DefaultSearchNode:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/DefaultSearchNode.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class FillerThread:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/FillerThread.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class PathResult:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/PathResult.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SearchNode:
+    """
+    Curated SNT class from tracing package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/SearchNode.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
 class SearchThread:
     """
     Curated SNT class from tracing package with method signatures.
@@ -99,7 +219,7 @@ __dir__ = _module_funcs["create_dir"]()
 __all__ = [
     # Functions
     "get_available_classes",
-    "get_class", 
+    "get_class",
     "list_classes",
     "get_curated_classes",
     "get_extended_classes",

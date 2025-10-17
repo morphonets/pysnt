@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 4
 
    pysnt.analysis
+   pysnt.io
    pysnt.tracing
    pysnt.util
    pysnt.viewer

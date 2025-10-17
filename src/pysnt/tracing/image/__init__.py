@@ -18,7 +18,7 @@ CURATED_CLASSES = [
     "ListSearchImage",
     "MapSearchImage",
     "SearchImageStack",
-    "SupplierUtil"
+    "SupplierUtil",
 ]
 
 # Extended classes - available via get_class() after discovery
@@ -28,6 +28,109 @@ EXTENDED_CLASSES = ["SearchImage"]
 # =============================================================================
 # MODULE SETUP - USUALLY NO CHANGES NEEDED
 # =============================================================================
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ArraySearchImage:
+    """
+    Curated SNT class from tracing/image package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ArraySearchImage.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ListSearchImage:
+    """
+    Curated SNT class from tracing/image package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ListSearchImage.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class MapSearchImage:
+    """
+    Curated SNT class from tracing/image package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/MapSearchImage.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SearchImageStack:
+    """
+    Curated SNT class from tracing/image package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SearchImageStack.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SupplierUtil:
+    """
+    Curated SNT class from tracing/image package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SupplierUtil.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(

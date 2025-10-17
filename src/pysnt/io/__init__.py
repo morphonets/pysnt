@@ -36,6 +36,149 @@ EXTENDED_CLASSES = [
 # MODULE SETUP - USUALLY NO CHANGES NEEDED
 # =============================================================================
 
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class FlyCircuitLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/FlyCircuitLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class InsectBrainLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/InsectBrainLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class MouseLightLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/MouseLightLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class MouseLightQuerier:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/MouseLightQuerier.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class NeuroMorphoLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/NeuroMorphoLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class RemoteSWCLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/RemoteSWCLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class WekaModelLoader:
+    """
+    Curated SNT class from io package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/WekaModelLoader.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.io",

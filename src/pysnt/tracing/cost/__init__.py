@@ -19,6 +19,89 @@ CURATED_CLASSES = ["Difference", "DifferenceSq", "OneMinusErf", "Reciprocal"]
 # These are less commonly used classes that are loaded on-demand
 EXTENDED_CLASSES = ["Cost"]
 
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Difference:
+    """
+    Curated SNT class from tracing/cost package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Difference.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DifferenceSq:
+    """
+    Curated SNT class from tracing/cost package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/DifferenceSq.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class OneMinusErf:
+    """
+    Curated SNT class from tracing/cost package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/OneMinusErf.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class Reciprocal:
+    """
+    Curated SNT class from tracing/cost package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Reciprocal.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.tracing.cost",
