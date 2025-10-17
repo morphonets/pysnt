@@ -468,12 +468,10 @@ def discover_java_classes(
                 if Modifier.isInterface(modifiers) and not include_interfaces:
                     logger.debug(f"Skipping interface: {class_name}")
                     continue
-                
-                # Skip inner classes (contain $)
-                if '$' in class_name:
-                    logger.debug(f"Skipping inner class: {class_name}")
-                    continue
-                
+
+                # Inner classes will also be included
+                # The public modifier check above will filter out private inner classes
+
                 classes.append(class_name)
                 logger.debug(f"Found public class: {class_name}")
                 
@@ -533,9 +531,9 @@ def _scan_package_from_jars(package_name: str, logger) -> List[str]:
                             relative_path = entry[len(f'{package_path}/'):]
                             if '/' not in relative_path:  # Top-level class only
                                 class_name = relative_path[:-6]  # Remove .class
-                                if not class_name.startswith('$'):  # Skip inner classes
-                                    classes.append(class_name)
-                                    logger.debug(f"Found class in JAR: {class_name}")
+                                # Include inner classes - public/private filtering happens later
+                                classes.append(class_name)
+                                logger.debug(f"Found class in JAR: {class_name}")
                                     
             except Exception as e:
                 logger.debug(f"Could not scan JAR {jar_path}: {e}")

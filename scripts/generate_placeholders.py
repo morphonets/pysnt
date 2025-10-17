@@ -43,6 +43,7 @@ class QualityController:
     def __init__(self):
         self.validation_rules = [
             self._validate_no_duplicate_classes,
+            self._validate_inner_class_naming,
             # Add more validation rules here in the future
         ]
     
@@ -88,6 +89,31 @@ class QualityController:
                 f"Classes appear in both CURATED_CLASSES and EXTENDED_CLASSES: {sorted(duplicates)}\n"
                 f"Each class should only appear in one list. Move duplicates to either CURATED_CLASSES "
                 f"(for commonly used classes) or EXTENDED_CLASSES (for less common classes)."
+            )
+    
+    def _validate_inner_class_naming(self, init_file: Path, curated_classes: List[str],
+                                   extended_classes: List[str], package_path: str) -> None:
+        """
+        Validate that inner class names use underscore notation, not dollar signs.
+        
+        Args:
+            init_file: Path to the __init__.py file
+            curated_classes: List of curated class names
+            extended_classes: List of extended class names
+            package_path: Java package path (unused in this validation)
+            
+        Raises:
+            QualityControlError: If dollar signs are found in class names
+        """
+        all_classes = curated_classes + extended_classes
+        dollar_classes = [cls for cls in all_classes if '$' in cls]
+        
+        if dollar_classes:
+            relative_path = init_file.relative_to(Path.cwd()) if init_file.is_absolute() else init_file
+            raise QualityControlError(
+                f"QC FAILURE in {relative_path}: "
+                f"Inner class names should use underscore notation, not dollar signs: {dollar_classes}\n"
+                f"Example: Use 'OuterClass_InnerClass' instead of 'OuterClass$InnerClass'"
             )
     
     # Future validation rules can be added here:
@@ -199,11 +225,15 @@ class PlaceholderGenerator:
         return len(parts) + 1  # +1 because we need to go up to pysnt level
     
     def generate_javadoc_url(self, class_name: str, package_path: str) -> str:
-        """Generate Javadoc URL for a class."""
+        """Generate Javadoc URL for a class, handling inner classes properly."""
+        # Convert Python inner class naming back to Java for Javadoc URLs
+        # Python: OuterClass_InnerClass -> Java: OuterClass.InnerClass
+        javadoc_class_name = class_name.replace('_', '.')
+        
         if package_path:
-            full_path = f"{JAVADOC_BASE_URL}/{package_path}/{class_name}.html"
+            full_path = f"{JAVADOC_BASE_URL}/{package_path}/{javadoc_class_name}.html"
         else:
-            full_path = f"{JAVADOC_BASE_URL}/{class_name}.html"
+            full_path = f"{JAVADOC_BASE_URL}/{javadoc_class_name}.html"
         return full_path
     
     def generate_placeholder_class(self, class_name: str, package_path: str, is_extended: bool = False) -> str:

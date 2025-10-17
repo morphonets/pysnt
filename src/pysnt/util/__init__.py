@@ -15,21 +15,26 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     "BoundingBox",
     "ColorMaps",
+    "CrossoverFinder",
+    "ImgUtils",
     "ImpUtils",
     "PointInImage",
-    "SNTColor", "SNTPoint", "SWCPoint"
+    "SNTColor",
+    "SNTPoint",
+    "SWCPoint",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "CircleCursor3D", "CrossoverFinder",
+    "CircleCursor3D",
     "DiskCursor3D",
     "LinAlgUtils",
-    "PathCursor", "PointInCanvas"
+    "Logger",
+    "LSystemsTree",
+    "PathCursor",
+    "PointInCanvas" "ShollPoint",
+    "SigmaUtils",
 ]
-
-
-
 
 
 # Placeholder classes for IDE support - will be replaced with Java classes
@@ -173,25 +178,26 @@ class SWCPoint:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
+
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.util",
     curated_classes=CURATED_CLASSES,
     extended_classes=EXTENDED_CLASSES,
     globals_dict=globals(),
-    discovery_packages=["sc.fiji.snt", "sc.fiji.snt.util"]  # Search both packages
+    discovery_packages=["sc.fiji.snt", "sc.fiji.snt.util"],  # Search both packages
 )
 
 # Import functions into module namespace
-get_available_classes = _module_funcs['get_available_classes']
-get_class = _module_funcs['get_class']
-list_classes = _module_funcs['list_classes']
-get_curated_classes = _module_funcs['get_curated_classes']
-get_extended_classes = _module_funcs['get_extended_classes']
+get_available_classes = _module_funcs["get_available_classes"]
+get_class = _module_funcs["get_class"]
+list_classes = _module_funcs["list_classes"]
+get_curated_classes = _module_funcs["get_curated_classes"]
+get_extended_classes = _module_funcs["get_extended_classes"]
 
 # Create module-level __getattr__ and __dir__
-__getattr__ = _module_funcs['create_getattr']('pysnt.util')
-__dir__ = _module_funcs['create_dir']()
+__getattr__ = _module_funcs["create_getattr"]("pysnt.util")
+__dir__ = _module_funcs["create_dir"]()
 
 
 # Static __all__ with curated classes always available

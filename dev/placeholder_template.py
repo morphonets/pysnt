@@ -4,14 +4,15 @@ Template for PySNT module __init__.py files.
 This template provides the standard structure for PySNT submodules that use
 the common_module functionality for class management and placeholder generation.
 
-Usage:
+Usage (Option 1):
+1. Use create_module.py
+
+Usage (Options 2):
 1. Copy this template to your new module directory as __init__.py
 2. Update the module docstring and package information
 3. Edit CURATED_CLASSES and EXTENDED_CLASSES lists
-
 4. Run `python scripts/generate_placeholders.py` to generate placeholder classes
 5. Test your module with `python -c "import src.pysnt.your_module"`
-
 Example:
     For a new "morphology" analysis module:
     1. Create src/pysnt/analysis/morphology/__init__.py from this template
@@ -51,6 +52,9 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     # Add your most important classes here
     # Example: "MorphologyAnalyzer", "ShapeMetrics", "BranchAnalyzer"
+    
+    # For Java inner classes, use underscore notation:
+    # Example: "OuterClass_InnerClass"  # Java: OuterClass$InnerClass
 ]
 
 # Extended classes - available via get_class() after discovery
@@ -58,6 +62,9 @@ CURATED_CLASSES = [
 EXTENDED_CLASSES = [
     # Add your extended classes here
     # Example: "AdvancedMorphology", "DetailedMetrics", "InternalUtils"
+    
+    # For Java inner classes, use underscore notation:
+    # Example: "UtilityClass_Helper"  # Java: UtilityClass$Helper
 ]
 
 # =============================================================================

@@ -22,9 +22,15 @@ from .java_utils import inspect
 
 # Import setup utilities for Fiji configuration
 from .setup_utils import (
-    set_fiji_path, get_fiji_path, clear_fiji_path, reset_fiji_path,
-    get_config_info, show_config_status, auto_detect_and_configure,
-    is_fiji_valid, get_fiji_status
+    set_fiji_path,
+    get_fiji_path,
+    clear_fiji_path,
+    reset_fiji_path,
+    get_config_info,
+    show_config_status,
+    auto_detect_and_configure,
+    is_fiji_valid,
+    get_fiji_status,
 )
 
 # Import common module functionality
@@ -33,14 +39,46 @@ from .common_module import setup_module_classes
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
     "Fill",
-    "Path", "PathAndFillManager", "PathFitter", "PathManagerUI",
-    "SNT", "SNTService", "SNTUI", "SNTUtils",
-    "TracerCanvas", "Tree", "TreeProperties"
+    "FillConverter",
+    "InteractiveTracerCanvas",
+    "Path",
+    "PathAndFillManager",
+    "PathChangeListener",
+    "PathDownsampler",
+    "PathFitter",
+    "PathManagerUI",
+    "SciViewSNT",
+    "SNT",
+    "SNTService",
+    "SNTUI",
+    "SNTUtils",
+    "TracerCanvas",
+    "Tree",
+    "TreeProperties",
 ]
 
 # Extended classes - available via get_class() (root package discovers dynamically)
-EXTENDED_ROOT_CLASSES = []
-
+EXTENDED_ROOT_CLASSES = [
+    "BookmarkManager",
+    "ClarifyingKeyListener",
+    "DelineationsManager",
+    "FillerProgressCallback",
+    "FillManagerUI",
+    "FittingProgress",
+    "HessianGenerationCallback",
+    "MultiTaskProgress",
+    "NearPoint",
+    "NormalPlaneCanvas",
+    "NotesUI",
+    "PathAndFillListener",
+    "PathChangeEvent",
+    "PathChangeListener",
+    "PathNodeCanvas",
+    "PathTransformer",
+    "QueueJumpingKeyListener",
+    "SearchProgressCallback",
+    "SNTPrefs",
+]
 
 
 # Placeholder classes for IDE support - will be replaced with Java classes
@@ -295,19 +333,20 @@ _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt",
     curated_classes=CURATED_ROOT_CLASSES,
     extended_classes=EXTENDED_ROOT_CLASSES,
-    globals_dict=globals()
+    globals_dict=globals(),
 )
 
 # Import functions into module namespace
-get_class = _module_funcs['get_class']
-get_available_classes = _module_funcs['get_available_classes']
-get_curated_classes = _module_funcs['get_curated_classes']
-get_extended_classes = _module_funcs['get_extended_classes']
-list_classes = _module_funcs['list_classes']
+get_class = _module_funcs["get_class"]
+get_available_classes = _module_funcs["get_available_classes"]
+get_curated_classes = _module_funcs["get_curated_classes"]
+get_extended_classes = _module_funcs["get_extended_classes"]
+list_classes = _module_funcs["list_classes"]
 
 # Create module-level __getattr__ and __dir__
-__getattr__ = _module_funcs['create_getattr']('pysnt')
-__dir__ = _module_funcs['create_dir']()
+__getattr__ = _module_funcs["create_getattr"]("pysnt")
+__dir__ = _module_funcs["create_dir"]()
+
 
 def version(detailed: bool = False) -> str:
     """
@@ -351,9 +390,10 @@ def _get_detailed_version_info() -> str:
     import sys
     import platform
     from pathlib import Path
-    
+
     lines = [
-        "PySNT Version Information", "=" * 35,
+        "PySNT Version Information",
+        "=" * 35,
         f"PySNT version: {__version__}",
         f"Author: {__author__}",
         f"\nPython Environment:",
@@ -361,9 +401,9 @@ def _get_detailed_version_info() -> str:
         f"Python executable: {sys.executable}",
         f"Platform: {platform.platform()}",
         f"Architecture: {platform.machine()}",
-        f"\n📦 Core Dependencies:"
+        f"\n📦 Core Dependencies:",
     ]
-    
+
     # Header
 
     # pysnt version
@@ -383,16 +423,18 @@ def _get_detailed_version_info() -> str:
         try:
             if dep_name == "imagej":
                 import imagej
-                version = getattr(imagej, '__version__', 'unknown')
+
+                version = getattr(imagej, "__version__", "unknown")
             elif dep_name == "jdk":
                 import jdk
-                version = getattr(jdk, '__version__', 'unknown')
+
+                version = getattr(jdk, "__version__", "unknown")
             else:
                 module = __import__(dep_name)
-                version = getattr(module, '__version__', 'unknown')
-            
+                version = getattr(module, "__version__", "unknown")
+
             lines.append(f"  ✅ {dep_name:<12} {version:<12} ({description})")
-            
+
         except ImportError:
             lines.append(f"  ❌ {dep_name:<12} {'not found':<12} ({description})")
         except Exception as e:
@@ -400,15 +442,18 @@ def _get_detailed_version_info() -> str:
     
     # Java information
     lines.append(f"\n☕ Java Environment:")
-    
+
     try:
         from .java_utils import check_java_installation
+
         java_info = check_java_installation()
-        
-        if java_info['available']:
-            lines.append(f"  ✅ Java version: {java_info['version']} ({java_info['vendor'] or 'Unknown vendor'})")
+
+        if java_info["available"]:
+            lines.append(
+                f"  ✅ Java version: {java_info['version']} ({java_info['vendor'] or 'Unknown vendor'})"
+            )
             lines.append(f"  📍 Java executable: {java_info['executable']}")
-            if java_info['java_home']:
+            if java_info["java_home"]:
                 lines.append(f"  🏠 JAVA_HOME: {java_info['java_home']}")
             else:
                 lines.append(f"  🏠 JAVA_HOME: Not set")
@@ -435,8 +480,9 @@ def _get_detailed_version_info() -> str:
                 # Try to get SNT version
                 try:
                     import scyjava
+
                     if scyjava.jvm_started():
-                        SNTUtils = scyjava.jimport('sc.fiji.snt.SNTUtils')
+                        SNTUtils = scyjava.jimport("sc.fiji.snt.SNTUtils")
                         snt_version = SNTUtils.VERSION
                         lines.append(f"  ℹ️ SNT version: {snt_version}")
                     else:
@@ -464,11 +510,14 @@ def _get_detailed_version_info() -> str:
     lines.append(f"\n💻 System Information:")
     lines.append(f"  OS: {platform.system()} {platform.release()}")
     lines.append(f"  CPU: {platform.processor() or 'Unknown'}")
-    
+
     try:
         import psutil
+
         memory = psutil.virtual_memory()
-        lines.append(f"  Memory: {memory.total // (1024**3)} GB total, {memory.available // (1024**3)} GB available")
+        lines.append(
+            f"  Memory: {memory.total // (1024**3)} GB total, {memory.available // (1024**3)} GB available"
+        )
     except ImportError:
         lines.append(f"  Memory: Unknown (install psutil for memory info)")
     except:
