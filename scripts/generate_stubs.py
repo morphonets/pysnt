@@ -511,7 +511,7 @@ class ComprehensiveStubGenerator:
                     results['errors'] += 1
 
             # Add module functions
-            stub_lines.extend([
+            module_functions = [
                 '# Module functions',
                 'def get_available_classes() -> List[str]: ...',
                 'def get_class(class_name: str) -> Any: ...',
@@ -521,7 +521,49 @@ class ComprehensiveStubGenerator:
                 '',
                 'CURATED_CLASSES: List[str]',
                 'EXTENDED_CLASSES: List[str]'
-            ])
+            ]
+            
+            # Add custom functions for main pysnt module
+            if module_name == 'pysnt':
+                module_functions = [
+                    '# Module functions',
+                    'def initialize(fiji_dir: Optional[str] = None, headless: bool = True, enable_ui: bool = False) -> Any: ...',
+                    'def inspect(class_or_object: Union[str, Any], keyword: str = "", methods: bool = True, fields: bool = True, constructors: bool = False, static_only: bool = False, case_sensitive: bool = False, max_results: int = 50) -> None: ...',
+                    'def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> List[Dict[str, Any]]: ...',
+                    'def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> List[Dict[str, Any]]: ...',
+                    'def find_members(class_or_object: Union[str, Any], keyword: str, include_methods: bool = True, include_fields: bool = True, static_only: bool = False, case_sensitive: bool = False) -> Dict[str, List[Dict[str, Any]]]: ...',
+                    'def version(detailed: bool = False) -> str: ...',
+                    'def print_version(detailed: bool = False) -> None: ...',
+                    'def show_version(detailed: bool = False) -> None: ...',
+                    'def info() -> None: ...',
+                    'def get_available_classes() -> List[str]: ...',
+                    'def get_class(class_name: str) -> Any: ...',
+                    'def list_classes() -> None: ...',
+                    'def get_curated_classes() -> List[str]: ...',
+                    'def get_extended_classes() -> List[str]: ...',
+                    '',
+                    '# Setup utilities',
+                    'def set_fiji_path(path: str) -> bool: ...',
+                    'def get_fiji_path() -> Optional[str]: ...',
+                    'def clear_fiji_path() -> None: ...',
+                    'def reset_fiji_path() -> None: ...',
+                    'def get_config_info() -> Dict[str, Any]: ...',
+                    'def show_config_status() -> None: ...',
+                    'def auto_detect_and_configure() -> bool: ...',
+                    'def is_fiji_valid(path: str) -> bool: ...',
+                    'def get_fiji_status() -> Dict[str, Any]: ...',
+                    '',
+                    '# Exception classes',
+                    'class FijiNotFoundError(Exception): ...',
+                    '',
+                    '# Constants',
+                    'CURATED_ROOT_CLASSES: List[str]',
+                    'EXTENDED_ROOT_CLASSES: List[str]',
+                    'CURATED_CLASSES: List[str]',
+                    'EXTENDED_CLASSES: List[str]'
+                ]
+            
+            stub_lines.extend(module_functions)
 
             # Write stub file
             module_path = self.source_dir / module_name.replace('.', '/')

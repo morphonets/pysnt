@@ -39,7 +39,7 @@
 ## Technical Features
 - **Complete Java bridge**: Access all SNT Java classes from Python
 - **Consistent API**: 1:1 correspondence with SNT's java API
-- **Type hints**: Type annotation support with .pyi files 
+- **Type hints**: Type annotation support with .pyi files
 - **IDE support**: Auto-completion in IDEs
 - **Dynamic loading**: Lazy loading of Java classes for better performance
 - **Development Tools**: Utilities to res
@@ -62,11 +62,11 @@ mamba config append channels conda-forge
 mamba config set channel_priority strict
 
 # 3. Create and activate the development environment
-mamba env create -f environment.yml
-mamba activate pysnt
+mamba env create -f environment-dev.yml
+mamba activate pysnt-dev
 
 # 4. Install PySNT in development mode
-pip install -e .
+pip install -e .[dev]
 
 # 5. Verify the setup
 python -c "import pysnt; print('PySNT imported successfully!')"

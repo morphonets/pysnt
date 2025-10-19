@@ -512,6 +512,12 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
     else:
         # Assume it's already a Java class or object
         try:
+            # Check if it's a jpype Java class
+            class_name = str(type(class_or_object))
+            if '_jpype._JClass' in class_name or 'java class' in str(class_or_object):
+                # It's a jpype Java class, return it directly
+                return class_or_object
+            
             # If it's an instance, get its class
             if hasattr(class_or_object, 'getClass'):
                 return class_or_object.getClass()
@@ -721,42 +727,83 @@ def get_methods(class_or_object: Union[str, Any], static_only: bool = False, inc
         if java_class is None:
             return []
         
-        methods = java_class.getMethods()
+        # Try different ways to get methods
+        methods = None
+        try:
+            methods = java_class.getMethods()
+        except AttributeError:
+            # Try alternative approaches
+            try:
+                if hasattr(java_class, 'class_'):
+                    methods = java_class.class_.getMethods()
+                elif hasattr(java_class, '__javaclass__'):
+                    methods = java_class.__javaclass__.getMethods()
+                else:
+                    # Last resort - use dir() and filter
+                    all_attrs = dir(java_class)
+                    methods = [attr for attr in all_attrs if not attr.startswith('_') and callable(getattr(java_class, attr, None))]
+            except Exception as e:
+                logger.error(f"Failed to get methods using alternative approaches: {e}")
+                return []
+        
+        if not methods:
+            logger.warning("No methods found for Java class")
+            return []
+        
         result = []
         
         for method in methods:
-            method_name = str(method.getName())
-            
-            # Skip Object methods unless explicitly requested
-            if not include_inherited and method_name in [
-                'equals', 'hashCode', 'toString', 'getClass', 
-                'notify', 'notifyAll', 'wait'
-            ]:
+            try:
+                if isinstance(method, str):
+                    # Method name from dir() - create basic info
+                    method_name = method
+                    param_types = []
+                    return_type = 'Any'
+                    is_static = False
+                else:
+                    # Java Method object
+                    method_name = str(method.getName())
+                    
+                    # Get method details
+                    try:
+                        param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
+                        return_type = str(method.getReturnType().getSimpleName())
+                        
+                        # Check static filter
+                        modifiers = method.getModifiers()
+                        is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+                    except Exception:
+                        # Fallback if we can't get detailed info
+                        param_types = []
+                        return_type = 'Any'
+                        is_static = False
+                
+                # Skip Object methods unless explicitly requested
+                if not include_inherited and method_name in [
+                    'equals', 'hashCode', 'toString', 'getClass', 
+                    'notify', 'notifyAll', 'wait'
+                ]:
+                    continue
+                
+                if static_only and not is_static:
+                    continue
+                
+                # Create signature
+                params_str = ', '.join(param_types) if param_types else ''
+                static_prefix = 'static ' if is_static else ''
+                signature = f"{static_prefix}{method_name}({params_str}) -> {return_type}"
+                
+                result.append({
+                    'name': method_name,
+                    'params': param_types,
+                    'return_type': return_type,
+                    'is_static': is_static,
+                    'signature': signature
+                })
+                
+            except Exception as e:
+                logger.debug(f"Error processing method {method}: {e}")
                 continue
-            
-            # Check static filter
-            modifiers = method.getModifiers()
-            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
-            
-            if static_only and not is_static:
-                continue
-            
-            # Get method details
-            param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
-            return_type = str(method.getReturnType().getSimpleName())
-            
-            # Create signature
-            params_str = ', '.join(param_types) if param_types else ''
-            static_prefix = 'static ' if is_static else ''
-            signature = f"{static_prefix}{method_name}({params_str}) -> {return_type}"
-            
-            result.append({
-                'name': method_name,
-                'params': param_types,
-                'return_type': return_type,
-                'is_static': is_static,
-                'signature': signature
-            })
         
         # Sort by name for consistent output
         result.sort(key=lambda m: m['name'])

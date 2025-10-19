@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  # Conda dependencies
+  # Core runtime dependencies
   - python>=3.8
   - openjdk=21
   - scyjava>=1.8.0
@@ -12,18 +12,5 @@ dependencies:
   - numpy>=1.20.0
   - matplotlib>=3.10.7
 
-  # Pip dependencies
+  # Pip dependencies (runtime only)
   - pip
-  - pip:
-    # Development dependencies
-    - pytest>=6.0
-    - pytest-cov
-    - black
-    - flake8
-    - mypy
-    # Documentation dependencies
-    - sphinx>=4.0
-    - sphinx-design
-    - myst-nb
-    - sphinx-copybutton
-    - pydata-sphinx-theme

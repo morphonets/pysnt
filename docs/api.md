@@ -85,7 +85,6 @@ stats = TreeStatistics()
 
 # Method 2: Discoverable classes via get_class()
 # Covers advanced functionality beyond the preset list of direct imports
-# 
 import pysnt
 CircModels = pysnt.analysis.get_class("CircularModels")
 # Get all methods from CircularModels
