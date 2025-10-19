@@ -137,7 +137,7 @@ See the [`dev/`](../dev/) directory for development tools and templates:
 
 - **`dev/placeholder_template.py`**: Template for creating new PySNT module `__init__.py` files
 - **`dev/create_module.py`**: Script to quickly create new modules from template
-- **`dev/README.md`**: Comprehensive guide for adding new SNT packages
+- **`dev/README.md`**:  Guide for adding new SNT packages
 
 ### Quick Module Creation
 
