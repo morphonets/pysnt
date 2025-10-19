@@ -102,6 +102,46 @@ class Fill:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
+class FillConverter:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/FillConverter.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class InteractiveTracerCanvas:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/InteractiveTracerCanvas.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
 class Path:
     """
     Curated SNT class from root package with method signatures.
@@ -142,6 +182,46 @@ class PathAndFillManager:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
+class PathChangeListener:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathChangeListener.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class PathDownsampler:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathDownsampler.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
 class PathFitter:
     """
     Curated SNT class from root package with method signatures.
@@ -172,6 +252,26 @@ class PathManagerUI:
     See `Javadoc Documentation`_.
     
     .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PathManagerUI.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SciViewSNT:
+    """
+    Curated SNT class from root package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SciViewSNT.html
     """
     
     def __getattr__(self, name: str):
@@ -351,37 +451,37 @@ __dir__ = _module_funcs["create_dir"]()
 def version(detailed: bool = False) -> str:
     """
     Get PySNT version information.
-    
+
     Parameters
     ----------
     detailed : bool, default False
         If True, returns detailed version information including dependencies.
         If False, returns just the pysnt version string.
-        
+
     Returns
     -------
     str
         Version information string
-        
+
     Examples
     --------
     >>> import pysnt
     >>> pysnt.version()
     '0.1.0'
-    >>> 
+    >>>
     >>> pysnt.version(detailed=True)
     # Displays detailed version information
     """
     if not detailed:
         return __version__
-    
+
     return _get_detailed_version_info()
 
 
 def _get_detailed_version_info() -> str:
     """
     Get detailed version information including dependencies.
-    
+
     Returns
     -------
     str
@@ -418,7 +518,7 @@ def _get_detailed_version_info() -> str:
         ("numpy", "NumPy"),
         ("jdk", "install-jdk library (OpenJDK installer)"),
     ]
-    
+
     for dep_name, description in dependencies:
         try:
             if dep_name == "imagej":
@@ -439,7 +539,7 @@ def _get_detailed_version_info() -> str:
             lines.append(f"  ❌ {dep_name:<12} {'not found':<12} ({description})")
         except Exception as e:
             lines.append(f"  ⚠️  {dep_name:<12} {'error':<12} ({description}) - {e}")
-    
+
     # Java information
     lines.append(f"\n☕ Java Environment:")
 
@@ -459,24 +559,24 @@ def _get_detailed_version_info() -> str:
                 lines.append(f"  🏠 JAVA_HOME: Not set")
         else:
             lines.append(f"  ❌ Java not found")
-            
+
     except Exception as e:
         lines.append(f"  ⚠️  Java check failed: {e}")
-    
+
     # SNT/Fiji information
     lines.append(f"\n🔬 SNT/Fiji Environment:")
-    
+
     try:
         from .core import is_initialized, get_ij
-        
+
         if is_initialized():
             lines.append(f"  ✅ PySNT initialized: Yes")
-            
+
             try:
                 ij = get_ij()
                 ij_version = ij.getVersion() if ij else "Unknown"
                 lines.append(f"  ℹ️ ImageJ version: {ij_version}")
-                
+
                 # Try to get SNT version
                 try:
                     import scyjava
@@ -489,15 +589,15 @@ def _get_detailed_version_info() -> str:
                         lines.append(f"  ℹ️ SNT version: JVM not started")
                 except Exception as e:
                     lines.append(f"  ℹ️ SNT version: Could not determine ({e})")
-                    
+
             except Exception as e:
                 lines.append(f"  ⚠️  ImageJ access failed: {e}")
         else:
             lines.append(f"  ❌ PySNT initialized: No (call pysnt.initialize())")
-            
+
     except Exception as e:
         lines.append(f"  ⚠️  Initialization check failed: {e}")
-    
+
     # Installation path
     lines.append(f"\n📁 Installation:")
     try:
@@ -505,7 +605,7 @@ def _get_detailed_version_info() -> str:
         lines.append(f"  📍 PySNT location: {pysnt_path}")
     except:
         lines.append(f"  📍 PySNT location: Unknown")
-    
+
     # System information
     lines.append(f"\n💻 System Information:")
     lines.append(f"  OS: {platform.system()} {platform.release()}")
@@ -522,26 +622,26 @@ def _get_detailed_version_info() -> str:
         lines.append(f"  Memory: Unknown (install psutil for memory info)")
     except:
         lines.append(f"  Memory: Could not determine")
-    
+
     return "\n".join(lines)
 
 
 def print_version(detailed: bool = False):
     """
     Print PySNT version information.
-    
+
     Parameters
     ----------
     detailed : bool, default False
         If True, prints detailed version information including dependencies.
         If False, prints just the PySNT version.
-        
+
     Examples
     --------
     >>> import pysnt
     >>> pysnt.print_version()
     pysnt version: 0.1.0
-    >>> 
+    >>>
     >>> pysnt.print_version(detailed=True)
     # Displays detailed version information
     """
@@ -572,7 +672,7 @@ __all__ = [
     # Exceptions
     "FijiNotFoundError",
     "version",
-    "print_version", 
+    "print_version",
     "show_version",
     "info",
     "get_available_classes",
@@ -582,7 +682,7 @@ __all__ = [
     "list_classes",
     # Setup utilities
     "set_fiji_path",
-    "get_fiji_path", 
+    "get_fiji_path",
     "clear_fiji_path",
     "reset_fiji_path",
     "get_config_info",
@@ -596,11 +696,11 @@ __all__ = [
     # Root SNT classes (sc.fiji.snt.*)
     "SNTService",
     "SNTUtils",
-    "Tree", 
+    "Tree",
     "Path",
     # Submodules
     "analysis",
-    "util", 
+    "util",
     "viewer",
     "tracing",
 ]

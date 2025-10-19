@@ -78,6 +78,46 @@ class ColorMaps:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
+class CrossoverFinder:
+    """
+    Curated SNT class from util package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/CrossoverFinder.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImgUtils:
+    """
+    Curated SNT class from util package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `Javadoc Documentation`_.
+    
+    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/ImgUtils.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
 class ImpUtils:
     """
     Curated SNT class from util package with method signatures.
@@ -178,7 +218,6 @@ class SWCPoint:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
-
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.util",
@@ -205,7 +244,7 @@ __dir__ = _module_funcs["create_dir"]()
 __all__ = [
     # Functions
     "get_available_classes",
-    "get_class", 
+    "get_class",
     "list_classes",
     "get_curated_classes",
     "get_extended_classes",

@@ -101,7 +101,6 @@ class Reciprocal:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
-
 # Setup common module functionality
 _module_funcs = setup_module_classes(
     package_name="sc.fiji.snt.tracing.cost",
