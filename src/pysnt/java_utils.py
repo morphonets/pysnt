@@ -681,6 +681,251 @@ def _show_fields(java_class, keyword: str, case_sensitive: bool, static_only: bo
         print(f"❌ Error getting fields: {e}")
 
 
+def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> list:
+    """
+    Retrieve all public methods from a Java class or object.
+    
+    Parameters
+    ----------
+    class_or_object : str or Java object
+        Either a string class name or a Java class/object
+    static_only : bool, default False
+        Whether to return only static methods
+    include_inherited : bool, default True
+        Whether to include inherited methods (from Object class excluded)
+        
+    Returns
+    -------
+    list
+        List of dictionaries containing method information:
+        - 'name': method name
+        - 'params': list of parameter type names
+        - 'return_type': return type name
+        - 'is_static': whether method is static
+        - 'signature': full method signature string
+        
+    Examples
+    --------
+    >>> methods = get_methods('TreeStatistics')
+    >>> for method in methods:
+    ...     print(f"{method['name']}({', '.join(method['params'])}) -> {method['return_type']}")
+    """
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            logger.warning("JVM not started. Call pysnt.initialize() first.")
+            return []
+        
+        java_class = _resolve_java_class(class_or_object)
+        if java_class is None:
+            return []
+        
+        methods = java_class.getMethods()
+        result = []
+        
+        for method in methods:
+            method_name = str(method.getName())
+            
+            # Skip Object methods unless explicitly requested
+            if not include_inherited and method_name in [
+                'equals', 'hashCode', 'toString', 'getClass', 
+                'notify', 'notifyAll', 'wait'
+            ]:
+                continue
+            
+            # Check static filter
+            modifiers = method.getModifiers()
+            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            
+            if static_only and not is_static:
+                continue
+            
+            # Get method details
+            param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
+            return_type = str(method.getReturnType().getSimpleName())
+            
+            # Create signature
+            params_str = ', '.join(param_types) if param_types else ''
+            static_prefix = 'static ' if is_static else ''
+            signature = f"{static_prefix}{method_name}({params_str}) -> {return_type}"
+            
+            result.append({
+                'name': method_name,
+                'params': param_types,
+                'return_type': return_type,
+                'is_static': is_static,
+                'signature': signature
+            })
+        
+        # Sort by name for consistent output
+        result.sort(key=lambda m: m['name'])
+        return result
+        
+    except ImportError:
+        logger.error("scyjava not available. Make sure pysnt is properly installed.")
+        return []
+    except Exception as e:
+        logger.error(f"Error getting methods: {e}")
+        return []
+
+
+def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> list:
+    """
+    Retrieve all public fields from a Java class or object.
+    
+    Parameters
+    ----------
+    class_or_object : str or Java object
+        Either a string class name or a Java class/object
+    static_only : bool, default False
+        Whether to return only static fields
+        
+    Returns
+    -------
+    list
+        List of dictionaries containing field information:
+        - 'name': field name
+        - 'type': field type name
+        - 'is_static': whether field is static
+        - 'is_final': whether field is final
+        - 'signature': full field signature string
+        
+    Examples
+    --------
+    >>> fields = get_fields('TreeStatistics')
+    >>> for field in fields:
+    ...     print(f"{field['name']}: {field['type']}")
+    """
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            logger.warning("JVM not started. Call pysnt.initialize() first.")
+            return []
+        
+        java_class = _resolve_java_class(class_or_object)
+        if java_class is None:
+            return []
+        
+        fields = java_class.getFields()
+        result = []
+        
+        for field in fields:
+            field_name = str(field.getName())
+            
+            # Check static filter
+            modifiers = field.getModifiers()
+            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            is_final = bool(modifiers & 0x0010)   # Modifier.FINAL
+            
+            if static_only and not is_static:
+                continue
+            
+            # Get field details
+            field_type = str(field.getType().getSimpleName())
+            
+            # Create signature
+            modifiers_list = []
+            if is_static:
+                modifiers_list.append('static')
+            if is_final:
+                modifiers_list.append('final')
+            
+            mod_str = ' '.join(modifiers_list)
+            if mod_str:
+                mod_str += ' '
+            
+            signature = f"{mod_str}{field_name}: {field_type}"
+            
+            result.append({
+                'name': field_name,
+                'type': field_type,
+                'is_static': is_static,
+                'is_final': is_final,
+                'signature': signature
+            })
+        
+        # Sort by name for consistent output
+        result.sort(key=lambda f: f['name'])
+        return result
+        
+    except ImportError:
+        logger.error("scyjava not available. Make sure pysnt is properly installed.")
+        return []
+    except Exception as e:
+        logger.error(f"Error getting fields: {e}")
+        return []
+
+
+def find_members(class_or_object: Union[str, Any], 
+                keyword: str,
+                include_methods: bool = True,
+                include_fields: bool = True,
+                static_only: bool = False,
+                case_sensitive: bool = False) -> Dict[str, list]:
+    """
+    Find methods and fields matching a keyword in a Java class or object.
+    
+    Parameters
+    ----------
+    class_or_object : str or Java object
+        Either a string class name or a Java class/object
+    keyword : str
+        Keyword to search for in method and field names
+    include_methods : bool, default True
+        Whether to search methods
+    include_fields : bool, default True
+        Whether to search fields
+    static_only : bool, default False
+        Whether to search only static members
+    case_sensitive : bool, default False
+        Whether keyword matching should be case-sensitive
+        
+    Returns
+    -------
+    Dict[str, list]
+        Dictionary with 'methods' and 'fields' keys containing matching members.
+        Each member is a dictionary with detailed information.
+        
+    Examples
+    --------
+    >>> # Find all members containing 'length'
+    >>> results = find_members('TreeStatistics', 'length')
+    >>> print(f"Found {len(results['methods'])} methods and {len(results['fields'])} fields")
+    
+    >>> # Find only static methods containing 'get'
+    >>> results = find_members('TreeStatistics', 'get', 
+    ...                       include_fields=False, static_only=True)
+    """
+    result = {'methods': [], 'fields': []}
+    
+    if not keyword:
+        logger.warning("No keyword provided for search")
+        return result
+    
+    try:
+        # Get methods if requested
+        if include_methods:
+            all_methods = get_methods(class_or_object, static_only=static_only)
+            for method in all_methods:
+                if _matches_keyword(method['name'], keyword, case_sensitive):
+                    result['methods'].append(method)
+        
+        # Get fields if requested
+        if include_fields:
+            all_fields = get_fields(class_or_object, static_only=static_only)
+            for field in all_fields:
+                if _matches_keyword(field['name'], keyword, case_sensitive):
+                    result['fields'].append(field)
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error finding members: {e}")
+        return result
+
+
 if __name__ == "__main__":
     # Run Java setup if called directly
     setup_java_environment()

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 from .core import initialize, FijiNotFoundError
 
 # Import Java utilities
-from .java_utils import inspect
+from .java_utils import inspect, get_methods, get_fields, find_members
 
 # Import setup utilities for Fiji configuration
 from .setup_utils import (
@@ -566,6 +566,9 @@ __all__ = [
     # Functions
     "initialize",
     "inspect",
+    "get_methods",
+    "get_fields",
+    "find_members",
     # Exceptions
     "FijiNotFoundError",
     "version",

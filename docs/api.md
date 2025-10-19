@@ -67,27 +67,33 @@ pysnt.initialize()  # Required first step
 ### Import Strategies
 Three ways to import SNT classes:
 
-| Method              | Coverage                      | Use Case       | Autocompletion | Comments                                                   |
-|---------------------|-------------------------------|----------------|----------------|------------------------------------------------------------|
-| Direct Import       | Restricted to curated classes | Common tasks   | Detailed       | Fast, convenient                                           |
-| `get_class()`       | Discoverable classes          | Advanced tasks | Basic          | Slower on first access, then cached                        |
-| `scyjava.jimport()` | _Any_ Java class              | Expert usage   | N/A            | Fast. May require a priori knowledge of SNT's architecture |
+| Method              | Coverage                      | Use Case                | Autocompletion | Comments                                                   |
+|---------------------|-------------------------------|-------------------------|----------------|------------------------------------------------------------|
+| Direct Import       | Restricted to curated classes | Common tasks            | Detailed       | Fast, convenient                                           |
+| `get_class()`       | Discoverable classes          | Advanced/uncommon tasks | Basic          | Slower on first access, then cached                        |
+| `scyjava.jimport()` | _Any_ Java class              | Expert usage            | N/A            | Fast. May require a priori knowledge of SNT's architecture |
 
 ```python
 # Method 1: Direct import (curated classes - recommended)
 # Covers most common tasks
-from pysnt import SNTService, SNTUtils, Tree, Path
-from pysnt.analysis import TreeStatistics, MultiTreeStatistics, ConvexHull3D
-from pysnt.util import PointInImage, SWCPoint
+import pysnt
+pysnt.initialize()
+from pysnt import Tree
+from pysnt.analysis import TreeStatistics
+tree = Tree()
+stats = TreeStatistics()
 
 # Method 2: Discoverable classes via get_class()
 # Covers advanced functionality beyond the preset list of direct imports
+# 
 import pysnt
-Tree = pysnt.get_class("Tree")                           # core (root) package
-NodeStats = pysnt.analysis.get_class("NodeStatistics")   # analysis package
-Viewer2D = pysnt.viewer.get_class("Viewer2D")            # viewer package
-SearchThread = pysnt.tracing.get_class("SearchThread")   # tracing package
-LinAlgUtils = pysnt.util.get_class("LinAlgUtils")        # util package
+CircModels = pysnt.analysis.get_class("CircularModels")
+# Get all methods from CircularModels
+methods = pysnt.get_methods(CircModels)
+# Find all members containing 'length'
+results = pysnt.find_members(CircModels, 'length')
+# Get only static fields (constants)
+constants = pysnt.get_fields(CircModels, static_only=True)
 
 # Method 3: Direct Java access (expert users)
 import scyjava

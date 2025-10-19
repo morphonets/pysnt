@@ -7,7 +7,17 @@ Development tools and templates for PySNT.
   groups: 
   - Curate classes: Most commonly used. These are 1st class citizens with functional autocompletion
   - Extended classes: These are either 'problematic' classes (e.g., objects that cannot be constructed in headless env.).
-    These won't have much of auto-completion
+    These won't have much of auto-completion. Users need to use java_utils to explore extended classes:
+    ```python
+    import pysnt
+    pysnt.initialize()
+    # Get all methods from TreeStatistics
+    methods = pysnt.get_methods('TreeStatistics')
+    # Find all members containing 'length'
+    results = pysnt.find_members('TreeStatistics', 'length')
+    # Get static fields (constants)
+    constants = pysnt.get_fields('TreeStatistics', static_only=True)
+    ```
 - Package names: Follow Java package structure (`sc.fiji.snt.analysis.morphology`)
 - Module paths: Follow Python import structure (`pysnt.analysis.morphology`)
 - Class names: Use exact Java class names. Reflection converters use underscore notation (OuterClass_InnerClass)

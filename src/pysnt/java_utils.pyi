@@ -4,7 +4,7 @@ Type stubs for java_utils.py
 Auto-generated stub file.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional, Union
 
 logger: Any
 REQUIRED_JAVA_VERSION: Any
@@ -34,3 +34,9 @@ def _show_constructors(java_class: Any, keyword: str, case_sensitive: bool, max_
 def _show_methods(java_class: Any, keyword: str, case_sensitive: bool, static_only: bool, max_results: int) -> Any: ...
 
 def _show_fields(java_class: Any, keyword: str, case_sensitive: bool, static_only: bool, max_results: int) -> Any: ...
+
+def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> List[Dict[str, Any]]: ...
+
+def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> List[Dict[str, Any]]: ...
+
+def find_members(class_or_object: Union[str, Any], keyword: str, include_methods: bool = True, include_fields: bool = True, static_only: bool = False, case_sensitive: bool = False) -> Dict[str, List[Dict[str, Any]]]: ...
