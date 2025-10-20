@@ -99,12 +99,13 @@ python -c "import pysnt; print('PySNT imported successfully!')"
 
 ```
 pysnt/
-├── src/pysnt/        # Main package source
-├── tests/            # Test suite
-├── scripts/          # Development scripts
-├── docs/             # Documentation source
-├── dev/              # Development utilities and templates
-└── environment.yml   # Environment specification
+├── src/pysnt/          # Main package source
+├── tests/              # Test suite
+├── scripts/            # Development scripts
+├── docs/               # Documentation source
+├── dev/                # Development utilities and templates
+├── environment.yml     # Environment specification (runtime)
+└── environment-dev.yml # Environment specification (development)
 ```
 
 ### Need Help?

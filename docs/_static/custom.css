@@ -222,9 +222,9 @@ dl.py .highlight pre {
     display: none !important;
 }
 
-/* Automatically add external link icons to all external links */
-a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before,
-a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before {
+/* Automatically add external link icons to all external links (except source code links) */
+a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before,
+a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before {
     content: "\f35d";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -235,7 +235,7 @@ a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before {
     text-decoration: none !important;
 }
 
-/* Exclude external link icons from header/navbar/toolbar areas */
+/* Exclude external link icons from header/navbar/toolbar areas and source code links */
 .bd-navbar a[href^="http"]::before,
 .bd-navbar a[href^="https"]::before,
 .bd-header a[href^="http"]::before,
@@ -243,13 +243,15 @@ a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before {
 .navbar a[href^="http"]::before,
 .navbar a[href^="https"]::before,
 .bd-header-article a[href^="http"]::before,
-.bd-header-article a[href^="https"]::before {
+.bd-header-article a[href^="https"]::before,
+a.reference.external[href*="github.com/morphonets/pysnt/blob"]::before,
+a.reference.external[href*="/blob/main/src/"]::before {
     display: none !important;
 }
 
 /* Style external link icons */
-a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):hover::before,
-a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):hover::before {
+a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link):hover::before,
+a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link):hover::before {
     opacity: 1;
 }
 
@@ -271,17 +273,19 @@ a .fab ~ *::before {
 }
 
 /* Dark theme support for external link icons */
-[data-theme="dark"] a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before,
-[data-theme="dark"] a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before {
+[data-theme="dark"] a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before,
+[data-theme="dark"] a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before {
     color: #b0b0b0;
     opacity: 0.6;
 }
 
-[data-theme="dark"] a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):hover::before,
-[data-theme="dark"] a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):hover::before {
+[data-theme="dark"] a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link):hover::before,
+[data-theme="dark"] a[href^="https"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link):hover::before {
     color: #64b5f6;
     opacity: 1;
 }
+
+
 
 
 
@@ -626,4 +630,99 @@ div[class*="highlight-"] {
 .highlight pre,
 div[class*="highlight-"] pre {
     padding-right: 3rem;
+}
+
+/* -- Source code links styling -------------------------------------------- */
+
+/* Style the source code links added by sphinx.ext.linkcode */
+.viewcode-link {
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: #6c757d !important;
+    text-decoration: none !important;
+    padding: 0.2rem 0.5rem !important;
+    border-radius: 0.25rem !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    margin-left: 0.5rem !important;
+}
+
+.viewcode-link:hover {
+    color: #2980b9 !important;
+    background-color: #e3f2fd !important;
+    border-color: #2980b9 !important;
+    text-decoration: none !important;
+}
+
+/* Add GitHub icon to source links */
+.viewcode-link::before {
+    content: "\f09b";
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin-right: 0.3rem;
+}
+
+/* Dark theme support for source links */
+[data-theme="dark"] .viewcode-link {
+    color: #adb5bd !important;
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+}
+
+[data-theme="dark"] .viewcode-link:hover {
+    color: #64b5f6 !important;
+    background-color: #1e3a5f !important;
+    border-color: #64b5f6 !important;
+}
+
+/* Position source links nicely in function/class signatures */
+dt .viewcode-link {
+    float: right !important;
+    margin-top: 0.1rem !important;
+    margin-left: 1rem !important;
+}
+
+/* Ensure source links don't interfere with signature layout */
+dt {
+    position: relative !important;
+}
+
+/* Style source links in the signature line */
+.sig .viewcode-link {
+    font-size: 0.7rem !important;
+    padding: 0.15rem 0.4rem !important;
+    margin-left: 0.5rem !important;
+    vertical-align: middle !important;
+}
+
+/* Make source links more subtle but discoverable */
+.viewcode-link {
+    opacity: 0.7;
+}
+
+.viewcode-link:hover,
+dt:hover .viewcode-link,
+.sig:hover .viewcode-link {
+    opacity: 1;
+}
+
+/* Responsive behavior for source links */
+@media (max-width: 768px) {
+    .viewcode-link {
+        font-size: 0.7rem !important;
+        padding: 0.15rem 0.3rem !important;
+        margin-left: 0.3rem !important;
+    }
+    
+    dt .viewcode-link {
+        float: none !important;
+        display: inline-block !important;
+        margin-left: 0.5rem !important;
+        margin-top: 0 !important;
+    }
 }

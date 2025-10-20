@@ -9,6 +9,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.linkcode",          # Add source code links
     "sphinx.ext.githubpages",
     "sphinx_design",
     "sphinx_copybutton",            # Copy-to-clipboard buttons for code blocks
@@ -43,7 +44,8 @@ autodoc_default_options = {
     'member-order': 'bysource',
     'special-members': '__init__',
     'undoc-members': True,
-    'exclude-members': '__weakref__'
+    'exclude-members': '__weakref__',
+    'show-inheritance': True,
 }
 
 # More compact API documentation
@@ -160,3 +162,85 @@ html_theme_options = {
 
 # Images produced by notebooks
 nb_render_image_options = {"align": "center"}
+
+# -- Source code links configuration ----------------------------------------
+
+def linkcode_resolve(domain, info):
+    """
+    Determine the URL corresponding to Python object.
+    
+    This function is called by sphinx.ext.linkcode to generate source code links.
+    """
+    if domain != 'py':
+        return None
+    
+    if not info['module']:
+        return None
+    
+    # Get the module and object name
+    module_name = info['module']
+    fullname = info['fullname']
+    
+    # Only link to our own modules (pysnt.*)
+    if not module_name.startswith('pysnt'):
+        return None
+    
+    # GitHub repository information
+    github_user = "morphonets"
+    github_repo = "pysnt"
+    github_branch = "main"  # or "master" depending on your default branch
+    
+    try:
+        # Import the module to get the source file
+        import importlib
+        import inspect
+        
+        # Handle submodules
+        try:
+            mod = importlib.import_module(module_name)
+        except ImportError:
+            return None
+        
+        # Get the object from the module
+        obj = mod
+        for part in fullname.split('.'):
+            try:
+                obj = getattr(obj, part)
+            except AttributeError:
+                return None
+        
+        # Get the source file and line number
+        try:
+            source_file = inspect.getsourcefile(obj)
+            source_lines = inspect.getsourcelines(obj)
+            line_number = source_lines[1]
+        except (OSError, TypeError):
+            return None
+        
+        if source_file is None:
+            return None
+        
+        # Convert absolute path to relative path from project root
+        import os
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        
+        try:
+            rel_path = os.path.relpath(source_file, project_root)
+        except ValueError:
+            # Can't make relative path (different drives on Windows, etc.)
+            return None
+        
+        # Normalize path separators for URLs
+        rel_path = rel_path.replace(os.sep, '/')
+        
+        # Construct GitHub URL
+        github_url = (
+            f"https://github.com/{github_user}/{github_repo}/blob/{github_branch}/"
+            f"{rel_path}#L{line_number}"
+        )
+        
+        return github_url
+        
+    except Exception:
+        # If anything goes wrong, just don't provide a link
+        return None
