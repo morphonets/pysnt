@@ -30,6 +30,7 @@ class ComprehensiveStubGenerator:
     def __init__(self, source_dir: Path, verbose: bool = False):
         self.source_dir = Path(source_dir)
         self.verbose = verbose
+        self._classes_with_converters = None  # Cache for converter detection
         self.java_type_map = {
             'void': 'None',
             'boolean': 'bool',
@@ -93,6 +94,59 @@ class ComprehensiveStubGenerator:
             return f'List[{self.java_type_to_python(base_type)}]'
 
         return self.java_type_map.get(java_type, 'Any')
+
+    def get_classes_with_converters(self) -> Dict[str, str]:
+        """
+        Get classes that have SNT converters.
+        
+        Returns a mapping of class names to their converter types.
+        """
+        # Use cached result if available
+        if self._classes_with_converters is not None:
+            return self._classes_with_converters
+            
+        classes_with_converters = {}
+        
+        try:
+            # Import the converter system
+            from pysnt.scyjava_integration import SNT_CONVERTERS
+            
+            # Map converter names to class names
+            for converter in SNT_CONVERTERS:
+                converter_name = converter.name
+                
+                # Parse converter names to extract class names
+                if '_to_' in converter_name:
+                    type_part = converter_name.split('_to_')[0]
+                    # Handle SNTChart_to_Matplotlib -> SNTChart
+                    if type_part == 'SNTChart':
+                        classes_with_converters['SNTChart'] = 'chart'
+                    # Handle SNTTable_to_xarray -> SNTTable
+                    elif type_part == 'SNTTable':
+                        classes_with_converters['SNTTable'] = 'table'
+                    # Generic handling for future converters
+                    elif type_part.startswith('SNT'):
+                        classes_with_converters[type_part] = type_part.lower().replace('snt', '')
+                
+                # Handle other naming patterns for future converters
+                elif 'Chart' in converter_name and 'SNT' in converter_name:
+                    classes_with_converters['SNTChart'] = 'chart'
+                elif 'Table' in converter_name and 'SNT' in converter_name:
+                    classes_with_converters['SNTTable'] = 'table'
+            
+            if self.verbose and classes_with_converters:
+                print(f"    📋 Found {len(classes_with_converters)} classes with converters: {list(classes_with_converters.keys())}")
+                
+        except ImportError as e:
+            if self.verbose:
+                print(f"    ⚠️  Could not import converter system: {e}")
+        except Exception as e:
+            if self.verbose:
+                print(f"    ⚠️  Error detecting converters: {e}")
+        
+        # Cache the result
+        self._classes_with_converters = classes_with_converters
+        return classes_with_converters
 
     def extract_all_methods_via_reflection(self, classes_by_module: Dict[str, List[str]]) -> Dict[str, Dict]:
         """Extract methods from all Java classes using reflection in a single subprocess call."""
@@ -290,8 +344,15 @@ class ComprehensiveStubGenerator:
                     method_groups[name] = []
                 method_groups[name].append(method)
 
+            # Check if this class has converters for special show() method handling
+            classes_with_converters = self.get_classes_with_converters()
+            has_converter = class_name in classes_with_converters
+
             for method_name, method_list in sorted(method_groups.items()):
-                if len(method_list) == 1:
+                # Special handling for show() method if class has converter
+                if method_name == 'show' and has_converter:
+                    self._generate_display_show_method(lines, method_list)
+                elif len(method_list) == 1:
                     method = method_list[0]
                     params = [f'arg{i}: {self.java_type_to_python(p)}'
                               for i, p in enumerate(method['params'])]
@@ -323,6 +384,24 @@ class ComprehensiveStubGenerator:
                                 params_str = ', ' + params_str
                             lines.append(f"    def {method_name}(self{params_str}) -> {return_type}: ...")
             lines.append('')
+            
+            # Add enhanced show() method if class has converter but no existing show() method
+            if has_converter and 'show' not in method_groups:
+                lines.extend([
+                    '    # Enhanced show() method with converter support',
+                    '    def show(self, **kwargs: Any) -> Any:',
+                    '        """',
+                    '        Display this object using enhanced conversion.',
+                    '        ',
+                    '        This method uses display() which can handle SNT-specific conversions.',
+                    '        """',
+                    '        from pysnt.scyjava_integration import display',
+                    '        return display(self, **kwargs)',
+                    ''
+                ])
+
+        # Note: Enhanced show() method patching is handled during method generation
+        # to avoid duplicate method definitions
 
         # Dynamic access fallback
         lines.extend([
@@ -337,9 +416,114 @@ class ComprehensiveStubGenerator:
 
         return '\n'.join(lines)
 
-    @staticmethod
-    def _generate_basic_stub(class_name: str) -> str:
+    def _generate_display_show_method(self, lines: List[str], method_list: List[Dict]) -> None:
+        """
+        Generate show() method that preserves original signatures but adds display fallback.
+        
+        This method generates the original Java show() method signatures with enhanced
+        fallback logic, avoiding duplicate method definitions.
+        """
+        if len(method_list) == 1:
+            # Single show() method
+            method = method_list[0]
+            params = [f'arg{i}: {self.java_type_to_python(p)}'
+                      for i, p in enumerate(method['params'])]
+            return_type = self.java_type_to_python(method['return_type'])
+            
+            if method['is_static']:
+                # Static show method - just generate normally (no enhancement needed)
+                lines.append('    @staticmethod')
+                params_str = ', '.join(params)
+                lines.append(f"    def show({params_str}) -> {return_type}: ...")
+            else:
+                # Instance show method - add enhanced version
+                params_str = ', '.join(params)
+                if params_str:
+                    params_str = ', ' + params_str
+                
+                lines.extend([
+                    f'    def show(self{params_str}) -> {return_type}:',
+                    '        """',
+                    '        Display this object using enhanced conversion.',
+                    '        ',
+                    '        This method first tries the original Java show() method, and if that fails,',
+                    '        it falls back to display() which can handle SNT-specific conversions.',
+                    '        """',
+                    '        try:',
+                    '            # Try to call the original Java show method via __getattr__',
+                    '            original_show = object.__getattribute__(self, "__getattr__")("show")',
+                    f'            return original_show({", ".join(f"arg{i}" for i in range(len(params)))})',
+                    '        except (AttributeError, TypeError, Exception):',
+                    '            # Fallback to display',
+                    '            from pysnt.scyjava_integration import display',
+                    '            return display(self)',
+                ])
+        else:
+            # Multiple show() method overloads - preserve all signatures with enhancement
+            lines.append('    # Enhanced show() method with multiple overloads')
+            
+            for i, method in enumerate(method_list):
+                params = [f'arg{i}: {self.java_type_to_python(p)}'
+                          for i, p in enumerate(method['params'])]
+                return_type = self.java_type_to_python(method['return_type'])
+                
+                if method['is_static']:
+                    lines.append('    @overload')
+                    lines.append('    @staticmethod')
+                    params_str = ', '.join(params)
+                    lines.append(f"    def show({params_str}) -> {return_type}: ...")
+                else:
+                    lines.append('    @overload')
+                    params_str = ', '.join(params)
+                    if params_str:
+                        params_str = ', ' + params_str
+                    lines.append(f"    def show(self{params_str}) -> {return_type}: ...")
+            
+            # Add the implementation with fallback logic
+            lines.extend([
+                '    def show(self, *args: Any, **kwargs: Any) -> Any:',
+                '        """',
+                '        Display this object using enhanced conversion.',
+                '        ',
+                '        This method first tries the original Java show() method, and if that fails,',
+                '        it falls back to display() which can handle SNT-specific conversions.',
+                '        """',
+                '        try:',
+                '            # Try to call the original Java show method via __getattr__',
+                '            original_show = object.__getattribute__(self, "__getattr__")("show")',
+                '            return original_show(*args, **kwargs)',
+                '        except (AttributeError, TypeError, Exception):',
+                '            # Fallback to display',
+                '            from pysnt.scyjava_integration import display',
+                '            return display(self, **kwargs)',
+            ])
+
+    def _generate_basic_stub(self, class_name: str) -> str:
         """Generate basic fallback stub."""
+        
+        # Check if this class has a converter
+        classes_with_converters = self.get_classes_with_converters()
+        display_show_method = ""
+        
+        if class_name in classes_with_converters:
+            display_show_method = f'''
+    
+    def show(self, **kwargs: Any) -> Any:
+        """
+        Display this object using enhanced conversion.
+        
+        This method first tries the original Java show() method, and if that fails,
+        it falls back to display() which can handle SNT-specific conversions.
+        """
+        try:
+            # Try to call the original Java show method via __getattr__
+            original_show = object.__getattribute__(self, "__getattr__")("show")
+            return original_show(**kwargs)
+        except (AttributeError, TypeError, Exception):
+            # Fallback to display
+            from pysnt.scyjava_integration import display
+            return display(self, **kwargs)'''
+        
         return f'''class {class_name}:
     """
     SNT {class_name} class.
@@ -350,7 +534,7 @@ class ComprehensiveStubGenerator:
     
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         """Initialize the {class_name}."""
-        ...
+        ...{display_show_method}
     
     def __getattr__(self, name: str) -> Any:
         """Dynamic attribute access for Java methods and fields."""
@@ -492,7 +676,7 @@ class ComprehensiveStubGenerator:
             stub_lines = [
                 '"""Comprehensive type stubs for Java classes."""',
                 '',
-                'from typing import Any, List, Dict, Optional, Union, overload, Set',
+                'from typing import Any, List, Dict, Optional, Union, overload, Set, Callable',
                 '',
             ]
 
@@ -527,7 +711,12 @@ class ComprehensiveStubGenerator:
             if module_name == 'pysnt':
                 module_functions = [
                     '# Module functions',
-                    'def initialize(fiji_dir: Optional[str] = None, headless: bool = True, enable_ui: bool = False) -> Any: ...',
+                    '@overload',
+                    'def initialize(mode: str) -> None: ...',
+                    '@overload', 
+                    'def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None: ...',
+                    'def get_ij() -> Any: ...',
+                    'def ij() -> Any: ...',
                     'def inspect(class_or_object: Union[str, Any], keyword: str = "", methods: bool = True, fields: bool = True, constructors: bool = False, static_only: bool = False, case_sensitive: bool = False, max_results: int = 50) -> None: ...',
                     'def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> List[Dict[str, Any]]: ...',
                     'def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> List[Dict[str, Any]]: ...',
@@ -541,6 +730,17 @@ class ComprehensiveStubGenerator:
                     'def list_classes() -> None: ...',
                     'def get_curated_classes() -> List[str]: ...',
                     'def get_extended_classes() -> List[str]: ...',
+                    '',
+                    '# ScyJava integration',
+                    'def to_python(obj: Any, **kwargs: Any) -> Any: ...',
+                    'def from_java(obj: Any, **kwargs: Any) -> Any: ...',
+                    'def show(obj: Any, **kwargs: Any) -> Any: ...',
+                    'def register_converters() -> bool: ...',
+                    'def register_snt_converters() -> None: ...',
+                    'def register_display_handler(obj_type: str, handler_func: Callable[[Dict[str, Any]], None]) -> None: ...',
+                    'def list_converters() -> List[Dict[str, Any]]: ...',
+                    'def display(obj: Any, **kwargs: Any) -> Any: ...',
+                    'def enhance_java_object(obj: Any) -> Any: ...',
                     '',
                     '# Setup utilities',
                     'def set_fiji_path(path: str) -> bool: ...',

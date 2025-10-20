@@ -2,6 +2,11 @@
 scyjava>=1.8.0
 pyimagej>=1.4.0
 numpy>=1.20.0
+cairosvg>=2.8.2
+PyMuPDF>=1.26.5
 
 # Java management (automatic JDK installation)
 install-jdk>=1.1.0
+
+# macOS-specific dependencies
+pyobjc; sys_platform == "darwin"

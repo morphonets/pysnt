@@ -15,7 +15,15 @@ from typing import Dict, Any, List
 logger = logging.getLogger(__name__)
 
 # Import main initialization
-from .core import initialize, FijiNotFoundError
+from .core import initialize, FijiNotFoundError, ij, get_ij
+
+# Import PyImageJ integration functions
+from .core import to_python, from_java, show, register_converters
+
+# Import converter utilities
+from .scyjava_integration import (
+    register_snt_converters, register_display_handler, list_converters, display, enhance_java_object
+)
 
 # Import Java utilities
 from .java_utils import inspect, get_methods, get_fields, find_members
@@ -665,10 +673,23 @@ def info():
 __all__ = [
     # Functions
     "initialize",
+    "ij",
+    "get_ij",
     "inspect",
     "get_methods",
     "get_fields",
     "find_members",
+    # PyImageJ integration
+    "to_python",
+    "from_java",  # backward compatibility alias
+    "show", 
+    "register_converters",
+    # Converter utilities
+    "register_snt_converters",
+    "register_display_handler",
+    "list_converters",
+    "display",
+    "enhance_java_object",
     # Exceptions
     "FijiNotFoundError",
     "version",

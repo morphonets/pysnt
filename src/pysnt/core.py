@@ -39,15 +39,28 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     ----------
     fiji_path : str, optional
         Path to Fiji installation. If None, will try to auto-detect.
-    mode : str, default "headless"
-        pyimagej initialization mode. Either "headless", "gui", "interactive",
-        or "interactive:force"
+        Can also be a mode string for convenience (e.g., "gui", "interactive").
     interactive : bool, default True
         Whether to prompt user for Fiji path if not found automatically.
         Set to False for non-interactive environments (CI, scripts, etc.).
     ensure_java : bool, default True
         Whether to check and ensure Java is available. If True, will attempt
         to install OpenJDK if Java is not found or version is too old.
+    mode : str, default "headless"
+        pyimagej initialization mode. Either "headless", "gui", "interactive",
+        or "interactive:force"
+        
+    Examples
+    --------
+    >>> # Standard usage
+    >>> pysnt.initialize("/path/to/Fiji.app", mode="gui")
+    >>> 
+    >>> # Convenience syntax - just specify mode
+    >>> pysnt.initialize("gui")
+    >>> pysnt.initialize("interactive")
+    >>> 
+    >>> # Full control
+    >>> pysnt.initialize(None, True, True, "gui")
         
     Raises
     ------
@@ -56,6 +69,12 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     RuntimeError
         If initialization fails for other reasons (Java issues, etc.).
     """
+    # Handle convenience syntax: initialize("gui") -> initialize(mode="gui")
+    valid_modes = {"headless", "gui", "interactive", "interactive:force"}
+    if fiji_path in valid_modes:
+        # Shift parameters: fiji_path is actually the mode
+        mode = fiji_path
+        fiji_path = None
     global _ij, _jvm_started
     
     if _jvm_started:
@@ -145,12 +164,24 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             
             raise FijiNotFoundError("\n".join(error_msg))
             
+        # Register SNT converters BEFORE JVM starts
+        if not scyjava.jvm_started():
+            logger.info("Registering SNT converters before JVM startup...")
+            try:
+                from .scyjava_integration import register_snt_converters
+                register_snt_converters()
+                logger.info("SNT converters registered successfully")
+            except Exception as e:
+                logger.warning(f"Failed to register SNT converters: {e}")
+        
         # Initialize PyImageJ from local Fiji
         logger.info(f"Initializing ImageJ with Fiji at: {fiji_path}")
         _ij = imagej.init(fiji_path, mode=mode)
         
         # Start JVM if not already started
         if not scyjava.jvm_started():
+            if "headless" == mode:
+                scyjava.config.enable_headless_mode() # System.setProperty("java.awt.headless", "true");
             scyjava.start_jvm()
             
         _jvm_started = True
@@ -368,6 +399,26 @@ def get_ij():
     if _ij is None:
         raise RuntimeError("SNT not initialized. Call initialize() first.")
     return _ij
+
+
+def ij():
+    """
+    Get the ImageJ instance (alias for get_ij()).
+    
+    This provides a shorter, more convenient way to access the ImageJ instance.
+    Consistent with PyImageJ's naming convention.
+    
+    Returns
+    -------
+    ImageJ instance
+        The initialized ImageJ instance.
+        
+    Raises
+    ------
+    RuntimeError
+        If SNT has not been initialized.
+    """
+    return get_ij()
 
 
 def is_initialized() -> bool:
@@ -683,3 +734,136 @@ def setup_dynamic_imports(
     except Exception as e:
         logger.error(f"Failed to set up dynamic imports for {package_name}: {e}")
         return {}
+
+# PyImageJ Integration and Convenience Methods
+def to_python(obj, **kwargs):
+    """
+    Convert supported Java data into Python equivalents.
+
+    This function extends scyjava's to_python() to support SNT-specific objects
+    like Tree, Path, and SNTChart.
+
+    Parameters
+    ----------
+    obj : Any
+        The Java object to convert to Python
+    **kwargs
+        Additional arguments passed to the converter
+        
+    Returns
+    -------
+    Any
+        The converted Python object
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize("headless")
+    >>> service = pysnt.SNTService()
+    >>> tree = service.demoTree('fractal')
+    >>> skeleton = tree.getSkeleton2D()
+    >>> 
+    >>> # Convert Java objects to Python
+    >>> py_tree = pysnt.to_python(tree)
+    >>> py_skeleton = pysnt.to_python(skeleton)
+    """
+    try:
+        import scyjava as sj
+        
+        # Use scyjava's conversion system with our registered converters
+        return sj.to_python(obj)
+        
+    except ImportError:
+        logger.error("scyjava not available")
+        raise RuntimeError("scyjava not available. Ensure scyjava is installed.")
+    except Exception as e:
+        logger.error(f"Conversion failed: {e}")
+        raise
+
+
+def from_java(obj, **kwargs):
+    """
+    Alias for to_python() for backward compatibility.
+    
+    This provides backward compatibility for existing code that uses from_java().
+    New code should use to_python() for consistency with scyjava.
+    """
+    return to_python(obj, **kwargs)
+
+
+def show(obj, **kwargs):
+    """
+    Enhanced show that handles SNT objects and converted data.
+    
+    This function extends PyImageJ's show() to support displaying SNT objects
+    and data converted by our custom converters.
+    
+    Parameters
+    ----------
+    obj : Any
+        The object to display (can be SNT objects, numpy arrays, etc.)
+    **kwargs
+        Additional display arguments (e.g., cmap='gray', title='My Image')
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize("interactive")  # or "gui"
+    >>> service = pysnt.SNTService()
+    >>> tree = service.demoTree('fractal')
+    >>> skeleton = tree.getSkeleton2D()
+    >>> 
+    >>> # Convert and display
+    >>> py_skeleton = pysnt.to_python(skeleton)
+    >>> pysnt.show(py_skeleton, cmap='gray', title='Fractal Skeleton')
+    >>> 
+    >>> # Or convert and display in one step
+    >>> pysnt.show(pysnt.to_python(tree))
+    """
+    try:
+        from .scyjava_integration import display
+        return display(obj, **kwargs)
+    except ImportError:
+        logger.error("PyImageJ integration module not available")
+        raise RuntimeError("PyImageJ integration not available. Ensure PyImageJ is installed.")
+
+
+def register_converters():
+    """
+    Register SNT converters with ScyJava.
+    
+    Note: Converters are automatically registered during pysnt.initialize().
+    This function is provided for manual registration if needed, but will
+    warn if called after JVM has already started (converters must be 
+    registered before JVM startup).
+    
+    Returns
+    -------
+    bool
+        True if converters were registered successfully, False otherwise
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize("headless")  # Converters auto-registered here
+    >>> # Manual registration (usually not needed):
+    >>> success = pysnt.register_converters()
+    """
+    import scyjava
+    
+    if scyjava.jvm_started():
+        logger.warning(
+            "JVM already started! Converters must be registered before JVM startup. "
+            "Converters are automatically registered during pysnt.initialize()."
+        )
+        return False
+    
+    try:
+        from .scyjava_integration import register_snt_converters
+        return register_snt_converters()
+    except ImportError:
+        logger.error("ScyJava integration module not available")
+        return False
+
+
+
