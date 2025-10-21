@@ -155,7 +155,7 @@ def setup_module_classes(
             return
 
         try:
-            from .core import discover_java_classes
+            from .java_utils import discover_java_classes
 
             # Discover classes from all packages
             all_classes = curated_classes + extended_classes

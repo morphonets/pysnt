@@ -109,7 +109,7 @@ class ComprehensiveStubGenerator:
         
         try:
             # Import the converter system
-            from pysnt.scyjava_integration import SNT_CONVERTERS
+            from pysnt.converters import SNT_CONVERTERS
             
             # Map converter names to class names
             for converter in SNT_CONVERTERS:
@@ -395,7 +395,7 @@ class ComprehensiveStubGenerator:
                     '        ',
                     '        This method uses display() which can handle SNT-specific conversions.',
                     '        """',
-                    '        from pysnt.scyjava_integration import display',
+                    '        from pysnt.converters import display',
                     '        return display(self, **kwargs)',
                     ''
                 ])
@@ -455,7 +455,7 @@ class ComprehensiveStubGenerator:
                     f'            return original_show({", ".join(f"arg{i}" for i in range(len(params)))})',
                     '        except (AttributeError, TypeError, Exception):',
                     '            # Fallback to display',
-                    '            from pysnt.scyjava_integration import display',
+                    '            from pysnt.converters import display',
                     '            return display(self)',
                 ])
         else:
@@ -494,7 +494,7 @@ class ComprehensiveStubGenerator:
                 '            return original_show(*args, **kwargs)',
                 '        except (AttributeError, TypeError, Exception):',
                 '            # Fallback to display',
-                '            from pysnt.scyjava_integration import display',
+                '            from pysnt.converters import display',
                 '            return display(self, **kwargs)',
             ])
 
@@ -521,7 +521,7 @@ class ComprehensiveStubGenerator:
             return original_show(**kwargs)
         except (AttributeError, TypeError, Exception):
             # Fallback to display
-            from pysnt.scyjava_integration import display
+            from pysnt.converters import display
             return display(self, **kwargs)'''
         
         return f'''class {class_name}:
@@ -715,7 +715,6 @@ class ComprehensiveStubGenerator:
                     'def initialize(mode: str) -> None: ...',
                     '@overload', 
                     'def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None: ...',
-                    'def get_ij() -> Any: ...',
                     'def ij() -> Any: ...',
                     'def inspect(class_or_object: Union[str, Any], keyword: str = "", methods: bool = True, fields: bool = True, constructors: bool = False, static_only: bool = False, case_sensitive: bool = False, max_results: int = 50) -> None: ...',
                     'def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> List[Dict[str, Any]]: ...',
@@ -735,7 +734,6 @@ class ComprehensiveStubGenerator:
                     'def to_python(obj: Any, **kwargs: Any) -> Any: ...',
                     'def from_java(obj: Any, **kwargs: Any) -> Any: ...',
                     'def show(obj: Any, **kwargs: Any) -> Any: ...',
-                    'def register_converters() -> bool: ...',
                     'def register_snt_converters() -> None: ...',
                     'def register_display_handler(obj_type: str, handler_func: Callable[[Dict[str, Any]], None]) -> None: ...',
                     'def list_converters() -> List[Dict[str, Any]]: ...',

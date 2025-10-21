@@ -15,13 +15,13 @@ from typing import Dict, Any, List
 logger = logging.getLogger(__name__)
 
 # Import main initialization
-from .core import initialize, FijiNotFoundError, ij, get_ij
+from .core import initialize, FijiNotFoundError, ij
 
 # Import PyImageJ integration functions
-from .core import to_python, from_java, show, register_converters
+from .core import to_python, from_java, show
 
 # Import converter utilities
-from .scyjava_integration import (
+from .converters import (
     register_snt_converters, register_display_handler, list_converters, display, enhance_java_object
 )
 
@@ -575,14 +575,14 @@ def _get_detailed_version_info() -> str:
     lines.append(f"\n🔬 SNT/Fiji Environment:")
 
     try:
-        from .core import is_initialized, get_ij
+        from .core import is_initialized, ij
 
         if is_initialized():
             lines.append(f"  ✅ PySNT initialized: Yes")
 
             try:
-                ij = get_ij()
-                ij_version = ij.getVersion() if ij else "Unknown"
+                ij_instance = ij()
+                ij_version = ij_instance.getVersion() if ij_instance else "Unknown"
                 lines.append(f"  ℹ️ ImageJ version: {ij_version}")
 
                 # Try to get SNT version
@@ -674,7 +674,6 @@ __all__ = [
     # Functions
     "initialize",
     "ij",
-    "get_ij",
     "inspect",
     "get_methods",
     "get_fields",
@@ -683,7 +682,6 @@ __all__ = [
     "to_python",
     "from_java",  # backward compatibility alias
     "show", 
-    "register_converters",
     # Converter utilities
     "register_snt_converters",
     "register_display_handler",

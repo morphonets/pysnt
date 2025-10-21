@@ -7,7 +7,6 @@ Fiji integration required for SNT functionality.
 
 import logging
 import os
-import zipfile
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 
@@ -168,7 +167,7 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         if not scyjava.jvm_started():
             logger.info("Registering SNT converters before JVM startup...")
             try:
-                from .scyjava_integration import register_snt_converters
+                from .converters import register_snt_converters
                 register_snt_converters()
                 logger.info("SNT converters registered successfully")
             except Exception as e:
@@ -382,9 +381,12 @@ def _validate_fiji_path(fiji_path: str) -> bool:
     return status["is_fiji"]
 
 
-def get_ij():
+def ij():
     """
-    Get the ImageJ instance associated with this wrapper
+    Get the ImageJ instance.
+    
+    This provides access to the ImageJ instance used by PySNT.
+    Consistent with PyImageJ's naming convention.
     
     Returns
     -------
@@ -401,26 +403,6 @@ def get_ij():
     return _ij
 
 
-def ij():
-    """
-    Get the ImageJ instance (alias for get_ij()).
-    
-    This provides a shorter, more convenient way to access the ImageJ instance.
-    Consistent with PyImageJ's naming convention.
-    
-    Returns
-    -------
-    ImageJ instance
-        The initialized ImageJ instance.
-        
-    Raises
-    ------
-    RuntimeError
-        If SNT has not been initialized.
-    """
-    return get_ij()
-
-
 def is_initialized() -> bool:
     """
     Check if SNT has been initialized.
@@ -432,227 +414,7 @@ def is_initialized() -> bool:
     """
     return _jvm_started and _ij is not None
 
-def discover_java_classes(
-    package_name: str, 
-    known_classes: Optional[List[str]] = None,
-    include_abstract: bool = False,
-    include_interfaces: bool = False
-) -> List[str]:
-    """
-    Discover all public classes in a Java package.
-    
-    This utility function can be used to dynamically discover classes
-    from any Java package, with filtering for visibility and type.
-    
-    Parameters
-    ----------
-    package_name : str
-        Full Java package name (e.g., 'sc.fiji.snt.analysis')
-    known_classes : List[str], optional
-        List of known class names to test. If None, attempts package scanning.
-    include_abstract : bool, default False
-        Whether to include abstract classes
-    include_interfaces : bool, default False
-        Whether to include interfaces
-        
-    Returns
-    -------
-    List[str]
-        List of discovered public class names
-        
-    Examples
-    --------
-    >>> # Discover analysis classes
-    >>> classes = discover_java_classes('sc.fiji.snt.analysis')
-    >>> 
-    >>> # Discover with known class list
-    >>> known = ['TreeStatistics', 'ConvexHull']
-    >>> classes = discover_java_classes('sc.fiji.snt.analysis', known)
-    """
-    logger = logging.getLogger(__name__)
-    
-    if not scyjava.jvm_started():
-        logger.warning("JVM not started. Cannot discover classes.")
-        return []
-    
-    try:
-        # Import Java reflection classes
-        Class = scyjava.jimport("java.lang.Class")
-        Modifier = scyjava.jimport("java.lang.reflect.Modifier")
-        
-        classes = []
-        
-        # Method 1: Advanced package scanning from JAR files
-        if known_classes is None:
-            try:
-                classes = _scan_package_from_jars(package_name, logger)
-            except Exception as e:
-                logger.debug(f"JAR scanning failed: {e}")
-        
-        # Method 2: Use provided known classes or fallback list
-        if not classes and known_classes:
-            test_classes = known_classes
-        elif not classes:
-            # Generate some common class name patterns to test
-            test_classes = _generate_common_class_names(package_name)
-        else:
-            test_classes = []
-        
-        # Test each class for existence and visibility
-        for class_name in test_classes:
-            try:
-                full_class_name = f"{package_name}.{class_name}"
-                java_class = Class.forName(full_class_name)
-                
-                # Check class modifiers
-                modifiers = java_class.getModifiers()
-                
-                # Filter based on visibility and type
-                if not Modifier.isPublic(modifiers):
-                    logger.debug(f"Skipping non-public class: {class_name}")
-                    continue
-                    
-                if Modifier.isAbstract(modifiers) and not include_abstract:
-                    logger.debug(f"Skipping abstract class: {class_name}")
-                    continue
-                    
-                if Modifier.isInterface(modifiers) and not include_interfaces:
-                    logger.debug(f"Skipping interface: {class_name}")
-                    continue
 
-                # Inner classes will also be included
-                # The public modifier check above will filter out private inner classes
-
-                classes.append(class_name)
-                logger.debug(f"Found public class: {class_name}")
-                
-            except Exception as e:
-                logger.debug(f"Class not found or not accessible: {class_name} - {e}")
-                continue
-        
-        # Remove duplicates and sort
-        classes = sorted(list(set(classes)))
-        logger.info(f"Discovered {len(classes)} public classes in {package_name}")
-        return classes
-        
-    except Exception as e:
-        logger.error(f"Failed to discover classes in {package_name}: {e}")
-        return []
-
-
-def _scan_package_from_jars(package_name: str, logger) -> List[str]:
-    """
-    Scan JAR files in classpath for classes in the specified package.
-    
-    Parameters
-    ----------
-    package_name : str
-        Java package name (e.g., 'sc.fiji.snt.analysis')
-    logger : Logger
-        Logger instance for debug messages
-        
-    Returns
-    -------
-    List[str]
-        List of class names found in JAR files
-    """
-    classes = []
-    package_path = package_name.replace('.', '/')
-    
-    # Get classpath
-    classpath = os.environ.get('CLASSPATH', '')
-    
-    # Look for relevant JAR files
-    potential_jars = []
-    if classpath:
-        for path in classpath.split(os.pathsep):
-            if any(keyword in path.lower() for keyword in ['snt']): # snt jar only for now
-                potential_jars.append(path)
-    
-    # Scan JAR files
-    for jar_path in potential_jars:
-        if os.path.exists(jar_path) and jar_path.endswith('.jar'):
-            try:
-                with zipfile.ZipFile(jar_path, 'r') as jar:
-                    for entry in jar.namelist():
-                        if (entry.startswith(f'{package_path}/') and 
-                            entry.endswith('.class')):
-                            
-                            # Extract class name
-                            relative_path = entry[len(f'{package_path}/'):]
-                            if '/' not in relative_path:  # Top-level class only
-                                class_name = relative_path[:-6]  # Remove .class
-                                # Include inner classes - public/private filtering happens later
-                                classes.append(class_name)
-                                logger.debug(f"Found class in JAR: {class_name}")
-                                    
-            except Exception as e:
-                logger.debug(f"Could not scan JAR {jar_path}: {e}")
-    
-    return classes
-
-
-def _generate_common_class_names(package_name: str) -> List[str]:
-    """
-    Generate common class name patterns based on package name.
-    
-    This is a fallback when no known classes are provided and
-    JAR scanning fails.
-    
-    Parameters
-    ----------
-    package_name : str
-        Java package name
-        
-    Returns
-    -------
-    List[str]
-        List of potential class names to test
-    """
-    # Extract package suffix for pattern generation
-    parts = package_name.split('.')
-    suffix = parts[-1] if parts else ""
-    
-    common_patterns = []
-    
-    if 'analysis' in suffix.lower():
-        common_patterns = [
-            "AbstractConvexHull", "AnalysisUtils", "AnnotationMapper", "CircularModels",
-            "ColorMapper", "ConvexHull2D", "ConvexHull3D", "ConvexHullAnalyzer",
-            "GroupedTreeStatistics", "MultiTreeColorMapper", "MultiTreeStatistics",
-            "NodeColorMapper", "NodeProfiler", "NodeStatistics", "PathProfiler",
-            "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer",
-            "ProfileProcessor", "RoiConverter", "RootAngleAnalyzer", "ShollAnalyzer",
-            "SkeletonConverter", "SNTChart", "SNTTable", "StrahlerAnalyzer",
-            "TreeColorMapper", "TreeStatistics"
-        ]
-    elif 'util' in suffix.lower():
-        common_patterns = [
-            "BoundingBox", "CircleCursor3D", "ColorMaps", "CrossoverFinder",
-            "DiskCursor3D", "ImgUtils", "ImpUtils", "LinAlgUtils", "PathCursor",
-            "PointInCanvas", "PointInImage", "SNTColor", "SNTPoint", "SWCPoint"
-        ]
-    elif 'viewer' in suffix.lower():
-        common_patterns = [
-            "Annotation3D", "Bvv", "ColorTableMapper", "GraphViewer", "MultiViewer2D",
-            "MultiViewer3D", "MultiViewer", "Viewer2D", "Viewer3D"
-        ]
-    elif 'tracing' in suffix.lower():
-        common_patterns = [
-            "AbstractSearch", "BiSearch", "BiSearchNode", "DefaultSearchNode",
-            "FillerThread", "ManualTracerThread", "SearchNode", "SearchThread",
-            "TracerThread" 
-        ]
-    else:
-        # Generic patterns for unknown packages
-        common_patterns = [
-            "Fill", "FillConverter", "NearPoint", "Path", "PathAndFillManager",
-            "PathChangeEvent", "PathDownsampler", "PathFitter", "PathManagerUI",
-            "SciViewSNT", "SearchProgressCallback", "SNT", "SNTService", "SNTUI",
-            "SNTUtils", "TracerCanvas", "Tree", "TreeProperties"
-        ]
-    
-    return common_patterns
 
 
 def setup_dynamic_imports(
@@ -698,6 +460,9 @@ def setup_dynamic_imports(
     logger = logging.getLogger(__name__)
     
     try:
+        # Import the moved function
+        from .java_utils import discover_java_classes
+        
         # Discover classes
         class_names = discover_java_classes(
             package_name, 
@@ -821,49 +586,14 @@ def show(obj, **kwargs):
     >>> pysnt.show(pysnt.to_python(tree))
     """
     try:
-        from .scyjava_integration import display
+        from .converters import display
         return display(obj, **kwargs)
     except ImportError:
         logger.error("PyImageJ integration module not available")
         raise RuntimeError("PyImageJ integration not available. Ensure PyImageJ is installed.")
 
 
-def register_converters():
-    """
-    Register SNT converters with ScyJava.
-    
-    Note: Converters are automatically registered during pysnt.initialize().
-    This function is provided for manual registration if needed, but will
-    warn if called after JVM has already started (converters must be 
-    registered before JVM startup).
-    
-    Returns
-    -------
-    bool
-        True if converters were registered successfully, False otherwise
-        
-    Examples
-    --------
-    >>> import pysnt
-    >>> pysnt.initialize("headless")  # Converters auto-registered here
-    >>> # Manual registration (usually not needed):
-    >>> success = pysnt.register_converters()
-    """
-    import scyjava
-    
-    if scyjava.jvm_started():
-        logger.warning(
-            "JVM already started! Converters must be registered before JVM startup. "
-            "Converters are automatically registered during pysnt.initialize()."
-        )
-        return False
-    
-    try:
-        from .scyjava_integration import register_snt_converters
-        return register_snt_converters()
-    except ImportError:
-        logger.error("ScyJava integration module not available")
-        return False
+
 
 
 
