@@ -34,20 +34,31 @@
   </h3>
 </div>
 
-<h3 align="center">⚠️ This project remains experimental. Feedback welcome! ⚠️ </h3>
 
 ## Technical Features
-- **Complete Java bridge**: Access all SNT Java classes from Python
-- **Consistent API**: 1:1 correspondence with SNT's java API
-- **Type hints**: Type annotation support with .pyi files
-- **IDE support**: Auto-completion in IDEs
-- **Dynamic loading**: Lazy loading of Java classes for better performance
-- **Development Tools**: Utilities to res
+
+- **Complete Java Bridge**: Full programmatic access to SNT's neuroanatomy toolkit from Python (via JPype and ScyJava),
+  enabling integration of advanced tracing, analysis, and visualization capabilities into Python workflows
+  
+- **Consistent API**: 1:1 correspondence with SNT's Java API while maintaining Python conventions, allowing developers
+  familiar with either language to work efficiently
+
+- **Full Type Annotation**: Type hints for all methods and classes, enabling static type checking with mypy and improved
+  code reliability
+  
+- **IDE Integration**: Autocomplete, inline documentation, and parameter hints in VS Code, PyCharm, Spyder, and Jupyter
+  notebooks through type stubs and docstrings
+  
+- **Performant**: Lazy class loading minimizes initialization overhead, loading only required SNT components on demand
+
+- **Native Python Converters**: Automatic conversion between SNT objects and Python-native types
+  (SNTChart → matplotlib figures; SNTTable → pandas DataFrames; ImageJ ImagePlus → NumPy arrays; Java Collections → Python lists/dicts, etc.)
 
 ## Limitations
-- Headless operations only
-- May require unreleased versions of SNT
-- Mostly untested
+- **Bleeding Edge**: Requires building SNT from the main branch (stable release integration planned for SNT v5.0)
+
+- **Early Stage Software**: Limited test coverage and community validation: Expect potential bugs and breaking API changes
+
 
 ## Getting Started for Developers
 
@@ -107,6 +118,22 @@ pysnt/
 ├── environment.yml     # Environment specification (runtime)
 └── environment-dev.yml # Environment specification (development)
 ```
+
+### Dependencies
+#### Core Dependencies (Required)
+- install-jdk - Java management
+- matplotlib - Used extensively for plotting and figure creation
+- numpy - Used throughout for array operations
+- pyimagej - ImageJ integration
+- scyjava  - Core Java integration
+- xarray - Dataset operations
+- pyobjc-core; sys_platform == 'darwin' - macOS support
+
+#### Optional Dependencies (Display/Conversion Features)
+- cairosvg - SNTChart SVG to matplotlib conversion
+- PyMuPDF  - SNTChart PDF to matplotlib conversion
+- pandas - DataFrame operations and SNTTable conversion
+- pandasgui - Interactive DataFrame display
 
 ### Need Help?
 

@@ -25,17 +25,35 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "scyjava>=1.8.0",
-    "pyimagej>=1.4.0",
-    "numpy>=1.20.0",
-    "cairosvg>=2.8.2",
-    "PyMuPDF>=1.26.5",
+    "scyjava>=1.12.1",
+    "pyimagej>=1.7.0",
+    "numpy>=2.3.3",
+    "matplotlib>=3.10.7",
     "install-jdk>=1.1.0",
+    "xarray>=2025.10.1",
     "pyobjc-core; sys_platform == 'darwin'",
     "pyobjc-framework-cocoa; sys_platform == 'darwin'",
 ]
 
 [project.optional-dependencies]
+# Enhanced display and conversion features
+display = [
+    "pandas>=2.3.3",
+    "cairosvg>=2.8.2",
+    "PyMuPDF>=1.26.3",
+]
+# Interactive GUI features
+gui = [
+    "pandasgui>=0.2.15",
+]
+# All optional features
+all = [
+    "pandas>=2.3.3",
+    "cairosvg>=2.8.2",
+    "PyMuPDF>=1.26.3",
+    "pandasgui>=0.2.15",
+]
+# Development dependencies
 dev = [
     "pytest>=6.0",
     "pytest-cov",
@@ -43,6 +61,7 @@ dev = [
     "flake8",
     "mypy",
 ]
+# Documentation dependencies
 docs = [
     "sphinx>=4.0",
     "sphinx-design",

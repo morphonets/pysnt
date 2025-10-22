@@ -1,4 +1,4 @@
-name: pysnt-dev
+name: pysnt-gui
 channels:
   - conda-forge
   - defaults
@@ -13,7 +13,7 @@ dependencies:
   - matplotlib>=3.10.7
   - xarray>=2025.10.1
 
-  # Optional display dependencies (included in dev environment)
+  # Enhanced display dependencies
   - pandas>=2.3.3
   - cairo>=1.18.4
   - cairosvg>=2.8.2
@@ -26,21 +26,5 @@ dependencies:
   # Pip dependencies
   - pip
   - pip:
-    # Optional GUI dependencies
+    # Interactive GUI features
     - pandasgui>=0.2.15
-    
-    # Testing dependencies
-    - pytest>=6.0
-    - pytest-cov
-    
-    # Code quality dependencies
-    - black
-    - flake8
-    - mypy
-    
-    # Documentation dependencies
-    - sphinx>=4.0
-    - sphinx-design
-    - myst-nb
-    - sphinx-copybutton
-    - pydata-sphinx-theme

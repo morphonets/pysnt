@@ -15,9 +15,9 @@ Please see the [Getting Started for Developers](README.md#getting-started-for-de
 - **Type hints**: Use type hints where appropriate, checked with [mypy](https://mypy.readthedocs.io/)
 
 ### Documentation Style
-- **Docstrings**: Use Google-style docstrings
-- **Comments**: Write clear, concise comments for complex logic
-- **README updates**: Update documentation when adding new features
+- **Docstrings**: Write clear, concise docstrings
+- **Comments**: Add comments for complex logic
+- **Docs**: Update documentation when adding new features
 
 ### Java Class Integration
 - **Naming**: Use underscore notation for inner classes (`OuterClass_InnerClass`)
