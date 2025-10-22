@@ -1,6 +1,6 @@
 """Comprehensive type stubs for Java classes."""
 
-from typing import Any, List, Dict, Optional, Union, overload, Set
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable
 
 class GrowthAnalyzer:
     """

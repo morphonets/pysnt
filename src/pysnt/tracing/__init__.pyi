@@ -1,52 +1,173 @@
-"""
-Type stubs for __init__.py
+"""Comprehensive type stubs for Java classes."""
 
-Auto-generated stub file.
-"""
+from typing import Any, List
 
-from typing import Any
-
-logger: Any
-CURATED_CLASSES: Any
-EXTENDED_CLASSES: Any
 class BiSearch:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT BiSearch class.
+    
+    This class provides access to the Java BiSearch functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the BiSearch."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class BiSearchNode:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT BiSearchNode class.
+    
+    This class provides access to the Java BiSearchNode functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the BiSearchNode."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class DefaultSearchNode:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT DefaultSearchNode class.
+    
+    This class provides access to the Java DefaultSearchNode functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the DefaultSearchNode."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class FillerThread:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT FillerThread class.
+    
+    This class provides access to the Java FillerThread functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the FillerThread."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class PathResult:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT PathResult class.
+    
+    This class provides access to the Java PathResult functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the PathResult."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class SearchNode:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT SearchNode class.
+    
+    This class provides access to the Java SearchNode functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the SearchNode."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class SearchThread:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT SearchThread class.
+    
+    This class provides access to the Java SearchThread functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the SearchThread."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class TracerThread:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT TracerThread class.
+    
+    This class provides access to the Java TracerThread functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the TracerThread."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
-_module_funcs: Any
-get_available_classes: Any
-get_class: Any
-list_classes: Any
-get_curated_classes: Any
-get_extended_classes: Any
-__getattr__: Any
-__dir__: Any
-__all__: Any
+# Module functions
+def get_available_classes() -> List[str]: ...
+def get_class(class_name: str) -> Any: ...
+def list_classes() -> None: ...
+def get_curated_classes() -> List[str]: ...
+def get_extended_classes() -> List[str]: ...
+
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]

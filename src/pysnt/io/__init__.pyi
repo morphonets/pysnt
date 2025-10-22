@@ -1,48 +1,153 @@
-"""
-Type stubs for __init__.py
+"""Comprehensive type stubs for Java classes."""
 
-Auto-generated stub file.
-"""
+from typing import Any, List
 
-from typing import Any
-
-logger: Any
-CURATED_CLASSES: Any
-EXTENDED_CLASSES: Any
 class FlyCircuitLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT FlyCircuitLoader class.
+    
+    This class provides access to the Java FlyCircuitLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the FlyCircuitLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class InsectBrainLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT InsectBrainLoader class.
+    
+    This class provides access to the Java InsectBrainLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the InsectBrainLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class MouseLightLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT MouseLightLoader class.
+    
+    This class provides access to the Java MouseLightLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the MouseLightLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class MouseLightQuerier:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT MouseLightQuerier class.
+    
+    This class provides access to the Java MouseLightQuerier functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the MouseLightQuerier."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class NeuroMorphoLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT NeuroMorphoLoader class.
+    
+    This class provides access to the Java NeuroMorphoLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the NeuroMorphoLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class RemoteSWCLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT RemoteSWCLoader class.
+    
+    This class provides access to the Java RemoteSWCLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the RemoteSWCLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class WekaModelLoader:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT WekaModelLoader class.
+    
+    This class provides access to the Java WekaModelLoader functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the WekaModelLoader."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
-_module_funcs: Any
-get_available_classes: Any
-get_class: Any
-list_classes: Any
-get_curated_classes: Any
-get_extended_classes: Any
-__getattr__: Any
-__dir__: Any
-__all__: Any
+# Module functions
+def get_available_classes() -> List[str]: ...
+def get_class(class_name: str) -> Any: ...
+def list_classes() -> None: ...
+def get_curated_classes() -> List[str]: ...
+def get_extended_classes() -> List[str]: ...
+
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]

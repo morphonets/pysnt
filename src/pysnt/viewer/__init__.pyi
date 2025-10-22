@@ -1,40 +1,93 @@
-"""
-Type stubs for __init__.py
+"""Comprehensive type stubs for Java classes."""
 
-Auto-generated stub file.
-"""
-
-from typing import Any
-
-logger: Any
-CURATED_CLASSES: Any
-EXTENDED_CLASSES: Any
-class MultiViewer:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+from typing import Any, List
 
 class MultiViewer2D:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT MultiViewer2D class.
+    
+    This class provides access to the Java MultiViewer2D functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the MultiViewer2D."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class MultiViewer3D:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT MultiViewer3D class.
+    
+    This class provides access to the Java MultiViewer3D functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the MultiViewer3D."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class Viewer2D:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Viewer2D class.
+    
+    This class provides access to the Java Viewer2D functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the Viewer2D."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
 class Viewer3D:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Viewer3D class.
+    
+    This class provides access to the Java Viewer3D functionality.
+    All methods and properties are dynamically resolved at runtime.
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the Viewer3D."""
+        ...
+    
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for Java methods and fields."""
+        ...
+    
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable if it has a default method."""
+        ...
 
-_module_funcs: Any
-get_available_classes: Any
-get_class: Any
-list_classes: Any
-get_curated_classes: Any
-get_extended_classes: Any
-__getattr__: Any
-__dir__: Any
-__all__: Any
+# Module functions
+def get_available_classes() -> List[str]: ...
+def get_class(class_name: str) -> Any: ...
+def list_classes() -> None: ...
+def get_curated_classes() -> List[str]: ...
+def get_extended_classes() -> List[str]: ...
+
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]
