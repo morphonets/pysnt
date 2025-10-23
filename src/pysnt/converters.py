@@ -109,6 +109,21 @@ def _is_snt_object(obj) -> bool:
     return obj_type == 'snt_object'
 
 
+def _is_tree_object(obj) -> bool:
+    """Check if object is an SNT Tree."""
+    try:
+        return hasattr(obj, 'getRoot') and hasattr(obj, 'getNodes') and hasattr(obj, 'setRadii')
+    except (AttributeError, TypeError, RuntimeError):
+        return False
+
+def _is_path_object(obj) -> bool:
+    """Check if object is an SNT Path."""
+    try:
+        return hasattr(obj, 'findJunctions') and hasattr(obj, 'getCanvasOffset') and hasattr(obj, 'getFitted')
+    except (AttributeError, TypeError, RuntimeError):
+        return False
+
+
 def _is_snt_chart_object(obj) -> bool:
     """Check if object is an SNT Chart."""
     try:
@@ -266,6 +281,27 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
         return result # type: ignore
 
 
+def _convert_path_to_xarray(path: Any):
+    """Convert SNT Path object to xarray Dataset."""
+    import xarray as xr
+    import numpy as np
+
+    # Collect all coordinates at once
+    coords = [(node.x, node.y, node.z) for node in path.getNodes()]
+    coords_array = np.array(coords)
+
+    # Create xarray Dataset
+    ds = xr.Dataset(
+        {
+            "x": (["node"], coords_array[:, 0]),
+            "y": (["node"], coords_array[:, 1]),
+            "z": (["node"], coords_array[:, 2]),
+        },
+        coords={"node": np.arange(len(coords))},
+    )
+    return ds
+
+
 def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: str, scale: float) -> Figure:
     """
     Convert a single SNTChart to matplotlib figure.
@@ -303,9 +339,15 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: str, scale
         else:  # PNG format
             chart.saveAsPNG(temp_path, scale)
 
-        # Verify file was created
+        # Verify file was created and has content
         if not os.path.exists(temp_path):
             raise FileNotFoundError(f"Chart file was not created: {temp_path}")
+        
+        file_size = os.path.getsize(temp_path)
+        if file_size == 0:
+            raise ValueError(f"Chart file is empty: {temp_path} (size: {file_size} bytes)")
+        
+        logger.debug(f"Chart file created successfully: {temp_path} (size: {file_size} bytes)")
 
         # Convert to matplotlib figure
         if format_type == 'svg':
@@ -1011,6 +1053,12 @@ def display(obj: Any, **kwargs) -> Any:
     kwargs['_internal'][_recursion_key] = True
 
     try:
+        if _is_tree_object(obj):
+            obj = obj.getSkeleton2D()
+        elif _is_path_object(obj):
+            from . import Tree
+            obj = _convert_path_to_xarray(obj)
+
         # Detect object type and get appropriate handler
         obj_type, handler = _get_display_handler(obj)
 
@@ -1882,7 +1930,7 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
 
 def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
     """
-    Display an xarray Dataset (typically from SNTTable conversion).
+    Display an xarray Dataset (e.g., SNTTable conversion).
     
     This function creates visualizations for tabular data stored in xarray Dataset format,
     including summary statistics, data distribution plots, correlation matrices, and DataFrame display.
