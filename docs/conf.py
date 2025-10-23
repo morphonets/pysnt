@@ -83,8 +83,6 @@ MOCK_MODULES = [
     'pyobjc_core',
     'pyobjc_framework_cocoa',
     'scyjava',
-    'threading',
-    'time',
     'xarray',
 ]
 

@@ -25,7 +25,9 @@ Submodules
    :maxdepth: 4
 
    pysnt.common_module
+   pysnt.config
    pysnt.converters
    pysnt.core
+   pysnt.gui_utils
    pysnt.java_utils
    pysnt.setup_utils
