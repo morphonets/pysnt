@@ -1,16 +1,17 @@
 # Documentation build requirements for Read the Docs
+# Keep this minimal: we mock the heavy dependencies to avoid installation issues on RTD
 
-# Core Sphinx and theme
-sphinx>=4.0,<8.0
-pydata-sphinx-theme>=0.13.0
+# Core Sphinx and extensions
+sphinx>=4.0
+sphinx-design
+myst-nb
+sphinx-copybutton
+pydata-sphinx-theme
 
-# MyST and notebook support
-myst-nb>=0.17.0
-myst-parser>=0.18.0
+# Notebook support (but we don't execute them on RTD)
+jupyter-book
+nbsphinx
 
-# Sphinx extensions
-sphinx-design>=0.3.0
-sphinx-copybutton>=0.5.0
-
-# Minimal dependencies for package import (mocked in conf.py)
-# We mock the heavy dependencies to avoid installation issues on RTD
+# Additional utilities
+setuptools>=61.0
+wheel

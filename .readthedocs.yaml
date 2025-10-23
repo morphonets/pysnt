@@ -8,20 +8,29 @@ build:
     python: "3.11"
   jobs:
     post_create_environment:
-      # Install the package in editable mode for autodoc
-      - pip install -e .
+      - pip install --upgrade pip setuptools wheel
     post_install:
-      # Ensure all dependencies are available
-      - pip install --upgrade pip
+      - echo "Build environment ready"
 
+# Build documentation in the "docs/" directory with Sphinx
 sphinx:
   configuration: docs/conf.py
+  # Don't fail the build on Sphinx warnings
   fail_on_warning: false
 
 # We don't execute notebooks on RTD; they render from stored outputs.
 # Notebook execution is controlled inside docs/conf.py (nb_execution_mode = "off")
 python:
   install:
+    # Install documentation-specific requirements
     - requirements: docs/requirements.txt
+    # Install the package itself with docs extras
     - method: pip
       path: .
+      extra_requirements:
+        - docs
+
+# Optional
+formats:
+  - pdf
+  - htmlzip

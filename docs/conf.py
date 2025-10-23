@@ -19,23 +19,42 @@ extensions = [
 import sys
 from unittest.mock import MagicMock
 
-class Mock(MagicMock):
+class MockModule(MagicMock):
     @classmethod
     def __getattr__(cls, name):
+        if name in ('__version__', 'version'):
+            return '1.0.0'
         return MagicMock()
 
 MOCK_MODULES = [
-    'scyjava',
-    'imagej', 
-    'pyimagej',
+    'cairosvg',
+    'fitz',
+    'install_jdk',
     'jdk',
     'jpype',
-    'jpype1',
+    'matplotlib',
+    'matplotlib.figure',
+    'matplotlib.pyplot',
+    'matplotlib.image',
     'numpy',
+    'pandas',
+    'pandasgui',
     'psutil',
+    'pyimagej',
+    'pyobjc',
+    'pyobjc_core',
+    'pyobjc_framework_cocoa',
+    'scyjava',
+    'threading',
+    'time',
+    'xarray',
 ]
 
-sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = MockModule()
+
+# Special handling for numpy version (pandas needs this)
+sys.modules['numpy'].__version__ = '1.24.0'
 
 # Autodoc configuration
 autodoc_mock_imports = MOCK_MODULES
