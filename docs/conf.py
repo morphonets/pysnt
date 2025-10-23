@@ -9,7 +9,7 @@ try:
     import time
     import datetime
     # Force timezone initialization
-    time.tzset() if hasattr(time, 'tzset') else None
+    getattr(time, 'tzset', lambda: None)()
     datetime.datetime.now()
 except Exception:
     pass  # Ignore any timezone initialization errors

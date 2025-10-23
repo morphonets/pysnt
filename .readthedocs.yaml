@@ -14,8 +14,6 @@ build:
       - export LANG=C.UTF-8
     post_create_environment:
       - pip install --upgrade pip setuptools wheel
-      # 'Pre-warm' Python's timezone cache
-      - python -c "import time, datetime; time.tzset() if hasattr(time, 'tzset') else None; datetime.datetime.now()"
     post_install:
       - echo "Build environment ready"
 
