@@ -1,3 +1,19 @@
+# -- Timezone fix for RTD environment ---------------------------------------
+# Fix timezone initialization issues that affect Jupyter dependencies
+import os
+import sys
+os.environ.setdefault('TZ', 'UTC')
+
+# Pre-initialize time module to avoid race conditions
+try:
+    import time
+    import datetime
+    # Force timezone initialization
+    time.tzset() if hasattr(time, 'tzset') else None
+    datetime.datetime.now()
+except Exception:
+    pass  # Ignore any timezone initialization errors
+
 # -- Project information -----------------------------------------------------
 project = "PySNT"
 author = "SNT contributors"

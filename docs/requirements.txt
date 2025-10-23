@@ -4,13 +4,15 @@
 # Core Sphinx and extensions
 sphinx>=4.0
 sphinx-design
-myst-nb
 sphinx-copybutton
 pydata-sphinx-theme
 
-# Notebook support (but we don't execute them on RTD)
-jupyter-book
-nbsphinx
+# Notebook support with timezone fix
+myst-nb>=0.17.0
+
+# Pin specific versions to avoid timezone issues
+jupyter-client>=7.0.0,<8.0.0
+nbclient>=0.5.0,<0.8.0
 
 # Additional utilities
 setuptools>=61.0

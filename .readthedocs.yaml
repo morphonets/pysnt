@@ -7,8 +7,15 @@ build:
   tools:
     python: "3.11"
   jobs:
+    pre_create_environment:
+      # Workaround timezone issues that can affect Jupyter dependencies
+      - export TZ=UTC
+      - export LC_ALL=C.UTF-8
+      - export LANG=C.UTF-8
     post_create_environment:
       - pip install --upgrade pip setuptools wheel
+      # 'Pre-warm' Python's timezone cache
+      - python -c "import time, datetime; time.tzset() if hasattr(time, 'tzset') else None; datetime.datetime.now()"
     post_install:
       - echo "Build environment ready"
 
