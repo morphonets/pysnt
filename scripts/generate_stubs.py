@@ -561,6 +561,207 @@ class ComprehensiveStubGenerator:
             logger.error(f"Failed to generate Python stub for {py_file}: {e}")
             return False
 
+    def extract_module_functions_from_python(self, module_name: str) -> List[str]:
+        """
+        Extract function signatures from actual Python module files.
+        
+        Parameters
+        ----------
+        module_name : str
+            Module name (e.g., 'pysnt', 'pysnt.analysis')
+            
+        Returns
+        -------
+        List[str]
+            List of function signature strings for the stub file
+        """
+        module_functions = []
+        
+        try:
+            # Convert module name to file path
+            module_path = self.source_dir / module_name.replace('.', '/')
+            init_file = module_path / "__init__.py"
+            
+            if not init_file.exists():
+                if self.verbose:
+                    print(f"    ⚠️  No __init__.py found for {module_name}")
+                return []
+            
+            # Parse the Python file
+            with open(init_file, 'r', encoding='utf-8') as f:
+                source_code = f.read()
+            
+            tree = ast.parse(source_code)
+            
+            # Extract imports to understand what functions are available
+            imported_functions = set()
+            imported_classes = set()
+            imported_exceptions = set()
+            
+            for node in tree.body:
+                if isinstance(node, ast.ImportFrom):
+                    if node.names:
+                        for alias in node.names:
+                            name = alias.name
+                            # Categorize imports based on naming patterns
+                            if name.endswith('Error') or name.endswith('Exception'):
+                                imported_exceptions.add(name)
+                            elif name[0].isupper():  # Likely a class
+                                imported_classes.add(name)
+                            else:  # Likely a function
+                                imported_functions.add(name)
+                
+                elif isinstance(node, ast.FunctionDef):
+                    # Direct function definitions in the module
+                    func_sig = self._extract_function_signature(node)
+                    imported_functions.add(node.name)
+                    module_functions.append(func_sig)
+            
+            # Group functions by category for better organization
+            config_functions = []
+            gui_functions = []
+            setup_functions = []
+            core_functions = []
+            converter_functions = []
+            other_functions = []
+            
+            for func_name in sorted(imported_functions):
+                func_sig = self._create_function_signature_from_name(func_name)
+                
+                if any(keyword in func_name for keyword in ['option', 'config']):
+                    config_functions.append(func_sig)
+                elif any(keyword in func_name for keyword in ['gui', 'safety', 'thread', 'macos']):
+                    gui_functions.append(func_sig)
+                elif any(keyword in func_name for keyword in ['fiji', 'path', 'detect', 'configure']):
+                    setup_functions.append(func_sig)
+                elif any(keyword in func_name for keyword in ['initialize', 'version', 'info', 'show', 'display']):
+                    core_functions.append(func_sig)
+                elif any(keyword in func_name for keyword in ['convert', 'register', 'enhance']):
+                    converter_functions.append(func_sig)
+                else:
+                    other_functions.append(func_sig)
+            
+            # Build organized function list
+            if core_functions:
+                module_functions.extend(['', '# Core functions'] + core_functions)
+            if converter_functions:
+                module_functions.extend(['', '# Converter utilities'] + converter_functions)
+            if config_functions:
+                module_functions.extend(['', '# Configuration system'] + config_functions)
+            if gui_functions:
+                module_functions.extend(['', '# GUI utilities'] + gui_functions)
+            if setup_functions:
+                module_functions.extend(['', '# Setup utilities'] + setup_functions)
+            if other_functions:
+                module_functions.extend(['', '# Other functions'] + other_functions)
+            
+            # Add classes
+            if imported_classes:
+                class_stubs = []
+                for class_name in sorted(imported_classes):
+                    if class_name.endswith('Error') or class_name.endswith('Exception'):
+                        continue  # Handle exceptions separately
+                    class_stubs.append(f'class {class_name}: ...')
+                
+                if class_stubs:
+                    module_functions.extend(['', '# Imported classes'] + class_stubs)
+            
+            # Add exceptions
+            if imported_exceptions:
+                exception_stubs = []
+                for exc_name in sorted(imported_exceptions):
+                    exception_stubs.append(f'class {exc_name}(Exception): ...')
+                
+                if exception_stubs:
+                    module_functions.extend(['', '# Exception classes'] + exception_stubs)
+            
+            # Add constants (look for ALL_CAPS variables)
+            constants = []
+            for node in tree.body:
+                if isinstance(node, ast.Assign):
+                    for target in node.targets:
+                        if isinstance(target, ast.Name) and target.id.isupper():
+                            constants.append(f'{target.id}: List[str]')
+            
+            if constants:
+                module_functions.extend(['', '# Constants'] + constants)
+            
+            if self.verbose:
+                print(f"    📋 Extracted {len(imported_functions)} functions, {len(imported_classes)} classes, {len(imported_exceptions)} exceptions from {module_name}")
+            
+        except Exception as e:
+            if self.verbose:
+                print(f"    ⚠️  Failed to extract functions from {module_name}: {e}")
+        
+        return module_functions
+    
+    def _extract_function_signature(self, node: ast.FunctionDef) -> str:
+        """Extract function signature from AST node."""
+        args = self._process_arguments(node.args)
+        return_annotation = " -> Any"
+        if node.returns:
+            try:
+                return_annotation = f" -> {ast.unparse(node.returns)}"
+            except:
+                return_annotation = " -> Any"
+        
+        return f"def {node.name}({args}){return_annotation}: ..."
+    
+    def _create_function_signature_from_name(self, func_name: str) -> str:
+        """
+        Create a function signature from just the function name.
+        
+        This uses heuristics to guess the likely signature based on the function name.
+        """
+        # Common patterns for different function types
+        if func_name.startswith('get_'):
+            if 'option' in func_name:
+                return f"def {func_name}(key: str) -> Any: ..."
+            else:
+                return f"def {func_name}() -> Any: ..."
+        
+        elif func_name.startswith('set_'):
+            if 'option' in func_name:
+                return f"def {func_name}(key: str, value: Any) -> None: ..."
+            elif 'path' in func_name:
+                return f"def {func_name}(path: str) -> bool: ..."
+            else:
+                return f"def {func_name}(value: Any) -> None: ..."
+        
+        elif func_name.startswith('is_'):
+            return f"def {func_name}() -> bool: ..."
+        
+        elif func_name.startswith('list_'):
+            return f"def {func_name}() -> List[str]: ..."
+        
+        elif func_name.startswith('describe_'):
+            return f"def {func_name}(key: Optional[str] = None) -> None: ..."
+        
+        elif func_name.startswith('reset_'):
+            return f"def {func_name}(key: str) -> None: ..."
+        
+        elif func_name.startswith('configure_'):
+            return f"def {func_name}(enabled: bool = True) -> None: ..."
+        
+        elif 'context' in func_name:
+            return f"def {func_name}(**kwargs: Any) -> Any: ..."
+        
+        elif func_name in ['initialize']:
+            return f"def {func_name}(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = \"headless\") -> None: ..."
+        
+        elif func_name in ['show', 'display']:
+            return f"def {func_name}(obj: Any, **kwargs: Any) -> Any: ..."
+        
+        elif func_name in ['to_python', 'from_java']:
+            return f"def {func_name}(obj: Any, **kwargs: Any) -> Any: ..."
+        
+        elif func_name.startswith('safe_'):
+            return f"def {func_name}(func: Callable, *args: Any, fallback_func: Optional[Callable] = None, **kwargs: Any) -> Any: ..."
+        
+        else:
+            # Generic fallback
+            return f"def {func_name}(*args: Any, **kwargs: Any) -> Any: ..."
+
     def _generate_python_stub_content(self, tree: ast.AST, py_file: Path) -> str:
         """Generate Python stub content from AST."""
         lines = [
@@ -707,80 +908,23 @@ class ComprehensiveStubGenerator:
                 'EXTENDED_CLASSES: List[str]'
             ]
             
-            # Add custom functions for main pysnt module
-            if module_name == 'pysnt':
+            # Use dynamic function extraction for Python modules
+            if self.verbose:
+                print(f"    🔍 Extracting functions dynamically from {module_name}...")
+            
+            module_functions = self.extract_module_functions_from_python(module_name)
+            
+            # If dynamic extraction fails or returns empty, use minimal fallback
+            if not module_functions:
+                if self.verbose:
+                    print(f"    ⚠️  Dynamic extraction failed, using minimal fallback for {module_name}")
                 module_functions = [
-                    '# Module functions',
-                    '@overload',
-                    'def initialize(mode: str) -> None: ...',
-                    '@overload', 
+                    '# Core functions (fallback)',
                     'def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None: ...',
-                    'def ij() -> Any: ...',
-                    'def inspect(class_or_object: Union[str, Any], keyword: str = "", methods: bool = True, fields: bool = True, constructors: bool = False, static_only: bool = False, case_sensitive: bool = False, max_results: int = 50) -> None: ...',
-                    'def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> List[Dict[str, Any]]: ...',
-                    'def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> List[Dict[str, Any]]: ...',
-                    'def find_members(class_or_object: Union[str, Any], keyword: str, include_methods: bool = True, include_fields: bool = True, static_only: bool = False, case_sensitive: bool = False) -> Dict[str, List[Dict[str, Any]]]: ...',
-                    'def version(detailed: bool = False) -> str: ...',
-                    'def print_version(detailed: bool = False) -> None: ...',
-                    'def show_version(detailed: bool = False) -> None: ...',
-                    'def info() -> None: ...',
-                    'def get_available_classes() -> List[str]: ...',
-                    'def get_class(class_name: str) -> Any: ...',
-                    'def list_classes() -> None: ...',
-                    'def get_curated_classes() -> List[str]: ...',
-                    'def get_extended_classes() -> List[str]: ...',
-                    '',
-                    '# ScyJava integration',
-                    'def to_python(obj: Any, **kwargs: Any) -> Any: ...',
-                    'def from_java(obj: Any, **kwargs: Any) -> Any: ...',
-                    'def show(obj: Any, **kwargs: Any) -> Any: ...',
-                    'def register_snt_converters() -> None: ...',
-                    'def register_display_handler(obj_type: str, handler_func: Callable[[Dict[str, Any]], None]) -> None: ...',
-                    'def list_converters() -> List[Dict[str, Any]]: ...',
-                    'def display(obj: Any, **kwargs: Any) -> Any: ...',
-                    'def enhance_java_object(obj: Any) -> Any: ...',
-                    '',
-                    '# Setup utilities',
-                    'def set_fiji_path(path: str) -> bool: ...',
-                    'def get_fiji_path() -> Optional[str]: ...',
-                    'def clear_fiji_path() -> None: ...',
-                    'def reset_fiji_path() -> None: ...',
-                    'def get_config_info() -> Dict[str, Any]: ...',
-                    'def show_config_status() -> None: ...',
-                    'def auto_detect_and_configure() -> bool: ...',
-                    'def is_fiji_valid(path: str) -> bool: ...',
-                    'def get_fiji_status() -> Dict[str, Any]: ...',
-                    '',
-                    '# Configuration system',
-                    'def get_option(key: str) -> Any: ...',
-                    'def set_option(key: str, value: Any) -> None: ...',
-                    'def reset_option(key: str) -> None: ...',
-                    'def describe_option(key: Optional[str] = None) -> None: ...',
-                    'def list_options() -> List[str]: ...',
-                    'def option_context(**kwargs: Any) -> Any: ...',
-                    '',
-                    '# Configuration object',
-                    'class _Config:',
-                    '    def __getattr__(self, name: str) -> Any: ...',
-                    '    def __setattr__(self, name: str, value: Any) -> None: ...',
-                    '',
-                    'options: _Config',
-                    '',
-                    '# GUI utilities',
-                    'def configure_gui_safety(enabled: bool = True) -> None: ...',
-                    'def safe_gui_call(func: Callable, *args: Any, fallback_func: Optional[Callable] = None, **kwargs: Any) -> Any: ...',
-                    'def is_main_thread() -> bool: ...',
-                    'def is_macos() -> bool: ...',
                     '',
                     '# Exception classes',
                     'class FijiNotFoundError(Exception): ...',
                     'class OptionError(Exception): ...',
-                    '',
-                    '# Constants',
-                    'CURATED_ROOT_CLASSES: List[str]',
-                    'EXTENDED_ROOT_CLASSES: List[str]',
-                    'CURATED_CLASSES: List[str]',
-                    'EXTENDED_CLASSES: List[str]'
                 ]
             
             stub_lines.extend(module_functions)
