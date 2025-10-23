@@ -1,42 +1,39 @@
-# -- RTD Timezone Fix for Jupyter Dependencies -----------------------------
+# -- RTD Environment Setup -------------------------------------------------
 import os
 import sys
 
-# Set environment variables before any imports
+# Set stable timezone and locale before any imports
 os.environ['TZ'] = 'UTC'
 os.environ['LC_ALL'] = 'C.UTF-8'
 os.environ['LANG'] = 'C.UTF-8'
 
-# Targeted fix: Mock only the specific module causing timezone issues
-from unittest.mock import MagicMock
-import datetime
+# Prevent timezone changes during initialization
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
-class JsonUtilMock(MagicMock):
-    """Mock for jupyter_client.jsonutil that avoids timezone initialization"""
-    
-    def extract_dates(self, obj):
-        return obj
-    
-    def json_clean(self, obj):
-        return obj
-    
-    def json_default(self, obj):
-        if isinstance(obj, datetime.datetime):
-            return obj.isoformat()
-        return str(obj)
-    
-    def squash_dates(self, obj):
-        return obj
-
-# Mock the problematic module before myst_nb imports it
-sys.modules['jupyter_client.jsonutil'] = JsonUtilMock()
-
-# Initialize timezone safely
+# Initialize timezone early and safely
 try:
     import time
-    getattr(time, 'tzset', lambda: None)()
+    import datetime
+    import locale
+    
+    # Set locale to C to avoid timezone issues
+    try:
+        locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+    except locale.Error:
+        try:
+            locale.setlocale(locale.LC_ALL, 'C')
+        except locale.Error:
+            pass
+    
+    # Initialize time module
+    if hasattr(time, 'tzset'):
+        time.tzset()
+    
+    # Pre-warm datetime
     datetime.datetime.now()
+    
 except Exception:
+    # If anything fails, continue anyway
     pass  # Ignore any timezone initialization errors
 
 # -- Project information -----------------------------------------------------

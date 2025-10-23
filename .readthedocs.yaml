@@ -8,10 +8,12 @@ build:
     python: "3.11"
   jobs:
     pre_create_environment:
-      # Workaround timezone issues that can affect Jupyter dependencies
+      # Set stable environment to prevent timezone initialization issues
       - export TZ=UTC
       - export LC_ALL=C.UTF-8
       - export LANG=C.UTF-8
+      - export PYTHONDONTWRITEBYTECODE=1
+      - export PYTHONUNBUFFERED=1
     post_create_environment:
       - pip install --upgrade pip setuptools wheel
     post_install:
