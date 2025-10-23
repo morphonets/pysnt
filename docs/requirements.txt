@@ -1,5 +1,5 @@
 # Documentation build requirements for Read the Docs
-# Keep this minimal: we mock the heavy dependencies to avoid installation issues on RTD
+# Minimal dependencies with targeted timezone fix for Jupyter
 
 # Core Sphinx and extensions
 sphinx>=4.0
@@ -7,12 +7,12 @@ sphinx-design
 sphinx-copybutton
 pydata-sphinx-theme
 
-# Notebook support with timezone fix
-myst-nb>=0.17.0
+# Notebook support with specific version pinning to avoid timezone issues
+myst-nb>=0.17.0,<1.0.0
 
-# Pin specific versions to avoid timezone issues
-jupyter-client>=7.0.0,<8.0.0
-nbclient>=0.5.0,<0.8.0
+# Pin Jupyter dependencies to stable versions
+jupyter-client>=7.4.0,<8.0.0
+nbclient>=0.6.0,<0.8.0
 
 # Additional utilities
 setuptools>=61.0
