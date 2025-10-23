@@ -213,7 +213,7 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
         The chart object to convert
     **kwargs
         Additional conversion options:
-        - format: 'svg', 'pdf', or 'png' (default: 'svg')
+        - format: 'svg', 'pdf', or 'png' (default: uses pysnt.get_option('display.chart_format'))
         - temp_dir: directory for temporary files (default: system temp)
         - scale: scaling factor (default: 1.0)
         - max_panels: maximum number of panels to detect when handling combined (multi-panel) charts (default: 20)
@@ -224,6 +224,7 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
     dict
         Dictionary (SNTObject TypedDict) containing chart information and matplotlib figure
     """
+    from .config import get_option
 
     # Create result SNTObject dictionary
     result: SNTObject = {
@@ -234,8 +235,8 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
     }
 
     try:
-        # Get conversion options
-        format_type = kwargs.get('format', 'svg').lower()
+        # Get conversion options with config defaults
+        format_type = kwargs.get('format', get_option('display.chart_format')).lower()
         temp_dir = kwargs.get('temp_dir', None)
         scale = kwargs.get('scale', 1.0)
         max_panels = kwargs.get('max_panels', 20)
@@ -399,6 +400,11 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: str, sca
     import matplotlib.pyplot as plt
     import glob
     import os
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     # Create temporary directory for panel files
     temp_chart_dir = tempfile.mkdtemp(dir=temp_dir)
@@ -613,6 +619,11 @@ def _create_matplotlib_figure_from_image(img_array, figsize=None, title=None, dp
         Figure containing the image
     """
     import matplotlib.pyplot as plt
+
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     # Create figure with specified parameters
     fig_kwargs = {}
@@ -1281,10 +1292,10 @@ def _show_matplotlib_figure(fig=None, **kwargs) -> bool:
 
     logger.debug(f"Showing matplotlib figure with unified display (backend: {matplotlib.get_backend()})")
 
-    # Ensure matplotlib is in interactive mode
-    if not plt.isinteractive():
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
         plt.ion()
-        logger.debug("Enabled matplotlib interactive mode")
 
     try:
         # Make figure current and show
@@ -1397,6 +1408,11 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
         This function performs display as a side effect
     """
     import matplotlib.pyplot as plt
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     logger.debug(f"Displaying xarray object: {type(xarr)}")
 
@@ -1495,7 +1511,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
 
 def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
     """
-    Display a pandas DataFrame using PandasGUI in a non-blocking way.
+    Display a pandas DataFrame using PandasGUI with thread handling.
     
     Parameters
     ----------
@@ -1518,37 +1534,100 @@ def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
     try:
         import threading
         import time
+        import sys
+        import os
+        
+        # Check if we should use safe mode
+        from .config import get_option
+        gui_safe_mode = get_option('display.gui_safe_mode')
+        
+        # Check if we're on macOS
+        is_macos = sys.platform == 'darwin'
+        
+        # Check if we're in the main thread
+        is_main_thread = threading.current_thread() is threading.main_thread()
+        
+        if gui_safe_mode and is_macos and not is_main_thread:
+            logger.warning("GUI safe mode enabled on macOS - falling back to console display to avoid threading issues.")
+            # Fall back to console display
+            with pandas.option_context('display.max_rows', kwargs.get('max_rows', 20),
+                                     'display.max_columns', kwargs.get('max_cols', 10),
+                                     'display.precision', kwargs.get('precision', 3)):
+                print(f"\n{title}:")
+                print("=" * 50)
+                print(df)
+                print("=" * 50)
+                print(f"Shape: {df.shape}")
+                if hasattr(df, 'describe'):
+                    print("\nSummary statistics:")
+                    print(df.describe())
+            return True
 
         def show_gui():
-            """Show PandasGUI in a separate thread to make it non-blocking."""
+            """Show PandasGUI with proper error handling."""
             try:
                 # Create a copy of the DataFrame to avoid any threading issues
                 df_copy = df.copy()
+
+                # Set Qt application attributes for better compatibility
+                try:
+                    from PyQt5.QtWidgets import QApplication
+                    from PyQt5.QtCore import Qt
+                    
+                    # Set attributes before creating QApplication
+                    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+                    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+                except ImportError:
+                    pass  # PyQt5 not available, continue anyway
 
                 # Show in PandasGUI with the specified title
                 gui = pandasgui_show(df_copy, title=title)
 
                 # Keep the GUI alive by running its event loop
-                # This is similar to how matplotlib handles non-blocking display
                 if hasattr(gui, 'app') and hasattr(gui.app, 'exec_'):
                     gui.app.exec_()
 
             except Exception as e:
-                logger.debug(f"PandasGUI thread error: {e}")
+                logger.error(f"PandasGUI error: {e}")
+                # Fall back to console display on error
+                logger.info("Falling back to console display")
+                with pandas.option_context('display.max_rows', kwargs.get('max_rows', 20),
+                                         'display.max_columns', kwargs.get('max_cols', 10),
+                                         'display.precision', kwargs.get('precision', 3)):
+                    print(f"\n{title} (PandasGUI failed):")
+                    print("=" * 50)
+                    print(df_copy)
+                    print("=" * 50)
 
-        # Start PandasGUI in a separate thread to make it non-blocking
-        gui_thread = threading.Thread(target=show_gui, daemon=True)
-        gui_thread.start()
-
-        # Give the GUI a moment to start up
-        time.sleep(0.2)
+        if is_main_thread:
+            # We're in the main thread, can run directly
+            show_gui()
+        else:
+            # We're in a background thread, start a daemon thread
+            gui_thread = threading.Thread(target=show_gui, daemon=True)
+            gui_thread.start()
+            
+            # Give the GUI a moment to start up
+            time.sleep(0.2)
 
         logger.info(f"Successfully launched PandasGUI for {title}")
         return True
 
     except Exception as e:
         logger.error(f"Failed to show DataFrame in PandasGUI: {e}")
-        return False
+        # Final fallback to console display
+        try:
+            with pandas.option_context('display.max_rows', kwargs.get('max_rows', 20),
+                                     'display.max_columns', kwargs.get('max_cols', 10),
+                                     'display.precision', kwargs.get('precision', 3)):
+                print(f"\n{title} (fallback):")
+                print("=" * 50)
+                print(df)
+                print("=" * 50)
+            return True
+        except Exception as fallback_e:
+            logger.error(f"Even console fallback failed: {fallback_e}")
+            return False
 
 
 def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
@@ -1562,9 +1641,9 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
     **kwargs
         Additional arguments:
         - use_gui: bool, whether to use PandasGUI (default: False)
-        - max_rows: int, max rows for console display (default: 20)
-        - max_cols: int, max columns for console display (default: 10)
-        - precision: int, decimal precision for console display (default: 3)
+        - max_rows: int, max rows for console display (default: uses pysnt.get_option('display.max_rows'))
+        - max_cols: int, max columns for console display (default: uses pysnt.get_option('display.max_columns'))
+        - precision: int, decimal precision for console display (default: uses pysnt.get_option('display.precision'))
         - title: str, title for PandasGUI window (default: "SNT Dataset")
         
     Returns
@@ -1572,14 +1651,16 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
     bool
         True if successful, False otherwise
     """
+    from .config import get_option
+    
     try:
         import pandas as pd
 
-        # Get display parameters
+        # Get display parameters with config defaults
         use_gui = kwargs.get('use_gui', False)
-        max_rows = kwargs.get('max_rows', 20)
-        max_cols = kwargs.get('max_cols', 10)
-        precision = kwargs.get('precision', 3)
+        max_rows = kwargs.get('max_rows', get_option('display.max_rows'))
+        max_cols = kwargs.get('max_cols', get_option('display.max_columns'))
+        precision = kwargs.get('precision', get_option('display.precision'))
         title = kwargs.get('title', 'SNT Dataset')
 
         # Convert dataset to DataFrame
@@ -1643,6 +1724,11 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
     """
     import matplotlib.pyplot as plt
     import numpy as np
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     try:
         fig, axes = plt.subplots(2, 2, figsize=figsize)
@@ -1750,7 +1836,7 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
         plt.tight_layout()
 
         # Use unified display system
-        if _show_matplotlib_figure():
+        if _show_matplotlib_figure(fig):
             logger.info("Successfully displayed xarray Dataset summary")
             return True
         else:
@@ -1784,6 +1870,11 @@ def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], tit
     """
     import matplotlib.pyplot as plt
     import numpy as np
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     try:
         # Create distribution plots for each variable
@@ -1831,7 +1922,7 @@ def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], tit
         plt.tight_layout()
 
         # Use unified display system
-        if _show_matplotlib_figure():
+        if _show_matplotlib_figure(fig):
             logger.info("Successfully displayed xarray Dataset distributions")
             return True
         else:
@@ -1865,6 +1956,11 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
     """
     import matplotlib.pyplot as plt
     import numpy as np
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
 
     try:
         # Get numeric variables
@@ -1916,7 +2012,7 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
         plt.tight_layout()
 
         # Use unified display system
-        if _show_matplotlib_figure():
+        if _show_matplotlib_figure(fig):
             logger.info("Successfully displayed correlation matrix")
             return True
         else:
@@ -1941,27 +2037,29 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         The xarray Dataset to display
     **kwargs
         Additional arguments for display:
-        - plot_type: 'auto', 'summary', 'distribution', 'correlation', 'dataframe'
+        - plot_type: 'auto', 'summary', 'distribution', 'correlation', 'dataframe' (default: uses pysnt.get_option('display.table_mode'))
         - max_vars: Maximum number of variables to display (default: 10)
-        - figsize: Figure size (default: (12, 8))
+        - figsize: Figure size (default: uses pysnt.get_option('plotting.figure_size'))
         - title: Plot title (default: 'SNT Table Data')
         - use_gui: Use PandasGUI for DataFrame display (default: False)
-        - max_rows: Max rows for DataFrame display (default: 20)
-        - max_cols: Max columns for DataFrame display (default: 10)
-        - precision: Decimal precision for DataFrame display (default: 3)
+        - max_rows: Max rows for DataFrame display (default: uses pysnt.get_option('display.max_rows'))
+        - max_cols: Max columns for DataFrame display (default: uses pysnt.get_option('display.max_columns'))
+        - precision: Decimal precision for DataFrame display (default: uses pysnt.get_option('display.precision'))
         
     Returns
     -------
     Any
         The result of the display operation
     """
+    from .config import get_option
+    
     logger.debug(f"Displaying xarray Dataset: {dataset}")
 
     try:
-        # Get display parameters
-        plot_type = kwargs.get('plot_type', 'auto')
+        # Get display parameters with config defaults
+        plot_type = kwargs.get('plot_type', get_option('display.table_mode')).lower()
         max_vars = kwargs.get('max_vars', 10)
-        figsize = kwargs.get('figsize', (12, 8))
+        figsize = kwargs.get('figsize', get_option('plotting.figure_size'))
         title = kwargs.get('title', 'SNT Table Data')
 
         # Get data variables (exclude coordinates)
@@ -1977,6 +2075,14 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         # Limit number of variables for display
         display_vars = data_vars[:max_vars] if n_vars > max_vars else data_vars
 
+        # Map table mode to plot type
+        if plot_type == 'pandasgui':
+            plot_type = 'dataframe'
+            kwargs['use_gui'] = True
+        elif plot_type == 'basic':
+            plot_type = 'dataframe'
+            kwargs['use_gui'] = False
+        
         # Auto-select plot type based on data
         if plot_type == 'auto':
             if n_vars == 1:
@@ -1997,7 +2103,7 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
             return _create_dataset_correlation_plot(dataset, display_vars, title, figsize)
         else:
             logger.warning(
-                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'summary', 'distribution', 'correlation', 'dataframe'")
+                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'summary', 'distribution', 'correlation', 'dataframe', 'pandasgui', 'basic'")
             return False
 
     except Exception as e:
@@ -2028,8 +2134,10 @@ def _display_array_data(data, source_type="array", **kwargs):
         SNTObject with display result or None on failure
     """
     import matplotlib.pyplot as plt
-
-    if not plt.isinteractive():
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
         plt.ion()
 
     # Handle different dimensionalities

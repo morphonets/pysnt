@@ -44,6 +44,17 @@ from .setup_utils import (
 # Import common module functionality
 from .common_module import setup_module_classes
 
+# Import configuration system
+from .config import (
+    get_option, set_option, reset_option, describe_option, list_options,
+    option_context, options, OptionError
+)
+
+# Import GUI utilities
+from .gui_utils import (
+    configure_gui_safety, safe_gui_call, is_main_thread, is_macos
+)
+
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
     "Fill",
@@ -688,8 +699,22 @@ __all__ = [
     "list_converters",
     "display",
     "enhance_java_object",
+    # Configuration system
+    "get_option",
+    "set_option", 
+    "reset_option",
+    "describe_option",
+    "list_options",
+    "option_context",
+    "options",
+    # GUI utilities
+    "configure_gui_safety",
+    "safe_gui_call",
+    "is_main_thread",
+    "is_macos",
     # Exceptions
     "FijiNotFoundError",
+    "OptionError",
     "version",
     "print_version",
     "show_version",
