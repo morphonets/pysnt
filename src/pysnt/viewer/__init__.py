@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "MultiViewer", "MultiViewer2D", "MultiViewer3D",
+    "MultiViewer2D", "MultiViewer3D",
     "Viewer2D", "Viewer3D"
 ]
 
@@ -25,30 +25,6 @@ EXTENDED_CLASSES = [
     "GraphViewer"
 ]
 
-
-
-
-
-# Placeholder classes for IDE support - will be replaced with Java classes
-class MultiViewer:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class MultiViewer2D:
     """
@@ -165,5 +141,4 @@ __all__ = [
     # Curated classes (always available for direct import)
     "Viewer2D",
     "Viewer3D",
-    "MultiViewer",
 ]

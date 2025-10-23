@@ -1184,7 +1184,7 @@ def _generate_common_class_names(package_name: str) -> List[str]:
     elif 'viewer' in suffix.lower():
         common_patterns = [
             "Annotation3D", "Bvv", "ColorTableMapper", "GraphViewer", "MultiViewer2D",
-            "MultiViewer3D", "MultiViewer", "Viewer2D", "Viewer3D"
+            "MultiViewer3D", "Viewer2D", "Viewer3D"
         ]
     elif 'tracing' in suffix.lower():
         common_patterns = [
