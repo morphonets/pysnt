@@ -153,21 +153,20 @@ def _parse_java_version(version_output: str) -> Dict[str, Any]:
     # Extract version number
     # Examples:
     # openjdk version "21.0.1" 2023-10-17
-    # java version "1.8.0_391"
     # openjdk version "11.0.21" 2023-10-17 LTS
     
     import re
     
-    # Try modern format (Java 9+): "21.0.1"
-    match = re.search(r'"(\d+)\.(\d+)\.(\d+)', first_line)
+    # Try legacy format first (Java 8): "1.8.0_391"
+    match = re.search(r'"1\.(\d+)\.', first_line)
     if match:
-        major = int(match.group(1))
-        result['version'] = major
+        result['version'] = int(match.group(1))
     else:
-        # Try legacy format (Java 8): "1.8.0_391"
-        match = re.search(r'"1\.(\d+)\.', first_line)
+        # Try modern format (Java 9+): "21.0.1"
+        match = re.search(r'"(\d+)\.(\d+)\.(\d+)', first_line)
         if match:
-            result['version'] = int(match.group(1))
+            major = int(match.group(1))
+            result['version'] = major
     
     # Extract vendor information
     if 'openjdk' in first_line.lower():

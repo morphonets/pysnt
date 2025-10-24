@@ -1030,6 +1030,9 @@ def display(obj: Any, **kwargs) -> Any:
         The object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, etc.)
     **kwargs
         Additional arguments for display (e.g., cmap, title, format, scale, vmin, vmax)
+        For ImagePlus objects:
+        - frame, t, time, timepoint : int, optional
+            Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
     Returns
     -------
     Any
@@ -1161,13 +1164,41 @@ def _display_imageplus(obj, **kwargs):
 
     If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved;
     if multichannel an RGB version is obtained. ROIs are also displayed if image has stored ROIs.
+
+    Parameters
+    ----------
+    obj : ImagePlus
+        The ImagePlus object to display
+    **kwargs : dict
+        Additional keyword arguments:
+        - frame, t, time, timepoint : int, optional
+            Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
+        - title : str, optional
+            Title for the display
+
+    Returns
+    -------
+    xarray or None
+        Converted xarray object if successful, None otherwise
     """
     logger.info("Detected ImagePlus object - attempting conversion to xarray...")
     try:
         from .util import ImpUtils
         from .core import ij
         logger.info("Converting ImagePlus to xarray using ImpUtils and ij.py.from_java()...")
-        converted = ij().py.from_java(ImpUtils.convertToSimple2D(obj))
+
+        # Extract frame parameter (supports frame=, t=, time=, case-insensitive)
+        kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
+        frame = None
+        for key in ['frame', 't', 'time', 'timepoint']:
+            if key in kwargs_lower:
+                try:
+                    frame = int(kwargs_lower[key])
+                    break
+                except (ValueError, TypeError):
+                    pass
+        frame = frame if frame is not None else 1
+        converted = ij().py.from_java(ImpUtils.convertToSimple2D(obj, frame))
         _display_xarray(converted, **kwargs)
         return converted
 
@@ -1201,18 +1232,8 @@ def _display_with_auto_conversion(obj: Any, **kwargs) -> Any:
 
     # Special handling of ImagePlus objects
     if str(type(obj)).find('ImagePlus') != -1:
-        logger.info("Detected ImagePlus object - attempting conversion to xarray...")
-        try:
-            # Try ImageJ-Python's from_java converter first
-            from .core import ij
-            from .util import ImpUtils
-            logger.info("Converting ImagePlus to xarray using ImpUtils and ij.py.from_java()...")
-            converted = ij().py.from_java(ImpUtils.convertToSimple2D(obj))
-            _display_xarray(converted, **kwargs)  # Display the converted xarray and return it
-            return converted
-
-        except Exception as ij_e:
-            logger.info(f"ij.py.from_java() conversion failed: {ij_e}")
+        logger.info("Detected ImagePlus object - attempting _display_imageplus...")
+        return _display_imageplus(obj, **kwargs)
 
     # Try scyjava's built-in conversion system. This uses PySNT's registered converters
     try:
