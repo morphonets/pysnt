@@ -9,6 +9,7 @@ their display and visualization.
 import logging
 import os
 import tempfile
+from contextlib import contextmanager
 from io import BytesIO
 from typing import Any, Callable, Dict, List, Optional, TypedDict, Type
 
@@ -64,6 +65,89 @@ from matplotlib.figure import Figure
 logger = logging.getLogger(__name__)
 
 
+def _setup_matplotlib_interactive():
+    """
+    Centralized matplotlib interactive mode setup.
+    
+    Returns
+    -------
+    matplotlib.pyplot
+        The pyplot module with interactive mode configured
+    """
+    from .config import get_option
+    import matplotlib.pyplot as plt
+    
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
+    return plt
+
+
+@contextmanager
+def _temp_file(format_type, temp_dir=None, cleanup=True):
+    """
+    Context manager for temporary files with guaranteed cleanup.
+    
+    Parameters
+    ----------
+    format_type : str
+        File format extension (e.g., 'svg', 'pdf', 'png')
+    temp_dir : str, optional
+        Directory for temporary files
+    cleanup : bool, default True
+        Whether to clean up the file on exit
+        
+    Yields
+    ------
+    str
+        Path to the temporary file
+    """
+    with tempfile.NamedTemporaryFile(
+        suffix=f'.{format_type}', delete=False, dir=temp_dir
+    ) as temp_file:
+        temp_path = temp_file.name
+    
+    try:
+        yield temp_path
+    finally:
+        if cleanup and os.path.exists(temp_path):
+            try:
+                os.unlink(temp_path)
+                logger.debug(f"Cleaned up temporary file: {temp_path}")
+            except OSError as e:
+                logger.debug(f"Could not clean up temporary file {temp_path}: {e}")
+
+
+@contextmanager
+def _temp_directory(temp_dir=None, cleanup=True):
+    """
+    Context manager for temporary chart directories with guaranteed cleanup.
+    
+    Parameters
+    ----------
+    temp_dir : str, optional
+        Parent directory for temporary directory
+    cleanup : bool, default True
+        Whether to clean up the directory on exit
+        
+    Yields
+    ------
+    str
+        Path to the temporary directory
+    """
+    temp_chart_dir = tempfile.mkdtemp(dir=temp_dir)
+    
+    try:
+        yield temp_chart_dir
+    finally:
+        if cleanup:
+            try:
+                import shutil
+                shutil.rmtree(temp_chart_dir, ignore_errors=True)
+                logger.debug(f"Cleaned up temporary directory: {temp_chart_dir}")
+            except Exception as e:
+                logger.debug(f"Could not clean up temporary directory {temp_chart_dir}: {e}")
+
+
 def _diagnose_graph_structure(nx_graph, graph_type: str = 'Unknown') -> None:
     """
     Diagnose and log information about graph structure for debugging.
@@ -108,20 +192,22 @@ def _diagnose_graph_structure(nx_graph, graph_type: str = 'Unknown') -> None:
 
 
 
-def _extract_color_attributes(color_obj: Any) -> Dict[str, Any]:
+def _extract_color_attributes(color_obj: Any, prefix: str = "color") -> Dict[str, Any]:
     """
-    Extract RGB and hex color attributes from a java.awt.Color object.
+    Color extraction with configurable prefix.
     
     Parameters
     ----------
     color_obj : java.awt.Color
         The Color object to extract attributes from
+    prefix : str, default "color"
+        Prefix for the attribute keys
         
     Returns
     -------
     dict
-        Dictionary containing 'color_rgb' tuple and 'color_hex' string,
-        or empty dict if extraction fails
+        Dictionary containing '{prefix}_rgb' tuple, '{prefix}_hex' string,
+        and '{prefix}' original object, or empty dict if extraction fails
     """
     attrs = {}
     try:
@@ -129,10 +215,11 @@ def _extract_color_attributes(color_obj: Any) -> Dict[str, Any]:
             r = int(color_obj.getRed())
             g = int(color_obj.getGreen())
             b = int(color_obj.getBlue())
-            attrs['color_rgb'] = (r, g, b)
-            attrs['color_hex'] = f"#{r:02x}{g:02x}{b:02x}"
+            attrs[f'{prefix}_rgb'] = (r, g, b)
+            attrs[f'{prefix}_hex'] = f"#{r:02x}{g:02x}{b:02x}"
+            attrs[prefix] = color_obj  # Store original object
     except Exception as e:
-        logger.debug(f"Could not extract Color RGB values: {e}")
+        logger.debug(f"Could not extract {prefix} attributes: {e}")
     
     return attrs
 
@@ -183,6 +270,29 @@ def _get_java_class_name(obj: Any) -> str:
         return str(type(obj))
 
 
+class JavaTypeDetector:
+    """Centralized Java type detection utilities."""
+
+    @staticmethod
+    def has_class_name(obj: Any, *names: str) -> bool:
+        """Check if object's class name contains any of the given strings."""
+        class_name = _get_java_class_name(obj)
+        return any(name in class_name for name in names)
+
+    @staticmethod
+    def has_methods(obj: Any, *method_names: str) -> bool:
+        """Check if object has all specified methods."""
+        return all(hasattr(obj, method) for method in method_names)
+
+    @staticmethod
+    def matches_pattern(obj: Any, class_patterns: List[str],
+                        required_methods: List[str]) -> bool:
+        """Check if object matches class name pattern AND has required methods."""
+        if not JavaTypeDetector.has_class_name(obj, *class_patterns):
+            return False
+        return JavaTypeDetector.has_methods(obj, *required_methods)
+
+
 # SNT Object Converters
 def _is_snt_object(obj) -> bool:
     """Check if object is a valid SNTObject."""
@@ -190,30 +300,17 @@ def _is_snt_object(obj) -> bool:
     return obj_type == 'snt_object'
 
 
-def _is_tree_object(obj) -> bool:
+def _is_snt_tree(obj) -> bool:
     """Check if object is an SNT Tree."""
     try:
         return hasattr(obj, 'getRoot') and hasattr(obj, 'getNodes') and hasattr(obj, 'setRadii')
     except (AttributeError, TypeError, RuntimeError):
         return False
 
-def _is_path_object(obj) -> bool:
+def _is_snt_path(obj) -> bool:
     """Check if object is an SNT Path."""
     try:
         return hasattr(obj, 'findJunctions') and hasattr(obj, 'getCanvasOffset') and hasattr(obj, 'getFitted')
-    except (AttributeError, TypeError, RuntimeError):
-        return False
-
-
-def _is_snt_chart_object(obj) -> bool:
-    """Check if object is an SNT Chart."""
-    try:
-        # Check if it's a Java object with show() method and looks like a chart
-        return (
-                hasattr(obj, 'show') and
-                hasattr(obj, 'save') and
-                (hasattr(obj, 'getChart') or hasattr(obj, 'getFrame'))
-        )
     except (AttributeError, TypeError, RuntimeError):
         return False
 
@@ -247,38 +344,29 @@ def _is_snt_chart(obj: Any) -> bool:
     except (AttributeError, TypeError, RuntimeError):  # java errors can cause RuntimeError, etc.
         return False
 
-
 def _is_snt_table(obj: Any) -> bool:
     """Check if object is an SNT Table."""
     try:
-        # First check: Must be specifically an SNTTable class
-        #  We must be specific to avoid catching generic collections
-        obj_class_name = _get_java_class_name(obj)
-        logger.debug(f"SNTTable predicate: Checking class '{obj_class_name}'")
-
-        # Must contain 'SNTTable' in the class name (handles full package names)
-        if 'SNTTable' not in obj_class_name:
-            logger.debug(f"SNTTable predicate: REJECT - class name doesn't contain 'SNTTable'")
-            return False
-
-        # Second check: Must have SNTTable-specific methods
-        # SNTTable has these methods that distinguish it from generic collections
-        snt_table_methods = [
-            'getColumnCount',  # Table dimension method
-            'getRowCount',  # Table dimension method
-            'getColumnHeader',  # SNTTable-specific header method
-        ]
-        has_all_methods = all(hasattr(obj, method) for method in snt_table_methods)
-        if not has_all_methods:
-            return False
-
-        logger.debug(f"SNTTable predicate: MATCH for {obj_class_name}")
-        return True
-
+        return JavaTypeDetector.matches_pattern(
+            obj,
+            class_patterns=['SNTTable'],
+            required_methods=['getColumnCount', 'getRowCount', 'getColumnHeader']
+        )
     except (AttributeError, TypeError, RuntimeError) as e:
         logger.debug(f"SNTTable predicate: FAILED for {type(obj)} - {e}")
         return False
 
+def _is_snt_graph(obj: Any) -> bool:
+    """Check if object is any SNTGraph."""
+    try:
+        return JavaTypeDetector.matches_pattern(
+            obj,
+            class_patterns=['SNTGraph', 'Graph'],
+            required_methods=['vertexSet', 'edgeSet', 'getEdgeSource', 'getEdgeTarget']
+        )
+    except (AttributeError, TypeError, RuntimeError) as e:
+        logger.debug(f"SNTGraph predicate: FAILED for {type(obj)} - {e}")
+        return False
 
 # Generic SNTGraph Converters
 class VertexExtractor:
@@ -347,9 +435,8 @@ class SWCPointExtractor(VertexExtractor):
                                 logger.debug(f"Could not extract BrainAnnotation details: {e}")
                         
                         elif attr == "color":
-                            attrs[attr] = value  # Store the java.awt.Color object itself
-                            # Also extract RGB components using helper function
-                            color_attrs = _extract_color_attributes(value)
+                            # Extract color attributes using enhanced helper
+                            color_attrs = _extract_color_attributes(value, "color")
                             attrs.update(color_attrs)
                         
                         else:
@@ -372,8 +459,8 @@ class SWCPointExtractor(VertexExtractor):
                                     attrs[attr] = obj.acronym()
                             
                             elif base_attr == "color":
-                                # Extract specific Color attribute using helper function
-                                color_attrs = _extract_color_attributes(obj)
+                                # Extract specific Color attribute using enhanced helper
+                                color_attrs = _extract_color_attributes(obj, "color")
                                 if sub_attr == 'rgb' and 'color_rgb' in color_attrs:
                                     attrs[attr] = color_attrs['color_rgb']
                                 elif sub_attr == 'hex' and 'color_hex' in color_attrs:
@@ -421,8 +508,8 @@ class BrainAnnotationExtractor(VertexExtractor):
                     
                     # Handle special cases
                     if attr == 'color' and value is not None:
-                        # Convert ColorRGB to hex string or RGB tuple using helper function
-                        color_attrs = _extract_color_attributes(value)
+                        # Convert ColorRGB to hex string or RGB tuple using enhanced helper
+                        color_attrs = _extract_color_attributes(value, "color")
                         if color_attrs:
                             attrs.update(color_attrs)
                         else:
@@ -517,7 +604,7 @@ _EDGE_EXTRACTORS = {
 
 
 def _detect_vertex_type(graph: Any) -> str:
-    """Detect the vertex type of an SNTGraph."""
+    """Detect the vertex type of a SNTGraph."""
     try:
         vertices = graph.vertexSet()
         if vertices:
@@ -567,27 +654,7 @@ def _detect_edge_type(graph: Any) -> str:
     return 'Unknown'
 
 
-def _is_snt_graph(obj: Any) -> bool:
-    """Check if object is any SNTGraph (generic predicate)."""
-    try:
-        obj_class_name = _get_java_class_name(obj)
-        logger.debug(f"SNTGraph predicate: Checking class '{obj_class_name}'")
 
-        # Check for SNTGraph in class hierarchy or common graph methods
-        if 'SNTGraph' in obj_class_name or 'Graph' in obj_class_name:
-            # Verify it has basic graph methods
-            graph_methods = ['vertexSet', 'edgeSet', 'getEdgeSource', 'getEdgeTarget']
-            has_all_methods = all(hasattr(obj, method) for method in graph_methods)
-            if has_all_methods:
-                logger.debug(f"SNTGraph predicate: MATCH for {obj_class_name}")
-                return True
-        
-        logger.debug(f"SNTGraph predicate: REJECT - not an SNTGraph")
-        return False
-
-    except (AttributeError, TypeError, RuntimeError) as e:
-        logger.debug(f"SNTGraph predicate: FAILED for {type(obj)} - {e}")
-        return False
 
 
 def _convert_snt_graph(graph: Any, **kwargs) -> SNTObject:
@@ -915,15 +982,7 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: str, scale
     matplotlib.figure.Figure
         The converted matplotlib figure
     """
-    # Create temporary file
-    with tempfile.NamedTemporaryFile(
-            suffix=f'.{format_type}',
-            delete=False,
-            dir=temp_dir
-    ) as temp_file:
-        temp_path = temp_file.name
-
-    try:
+    with _temp_file(format_type, temp_dir) as temp_path:
         # Save chart using appropriate method
         if format_type == 'svg':
             chart.saveAsSVG(temp_path, scale)
@@ -951,14 +1010,6 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: str, scale
             fig = _png_to_matplotlib(png_file=temp_path, figsize=None)
 
         return fig
-
-    finally:
-        # Clean up temp file
-        try:
-            if os.path.exists(temp_path):
-                os.unlink(temp_path)
-        except OSError:
-            pass
 
 
 def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: str, scale: float, max_panels: int,
@@ -989,25 +1040,18 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: str, sca
     matplotlib.figure.Figure
         The assembled multipanel matplotlib figure
     """
-    import matplotlib.pyplot as plt
     import glob
     import os
     
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
-    # Create temporary directory for panel files
-    temp_chart_dir = tempfile.mkdtemp(dir=temp_dir)
-    base_name = "combined_chart"
-    temp_path = os.path.join(temp_chart_dir, f"{base_name}.{format_type}")
-    logger.debug(f"Created temp directory: {temp_chart_dir}")
-    logger.debug(f"Base temp path: {temp_path}")
+    with _temp_directory(temp_dir) as temp_chart_dir:
+        base_name = "combined_chart"
+        temp_path = os.path.join(temp_chart_dir, f"{base_name}.{format_type}")
+        logger.debug(f"Using temp directory: {temp_chart_dir}")
+        logger.debug(f"Base temp path: {temp_path}")
 
-    panel_files = []
-
-    try:
+        panel_files = []
         # Save combined chart - this will create multiple files
         if format_type == 'svg':
             chart.saveAsSVG(temp_path, scale)
@@ -1170,29 +1214,12 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: str, sca
 
         plt.tight_layout()
 
-        # Clean up all temporary files after figure is created
-        try:
-            import shutil
-            shutil.rmtree(temp_chart_dir, ignore_errors=True)
-            logger.debug(f"Cleaned up temp directory: {temp_chart_dir}")
-        except Exception as e:
-            logger.debug(f"Could not clean up temp directory: {e}")
-
         return fig
 
-    except Exception:
-        # Clean up on error
-        try:
-            import shutil
-            shutil.rmtree(temp_chart_dir, ignore_errors=True)
-        except Exception as cleanup_e:
-            logger.debug(f"Could not clean up temp directory after error: {cleanup_e}")
-        raise
 
-
-def _create_matplotlib_figure_from_image(img_array, figsize=None, title=None, dpi=None):
+def _create_figure_with_image(img_array, figsize=None, title=None, dpi=None, tight_layout=True):
     """
-    Common matplotlib figure creation from image array.
+    Unified figure creation with consistent formatting.
     
     Parameters
     ----------
@@ -1204,18 +1231,15 @@ def _create_matplotlib_figure_from_image(img_array, figsize=None, title=None, dp
         Figure title
     dpi : int, optional
         Figure DPI
+    tight_layout : bool, default True
+        Whether to apply tight layout formatting
 
     Returns
     -------
     matplotlib.figure.Figure
         Figure containing the image
     """
-    import matplotlib.pyplot as plt
-
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     # Create figure with specified parameters
     fig_kwargs = {}
@@ -1232,6 +1256,11 @@ def _create_matplotlib_figure_from_image(img_array, figsize=None, title=None, dp
 
     if title:
         ax.set_title(title)
+
+    if tight_layout:
+        fig.tight_layout(pad=0)
+        fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+        ax.margins(0)
 
     return fig
 
@@ -1263,8 +1292,8 @@ def _png_to_matplotlib(png_file: str, figsize=None) -> Figure:
             height, width = img.shape[:2]
             figsize = (width / 100, height / 100)  # Rough conversion to inches
 
-        # Use common figure creation
-        return _create_matplotlib_figure_from_image(img, figsize=figsize)
+        # Use unified figure creation
+        return _create_figure_with_image(img, figsize=figsize, tight_layout=False)
 
     except Exception as e:
         logger.error(f"Failed to convert PNG to matplotlib: {e}")
@@ -1464,15 +1493,8 @@ def _svg_to_matplotlib(svg_file, dpi=300, figsize=None, background='white'):
         # Convert pixels back to inches at the specified DPI
         figsize = (w / dpi, h / dpi)
 
-    # Use common figure creation
-    fig = _create_matplotlib_figure_from_image(img, figsize=figsize, dpi=dpi)
-
-    # Apply SVG-specific formatting
-    fig.tight_layout(pad=0)
-    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
-    fig.axes[0].margins(0)
-
-    return fig
+    # Use unified figure creation with SVG-specific tight layout
+    return _create_figure_with_image(img, figsize=figsize, dpi=dpi, tight_layout=True)
 
 
 def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
@@ -1537,20 +1559,14 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
         h, w = img.shape[:2]
         figsize = (w / dpi, h / dpi)
 
-    # Use common figure creation
-    fig = _create_matplotlib_figure_from_image(
+    # Use unified figure creation with PDF-specific tight layout
+    return _create_figure_with_image(
         img,
         figsize=figsize,
         title=f"PDF Page {page + 1}",
-        dpi=dpi
+        dpi=dpi,
+        tight_layout=True
     )
-
-    # Apply PDF-specific formatting
-    fig.tight_layout(pad=0)
-    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
-    fig.axes[0].margins(0)
-
-    return fig
 
 
 # Define the converters
@@ -1707,9 +1723,9 @@ def display(obj: Any, **kwargs) -> Any:
     kwargs['_internal'][_recursion_key] = True
 
     try:
-        if _is_tree_object(obj):
+        if _is_snt_tree(obj):
             obj = obj.getSkeleton2D()
-        elif _is_path_object(obj):
+        elif _is_snt_path(obj):
             from . import Tree
             obj = _convert_path_to_xarray(obj)
 
@@ -1983,19 +1999,15 @@ def _show_matplotlib_figure(fig=None, **kwargs) -> bool:
     bool
         True if display succeeded, False otherwise
     """
-    import matplotlib.pyplot as plt
     import matplotlib
+    
+    plt = _setup_matplotlib_interactive()
 
     # Get the figure to display
     if fig is None:
         fig = plt.gcf()  # Get current figure
 
     logger.debug(f"Showing matplotlib figure with unified display (backend: {matplotlib.get_backend()})")
-
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
 
     try:
         # Make figure current and show
@@ -2115,16 +2127,9 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
     if not HAS_NETWORKX:
         raise ImportError("NetworkX is required for graph visualization. Install with: pip install networkx")
     
-    import matplotlib.pyplot as plt
+    plt = _setup_matplotlib_interactive()
     
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
-    
-    # Get visualization parameters with smart defaults
-    from .config import get_option
-    
+    # Get visualization parameters with sensible defaults
     graph_type = kwargs.get('graph_type', 'Unknown')
     default_layout = _get_default_layout_for_graph_type(graph_type)
     layout = kwargs.get('layout', default_layout)
@@ -2379,12 +2384,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
     None
         This function performs display as a side effect
     """
-    import matplotlib.pyplot as plt
-    
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     logger.debug(f"Displaying xarray object: {type(xarr)}")
 
@@ -2694,13 +2694,9 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
     bool
         True if successful, False otherwise
     """
-    import matplotlib.pyplot as plt
     import numpy as np
     
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     try:
         fig, axes = plt.subplots(2, 2, figsize=figsize)
@@ -2840,13 +2836,9 @@ def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], tit
     bool
         True if successful, False otherwise
     """
-    import matplotlib.pyplot as plt
     import numpy as np
     
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     try:
         # Create distribution plots for each variable
@@ -2926,13 +2918,9 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
     bool
         True if successful, False otherwise
     """
-    import matplotlib.pyplot as plt
     import numpy as np
     
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     try:
         # Get numeric variables
@@ -3105,12 +3093,7 @@ def _display_array_data(data, source_type="array", **kwargs):
     SNTObject or None
         SNTObject with display result or None on failure
     """
-    import matplotlib.pyplot as plt
-    
-    # Ensure matplotlib is in interactive mode based on configuration
-    from .config import get_option
-    if get_option('pyplot.ion') and not plt.isinteractive():
-        plt.ion()
+    plt = _setup_matplotlib_interactive()
 
     # Handle different dimensionalities
     original_shape = data.shape
@@ -3227,7 +3210,7 @@ def list_converters() -> List[Dict[str, Any]]:
 
 def _should_enhance_object(obj) -> bool:
     """Check if object should be enhanced with fallback methods."""
-    return _is_snt_chart_object(obj) or _is_gui_object(obj)
+    return _is_snt_chart(obj) or _is_gui_object(obj)
 
 
 def _enhanced_show_method(original_obj):
@@ -3282,7 +3265,7 @@ class EnhancedJavaObject:
     def __init__(self, java_obj):
         """Initialize with a Java object to wrap."""
         object.__setattr__(self, '_java_obj', java_obj)
-        object.__setattr__(self, '_is_chart', _is_snt_chart_object(java_obj))
+        object.__setattr__(self, '_is_chart', _is_snt_chart(java_obj))
         object.__setattr__(self, '_is_gui', _is_gui_object(java_obj))
         object.__setattr__(self, '_enhanced', _should_enhance_object(java_obj))
 
@@ -3401,7 +3384,7 @@ def enhance_java_object(obj: Any) -> Any:
         try:
             enhanced_obj = EnhancedJavaObject(obj)
             enhancement_types = []
-            if _is_snt_chart_object(obj):
+            if _is_snt_chart(obj):
                 enhancement_types.append("show()")
             if _is_gui_object(obj):
                 enhancement_types.append("setVisible()")
