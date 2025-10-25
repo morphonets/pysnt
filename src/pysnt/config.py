@@ -70,6 +70,27 @@ def _positive_int_validator(value: int) -> int:
     return value
 
 
+def _layout_algorithm_validator(value: str) -> str:
+    """Validate layout algorithm option."""
+    valid_layouts = {
+        'spring', 'circular', 'random', 'shell', 'kamada_kawai', 
+        'planar', 'spectral', 'spiral', 'spatial', 'anatomical'
+    }
+    if value not in valid_layouts:
+        raise ValueError(f"Invalid layout algorithm '{value}'. Must be one of {valid_layouts}")
+    return value
+
+
+def _graph_type_validator(value: str) -> str:
+    """Validate graph type for layout defaults."""
+    valid_types = {
+        'DirectedWeightedGraph', 'AnnotationGraph', 'SWCPoint', 'BrainAnnotation', 'Unknown'
+    }
+    if value not in valid_types:
+        raise ValueError(f"Invalid graph type '{value}'. Must be one of {valid_types}")
+    return value
+
+
 # Global configuration registry
 _global_config: Dict[str, _Option] = {}
 
@@ -133,6 +154,50 @@ _register_option(
     'pyplot.ion',
     True,
     'Enable matplotlib interactive mode (plt.ion()) for better plot display',
+    lambda x: bool(x)
+)
+
+# Graph layout configuration options
+_register_option(
+    'graph.layout.DirectedWeightedGraph',
+    'spring',
+    'Default layout algorithm for DirectedWeightedGraph (neural morphology)',
+    _layout_algorithm_validator
+)
+
+_register_option(
+    'graph.layout.AnnotationGraph',
+    'circular',
+    'Default layout algorithm for AnnotationGraph (brain regions)',
+    _layout_algorithm_validator
+)
+
+_register_option(
+    'graph.layout.SWCPoint',
+    'spring',
+    'Default layout algorithm for SWCPoint-based graphs (neural morphology fallback)',
+    _layout_algorithm_validator
+)
+
+_register_option(
+    'graph.layout.BrainAnnotation',
+    'circular',
+    'Default layout algorithm for BrainAnnotation-based graphs (brain regions fallback)',
+    _layout_algorithm_validator
+)
+
+_register_option(
+    'graph.layout.default',
+    'spring',
+    'Default layout algorithm for unknown graph types',
+    _layout_algorithm_validator
+)
+
+# Graph processing configuration options
+_register_option(
+    'graph.processing.warn_self_loops',
+    True,
+    'Warn when self-loops are detected in neural morphology graphs',
     lambda x: bool(x)
 )
 

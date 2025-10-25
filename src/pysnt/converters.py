@@ -48,12 +48,93 @@ except ImportError:
     HAS_PANDASGUI = False
     pandasgui_show = None
 
+try:
+    import networkx as nx
+
+    HAS_NETWORKX = True
+except ImportError:
+    HAS_NETWORKX = False
+    nx = None
+
 import matplotlib.image as mpimg
 import numpy as np
 import scyjava as sj
 from matplotlib.figure import Figure
 
 logger = logging.getLogger(__name__)
+
+
+def _diagnose_graph_structure(nx_graph, graph_type: str = 'Unknown') -> None:
+    """
+    Diagnose and log information about graph structure for debugging.
+    
+    Parameters
+    ----------
+    nx_graph : networkx.Graph
+        The NetworkX graph to diagnose
+    graph_type : str
+        Type of the graph for context
+    """
+    if not HAS_NETWORKX:
+        return
+    
+    logger.info(f"Graph structure diagnosis for {graph_type}:")
+    logger.info(f"  Nodes: {nx_graph.number_of_nodes()}")
+    logger.info(f"  Edges: {nx_graph.number_of_edges()}")
+    logger.info(f"  Directed: {nx_graph.is_directed()}")
+    
+    # Check for self-loops
+    self_loops = list(nx.selfloop_edges(nx_graph))
+    logger.info(f"  Self-loops: {len(self_loops)}")
+    if self_loops:
+        logger.warning(f"  Self-loop edges: {self_loops[:5]}{'...' if len(self_loops) > 5 else ''}")
+    
+    # Check for multiple edges between same nodes
+    if hasattr(nx_graph, 'is_multigraph') and not nx_graph.is_multigraph():
+        # For simple graphs, check for potential issues
+        edge_list = list(nx_graph.edges())
+        unique_edges = set(edge_list)
+        if len(edge_list) != len(unique_edges):
+            logger.warning(f"  Duplicate edges detected: {len(edge_list) - len(unique_edges)} duplicates")
+    
+    # Check connectivity
+    if nx_graph.number_of_nodes() > 0:
+        if nx_graph.is_directed():
+            is_connected = nx.is_weakly_connected(nx_graph)
+            logger.info(f"  Weakly connected: {is_connected}")
+        else:
+            is_connected = nx.is_connected(nx_graph)
+            logger.info(f"  Connected: {is_connected}")
+
+
+
+def _extract_color_attributes(color_obj: Any) -> Dict[str, Any]:
+    """
+    Extract RGB and hex color attributes from a java.awt.Color object.
+    
+    Parameters
+    ----------
+    color_obj : java.awt.Color
+        The Color object to extract attributes from
+        
+    Returns
+    -------
+    dict
+        Dictionary containing 'color_rgb' tuple and 'color_hex' string,
+        or empty dict if extraction fails
+    """
+    attrs = {}
+    try:
+        if color_obj is not None and hasattr(color_obj, 'getRed') and hasattr(color_obj, 'getGreen') and hasattr(color_obj, 'getBlue'):
+            r = int(color_obj.getRed())
+            g = int(color_obj.getGreen())
+            b = int(color_obj.getBlue())
+            attrs['color_rgb'] = (r, g, b)
+            attrs['color_hex'] = f"#{r:02x}{g:02x}{b:02x}"
+    except Exception as e:
+        logger.debug(f"Could not extract Color RGB values: {e}")
+    
+    return attrs
 
 
 class SNTObject(TypedDict):
@@ -196,6 +277,517 @@ def _is_snt_table(obj: Any) -> bool:
 
     except (AttributeError, TypeError, RuntimeError) as e:
         logger.debug(f"SNTTable predicate: FAILED for {type(obj)} - {e}")
+        return False
+
+
+# Generic SNTGraph Converters
+class VertexExtractor:
+    """Base class for vertex attribute extraction."""
+    
+    def extract_attributes(self, vertex: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from a vertex object."""
+        raise NotImplementedError
+    
+    def get_default_attributes(self) -> List[str]:
+        """Get default attributes to extract for this vertex type."""
+        raise NotImplementedError
+    
+    def get_display_position(self, vertex: Any) -> Optional[tuple]:
+        """Get (x, y) position for display, or None if not available."""
+        return None
+
+
+class EdgeExtractor:
+    """Base class for edge attribute extraction."""
+
+    def extract_attributes(self, edge: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from an edge object."""
+        raise NotImplementedError
+
+    def get_default_attributes(self) -> List[str]:
+        """Get default attributes to extract for this edge type."""
+        raise NotImplementedError
+
+
+class SWCPointExtractor(VertexExtractor):
+    """Extractor for SWCPoint vertices."""
+    
+    def extract_attributes(self, vertex: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from SWCPoint vertex."""
+        attrs = {}
+        
+        # Direct field access (JPype handles type conversion)
+        direct_fields = ["x", "y", "z", "radius", "type", "id", "parent"]
+        
+        # Methods that return objects needing special handling (python -> Java mapping)
+        methods = {"annotation": "getAnnotation", "color": "getColor"}
+        
+        for attr in requested_attrs:
+            try:
+                # Direct field access
+                if attr in direct_fields and hasattr(vertex, attr):
+                    attrs[attr] = getattr(vertex, attr)
+                
+                # Method-based access for complex objects
+                elif attr in methods and hasattr(vertex, methods[attr]):
+                    method = getattr(vertex, methods[attr])
+                    value = method()
+                    
+                    if value is not None:
+                        if attr == "annotation": # Handle BrainAnnotation object
+                            attrs[attr] = value  # Store the BrainAnnotation object itself
+                            try: # Also extract common BrainAnnotation attributes
+                                if hasattr(value, 'id'):
+                                    attrs['annotation_id'] = value.id()
+                                if hasattr(value, 'name'):
+                                    attrs['annotation_name'] = value.name()
+                                if hasattr(value, 'acronym'):
+                                    attrs['annotation_acronym'] = value.acronym()
+                            except Exception as e:
+                                logger.debug(f"Could not extract BrainAnnotation details: {e}")
+                        
+                        elif attr == "color":
+                            attrs[attr] = value  # Store the java.awt.Color object itself
+                            # Also extract RGB components using helper function
+                            color_attrs = _extract_color_attributes(value)
+                            attrs.update(color_attrs)
+                        
+                        else:
+                            attrs[attr] = value
+                
+                # Handle nested attribute requests (e.g., 'annotation_id', 'color_rgb')
+                elif '_' in attr:
+                    base_attr, sub_attr = attr.split('_', 1)
+                    if base_attr in methods and hasattr(vertex, methods[base_attr]):
+                        method = getattr(vertex, methods[base_attr])
+                        obj = method()
+
+                        if obj is not None:
+                            if base_attr == "annotation": # Extract specific BrainAnnotation attribute
+                                if sub_attr == 'id':
+                                    attrs[attr] = obj.id()
+                                elif sub_attr == 'name':
+                                    attrs[attr] = obj.name()
+                                elif sub_attr == 'acronym':
+                                    attrs[attr] = obj.acronym()
+                            
+                            elif base_attr == "color":
+                                # Extract specific Color attribute using helper function
+                                color_attrs = _extract_color_attributes(obj)
+                                if sub_attr == 'rgb' and 'color_rgb' in color_attrs:
+                                    attrs[attr] = color_attrs['color_rgb']
+                                elif sub_attr == 'hex' and 'color_hex' in color_attrs:
+                                    attrs[attr] = color_attrs['color_hex']
+                
+            except Exception as e:
+                logger.debug(f"Could not extract attribute '{attr}' from SWCPoint: {e}")
+        
+        return attrs
+    
+    def get_default_attributes(self) -> List[str]:
+        """Default SWCPoint attributes."""
+        return ['x', 'y', 'z', 'radius', 'type', 'id', 'parent', 'annotation_id', 'annotation_name', 'color_hex']
+    
+    def get_display_position(self, vertex: Any) -> Optional[tuple]:
+        """Get (x, y, z) position from SWCPoint."""
+        try:
+            return vertex.x, vertex.y, vertex.z
+        except Exception as e:
+            logger.debug(f"Could not extract position from SWCPoint: {e}")
+        return None
+
+
+class BrainAnnotationExtractor(VertexExtractor):
+    """Extractor for BrainAnnotation vertices."""
+    
+    def extract_attributes(self, vertex: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from BrainAnnotation vertex."""
+        attrs = {}
+        
+        # Standard BrainAnnotation attributes via methods
+        method_attrs = {
+            'id': 'id',
+            'name': 'name',
+            'acronym': 'acronym',
+            'color': 'color'
+        }
+        
+        for attr in requested_attrs:
+            try:
+                # Try method-based access
+                if attr in method_attrs and hasattr(vertex, method_attrs[attr]):
+                    method = getattr(vertex, method_attrs[attr])
+                    value = method()
+                    
+                    # Handle special cases
+                    if attr == 'color' and value is not None:
+                        # Convert ColorRGB to hex string or RGB tuple using helper function
+                        color_attrs = _extract_color_attributes(value)
+                        if color_attrs:
+                            attrs.update(color_attrs)
+                        else:
+                            attrs[attr] = str(value)  # Fallback to string representation
+                    else:
+                        attrs[attr] = value
+                        
+                # Try direct attribute access
+                elif hasattr(vertex, attr):
+                    value = getattr(vertex, attr)
+                    attrs[attr] = value
+                    
+            except Exception as e:
+                logger.debug(f"Could not extract attribute '{attr}' from BrainAnnotation: {e}")
+        
+        # Add hierarchical information if available
+        try:
+            if hasattr(vertex, 'getParent'):
+                parent = vertex.getParent()
+                if parent is not None:
+                    attrs['parent_id'] = parent.id() if hasattr(parent, 'id') else str(parent)
+                    attrs['parent_name'] = parent.name() if hasattr(parent, 'name') else str(parent)
+        except Exception as e:
+            logger.debug(f"Could not extract parent information: {e}")
+        
+        return attrs
+    
+    def get_default_attributes(self) -> List[str]:
+        """Default BrainAnnotation attributes."""
+        return ['id', 'name', 'acronym', 'color']
+
+
+class SWCWeightedEdgeExtractor(EdgeExtractor):
+    """Extractor for SWCWeightedEdge edges."""
+    
+    def extract_attributes(self, edge: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from SWCWeightedEdge."""
+        attrs = {}
+        
+        for attr in requested_attrs:
+            try:
+                if attr == 'weight' and hasattr(edge, 'getWeight'):
+                    attrs[attr] = edge.getWeight()  # JPype handles double->float conversion
+                elif attr == 'length' and hasattr(edge, 'getLength'):
+                    attrs[attr] = edge.getLength()  # JPype handles double->float conversion
+                elif hasattr(edge, attr):
+                    attrs[attr] = getattr(edge, attr)  # Direct access fallback
+            except Exception as e:
+                logger.debug(f"Could not extract attribute '{attr}' from SWCWeightedEdge: {e}")
+        
+        return attrs
+    
+    def get_default_attributes(self) -> List[str]:
+        """Default SWCWeightedEdge attributes."""
+        return ['weight', 'length']
+
+
+class AnnotationWeightedEdgeExtractor(EdgeExtractor):
+    """Extractor for AnnotationWeightedEdge edges."""
+    
+    def extract_attributes(self, edge: Any, requested_attrs: List[str]) -> Dict[str, Any]:
+        """Extract attributes from AnnotationWeightedEdge."""
+        attrs = {}
+        
+        for attr in requested_attrs:
+            try:
+                # Both weight and length return the same value (getWeight()) for AnnotationWeightedEdge
+                if attr in ['weight', 'length'] and hasattr(edge, 'getWeight'):
+                    attrs[attr] = edge.getWeight()  # JPype handles double->float conversion
+                elif hasattr(edge, attr):
+                    attrs[attr] = getattr(edge, attr)  # Direct access fallback
+            except Exception as e:
+                logger.debug(f"Could not extract attribute '{attr}' from AnnotationWeightedEdge: {e}")
+        
+        return attrs
+    
+    def get_default_attributes(self) -> List[str]:
+        """Default AnnotationWeightedEdge attributes."""
+        return ['weight', 'length']
+
+
+# Registry for vertex and edge extractors
+_VERTEX_EXTRACTORS = {
+    'SWCPoint': SWCPointExtractor(),
+    'BrainAnnotation': BrainAnnotationExtractor(),
+}
+
+_EDGE_EXTRACTORS = {
+    'SWCWeightedEdge': SWCWeightedEdgeExtractor(),
+    'AnnotationWeightedEdge': AnnotationWeightedEdgeExtractor(),
+}
+
+
+def _detect_vertex_type(graph: Any) -> str:
+    """Detect the vertex type of an SNTGraph."""
+    try:
+        vertices = graph.vertexSet()
+        if vertices:
+            # Get first vertex to determine type
+            first_vertex = next(iter(vertices))
+            vertex_class_name = _get_java_class_name(first_vertex)
+            
+            # Check for known types
+            if 'SWCPoint' in vertex_class_name:
+                return 'SWCPoint'
+            elif 'BrainAnnotation' in vertex_class_name:
+                return 'BrainAnnotation'
+            else:
+                # Try interface detection for BrainAnnotation
+                if (hasattr(first_vertex, 'id') and hasattr(first_vertex, 'name') and 
+                    hasattr(first_vertex, 'acronym')):
+                    return 'BrainAnnotation'
+                
+                logger.debug(f"Unknown vertex type: {vertex_class_name}")
+                return 'Unknown'
+    except Exception as e:
+        logger.debug(f"Could not detect vertex type: {e}")
+    
+    return 'Unknown'
+
+
+def _detect_edge_type(graph: Any) -> str:
+    """Detect the edge type of an SNTGraph."""
+    try:
+        edges = graph.edgeSet()
+        if edges:
+            # Get first edge to determine type
+            first_edge = next(iter(edges))
+            edge_class_name = _get_java_class_name(first_edge)
+            
+            # Check for known types
+            if 'SWCWeightedEdge' in edge_class_name:
+                return 'SWCWeightedEdge'
+            elif 'AnnotationWeightedEdge' in edge_class_name:
+                return 'AnnotationWeightedEdge'
+            else:
+                logger.debug(f"Unknown edge type: {edge_class_name}")
+                return 'Unknown'
+    except Exception as e:
+        logger.debug(f"Could not detect edge type: {e}")
+    
+    return 'Unknown'
+
+
+def _is_snt_graph(obj: Any) -> bool:
+    """Check if object is any SNTGraph (generic predicate)."""
+    try:
+        obj_class_name = _get_java_class_name(obj)
+        logger.debug(f"SNTGraph predicate: Checking class '{obj_class_name}'")
+
+        # Check for SNTGraph in class hierarchy or common graph methods
+        if 'SNTGraph' in obj_class_name or 'Graph' in obj_class_name:
+            # Verify it has basic graph methods
+            graph_methods = ['vertexSet', 'edgeSet', 'getEdgeSource', 'getEdgeTarget']
+            has_all_methods = all(hasattr(obj, method) for method in graph_methods)
+            if has_all_methods:
+                logger.debug(f"SNTGraph predicate: MATCH for {obj_class_name}")
+                return True
+        
+        logger.debug(f"SNTGraph predicate: REJECT - not an SNTGraph")
+        return False
+
+    except (AttributeError, TypeError, RuntimeError) as e:
+        logger.debug(f"SNTGraph predicate: FAILED for {type(obj)} - {e}")
+        return False
+
+
+def _convert_snt_graph(graph: Any, **kwargs) -> SNTObject:
+    """
+    Generic converter for SNTGraph objects to NetworkX graphs.
+    
+    This converter uses a plugin system with vertex and edge extractors
+    to handle different SNTGraph subtypes (DirectedWeightedGraph, AnnotationGraph, etc.).
+
+    Parameters
+    ----------
+    graph : SNTGraph
+        Any SNTGraph object (DirectedWeightedGraph, AnnotationGraph, etc.)
+    **kwargs
+        Additional conversion options:
+        - include_metadata: bool, whether to include graph metadata (default: True)
+        - node_attributes: list, node attributes to extract (default: auto-detected)
+        - edge_attributes: list, edge attributes to extract (default: auto-detected)
+        - vertex_extractor: VertexExtractor, custom vertex extractor (default: auto-detected)
+        - edge_extractor: EdgeExtractor, custom edge extractor (default: auto-detected)
+
+    Returns
+    -------
+    dict
+        Dictionary (SNTObject TypedDict) containing graph information and NetworkX graph
+    """
+    # Create result SNTObject dictionary
+    result: SNTObject = {
+        'type': type(nx.DiGraph) if HAS_NETWORKX else type(None),
+        'data': None,
+        'metadata': {},
+        'error': None
+    }
+
+    try:
+        # Check if NetworkX is available
+        if not HAS_NETWORKX:
+            result['error'] = ImportError(
+                "NetworkX is required for SNTGraph conversion. Install with: pip install networkx")
+            logger.error("Missing NetworkX for SNTGraph conversion")
+            return result
+
+        logger.info("Converting SNTGraph to NetworkX graph")
+
+        # Detect vertex and edge types
+        vertex_type = _detect_vertex_type(graph)
+        edge_type = _detect_edge_type(graph)
+        
+        logger.debug(f"Detected vertex type: {vertex_type}, edge type: {edge_type}")
+
+        # Get extractors
+        vertex_extractor = kwargs.get('vertex_extractor') or _VERTEX_EXTRACTORS.get(vertex_type)
+        edge_extractor = kwargs.get('edge_extractor') or _EDGE_EXTRACTORS.get(edge_type)
+        
+        if vertex_extractor is None:
+            logger.warning(f"No vertex extractor found for type: {vertex_type}")
+            vertex_extractor = SWCPointExtractor()  # Fallback
+            
+        if edge_extractor is None:
+            logger.warning(f"No edge extractor found for type: {edge_type}")
+            edge_extractor = SWCWeightedEdgeExtractor()  # Fallback
+
+        # Get conversion options
+        include_metadata = kwargs.get('include_metadata', True)
+        node_attributes = kwargs.get('node_attributes') or vertex_extractor.get_default_attributes()
+        edge_attributes = kwargs.get('edge_attributes') or edge_extractor.get_default_attributes()
+
+        # Determine if graph is directed (most SNTGraphs are directed)
+        is_directed = True  # Default assumption for SNTGraphs
+        try:
+            # Try to detect if it's specifically a directed graph
+            graph_class_name = _get_java_class_name(graph)
+            if 'Directed' in graph_class_name:
+                is_directed = True
+            elif 'Undirected' in graph_class_name:
+                is_directed = False
+        except Exception:
+            pass
+
+        # Create NetworkX graph
+        nx_graph = nx.DiGraph() if is_directed else nx.Graph()
+
+        # Extract vertices
+        vertices = graph.vertexSet()
+        vertex_count = len(vertices) if hasattr(vertices, '__len__') else sum(1 for _ in vertices)
+        logger.debug(f"Processing {vertex_count} vertices")
+
+        # Add nodes to NetworkX graph
+        for vertex in vertices:
+            try:
+                node_id = vertex
+                node_attrs = vertex_extractor.extract_attributes(vertex, node_attributes)
+                nx_graph.add_node(node_id, **node_attrs)
+            except Exception as e:
+                logger.warning(f"Failed to process vertex {vertex}: {e}")
+
+        # Extract edges
+        edges = graph.edgeSet()
+        edge_count = len(edges) if hasattr(edges, '__len__') else sum(1 for _ in edges)
+        logger.debug(f"Processing {edge_count} edges")
+
+        # Add edges to NetworkX graph
+        from . import get_option
+        warn_self_loops = get_option('graph.processing.warn_self_loops')
+        self_loops_detected = 0
+        
+        for edge in edges:
+            try:
+                source = graph.getEdgeSource(edge)
+                target = graph.getEdgeTarget(edge)
+                
+                # Check for self-loops (especially important for neural morphology)
+                if source == target:
+                    self_loops_detected += 1
+                    
+                    if warn_self_loops:
+                        logger.warning(f"Self-loop detected: {source} -> {target}")
+
+                
+                edge_attrs = edge_extractor.extract_attributes(edge, edge_attributes)
+                nx_graph.add_edge(source, target, **edge_attrs)
+            except Exception as e:
+                logger.warning(f"Failed to process edge {edge}: {e}")
+        
+        # Log self-loop detection summary
+        if self_loops_detected > 0 and warn_self_loops:
+            logger.warning(f"Detected {self_loops_detected} self-loop(s) in {vertex_type}/{edge_type} graph.")
+
+        result['data'] = nx_graph
+
+        # Add metadata if requested
+        if include_metadata:
+            try:
+                result['metadata']['node_count'] = nx_graph.number_of_nodes()
+                result['metadata']['edge_count'] = nx_graph.number_of_edges()
+                result['metadata']['is_directed'] = nx_graph.is_directed()
+                result['metadata']['vertex_type'] = vertex_type
+                result['metadata']['edge_type'] = edge_type
+                result['metadata']['node_attributes'] = node_attributes
+                result['metadata']['edge_attributes'] = edge_attributes
+                
+                # Add self-loop information to metadata
+                result['metadata']['self_loops_detected'] = self_loops_detected
+
+                # Add basic graph statistics
+                if nx_graph.number_of_nodes() > 0:
+                    if is_directed:
+                        result['metadata']['is_connected'] = nx.is_weakly_connected(nx_graph)
+                    else:
+                        result['metadata']['is_connected'] = nx.is_connected(nx_graph)
+                    
+                    if nx_graph.number_of_edges() > 0:
+                        result['metadata']['density'] = nx.density(nx_graph)
+                        
+                    # Check for remaining self-loops in the final graph
+                    remaining_self_loops = list(nx.selfloop_edges(nx_graph))
+                    result['metadata']['final_self_loops'] = len(remaining_self_loops)
+                
+            except Exception as e:
+                logger.debug(f"Could not extract graph metadata: {e}")
+
+        logger.info(f"Successfully converted {vertex_type}/{edge_type} SNTGraph to NetworkX "
+                   f"({nx_graph.number_of_nodes()} nodes, {nx_graph.number_of_edges()} edges)")
+
+        return result
+
+    except Exception as e:
+        logger.error(f"Failed to convert SNTGraph: {e}")
+        result['error'] = e
+        return result
+
+
+def _is_directed_weighted_graph(obj: Any) -> bool:
+    """Check if object is a DirectedWeightedGraph."""
+    try:
+        obj_class_name = _get_java_class_name(obj)
+        logger.debug(f"DirectedWeightedGraph predicate: Checking class '{obj_class_name}'")
+
+        # Must contain 'DirectedWeightedGraph' in the class name
+        if 'DirectedWeightedGraph' not in obj_class_name:
+            logger.debug(f"DirectedWeightedGraph predicate: REJECT - class name doesn't contain 'DirectedWeightedGraph'")
+            return False
+
+        # Check for graph-specific methods
+        graph_methods = [
+            'vertexSet',  # AbstractBaseGraph
+            'edgeSet',   # AbstractBaseGraph
+            'getEdgeSource',  # Get edge source
+            'getEdgeTarget',  # Get edge target
+        ]
+        has_all_methods = all(hasattr(obj, method) for method in graph_methods)
+        if not has_all_methods:
+            logger.debug(f"DirectedWeightedGraph predicate: REJECT - missing required methods")
+            return False
+
+        logger.debug(f"DirectedWeightedGraph predicate: MATCH for {obj_class_name}")
+        return True
+
+    except (AttributeError, TypeError, RuntimeError) as e:
+        logger.debug(f"DirectedWeightedGraph predicate: FAILED for {type(obj)} - {e}")
         return False
 
 
@@ -679,6 +1271,40 @@ def _png_to_matplotlib(png_file: str, figsize=None) -> Figure:
         raise
 
 
+def _convert_directed_weighted_graph(graph: Any, **kwargs) -> SNTObject:
+    """
+    Convert DirectedWeightedGraph to a SNTObject containing a NetworkX DiGraph.
+    
+    Phase 4: This converter now uses the generic SNTGraph conversion system
+    while maintaining backward compatibility.
+
+    Parameters
+    ----------
+    graph : DirectedWeightedGraph
+        The DirectedWeightedGraph object to convert
+    **kwargs
+        Additional conversion options:
+        - include_metadata: bool, whether to include graph metadata (default: True)
+        - node_attributes: list, additional node attributes to extract (default: ['x', 'y', 'z', 'radius'])
+        - edge_attributes: list, additional edge attributes to extract (default: ['weight', 'length'])
+
+    Returns
+    -------
+    dict
+        Dictionary (SNTObject TypedDict) containing graph information and NetworkX DiGraph
+    """
+    logger.info("Converting DirectedWeightedGraph using generic SNTGraph converter")
+    
+    # Use the generic converter with SWCPoint/SWCWeightedEdge extractors
+    # This maintains backward compatibility while using the new system
+    kwargs.setdefault('vertex_extractor', SWCPointExtractor())
+    kwargs.setdefault('edge_extractor', SWCWeightedEdgeExtractor())
+    kwargs.setdefault('node_attributes', ['x', 'y', 'z', 'radius', 'type', 'id'])
+    kwargs.setdefault('edge_attributes', ['weight', 'length'])
+    
+    return _convert_snt_graph(graph, **kwargs)
+
+
 def _convert_snt_table(table: Any, **kwargs) -> SNTObject:
     """
     Convert SNT Table to a SNTObject containing a xarray Dataset.
@@ -941,6 +1567,20 @@ SNT_CONVERTERS = [
         priority=sj.Priority.NORMAL,
         name="SNTChart_to_Matplotlib"
     ),
+    # Phase 1: Keep existing DirectedWeightedGraph converter (will be migrated in Phase 4)
+    sj.Converter(
+        predicate=_is_directed_weighted_graph,
+        converter=_convert_directed_weighted_graph,
+        priority=sj.Priority.EXTREMELY_HIGH,  # Higher than generic to maintain compatibility
+        name="DirectedWeightedGraph_to_NetworkX"
+    ),
+    # Phase 2-3: Generic SNTGraph converter (lower priority as fallback)
+    sj.Converter(
+        predicate=_is_snt_graph,
+        converter=_convert_snt_graph,
+        priority=sj.Priority.HIGH,  # Lower than specific converters
+        name="SNTGraph_to_NetworkX"
+    ),
 ]
 
 
@@ -1148,6 +1788,45 @@ def _handle_snt_object_display(obj, **kwargs):
         with np.printoptions(precision=3, suppress=True):
             print(data)
         return obj
+    elif HAS_NETWORKX and isinstance(data, (nx.Graph, nx.DiGraph, nx.MultiGraph, nx.MultiDiGraph)):
+        logger.info(f"Displaying NetworkX graph ({type(data).__name__} with {data.number_of_nodes()} nodes, {data.number_of_edges()} edges)")
+        try:
+            # Extract graph type information from SNTObject metadata for smart defaults
+            metadata = obj.get('metadata', {})
+            
+            # Determine graph type from metadata
+            graph_type = 'Unknown'
+            if 'vertex_type' in metadata and 'edge_type' in metadata:
+                vertex_type = metadata['vertex_type']
+                edge_type = metadata['edge_type']
+                
+                # Map vertex/edge types to original graph types
+                if vertex_type == 'SWCPoint' and edge_type == 'SWCWeightedEdge':
+                    graph_type = 'DirectedWeightedGraph'
+                elif vertex_type == 'BrainAnnotation' and edge_type == 'AnnotationWeightedEdge':
+                    graph_type = 'AnnotationGraph'
+                else:
+                    graph_type = f"{vertex_type}_{edge_type}"
+
+            # Pass graph type for smart layout defaults
+            kwargs_with_type = kwargs.copy()
+            kwargs_with_type['graph_type'] = graph_type
+            
+            logger.debug(f"Using graph type '{graph_type}' for layout defaults")
+            
+            # Create matplotlib figure from NetworkX graph
+            fig = _graph_to_matplotlib(data, **kwargs_with_type)
+            _display_matplotlib_figure(fig, **kwargs)
+            return obj
+        except Exception as e:
+            logger.error(f"Failed to display NetworkX graph: {e}")
+            # Fallback to text representation
+            print(f"NetworkX {type(data).__name__}:")
+            print(f"  Nodes: {data.number_of_nodes()}")
+            print(f"  Edges: {data.number_of_edges()}")
+            if hasattr(data, 'is_directed'):
+                print(f"  Directed: {data.is_directed()}")
+            return obj
     else:
         logger.warning(f"SNTObject data is not supported: {type(data)}")
         return None
@@ -1365,6 +2044,278 @@ def _show_matplotlib_figure(fig=None, **kwargs) -> bool:
         except Exception as e2:
             logger.debug(f"Fallback show failed: {e2}")
             return False
+
+
+def _get_default_layout_for_graph_type(graph_type: str) -> str:
+    """
+    Get the default layout algorithm based on the original SNT graph type.
+
+    Layout defaults are retrieved using the PySNT configuration system.
+    
+    Parameters
+    ----------
+    graph_type : str
+        The type of the original SNT graph ('DirectedWeightedGraph', 'AnnotationGraph', etc.)
+        
+    Returns
+    -------
+    str
+        Default layout algorithm name from configuration
+    """
+    from .config import get_option
+    
+    # Map graph types to config keys
+    config_keys = {
+        'DirectedWeightedGraph': 'graph.layout.DirectedWeightedGraph',
+        'AnnotationGraph': 'graph.layout.AnnotationGraph', 
+        'SWCPoint': 'graph.layout.SWCPoint',
+        'BrainAnnotation': 'graph.layout.BrainAnnotation',
+    }
+    
+    # Check for exact matches first
+    if graph_type in config_keys:
+        return get_option(config_keys[graph_type])
+    
+    # Check for partial matches (in case of full class names)
+    for key, config_key in config_keys.items():
+        if key in graph_type:
+            return get_option(config_key)
+    
+    # Default fallback
+    return get_option('graph.layout.default')
+
+
+def _graph_to_matplotlib(graph, **kwargs) -> Figure:
+    """
+    Convert a NetworkX graph to a matplotlib figure for display.
+    
+    Parameters
+    ----------
+    graph : networkx.Graph
+        The NetworkX graph to visualize
+    **kwargs
+        Additional visualization options:
+        - layout: str or dict, layout algorithm or position dict (default: auto-detected by graph type)
+        - graph_type: str, original SNT graph type for smart defaults (optional)
+        - node_color: str or list, node colors (default: 'lightblue')
+        - node_size: int or list, node sizes (default: 500)
+        - edge_color: str or list, edge colors (default: 'gray')
+        - edge_width: float or list, edge widths (default: 2)
+        - with_labels: bool, whether to show node labels (default: True)
+        - figsize: tuple, figure size (default: (10, 8))
+        - title: str, plot title (default: 'NetworkX Graph')
+        - seed: int, random seed for layout (default: 42)
+        - use_node_positions: bool, use node spatial coordinates if available (default: True)
+        
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Figure containing the graph visualization
+    """
+    if not HAS_NETWORKX:
+        raise ImportError("NetworkX is required for graph visualization. Install with: pip install networkx")
+    
+    import matplotlib.pyplot as plt
+    
+    # Ensure matplotlib is in interactive mode based on configuration
+    from .config import get_option
+    if get_option('pyplot.ion') and not plt.isinteractive():
+        plt.ion()
+    
+    # Get visualization parameters with smart defaults
+    from .config import get_option
+    
+    graph_type = kwargs.get('graph_type', 'Unknown')
+    default_layout = _get_default_layout_for_graph_type(graph_type)
+    layout = kwargs.get('layout', default_layout)
+    node_color = kwargs.get('node_color', 'lightblue')
+    node_size = kwargs.get('node_size', 300)
+    edge_color = kwargs.get('edge_color', 'gray')
+    edge_width = kwargs.get('edge_width', 2)
+    with_labels = kwargs.get('with_labels', graph_type != 'DirectedWeightedGraph')
+    figsize = kwargs.get('figsize', (10, 8))
+    title = kwargs.get('title', graph_type)
+    seed = kwargs.get('seed', 42)
+    use_node_positions = kwargs.get('use_node_positions', True)
+    
+    # Create figure
+    fig, ax = plt.subplots(figsize=figsize)
+    
+    try:
+        # Determine node positions
+        if isinstance(layout, dict):
+            # Use provided position dictionary
+            pos = layout
+        elif layout == 'spatial' or (use_node_positions and layout == 'spring'):
+            # Try to use spatial coordinates from SWCPoint nodes
+            pos = {}
+            has_spatial_coords = False
+            
+            for node in graph.nodes():
+                try:
+                    # Try to get coordinates from SWCPoint attributes
+                    if 'x' in graph.nodes[node] and 'y' in graph.nodes[node]:
+                        # Use node attributes if available
+                        x = float(graph.nodes[node]['x'])
+                        y = float(graph.nodes[node]['y'])
+                        pos[node] = (x, y)
+                        has_spatial_coords = True
+                except Exception as e:
+                    logger.debug(f"Could not extract spatial coordinates from node {node}: {e}")
+            
+            # Fall back to spring layout if no spatial coordinates found
+            if not has_spatial_coords or len(pos) != graph.number_of_nodes():
+                logger.debug("No spatial coordinates found, using spring layout")
+                pos = nx.spring_layout(graph, seed=seed)
+        else:
+            # Use specified layout algorithm
+            if layout == 'spring':
+                pos = nx.spring_layout(graph, seed=seed)
+            elif layout == 'circular':
+                pos = nx.circular_layout(graph)
+            elif layout == 'random':
+                pos = nx.random_layout(graph, seed=seed)
+            elif layout == 'shell':
+                pos = nx.shell_layout(graph)
+            elif layout == 'kamada_kawai':
+                pos = nx.kamada_kawai_layout(graph)
+            elif layout == 'planar':
+                try:
+                    pos = nx.planar_layout(graph)
+                except nx.NetworkXException:
+                    logger.warning("Graph is not planar, falling back to spring layout")
+                    pos = nx.spring_layout(graph, seed=seed)
+            else:
+                logger.warning(f"Unknown layout '{layout}', using spring layout")
+                pos = nx.spring_layout(graph, seed=seed)
+        
+        # Handle node colors based on attributes
+        if node_color == 'by_type' and graph.number_of_nodes() > 0:
+            # Color nodes by SWC type if available
+            node_colors = []
+            # see Path#getSWCcolor()
+            type_colors = {1: 'blue', 2: 'red', 3: 'green', 4: 'cyan', 5: 'yellow', 6: 'orange', 7: 'pink', 8: 'goldenrod'}
+            
+            for node in graph.nodes():
+                try:
+                    if hasattr(node, 'getType'):
+                        node_type = int(node.getType())
+                    elif 'type' in graph.nodes[node]:
+                        node_type = int(graph.nodes[node]['type'])
+                    else:
+                        node_type = 1  # Default
+                    
+                    node_colors.append(type_colors.get(node_type, 'lightblue'))
+                except Exception:
+                    node_colors.append('lightblue')
+            
+            node_color = node_colors
+        elif node_color == 'by_annotation' and graph.number_of_nodes() > 0:
+            # Color nodes by BrainAnnotation color if available
+            node_colors = []
+            
+            for node in graph.nodes():
+                try:
+                    # Try to get color from BrainAnnotation
+                    if 'color_hex' in graph.nodes[node]:
+                        node_colors.append(graph.nodes[node]['color_hex'])
+                    elif 'color_rgb' in graph.nodes[node]:
+                        rgb = graph.nodes[node]['color_rgb']
+                        hex_color = f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
+                        node_colors.append(hex_color)
+                    elif hasattr(node, 'color'):
+                        color = node.color()
+                        color_attrs = _extract_color_attributes(color)
+                        if 'color_hex' in color_attrs:
+                            node_colors.append(color_attrs['color_hex'])
+                        else:
+                            node_colors.append('lightblue')
+                    else:
+                        node_colors.append('lightblue')
+                except Exception:
+                    node_colors.append('lightblue')
+            
+            node_color = node_colors
+        
+        # Handle node sizes based on radius if available
+        if node_size == 'by_radius' and graph.number_of_nodes() > 0:
+            node_sizes = []
+            base_size = 300
+            
+            for node in graph.nodes():
+                try:
+                    if hasattr(node, 'getRadius'):
+                        radius = float(node.getRadius())
+                    elif 'radius' in graph.nodes[node]:
+                        radius = float(graph.nodes[node]['radius'])
+                    else:
+                        radius = 1.0  # Default
+                    
+                    # Scale radius to reasonable node size
+                    node_sizes.append(base_size * max(0.5, radius))
+                except Exception:
+                    node_sizes.append(base_size)
+            
+            node_size = node_sizes
+        
+        # Handle edge widths based on weight if available
+        if edge_width == 'by_weight' and graph.number_of_edges() > 0:
+            edge_widths = []
+            
+            for edge in graph.edges():
+                try:
+                    weight = graph.edges[edge].get('weight', 1.0)
+                    # Scale weight to reasonable line width
+                    edge_widths.append(max(0.5, min(5.0, float(weight))))
+                except Exception:
+                    edge_widths.append(2.0)
+            
+            edge_width = edge_widths
+        
+        # Draw the graph
+        nx.draw(graph, pos,
+                node_color=node_color,
+                node_size=node_size,
+                edge_color=edge_color,
+                width=edge_width,
+                with_labels=with_labels,
+                ax=ax,
+                arrows=True,           # Ensure arrows are drawn for directed graphs
+                arrowsize=10,          # Smaller arrows to reduce visual clutter
+                arrowstyle='->'        # Simple arrow style
+                )
+        
+        # Add title and labels
+        ax.set_title(title, fontsize=14, fontweight='normal')
+        
+        # Add graph statistics as text
+        stats_text = f"Nodes: {graph.number_of_nodes()}, Edges: {graph.number_of_edges()}"
+        if hasattr(graph, 'is_directed') and graph.is_directed():
+            stats_text += " (Directed)"
+        
+        ax.text(0.02, 0.98, stats_text, transform=ax.transAxes, 
+                verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
+        
+        # Add colorbar for edge weights if they vary
+        if isinstance(edge_width, list) and len(set(edge_width)) > 1:
+            # Create a simple legend for edge weights
+            legend_text = "Edge width ∝ weight"
+            ax.text(0.02, 0.02, legend_text, transform=ax.transAxes,
+                    verticalalignment='bottom', bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
+        
+        plt.tight_layout()
+        
+        logger.info(f"Successfully created NetworkX graph visualization with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges")
+        return fig
+        
+    except Exception as e:
+        logger.error(f"Failed to create graph visualization: {e}")
+        # Create a simple error figure
+        ax.text(0.5, 0.5, f'Graph visualization failed:\n{str(e)}', 
+                ha='center', va='center', transform=ax.transAxes,
+                bbox=dict(boxstyle='round', facecolor='red', alpha=0.3))
+        ax.set_title(title)
+        return fig
 
 
 def _display_matplotlib_figure(fig: Figure, **kwargs) -> None:

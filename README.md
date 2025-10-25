@@ -51,13 +51,25 @@
   
 - **Performant**: Lazy class loading minimizes initialization overhead, loading only required SNT components on demand
 
-- **Native Python Converters**: Automatic conversion between SNT objects and Python-native types
-  (SNTChart → matplotlib figures; SNTTable → pandas DataFrames; ImageJ ImagePlus → NumPy arrays; Java Collections → Python lists/dicts, etc.)
+- **Native Python Converters**: Automatic conversion between SNT objects and Python-native types:
+    
+    | SNT Java Object | PySNT Python Object              |
+    |-----------------|----------------------------------|
+    | SNTChart        | matplotlib Figure                |
+    | SNTGraph        | NetworkX graph                   |
+    | SNTTable        | xarray Dataset; pandas DataFrame |
+    | ImagePlus       | xarray; numpy (via ScyJava)      |
+    | Collections     | lists/dicts, etc. (via ScyJava)  |
+
+
 
 ## Limitations
 - **Bleeding Edge**: Requires building SNT from the main branch (stable release integration planned for SNT v5.0)
 
 - **Early Stage Software**: Limited test coverage and community validation: Expect potential bugs and breaking API changes
+
+## Getting Started for Users
+See [Install instructions](https://pysnt.readthedocs.io/en/latest/install.html).
 
 
 ## Getting Started for Developers
@@ -133,6 +145,7 @@ pysnt/
 - cairosvg - SNTChart SVG to matplotlib conversion
 - PyMuPDF  - SNTChart PDF to matplotlib conversion
 - pandas - DataFrame operations and SNTTable conversion
+- networkx - SNTGraph to NetworkX graph conversion
 - pandasgui - Interactive DataFrame display
 
 ### Need Help?
