@@ -1,4 +1,4 @@
-name: pysnt
+name: pysnt-gui
 channels:
   - conda-forge
   - defaults
@@ -13,13 +13,18 @@ dependencies:
   - matplotlib>=3.10.7
   - xarray>=2025.10.1
 
-  # Optional dependencies for enhanced features
+  # Enhanced display dependencies
   - pandas>=2.3.3
-  - networkx>=3.0
+  - cairo>=1.18.4
+  - cairosvg>=2.8.2
+  - mupdf>=1.25.6
 
   # macOS-specific dependencies
   - pyobjc-core  # [osx]
   - pyobjc-framework-cocoa  # [osx]
 
-  # Pip dependencies (runtime only)
+  # Pip dependencies
   - pip
+  - pip:
+    # Interactive GUI features
+    - pandasgui>=0.2.15

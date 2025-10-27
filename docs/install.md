@@ -8,10 +8,14 @@ since Conda can be painfully slow with complex environments. If you do not have 
 so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
 
 ```{important}
-In the future, PySNT will automatically download SNT if it is not found. For now, you'll need to download it manually (see installation instructions below).
+In the future, PySNT will automatically download SNT if it is not found. For now, you'll need to download it manually
+(see installation instructions below).
 ```
 
-Here we only summarize the _easiest_ way to install pysnt. For other (advanced) install options (via pip, condacolab, dynamic install, etc.) you should be able to adapt the advanced install documentation of [pyimagej][pyimagejdocs].
+Here we only summarize the _easiest_ way to install pysnt. For other (advanced) install options (via pip, condacolab,
+dynamic install, etc.) you should be able to adapt the advanced install documentation of [pyimagej][pyimagejdocs]. If
+you want to debug or improve PySNT have a look at
+[Install Instructions for Developers](https://github.com/morphonets/pysnt?tab=readme-ov-file#getting-started-for-developers).
 
 ## Setting Up
 
@@ -29,12 +33,19 @@ Here we only summarize the _easiest_ way to install pysnt. For other (advanced) 
    git clone https://github.com/morphonets/pysnt.git
    ```
 
-3. Create a new `pysnt` environment using the provided `environment.yml`. This will install all the key dependencies:
+3. Create a new `pysnt` environment using the provided `environment.yml` file. This will install all the needed dependencies:
 
    ```bash
    cd ./pysnt # cd to pysnt root directory
    mamba env create -f environment.yml
    ```
+   NB: Other environment files are also provided for more granular installations:
+
+   | File                | Scope/Comments                                        |
+   |---------------------|-------------------------------------------------------|
+   | environment.yml     | Full install with interactive GUI features            |
+   | environment-min.yml | Minimal CLI install with core dependencies only       |
+   | environment-dev.yml | Full install plus dev tools for contributing to PySNT |
 
 4. Install pysnt in editable/development mode
 

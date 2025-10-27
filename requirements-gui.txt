@@ -1,8 +1,18 @@
 # Optional dependencies for interactive GUI features
 # Install with: pip install -r requirements-gui.txt
 
-# Include display dependencies (which includes core)
--r requirements-display.txt
+# Include core dependencies
+-r requirements.txt
+
+# Enhanced display features
+pandas>=2.3.3
+
+# Graph analysis and conversion
+networkx>=3.0
+
+# File format conversion support
+cairosvg>=2.8.2
+PyMuPDF>=1.26.3
 
 # Interactive GUI features
 pandasgui>=0.2.15
