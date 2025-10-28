@@ -38,17 +38,33 @@ class ArraySearchImage:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_image_ArraySearchImage_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ArraySearchImage.html
+    .. _tracing_image_ArraySearchImage_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ArraySearchImage.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.image
+            if hasattr(pysnt.tracing.image, '_module_funcs'):
+                module_funcs = pysnt.tracing.image._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ArraySearchImage" in curated_classes and curated_classes["ArraySearchImage"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ArraySearchImage"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ListSearchImage:
@@ -58,17 +74,33 @@ class ListSearchImage:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_image_ListSearchImage_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ListSearchImage.html
+    .. _tracing_image_ListSearchImage_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/ListSearchImage.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.image
+            if hasattr(pysnt.tracing.image, '_module_funcs'):
+                module_funcs = pysnt.tracing.image._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ListSearchImage" in curated_classes and curated_classes["ListSearchImage"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ListSearchImage"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class MapSearchImage:
@@ -78,17 +110,33 @@ class MapSearchImage:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_image_MapSearchImage_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/MapSearchImage.html
+    .. _tracing_image_MapSearchImage_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/MapSearchImage.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.image
+            if hasattr(pysnt.tracing.image, '_module_funcs'):
+                module_funcs = pysnt.tracing.image._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "MapSearchImage" in curated_classes and curated_classes["MapSearchImage"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["MapSearchImage"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SearchImageStack:
@@ -98,17 +146,33 @@ class SearchImageStack:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_image_SearchImageStack_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SearchImageStack.html
+    .. _tracing_image_SearchImageStack_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SearchImageStack.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.image
+            if hasattr(pysnt.tracing.image, '_module_funcs'):
+                module_funcs = pysnt.tracing.image._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SearchImageStack" in curated_classes and curated_classes["SearchImageStack"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SearchImageStack"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SupplierUtil:
@@ -118,17 +182,33 @@ class SupplierUtil:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_image_SupplierUtil_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SupplierUtil.html
+    .. _tracing_image_SupplierUtil_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/image/SupplierUtil.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.image
+            if hasattr(pysnt.tracing.image, '_module_funcs'):
+                module_funcs = pysnt.tracing.image._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SupplierUtil" in curated_classes and curated_classes["SupplierUtil"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SupplierUtil"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality

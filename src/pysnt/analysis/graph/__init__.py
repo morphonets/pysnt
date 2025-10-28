@@ -384,17 +384,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -404,17 +420,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -424,17 +456,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -444,17 +492,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -467,17 +531,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -487,17 +567,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -507,17 +603,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -527,17 +639,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -550,17 +678,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -570,17 +714,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -590,17 +750,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -610,17 +786,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -633,17 +825,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -653,17 +861,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -673,17 +897,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -693,17 +933,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -716,17 +972,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -736,17 +1008,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -756,17 +1044,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -776,17 +1080,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -799,17 +1119,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -819,17 +1155,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -839,17 +1191,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -859,17 +1227,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -882,17 +1266,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -902,17 +1302,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -922,17 +1338,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -942,17 +1374,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -965,17 +1413,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -985,17 +1449,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1005,17 +1485,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1025,17 +1521,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1048,17 +1560,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1068,17 +1596,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1088,17 +1632,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1108,17 +1668,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1131,17 +1707,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1151,17 +1743,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1171,17 +1779,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1191,17 +1815,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1214,17 +1854,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1234,17 +1890,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1254,17 +1926,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1274,17 +1962,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1297,17 +2001,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1317,17 +2037,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1337,17 +2073,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1357,17 +2109,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1380,17 +2148,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1400,17 +2184,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1420,17 +2220,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1440,17 +2256,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1463,17 +2295,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1483,17 +2331,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1503,17 +2367,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1523,17 +2403,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1546,17 +2442,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1566,17 +2478,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1586,17 +2514,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1606,17 +2550,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1629,17 +2589,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1649,17 +2625,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1669,17 +2661,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1689,17 +2697,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1712,17 +2736,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1732,17 +2772,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1752,17 +2808,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1772,17 +2844,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1795,17 +2883,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1815,17 +2919,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1835,17 +2955,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1855,17 +2991,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1878,17 +3030,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1898,17 +3066,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -1918,17 +3102,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -1938,17 +3138,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1961,17 +3177,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -1981,17 +3213,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2001,17 +3249,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2021,17 +3285,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2044,17 +3324,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2064,17 +3360,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2084,17 +3396,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2104,17 +3432,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2127,17 +3471,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2147,17 +3507,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2167,17 +3543,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2187,17 +3579,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2210,17 +3618,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2230,17 +3654,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2250,17 +3690,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2270,17 +3726,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2293,17 +3765,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2313,17 +3801,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2333,17 +3837,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2353,17 +3873,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2376,17 +3912,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2396,17 +3948,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2416,17 +3984,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2436,17 +4020,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2459,17 +4059,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2479,17 +4095,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2499,17 +4131,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2519,17 +4167,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2542,17 +4206,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2562,17 +4242,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2582,17 +4278,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2602,17 +4314,33 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2625,17 +4353,33 @@ class AnnotationGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_AnnotationGraph_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    .. _analysis_graph_AnnotationGraph_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedGraph:
@@ -2645,17 +4389,33 @@ class DirectedWeightedGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedGraph_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    .. _analysis_graph_DirectedWeightedGraph_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DirectedWeightedSubgraph:
@@ -2665,17 +4425,33 @@ class DirectedWeightedSubgraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTGraph:
@@ -2685,16 +4461,326 @@ class SNTGraph:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_graph_SNTGraph_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    .. _analysis_graph_SNTGraph_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
     
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "AnnotationGraph" in curated_classes and curated_classes["AnnotationGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["AnnotationGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedGraph" in curated_classes and curated_classes["DirectedWeightedGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DirectedWeightedSubgraph" in curated_classes and curated_classes["DirectedWeightedSubgraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DirectedWeightedSubgraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.graph
+            if hasattr(pysnt.analysis.graph, '_module_funcs'):
+                module_funcs = pysnt.analysis.graph._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SNTGraph" in curated_classes and curated_classes["SNTGraph"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SNTGraph"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 

@@ -370,17 +370,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -390,17 +406,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -410,17 +442,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -433,17 +481,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -453,17 +517,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -473,17 +553,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_1`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_1: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -496,17 +592,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -516,17 +628,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -536,17 +664,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_2`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_2: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -559,17 +703,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -579,17 +739,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -599,17 +775,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_3`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_3: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -622,17 +814,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -642,17 +850,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -662,17 +886,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_4`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_4: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -685,17 +925,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -705,17 +961,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -725,17 +997,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_5`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_5: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -748,17 +1036,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -768,17 +1072,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -788,17 +1108,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_6`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_6: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -811,17 +1147,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -831,17 +1183,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -851,17 +1219,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_7`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_7: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -874,17 +1258,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -894,17 +1294,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -914,17 +1330,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_8`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_8: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -937,17 +1369,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -957,17 +1405,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -977,17 +1441,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_9`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_9: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1000,17 +1480,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1020,17 +1516,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1040,17 +1552,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_10`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_10: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1063,17 +1591,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1083,17 +1627,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1103,17 +1663,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_11`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_11: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1126,17 +1702,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1146,17 +1738,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1166,17 +1774,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_12`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_12: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1189,17 +1813,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1209,17 +1849,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1229,17 +1885,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_13`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_13: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1252,17 +1924,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1272,17 +1960,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1292,17 +1996,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_14`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_14: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1315,17 +2035,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1335,17 +2071,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1355,17 +2107,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_15`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_15: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1378,17 +2146,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1398,17 +2182,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1418,17 +2218,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_16`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_16: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1441,17 +2257,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1461,17 +2293,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1481,17 +2329,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_17`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_17: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1504,17 +2368,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1524,17 +2404,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1544,17 +2440,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_18`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_18: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1567,17 +2479,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1587,17 +2515,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1607,17 +2551,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_19`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_19: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1630,17 +2590,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1650,17 +2626,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1670,17 +2662,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_20`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_20: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1693,17 +2701,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1713,17 +2737,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1733,17 +2773,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_21`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_21: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1756,17 +2812,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1776,17 +2848,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1796,17 +2884,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_22`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_22: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1819,17 +2923,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1839,17 +2959,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1859,17 +2995,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_23`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_23: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1882,17 +3034,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1902,17 +3070,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1922,17 +3106,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_24`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_24: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -1945,17 +3145,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -1965,17 +3181,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -1985,17 +3217,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_25`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_25: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2008,17 +3256,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -2028,17 +3292,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -2048,17 +3328,33 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_26`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_26: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 
@@ -2071,17 +3367,33 @@ class Profile:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_Profile_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    .. _analysis_sholl_Profile_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileEntry:
@@ -2091,17 +3403,33 @@ class ProfileEntry:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileEntry_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    .. _analysis_sholl_ProfileEntry_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ProfileProperties:
@@ -2111,16 +3439,254 @@ class ProfileProperties:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_ProfileProperties_javadoc_27`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    .. _analysis_sholl_ProfileProperties_javadoc_27: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Profile:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
     
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_Profile_javadoc`_.
+    
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileEntry:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileEntry_javadoc`_.
+    
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileProperties:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileProperties_javadoc`_.
+    
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Profile:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_Profile_javadoc`_.
+    
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Profile" in curated_classes and curated_classes["Profile"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Profile"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileEntry:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileEntry_javadoc`_.
+    
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileEntry" in curated_classes and curated_classes["ProfileEntry"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileEntry"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileProperties:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileProperties_javadoc`_.
+    
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl
+            if hasattr(pysnt.analysis.sholl, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ProfileProperties" in curated_classes and curated_classes["ProfileProperties"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ProfileProperties"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 

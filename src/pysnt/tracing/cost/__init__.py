@@ -28,17 +28,33 @@ class Difference:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_cost_Difference_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Difference.html
+    .. _tracing_cost_Difference_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Difference.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.cost
+            if hasattr(pysnt.tracing.cost, '_module_funcs'):
+                module_funcs = pysnt.tracing.cost._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Difference" in curated_classes and curated_classes["Difference"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Difference"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class DifferenceSq:
@@ -48,17 +64,33 @@ class DifferenceSq:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_cost_DifferenceSq_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/DifferenceSq.html
+    .. _tracing_cost_DifferenceSq_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/DifferenceSq.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.cost
+            if hasattr(pysnt.tracing.cost, '_module_funcs'):
+                module_funcs = pysnt.tracing.cost._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "DifferenceSq" in curated_classes and curated_classes["DifferenceSq"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["DifferenceSq"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class OneMinusErf:
@@ -68,17 +100,33 @@ class OneMinusErf:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_cost_OneMinusErf_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/OneMinusErf.html
+    .. _tracing_cost_OneMinusErf_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/OneMinusErf.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.cost
+            if hasattr(pysnt.tracing.cost, '_module_funcs'):
+                module_funcs = pysnt.tracing.cost._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "OneMinusErf" in curated_classes and curated_classes["OneMinusErf"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["OneMinusErf"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Reciprocal:
@@ -88,17 +136,33 @@ class Reciprocal:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_cost_Reciprocal_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Reciprocal.html
+    .. _tracing_cost_Reciprocal_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/cost/Reciprocal.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.cost
+            if hasattr(pysnt.tracing.cost, '_module_funcs'):
+                module_funcs = pysnt.tracing.cost._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Reciprocal" in curated_classes and curated_classes["Reciprocal"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Reciprocal"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality

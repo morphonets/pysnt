@@ -33,17 +33,33 @@ class MultiViewer2D:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `viewer_MultiViewer2D_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer2D.html
+    .. _viewer_MultiViewer2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer2D.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.viewer
+            if hasattr(pysnt.viewer, '_module_funcs'):
+                module_funcs = pysnt.viewer._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "MultiViewer2D" in curated_classes and curated_classes["MultiViewer2D"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["MultiViewer2D"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class MultiViewer3D:
@@ -53,17 +69,33 @@ class MultiViewer3D:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `viewer_MultiViewer3D_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer3D.html
+    .. _viewer_MultiViewer3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer3D.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.viewer
+            if hasattr(pysnt.viewer, '_module_funcs'):
+                module_funcs = pysnt.viewer._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "MultiViewer3D" in curated_classes and curated_classes["MultiViewer3D"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["MultiViewer3D"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Viewer2D:
@@ -73,17 +105,33 @@ class Viewer2D:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `viewer_Viewer2D_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer2D.html
+    .. _viewer_Viewer2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer2D.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.viewer
+            if hasattr(pysnt.viewer, '_module_funcs'):
+                module_funcs = pysnt.viewer._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Viewer2D" in curated_classes and curated_classes["Viewer2D"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Viewer2D"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Viewer3D:
@@ -93,100 +141,35 @@ class Viewer3D:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `viewer_Viewer3D_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer3D.html
+    .. _viewer_Viewer3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer3D.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.viewer
+            if hasattr(pysnt.viewer, '_module_funcs'):
+                module_funcs = pysnt.viewer._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Viewer3D" in curated_classes and curated_classes["Viewer3D"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Viewer3D"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
-
-# Placeholder classes for IDE support - will be replaced with Java classes
-class MultiViewer2D:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer2D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class MultiViewer3D:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer3D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class Viewer2D:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer2D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class Viewer3D:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Viewer3D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(

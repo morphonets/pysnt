@@ -57,7 +57,6 @@ class ShollStats:
     """
     pass
 
-
 def _java_setup():
     """
     Lazy initialization function for Java-dependent Sholl math classes.
@@ -106,7 +105,6 @@ def _java_setup():
         logger.error(f"Failed to load curated Sholl math classes: {e}")
         raise ImportError(f"Could not load curated Sholl math classes: {e}") from e
 
-
 def _discover_extended_classes():
     """
     Discover and load extended classes on-demand.
@@ -151,10 +149,8 @@ def _discover_extended_classes():
         logger.error(f"Failed to discover extended classes: {e}")
         _discovery_completed = True  # Prevent repeated attempts
 
-
 # Register the setup function to run when JVM starts
 scyjava.when_jvm_starts(_java_setup)
-
 
 def get_available_classes() -> List[str]:
     """
@@ -176,7 +172,6 @@ def get_available_classes() -> List[str]:
     
     all_available = list(_curated_classes.keys()) + list(_extended_classes.keys())
     return sorted(all_available)
-
 
 def get_class(class_name: str) -> Any:
     """
@@ -234,7 +229,6 @@ def get_class(class_name: str) -> Any:
     else:
         raise KeyError(f"Class '{class_name}' not found. No classes loaded.")
 
-
 def list_classes():
     """
     Print all available Sholl math classes organized by tier.
@@ -266,7 +260,6 @@ def list_classes():
     total = len(_curated_classes) + len(_extended_classes)
     print(f"\nTotal: {total} classes")
 
-
 def get_curated_classes() -> List[str]:
     """
     Get list of curated classes that are always available for direct import.
@@ -277,7 +270,6 @@ def get_curated_classes() -> List[str]:
         List of curated class names.
     """
     return CURATED_CLASSES.copy()
-
 
 def get_extended_classes() -> List[str]:
     """
@@ -295,7 +287,6 @@ def get_extended_classes() -> List[str]:
         return list(_extended_classes.keys())
     else:
         return EXTENDED_CLASSES.copy()
-
 
 # Dynamic __getattr__ to provide access to extended classes
 def __getattr__(name: str) -> Any:
@@ -323,7 +314,6 @@ def __getattr__(name: str) -> Any:
             f"Curated classes: {available_curated}. "
             f"Use get_class('{name}') for extended classes or list_classes() to see all."
         )
-
 
 # Enhanced __dir__ for IDE autocompletion
 def __dir__() -> List[str]:
@@ -360,7 +350,6 @@ def __dir__() -> List[str]:
     
     return sorted(base_attrs + curated_attrs + extended_attrs)
 
-
 # Static __all__ with curated classes always available
 # This ensures IDEs know these symbols are available for import
 __all__ = [
@@ -388,17 +377,33 @@ class LinearProfileStats:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_math_LinearProfileStats_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
+    .. _analysis_sholl_math_LinearProfileStats_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl.math
+            if hasattr(pysnt.analysis.sholl.math, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl.math._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "LinearProfileStats" in curated_classes and curated_classes["LinearProfileStats"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["LinearProfileStats"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class NormalizedProfileStats:
@@ -408,17 +413,33 @@ class NormalizedProfileStats:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_math_NormalizedProfileStats_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
+    .. _analysis_sholl_math_NormalizedProfileStats_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl.math
+            if hasattr(pysnt.analysis.sholl.math, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl.math._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "NormalizedProfileStats" in curated_classes and curated_classes["NormalizedProfileStats"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["NormalizedProfileStats"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class PolarProfileStats:
@@ -428,17 +449,33 @@ class PolarProfileStats:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_math_PolarProfileStats_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
+    .. _analysis_sholl_math_PolarProfileStats_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl.math
+            if hasattr(pysnt.analysis.sholl.math, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl.math._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "PolarProfileStats" in curated_classes and curated_classes["PolarProfileStats"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["PolarProfileStats"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ShollStats:
@@ -448,2257 +485,293 @@ class ShollStats:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_sholl_math_ShollStats_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
+    .. _analysis_sholl_math_ShollStats_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.sholl.math
+            if hasattr(pysnt.analysis.sholl.math, '_module_funcs'):
+                module_funcs = pysnt.analysis.sholl.math._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "ShollStats" in curated_classes and curated_classes["ShollStats"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["ShollStats"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
-
-# Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-
+("SNT not initialized. Call pysnt.initialize() first.")
 
 # Placeholder classes for IDE support - will be replaced with Java classes
-class LinearProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/LinearProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class NormalizedProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/NormalizedProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class PolarProfileStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/PolarProfileStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
 
-class ShollStats:
-    """
-    Curated SNT class from analysis/sholl/math package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `Javadoc Documentation`_.
-    
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/math/ShollStats.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+("SNT not initialized. Call pysnt.initialize() first.")
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
+
+("SNT not initialized. Call pysnt.initialize() first.")
 

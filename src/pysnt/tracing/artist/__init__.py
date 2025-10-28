@@ -33,17 +33,33 @@ class BiSearchArtist:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_artist_BiSearchArtist_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/BiSearchArtist.html
+    .. _tracing_artist_BiSearchArtist_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/BiSearchArtist.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.artist
+            if hasattr(pysnt.tracing.artist, '_module_funcs'):
+                module_funcs = pysnt.tracing.artist._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "BiSearchArtist" in curated_classes and curated_classes["BiSearchArtist"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["BiSearchArtist"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class FillerThreadArtist:
@@ -53,17 +69,33 @@ class FillerThreadArtist:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_artist_FillerThreadArtist_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/FillerThreadArtist.html
+    .. _tracing_artist_FillerThreadArtist_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/FillerThreadArtist.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.artist
+            if hasattr(pysnt.tracing.artist, '_module_funcs'):
+                module_funcs = pysnt.tracing.artist._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "FillerThreadArtist" in curated_classes and curated_classes["FillerThreadArtist"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["FillerThreadArtist"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SearchArtistFactory:
@@ -73,17 +105,33 @@ class SearchArtistFactory:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_artist_SearchArtistFactory_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/SearchArtistFactory.html
+    .. _tracing_artist_SearchArtistFactory_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/SearchArtistFactory.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.artist
+            if hasattr(pysnt.tracing.artist, '_module_funcs'):
+                module_funcs = pysnt.tracing.artist._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SearchArtistFactory" in curated_classes and curated_classes["SearchArtistFactory"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SearchArtistFactory"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SearchThreadArtist:
@@ -93,17 +141,33 @@ class SearchThreadArtist:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_artist_SearchThreadArtist_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/SearchThreadArtist.html
+    .. _tracing_artist_SearchThreadArtist_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/artist/SearchThreadArtist.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.artist
+            if hasattr(pysnt.tracing.artist, '_module_funcs'):
+                module_funcs = pysnt.tracing.artist._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "SearchThreadArtist" in curated_classes and curated_classes["SearchThreadArtist"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["SearchThreadArtist"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality

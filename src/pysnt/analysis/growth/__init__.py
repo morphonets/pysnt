@@ -33,17 +33,33 @@ class GrowthAnalyzer:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_growth_GrowthAnalyzer_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalyzer.html
+    .. _analysis_growth_GrowthAnalyzer_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalyzer.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.growth
+            if hasattr(pysnt.analysis.growth, '_module_funcs'):
+                module_funcs = pysnt.analysis.growth._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "GrowthAnalyzer" in curated_classes and curated_classes["GrowthAnalyzer"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["GrowthAnalyzer"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class GrowthAnalysisResults:
@@ -53,17 +69,33 @@ class GrowthAnalysisResults:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `analysis_growth_GrowthAnalysisResults_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalysisResults.html
+    .. _analysis_growth_GrowthAnalysisResults_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/growth/GrowthAnalysisResults.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.analysis.growth
+            if hasattr(pysnt.analysis.growth, '_module_funcs'):
+                module_funcs = pysnt.analysis.growth._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "GrowthAnalysisResults" in curated_classes and curated_classes["GrowthAnalysisResults"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["GrowthAnalysisResults"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality

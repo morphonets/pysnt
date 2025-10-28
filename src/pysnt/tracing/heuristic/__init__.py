@@ -28,17 +28,33 @@ class Dijkstra:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_heuristic_Dijkstra_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Dijkstra.html
+    .. _tracing_heuristic_Dijkstra_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Dijkstra.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.heuristic
+            if hasattr(pysnt.tracing.heuristic, '_module_funcs'):
+                module_funcs = pysnt.tracing.heuristic._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Dijkstra" in curated_classes and curated_classes["Dijkstra"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Dijkstra"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Euclidean:
@@ -48,17 +64,33 @@ class Euclidean:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_heuristic_Euclidean_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Euclidean.html
+    .. _tracing_heuristic_Euclidean_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Euclidean.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.heuristic
+            if hasattr(pysnt.tracing.heuristic, '_module_funcs'):
+                module_funcs = pysnt.tracing.heuristic._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Euclidean" in curated_classes and curated_classes["Euclidean"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Euclidean"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class Heuristic:
@@ -68,17 +100,33 @@ class Heuristic:
     Available for direct import after JVM initialization.
     Call pysnt.initialize() before using this class.
     
-    See `Javadoc Documentation`_.
+    See `tracing_heuristic_Heuristic_javadoc`_.
     
-    .. _Javadoc Documentation: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Heuristic.html
+    .. _tracing_heuristic_Heuristic_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/heuristic/Heuristic.html
     """
+    
+    def __new__(cls, *args, **kwargs):
+        """Smart constructor that redirects to real Java class if available."""
+        # Try to get the real Java class
+        try:
+            # Access the module functions that were set up
+            import pysnt.tracing.heuristic
+            if hasattr(pysnt.tracing.heuristic, '_module_funcs'):
+                module_funcs = pysnt.tracing.heuristic._module_funcs
+                if "_curated_classes" in module_funcs:
+                    curated_classes = module_funcs["_curated_classes"]
+                    if "Heuristic" in curated_classes and curated_classes["Heuristic"] is not None:
+                        # We have the real Java class, use it instead
+                        real_class = curated_classes["Heuristic"]
+                        return real_class(*args, **kwargs)
+        except Exception:
+            pass
+        
+        # No real class available, show error
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality
