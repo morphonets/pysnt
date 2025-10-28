@@ -729,6 +729,10 @@ class ComprehensiveStubGenerator:
         # Handle specific cases first
         if func_name == 'get_class':
             return f"def {func_name}(class_name: str) -> Any: ..."
+        elif func_name == 'register_display_handler':
+            return f"def {func_name}(handler: Callable) -> None: ..."
+        elif func_name == 'enhance_java_object':
+            return f"def {func_name}(obj: Any) -> Any: ..."
         
         elif func_name.startswith('get_'):
             if 'option' in func_name:
