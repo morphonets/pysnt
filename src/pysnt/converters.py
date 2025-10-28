@@ -64,6 +64,98 @@ from matplotlib.figure import Figure
 
 logger = logging.getLogger(__name__)
 
+# Constants for common default values
+DEFAULT_CMAP = 'gray'
+DEFAULT_NODE_SIZE = 300
+DEFAULT_NODE_COLOR = 'lightblue'
+DEFAULT_DPI = 300
+DEFAULT_FIGSIZE = None
+DEFAULT_SCALE = 1.0
+DEFAULT_MAX_PANELS = 6
+DEFAULT_PANEL_LAYOUT = 'auto'
+
+# Common parameter names for frame/time extraction
+FRAME_PARAM_NAMES = ['frame', 't', 'time', 'timepoint']
+
+# Common error messages
+ERROR_MISSING_NETWORKX = "NetworkX is required for graph operations. Install with: pip install networkx"
+ERROR_MISSING_PANDAS = "pandas is required for table operations. Install with: pip install pandas"
+ERROR_MISSING_CAIROSVG = "cairosvg is required for SVG conversion. Install with: pip install cairosvg"
+ERROR_MISSING_FITZ = "PyMuPDF is required for PDF conversion. Install with: pip install PyMuPDF"
+
+# Internal parameter names to exclude from matplotlib kwargs
+INTERNAL_PARAMS = {'_internal', 'cmap', 'title', 'add_colorbar', 'metadata', 'is_rgb'}
+
+
+def _extract_frame_parameter(kwargs: Dict[str, Any]) -> int:
+    """
+    Extract frame parameter from kwargs with standard logic.
+    
+    Parameters
+    ----------
+    kwargs : dict
+        Keyword arguments that may contain frame parameters
+        
+    Returns
+    -------
+    int
+        Frame number (default: 1)
+    """
+    kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
+    for key in FRAME_PARAM_NAMES:
+        if key in kwargs_lower:
+            try:
+                return int(kwargs_lower[key])
+            except (ValueError, TypeError):
+                continue
+    return 1
+
+
+def _filter_matplotlib_kwargs(kwargs: Dict[str, Any], additional_exclude: Optional[List[str]] = None) -> Dict[str, Any]:
+    """
+    Filter kwargs for matplotlib functions, excluding internal parameters.
+    
+    Parameters
+    ----------
+    kwargs : dict
+        Original keyword arguments
+    additional_exclude : list, optional
+        Additional parameter names to exclude
+        
+    Returns
+    -------
+    dict
+        Filtered kwargs suitable for matplotlib functions
+    """
+    exclude_params = INTERNAL_PARAMS.copy()
+    if additional_exclude:
+        exclude_params.update(additional_exclude)
+    
+    return {k: v for k, v in kwargs.items() if k not in exclude_params}
+
+
+def _create_standard_error_message(operation: str, error: Exception, obj_type: str = None) -> str:
+    """
+    Create standardized error message format.
+    
+    Parameters
+    ----------
+    operation : str
+        The operation that failed
+    error : Exception
+        The exception that occurred
+    obj_type : str, optional
+        Type of object being processed
+        
+    Returns
+    -------
+    str
+        Formatted error message
+    """
+    if obj_type:
+        return f"Failed to {operation} {obj_type}: {error}"
+    return f"Failed to {operation}: {error}"
+
 
 def _setup_matplotlib_interactive():
     """
@@ -146,6 +238,95 @@ def _temp_directory(temp_dir=None, cleanup=True):
                 logger.debug(f"Cleaned up temporary directory: {temp_chart_dir}")
             except Exception as e:
                 logger.debug(f"Could not clean up temporary directory {temp_chart_dir}: {e}")
+
+
+def _create_snt_object(data_type: Type, data: Any = None, metadata: Optional[Dict[str, Any]] = None, 
+                      error: Optional[Exception] = None) -> 'SNTObject':
+    """
+    Factory function for creating standardized SNTObject dictionaries.
+    
+    Parameters
+    ----------
+    data_type : Type
+        The type of the data being stored
+    data : Any, optional
+        The actual data object
+    metadata : dict, optional
+        Metadata dictionary
+    error : Exception, optional
+        Error that occurred during conversion
+        
+    Returns
+    -------
+    SNTObject
+        Standardized SNTObject dictionary
+    """
+    return {
+        'type': data_type,
+        'data': data,
+        'metadata': metadata or {},
+        'error': error
+    }
+
+
+def _create_converter_result(data: Any, source_type: str, **metadata_kwargs) -> 'SNTObject':
+    """
+    Create standardized converter result with common metadata.
+    
+    Parameters
+    ----------
+    data : Any
+        The converted data object
+    source_type : str
+        Type of the source object (e.g., 'ImagePlus', 'SNTGraph')
+    **metadata_kwargs
+        Additional metadata fields
+        
+    Returns
+    -------
+    SNTObject
+        Standardized converter result
+    """
+    metadata = {
+        'source_type': source_type,
+        **metadata_kwargs
+    }
+    
+    return _create_snt_object(
+        data_type=type(data),
+        data=data,
+        metadata=metadata
+    )
+
+
+def _create_error_result(data_type: Type, error: Exception, source_type: str = None) -> 'SNTObject':
+    """
+    Create standardized error result for failed conversions.
+    
+    Parameters
+    ----------
+    data_type : Type
+        The expected type of the data
+    error : Exception
+        The error that occurred
+    source_type : str, optional
+        Type of the source object
+        
+    Returns
+    -------
+    SNTObject
+        Standardized error result
+    """
+    metadata = {}
+    if source_type:
+        metadata['source_type'] = source_type
+        
+    return _create_snt_object(
+        data_type=data_type,
+        data=None,
+        metadata=metadata,
+        error=error
+    )
 
 
 def _diagnose_graph_structure(nx_graph, graph_type: str = 'Unknown') -> None:
@@ -694,21 +875,14 @@ def _convert_snt_graph(graph: Any, **kwargs) -> SNTObject:
     dict
         Dictionary (SNTObject TypedDict) containing graph information and NetworkX graph
     """
-    # Create result SNTObject dictionary
-    result: SNTObject = {
-        'type': type(nx.DiGraph) if HAS_NETWORKX else type(None),
-        'data': None,
-        'metadata': {},
-        'error': None
-    }
-
     try:
         # Check if NetworkX is available
         if not HAS_NETWORKX:
-            result['error'] = ImportError(
-                "NetworkX is required for SNTGraph conversion. Install with: pip install networkx")
-            logger.error("Missing NetworkX for SNTGraph conversion")
-            return result
+            return _create_error_result(
+                data_type=type(nx.DiGraph) if HAS_NETWORKX else type(None),
+                error=ImportError(ERROR_MISSING_NETWORKX),
+                source_type='SNTGraph'
+            )
 
         logger.info("Converting SNTGraph to NetworkX graph")
 
@@ -796,35 +970,37 @@ def _convert_snt_graph(graph: Any, **kwargs) -> SNTObject:
         if self_loops_detected > 0 and warn_self_loops:
             logger.warning(f"Detected {self_loops_detected} self-loop(s) in {vertex_type}/{edge_type} graph.")
 
-        result['data'] = nx_graph
-
+        # Prepare metadata
+        metadata = {
+            'vertex_type': vertex_type,
+            'edge_type': edge_type,
+            'node_attributes': node_attributes,
+            'edge_attributes': edge_attributes,
+            'self_loops_detected': self_loops_detected
+        }
+        
         # Add metadata if requested
         if include_metadata:
             try:
-                result['metadata']['node_count'] = nx_graph.number_of_nodes()
-                result['metadata']['edge_count'] = nx_graph.number_of_edges()
-                result['metadata']['is_directed'] = nx_graph.is_directed()
-                result['metadata']['vertex_type'] = vertex_type
-                result['metadata']['edge_type'] = edge_type
-                result['metadata']['node_attributes'] = node_attributes
-                result['metadata']['edge_attributes'] = edge_attributes
-                
-                # Add self-loop information to metadata
-                result['metadata']['self_loops_detected'] = self_loops_detected
+                metadata.update({
+                    'node_count': nx_graph.number_of_nodes(),
+                    'edge_count': nx_graph.number_of_edges(),
+                    'is_directed': nx_graph.is_directed()
+                })
 
                 # Add basic graph statistics
                 if nx_graph.number_of_nodes() > 0:
                     if is_directed:
-                        result['metadata']['is_connected'] = nx.is_weakly_connected(nx_graph)
+                        metadata['is_connected'] = nx.is_weakly_connected(nx_graph)
                     else:
-                        result['metadata']['is_connected'] = nx.is_connected(nx_graph)
+                        metadata['is_connected'] = nx.is_connected(nx_graph)
                     
                     if nx_graph.number_of_edges() > 0:
-                        result['metadata']['density'] = nx.density(nx_graph)
+                        metadata['density'] = nx.density(nx_graph)
                         
                     # Check for remaining self-loops in the final graph
                     remaining_self_loops = list(nx.selfloop_edges(nx_graph))
-                    result['metadata']['final_self_loops'] = len(remaining_self_loops)
+                    metadata['final_self_loops'] = len(remaining_self_loops)
                 
             except Exception as e:
                 logger.debug(f"Could not extract graph metadata: {e}")
@@ -832,12 +1008,15 @@ def _convert_snt_graph(graph: Any, **kwargs) -> SNTObject:
         logger.info(f"Successfully converted {vertex_type}/{edge_type} SNTGraph to NetworkX "
                    f"({nx_graph.number_of_nodes()} nodes, {nx_graph.number_of_edges()} edges)")
 
-        return result
+        return _create_converter_result(nx_graph, 'SNTGraph', **metadata)
 
     except Exception as e:
-        logger.error(f"Failed to convert SNTGraph: {e}")
-        result['error'] = e
-        return result
+        logger.error(_create_standard_error_message("convert SNTGraph", e))
+        return _create_error_result(
+            data_type=type(nx.DiGraph) if HAS_NETWORKX else type(None),
+            error=e,
+            source_type='SNTGraph'
+        )
 
 
 def _is_directed_weighted_graph(obj: Any) -> bool:
@@ -898,21 +1077,13 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
     """
     from .config import get_option
 
-    # Create result SNTObject dictionary
-    result: SNTObject = {
-        'type': Figure,
-        'data': None,
-        'metadata': {},
-        'error': None
-    }
-
     try:
         # Get conversion options with config defaults
         format_type = kwargs.get('format', get_option('display.chart_format')).lower()
         temp_dir = kwargs.get('temp_dir', None)
-        scale = kwargs.get('scale', 1.0)
-        max_panels = kwargs.get('max_panels', 20)
-        panel_layout = kwargs.get('panel_layout', 'auto')
+        scale = kwargs.get('scale', DEFAULT_SCALE)
+        max_panels = kwargs.get('max_panels', DEFAULT_MAX_PANELS)
+        panel_layout = kwargs.get('panel_layout', DEFAULT_PANEL_LAYOUT)
 
         # Check if this is a combined chart
         is_combined = chart.isCombined()
@@ -921,37 +1092,37 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
         if is_combined:
             # Handle combined chart with multiple panels
             logger.info(f"Processing combined chart")
-            result['data'] = _convert_combined_snt_chart(chart, format_type, temp_dir, scale, max_panels, panel_layout)
-
+            figure_data = _convert_combined_snt_chart(chart, format_type, temp_dir, scale, max_panels, panel_layout)
         else:
             # Handle single chart or forced single processing
-            result['data'] = _convert_single_snt_chart(chart, format_type, temp_dir, scale)
+            figure_data = _convert_single_snt_chart(chart, format_type, temp_dir, scale)
 
-        # Get chart metadata if available
+        if figure_data is None:
+            raise ValueError("Chart conversion produced no data")
+
+        # Prepare metadata
+        metadata = {
+            'format': format_type,
+            'scale': scale,
+            'is_combined': is_combined
+        }
+        
+        # Get additional chart metadata if available
         try:
-            result['metadata']['format'] = format_type
-            result['metadata']['scale'] = scale
-            result['metadata']['is_combined'] = is_combined
-            result['metadata']['title'] = chart.getTitle()
+            metadata['title'] = chart.getTitle()
             if hasattr(chart, 'containsValidData'):
-                result['metadata']['containsValidData'] = chart.containsValidData()
+                metadata['containsValidData'] = chart.containsValidData()
             if hasattr(chart, 'isLegendVisible'):
-                result['metadata']['isLegendVisible'] = chart.isLegendVisible()
+                metadata['isLegendVisible'] = chart.isLegendVisible()
         except Exception as e:
             logger.debug(f"Could not extract chart metadata: {e}")
 
-        if result['data'] is not None:
-            logger.info(
-                f"Successfully converted SNTChart ({'combined' if is_combined else 'single'}) to matplotlib figure")
-        else:
-            raise ValueError("Chart conversion produced no data")
-
-        return result # type: ignore
+        logger.info(f"Successfully converted SNTChart ({'combined' if is_combined else 'single'}) to matplotlib figure")
+        return _create_converter_result(figure_data, 'SNTChart', **metadata)
 
     except Exception as e:
-        logger.error(f"Failed to convert SNTChart: {e}")
-        result['error'] = e
-        return result # type: ignore
+        logger.error(_create_standard_error_message("convert SNTChart", e))
+        return _create_error_result(Figure, e, 'SNTChart')
 
 
 def _convert_path_to_xarray(path: Any):
@@ -1230,6 +1401,96 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: str, sca
         return fig
 
 
+@contextmanager
+def _matplotlib_context(figsize=None, dpi=None, **kwargs):
+    """
+    Context manager for matplotlib setup with automatic cleanup.
+    
+    Parameters
+    ----------
+    figsize : tuple, optional
+        Figure size (width, height) in inches
+    dpi : int, optional
+        Figure DPI
+    **kwargs
+        Additional matplotlib configuration
+        
+    Yields
+    ------
+    matplotlib.pyplot
+        Configured pyplot module
+    """
+    plt = _setup_matplotlib_interactive()
+    
+    # Store original settings
+    original_settings = {}
+    if dpi is not None:
+        original_settings['figure.dpi'] = plt.rcParams.get('figure.dpi')
+        plt.rcParams['figure.dpi'] = dpi
+    
+    try:
+        yield plt
+    finally:
+        # Restore original settings
+        for key, value in original_settings.items():
+            plt.rcParams[key] = value
+
+
+def _create_standard_figure(data=None, title=None, figsize=None, dpi=None, 
+                           cmap=None, add_colorbar=True, is_rgb=False, **kwargs):
+    """
+    Create a standardized matplotlib figure with common patterns.
+    
+    Parameters
+    ----------
+    data : array-like, optional
+        Image data to display
+    title : str, optional
+        Figure title
+    figsize : tuple, optional
+        Figure size (width, height) in inches
+    dpi : int, optional
+        Figure DPI
+    cmap : str, optional
+        Colormap name (ignored for RGB images)
+    add_colorbar : bool, default True
+        Whether to add a colorbar (ignored for RGB images)
+    is_rgb : bool, default False
+        Whether the data is RGB/RGBA
+    **kwargs
+        Additional arguments for imshow
+        
+    Returns
+    -------
+    tuple
+        (figure, axes, image) where image is None if no data provided
+    """
+    with _matplotlib_context(figsize=figsize, dpi=dpi) as plt:
+        fig, ax = plt.subplots(figsize=figsize)
+        
+        if title:
+            ax.set_title(title)
+        
+        im = None
+        if data is not None:
+            # Set colormap based on image type
+            if is_rgb:
+                cmap = None  # No colormap for RGB images
+            else:
+                cmap = cmap or DEFAULT_CMAP
+            
+            # Filter kwargs for imshow
+            imshow_kwargs = _filter_matplotlib_kwargs(kwargs, ['figsize', 'dpi', 'add_colorbar', 'is_rgb'])
+            
+            im = ax.imshow(data, cmap=cmap, **imshow_kwargs)
+            
+            # Add colorbar only for non-RGB images
+            if add_colorbar and not is_rgb and cmap is not None:
+                plt.colorbar(im, ax=ax)
+        
+        return fig, ax, im
+
+
 def _create_figure_with_image(img_array, figsize=None, title=None, dpi=None, tight_layout=True):
     """
     Unified figure creation with consistent formatting.
@@ -1434,21 +1695,14 @@ def _convert_snt_table(table: Any, **kwargs) -> SNTObject:
         Dictionary containing table information and xarray Dataset
     """
 
-    # Create result SNTObject dictionary
-    result: SNTObject = {
-        'type': type(xarray.Dataset ),
-        'data': None,
-        'metadata': {},
-        'error': None
-    }
-
     try:
         # Check if pandas are available
         if not HAS_PANDAS:
-            result['error'] = ImportError(
-                "pandas is required for SNTTable conversion. Install with: pip install pandas")
-            logger.error("Missing pandas for SNTTable conversion")
-            return result # type: ignore
+            return _create_error_result(
+                data_type=type(xarray.Dataset),
+                error=ImportError(ERROR_MISSING_PANDAS),
+                source_type='SNTTable'
+            )
 
         # Get table dimensions
         try:
@@ -1504,36 +1758,33 @@ def _convert_snt_table(table: Any, **kwargs) -> SNTObject:
             # Add row index as a coordinate
             xr_dataset = xr_dataset.assign_coords(index=range(row_count))
 
-            result['data'] = xr_dataset
-
-            # Get table metadata if available
+            # Prepare metadata
+            metadata = {
+                'row_count': row_count,
+                'column_count': col_count,
+                'column_names': column_names
+            }
+            
+            # Get additional table metadata if available
             include_metadata = kwargs.get('include_metadata', True)
             if include_metadata:
                 try:
-                    result['metadata']['row_count'] = row_count
-                    result['metadata']['column_count'] = col_count
-                    result['metadata']['column_names'] = column_names
-                    result['metadata']['title'] = table.getTitle()
-
+                    metadata['title'] = table.getTitle()
                     # Add data types for each column
-                    result['metadata']['dtypes'] = {col: str(df[col].dtype) for col in df.columns}
-
+                    metadata['dtypes'] = {col: str(df[col].dtype) for col in df.columns}
                 except Exception as e:
                     logger.debug(f"Could not extract table metadata: {e}")
 
             logger.info(f"Successfully converted SNTTable to xarray Dataset with shape {xr_dataset.dims}")
+            return _create_converter_result(xr_dataset, 'SNTTable', **metadata)
 
         except Exception as e:
-            result['error'] = e
-            logger.error(f"Failed to extract table data: {e}")
-            return result # type: ignore
-
-        return result # type: ignore
+            logger.error(_create_standard_error_message("extract table data", e))
+            return _create_error_result(type(xarray.Dataset), e, 'SNTTable')
 
     except Exception as e:
-        logger.error(f"Failed to convert SNTTable: {e}")
-        result['error'] = e
-        return result # type: ignore
+        logger.error(_create_standard_error_message("convert SNTTable", e))
+        return _create_error_result(type(xarray.Dataset), e, 'SNTTable')
 
 
 def _svg_to_matplotlib(svg_file, dpi=300, figsize=None, background='white'):
@@ -2222,7 +2473,7 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
         Figure containing the graph visualization
     """
     if not HAS_NETWORKX:
-        raise ImportError("NetworkX is required for graph visualization. Install with: pip install networkx")
+        raise ImportError(ERROR_MISSING_NETWORKX)
     
     plt = _setup_matplotlib_interactive()
     
@@ -2230,8 +2481,8 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
     graph_type = kwargs.get('graph_type', 'Unknown')
     default_layout = _get_default_layout_for_graph_type(graph_type)
     layout = kwargs.get('layout', default_layout)
-    node_color = kwargs.get('node_color', 'lightblue')
-    node_size = kwargs.get('node_size', 300)
+    node_color = kwargs.get('node_color', DEFAULT_NODE_COLOR)
+    node_size = kwargs.get('node_size', DEFAULT_NODE_SIZE)
     edge_color = kwargs.get('edge_color', 'gray')
     edge_width = kwargs.get('edge_width', 2)
     with_labels = kwargs.get('with_labels', graph_type != 'DirectedWeightedGraph')
@@ -2487,7 +2738,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
 
     try:
         # Get display parameters
-        cmap = kwargs.get('cmap', 'gray')  # Default to grayscale for images
+        cmap = kwargs.get('cmap', DEFAULT_CMAP)
         title = kwargs.get('title', None)
 
         # Handle xarray Dataset (from SNTTable) vs DataArray (from ImagePlus)
@@ -3215,8 +3466,6 @@ def _display_array_data(data, source_type="array", **kwargs):
     SNTObject or None
         SNTObject with display result or None on failure
     """
-    plt = _setup_matplotlib_interactive()
-
     # Handle different dimensionalities
     original_shape = data.shape
     title = kwargs.get('title', None)
@@ -3268,34 +3517,18 @@ def _display_array_data(data, source_type="array", **kwargs):
         logger.warning(f"Data has only {data.ndim} dimensions, cannot display as image")
         raise ValueError(f"Cannot display {data.ndim}D data as image")
 
-    # Create figure and display
-    fig, ax = plt.subplots()
-    ax.set_title(title)
-
-    # Set colormap based on image type
-    if is_rgb:
-        # For RGB images, don't use a colormap
-        cmap = None
-        logger.debug("Using no colormap for RGB image")
-    else:
-        # For grayscale images, use the specified colormap or default to gray
-        cmap = kwargs.get('cmap', 'gray')
-        logger.debug(f"Using colormap '{cmap}' for grayscale image")
-
-    # Filter kwargs for matplotlib imshow - exclude internal and display-specific parameters
-    internal_params = {'_internal', 'cmap', 'title', 'add_colorbar', 'metadata', 'is_rgb'}
-    imshow_kwargs = {k: v for k, v in kwargs.items() if k not in internal_params}
-
-    logger.debug(f"Using matplotlib imshow with filtered kwargs: {imshow_kwargs}")
-    im = ax.imshow(img_data, cmap=cmap, **imshow_kwargs)
-
-    # Add colorbar only for grayscale images (not RGB)
+    # Use the new standardized figure creation
+    cmap = kwargs.get('cmap', DEFAULT_CMAP)
     add_colorbar = kwargs.get('add_colorbar', True)
-    if add_colorbar and not is_rgb:
-        plt.colorbar(im, ax=ax)
-        logger.debug("Added colorbar for grayscale image")
-    elif is_rgb:
-        logger.debug("Skipped colorbar for RGB image")
+    
+    fig, ax, im = _create_standard_figure(
+        data=img_data,
+        title=title,
+        cmap=cmap,
+        add_colorbar=add_colorbar,
+        is_rgb=is_rgb,
+        **kwargs
+    )
 
     # Use unified display system
     if _show_matplotlib_figure(fig):
