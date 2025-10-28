@@ -616,6 +616,18 @@ class ComprehensiveStubGenerator:
                     func_sig = self._extract_function_signature(node)
                     imported_functions.add(node.name)
                     module_functions.append(func_sig)
+                
+                elif isinstance(node, ast.Assign):
+                    # Handle assignments like get_class = _module_funcs["get_class"]
+                    for target in node.targets:
+                        if isinstance(target, ast.Name):
+                            name = target.id
+                            # Check if it's a function assignment from _module_funcs
+                            if (isinstance(node.value, ast.Subscript) and 
+                                isinstance(node.value.value, ast.Name) and 
+                                node.value.value.id == '_module_funcs'):
+                                # This is likely a function
+                                imported_functions.add(name)
             
             # Group functions by category for better organization
             config_functions = []
@@ -714,7 +726,11 @@ class ComprehensiveStubGenerator:
         This uses heuristics to guess the likely signature based on the function name.
         """
         # Common patterns for different function types
-        if func_name.startswith('get_'):
+        # Handle specific cases first
+        if func_name == 'get_class':
+            return f"def {func_name}(class_name: str) -> Any: ..."
+        
+        elif func_name.startswith('get_'):
             if 'option' in func_name:
                 return f"def {func_name}(key: str) -> Any: ..."
             else:
