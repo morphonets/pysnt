@@ -130,8 +130,8 @@ def setup_module_classes(
                     logger.warning(
                         f"Failed to load curated class {python_name} (Java: {java_name})"
                     )
-                    # Set to None so users get clear error messages
-                    globals_dict[python_name] = None
+                    # Don't replace the placeholder class - leave it so users get proper error messages
+                    # The placeholder class will show "SNT not initialized" error when instantiated
 
             logger.info(
                 f"Successfully loaded {len(_curated_classes)} curated classes for {package_name}"

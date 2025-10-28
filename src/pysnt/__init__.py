@@ -466,6 +466,10 @@ list_classes = _module_funcs["list_classes"]
 __getattr__ = _module_funcs["create_getattr"]("pysnt")
 __dir__ = _module_funcs["create_dir"]()
 
+# Register the setup function to run when JVM starts
+# This ensures that placeholder classes are replaced with actual Java classes
+scyjava.when_jvm_starts(_module_funcs["_java_setup"])
+
 
 def version(detailed: bool = False) -> str:
     """
