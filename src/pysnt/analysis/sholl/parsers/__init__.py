@@ -27,25 +27,7 @@ _curated_classes: Dict[str, Any] = {}
 _extended_classes: Dict[str, Any] = {}
 _discovery_completed: bool = False
 
-# Make curated classes None initially (will be set by _java_setup)
-# These explicit declarations ensure IDE autocompletion works
-class ImageParser2D:
-    """
-    Parser for extracting Sholl profiles from 2D image data.
-    """
-    pass
-
-class ImageParser3D:
-    """
-    Parser for extracting Sholl profiles from 3D image data.
-    """
-    pass
-
-class TreeParser:
-    """
-    Parser for extracting Sholl profiles from a Tree.
-    """
-    pass
+# Curated classes will be set by _java_setup when JVM starts
 
 def _java_setup():
     """

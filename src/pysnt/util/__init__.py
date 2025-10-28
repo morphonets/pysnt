@@ -50,28 +50,12 @@ class BoundingBox:
     .. _util_BoundingBox_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/BoundingBox.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "BoundingBox" in curated_classes and curated_classes["BoundingBox"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["BoundingBox"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ColorMaps:
@@ -86,28 +70,12 @@ class ColorMaps:
     .. _util_ColorMaps_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/ColorMaps.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "ColorMaps" in curated_classes and curated_classes["ColorMaps"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["ColorMaps"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class CrossoverFinder:
@@ -122,28 +90,12 @@ class CrossoverFinder:
     .. _util_CrossoverFinder_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/CrossoverFinder.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "CrossoverFinder" in curated_classes and curated_classes["CrossoverFinder"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["CrossoverFinder"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ImgUtils:
@@ -158,28 +110,12 @@ class ImgUtils:
     .. _util_ImgUtils_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/ImgUtils.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "ImgUtils" in curated_classes and curated_classes["ImgUtils"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["ImgUtils"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class ImpUtils:
@@ -194,28 +130,12 @@ class ImpUtils:
     .. _util_ImpUtils_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/ImpUtils.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "ImpUtils" in curated_classes and curated_classes["ImpUtils"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["ImpUtils"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class PointInImage:
@@ -230,28 +150,12 @@ class PointInImage:
     .. _util_PointInImage_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/PointInImage.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "PointInImage" in curated_classes and curated_classes["PointInImage"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["PointInImage"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTColor:
@@ -266,28 +170,12 @@ class SNTColor:
     .. _util_SNTColor_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/SNTColor.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "SNTColor" in curated_classes and curated_classes["SNTColor"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["SNTColor"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SNTPoint:
@@ -302,28 +190,12 @@ class SNTPoint:
     .. _util_SNTPoint_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/SNTPoint.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "SNTPoint" in curated_classes and curated_classes["SNTPoint"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["SNTPoint"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 class SWCPoint:
@@ -338,28 +210,12 @@ class SWCPoint:
     .. _util_SWCPoint_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/SWCPoint.html
     """
     
-    def __new__(cls, *args, **kwargs):
-        """Smart constructor that redirects to real Java class if available."""
-        # Try to get the real Java class
-        try:
-            # Access the module functions that were set up
-            import pysnt.util
-            if hasattr(pysnt.util, '_module_funcs'):
-                module_funcs = pysnt.util._module_funcs
-                if "_curated_classes" in module_funcs:
-                    curated_classes = module_funcs["_curated_classes"]
-                    if "SWCPoint" in curated_classes and curated_classes["SWCPoint"] is not None:
-                        # We have the real Java class, use it instead
-                        real_class = curated_classes["SWCPoint"]
-                        return real_class(*args, **kwargs)
-        except Exception:
-            pass
-        
-        # No real class available, show error
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
     def __getattr__(self, name: str):
         """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
 # Setup common module functionality

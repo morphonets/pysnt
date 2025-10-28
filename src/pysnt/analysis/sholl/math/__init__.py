@@ -30,33 +30,6 @@ _discovery_completed: bool = False
 # Make curated classes None initially (will be set by _java_setup)
 # These explicit declarations ensure IDE autocompletion works
 
-class LinearProfileStats:
-    """
-    Computes descriptive statistics and Sholl Metrics from sampled Sholl profiles,
-    including those relying on polynomial fitting
-    """
-    pass
-
-class NormalizedProfileStats:
-    """
-    Computes Sholl Metrics from normalized profiles, including Sholl decay and
-    methods for determination of 'optimal' normalization.
-    """
-    pass
-
-class PolarProfileStats:
-    """
-    Computes angle-resolved (‘Polar Sholl’) metrics, providing methods for analysis
-    of directional patterns in Sholl profiles.
-    """
-    pass
-
-class ShollStats:
-    """
-    Methods and constants common to all Profile analyzers.
-    """
-    pass
-
 def _java_setup():
     """
     Lazy initialization function for Java-dependent Sholl math classes.
