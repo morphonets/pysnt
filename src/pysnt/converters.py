@@ -368,6 +368,19 @@ def _is_snt_graph(obj: Any) -> bool:
         logger.debug(f"SNTGraph predicate: FAILED for {type(obj)} - {e}")
         return False
 
+
+def _is_imageplus(obj: Any) -> bool:
+    """Check if object is an ImageJ ImagePlus."""
+    try:
+        return JavaTypeDetector.matches_pattern(
+            obj,
+            class_patterns=['ImagePlus'],
+            required_methods=['getType', 'getTitle', 'getWidth', 'getHeight']
+        )
+    except (AttributeError, TypeError, RuntimeError) as e:
+        logger.debug(f"ImagePlus predicate: FAILED for {type(obj)} - {e}")
+        return False
+
 # Generic SNTGraph Converters
 class VertexExtractor:
     """Base class for vertex attribute extraction."""
@@ -1334,6 +1347,74 @@ def _convert_directed_weighted_graph(graph: Any, **kwargs) -> SNTObject:
     return _convert_snt_graph(graph, **kwargs)
 
 
+def _extract_imageplus_metadata(imageplus: Any, **kwargs) -> dict:
+    """
+    Extract metadata from ImagePlus object without triggering conversion.
+    
+    This function extracts ImagePlus metadata including RGB type information and title
+    for use in display functions.
+
+    Parameters
+    ----------
+    imageplus : ImagePlus
+        The ImagePlus object to extract metadata from
+    **kwargs
+        Additional options:
+        - frame, t, time, timepoint : int, optional
+            Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
+
+    Returns
+    -------
+    dict
+        Dictionary containing ImagePlus metadata
+    """
+    try:
+        logger.debug(f"Extracting ImagePlus metadata: {imageplus.getTitle()}")
+        
+        # Extract ImagePlus metadata
+        image_type = imageplus.getType()
+        image_title = imageplus.getTitle() or "Untitled Image"
+        width = imageplus.getWidth()
+        height = imageplus.getHeight()
+        
+        # Determine if this is an RGB image based on ImagePlus type
+        # ImagePlus.COLOR_RGB = 4, ImagePlus.COLOR_256 = 1, ImagePlus.GRAY8 = 0, etc.
+        is_rgb = image_type == 4  # ImagePlus.COLOR_RGB
+        
+        logger.debug(f"ImagePlus metadata: type={image_type}, title='{image_title}', "
+                    f"size={width}x{height}, is_rgb={is_rgb}")
+        
+        # Extract frame parameter (supports frame=, t=, time=, case-insensitive)
+        kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
+        frame = None
+        for key in ['frame', 't', 'time', 'timepoint']:
+            if key in kwargs_lower:
+                try:
+                    frame = int(kwargs_lower[key])
+                    break
+                except (ValueError, TypeError):
+                    pass
+        frame = frame if frame is not None else 1
+        
+        # Return comprehensive metadata
+        metadata = {
+            'source_type': 'ImagePlus',
+            'image_type': image_type,
+            'image_title': image_title,
+            'is_rgb': is_rgb,
+            'width': width,
+            'height': height,
+            'frame': frame
+        }
+        
+        logger.debug(f"Extracted metadata for '{image_title}': {'RGB' if is_rgb else 'grayscale'}")
+        return metadata
+        
+    except Exception as e:
+        logger.error(f"Failed to extract ImagePlus metadata: {e}")
+        return {}
+
+
 def _convert_snt_table(table: Any, **kwargs) -> SNTObject:
     """
     Convert SNT Table to a SNTObject containing a xarray Dataset.
@@ -1583,6 +1664,7 @@ SNT_CONVERTERS = [
         priority=sj.Priority.NORMAL,
         name="SNTChart_to_Matplotlib"
     ),
+    # Note: ImagePlus converter is handled directly in _display_imageplus to avoid recursion
     # Phase 1: Keep existing DirectedWeightedGraph converter (will be migrated in Phase 4)
     sj.Converter(
         predicate=_is_directed_weighted_graph,
@@ -1789,15 +1871,13 @@ def _handle_snt_object_display(obj, **kwargs):
         except Exception as e:
             logger.info(f"Displaying xarray object (size info unavailable: {e})")
 
-        # Display the data
-        try:
-            if hasattr(data, 'to_pandas'):
-                print(data.to_pandas().head())
-            else:
-                print(data)
-        except Exception as e:
-            logger.warning(f"Could not display xarray data: {e}")
-            print(f"xarray object: {type(data)}")
+        # Pass metadata to display function for proper RGB/title handling
+        metadata = obj.get('metadata', {})
+        kwargs_with_metadata = kwargs.copy()
+        kwargs_with_metadata['metadata'] = metadata
+        
+        # Display the xarray data with metadata
+        _display_xarray(data, **kwargs_with_metadata)
         return obj
     elif isinstance(data, numpy.ndarray):
         logger.info(f"Displaying numpy array (size: {data.size})")
@@ -1856,9 +1936,9 @@ def _display_snt_object(obj, **kwargs):
 def _display_imageplus(obj, **kwargs):
     """
     Handler function for ImagePlus display.
-
-    If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved;
-    if multichannel an RGB version is obtained. ROIs are also displayed if image has stored ROIs.
+    
+    This function extracts ImagePlus metadata and then converts to xarray
+    for display with proper RGB/title handling.
 
     Parameters
     ----------
@@ -1876,29 +1956,46 @@ def _display_imageplus(obj, **kwargs):
     xarray or None
         Converted xarray object if successful, None otherwise
     """
-    logger.info("Detected ImagePlus object - attempting conversion to xarray...")
+    logger.info("Detected ImagePlus object - extracting metadata and converting...")
     try:
         from .util import ImpUtils
         from .core import ij
-        logger.info("Converting ImagePlus to xarray using ImpUtils and ij.py.from_java()...")
+        
+        # Extract metadata first (before conversion to avoid recursion)
+        metadata = _extract_imageplus_metadata(obj, **kwargs)
+        
+        # Convert ImagePlus to xarray using existing utilities
+        # This bypasses the scyjava converter system to avoid recursion
+        logger.debug("Converting ImagePlus to xarray using ImpUtils...")
+        converted_imp = ImpUtils.convertToSimple2D(obj)
+        
+        # Use ij().py.from_java() but with recursion protection
+        logger.debug("Converting to xarray using ij().py.from_java()...")
+        xarray_data = ij().py.from_java(converted_imp)
+        
+        if xarray_data is None:
+            logger.error("Failed to convert ImagePlus to xarray - got None")
+            return None
+        
+        # Update metadata with actual xarray information
+        metadata['original_shape'] = getattr(xarray_data, 'shape', None)
+        metadata['dtype'] = str(getattr(xarray_data, 'dtype', 'unknown'))
+        
+        # Add metadata to kwargs for display functions
+        kwargs_with_metadata = kwargs.copy()
+        kwargs_with_metadata['metadata'] = metadata
+        
+        # Display the xarray data with metadata
+        logger.info(f"Displaying ImagePlus '{metadata.get('image_title', 'Unknown')}' "
+                   f"({'RGB' if metadata.get('is_rgb', False) else 'grayscale'})")
+        _display_xarray(xarray_data, **kwargs_with_metadata)
+        
+        return xarray_data
 
-        # Extract frame parameter (supports frame=, t=, time=, case-insensitive)
-        kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
-        frame = None
-        for key in ['frame', 't', 'time', 'timepoint']:
-            if key in kwargs_lower:
-                try:
-                    frame = int(kwargs_lower[key])
-                    break
-                except (ValueError, TypeError):
-                    pass
-        frame = frame if frame is not None else 1
-        converted = ij().py.from_java(ImpUtils.convertToSimple2D(obj, frame))
-        _display_xarray(converted, **kwargs)
-        return converted
-
-    except Exception as ij_e:
-        logger.info(f"ImagePlus conversion failed: {ij_e}")
+    except Exception as e:
+        logger.error(f"ImagePlus display failed: {e}")
+        import traceback
+        traceback.print_exc()
         return None
 
 
@@ -2403,24 +2500,45 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
         try:
             logger.debug("Trying xarray.plot() method...")
 
+            # Check for metadata-based RGB detection (most reliable)
+            metadata = kwargs.get('metadata', {})
+            is_rgb = metadata.get('is_rgb', False)
+            
+            # Use metadata title if available and no title override provided
+            if not title and 'image_title' in metadata:
+                title = metadata['image_title']
+            
+            # Fallback to shape-based detection if no metadata available
+            if not is_rgb and hasattr(xarr, 'shape') and len(xarr.shape) == 3 and xarr.shape[2] in [3, 4]:
+                is_rgb = True
+                logger.warning(f"Using fallback RGB detection for xarray shape {xarr.shape}. "
+                              f"Consider using metadata-based detection for reliability.")
+            
+            logger.debug(f"RGB detection result: is_rgb={is_rgb}, metadata_available={bool(metadata)}")
+
             # Handle different dimensionalities
             if hasattr(xarr, 'ndim'):
                 if xarr.ndim == 2:
                     # 2D image - use imshow-style plot
-                    # Ensure xarray doesn't add its own colorbar if we're going to add one later
-                    plot_obj = xarr.plot(cmap=cmap, add_colorbar=True, **kwargs)
+                    plot_obj = xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
                 elif xarr.ndim == 3:
-                    # 3D image - plot middle slice
-                    middle_slice = xarr.shape[0] // 2
-                    plot_obj = xarr[middle_slice].plot(cmap=cmap, add_colorbar=True, **kwargs)
-                    if not title:
-                        title = f"Slice {middle_slice} of 3D image"
+                    if is_rgb:
+                        # RGB image - plot directly without colormap
+                        plot_obj = xarr.plot(add_colorbar=False, **kwargs)
+                        if not title:
+                            title = metadata.get('image_title', "RGB image")
+                    else:
+                        # 3D image - plot middle slice
+                        middle_slice = xarr.shape[0] // 2
+                        plot_obj = xarr[middle_slice].plot(cmap=cmap, add_colorbar=True, **kwargs)
+                        if not title:
+                            title = f"Slice {middle_slice} of 3D image"
                 else:
                     # Higher dimensions - flatten to 2D
-                    plot_obj = xarr.plot(cmap=cmap, add_colorbar=True, **kwargs)
+                    plot_obj = xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
             else:
                 # Fallback - just try to plot
-                plot_obj = xarr.plot(cmap=cmap, add_colorbar=True, **kwargs)
+                plot_obj = xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
 
             # Add title if provided
             if title:
@@ -3086,7 +3204,11 @@ def _display_array_data(data, source_type="array", **kwargs):
     source_type : str
         Type of source data for logging/metadata
     **kwargs
-        Display parameters
+        Display parameters including:
+        - metadata: dict, optional metadata from SNTObject conversion
+        - title: str, optional title override
+        - is_rgb: bool, optional RGB flag override
+        - add_colorbar: bool, whether to add colorbar (default: True for grayscale)
         
     Returns
     -------
@@ -3098,14 +3220,38 @@ def _display_array_data(data, source_type="array", **kwargs):
     # Handle different dimensionalities
     original_shape = data.shape
     title = kwargs.get('title', None)
+    
+    # Check for metadata-based RGB detection (most reliable)
+    metadata = kwargs.get('metadata', {})
+    is_rgb = metadata.get('is_rgb', False)
+    
+    # Use metadata title if available and no title override provided
+    if not title and 'image_title' in metadata:
+        title = metadata['image_title']
+    
+    # If no metadata available, fall back to manual override or shape detection
+    if not is_rgb and 'is_rgb' in kwargs:
+        is_rgb = kwargs['is_rgb']
+    elif not is_rgb and data.ndim == 3 and data.shape[2] in [3, 4]:
+        # Fallback: shape-based detection (less reliable)
+        is_rgb = True
+        logger.warning(f"Using fallback RGB detection based on shape {data.shape}. "
+                      f"Consider using metadata-based detection for reliability.")
 
     if data.ndim == 3:
-        # 3D - show middle slice
-        middle_slice = data.shape[0] // 2
-        img_data = data[middle_slice]
-        logger.debug(f"Using middle slice {middle_slice} from 3D data: new shape={img_data.shape}")
-        if not title:
-            title = f"Slice {middle_slice} of 3D {source_type}"
+        if is_rgb:
+            # RGB/RGBA data - display as-is
+            img_data = data
+            logger.debug(f"Displaying RGB/RGBA data: shape={img_data.shape}")
+            if not title:
+                title = f"RGB {source_type}"
+        else:
+            # 3D - show middle slice
+            middle_slice = data.shape[0] // 2
+            img_data = data[middle_slice]
+            logger.debug(f"Using middle slice {middle_slice} from 3D data: new shape={img_data.shape}")
+            if not title:
+                title = f"Slice {middle_slice} of 3D {source_type}"
     elif data.ndim > 3:
         # Higher dimensions - take first 2D slice
         img_data = data
@@ -3126,22 +3272,34 @@ def _display_array_data(data, source_type="array", **kwargs):
     fig, ax = plt.subplots()
     ax.set_title(title)
 
-    cmap = kwargs.get('cmap', 'gray')
+    # Set colormap based on image type
+    if is_rgb:
+        # For RGB images, don't use a colormap
+        cmap = None
+        logger.debug("Using no colormap for RGB image")
+    else:
+        # For grayscale images, use the specified colormap or default to gray
+        cmap = kwargs.get('cmap', 'gray')
+        logger.debug(f"Using colormap '{cmap}' for grayscale image")
 
     # Filter kwargs for matplotlib imshow - exclude internal and display-specific parameters
-    internal_params = {'_internal', 'cmap', 'title', 'add_colorbar'}
+    internal_params = {'_internal', 'cmap', 'title', 'add_colorbar', 'metadata', 'is_rgb'}
     imshow_kwargs = {k: v for k, v in kwargs.items() if k not in internal_params}
 
     logger.debug(f"Using matplotlib imshow with filtered kwargs: {imshow_kwargs}")
     im = ax.imshow(img_data, cmap=cmap, **imshow_kwargs)
 
-    # Add colorbar if requested
-    if kwargs.get('add_colorbar', True):
+    # Add colorbar only for grayscale images (not RGB)
+    add_colorbar = kwargs.get('add_colorbar', True)
+    if add_colorbar and not is_rgb:
         plt.colorbar(im, ax=ax)
+        logger.debug("Added colorbar for grayscale image")
+    elif is_rgb:
+        logger.debug("Skipped colorbar for RGB image")
 
     # Use unified display system
     if _show_matplotlib_figure(fig):
-        logger.info(f"Successfully displayed {source_type} data as image")
+        logger.info(f"Successfully displayed {source_type} data as {'RGB' if is_rgb else 'grayscale'} image: '{title}'")
         return {
             'type': Figure,
             'data': data,
@@ -3149,7 +3307,9 @@ def _display_array_data(data, source_type="array", **kwargs):
                 'source_type': source_type,
                 'original_shape': original_shape,
                 'displayed_shape': img_data.shape,
-                'title': title
+                'title': title,
+                'is_rgb': is_rgb,
+                **metadata  # Include original metadata
             },
             'error': None
         }
