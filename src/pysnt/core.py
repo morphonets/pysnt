@@ -30,7 +30,46 @@ class FijiNotFoundError(RuntimeError):
     pass
 
 
-def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless") -> None:
+def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None) -> None:
+    """
+    Configure JVM parameters before startup.
+    
+    Parameters
+    ----------
+    max_heap : str, optional
+        Maximum heap size (e.g., "8g", "4096m")
+    min_heap : str, optional
+        Initial heap size (e.g., "2g", "1024m")
+    jvm_args : List[str], optional
+        Additional JVM arguments
+    """
+    if max_heap is None and min_heap is None and (jvm_args is None or len(jvm_args) == 0):
+        return  # Nothing to configure
+    
+    logger.info("Configuring JVM parameters...")
+    
+    # Configure heap sizes
+    if max_heap is not None:
+        max_heap_arg = f"-Xmx{max_heap}"
+        scyjava.config.add_option(max_heap_arg)
+        logger.info(f"Set maximum heap size: {max_heap_arg}")
+    
+    if min_heap is not None:
+        min_heap_arg = f"-Xms{min_heap}"
+        scyjava.config.add_option(min_heap_arg)
+        logger.info(f"Set initial heap size: {min_heap_arg}")
+    
+    # Configure additional JVM arguments
+    if jvm_args is not None:
+        for arg in jvm_args:
+            scyjava.config.add_option(arg)
+            logger.info(f"Added JVM argument: {arg}")
+    
+    logger.info("JVM configuration complete")
+
+
+def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless", 
+               max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None) -> None:
     """
     Initialize the SNT environment with ImageJ/Fiji.
     
@@ -48,6 +87,15 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     mode : str, default "headless"
         pyimagej initialization mode. Either "headless", "gui", "interactive",
         or "interactive:force"
+    max_heap : str, optional
+        Maximum JVM heap size (e.g., "8g", "4096m", "2G"). 
+        Convenient alternative to manually configuring JVM args.
+    min_heap : str, optional
+        Initial JVM heap size (e.g., "2g", "1024m", "1G").
+        Convenient alternative to manually configuring JVM args.
+    jvm_args : List[str], optional
+        Additional JVM arguments to pass (e.g., ["-XX:+UseG1GC", "-Xss2m"]).
+        For advanced users who need full control over JVM configuration.
         
     Examples
     --------
@@ -58,8 +106,15 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     >>> pysnt.initialize("gui")
     >>> pysnt.initialize("interactive")
     >>> 
+    >>> # Memory configuration
+    >>> pysnt.initialize(max_heap="8g")  # 8GB heap
+    >>> pysnt.initialize(max_heap="16g", min_heap="4g")  # 16GB max, 4GB initial
+    >>> 
+    >>> # Advanced JVM configuration
+    >>> pysnt.initialize(jvm_args=["-Xmx8g", "-XX:+UseG1GC"])
+    >>> 
     >>> # Full control
-    >>> pysnt.initialize(None, True, True, "gui")
+    >>> pysnt.initialize(None, True, True, "gui", max_heap="8g")
         
     Raises
     ------
@@ -67,6 +122,12 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         If Fiji installation cannot be found or configured.
     RuntimeError
         If initialization fails for other reasons (Java issues, etc.).
+        
+    Notes
+    -----
+    JVM memory configuration (max_heap, min_heap, jvm_args) must be specified
+    on the first call to initialize(). Subsequent calls will ignore these
+    parameters since the JVM cannot be reconfigured once started.
     """
     # Handle convenience syntax: initialize("gui") -> initialize(mode="gui")
     valid_modes = {"headless", "gui", "interactive", "interactive:force"}
@@ -163,6 +224,10 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             
             raise FijiNotFoundError("\n".join(error_msg))
             
+        # Configure JVM BEFORE it starts
+        if not scyjava.jvm_started():
+            _configure_jvm(max_heap, min_heap, jvm_args)
+        
         # Register SNT converters BEFORE JVM starts
         if not scyjava.jvm_started():
             logger.info("Registering SNT converters before JVM startup...")
