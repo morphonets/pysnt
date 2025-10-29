@@ -1,0 +1,28 @@
+"""
+Type stubs for chart_converters.py
+
+Auto-generated stub file.
+"""
+
+from typing import Any, Optional
+
+from matplotlib.figure import Figure
+
+from pysnt.converters.core import SNTObject
+
+logger: Any
+def _is_snt_chart(obj: Any) -> bool: ...
+
+def _convert_snt_chart(chart: Any, **kwargs: Any) -> SNTObject: ...
+
+def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[str], scale: float) -> Figure: ...
+
+def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional[str], scale: float, max_panels: int, panel_layout: str) -> Figure: ...
+
+def _create_figure_with_image(img_array: Any, figsize: Any, title: Any, dpi: Any, tight_layout: Any) -> Any: ...
+
+def _svg_to_matplotlib(svg_file: Any, dpi: Any, figsize: Any, background: Any) -> Any: ...
+
+def _pdf_to_matplotlib(pdf_file: Any, page: Any, dpi: Any, figsize: Any) -> Any: ...
+
+def _png_to_matplotlib(png_file: str, figsize: Any) -> Figure: ...

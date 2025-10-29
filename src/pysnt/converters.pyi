@@ -1,5 +1,5 @@
 """
-Type stubs for converters.py
+Type stubs for converters module
 
 Auto-generated stub file.
 """
