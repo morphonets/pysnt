@@ -784,27 +784,43 @@ class ComprehensiveStubGenerator:
 
     def _generate_python_stub_content(self, tree: ast.AST, py_file: Path) -> str:
         """Generate Python stub content from AST."""
+        # First pass: collect all imports and analyze what we need
+        original_imports = self._extract_imports_from_ast(tree)
+        
+        # Generate stub content first to analyze what types are used
+        stub_body_lines = []
+        
+        # Process top-level nodes
+        for node in tree.body:
+            if isinstance(node, ast.FunctionDef):
+                stub_body_lines.extend(self._process_function(node))
+                stub_body_lines.append('')
+            elif isinstance(node, ast.ClassDef):
+                stub_body_lines.extend(self._process_class(node))
+                stub_body_lines.append('')
+            elif isinstance(node, ast.Assign):
+                stub_body_lines.extend(self._process_assignment(node))
+
+        # Analyze stub content to determine needed imports
+        stub_content = '\n'.join(stub_body_lines)
+        needed_imports = self._analyze_needed_imports(stub_content, original_imports, py_file)
+        
+        # Build final stub with proper imports
         lines = [
             '"""',
             f'Type stubs for {py_file.name}',
             '',
             'Auto-generated stub file.',
             '"""',
-            '',
-            'from typing import Any',
             ''
         ]
-
-        # Process top-level nodes
-        for node in tree.body:
-            if isinstance(node, ast.FunctionDef):
-                lines.extend(self._process_function(node))
-                lines.append('')
-            elif isinstance(node, ast.ClassDef):
-                lines.extend(self._process_class(node))
-                lines.append('')
-            elif isinstance(node, ast.Assign):
-                lines.extend(self._process_assignment(node))
+        
+        # Add imports
+        lines.extend(needed_imports)
+        lines.append('')
+        
+        # Add stub content
+        lines.extend(stub_body_lines)
 
         return '\n'.join(lines)
 
@@ -864,6 +880,81 @@ class ComprehensiveStubGenerator:
             arg_strs.append(kwarg_str)
 
         return ", ".join(arg_strs)
+
+    def _extract_imports_from_ast(self, tree: ast.AST) -> Dict[str, List[str]]:
+        """Extract imports from the original Python file."""
+        imports = {
+            'typing': [],
+            'relative': [],
+            'external': []
+        }
+        
+        for node in tree.body:
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    imports['external'].append(alias.name)
+            elif isinstance(node, ast.ImportFrom):
+                module = node.module or ''
+                if module == 'typing':
+                    imports['typing'].extend([alias.name for alias in node.names])
+                elif module.startswith('.'):
+                    # Relative import
+                    import_items = [alias.name for alias in node.names]
+                    imports['relative'].append((module, import_items))
+                else:
+                    imports['external'].append(module)
+        
+        return imports
+
+    def _analyze_needed_imports(self, stub_content: str, original_imports: Dict, py_file: Path) -> List[str]:
+        """Analyze stub content to determine what imports are needed."""
+        import_lines = []
+        
+        # Always include basic typing imports
+        typing_imports = {'Any'}
+        
+        # Check for specific types used in the stub
+        if 'List[' in stub_content:
+            typing_imports.add('List')
+        if 'Dict[' in stub_content:
+            typing_imports.add('Dict')
+        if 'Optional[' in stub_content:
+            typing_imports.add('Optional')
+        if 'Union[' in stub_content:
+            typing_imports.add('Union')
+        if 'Callable[' in stub_content:
+            typing_imports.add('Callable')
+        if 'Tuple[' in stub_content:
+            typing_imports.add('Tuple')
+        if 'Set[' in stub_content:
+            typing_imports.add('Set')
+        if ': Type' in stub_content or '-> Type' in stub_content:
+            typing_imports.add('Type')
+        
+        # Add typing import
+        if typing_imports:
+            import_lines.append(f"from typing import {', '.join(sorted(typing_imports))}")
+        
+        # Check for specific types that need special imports
+        module_name = py_file.stem
+        
+        # Handle SNTObject import for converter modules
+        if 'SNTObject' in stub_content and 'converters' in str(py_file):
+            if module_name != 'core':  # Don't import from self
+                import_lines.append("from .core import SNTObject")
+        
+        # Handle matplotlib Figure import
+        if 'Figure' in stub_content:
+            import_lines.append("from matplotlib.figure import Figure")
+        
+        # Handle other specific imports based on original file
+        for module, items in original_imports.get('relative', []):
+            # Only include relative imports that are actually used in the stub
+            used_items = [item for item in items if item in stub_content]
+            if used_items:
+                import_lines.append(f"from {module} import {', '.join(used_items)}")
+        
+        return import_lines
 
     def generate_all_stubs(self, overwrite: bool = False) -> Dict[str, int]:
         """Generate all stub files."""
