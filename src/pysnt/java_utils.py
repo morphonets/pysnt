@@ -490,6 +490,7 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
         
         # Try to import from common pysnt modules
         modules_to_try = [
+            'pysnt',  # Main module first
             'pysnt.analysis',
             'pysnt.analysis.graph', 
             'pysnt.analysis.growth',
@@ -517,11 +518,24 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
     else:
         # Assume it's already a Java class or object
         try:
-            # Check if it's a jpype Java class
+            import scyjava
+            
+            # Check if it's a jpype Java class (used by scyjava)
             class_name = str(type(class_or_object))
-            if '_jpype._JClass' in class_name or 'java class' in str(class_or_object):
-                # It's a jpype Java class, return it directly
-                return class_or_object
+            if '_jpype._JClass' in class_name:
+                # It's a jpype Java class, get the Class object for reflection
+                # For jpype classes, we can use the class_() method to get the Class object
+                if hasattr(class_or_object, 'class_'):
+                    return class_or_object.class_
+                else:
+                    # Alternative: use the class name to get Class object
+                    java_class_name = str(class_or_object).split("'")[1]
+                    Class = scyjava.jimport('java.lang.Class')
+                    return Class.forName(java_class_name)
+            
+            # Check if it's a scyjava wrapper
+            if hasattr(class_or_object, '__jclass__'):
+                return class_or_object.__jclass__
             
             # If it's an instance, get its class
             if hasattr(class_or_object, 'getClass'):
@@ -529,8 +543,8 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
             else:
                 # Assume it's already a Class object
                 return class_or_object
-        except:
-            print(f"❌ Could not resolve Java class from: {type(class_or_object)}")
+        except Exception as e:
+            print(f"❌ Could not resolve Java class from: {type(class_or_object)}: {e}")
             return None
 
 
