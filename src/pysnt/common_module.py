@@ -221,16 +221,19 @@ def setup_module_classes(
 
         This method provides access to both curated and extended classes.
         Extended classes are discovered and loaded on first access.
+        
+        Supports inner class access using dot notation (e.g., "CircularModels.VonMisesFit").
 
         Parameters
         ----------
         class_name : str
-            Name of the class to retrieve.
+            Name of the class to retrieve. Can include inner class notation
+            using dots (e.g., "CircularModels.VonMisesFit").
 
         Returns
         -------
         Java class
-            The requested SNT class.
+            The requested SNT class or inner class.
 
         Raises
         ------
@@ -238,9 +241,38 @@ def setup_module_classes(
             If the class is not available.
         RuntimeError
             If the JVM has not been started.
+            
+        Examples
+        --------
+        >>> # Get a regular class
+        >>> CircModels = pysnt.analysis.get_class("CircularModels")
+        
+        >>> # Get an inner class
+        >>> VonMisesFit = pysnt.analysis.get_class("CircularModels.VonMisesFit")
         """
         if not scyjava.jvm_started():
             raise RuntimeError("JVM not started. Call pysnt.initialize() first.")
+
+        # Check if this is an inner class request (contains dot notation)
+        if '.' in class_name:
+            try:
+                # Handle inner class notation: "OuterClass.InnerClass"
+                outer_class_name, inner_class_name = class_name.split('.', 1)
+                
+                # First get the outer class
+                outer_class = get_class(outer_class_name)  # Recursive call
+                
+                # Then try to access the inner class
+                java_name = _get_java_class_name(outer_class_name)
+                inner_java_name = _get_java_class_name(inner_class_name)
+                full_inner_class_name = f"{package_name}.{java_name}.{inner_java_name}"
+                
+                inner_class = scyjava.jimport(full_inner_class_name)
+                return inner_class
+                
+            except Exception as e:
+                # If inner class access fails, continue with normal lookup
+                logger.debug(f"Failed to access inner class {class_name}: {e}")
 
         # Normalize the class name for lookup (handle both Python and Java naming)
         python_name = _normalize_class_name_for_python(class_name)

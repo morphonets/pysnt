@@ -924,25 +924,118 @@ def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> l
         return []
 
 
+def get_inner_classes(class_or_object: Union[str, Any]) -> list:
+    """
+    Retrieve all public inner classes from a Java class.
+    
+    Parameters
+    ----------
+    class_or_object : str or Java object
+        Either a string class name or a Java class/object
+        
+    Returns
+    -------
+    list
+        List of dictionaries containing inner class information:
+        - 'name': simple class name
+        - 'full_name': full qualified class name
+        - 'is_static': whether the inner class is static
+        - 'is_interface': whether it's an interface
+        - 'is_enum': whether it's an enum
+        - 'signature': descriptive signature string
+        
+    Examples
+    --------
+    >>> inner_classes = get_inner_classes('CircularModels')
+    >>> for cls in inner_classes:
+    ...     print(f"{cls['name']}: {cls['full_name']}")
+    """
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            logger.warning("JVM not started. Call pysnt.initialize() first.")
+            return []
+        
+        java_class = _resolve_java_class(class_or_object)
+        if java_class is None:
+            return []
+        
+        # Get declared classes (inner classes)
+        inner_classes = java_class.getDeclaredClasses()
+        result = []
+        
+        for inner_class in inner_classes:
+            class_name = str(inner_class.getSimpleName())
+            full_name = str(inner_class.getName())
+            
+            # Get modifiers
+            modifiers = inner_class.getModifiers()
+            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            is_interface = inner_class.isInterface()
+            is_enum = inner_class.isEnum()
+            
+            # Create signature
+            modifiers_list = []
+            if is_static:
+                modifiers_list.append('static')
+            
+            if is_interface:
+                type_str = 'interface'
+            elif is_enum:
+                type_str = 'enum'
+            else:
+                type_str = 'class'
+            
+            mod_str = ' '.join(modifiers_list)
+            if mod_str:
+                mod_str += ' '
+            
+            signature = f"{mod_str}{type_str} {class_name}"
+            
+            result.append({
+                'name': class_name,
+                'full_name': full_name,
+                'is_static': is_static,
+                'is_interface': is_interface,
+                'is_enum': is_enum,
+                'signature': signature
+            })
+        
+        # Sort by name for consistent output
+        result.sort(key=lambda c: c['name'])
+        return result
+        
+    except ImportError:
+        logger.error("scyjava not available. Make sure pysnt is properly installed.")
+        return []
+    except Exception as e:
+        logger.error(f"Error getting inner classes: {e}")
+        return []
+
+
 def find_members(class_or_object: Union[str, Any], 
                 keyword: str,
                 include_methods: bool = True,
                 include_fields: bool = True,
+                include_inner_classes: bool = True,
                 static_only: bool = False,
                 case_sensitive: bool = False) -> Dict[str, list]:
     """
-    Find methods and fields matching a keyword in a Java class or object.
+    Find methods, fields, and inner classes matching a keyword in a Java class or object.
     
     Parameters
     ----------
     class_or_object : str or Java object
         Either a string class name or a Java class/object
     keyword : str
-        Keyword to search for in method and field names
+        Keyword to search for in method, field, and inner class names
     include_methods : bool, default True
         Whether to search methods
     include_fields : bool, default True
         Whether to search fields
+    include_inner_classes : bool, default True
+        Whether to search inner classes
     static_only : bool, default False
         Whether to search only static members
     case_sensitive : bool, default False
@@ -951,7 +1044,7 @@ def find_members(class_or_object: Union[str, Any],
     Returns
     -------
     Dict[str, list]
-        Dictionary with 'methods' and 'fields' keys containing matching members.
+        Dictionary with 'methods', 'fields', and 'inner_classes' keys containing matching members.
         Each member is a dictionary with detailed information.
         
     Examples
@@ -960,11 +1053,15 @@ def find_members(class_or_object: Union[str, Any],
     >>> results = find_members('TreeStatistics', 'length')
     >>> print(f"Found {len(results['methods'])} methods and {len(results['fields'])} fields")
     
+    >>> # Find inner classes containing 'Fit'
+    >>> results = find_members('CircularModels', 'Fit')
+    >>> print(f"Found {len(results['inner_classes'])} inner classes")
+    
     >>> # Find only static methods containing 'get'
     >>> results = find_members('TreeStatistics', 'get', 
     ...                       include_fields=False, static_only=True)
     """
-    result = {'methods': [], 'fields': []}
+    result = {'methods': [], 'fields': [], 'inner_classes': []}
     
     if not keyword:
         logger.warning("No keyword provided for search")
@@ -984,6 +1081,13 @@ def find_members(class_or_object: Union[str, Any],
             for field in all_fields:
                 if _matches_keyword(field['name'], keyword, case_sensitive):
                     result['fields'].append(field)
+        
+        # Get inner classes if requested
+        if include_inner_classes:
+            inner_classes = get_inner_classes(class_or_object)
+            for inner_class in inner_classes:
+                if _matches_keyword(inner_class['name'], keyword, case_sensitive):
+                    result['inner_classes'].append(inner_class)
         
         return result
         
