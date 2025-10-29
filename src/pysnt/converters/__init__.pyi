@@ -4,7 +4,7 @@ Type stubs for __init__.py
 Auto-generated stub file.
 """
 
-from typing import Any, List, Dict
+from typing import Any, Dict, List
 
 logger: Any
 SNT_CONVERTERS: Any

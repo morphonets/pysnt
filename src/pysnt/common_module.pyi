@@ -4,7 +4,7 @@ Type stubs for common_module.py
 Auto-generated stub file.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 logger: Any
 def _normalize_class_name_for_python(class_name: str) -> str: ...

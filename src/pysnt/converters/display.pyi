@@ -4,8 +4,7 @@ Type stubs for display.py
 Auto-generated stub file.
 """
 
-from typing import Any, Tuple, Optional, Callable, List, Dict
-
+from typing import Any, Callable, Dict, List, Optional, Tuple
 from matplotlib.figure import Figure
 
 def _is_snt_object(obj: Any) -> bool: ...

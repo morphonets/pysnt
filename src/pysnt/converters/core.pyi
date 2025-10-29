@@ -4,19 +4,9 @@ Type stubs for core.py
 Auto-generated stub file.
 """
 
-from typing import Any, Optional, Type, Dict, List
+from typing import Any, Dict, List, Optional, Type
 
 logger: Any
-HAS_CAIROSVG: bool
-cairosvg: Any
-HAS_FITZ: bool
-fitz: Any
-HAS_PANDAS: bool
-pd: Any
-HAS_PANDASGUI: bool
-pandasgui_show: Any
-HAS_NETWORKX: bool
-nx: Any
 DEFAULT_CMAP: Any
 DEFAULT_NODE_SIZE: Any
 DEFAULT_NODE_COLOR: Any

@@ -5,9 +5,7 @@ Auto-generated stub file.
 """
 
 from typing import Any
-
-from pysnt.converters.core import SNTObject
-
+from .core import SNTObject
 
 def _is_snt_table(obj: Any) -> bool: ...
 

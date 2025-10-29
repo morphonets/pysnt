@@ -5,10 +5,8 @@ Auto-generated stub file.
 """
 
 from typing import Any, Optional
-
+from .core import SNTObject
 from matplotlib.figure import Figure
-
-from pysnt.converters.core import SNTObject
 
 logger: Any
 def _is_snt_chart(obj: Any) -> bool: ...

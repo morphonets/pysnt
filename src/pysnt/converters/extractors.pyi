@@ -4,8 +4,7 @@ Type stubs for extractors.py
 Auto-generated stub file.
 """
 
-from typing import Any, List, Optional, Dict
-
+from typing import Any, Dict, List, Optional
 
 class VertexExtractor:
     def extract_attributes(self: Any, vertex: Any, requested_attrs: List[str]) -> Dict[str, Any]: ...

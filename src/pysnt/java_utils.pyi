@@ -4,7 +4,7 @@ Type stubs for java_utils.py
 Auto-generated stub file.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional, Union
 
 logger: Any
 REQUIRED_JAVA_VERSION: Any

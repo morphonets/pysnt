@@ -747,3 +747,584 @@ class SNTGraph:
 
 ("SNT not initialized. Call pysnt.initialize() first.")
 
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class AnnotationGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_AnnotationGraph_javadoc`_.
+    
+    .. _analysis_graph_AnnotationGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/AnnotationGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedGraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class DirectedWeightedSubgraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_DirectedWeightedSubgraph_javadoc`_.
+    
+    .. _analysis_graph_DirectedWeightedSubgraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/DirectedWeightedSubgraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class SNTGraph:
+    """
+    Curated SNT class from analysis/graph package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_graph_SNTGraph_javadoc`_.
+    
+    .. _analysis_graph_SNTGraph_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/graph/SNTGraph.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+

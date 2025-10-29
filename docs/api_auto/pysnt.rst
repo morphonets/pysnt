@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 4
 
    pysnt.analysis
+   pysnt.converters
    pysnt.io
    pysnt.tracing
    pysnt.util
@@ -26,7 +27,6 @@ Submodules
 
    pysnt.common_module
    pysnt.config
-   pysnt.converters
    pysnt.core
    pysnt.gui_utils
    pysnt.java_utils

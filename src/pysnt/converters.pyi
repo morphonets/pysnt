@@ -4,7 +4,9 @@ Type stubs for converters module
 Auto-generated stub file.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional, Type, Callable, Tuple
+from .core import SNTObject
+from matplotlib.figure import Figure
 
 logger: Any
 def _setup_matplotlib_interactive() -> Any: ...

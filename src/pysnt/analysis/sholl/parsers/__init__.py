@@ -648,3 +648,444 @@ class TreeParser:
 
 ("SNT not initialized. Call pysnt.initialize() first.")
 
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class ImageParser2D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser2D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser2D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ImageParser3D:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_ImageParser3D_javadoc`_.
+    
+    .. _analysis_sholl_parsers_ImageParser3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/ImageParser3D.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class TreeParser:
+    """
+    Curated SNT class from analysis/sholl/parsers package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_parsers_TreeParser_javadoc`_.
+    
+    .. _analysis_sholl_parsers_TreeParser_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/TreeParser.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
