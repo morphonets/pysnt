@@ -131,6 +131,6 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
 :hidden:
 
 install
+quickstart
 notebooks/index
-api
 ```

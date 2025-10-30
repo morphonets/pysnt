@@ -1,6 +1,16 @@
 # <i class="fas fa-download"></i>&hairsp;Install
 
-## Requirements
+This section covers everything you need to get PySNT up and running.
+
+```{toctree}
+:maxdepth: 2
+
+quickstart
+overview
+api
+```
+
+## Installation Requirements
 
 
 The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5 pre-release](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
@@ -22,8 +32,8 @@ you want to debug or improve PySNT have a look at
 1. Assuming you have `mamba` installed, activate conda-forge:
 
    ```bash
-   mamba config append channels conda-forge
-   mamba config set channel_priority strict
+   mamba config --add channels conda-forge
+   mamba config --set channel_priority strict
    ```
 
 2. [Clone](https://github.com/morphonets/pysnt.git) or [download](https://github.com/morphonets/pysnt/archive/refs/heads/main.zip) pysnt
@@ -36,21 +46,22 @@ you want to debug or improve PySNT have a look at
 3. Create a new `pysnt` environment using the provided `environment.yml` file. This will install all the needed dependencies:
 
    ```bash
-   cd ./pysnt # cd to pysnt root directory
+   cd ./pysnt  # cd to pysnt root directory
    mamba env create -f environment.yml
    ```
-   NB: Other environment files are also provided for more granular installations:
+
+   **Environment Options**: Other environment files are also provided for more granular installations:
 
    | File                | Scope/Comments                                        |
    |---------------------|-------------------------------------------------------|
-   | environment.yml     | Full install with interactive GUI features            |
+   | environment.yml     | Full install with interactive GUI features  (default) |
    | environment-min.yml | Minimal CLI install with core dependencies only       |
    | environment-dev.yml | Full install plus dev tools for contributing to PySNT |
 
 4. Install pysnt in editable/development mode
 
    ```bash
-   mamba activate pysnt # activate the newly created environment
+   mamba activate pysnt  # activate the newly created environment
    pip install -e .
    ```
 
@@ -58,15 +69,15 @@ you want to debug or improve PySNT have a look at
 
    ```bash
    mamba activate pysnt
-   python -c 'import pysnt; print(f"Using PySNT version: {pysnt.version()}")'
-   ```
-   Which should print:
-   ```bash
-   0.0.1
+   python -c "import pysnt; print(f'Using PySNT version: {pysnt.version()}')"
    ```
 
-6. At this point, it may be convenient to make the new `pysnt` environment available in the graphical 
-   notebook interface (skip this step if you have no intention of using notebooks):
+   Which should print something like:
+   ```bash
+   Using PySNT version: 0.0.1
+   ```
+
+6. **Optional**: Make the new `pysnt` environment available in Jupyter notebooks:
 
    ```bash
    mamba activate pysnt
@@ -74,8 +85,7 @@ you want to debug or improve PySNT have a look at
    python -m ipykernel install --user --name=pysnt
    ```
 
-   Now, when you now start jupyter (or Jupyter lab), it will show `pysnt` in the list of registered
-   kernels. Selecting it, makes all the packages installed in the `pysnt` environment available.
+   Now, when you start jupyter (or Jupyter lab), it will show `pysnt` in the list of registered kernels. Selecting it makes all the packages installed in the `pysnt` environment available.
 
 
 ### Attaching to SNT
@@ -88,47 +98,49 @@ PySNT requires a connection to a local SNT installation. There are two options:
 
 
 ```{important}
-Currently the automatic option does not retrieve the latest version of SNT. Until SNTv5 is officially released,
-it is best to point pyimagej to a SNT pre-release bundle:
+Currently the automatic option does not retrieve the latest version of SNT. Until SNTv5 is officially released, it is best to point pyimagej to a SNT pre-release bundle:
 
 1. Download a pre-release bundle from the [SNT Release Page](https://github.com/morphonets/SNT/releases).
    Unzip it to a local directory, e.g., `~/Downloads/`
 
 2. Provide the installer with the path to the unzipped directory
+```
 
-#### Interactive Setup
-When you initialize pysnt using default options...
+### Interactive Setup
+
+When you initialize pysnt using default options:
 
 ```python
 import pysnt
 pysnt.initialize()
 ```
-... The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
+
+The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
 
 ```terminaloutput
-Fiji Installation Not Found
-========================================
-PySNT requires Fiji to be installed:
+❌ Fiji installation not found!
 
-Common installation locations checked:
-  - /Applications/Fiji.app
-  - C:/Fiji.app
-  - ~/Fiji.app
-  - ~/Applications/Fiji.app
-  - ~/Desktop/Fiji.app
-  - ~/Downloads/Fiji.app
+PySNT requires Fiji to function. Here's how to fix this:
 
-If Fiji is installed in a different location, please provide the path.
-If Fiji is not installed, you can:
-  1. Set FIJI_PATH environment variable
-  2. Pass fiji_path parameter to initialize_snt()
+🔧 Quick Solutions:
+  1. Run the interactive setup:
+     python -m pysnt.setup_utils
 
-📍Enter Fiji installation path (or 'skip' to continue without): /Users/user/Downloads/Fiji-SNTv5_pre-release_macOS
-✅ Using Fiji installation: /Users/user/Downloads/Fiji-SNTv5_pre-release_macOS
-❓Save this path to FIJI_PATH environment variable for future use? (y/N): y
-✅ FIJI_PATH set for current session.
-👉 To make permanent, add this to your shell profile:
-   export FIJI_PATH='/Users/user/Downloads/Fiji-SNTv5_pre-release_macOS'
+  2. Auto-detect Fiji installation:
+     python -m pysnt.setup_utils --auto-detect
+
+📋 Alternative Methods:
+  • Set environment variable: export FIJI_PATH='/path/to/Fiji.app'
+  • Pass path directly: pysnt.initialize(fiji_path='/path/to/Fiji.app')
+  • Use pysnt.set_fiji_path('/path/to/Fiji.app')
+
+🔍 We checked these common locations:
+  ✗ /Applications/Fiji.app
+  ✗ ~/Downloads/Fiji.app
+  ... and 3 more locations
+
+💡 Need help? Check configuration status:
+   python -m pysnt.setup_utils --status
 ```
 
 ## Verify Installation
@@ -137,10 +149,14 @@ To check version and system info:
 
 ```python
 import pysnt
+pysnt.initialize()  # Initialize first
+
 print(f"PySNT version: {pysnt.version()}")
 print("System info:")
 pysnt.info()
 ```
+
+This will output detailed system information:
 
 ```terminaloutput
 PySNT version: 0.0.1
@@ -151,35 +167,37 @@ PySNT version: 0.0.1
 Author: SNT contributors
 
 Python Environment:
-Python version: 3.12.12
-Python executable: /Users/ferreirat/miniforge3/envs/pysnt-dev/bin/python
-Platform: macOS-26.0.1-arm64-arm-64bit
+Python version: 3.13.9
+Python executable: /Users/user/mamba/envs/pysnt-dev/bin/python
+Platform: macOS-26.0.1-arm64-arm-64bit-Mach-O
 Architecture: arm64
 
 📦 Core Dependencies:
   ✅ scyjava      1.12.1       (SciJava Python bridge)
   ✅ imagej       1.7.0        (PyImageJ)
   ✅ numpy        2.3.3        (NumPy)
-  ✅ jdk          1.1.0        (install-jdk library (OpenJDK installer))
+  ✅ jdk          unknown      (install-jdk library (OpenJDK installer))
 
 ☕ Java Environment:
-  ✅ Java version: 24 (OpenJDK)
-  📍 Java executable: /Users/ferreirat/miniforge3/envs/pysnt-dev/lib/jvm/bin/java
-  🏠 JAVA_HOME: /Users/ferreirat/miniforge3/envs/pysnt-dev/lib/jvm
+  ✅ Java version: 21 (OpenJDK)
+  📍 Java executable: /Users/user/mamba/envs/pysnt-dev/lib/jvm/bin/java
+  🏠 JAVA_HOME: /Users/user/mamba/envs/pysnt-dev/lib/jvm
 
 🔬 SNT/Fiji Environment:
   ✅ PySNT initialized: Yes
   ℹ️ ImageJ version: 2.17.0/1.54p
-  ℹ️ SNT version: 4.9.9-SNAPSHOT-4896c9da7f9ebc6db367ec4fd8c222232f00b2ed
+  ℹ️ SNT version: 4.9.9-SNAPSHOT-04cbcaef56cfd037a0bd9a2d9a73050b86049d3b
 
 📁 Installation:
-  📍 PySNT location: /Users/ferreirat/code/pysnt/src/pysnt
+  📍 PySNT location: /Users/user/code/pysnt/src/pysnt
 
 💻 System Information:
   OS: Darwin 25.0.0
   CPU: arm
-  Memory: 48 GB total, 22 GB available
+  Memory: 48 GB total, 21 GB available
 ```
+
+### Test SNT Functionality
 
 Now you can test that SNT access is fully functional:
 
@@ -187,115 +205,105 @@ Now you can test that SNT access is fully functional:
 import pysnt
 from pysnt import SNTService, Tree
 pysnt.initialize()
+snt_service = SNTService()  # Start SNT's SciJava service
+print("✓ SNTService created successfully")
 
-snt_service = SNTService() # SNT's Scijava service
-tree = snt_service.demoTree('fractal') # retrieve a toy neuron
-tree.show() # display reconstruction
+# Retrieve and display a demo neuron
+tree = snt_service.demoTree('fractal')  # retrieve a toy neuron
+print(f"✓ Demo tree loaded: {type(tree)}")
+
+tree.show() # Display the reconstruction
 ```
 
-Because SNT is running headless, the reconstruction is displayed as ascii art in the console:
+Because SNT is running headless, the reconstruction is displayed as ascii art in the console.
+We can also display it in a matplotlib figure:
+
+```python
+pysnt.display(tree)
 ```
-################################################################################
-###########################  ######  #######  ######  ##########################
-#######################  ##  ######  ##   ##  ######  ##  ######################
-#######################      ######  #        ######  #   ######################
-#########################    ######     ##    ######     #######################
-###############  ########    ######    ###    ######    #########  #############
-###########  ##  ##########  ######   ######  ######   ##########  ##  #########
-###########   #  ##########   #####  #######   #####  ###########      #########
-############     ###########  #####  ########  #####  ###########     ##########
-#############    ###########   ###   ########   ###   ###########    ###########
-##############   ############  ##   ##########  ##   ############   ############
-####  #########   ###########  ##  ###########  ##  ############   #########  ##
-####   #########  ###########   #  ###########   #  ############  #########   ##
-#####   ########  ############     ############     ###########   ########   ###
-##       #######   ############   ##############   ############  ########       
-##         ######  ############   ##############   ############  ######         
-########      ###   ###########  ###############  ############   ###     #######
-##########     ###  ###########  ###############  ############  ###     ########
-############        ###########  ###############  ###########        ###########
-###############      ##########  ###############  ###########      #############
-##################   ##########  ###############  ##########    ################
-####################   ########  ###############  #########   ##################
-#####################  ########  ###############  ########   ###################
-#####################    ######  ###############  #######   ####################
-#######################   #####  ###############  ######   #####################
-########################   ####  ###############  ####    ######################
-#########################  ####  ###############  ####   #######################
-#########################    ##  ###############  ###   ########################
-###########################   #  ###############  ##   #########################
-############################     ###############      ##########################
-#############################    ###############    ############################
-##############################   ###############    ############################
-###############################   ##############  ##############################
-################################  ##############  ##############################
-################################   ############   ##############################
-#################################  ############  ###############################
-#################################  ###########   ###############################
-#################################   ##########  ################################
-##################################   ########   ################################
-###################################  ########  #################################
-###################################  #######   #################################
-###################################   ######  ##################################
-####################################  ######  ##################################
-####################################   ####   ##################################
-#####################################  ####  ###################################
-#####################################  ###   ###################################
-#####################################   ##  ####################################
-######################################  #   ####################################
-####################################### #  #####################################
-#######################################    #####################################
-#######################################   ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-########################################  ######################################
-```
+
+## Next Steps
+
+See [PySNT Overview](./overview.md) to learn the basics of PySNT.
 
 ## Troubleshooting
 
-PySNT includes some Java management capabilities:
+### Java Issues
+
+PySNT includes Java management capabilities:
 
 ```python
+# Check Java installation status
 from pysnt.java_utils import print_java_status
-print_java_status() # check Java installation status
+print_java_status()
 ```
 
-```python
-import pysnt
-pysnt.initialize() # check Java installation and install OpenJDK if needed
+This will show detailed Java information:
+
+```terminaloutput
+☕ Java Installation Status
+==============================
+✅ Java available: openjdk version "21.0.8" 2025-07-15 LTS
+📍 Executable: /Users/user/mamba/envs/pysnt-dev/lib/jvm/bin/java
+🏠 JAVA_HOME: /Users/user/mamba/envs/pysnt-dev/lib/jvm
+🏢 Vendor: OpenJDK
+✅ Version check: 21 >= 21 (recommended)
 ```
 
 ### Manual Java Setup
 
 ```python
-from pysnt.java_utils import ensure_java_available
-
 # Ensure Java 21 or newer is available
+from pysnt.java_utils import ensure_java_available
 ensure_java_available(required_version=21)
 ```
 
 ```python
+# Interactive Java setup wizard (experimental)
 from pysnt.java_utils import setup_java_environment
-setup_java_environment()  # Interactive wizard for jdk installation (experimental)
+setup_java_environment()
+```
+
+### Common Issues
+
+1. **"Fiji not found" error**: Set `FIJI_PATH` environment variable, or use the interactive setup:
+   ```python
+   import pysnt
+   pysnt.initialize(interactive =True)  # 8GB heap
+   ```
+2. **Java version issues**: Ensure Java 21+ is installed and accessible
+3. **Memory issues**: Use memory configuration:
+   ```python
+   import pysnt
+   pysnt.initialize(max_heap="8g")  # 8GB heap
+   ```
+4. **Import errors**: Make sure you've activated the correct conda environment
+
+### Getting Help
+
+```python
+# Show version and system information
+pysnt.show_version()
+pysnt.info()
+
+# Check configuration
+pysnt.show_config_status()
+
+# List available classes to verify SNT is working
+pysnt.list_classes()
 ```
 
 ```{note}
 Do [reach out](https://forum.image.sc/tag/snt) if you run into issues!
 ```
 
+## Next Steps
+
+Once PySNT is installed and working:
+
+1. **[Quickstart](quickstart.md)** - Learn essential workflows and concepts
+2. **[PySNT Overview](overview.md)** - Dive deeper into core functionality and patterns
+3. **[API Reference](api.md)** - Complete documentation of all functions and classes
 
 [snt]: https://imagej.net/SNT
 [api]: https://morphonets.github.io/SNT

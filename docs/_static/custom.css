@@ -263,12 +263,12 @@ a:has(i.fab)::before {
 }
 
 /* Alternative fallback for browsers that don't support :has() */
-.fa + a::before,
-.fas + a::before,
-.fab + a::before,
-a .fa ~ *::before,
-a .fas ~ *::before,
-a .fab ~ *::before {
+.fa+a::before,
+.fas+a::before,
+.fab+a::before,
+a .fa~*::before,
+a .fas~*::before,
+a .fab~*::before {
     display: none !important;
 }
 
@@ -417,14 +417,80 @@ a .fab ~ *::before {
     text-decoration: none;
 }
 
-/* Responsive design */
-@media (max-width: 992px) {
+/* Navigation spacing improvements */
+/* Moderate flexible spacing between navigation links */
+.navbar-nav {
+    gap: clamp(0.5rem, 1.5vw, 1rem) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem clamp(0.6rem, 1vw, 0.9rem) !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Ensure consistent navbar behavior across all screen sizes */
+/* Force all navbar elements to stay visible until the main collapse point */
+.navbar-expand-lg .navbar-nav,
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+}
+
+/* Prevent premature wrapping of navbar elements */
+.bd-navbar .navbar-nav {
+    flex-wrap: nowrap !important;
+}
+
+/* Keep search and icon elements aligned */
+.bd-navbar .navbar-nav,
+.bd-navbar .navbar-text,
+.bd-navbar .btn {
+    align-items: center !important;
+}
+
+/* Ensure the navbar container maintains proper flex behavior */
+.bd-navbar .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* Prevent individual elements from collapsing at different breakpoints */
+@media (min-width: 576px) and (max-width: 991.98px) {
     .navbar-nav {
-        gap: 1rem;
+        gap: clamp(0.3rem, 1vw, 0.6rem) !important;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.4rem clamp(0.4rem, 0.8vw, 0.6rem) !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Keep all elements visible and aligned */
+    .bd-navbar .navbar-nav,
+    .bd-navbar .navbar-text,
+    .bd-navbar .btn {
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* Reduce search bar width slightly to make room */
+    .bd-search {
+        max-width: 200px !important;
+    }
+}
+
+/* Responsive design - only apply when navbar actually collapses */
+@media (max-width: 991.98px) {
+    /* Only apply these styles when the navbar is actually collapsed */
+    .navbar-collapse:not(.show) .navbar-nav {
+        gap: clamp(0.4rem, 1.2vw, 0.8rem) !important;
     }
 
-    .navbar-nav .nav-link {
-        padding: 0.4rem 0.8rem;
+    .navbar-collapse:not(.show) .navbar-nav .nav-link {
+        padding: 0.4rem clamp(0.5rem, 0.8vw, 0.7rem) !important;
         font-size: 0.9rem;
     }
 }
@@ -449,13 +515,17 @@ a .fab ~ *::before {
         grid-column: span 2;
     }
 
-    .navbar-nav {
+    /* Only apply mobile navbar styles when actually collapsed */
+    .navbar-collapse.show .navbar-nav,
+    .navbar-toggler:not(.collapsed) ~ .navbar-collapse .navbar-nav {
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: clamp(0.3rem, 1vw, 0.6rem) !important;
+        justify-content: center !important;
     }
 
-    .navbar-nav .nav-link {
-        padding: 0.3rem 0.6rem;
+    .navbar-collapse.show .navbar-nav .nav-link,
+    .navbar-toggler:not(.collapsed) ~ .navbar-collapse .navbar-nav .nav-link {
+        padding: 0.3rem clamp(0.4rem, 0.8vw, 0.6rem) !important;
         font-size: 0.85rem;
     }
 }
@@ -718,11 +788,79 @@ dt:hover .viewcode-link,
         padding: 0.15rem 0.3rem !important;
         margin-left: 0.3rem !important;
     }
-    
+
     dt .viewcode-link {
         float: none !important;
         display: inline-block !important;
         margin-left: 0.5rem !important;
         margin-top: 0 !important;
     }
+}
+
+/* Theme toggle icon consistency */
+/* Make theme toggle icon consistent with other navbar icons */
+.theme-switch-button {
+    color: #485A6B !important;
+    opacity: 1 !important;
+    transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.theme-switch-button:hover {
+    color: #2980b9 !important;
+    opacity: 1 !important;
+}
+
+/* Dark theme support for theme toggle */
+[data-theme="dark"] .theme-switch-button {
+    color: #adb5bd !important;
+    opacity: 1 !important;
+}
+
+[data-theme="dark"] .theme-switch-button:hover {
+    color: #64b5f6 !important;
+    opacity: 1 !important;
+}
+
+/* Alternative selectors for theme toggle button */
+button[title*="light"],
+button[title*="dark"],
+button[title*="theme"],
+.btn-outline-primary.theme-switch-button,
+.navbar .btn[data-bs-toggle="tooltip"] {
+    color: #485A6B !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    transition: all 0.2s ease !important;
+}
+
+button[title*="light"]:hover,
+button[title*="dark"]:hover,
+button[title*="theme"]:hover,
+.btn-outline-primary.theme-switch-button:hover,
+.navbar .btn[data-bs-toggle="tooltip"]:hover {
+    color: #2980b9 !important;
+    border-color: transparent !important;
+    background-color: rgba(41, 128, 185, 0.1) !important;
+    opacity: 1 !important;
+}
+
+/* Dark theme for alternative selectors */
+[data-theme="dark"] button[title*="light"],
+[data-theme="dark"] button[title*="dark"],
+[data-theme="dark"] button[title*="theme"],
+[data-theme="dark"] .btn-outline-primary.theme-switch-button,
+[data-theme="dark"] .navbar .btn[data-bs-toggle="tooltip"] {
+    color: #adb5bd !important;
+    opacity: 1 !important;
+}
+
+[data-theme="dark"] button[title*="light"]:hover,
+[data-theme="dark"] button[title*="dark"]:hover,
+[data-theme="dark"] button[title*="theme"]:hover,
+[data-theme="dark"] .btn-outline-primary.theme-switch-button:hover,
+[data-theme="dark"] .navbar .btn[data-bs-toggle="tooltip"]:hover {
+    color: #64b5f6 !important;
+    background-color: rgba(100, 181, 246, 0.1) !important;
+    opacity: 1 !important;
 }
