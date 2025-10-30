@@ -520,9 +520,22 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
         try:
             import scyjava
             
+            # Check if it's a dynamic placeholder class
+            type_name = str(type(class_or_object))
+            if 'DynamicPlaceholderMeta' in type_name:
+                # It's a dynamic placeholder class - get the actual Java class
+                if hasattr(class_or_object, '_java_class_name'):
+                    java_class_name = class_or_object._java_class_name
+                    return scyjava.jimport(java_class_name)
+                else:
+                    # Try to extract from the metaclass
+                    meta = type(class_or_object)
+                    if hasattr(meta, '_java_class_name'):
+                        java_class_name = meta._java_class_name
+                        return scyjava.jimport(java_class_name)
+            
             # Check if it's a jpype Java class (used by scyjava)
-            class_name = str(type(class_or_object))
-            if '_jpype._JClass' in class_name:
+            if '_jpype._JClass' in type_name:
                 # It's a jpype Java class, get the Class object for reflection
                 # For jpype classes, we can use the class_() method to get the Class object
                 if hasattr(class_or_object, 'class_'):

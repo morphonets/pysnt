@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """
 Prepares PySNT for deployment by generating stubs and API docs.
+
+This script:
+1. Generate type stub files (.pyi) for IDE support
+2. Generate API documentation
+3. Run some quality control validations
+
+Placeholder classes are created automatically at runtime via setup_module_classes().
+No manual sync or placeholder generation is required.
 """
 
 import argparse
@@ -55,6 +63,7 @@ def main():
         action="store_true",
         help="Skip documentation generation"
     )
+
     parser.add_argument(
         "--verbose",
         action="store_true",
@@ -75,16 +84,16 @@ def main():
     success_count = 0
     total_tasks = 0
 
-    # 0. Generate placeholder classes (first step)
+    # 0. Run quality control validation
     total_tasks += 1
-    cmd = [sys.executable, str(script_dir / "generate_placeholders.py")]
+    cmd = [sys.executable, str(script_dir / "pysnt_utils.py"), "--qc"]
     if args.verbose:
         cmd.append("--verbose")
     
-    if run_command(cmd, "Generating placeholder classes with Javadoc links"):
+    if run_command(cmd, "Running quality control validation"):
         success_count += 1
     else:
-        print("⚠️ Placeholder generation failed, but continuing...")
+        print("⚠️ Quality control validation failed, but continuing...")
 
     # 1. Generate stubs (Python + Java with some fallback strategies)
     if not args.skip_java:
@@ -94,13 +103,7 @@ def main():
             cmd.append("--verbose")
 
         if run_command(cmd, "Generating stub files (Java + Python)"):
-            # Also sync Python classes with stub files for better IDE support
-            sync_cmd = [sys.executable, str(script_dir / "sync_python_classes.py")]
-            if run_command(sync_cmd, "Syncing Python classes with stub files"):
-                success_count += 1
-            else:
-                print("⚠️  Python class sync failed, but stubs are still generated")
-                success_count += 1  # Still count as success since stubs are generated
+            success_count += 1
         else:
             print("⚠️ stub generation failed, but continuing...")
 
@@ -112,13 +115,7 @@ def main():
             cmd.append("--verbose")
 
         if run_command(cmd, "Generating Python stub files"):
-            # Also sync Python classes with stub files for better IDE support
-            sync_cmd = [sys.executable, str(script_dir / "sync_python_classes.py")]
-            if run_command(sync_cmd, "Syncing Python classes with stub files"):
-                success_count += 1
-            else:
-                print("⚠️  Python class sync failed, but stubs are still generated")
-                success_count += 1  # Still count as success since stubs are generated
+            success_count += 1
 
     # 3. Generate API documentation (unless skipped)
     if not args.skip_docs:
@@ -145,12 +142,17 @@ def main():
     if success_count == total_tasks:
         print("🎉 Deployment completed successfully!")
         print("\n💡 Generated files:")
-        print("  • stub files (.pyi) with complete method signatures")
+        print("  • Type stub files (.pyi) with complete method signatures")
         if not args.skip_java:
             print("  • Java class stubs using reflection (most complete available)")
         if not args.skip_docs:
             print("  • API documentation (.rst files)")
             print("  • HTML documentation (docs/_build/html/)")
+        
+        print("\n💡 Note: Placeholder classes are generated automatically at runtime")
+        print("  • No manual sync or placeholder generation needed")
+        print("  • Import timing issues resolved with dynamic placeholders")
+        print("  • Simplified deployment process")
 
         print(f"\nDone.")
         return 0

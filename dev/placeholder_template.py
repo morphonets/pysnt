@@ -5,14 +5,15 @@ This template provides the standard structure for PySNT submodules that use
 the common_module functionality for class management and placeholder generation.
 
 Usage (Option 1):
-1. Use create_module.py
+1. Use create_module.py (recommended)
 
-Usage (Options 2):
+Usage (Option 2):
 1. Copy this template to your new module directory as __init__.py
 2. Update the module docstring and package information
 3. Edit CURATED_CLASSES and EXTENDED_CLASSES lists
-4. Run `python scripts/generate_placeholders.py` to generate placeholder classes
-5. Test your module with `python -c "import src.pysnt.your_module"`
+4. Test your module with `python -c "import src.pysnt.your_module"`
+
+Note: Placeholder classes are generated automatically by setup_module_classes()!
 Example:
     For a new "morphology" analysis module:
     1. Create src/pysnt/analysis/morphology/__init__.py from this template
@@ -39,7 +40,7 @@ import logging
 import scyjava
 from typing import Dict, Any, List
 
-from ..common_module import setup_module_classes  # Import depth will be auto-fixed by generate_placeholders.py
+from ..common_module import setup_module_classes  # Adjust import depth based on module location
 
 logger = logging.getLogger(__name__)
 
@@ -109,8 +110,7 @@ __all__ = [
     # Constants (standard for all modules)
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",
-    # Curated classes (will be populated by placeholder generation)
-    # The placeholder generation script will automatically add your curated classes here
+    # Curated classes (automatically available via dynamic placeholders)
 ] + CURATED_CLASSES
 
 # =============================================================================
@@ -136,10 +136,10 @@ Before using this template, make sure to:
 □ Update the __getattr__ module path
 □ Add submodule imports if needed
 □ Remove this checklist section
-□ Run `python scripts/generate_placeholders.py` to generate placeholder classes
 □ Test with `python -c "import src.pysnt.your_module; print('Success!')"`
+□ Run quality control: `python scripts/pysnt_utils.py --qc`
 
-Example completed configuration for morphology analysis:
+Example configuration for a (dummy) analysis.morphology package:
 
 ```python
 # Module docstring

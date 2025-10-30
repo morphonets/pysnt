@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
-stub generator for PySNT.
+Type stub generator for PySNT.
+
+Generates .pyi files for IDE autocompletion and type checking support.
+This is independent of the runtime dynamic placeholder system.
 
 Combines several stub generation approaches:
-1. Java reflection (most complete) - extracts actual method signatures
-2. Basic stubs (fallback) - generic __getattr__ approach
-2. Python AST stubs - for Python code
+1. Java reflection (most complete) - extracts actual method signatures from Java classes
+2. Basic stubs (fallback) - generic __getattr__ approach for when reflection fails
+3. Python AST stubs - for Python code analysis
+
+Note: This generates type stubs (.pyi files) for IDEs, not runtime placeholder classes.
+Runtime placeholders should be handled automatically by setup_module_classes().
 """
 
 import argparse
@@ -43,45 +49,88 @@ class ComprehensiveStubGenerator:
             'Set': 'Set[Any]', 'HashSet': 'Set[Any]'
         }
 
-        # Configuration for Java classes
-        self.java_classes_config = {
-            'pysnt': {
-                'classes': ['Fill', 'Path', 'PathAndFillManager', 'PathFitter', 'PathManagerUI',
-                            'SNT', 'SNTService', 'SNTUI', 'SNTUtils', 'TracerCanvas', 'Tree', 'TreeProperties'],
-                'package': 'sc.fiji.snt'
-            },
-            'pysnt.analysis': {
-                'classes': ['ConvexHull2D', 'ConvexHull3D', 'TreeStatistics',
-                            'MultiTreeStatistics', 'SNTChart', 'SNTTable'],
-                'package': 'sc.fiji.snt.analysis'
-            },
-            'pysnt.analysis.graph': {
-                'classes': ['DirectedWeightedGraph', 'DirectedWeightedSubgraph',
-                            'GraphColorMapper', 'GraphUtils'],
-                'package': 'sc.fiji.snt.analysis.graph'
-            },
-            'pysnt.analysis.growth': {
-                'classes': ['GrowthAnalyzer', 'GrowthChart', 'GrowthStatistics', 'GrowthUtils'],
-                'package': 'sc.fiji.snt.analysis.growth'
-            },
-            'pysnt.analysis.sholl': {
-                'classes': ['ShollAnalyzer', 'ShollChart', 'ShollProfile', 'ShollUtils'],
-                'package': 'sc.fiji.snt.analysis.sholl'
-            },
-            'pysnt.analysis.sholl.gui': {
-                'classes': ['ShollPlot', 'ShollTable', 'ShollOverlay', 'ShollWidget'],
-                'package': 'sc.fiji.snt.analysis.sholl.gui'
-            },
-            'pysnt.analysis.sholl.math': {
-                'classes': ['LinearProfileStats', 'NormalizedProfileStats',
-                            'ProfileStats', 'ShollStats'],
-                'package': 'sc.fiji.snt.analysis.sholl.math'
-            },
-            'pysnt.analysis.sholl.parsers': {
-                'classes': ['ImageParser', 'TreeParser', 'ImageParser2D', 'ImageParser3D'],
-                'package': 'sc.fiji.snt.analysis.sholl.parsers'
+        # Configuration for Java classes - will be populated dynamically
+        self.java_classes_config = {}
+        self._populate_java_classes_config()
+
+    def _populate_java_classes_config(self):
+        """Dynamically populate Java classes configuration from actual module files."""
+        try:
+            # Find all __init__.py files in the pysnt package
+            init_files = list(self.source_dir.rglob("__init__.py"))
+            
+            for init_file in init_files:
+                # Skip __pycache__ and other non-source directories
+                if "__pycache__" in str(init_file):
+                    continue
+                
+                # Get module name from path
+                relative_path = init_file.relative_to(self.source_dir)
+                module_parts = relative_path.parts[:-1]  # Remove __init__.py
+                
+                if not module_parts:
+                    module_name = "pysnt"
+                    java_package = "sc.fiji.snt"
+                else:
+                    # Remove 'pysnt' from module_parts if it's there (since we're already in pysnt)
+                    filtered_parts = [part for part in module_parts if part != 'pysnt']
+                    if filtered_parts:
+                        module_name = "pysnt." + ".".join(filtered_parts)
+                        java_package = "sc.fiji.snt." + ".".join(filtered_parts)
+                    else:
+                        module_name = "pysnt"
+                        java_package = "sc.fiji.snt"
+                
+                # Parse the file to extract CURATED_CLASSES
+                try:
+                    with open(init_file, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    import ast
+                    tree = ast.parse(content)
+                    
+                    curated_classes = []
+                    for node in ast.walk(tree):
+                        if isinstance(node, ast.Assign):
+                            for target in node.targets:
+                                if isinstance(target, ast.Name):
+                                    if target.id in ["CURATED_CLASSES", "CURATED_ROOT_CLASSES"] and isinstance(node.value, ast.List):
+                                        curated_classes = self._extract_string_list_from_ast(node.value)
+                                        break
+                    
+                    if curated_classes:
+                        self.java_classes_config[module_name] = {
+                            'classes': curated_classes,
+                            'package': java_package
+                        }
+                        if self.verbose:
+                            print(f"    📋 Found {len(curated_classes)} classes in {module_name}")
+                
+                except Exception as e:
+                    if self.verbose:
+                        print(f"    ⚠️  Failed to parse {init_file}: {e}")
+                    continue
+        
+        except Exception as e:
+            if self.verbose:
+                print(f"    ⚠️  Failed to populate Java classes config: {e}")
+            # Fallback to a minimal configuration
+            self.java_classes_config = {
+                'pysnt': {
+                    'classes': ['SNTService', 'Tree', 'Path', 'SNTUtils'],
+                    'package': 'sc.fiji.snt'
+                }
             }
-        }
+
+    def _extract_string_list_from_ast(self, list_node: ast.List) -> List[str]:
+        """Extract string values from an AST List node."""
+        strings = []
+        for item in list_node.elts:
+            if isinstance(item, ast.Constant) and isinstance(item.value, str):
+                strings.append(item.value)
+            elif isinstance(item, ast.Str):  # Python < 3.8 compatibility
+                strings.append(item.s)
+        return strings
 
     def java_type_to_python(self, java_type: str) -> str:
         """Convert Java type to Python type hint."""
@@ -499,7 +548,7 @@ class ComprehensiveStubGenerator:
             ])
 
     def _generate_basic_stub(self, class_name: str) -> str:
-        """Generate basic fallback stub."""
+        """Generate basic fallback stub when Java reflection is not available."""
         
         # Check if this class has a converter
         classes_with_converters = self.get_classes_with_converters()
@@ -526,9 +575,10 @@ class ComprehensiveStubGenerator:
         
         return f'''class {class_name}:
     """
-    SNT {class_name} class.
+    SNT {class_name} class (type stub).
     
     This class provides access to the Java {class_name} functionality.
+    At runtime, this is handled by the dynamic placeholder system in setup_module_classes().
     All methods and properties are dynamically resolved at runtime.
     """
     
@@ -597,6 +647,7 @@ class ComprehensiveStubGenerator:
             imported_functions = set()
             imported_classes = set()
             imported_exceptions = set()
+            processed_functions = set()  # Track functions already processed to avoid duplicates
             
             for node in tree.body:
                 if isinstance(node, ast.ImportFrom):
@@ -614,7 +665,7 @@ class ComprehensiveStubGenerator:
                 elif isinstance(node, ast.FunctionDef):
                     # Direct function definitions in the module
                     func_sig = self._extract_function_signature(node)
-                    imported_functions.add(node.name)
+                    processed_functions.add(node.name)  # Mark as processed
                     module_functions.append(func_sig)
                 
                 elif isinstance(node, ast.Assign):
@@ -638,6 +689,10 @@ class ComprehensiveStubGenerator:
             other_functions = []
             
             for func_name in sorted(imported_functions):
+                # Skip functions that were already processed as direct definitions
+                if func_name in processed_functions:
+                    continue
+                    
                 func_sig = self._create_function_signature_from_name(func_name)
                 
                 if any(keyword in func_name for keyword in ['option', 'config']):
@@ -711,7 +766,11 @@ class ComprehensiveStubGenerator:
         """Extract function signature from AST node."""
         args = self._process_arguments(node.args)
         return_annotation = " -> Any"
-        if node.returns:
+        
+        # Special handling for specific functions
+        if node.name == 'list_classes':
+            return_annotation = " -> None"
+        elif node.returns:
             try:
                 return_annotation = f" -> {ast.unparse(node.returns)}"
             except:
@@ -752,7 +811,10 @@ class ComprehensiveStubGenerator:
             return f"def {func_name}() -> bool: ..."
         
         elif func_name.startswith('list_'):
-            return f"def {func_name}() -> List[str]: ..."
+            if func_name == 'list_classes':
+                return f"def {func_name}() -> None: ..."
+            else:
+                return f"def {func_name}() -> List[str]: ..."
         
         elif func_name.startswith('describe_'):
             return f"def {func_name}(key: Optional[str] = None) -> None: ..."
@@ -1006,19 +1068,6 @@ class ComprehensiveStubGenerator:
                     logger.error(f"Error generating stub for {class_name}: {e}")
                     results['errors'] += 1
 
-            # Add module functions
-            module_functions = [
-                '# Module functions',
-                'def get_available_classes() -> List[str]: ...',
-                'def get_class(class_name: str) -> Any: ...',
-                'def list_classes() -> None: ...',
-                'def get_curated_classes() -> List[str]: ...',
-                'def get_extended_classes() -> List[str]: ...',
-                '',
-                'CURATED_CLASSES: List[str]',
-                'EXTENDED_CLASSES: List[str]'
-            ]
-            
             # Use dynamic function extraction for Python modules
             if self.verbose:
                 print(f"    🔍 Extracting functions dynamically from {module_name}...")

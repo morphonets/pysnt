@@ -12,6 +12,117 @@ from typing import Dict, Any, List, Optional, Callable
 logger = logging.getLogger(__name__)
 
 
+def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str = None):
+    """
+    Create a dynamic placeholder class that redirects to the actual Java class when available.
+    
+    This solves the issue where users import classes before initialization:
+    from pysnt.analysis import TreeStatistics  # Gets placeholder
+    pysnt.initialize()                          # Replaces module globals, but not the imported reference
+    TreeStatistics()                            # Would fail without this dynamic approach
+    
+    Parameters
+    ----------
+    java_class_name : str
+        Full Java class name (e.g., 'sc.fiji.snt.analysis.TreeStatistics')
+    javadoc_name : str, optional
+        Name for javadoc link. If None, uses the simple class name.
+    
+    Returns
+    -------
+    type
+        Dynamic placeholder class that redirects to Java class when available
+    """
+    if javadoc_name is None:
+        javadoc_name = java_class_name.split('.')[-1]
+    
+    class DynamicPlaceholderMeta(type):
+        """Metaclass to handle class-level attribute access."""
+        _java_class_name = java_class_name  # Store for external access
+        
+        def __getattr__(cls, name: str):
+            """Dynamic attribute access for Java class attributes and static methods."""
+            try:
+                import scyjava
+                if scyjava.jvm_started():
+                    java_class = scyjava.jimport(java_class_name)
+                    return getattr(java_class, name)
+            except ImportError:
+                # JVM not started or class not found
+                pass
+            except Exception as e:
+                # JVM is started and class was found, but attribute access failed
+                # Let the Java error bubble up
+                raise e
+            raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    class DynamicPlaceholder(metaclass=DynamicPlaceholderMeta):
+        def __new__(cls, *args, **kwargs):
+            """Dynamic constructor that redirects to Java class if available."""
+            try:
+                import scyjava
+                if scyjava.jvm_started():
+                    java_class = scyjava.jimport(java_class_name)
+                    return java_class(*args, **kwargs)
+            except ImportError:
+                # JVM not started or class not found
+                pass
+            except Exception as e:
+                # JVM is started and class was found, but constructor failed
+                # Let the Java error bubble up (e.g., "Java class has no constructors")
+                raise e
+            raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+        
+        def __getattr__(self, name: str):
+            """Dynamic attribute access for Java methods (instance level)."""
+            try:
+                import scyjava
+                if scyjava.jvm_started():
+                    java_class = scyjava.jimport(java_class_name)
+                    return getattr(java_class, name)
+            except ImportError:
+                # JVM not started or class not found
+                pass
+            except Exception as e:
+                # JVM is started and class was found, but attribute access failed
+                # Let the Java error bubble up
+                raise e
+            raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    # Set up the docstring
+    package_parts = java_class_name.split('.')
+    if len(package_parts) >= 3:
+        # Extract package info for better documentation
+        base_package = '.'.join(package_parts[:3])  # e.g., 'sc.fiji.snt'
+        sub_package = '.'.join(package_parts[3:-1]) if len(package_parts) > 4 else ''
+        class_name = package_parts[-1]
+        
+        if sub_package:
+            doc_title = f"SNT {sub_package} class"
+        else:
+            doc_title = "SNT class"
+    else:
+        doc_title = "SNT class"
+        class_name = javadoc_name
+    
+    DynamicPlaceholder.__doc__ = f"""
+    {doc_title} with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `{javadoc_name}_javadoc`_.
+    
+    .. _{javadoc_name}_javadoc: https://javadoc.scijava.org/SNT/index.html?{java_class_name.replace('.', '/')}.html
+    """
+    
+    # Set the class name for better debugging
+    DynamicPlaceholder.__name__ = class_name
+    DynamicPlaceholder.__qualname__ = class_name
+    
+    return DynamicPlaceholder
+
+
 def _normalize_class_name_for_python(class_name: str) -> str:
     """
     Convert Java inner class names to Python-friendly names.
@@ -58,6 +169,7 @@ def setup_module_classes(
     Setup function that handles all common module initialization.
 
     This function creates all the standard functionality that PySNT modules need:
+    - Dynamic placeholder classes for curated classes
     - Class registries for curated and extended classes
     - Java setup function that loads curated classes
     - Discovery function for extended classes
@@ -94,17 +206,37 @@ def setup_module_classes(
     if discovery_packages is None:
         discovery_packages = [package_name]
 
+    # Create dynamic placeholder classes for curated classes immediately
+    logger.debug(f"Creating dynamic placeholders for {len(curated_classes)} curated classes in {package_name}")
+    for class_name in curated_classes:
+        python_name = _normalize_class_name_for_python(class_name)
+        java_name = _get_java_class_name(class_name)
+        
+        # Try all discovery packages to find the right one for this class
+        full_java_class_name = None
+        for pkg in discovery_packages:
+            potential_name = f"{pkg}.{java_name}"
+            # We'll use the first package as the default, but this will be validated during _java_setup
+            if full_java_class_name is None:
+                full_java_class_name = potential_name
+        
+        # Create dynamic placeholder
+        dynamic_class = create_dynamic_placeholder_class(full_java_class_name, class_name)
+        globals_dict[python_name] = dynamic_class
+        logger.debug(f"Created dynamic placeholder for {python_name} -> {full_java_class_name}")
+
     def _java_setup():
         """
-        Lazy initialization function for Java-dependent classes.
+        Validation function for Java-dependent classes.
 
-        This loads curated classes immediately and prepares extended classes
-        for on-demand loading.
+        With dynamic placeholders, this function now validates that curated classes
+        can be loaded and registers them for faster access, but doesn't need to
+        replace placeholder classes since they handle redirection automatically.
         """
         nonlocal _curated_classes
 
         try:
-            # Import curated classes immediately
+            # Validate and register curated classes
             for class_name in curated_classes:
                 java_class = None
                 python_name = _normalize_class_name_for_python(class_name)
@@ -116,7 +248,7 @@ def setup_module_classes(
                         full_class_name = f"{pkg}.{java_name}"
                         java_class = scyjava.jimport(full_class_name)
                         logger.debug(
-                            f"Loaded curated class {python_name} (Java: {java_name}) from {pkg}"
+                            f"Validated curated class {python_name} (Java: {java_name}) from {pkg}"
                         )
                         break
                     except Exception:
@@ -124,24 +256,21 @@ def setup_module_classes(
 
                 if java_class is not None:
                     _curated_classes[python_name] = java_class
-                    # Replace placeholder class with actual Java class using Python name
-                    globals_dict[python_name] = java_class
+                    # Note: We don't replace the dynamic placeholder in globals_dict
+                    # The dynamic placeholder will handle redirection automatically
                 else:
                     logger.warning(
-                        f"Failed to load curated class {python_name} (Java: {java_name})"
+                        f"Failed to validate curated class {python_name} (Java: {java_name})"
                     )
-                    # Don't replace the placeholder class - leave it so users get proper error messages
-                    # The placeholder class will show "SNT not initialized" error when instantiated
+                    # The dynamic placeholder will continue to show initialization errors
 
             logger.info(
-                f"Successfully loaded {len(_curated_classes)} curated classes for {package_name}"
+                f"Successfully validated {len(_curated_classes)} curated classes for {package_name}"
             )
 
         except Exception as e:
-            logger.error(f"Failed to load curated classes for {package_name}: {e}")
-            raise ImportError(
-                f"Could not load curated classes for {package_name}: {e}"
-            ) from e
+            logger.error(f"Failed to validate curated classes for {package_name}: {e}")
+            # Don't raise an exception here - let the dynamic placeholders handle errors gracefully
 
     def _discover_extended_classes():
         """
