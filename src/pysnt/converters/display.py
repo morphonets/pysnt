@@ -14,6 +14,7 @@ Dependencies: core.py, chart_converters.py, structured_data_converters.py, graph
 """
 
 from typing import Any, Callable, Dict, List, Optional, Tuple
+from pprint import pprint
 
 import numpy as np  # noqa
 
@@ -113,9 +114,28 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     if _is_snt_object(obj):
         return 'snt_object', _handle_snt_object_display
 
+    # Check for SNTTable objects
+    from .structured_data_converters import _is_snt_table
+    if _is_snt_table(obj):
+        return 'snt_table', _display_snt_table
+
+    # Check for SNTChart objects
+    from .chart_converters import _is_snt_chart
+    if _is_snt_chart(obj):
+        return 'snt_chart', _display_snt_chart
+
+    # Check for SNTGraph objects
+    from .graph_converters import _is_snt_graph
+    if _is_snt_graph(obj):
+        return 'snt_graph', _display_snt_graph
+
     # Check for ImagePlus objects
     if str(type(obj)).find('ImagePlus') != -1:
         return 'imageplus', _display_imageplus
+
+    # Check for pandas DataFrames
+    if HAS_PANDAS and isinstance(obj, pandas.DataFrame):
+        return 'pandas_dataframe', _display_pandas_dataframe
 
     # Check numpy arrays
     if hasattr(obj, 'shape') and hasattr(obj, 'dtype') and hasattr(obj, 'ndim'):
@@ -202,6 +222,14 @@ def display(obj: Any, **kwargs) -> Any:
             return obj
         elif obj_type == 'snt_object':
             return _handle_snt_object_display(obj, **kwargs)
+        elif obj_type == 'snt_table':
+            return handler(obj, **kwargs)
+        elif obj_type == 'snt_chart':
+            return handler(obj, **kwargs)
+        elif obj_type == 'snt_graph':
+            return handler(obj, **kwargs)
+        elif obj_type == 'pandas_dataframe':
+            return handler(obj, **kwargs)
         else:
             # For other types (imageplus, numpy_array, java_object)
             return handler(obj, **kwargs)
@@ -302,6 +330,192 @@ def _handle_snt_object_display(obj, **kwargs):
 def _display_snt_object(obj, **kwargs):
     """Handler function for SNTObject display (for dispatch table)."""
     return _handle_snt_object_display(obj, **kwargs)
+
+
+def _display_snt_table(obj, **kwargs):
+    """
+    Handler function for SNTTable display.
+    
+    This function converts an SNTTable to xarray Dataset and then displays it
+    using the appropriate display method based on configuration.
+    
+    Parameters
+    ----------
+    obj : SNTTable
+        The SNTTable object to display
+    **kwargs : dict
+        Additional keyword arguments for display
+        
+    Returns
+    -------
+    Any
+        The result of the display operation
+    """
+    logger.info("Detected SNTTable object - converting and displaying...")
+    
+    try:
+        # Convert SNTTable to SNTObject containing xarray Dataset
+        from .structured_data_converters import _convert_snt_table
+        converted = _convert_snt_table(obj, **kwargs)
+        
+        if converted.get('error') is not None:
+            logger.error(f"SNTTable conversion failed: {converted['error']}")
+            return None
+            
+        # Display the converted SNTObject
+        return _handle_snt_object_display(converted, **kwargs)
+        
+    except Exception as e:
+        logger.error(f"SNTTable display failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
+
+
+def _display_snt_chart(obj, **kwargs):
+    """
+    Handler function for SNTChart display.
+    
+    This function converts an SNTChart to matplotlib Figure and then displays it.
+    
+    Parameters
+    ----------
+    obj : SNTChart
+        The SNTChart object to display
+    **kwargs : dict
+        Additional keyword arguments for display
+        
+    Returns
+    -------
+    Any
+        The result of the display operation
+    """
+    logger.info("Detected SNTChart object - converting and displaying...")
+    
+    try:
+        # Convert SNTChart to SNTObject containing matplotlib Figure
+        from .chart_converters import _convert_snt_chart
+        converted = _convert_snt_chart(obj, **kwargs)
+        
+        if converted.get('error') is not None:
+            logger.error(f"SNTChart conversion failed: {converted['error']}")
+            return None
+            
+        # Display the converted SNTObject
+        return _handle_snt_object_display(converted, **kwargs)
+        
+    except Exception as e:
+        logger.error(f"SNTChart display failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
+
+
+def _display_snt_graph(obj, **kwargs):
+    """
+    Handler function for SNTGraph display.
+    
+    This function converts an SNTGraph to NetworkX Graph and then displays it
+    as a matplotlib figure.
+    
+    Parameters
+    ----------
+    obj : SNTGraph
+        The SNTGraph object to display
+    **kwargs : dict
+        Additional keyword arguments for display
+        
+    Returns
+    -------
+    Any
+        The result of the display operation
+    """
+    logger.info("Detected SNTGraph object - converting and displaying...")
+    
+    try:
+        # Convert SNTGraph to SNTObject containing NetworkX Graph
+        from .graph_converters import _convert_snt_graph
+        converted = _convert_snt_graph(obj, **kwargs)
+        
+        if converted.get('error') is not None:
+            logger.error(f"SNTGraph conversion failed: {converted['error']}")
+            return None
+            
+        # Display the converted SNTObject
+        return _handle_snt_object_display(converted, **kwargs)
+        
+    except Exception as e:
+        logger.error(f"SNTGraph display failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
+
+
+def _display_pandas_dataframe(df, **kwargs):
+    """
+    Handler function for pandas DataFrame display.
+    
+    This function displays a pandas DataFrame using the configured display method
+    (PandasGUI, console, etc.) based on the display.table_mode setting.
+    
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to display
+    **kwargs : dict
+        Additional keyword arguments for display
+        
+    Returns
+    -------
+    pandas.DataFrame
+        The original DataFrame
+    """
+    from ..config import get_option
+    
+    logger.info(f"Detected pandas DataFrame - displaying with shape {df.shape}")
+    
+    try:
+        # Get display mode from configuration
+        table_mode = kwargs.get('table_mode', get_option('display.table_mode')).lower()
+        
+        # Map table mode to display parameters
+        if table_mode == 'pandasgui':
+            kwargs['use_gui'] = True
+        elif table_mode == 'basic':
+            kwargs['use_gui'] = False
+        else:
+            # For other modes (summary, distribution, etc.), use GUI if available
+            kwargs['use_gui'] = HAS_PANDASGUI
+        
+        # Use the existing DataFrame display function
+        success = _show_pandasgui_dataframe(df, title=kwargs.get('title', 'DataFrame'), **kwargs)
+        
+        if not success:
+            # Fallback to console display
+            from ..config import get_option
+            max_rows = kwargs.get('max_rows', get_option('display.max_rows'))
+            max_cols = kwargs.get('max_cols', get_option('display.max_columns'))
+            precision = kwargs.get('precision', get_option('display.precision'))
+            
+            with pandas.option_context('display.max_rows', max_rows,
+                                     'display.max_columns', max_cols,
+                                     'display.precision', precision,
+                                     'display.width', None):
+                print("pandas.DataFrame:")
+                print(df)
+                print(f"Shape: {df.shape}")
+                if hasattr(df, 'describe'):
+                    print("\nSummary statistics:")
+                    print(df.describe())
+        
+        return df
+        
+    except Exception as e:
+        logger.error(f"pandas DataFrame display failed: {e}")
+        # Fallback to simple print
+        print("pandas.DataFrame:")
+        print(df)
+        return df
 
 
 def _display_imageplus(obj, **kwargs):
@@ -621,15 +835,8 @@ def _display_with_auto_conversion(obj: Any, **kwargs) -> Any:
     except Exception as e1:
         logger.debug(f"scyjava.to_python() failed: {e1}")
 
-    # Fallbacks - return info about the object
-    logger.warning(f"Could not convert or display object of type: {type(obj)}")
-    logger.info("Available options:")
-    logger.info("1. Use pysnt.to_python(obj) to convert manually")
-    logger.info("3. Use pysnt.enhance_java_object(obj) to enhance its display capabilities")
-    logger.info("4. Check if object has a show() method: obj.show()")
-    logger.info("5. Open an issue at https://github.com/morphonets/pysnt")
-
-    return None
+    # Enhanced fallbacks - try to display something useful about any object
+    return _display_generic_object(obj, **kwargs)
 
 
 def _show_matplotlib_figure(fig=None, **kwargs) -> bool: # noqa
@@ -1702,3 +1909,156 @@ def register_display_handler(obj_type: str, handler_func: Callable[[Dict[str, An
     """
     _DISPLAY_HANDLERS[obj_type] = handler_func
     logger.info(f"Registered display handler for {obj_type}")
+
+def _display_generic_object(obj: Any, **kwargs) -> Any:
+    """
+    Enhanced fallback display function for any Python object.
+    
+    This function provides useful display for objects that don't have specialized
+    converters, using pprint for structured data and informative summaries for
+    other objects.
+    
+    Parameters
+    ----------
+    obj : Any
+        The object to display
+    **kwargs
+        Additional display arguments (unused but kept for consistency)
+        
+    Returns
+    -------
+    Any
+        The original object
+    """
+    obj_type = type(obj)
+    obj_type_name = obj_type.__name__
+    
+    # Handle common Python data structures with pprint
+    if isinstance(obj, (list, tuple, dict, set)):
+        print(f"{obj_type_name}:")
+        try:
+            pprint(obj, width=100, depth=3)
+        except Exception as e:
+            # Fallback if pprint fails (e.g., with very complex objects)
+            print(f"  <{obj_type_name} with {len(obj)} items>")
+            logger.debug(f"pprint failed: {e}")
+        return obj
+    
+    # Handle numpy arrays
+    elif isinstance(obj, np.ndarray):
+        print(f"numpy.ndarray:")
+        print(f"  Shape: {obj.shape}")
+        print(f"  Dtype: {obj.dtype}")
+        print(f"  Size: {obj.size}")
+        if obj.size > 0:
+            print(f"  Min: {obj.min()}, Max: {obj.max()}")
+            if obj.size <= 20:  # Show small arrays completely
+                print("  Data:")
+                with np.printoptions(precision=3, suppress=True):
+                    print(f"    {obj}")
+            else:  # Show preview for large arrays
+                print("  Preview:")
+                with np.printoptions(precision=3, suppress=True):
+                    if obj.ndim == 1:
+                        print(f"    [{obj[0]}, {obj[1]}, ..., {obj[-2]}, {obj[-1]}]")
+                    else:
+                        print(f"    {obj.flat[0]}, {obj.flat[1]}, ..., {obj.flat[-2]}, {obj.flat[-1]}")
+        return obj
+    
+    # Handle string representations
+    elif isinstance(obj, str):
+        if len(obj) <= 200:
+            print(f"str: {repr(obj)}")
+        else:
+            print(f"str (length {len(obj)}): {repr(obj[:100])}...{repr(obj[-50:])}")
+        return obj
+    
+    # Handle callable objects (functions, methods, classes)
+    elif callable(obj):
+        print(f"Callable {obj_type_name}: {obj}")
+        if hasattr(obj, '__doc__') and obj.__doc__:
+            doc_lines = obj.__doc__.strip().split('\n')
+            print(f"  Documentation: {doc_lines[0]}")
+        if hasattr(obj, '__module__'):
+            print(f"  Module: {obj.__module__}")
+        return obj
+    
+    # Handle pandas objects if available (check before generic object handling)
+    else:
+        try:
+            import pandas as pd
+            if isinstance(obj, (pd.DataFrame, pd.Series)):
+                print(f"pandas.{obj_type_name}:")
+                print(obj)
+                return obj
+        except ImportError:
+            pass
+        
+        # Generic object information
+        print(f"Object of type: {obj_type}")
+        print(f"  Module: {getattr(obj_type, '__module__', 'unknown')}")
+        
+        # Show string representation if reasonable
+        try:
+            str_repr = str(obj)
+            if len(str_repr) <= 200 and '\n' not in str_repr:
+                print(f"  String representation: {str_repr}")
+            elif len(str_repr) <= 500:
+                lines = str_repr.split('\n')
+                if len(lines) <= 5:
+                    print(f"  String representation:")
+                    for line in lines:
+                        print(f"    {line}")
+                else:
+                    print(f"  String representation: {lines[0]}... ({len(lines)} lines)")
+            else:
+                print(f"  String representation: <{len(str_repr)} characters>")
+        except Exception:
+            print("  String representation: <unavailable>")
+        
+        # Show useful attributes
+        attrs = []
+        for attr_name in dir(obj):
+            if not attr_name.startswith('_'):
+                try:
+                    attr_value = getattr(obj, attr_name)
+                    if not callable(attr_value):
+                        attrs.append(attr_name)
+                except Exception:
+                    pass
+        
+        if attrs:
+            print(f"  Public attributes ({len(attrs)}): {', '.join(attrs[:10])}")
+            if len(attrs) > 10:
+                print(f"    ... and {len(attrs) - 10} more")
+        
+        # Show useful methods
+        methods = []
+        for attr_name in dir(obj):
+            if not attr_name.startswith('_'):
+                try:
+                    attr_value = getattr(obj, attr_name)
+                    if callable(attr_value):
+                        methods.append(attr_name)
+                except Exception:
+                    pass
+        
+        if methods:
+            print(f"  Public methods ({len(methods)}): {', '.join(methods[:10])}")
+            if len(methods) > 10:
+                print(f"    ... and {len(methods) - 10} more")
+        
+        # Provide helpful suggestions
+        print("\n  💡 Suggestions:")
+        if hasattr(obj, 'show'):
+            print("    • Try: obj.show()")
+        if hasattr(obj, 'display'):
+            print("    • Try: obj.display()")
+        if hasattr(obj, 'plot'):
+            print("    • Try: obj.plot()")
+        if hasattr(obj, '__str__') or hasattr(obj, '__repr__'):
+            print("    • Try: print(obj)")
+        print("    • Try: pysnt.to_python(obj) to convert")
+        print("    • Try: print(dir(obj)) to list all attributes")
+        
+        return obj
