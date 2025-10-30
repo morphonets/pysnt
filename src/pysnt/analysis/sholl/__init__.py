@@ -1085,3 +1085,192 @@ class ProfileProperties:
         """Placeholder constructor."""
         raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
 
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Profile:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_Profile_javadoc`_.
+    
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileEntry:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileEntry_javadoc`_.
+    
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileProperties:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileProperties_javadoc`_.
+    
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Profile:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_Profile_javadoc`_.
+    
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileEntry:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileEntry_javadoc`_.
+    
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileProperties:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileProperties_javadoc`_.
+    
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+
+
+# Placeholder classes for IDE support - will be replaced with Java classes
+class Profile:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_Profile_javadoc`_.
+    
+    .. _analysis_sholl_Profile_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/Profile.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileEntry:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileEntry_javadoc`_.
+    
+    .. _analysis_sholl_ProfileEntry_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileEntry.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+
+class ProfileProperties:
+    """
+    Curated SNT class from analysis/sholl package with method signatures.
+    
+    Available for direct import after JVM initialization.
+    Call pysnt.initialize() before using this class.
+    
+    See `analysis_sholl_ProfileProperties_javadoc`_.
+    
+    .. _analysis_sholl_ProfileProperties_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/ProfileProperties.html
+    """
+    
+    def __getattr__(self, name: str):
+        """Dynamic attribute access for Java methods."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+    
+    def __init__(self, *args, **kwargs):
+        """Placeholder constructor."""
+        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+

@@ -5,7 +5,7 @@ This module provides convenient access to
 
 import logging
 import scyjava
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Callable
 
 from ..common_module import setup_module_classes
 
@@ -35,126 +35,7 @@ EXTENDED_CLASSES = [
 
 
 
-# Placeholder classes for IDE support - will be replaced with Java classes
-class ConvexHull2D:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_ConvexHull2D_javadoc`_.
-    
-    .. _analysis_ConvexHull2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/ConvexHull2D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class ConvexHull3D:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_ConvexHull3D_javadoc`_.
-    
-    .. _analysis_ConvexHull3D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/ConvexHull3D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class TreeStatistics:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_TreeStatistics_javadoc`_.
-    
-    .. _analysis_TreeStatistics_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/TreeStatistics.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class MultiTreeStatistics:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_MultiTreeStatistics_javadoc`_.
-    
-    .. _analysis_MultiTreeStatistics_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/MultiTreeStatistics.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class SNTChart:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_SNTChart_javadoc`_.
-    
-    .. _analysis_SNTChart_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/SNTChart.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-
-class SNTTable:
-    """
-    Curated SNT class from analysis package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `analysis_SNTTable_javadoc`_.
-    
-    .. _analysis_SNTTable_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/SNTTable.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+# Dynamic placeholder classes will be created automatically by setup_module_classes()
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(
@@ -165,11 +46,11 @@ _module_funcs = setup_module_classes(
 )
 
 # Import functions into module namespace
-get_available_classes = _module_funcs['get_available_classes']
-get_class = _module_funcs['get_class']
-list_classes = _module_funcs['list_classes']
-get_curated_classes = _module_funcs['get_curated_classes']
-get_extended_classes = _module_funcs['get_extended_classes']
+get_available_classes = _module_funcs['get_available_classes']  # type: Callable[[], List[str]]
+get_class = _module_funcs['get_class']  # type: Callable[[str], Any]
+list_classes = _module_funcs['list_classes']  # type: Callable[[], None]
+get_curated_classes = _module_funcs['get_curated_classes']  # type: Callable[[], List[str]]
+get_extended_classes = _module_funcs['get_extended_classes']  # type: Callable[[], List[str]]
 
 # Import submodules for easy access
 from . import growth

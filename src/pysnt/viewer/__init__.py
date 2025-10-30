@@ -5,7 +5,7 @@ This module provides convenient access to
 
 import logging
 import scyjava
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Callable
 
 from ..common_module import setup_module_classes
 
@@ -172,26 +172,8 @@ class Viewer3D:
 
 
 
-# Placeholder classes for IDE support - will be replaced with Java classes
-class MultiViewer2D:
-    """
-    Curated SNT class from viewer package with method signatures.
-    
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `viewer_MultiViewer2D_javadoc`_.
-    
-    .. _viewer_MultiViewer2D_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/MultiViewer2D.html
-    """
-    
-    def __getattr__(self, name: str):
-        """Dynamic attribute access for Java methods."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
-    
-    def __init__(self, *args, **kwargs):
-        """Placeholder constructor."""
-        raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
+# Dynamic placeholder classes will be created automatically by setup_module_classes()
+
 
 class MultiViewer3D:
     """
@@ -262,11 +244,11 @@ _module_funcs = setup_module_classes(
 )
 
 # Import functions into module namespace
-get_available_classes = _module_funcs['get_available_classes']
-get_class = _module_funcs['get_class']
-list_classes = _module_funcs['list_classes']
-get_curated_classes = _module_funcs['get_curated_classes']
-get_extended_classes = _module_funcs['get_extended_classes']
+get_available_classes = _module_funcs['get_available_classes']  # type: Callable[[], List[str]]
+get_class = _module_funcs['get_class']  # type: Callable[[str], Any]
+list_classes = _module_funcs['list_classes']  # type: Callable[[], None]
+get_curated_classes = _module_funcs['get_curated_classes']  # type: Callable[[], List[str]]
+get_extended_classes = _module_funcs['get_extended_classes']  # type: Callable[[], List[str]]
 
 # Create module-level __getattr__ and __dir__
 __getattr__ = _module_funcs['create_getattr']('pysnt.viewer')

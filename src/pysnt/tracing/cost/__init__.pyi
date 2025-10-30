@@ -1,36 +1,123 @@
-"""
-Type stubs for __init__.py
+"""Comprehensive type stubs for Java classes."""
 
-Auto-generated stub file.
-"""
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable
 
-from typing import Any
-
-logger: Any
-CURATED_CLASSES: Any
-EXTENDED_CLASSES: Any
 class Difference:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Difference class with complete method signatures.
+    Generated using Java reflection.
+    """
+
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, arg0: float, arg1: float) -> None: ...
+
+    # Methods
+    def costMovingTo(self, arg0: float) -> float: ...
+    def minStepCost(self) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
 
 class DifferenceSq:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT DifferenceSq class with complete method signatures.
+    Generated using Java reflection.
+    """
+
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, arg0: float, arg1: float) -> None: ...
+
+    # Fields
+    MIN_COST_PER_UNIT_DISTANCE: float
+
+    # Methods
+    def costMovingTo(self, arg0: float) -> float: ...
+    def minStepCost(self) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
 
 class OneMinusErf:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT OneMinusErf class with complete method signatures.
+    Generated using Java reflection.
+    """
+
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, arg0: float, arg1: float, arg2: float) -> None: ...
+
+    # Methods
+    def costMovingTo(self, arg0: float) -> float: ...
+    def getZFudge(self) -> float: ...
+    def minStepCost(self) -> float: ...
+    def setZFudge(self, arg0: float) -> None: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
 
 class Reciprocal:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Reciprocal class with complete method signatures.
+    Generated using Java reflection.
+    """
 
-_module_funcs: Any
-get_available_classes: Any
-get_class: Any
-list_classes: Any
-get_curated_classes: Any
-get_extended_classes: Any
-__getattr__: Any
-__dir__: Any
-__all__: Any
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, arg0: float, arg1: float) -> None: ...
+
+    # Fields
+    RECIPROCAL_FUDGE: float
+    CONST_8: float
+    MIN_COST_PER_UNIT_DISTANCE: float
+
+    # Methods
+    def costMovingTo(self, arg0: float) -> float: ...
+    def minStepCost(self) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
+
+
+# Other functions
+def get_available_classes() -> Any: ...
+def get_class(class_name: str) -> Any: ...
+def get_curated_classes() -> Any: ...
+def get_extended_classes() -> Any: ...
+def list_classes() -> None: ...
+def setup_module_classes(*args: Any, **kwargs: Any) -> Any: ...
+
+# Imported classes
+class Any: ...
+class Dict: ...
+class List: ...
+
+# Constants
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]

@@ -1,32 +1,87 @@
-"""
-Type stubs for __init__.py
+"""Comprehensive type stubs for Java classes."""
 
-Auto-generated stub file.
-"""
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable
 
-from typing import Any
-
-logger: Any
-CURATED_CLASSES: Any
-EXTENDED_CLASSES: Any
 class Dijkstra:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Dijkstra class with complete method signatures.
+    Generated using Java reflection.
+    """
+
+    def __init__(self) -> None:
+        """Initialize Dijkstra."""
+        ...
+
+    # Methods
+    def estimateCostToGoal(self, arg0: int, arg1: int, arg2: int, arg3: int, arg4: int, arg5: int) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
 
 class Euclidean:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Euclidean class with complete method signatures.
+    Generated using Java reflection.
+    """
+
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, arg0: Any) -> None: ...
+    @overload
+    def __init__(self, arg0: Any) -> None: ...
+
+    # Methods
+    def estimateCostToGoal(self, arg0: int, arg1: int, arg2: int, arg3: int, arg4: int, arg5: int) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
 
 class Heuristic:
-    def __getattr__(self: Any, name: str) -> Any: ...
-    def __init__(self: Any, *args: Any, **kwargs: Any) -> Any: ...
+    """
+    SNT Heuristic class with complete method signatures.
+    Generated using Java reflection.
+    """
 
-_module_funcs: Any
-get_available_classes: Any
-get_class: Any
-list_classes: Any
-get_curated_classes: Any
-get_extended_classes: Any
-__getattr__: Any
-__dir__: Any
-__all__: Any
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize Heuristic."""
+        ...
+
+    # Methods
+    def estimateCostToGoal(self, arg0: int, arg1: int, arg2: int, arg3: int, arg4: int, arg5: int) -> float: ...
+
+    def __getattr__(self, name: str) -> Any:
+        """Dynamic attribute access for additional methods."""
+        ...
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Make the class callable."""
+        ...
+
+
+# Other functions
+def get_available_classes() -> Any: ...
+def get_class(class_name: str) -> Any: ...
+def get_curated_classes() -> Any: ...
+def get_extended_classes() -> Any: ...
+def list_classes() -> None: ...
+def setup_module_classes(*args: Any, **kwargs: Any) -> Any: ...
+
+# Imported classes
+class Any: ...
+class Dict: ...
+class List: ...
+
+# Constants
+CURATED_CLASSES: List[str]
+EXTENDED_CLASSES: List[str]
