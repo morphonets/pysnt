@@ -740,4 +740,60 @@ html[data-mode="dark"] .theme-switcher .btn:hover {
     color: #64b5f6 !important;
     background-color: rgba(100, 181, 246, 0.1) !important;
     opacity: 1 !important;
+}/* Do
+wnload button styling for notebooks */
+.article-header-buttons {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.article-header-buttons .btn {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.article-header-buttons .btn-outline-primary {
+    color: #2980b9;
+    border-color: #2980b9;
+    background-color: transparent;
+}
+
+.article-header-buttons .btn-outline-primary:hover {
+    color: white;
+    background-color: #2980b9;
+    border-color: #2980b9;
+    text-decoration: none;
+}
+
+/* Dark theme support for download buttons */
+html[data-mode="dark"] .article-header-buttons .btn-outline-primary {
+    color: #64b5f6;
+    border-color: #64b5f6;
+}
+
+html[data-mode="dark"] .article-header-buttons .btn-outline-primary:hover {
+    color: #1a1a1a;
+    background-color: #64b5f6;
+    border-color: #64b5f6;
+}
+
+/* Responsive behavior for download buttons */
+@media (max-width: 768px) {
+    .article-header-buttons {
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .article-header-buttons .btn {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
 }

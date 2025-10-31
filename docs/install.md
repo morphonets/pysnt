@@ -7,6 +7,7 @@ This section covers everything you need to get PySNT up and running.
 
 quickstart
 overview
+limitations
 api
 ```
 
@@ -81,7 +82,7 @@ you want to debug or improve PySNT have a look at
 
    ```bash
    mamba activate pysnt
-   mamba install ipykernel
+   mamba install ipykernel # Only if you haven't done so yet (i.e., if you used environment-min.yml)
    python -m ipykernel install --user --name=pysnt
    ```
 

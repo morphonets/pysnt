@@ -6,7 +6,7 @@ Thank you for your interest in contributing to PySNT! This document provides gui
 
 Please see the [Getting Started for Developers](README.md#getting-started-for-developers) section in the README for detailed setup instructions.
 
-## Code Style and Standards
+## Code Style
 
 ### Python Code Style
 - **Formatting**: We use [Black](https://black.readthedocs.io/) with 88-character line length
@@ -19,10 +19,10 @@ Please see the [Getting Started for Developers](README.md#getting-started-for-de
 - **Comments**: Add comments for complex logic
 - **Docs**: Update documentation when adding new features
 
-### Java Class Integration
-- **Naming**: Use underscore notation for inner classes (`OuterClass_InnerClass`)
-- **Classification**: Add classes to `CURATED_CLASSES` (common) or `EXTENDED_CLASSES` (less common)
-- **Placeholders**: Run `python scripts/generate_placeholders.py` after adding classes
+
+## Development Scripts
+See [DEV (README)](./dev/README.md).
+
 
 ## Testing
 
@@ -43,8 +43,8 @@ pytest -v
 - Use descriptive test names: `test_should_do_something_when_condition()`
 - Mock external dependencies when appropriate
 
-## Pull Request Process
 
+## Pull Request Process
 1. **Fork and Clone**: Fork the repository and clone your fork
 2. **Branch**: Create a feature branch (`git checkout -b feature/new-feature`)
 3. **Develop**: Make your changes following the code style guidelines
@@ -75,24 +75,6 @@ For feature requests, please include:
 - **Use case**: Why is this feature needed?
 - **Proposed solution**: How should it work?
 - **Alternatives**: What alternatives have you considered?
-
-## Development Scripts
-
-### Placeholder Generation
-```bash
-# Preview placeholder changes
-python scripts/generate_placeholders.py --dry-run
-# Generate placeholders
-python scripts/generate_placeholders.py
-# Clean up .pyi imports
-python scripts/generate_placeholders.py --clean-pyi-imports
-```
-
-### Quality Control
-The placeholder generation system has some quality control built-in:
-- **Duplicate detection**: Prevents classes from appearing in both curated and extended lists
-- **Naming validation**: Ensures inner classes use underscore notation
-- **Import validation**: Checks for correct import depths
 
 
 ## Getting Help

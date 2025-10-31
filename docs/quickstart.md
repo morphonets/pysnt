@@ -3,8 +3,8 @@
 Get up and running with PySNT quickly! This guide covers essential workflows and practical examples to start analyzing neuronal morphology right after [installation](install.md).
 
 ```{seealso}
-**Related Documentation:**
 - [PySNT Overview](overview.md) - Core concepts and detailed usage patterns
+- [Limitations and Quirks](limitations.md) - Known limitations and workarounds
 - [API Reference](api.md) - Complete function and class documentation
 ```
 

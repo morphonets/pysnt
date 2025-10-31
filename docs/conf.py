@@ -178,7 +178,7 @@ html_theme_options = {
     "navigation_depth": 3,
     "show_version_warning_banner": False,
     "article_header_start": [],
-    "article_header_end": [],
+    "article_header_end": ["article-header-buttons.html"],
     "article_footer_items": [],
     "content_footer_items": [],
     # Enable secondary sidebar (right TOC) for all pages except index
@@ -212,7 +212,17 @@ html_theme_options = {
         },
     ],
     # Work in progress banner
-    "announcement": "🚧 Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>! 🚧"
+    "announcement": "🚧 Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>! 🚧",
+    # GitHub integration for edit buttons
+    "use_edit_page_button": True,
+}
+
+# GitHub context for edit buttons
+html_context = {
+    "github_user": "morphonets",
+    "github_repo": "pysnt",
+    "github_version": "main",
+    "doc_path": "docs",
 }
 
 # Images produced by notebooks

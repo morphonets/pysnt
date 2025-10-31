@@ -8,8 +8,8 @@ Make sure PySNT is properly
 This overview describes how PySNT works under the hood by covering PySNT's architecture, configuration options, class system, and discovery tools.
 
 ```{seealso}
-**Related Documentation:**
 - [Quickstart](quickstart.md) - Step-by-step introduction and workflows
+- [Limitations and Quirks](limitations.md) - Known limitations and workarounds
 - [API Reference](api.md) - Complete function and class documentation
 ```
 
@@ -346,91 +346,4 @@ pysnt.show_config_status()
 # List available classes if a class is not found
 pysnt.analysis.list_classes()  # for analysis classes
 pysnt.viewer.list_classes()    # for viewer classes
-```
-
-### GUI Threading Issues
-
-PySNT includes GUI components like PandasGUI for interactive data exploration. However, GUI applications can encounter threading issues, particularly on macOS where Qt applications must be created on the main thread.
-
-PySNT automatically enables GUI safe mode on macOS, which falls back to console display when GUI operations would be unsafe:
-
-```python
-import pysnt
-
-# Check if GUI safe mode is enabled (default: True on macOS)
-print(pysnt.get_option('display.gui_safe_mode'))
-
-# Enable GUI safe mode explicitly
-pysnt.set_option('display.gui_safe_mode', True)
-pysnt.display(some_pandas_table)  # Falls back to console if unsafe
-```
-
-Instead of GUI-enabled modes, you can always use console-safe display modes:
-
-```python
-import pysnt
-
-# Safe display modes
-pysnt.set_table_mode('basic')      # Console table display
-pysnt.set_table_mode('summary')    # Summary statistics
-pysnt.set_table_mode('distribution')  # Distribution plots
-pysnt.display(some_table)
-```
-
-If you need to inspect your environment:
-
-```python
-import pysnt
-
-print(f"Main thread: {pysnt.is_main_thread()}")
-print(f"macOS: {pysnt.is_macos()}")
-print(f"GUI safe mode: {pysnt.get_option('display.gui_safe_mode')}")
-```
-
-## Quirks
-
-There are a couple of quirks/annoyances to be aware of:
-
-### Java vs Python conventions
-
-Accessing Java classes and methods may feel awkward due to differences in naming conventions between Java and Python:
-
-| Element           | Java               | Python                      |
-|-------------------|--------------------|-----------------------------|
-| Methods/Functions | `camelCase`        | `snake_case`                |
-| Variables         | `camelCase`        | `snake_case`                |
-| Classes           | `PascalCase`       | `PascalCase` ✓ (same)       |
-| Constants         | `UPPER_SNAKE_CASE` | `UPPER_SNAKE_CASE` ✓ (same) |
-
-### Exceptions
-
-Unfortunately, Java exceptions are not always directly translatable to Python exceptions, and some granularity is lost when handling SNT-triggered exceptions.
-For the most part, it is always better to obtain details from generic Exceptions:
-
-```python
-try:
-    tree = pysnt.Tree("path/to/file.swc")
-except (FileNotFoundError, PermissionError, IsADirectoryError) as e: # Handle Python-exceptions first
-    print(f"File access error: {e}")
-except Exception as e:  # Catch generic exceptions from Java
-    print(f"Unexpected error: {e}")
-
-    # Unfortunately, trying to know more about the exception is cumbersome
-    print(f"Unexpected error (type: {type(e).__name__}): {e}")
-    print(f"Java class: {e.__javaclass__}")  # java.lang.IllegalArgumentException
-
-    # Let's try to find out if the SWC file is not invalid
-    error_str = str(e).lower()
-
-    if ("no paths extracted" in error_str or
-        ("illegalargumentexception" in error_str and "invalid file" in error_str)):
-        return None, f"Invalid SWC file format: {file_path}"
-
-    elif ("no paths extracted" in error_str or
-        ("illegalargumentexception" in error_str and "invalid file" in error_str)):
-        return None, f"Invalid SWC file format: {file_path}"
-
-    # Other errors
-    else:
-        return None, f"Error loading {file_path}: {e}"
 ```

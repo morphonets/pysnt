@@ -1,9 +1,9 @@
 # <i class="fa-solid fa-code"></i>&hairsp;API
 
 ```{seealso}
-**Related Documentation:**
 - [Quickstart](quickstart.md) - Step-by-step introduction and workflows
 - [PySNT Overview](overview.md) - Core concepts and detailed usage patterns
+- [Limitations and Quirks](limitations.md) - Known limitations and workarounds
 ```
 
 ```{toctree}

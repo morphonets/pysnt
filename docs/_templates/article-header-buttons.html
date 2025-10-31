@@ -1,0 +1,13 @@
+{# Custom download button for notebook pages #}
+{% if pagename.startswith('notebooks/') and not pagename.endswith('/index') %}
+<div class="article-header-buttons">
+    <div class="btn-group" role="group" aria-label="Download options">
+        <a href="{{ pathto('_sources/' + pagename + '.ipynb.txt', 1) }}" 
+           class="btn btn-outline-primary" 
+           title="Download notebook (.ipynb)"
+           download="{{ pagename.split('/')[-1] }}.ipynb">
+            <i class="fas fa-download"></i> Download .ipynb
+        </a>
+    </div>
+</div>
+{% endif %}
