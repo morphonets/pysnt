@@ -37,13 +37,45 @@ except ImportError:
     HAS_PANDAS = False
     pd = None
 
-try:
-    from pandasgui import show as pandasgui_show  # noqa
+# Lazy import for pandasgui to avoid initialization issues in PyCharm console
+HAS_PANDASGUI = None  # Will be determined on first use
+_pandasgui_show = None  # Cached import
 
-    HAS_PANDASGUI = True
-except ImportError:
-    HAS_PANDASGUI = False
-    pandasgui_show = None
+
+def _get_pandasgui_show():
+    """
+    Lazy import of pandasgui.show to avoid initialization issues.
+    
+    Returns
+    -------
+    callable or None
+        The pandasgui.show function if available, None otherwise
+    """
+    global HAS_PANDASGUI, _pandasgui_show
+    
+    if HAS_PANDASGUI is None:  # First time check
+        try:
+            from pandasgui import show as pandasgui_show
+            HAS_PANDASGUI = True
+            _pandasgui_show = pandasgui_show
+        except (ImportError, AttributeError):
+            # AttributeError can occur in PyCharm console where IPython magic methods aren't available
+            HAS_PANDASGUI = False
+            _pandasgui_show = None
+    
+    return _pandasgui_show
+
+
+def has_pandasgui():
+    """
+    Check if pandasgui is available without triggering import.
+    
+    Returns
+    -------
+    bool
+        True if pandasgui is available, False otherwise
+    """
+    return _get_pandasgui_show() is not None
 
 try:
     import networkx as nx  # noqa

@@ -57,12 +57,13 @@ except ImportError:
     HAS_PANDAS = False
     pandas = None
 
-try:
-    from pandasgui import show as pandasgui_show # noqa
-    HAS_PANDASGUI = True
-except ImportError:
-    HAS_PANDASGUI = False
-    pandasgui_show = None
+# Import lazy pandasgui function from core
+from .core import _get_pandasgui_show
+
+
+def _has_pandasgui():
+    """Check if pandasgui is available using lazy import."""
+    return _get_pandasgui_show() is not None
 
 
 def _is_snt_object(obj: Any) -> bool:
@@ -485,7 +486,7 @@ def _display_pandas_dataframe(df, **kwargs):
             kwargs['use_gui'] = False
         else:
             # For other modes (summary, distribution, etc.), use GUI if available
-            kwargs['use_gui'] = HAS_PANDASGUI
+            kwargs['use_gui'] = _has_pandasgui()
         
         # Use the existing DataFrame display function
         success = _show_pandasgui_dataframe(df, title=kwargs.get('title', 'DataFrame'), **kwargs)
@@ -1780,7 +1781,7 @@ def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
     bool
         True if successful, False otherwise
     """
-    if not HAS_PANDASGUI:
+    if not _has_pandasgui():
         logger.warning("PandasGUI not available. Install with: pip install pandasgui")
         return False
 
@@ -1834,6 +1835,9 @@ def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
                     pass  # PyQt5 not available, continue anyway
 
                 # Show in PandasGUI with the specified title
+                pandasgui_show = _get_pandasgui_show()
+                if pandasgui_show is None:
+                    raise ImportError("PandasGUI not available")
                 gui = pandasgui_show(df_copy, title=title)
 
                 # Keep the GUI alive by running its event loop
