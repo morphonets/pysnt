@@ -91,7 +91,6 @@ print(f"DCI: {metric}")
 ### 3. Visualization and Export
 
 ```python
-
 # Display tree
 pysnt.display(tree)
 
@@ -180,8 +179,6 @@ pysnt.initialize(max_heap="8g")
 # For very large datasets
 pysnt.initialize(max_heap="16g", min_heap="4g")
 ```
-
-See [Memory Configuration](install.md#memory-configuration) for details.
 
 ## Discovery and Exploration
 

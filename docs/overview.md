@@ -251,7 +251,7 @@ case_sensitive = pysnt.find_members(CircModels, "Fit", case_sensitive=True)
 
 ### Converting Objects
 
-Common data types require no convertion at all. However, some operations return specialized SNT Java objects, that may require conversion to Python. When that happens, you can use he `to_python()` function:
+Common data types require no convertion at all. However, some operations return specialized SNT Java objects, that may require conversion to Python. When that happens, one can use the `to_python()` function:
 
 ```python
 # Only needed for specialized objects
@@ -266,28 +266,38 @@ Under the hood, `pysnt.to_python(java_result)` will use all of Java -> Python co
 PySNT provides a convenient `display()` function that handles _any_ object you throw at it: It automatically chooses the "best" visualization based on the object type - DataFrames for tabulardata, Figures for charts, formatted lists for collections, etc.
 
 ```python
+import pysnt
+from pysnt import Tree
 from pysnt.analysis import TreeStatistics, SNTChart
 
 # Display discovery results
-methods = pysnt.get_methods(TreeStatistics)
+tree = Tree("path/to/swc/file.swc")
+stats = TreeStatistics(tree)
+pysnt.display(tree) # Shows the reconstruction
+methods = pysnt.get_methods(stats)
 pysnt.display(methods)  # Shows formatted method list
 
 # Display search results
-results = pysnt.find_members(TreeStatistics, "length")
-pysnt.display(results)  # Shows nicely formatted search results
+results = pysnt.find_members(stats, "length")
+pysnt.display(results)  # Prints nicely formatted search results
 
 # Display inner classes
 CircModels = pysnt.analysis.get_class("CircularModels")
 inner_classes = pysnt.get_inner_classes(CircModels)
-pysnt.display(inner_classes)  # Shows formatted class information
+pysnt.display(inner_classes)  # Prints formatted class information
 
 # Display charts and plots (when you have data)
-# chart = SNTChart("Histogram", "Length", "Frequency")
-# pysnt.display(chart)  # Shows the chart
+chart = stats.getHistogram("internode-distance")
+pysnt.display(chart)  # Shows the chart
+chart = stats.getPolarHistogram("internode-angle")
+pysnt.display(chart)  # Shows the chart
 
-# Display analysis results (when you have tree data)
-# tree_stats = TreeStatistics(tree)
-# pysnt.display(tree_stats)  # Shows interactive table/summary
+metrics = stats.getMetrics("common")
+stats.measure("Common measurements", metrics, True)
+table = stats.getTable()
+pysnt.display(table)  # Shows tabular data
+
+# etc.
 ```
 
 ```{tip}
@@ -295,8 +305,8 @@ In addition, PYSNT can also patch the show() method of SNT objects, so that they
 An example is the `Tree` class:
 
 When running from Java its `show()` method displays the tree in either
-Reconstructing Plotter or Reconstruction Viewer (depending if the reconstruction is 2D or 3D).
-In PySNT, calling `tree.show()` from a headless environment will print the tree as ASCII art to the console.
+[Reconstructing Plotter](https://imagej.net/plugins/snt/manual#reconstruction-plotter) or [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer) (depending if the reconstruction is 2D or 3D).
+In PySNT, calling `tree.show()` from a headless environment will print the tree as ASCII art to the console, while `pysnt.display(tree)` will display it as a matplotlib figure.
 ```
 
 ### Advanced Operations
@@ -385,16 +395,17 @@ There are a couple of quirks/annoyances to be aware of:
 
 Accessing Java classes and methods may feel awkward due to differences in naming conventions between Java and Python:
 
-| Element | Java | Python |
-|---------|------|--------|
-| Methods/Functions | `camelCase` | `snake_case` |
-| Variables | `camelCase` | `snake_case` |
-| Classes | `PascalCase` | `PascalCase` ✓ (same) |
-| Constants | `UPPER_SNAKE_CASE` | `UPPER_SNAKE_CASE` ✓ (same) |
+| Element           | Java               | Python                      |
+|-------------------|--------------------|-----------------------------|
+| Methods/Functions | `camelCase`        | `snake_case`                |
+| Variables         | `camelCase`        | `snake_case`                |
+| Classes           | `PascalCase`       | `PascalCase` ✓ (same)       |
+| Constants         | `UPPER_SNAKE_CASE` | `UPPER_SNAKE_CASE` ✓ (same) |
 
 ### Exceptions
 
-Unfortunately, Java exceptions are not always directly translatable to Python exceptions, and some granularity is lost when handling SNT-triggered exceptions. For the most part, you it is always best to intercept a generic Expection:
+Unfortunately, Java exceptions are not always directly translatable to Python exceptions, and some granularity is lost when handling SNT-triggered exceptions.
+For the most part, it is always better to obtain details from generic Exceptions:
 
 ```python
 try:
