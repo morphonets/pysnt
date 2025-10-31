@@ -221,7 +221,7 @@ def _extract_imageplus_metadata(imageplus: Any, **kwargs) -> dict:
                     pass
         frame = frame if frame is not None else 1
         
-        # Return comprehensive metadata
+        # Return some useful metadata
         metadata = {
             'source_type': 'ImagePlus',
             'image_type': image_type,

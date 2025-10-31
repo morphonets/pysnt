@@ -552,7 +552,8 @@ def _display_imageplus(obj, **kwargs):
         # Convert ImagePlus to xarray using existing utilities
         # This bypasses the scyjava converter system to avoid recursion
         logger.debug("Converting ImagePlus to xarray using ImpUtils...")
-        converted_imp = ImpUtils.convertToSimple2D(obj)
+        frame = int(metadata.get('frame', 1))
+        converted_imp = ImpUtils.convertToSimple2D(obj, frame)
         
         # Use ij().py.from_java() but with recursion protection
         logger.debug("Converting to xarray using ij().py.from_java()...")
