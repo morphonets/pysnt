@@ -172,7 +172,7 @@ html_theme_options = {
     "show_prev_next": True,
     "navbar_start": ["navbar-logo"],
     "navbar_center": ["navbar-nav"],
-    "navbar_end": ["navbar-icon-links"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],  # Add built-in theme switcher
     "header_links_before_dropdown": 6,
     "show_toc_level": 2,
     "navigation_depth": 3,

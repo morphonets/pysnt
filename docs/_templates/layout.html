@@ -38,39 +38,14 @@
         display: none;
     }
 
-    /* Theme toggle button styling */
-    .theme-toggle-btn {
-        background: none;
-        border: none;
-        color: var(--pst-color-text-base);
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-    }
-
-    .theme-toggle-btn:hover {
-        background-color: var(--pst-color-surface);
-        color: var(--pst-color-primary);
-    }
-
-    /* Hide mobile theme toggle on desktop */
-    @media (min-width: 960px) {
-        .mobile-theme-toggle {
-            display: none !important;
-        }
+    /* Built-in theme switcher styling adjustments */
+    .theme-switcher {
+        margin-left: 0.5rem;
     }
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Add theme toggle to navbar with a delay to ensure DOM is ready
-        setTimeout(addThemeToggle, 500);
-        
         // Add compact styling to API landing page
         const currentPath = window.location.pathname;
         
@@ -92,67 +67,5 @@
             }
         }
     });
-
-    function addThemeToggle() {
-        // Add to navbar icon links (desktop)
-        const iconLinks = document.querySelector('.navbar-icon-links');
-        if (iconLinks) {
-            const themeToggle = document.createElement('li');
-            themeToggle.className = 'nav-item';
-            themeToggle.innerHTML = `
-                <button class="theme-toggle-btn" title="Toggle light/dark theme" aria-label="Toggle theme">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
-            `;
-            iconLinks.insertBefore(themeToggle, iconLinks.firstChild);
-        }
-
-        // Add to mobile sidebar - be more specific to avoid TOC sidebars
-        // Only target the main navigation sidebar, not content TOC sidebars
-        const mobileContainer = document.querySelector('.bd-sidebar-primary .bd-sidenav:not(.bd-toc)');
-        
-        if (mobileContainer && !mobileContainer.closest('.bd-toc')) {
-            const mobileThemeToggle = document.createElement('li');
-            mobileThemeToggle.className = 'nav-item mobile-theme-toggle';
-            mobileThemeToggle.innerHTML = `
-                <a class="nav-link theme-toggle-btn" href="#" title="Toggle light/dark theme" aria-label="Toggle theme" style="cursor: pointer;">
-                    <i class="fa-solid fa-circle-half-stroke" style="margin-right: 0.5rem;"></i>
-                    <span>Toggle Theme</span>
-                </a>
-            `;
-            
-            const link = mobileThemeToggle.querySelector('a');
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                toggleTheme();
-            });
-            
-            mobileContainer.insertBefore(mobileThemeToggle, mobileContainer.firstChild);
-        }
-
-        setupThemeToggle();
-    }
-
-    function setupThemeToggle() {
-        // Get current theme from localStorage or default to light
-        const currentTheme = localStorage.getItem('pst-color-scheme') || 'light';
-        
-        // Apply current theme
-        document.documentElement.setAttribute('data-theme', currentTheme);
-
-        // Add click handlers to desktop theme toggle buttons
-        const desktopThemeToggleButtons = document.querySelectorAll('.navbar-icon-links .theme-toggle-btn');
-        desktopThemeToggleButtons.forEach(button => {
-            button.addEventListener('click', toggleTheme);
-        });
-    }
-
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('pst-color-scheme', newTheme);
-    }
 </script>
 {% endblock %}
