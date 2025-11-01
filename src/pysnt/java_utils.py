@@ -3,6 +3,13 @@ Java utilities for PySNT.
 
 This module handles Java/OpenJDK installation and configuration,
 as well as Java class introspection utilities.
+
+The reflection functions use scyjava's reflection tools:
+- inspect(): Uses jreflect for detailed class inspection
+- get_methods(): Uses jreflect to retrieve method information  
+- get_fields(): Uses jreflect to retrieve field information
+- is_instance_of(): Uses jinstance for type checking
+- reflect_java_object(): Direct wrapper around jreflect
 """
 
 import logging
@@ -378,7 +385,7 @@ def inspect(class_or_object: Union[str, Any],
     """
     Inspect a Java class or object, listing methods and fields matching a keyword.
     
-    This function uses Java reflection to introspect classes and display
+    This function uses scyjava's jreflect to introspect classes and display
     their public methods and fields. Useful for exploring SNT classes
     and discovering available functionality.
     
@@ -425,17 +432,26 @@ def inspect(class_or_object: Union[str, Any],
             print("❌ JVM not started. Call pysnt.initialize() first.")
             return
         
-        # Get the Java class
-        java_class = _resolve_java_class(class_or_object)
-        if java_class is None:
+        # Resolve the Java class or object
+        resolved_object = _resolve_java_object(class_or_object)
+        if resolved_object is None:
+            return
+        
+        # Get class information using scyjava.jreflect
+        try:
+            all_info = scyjava.jreflect(resolved_object, "all")
+            class_name = _get_class_name(resolved_object)
+            full_name = _get_full_class_name(resolved_object)
+            package_name = _get_package_name(resolved_object)
+        except Exception as e:
+            print(f"❌ Error using jreflect: {e}")
+            logger.debug(f"jreflect error details: {e}", exc_info=True)
             return
         
         # Display header
-        class_name = str(java_class.getSimpleName())
-        full_name = str(java_class.getName())
-        
         print(f"\n🔍 Inspecting: {class_name}")
-        print(f"📦 Package: {java_class.getPackage().getName()}")
+        if package_name:
+            print(f"📦 Package: {package_name}")
         print(f"Full name: {full_name}")
         
         if keyword:
@@ -460,17 +476,15 @@ def inspect(class_or_object: Union[str, Any],
         
         print("=" * 60)
         
-        # Show constructors
+        # Filter and show results using jreflect data
         if constructors:
-            _show_constructors(java_class, keyword, case_sensitive, max_results)
+            _show_constructors_from_jreflect(resolved_object, keyword, case_sensitive, max_results)
         
-        # Show methods
         if methods:
-            _show_methods(java_class, keyword, case_sensitive, static_only, max_results)
+            _show_methods_from_jreflect(resolved_object, keyword, case_sensitive, static_only, max_results)
         
-        # Show fields
         if fields:
-            _show_fields(java_class, keyword, case_sensitive, static_only, max_results)
+            _show_fields_from_jreflect(resolved_object, keyword, case_sensitive, static_only, max_results)
         
         print()
         
@@ -481,8 +495,8 @@ def inspect(class_or_object: Union[str, Any],
         logger.debug(f"Inspection error details: {e}", exc_info=True)
 
 
-def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
-    """Resolve a class name or object to a Java Class object."""
+def _resolve_java_object(class_or_object: Union[str, Any]) -> Optional[Any]:
+    """Resolve a class name or object to a Java object suitable for jreflect."""
     
     if isinstance(class_or_object, str):
         # String class name - try to resolve it
@@ -511,77 +525,92 @@ def _resolve_java_class(class_or_object: Union[str, Any]) -> Optional[Any]:
             except:
                 continue
         
+        # Try direct jimport as fallback
+        try:
+            import scyjava
+            return scyjava.jimport(class_name)
+        except:
+            pass
+        
         print(f"❌ Could not find class '{class_name}' in common pysnt modules")
         print("Try using the actual Java class object instead")
         return None
     
     else:
-        # Assume it's already a Java class or object
-        try:
-            import scyjava
-            
-            # Check if it's a dynamic placeholder class
-            type_name = str(type(class_or_object))
-            if 'DynamicPlaceholderMeta' in type_name:
-                # It's a dynamic placeholder class - get the actual Java class
-                if hasattr(class_or_object, '_java_class_name'):
-                    java_class_name = class_or_object._java_class_name
-                    return scyjava.jimport(java_class_name)
-                else:
-                    # Try to extract from the metaclass
-                    meta = type(class_or_object)
-                    if hasattr(meta, '_java_class_name'):
-                        java_class_name = meta._java_class_name
-                        return scyjava.jimport(java_class_name)
-            
-            # Check if it's a jpype Java class (used by scyjava)
-            if '_jpype._JClass' in type_name:
-                # It's a jpype Java class, get the Class object for reflection
-                # For jpype classes, we can use the class_() method to get the Class object
-                if hasattr(class_or_object, 'class_'):
-                    return class_or_object.class_
-                else:
-                    # Alternative: use the class name to get Class object
-                    java_class_name = str(class_or_object).split("'")[1]
-                    Class = scyjava.jimport('java.lang.Class')
-                    return Class.forName(java_class_name)
-            
-            # Check if it's a scyjava wrapper
-            if hasattr(class_or_object, '__jclass__'):
-                return class_or_object.__jclass__
-            
-            # If it's an instance, get its class
-            if hasattr(class_or_object, 'getClass'):
-                return class_or_object.getClass()
-            else:
-                # Assume it's already a Class object
-                return class_or_object
-        except Exception as e:
-            print(f"❌ Could not resolve Java class from: {type(class_or_object)}: {e}")
-            return None
+        # Return the object as-is for jreflect to handle
+        return class_or_object
 
 
-def _matches_keyword(name: str, keyword: str, case_sensitive: bool) -> bool:
-    """Check if a name matches the keyword filter."""
-    if not keyword:
-        return True
-    
-    if case_sensitive:
-        return keyword in name
-    else:
-        return keyword.lower() in name.lower()
-
-
-def _show_constructors(java_class, keyword: str, case_sensitive: bool, max_results: int):
-    """Show constructors matching the keyword."""
+def _get_class_name(java_object: Any) -> str:
+    """Get simple class name from a Java object."""
     try:
-        constructors = java_class.getConstructors()
-        class_name = str(java_class.getSimpleName())
+        import scyjava
+        # Try to get class info using jreflect
+        info = scyjava.jreflect(java_object, "all")
+        if info and len(info) > 0:
+            # Look for class information in the reflection data
+            for item in info:
+                if 'name' in item and '.' in item['name']:
+                    return item['name'].split('.')[-1]
+        
+        # Fallback to string representation
+        class_str = str(type(java_object))
+        if 'class ' in class_str:
+            return class_str.split('class ')[-1].split('.')[-1].rstrip("'>")
+        return str(java_object).split('.')[-1]
+    except:
+        return str(type(java_object).__name__)
+
+
+def _get_full_class_name(java_object: Any) -> str:
+    """Get full class name from a Java object."""
+    try:
+        import scyjava
+        # Try to get class info using jreflect
+        info = scyjava.jreflect(java_object, "all")
+        if info and len(info) > 0:
+            # Look for class information in the reflection data
+            for item in info:
+                if 'name' in item and '.' in item['name']:
+                    return item['name']
+        
+        # Fallback to string representation
+        return str(java_object)
+    except:
+        return str(java_object)
+
+
+def _get_package_name(java_object: Any) -> str:
+    """Get package name from a Java object."""
+    try:
+        full_name = _get_full_class_name(java_object)
+        if '.' in full_name:
+            return '.'.join(full_name.split('.')[:-1])
+        return ""
+    except:
+        return ""
+
+
+def _show_constructors_from_jreflect(java_object: Any, keyword: str, case_sensitive: bool, max_results: int):
+    """Show constructors using scyjava.jreflect."""
+    try:
+        import scyjava
+        constructors_info = scyjava.jreflect(java_object, "constructors")
+        class_name = _get_class_name(java_object)
         
         matching_constructors = []
-        for constructor in constructors:
+        for constructor in constructors_info:
             if _matches_keyword(class_name, keyword, case_sensitive):
-                param_types = [str(p.getSimpleName()) for p in constructor.getParameterTypes()]
+                # Extract parameter types from arguments
+                params = constructor.get('arguments', [])
+                param_types = []
+                for param in params:
+                    if isinstance(param, dict) and 'type' in param:
+                        param_type = str(param['type'])
+                        param_types.append(param_type.split('.')[-1])  # Simple name
+                    else:
+                        param_type = str(param)
+                        param_types.append(param_type.split('.')[-1])
                 matching_constructors.append(param_types)
         
         if matching_constructors:
@@ -599,15 +628,15 @@ def _show_constructors(java_class, keyword: str, case_sensitive: bool, max_resul
         print(f"❌ Error getting constructors: {e}")
 
 
-def _show_methods(java_class, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
-    """Show methods matching the keyword."""
+def _show_methods_from_jreflect(java_object: Any, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
+    """Show methods using scyjava.jreflect."""
     try:
-        methods = java_class.getMethods()
+        import scyjava
+        methods_info = scyjava.jreflect(java_object, "methods")
         
-        # Filter methods
         matching_methods = []
-        for method in methods:
-            method_name = str(method.getName())
+        for method in methods_info:
+            method_name = str(method.get('name', ''))
             
             # Skip Object methods
             if method_name in ['equals', 'hashCode', 'toString', 'getClass', 'notify', 'notifyAll', 'wait']:
@@ -618,15 +647,27 @@ def _show_methods(java_class, keyword: str, case_sensitive: bool, static_only: b
                 continue
             
             # Check static filter
-            modifiers = method.getModifiers()
-            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+            modifiers = method.get('mods', [])
+            is_static = 'static' in modifiers
             
             if static_only and not is_static:
                 continue
             
-            # Get method info
-            param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
-            return_type = str(method.getReturnType().getSimpleName())
+            # Extract parameter and return types
+            params = method.get('arguments', [])
+            param_types = []
+            for param in params:
+                if isinstance(param, dict) and 'type' in param:
+                    param_type = str(param['type'])
+                    param_types.append(param_type.split('.')[-1])  # Simple name
+                else:
+                    param_type = str(param)
+                    param_types.append(param_type.split('.')[-1])
+            
+            return_type = method.get('returns', 'void')
+            return_type = str(return_type)
+            if '.' in return_type:
+                return_type = return_type.split('.')[-1]  # Simple name
             
             matching_methods.append({
                 'name': method_name,
@@ -657,30 +698,33 @@ def _show_methods(java_class, keyword: str, case_sensitive: bool, static_only: b
         print(f"❌ Error getting methods: {e}")
 
 
-def _show_fields(java_class, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
-    """Show fields matching the keyword."""
+def _show_fields_from_jreflect(java_object: Any, keyword: str, case_sensitive: bool, static_only: bool, max_results: int):
+    """Show fields using scyjava.jreflect."""
     try:
-        fields = java_class.getFields()
+        import scyjava
+        fields_info = scyjava.jreflect(java_object, "fields")
         
-        # Filter fields
         matching_fields = []
-        for field in fields:
-            field_name = str(field.getName())
+        for field in fields_info:
+            field_name = str(field.get('name', ''))
             
             # Check keyword match
             if not _matches_keyword(field_name, keyword, case_sensitive):
                 continue
             
             # Check static filter
-            modifiers = field.getModifiers()
-            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
-            is_final = bool(modifiers & 0x0010)   # Modifier.FINAL
+            modifiers = field.get('mods', [])
+            is_static = 'static' in modifiers
+            is_final = 'final' in modifiers
             
             if static_only and not is_static:
                 continue
             
-            # Get field info
-            field_type = str(field.getType().getSimpleName())
+            # Extract field type
+            field_type = field.get('returns', 'Object')  # fields use 'returns' for type
+            field_type = str(field_type)
+            if '.' in field_type:
+                field_type = field_type.split('.')[-1]  # Simple name
             
             matching_fields.append({
                 'name': field_name,
@@ -719,9 +763,23 @@ def _show_fields(java_class, keyword: str, case_sensitive: bool, static_only: bo
         print(f"❌ Error getting fields: {e}")
 
 
+def _matches_keyword(name: str, keyword: str, case_sensitive: bool) -> bool:
+    """Check if a name matches the keyword filter."""
+    if not keyword:
+        return True
+    
+    # Ensure name is a string (convert Java strings if needed)
+    name_str = str(name)
+    
+    if case_sensitive:
+        return keyword in name_str
+    else:
+        return keyword.lower() in name_str.lower()
+
+
 def get_methods(class_or_object: Union[str, Any], static_only: bool = False, include_inherited: bool = True) -> list:
     """
-    Retrieve all public methods from a Java class or object.
+    Retrieve all public methods from a Java class or object using scyjava.jreflect.
     
     Parameters
     ----------
@@ -755,60 +813,22 @@ def get_methods(class_or_object: Union[str, Any], static_only: bool = False, inc
             logger.warning("JVM not started. Call pysnt.initialize() first.")
             return []
         
-        java_class = _resolve_java_class(class_or_object)
-        if java_class is None:
+        java_object = _resolve_java_object(class_or_object)
+        if java_object is None:
             return []
         
-        # Try different ways to get methods
-        methods = None
+        # Use scyjava.jreflect to get method information
         try:
-            methods = java_class.getMethods()
-        except AttributeError:
-            # Try alternative approaches
-            try:
-                if hasattr(java_class, 'class_'):
-                    methods = java_class.class_.getMethods()
-                elif hasattr(java_class, '__javaclass__'):
-                    methods = java_class.__javaclass__.getMethods()
-                else:
-                    # Last resort - use dir() and filter
-                    all_attrs = dir(java_class)
-                    methods = [attr for attr in all_attrs if not attr.startswith('_') and callable(getattr(java_class, attr, None))]
-            except Exception as e:
-                logger.error(f"Failed to get methods using alternative approaches: {e}")
-                return []
-        
-        if not methods:
-            logger.warning("No methods found for Java class")
+            methods_info = scyjava.jreflect(java_object, "methods")
+        except Exception as e:
+            logger.error(f"Failed to get methods using jreflect: {e}")
             return []
         
         result = []
         
-        for method in methods:
+        for method in methods_info:
             try:
-                if isinstance(method, str):
-                    # Method name from dir() - create basic info
-                    method_name = method
-                    param_types = []
-                    return_type = 'Any'
-                    is_static = False
-                else:
-                    # Java Method object
-                    method_name = str(method.getName())
-                    
-                    # Get method details
-                    try:
-                        param_types = [str(p.getSimpleName()) for p in method.getParameterTypes()]
-                        return_type = str(method.getReturnType().getSimpleName())
-                        
-                        # Check static filter
-                        modifiers = method.getModifiers()
-                        is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
-                    except Exception:
-                        # Fallback if we can't get detailed info
-                        param_types = []
-                        return_type = 'Any'
-                        is_static = False
+                method_name = str(method.get('name', ''))
                 
                 # Skip Object methods unless explicitly requested
                 if not include_inherited and method_name in [
@@ -817,8 +837,29 @@ def get_methods(class_or_object: Union[str, Any], static_only: bool = False, inc
                 ]:
                     continue
                 
+                # Check static filter
+                modifiers = method.get('mods', [])
+                is_static = 'static' in modifiers
+                
                 if static_only and not is_static:
                     continue
+                
+                # Extract parameter types
+                params = method.get('arguments', [])
+                param_types = []
+                for param in params:
+                    if isinstance(param, dict) and 'type' in param:
+                        param_type = str(param['type'])
+                        param_types.append(param_type.split('.')[-1])  # Simple name
+                    else:
+                        param_type = str(param)
+                        param_types.append(param_type.split('.')[-1])
+                
+                # Extract return type
+                return_type = method.get('returns', 'void')
+                return_type = str(return_type)
+                if '.' in return_type:
+                    return_type = return_type.split('.')[-1]  # Simple name
                 
                 # Create signature
                 params_str = ', '.join(param_types) if param_types else ''
@@ -851,7 +892,7 @@ def get_methods(class_or_object: Union[str, Any], static_only: bool = False, inc
 
 def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> list:
     """
-    Retrieve all public fields from a Java class or object.
+    Retrieve all public fields from a Java class or object using scyjava.jreflect.
     
     Parameters
     ----------
@@ -883,47 +924,61 @@ def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> l
             logger.warning("JVM not started. Call pysnt.initialize() first.")
             return []
         
-        java_class = _resolve_java_class(class_or_object)
-        if java_class is None:
+        java_object = _resolve_java_object(class_or_object)
+        if java_object is None:
             return []
         
-        fields = java_class.getFields()
+        # Use scyjava.jreflect to get field information
+        try:
+            fields_info = scyjava.jreflect(java_object, "fields")
+        except Exception as e:
+            logger.error(f"Failed to get fields using jreflect: {e}")
+            return []
+        
         result = []
         
-        for field in fields:
-            field_name = str(field.getName())
-            
-            # Check static filter
-            modifiers = field.getModifiers()
-            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
-            is_final = bool(modifiers & 0x0010)   # Modifier.FINAL
-            
-            if static_only and not is_static:
+        for field in fields_info:
+            try:
+                field_name = str(field.get('name', ''))
+                
+                # Check static filter
+                modifiers = field.get('mods', [])
+                is_static = 'static' in modifiers
+                is_final = 'final' in modifiers
+                
+                if static_only and not is_static:
+                    continue
+                
+                # Extract field type
+                field_type = field.get('returns', 'Object')  # fields use 'returns' for type
+                field_type = str(field_type)
+                if '.' in field_type:
+                    field_type = field_type.split('.')[-1]  # Simple name
+                
+                # Create signature
+                modifiers_list = []
+                if is_static:
+                    modifiers_list.append('static')
+                if is_final:
+                    modifiers_list.append('final')
+                
+                mod_str = ' '.join(modifiers_list)
+                if mod_str:
+                    mod_str += ' '
+                
+                signature = f"{mod_str}{field_name}: {field_type}"
+                
+                result.append({
+                    'name': field_name,
+                    'type': field_type,
+                    'is_static': is_static,
+                    'is_final': is_final,
+                    'signature': signature
+                })
+                
+            except Exception as e:
+                logger.debug(f"Error processing field {field}: {e}")
                 continue
-            
-            # Get field details
-            field_type = str(field.getType().getSimpleName())
-            
-            # Create signature
-            modifiers_list = []
-            if is_static:
-                modifiers_list.append('static')
-            if is_final:
-                modifiers_list.append('final')
-            
-            mod_str = ' '.join(modifiers_list)
-            if mod_str:
-                mod_str += ' '
-            
-            signature = f"{mod_str}{field_name}: {field_type}"
-            
-            result.append({
-                'name': field_name,
-                'type': field_type,
-                'is_static': is_static,
-                'is_final': is_final,
-                'signature': signature
-            })
         
         # Sort by name for consistent output
         result.sort(key=lambda f: f['name'])
@@ -940,6 +995,9 @@ def get_fields(class_or_object: Union[str, Any], static_only: bool = False) -> l
 def get_inner_classes(class_or_object: Union[str, Any]) -> list:
     """
     Retrieve all public inner classes from a Java class.
+    
+    Note: This function uses traditional Java reflection as scyjava.jreflect 
+    doesn't currently provide inner class information.
     
     Parameters
     ----------
@@ -970,50 +1028,69 @@ def get_inner_classes(class_or_object: Union[str, Any]) -> list:
             logger.warning("JVM not started. Call pysnt.initialize() first.")
             return []
         
-        java_class = _resolve_java_class(class_or_object)
-        if java_class is None:
+        java_object = _resolve_java_object(class_or_object)
+        if java_object is None:
             return []
         
-        # Get declared classes (inner classes)
-        inner_classes = java_class.getDeclaredClasses()
+        # Get the Java Class object for reflection
+        # Since jreflect doesn't provide inner classes, we use traditional reflection
+        try:
+            if hasattr(java_object, 'getClass'):
+                java_class = java_object.getClass()
+            elif hasattr(java_object, 'class_'):
+                java_class = java_object.class_
+            else:
+                java_class = java_object
+            
+            # Get declared classes (inner classes)
+            inner_classes = java_class.getDeclaredClasses()
+        except Exception as e:
+            logger.debug(f"Could not get inner classes using traditional reflection: {e}")
+            return []
+        
         result = []
         
         for inner_class in inner_classes:
-            class_name = str(inner_class.getSimpleName())
-            full_name = str(inner_class.getName())
-            
-            # Get modifiers
-            modifiers = inner_class.getModifiers()
-            is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
-            is_interface = inner_class.isInterface()
-            is_enum = inner_class.isEnum()
-            
-            # Create signature
-            modifiers_list = []
-            if is_static:
-                modifiers_list.append('static')
-            
-            if is_interface:
-                type_str = 'interface'
-            elif is_enum:
-                type_str = 'enum'
-            else:
-                type_str = 'class'
-            
-            mod_str = ' '.join(modifiers_list)
-            if mod_str:
-                mod_str += ' '
-            
-            signature = f"{mod_str}{type_str} {class_name}"
-            
-            result.append({
-                'name': class_name,
-                'full_name': full_name,
-                'is_static': is_static,
-                'is_interface': is_interface,
-                'is_enum': is_enum,
-                'signature': signature
-            })
+            try:
+                class_name = str(inner_class.getSimpleName())
+                full_name = str(inner_class.getName())
+                
+                # Get modifiers
+                modifiers = inner_class.getModifiers()
+                is_static = bool(modifiers & 0x0008)  # Modifier.STATIC
+                is_interface = inner_class.isInterface()
+                is_enum = inner_class.isEnum()
+                
+                # Create signature
+                modifiers_list = []
+                if is_static:
+                    modifiers_list.append('static')
+                
+                if is_interface:
+                    type_str = 'interface'
+                elif is_enum:
+                    type_str = 'enum'
+                else:
+                    type_str = 'class'
+                
+                mod_str = ' '.join(modifiers_list)
+                if mod_str:
+                    mod_str += ' '
+                
+                signature = f"{mod_str}{type_str} {class_name}"
+                
+                result.append({
+                    'name': class_name,
+                    'full_name': full_name,
+                    'is_static': is_static,
+                    'is_interface': is_interface,
+                    'is_enum': is_enum,
+                    'signature': signature
+                })
+                
+            except Exception as e:
+                logger.debug(f"Error processing inner class {inner_class}: {e}")
+                continue
         
         # Sort by name for consistent output
         result.sort(key=lambda c: c['name'])
@@ -1027,6 +1104,100 @@ def get_inner_classes(class_or_object: Union[str, Any]) -> list:
         return []
 
 
+def is_instance_of(obj: Any, jtype: Union[str, Any]) -> bool:
+    """
+    Test if the given object is an instance of a particular Java type using scyjava.jinstance.
+    
+    This is a wrapper around scyjava's jinstance function that provides better error handling
+    and logging for the PySNT context.
+    
+    Parameters
+    ----------
+    obj : Any
+        The object to check
+    jtype : str or Java class
+        The Java type, as either a jimported class or as a string
+        
+    Returns
+    -------
+    bool
+        True if the object is an instance of that Java type, False otherwise
+        
+    Examples
+    --------
+    >>> from pysnt.analysis import TreeStatistics
+    >>> stats = TreeStatistics()
+    >>> is_instance_of(stats, 'sc.fiji.snt.analysis.TreeStatistics')
+    True
+    
+    >>> # Using jimported class
+    >>> TreeStats = scyjava.jimport('sc.fiji.snt.analysis.TreeStatistics')
+    >>> is_instance_of(stats, TreeStats)
+    True
+    """
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            logger.warning("JVM not started. Call pysnt.initialize() first.")
+            return False
+        
+        return scyjava.jinstance(obj, jtype)
+        
+    except ImportError:
+        logger.error("scyjava not available. Make sure pysnt is properly installed.")
+        return False
+    except Exception as e:
+        logger.debug(f"Error checking instance type: {e}")
+        return False
+
+
+def reflect_java_object(data: Any, aspect: str = "all") -> List[Dict[str, Any]]:
+    """
+    Use Java reflection to introspect the given Java object using scyjava.jreflect.
+    
+    This is a wrapper around scyjava's jreflect function that provides better error handling
+    and logging for the PySNT context.
+    
+    Parameters
+    ----------
+    data : Any
+        The object or class or fully qualified class name to inspect
+    aspect : str, default "all"
+        One of: "all", "constructors", "fields", or "methods"
+        
+    Returns
+    -------
+    List[Dict[str, Any]]
+        List of dicts with keys: "name", "mods", "arguments", and "returns"
+        
+    Examples
+    --------
+    >>> from pysnt.analysis import TreeStatistics
+    >>> methods = reflect_java_object(TreeStatistics, "methods")
+    >>> for method in methods:
+    ...     print(f"{method['name']}: {method.get('returns', 'void')}")
+    
+    >>> # Get all reflection info
+    >>> all_info = reflect_java_object('sc.fiji.snt.analysis.TreeStatistics')
+    """
+    try:
+        import scyjava
+        
+        if not scyjava.jvm_started():
+            logger.warning("JVM not started. Call pysnt.initialize() first.")
+            return []
+        
+        return scyjava.jreflect(data, aspect)
+        
+    except ImportError:
+        logger.error("scyjava not available. Make sure pysnt is properly installed.")
+        return []
+    except Exception as e:
+        logger.error(f"Error during reflection: {e}")
+        return []
+
+
 def find_members(class_or_object: Union[str, Any], 
                 keyword: str,
                 include_methods: bool = True,
@@ -1036,6 +1207,8 @@ def find_members(class_or_object: Union[str, Any],
                 case_sensitive: bool = False) -> Dict[str, list]:
     """
     Find methods, fields, and inner classes matching a keyword in a Java class or object.
+    
+    This function now uses scyjava.jreflect for improved performance and consistency.
     
     Parameters
     ----------
@@ -1077,25 +1250,26 @@ def find_members(class_or_object: Union[str, Any],
     result = {'methods': [], 'fields': [], 'inner_classes': []}
     
     if not keyword:
-        logger.warning("No keyword provided for search")
-        return result
+        logger.debug("No keyword provided for search - will return all members")
+        # Don't return early - let it proceed to get all members
     
     try:
-        # Get methods if requested
+        # Get methods if requested - now using jreflect-based implementation
         if include_methods:
             all_methods = get_methods(class_or_object, static_only=static_only)
             for method in all_methods:
                 if _matches_keyword(method['name'], keyword, case_sensitive):
                     result['methods'].append(method)
         
-        # Get fields if requested
+        # Get fields if requested - now using jreflect-based implementation
         if include_fields:
             all_fields = get_fields(class_or_object, static_only=static_only)
             for field in all_fields:
                 if _matches_keyword(field['name'], keyword, case_sensitive):
                     result['fields'].append(field)
         
-        # Get inner classes if requested
+        # Get inner classes if requested - still uses traditional reflection
+        # as jreflect doesn't provide inner class information
         if include_inner_classes:
             inner_classes = get_inner_classes(class_or_object)
             for inner_class in inner_classes:
@@ -1118,15 +1292,22 @@ def discover_java_classes(
     """
     Discover all public classes in a Java package.
     
-    This utility function can be used to dynamically discover classes
-    from any Java package, with filtering for visibility and type.
+    This utility function dynamically discovers classes from Java packages using
+    a multi-step approach:
+    1. First attempts JAR file scanning for .class files
+    2. If no known_classes provided, scans pysnt module __init__.py files for 
+       CURATED_CLASSES and EXTENDED_CLASSES lists
+    3. Tests each candidate class for existence and visibility
+    
+    The dynamic scanning approach finds significantly more classes than hardcoded
+    lists and automatically stays up-to-date with module definitions.
     
     Parameters
     ----------
     package_name : str
         Full Java package name (e.g., 'sc.fiji.snt.analysis')
     known_classes : List[str], optional
-        List of known class names to test. If None, attempts package scanning.
+        List of known class names to test. If None, scans pysnt modules dynamically.
     include_abstract : bool, default False
         Whether to include abstract classes
     include_interfaces : bool, default False
@@ -1139,12 +1320,25 @@ def discover_java_classes(
         
     Examples
     --------
-    >>> # Discover analysis classes
+    >>> # Discover analysis classes (scans pysnt.analysis modules)
     >>> classes = discover_java_classes('sc.fiji.snt.analysis')
     >>> 
-    >>> # Discover with known class list
+    >>> # Discover with explicit class list
     >>> known = ['TreeStatistics', 'ConvexHull']
     >>> classes = discover_java_classes('sc.fiji.snt.analysis', known)
+    
+    Notes
+    -----
+    The dynamic scanning finds classes from:
+    - CURATED_CLASSES lists in matching pysnt modules
+    - EXTENDED_CLASSES lists in matching pysnt modules  
+    - All submodules of the matching package
+    
+    For 'sc.fiji.snt.analysis', this scans:
+    - src/pysnt/analysis/__init__.py
+    - src/pysnt/analysis/graph/__init__.py
+    - src/pysnt/analysis/sholl/__init__.py
+    - And other analysis submodules
     """
     if scyjava is None:
         logger.warning("ScyJava not available. Cannot discover classes.")
@@ -1168,12 +1362,12 @@ def discover_java_classes(
             except Exception as e:
                 logger.debug(f"JAR scanning failed: {e}")
         
-        # Method 2: Use provided known classes or fallback list
+        # Method 2: Use provided known classes or scan pysnt modules
         if not classes and known_classes:
             test_classes = known_classes
         elif not classes:
-            # Generate some common class name patterns to test
-            test_classes = _generate_common_class_names(package_name)
+            # Scan pysnt modules for CURATED_CLASSES and EXTENDED_CLASSES
+            test_classes = _scan_pysnt_modules_for_classes(package_name)
         else:
             test_classes = []
         
@@ -1271,67 +1465,154 @@ def _scan_package_from_jars(package_name: str, logger) -> List[str]:
     return classes
 
 
-def _generate_common_class_names(package_name: str) -> List[str]:
+def _scan_pysnt_modules_for_classes(package_name: str) -> List[str]:
     """
-    Generate common class name patterns based on package name.
+    Scan pysnt module __init__.py files to collect CURATED_CLASSES and EXTENDED_CLASSES
+    that match the given Java package name.
     
-    This is a fallback when no known classes are provided and
-    JAR scanning fails.
+    This dynamically discovers class names from the actual module definitions
+    instead of using hardcoded lists.
     
     Parameters
     ----------
     package_name : str
-        Java package name
+        Java package name (e.g., 'sc.fiji.snt.analysis')
         
     Returns
     -------
     List[str]
-        List of potential class names to test
+        List of class names found in matching pysnt modules
     """
-    # Extract package suffix for pattern generation
-    parts = package_name.split('.')
-    suffix = parts[-1] if parts else ""
+    import os
+    import importlib.util
+    from pathlib import Path
     
-    common_patterns = []
+    # Get the pysnt source directory
+    pysnt_dir = Path(__file__).parent
     
-    if 'analysis' in suffix.lower():
-        common_patterns = [
-            "AbstractConvexHull", "AnalysisUtils", "AnnotationMapper", "CircularModels",
-            "ColorMapper", "ConvexHull2D", "ConvexHull3D", "ConvexHullAnalyzer",
-            "GroupedTreeStatistics", "MultiTreeColorMapper", "MultiTreeStatistics",
-            "NodeColorMapper", "NodeProfiler", "NodeStatistics", "PathProfiler",
-            "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer",
-            "ProfileProcessor", "RoiConverter", "RootAngleAnalyzer", "ShollAnalyzer",
-            "SkeletonConverter", "SNTChart", "SNTTable", "StrahlerAnalyzer",
-            "TreeColorMapper", "TreeStatistics"
-        ]
-    elif 'util' in suffix.lower():
-        common_patterns = [
-            "BoundingBox", "CircleCursor3D", "ColorMaps", "CrossoverFinder",
-            "DiskCursor3D", "ImgUtils", "ImpUtils", "LinAlgUtils", "PathCursor",
-            "PointInCanvas", "PointInImage", "SNTColor", "SNTPoint", "SWCPoint"
-        ]
-    elif 'viewer' in suffix.lower():
-        common_patterns = [
-            "Annotation3D", "Bvv", "ColorTableMapper", "GraphViewer", "MultiViewer2D",
-            "MultiViewer3D", "Viewer2D", "Viewer3D"
-        ]
-    elif 'tracing' in suffix.lower():
-        common_patterns = [
-            "AbstractSearch", "BiSearch", "BiSearchNode", "DefaultSearchNode",
-            "FillerThread", "ManualTracerThread", "SearchNode", "SearchThread",
-            "TracerThread" 
-        ]
-    else:
-        # Generic patterns for unknown packages
-        common_patterns = [
-            "Fill", "FillConverter", "NearPoint", "Path", "PathAndFillManager",
-            "PathChangeEvent", "PathDownsampler", "PathFitter", "PathManagerUI",
-            "SciViewSNT", "SearchProgressCallback", "SNT", "SNTService", "SNTUI",
-            "SNTUtils", "TracerCanvas", "Tree", "TreeProperties"
-        ]
+    # Map Java package names to pysnt module paths
+    package_mappings = {
+        'sc.fiji.snt.analysis': ['analysis'],
+        'sc.fiji.snt.analysis.graph': ['analysis/graph'],
+        'sc.fiji.snt.analysis.growth': ['analysis/growth'],  
+        'sc.fiji.snt.analysis.sholl': ['analysis/sholl'],
+        'sc.fiji.snt.analysis.sholl.gui': ['analysis/sholl/gui'],
+        'sc.fiji.snt.analysis.sholl.math': ['analysis/sholl/math'],
+        'sc.fiji.snt.analysis.sholl.parsers': ['analysis/sholl/parsers'],
+        'sc.fiji.snt.util': ['util'],
+        'sc.fiji.snt.viewer': ['viewer'],
+        'sc.fiji.snt.tracing': ['tracing'],
+        'sc.fiji.snt.tracing.artist': ['tracing/artist'],
+        'sc.fiji.snt.tracing.cost': ['tracing/cost'],
+        'sc.fiji.snt.tracing.heuristic': ['tracing/heuristic'],
+        'sc.fiji.snt.tracing.image': ['tracing/image'],
+        'sc.fiji.snt.io': ['io'],
+        'sc.fiji.snt': [''],  # Main package
+    }
     
-    return common_patterns
+    # Get module paths to scan for this package
+    module_paths = package_mappings.get(package_name, [])
+    
+    # If no direct mapping, try to infer from package name
+    if not module_paths:
+        # Extract the last part of the package name
+        parts = package_name.split('.')
+        if len(parts) >= 3 and parts[0] == 'sc' and parts[1] == 'fiji' and parts[2] == 'snt':
+            # Build path from remaining parts
+            if len(parts) > 3:
+                module_path = '/'.join(parts[3:])
+                module_paths = [module_path]
+    
+    collected_classes = []
+    
+    # Scan each relevant module path
+    for module_path in module_paths:
+        init_file = pysnt_dir / module_path / '__init__.py' if module_path else pysnt_dir / '__init__.py'
+        
+        if init_file.exists():
+            try:
+                # Read and parse the __init__.py file
+                with open(init_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Extract CURATED_CLASSES and EXTENDED_CLASSES using simple parsing
+                classes = _extract_class_lists_from_content(content)
+                collected_classes.extend(classes)
+                
+                logger.debug(f"Found {len(classes)} classes in {init_file}")
+                
+            except Exception as e:
+                logger.debug(f"Error reading {init_file}: {e}")
+                continue
+    
+    # Also scan all subdirectories for additional classes
+    if module_paths:
+        for module_path in module_paths:
+            base_dir = pysnt_dir / module_path if module_path else pysnt_dir
+            if base_dir.is_dir():
+                for subdir in base_dir.iterdir():
+                    if subdir.is_dir() and (subdir / '__init__.py').exists():
+                        try:
+                            with open(subdir / '__init__.py', 'r', encoding='utf-8') as f:
+                                content = f.read()
+                            
+                            classes = _extract_class_lists_from_content(content)
+                            collected_classes.extend(classes)
+                            
+                            logger.debug(f"Found {len(classes)} classes in {subdir / '__init__.py'}")
+                            
+                        except Exception as e:
+                            logger.debug(f"Error reading {subdir / '__init__.py'}: {e}")
+                            continue
+    
+    # Remove duplicates and return
+    unique_classes = list(set(collected_classes))
+    logger.debug(f"Total unique classes found for {package_name}: {len(unique_classes)}")
+    
+    return unique_classes
+
+
+def _extract_class_lists_from_content(content: str) -> List[str]:
+    """
+    Extract CURATED_CLASSES and EXTENDED_CLASSES from Python file content.
+    
+    Uses simple string parsing to avoid importing modules.
+    
+    Parameters
+    ----------
+    content : str
+        Content of the Python file
+        
+    Returns
+    -------
+    List[str]
+        List of class names found
+    """
+    import re
+    
+    classes = []
+    
+    # Pattern to match CURATED_CLASSES = [...]
+    curated_pattern = r'CURATED_CLASSES\s*=\s*\[(.*?)\]'
+    extended_pattern = r'EXTENDED_CLASSES\s*=\s*\[(.*?)\]'
+    
+    # Find CURATED_CLASSES
+    curated_match = re.search(curated_pattern, content, re.DOTALL)
+    if curated_match:
+        curated_content = curated_match.group(1)
+        # Extract quoted strings
+        class_names = re.findall(r'["\']([^"\']+)["\']', curated_content)
+        classes.extend(class_names)
+    
+    # Find EXTENDED_CLASSES  
+    extended_match = re.search(extended_pattern, content, re.DOTALL)
+    if extended_match:
+        extended_content = extended_match.group(1)
+        # Extract quoted strings
+        class_names = re.findall(r'["\']([^"\']+)["\']', extended_content)
+        classes.extend(class_names)
+    
+    return classes
 
 
 if __name__ == "__main__":
