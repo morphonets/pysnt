@@ -1,0 +1,473 @@
+{
+  "class_name": "BoundingBox",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2025-11-02T09:55:54.238195",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "append",
+      "overloads": [
+        {
+          "signature": "append(Iterator) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Iterator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: append"
+    },
+    {
+      "name": "clone",
+      "overloads": [
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        },
+        {
+          "signature": "clone() -> BoundingBox",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: clone"
+    },
+    {
+      "name": "combine",
+      "overloads": [
+        {
+          "signature": "combine(BoundingBox) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: combine"
+    },
+    {
+      "name": "compute",
+      "overloads": [
+        {
+          "signature": "compute(Iterator) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Iterator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: compute"
+    },
+    {
+      "name": "contains",
+      "overloads": [
+        {
+          "signature": "contains(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(BoundingBox) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: contains"
+    },
+    {
+      "name": "contains2D",
+      "overloads": [
+        {
+          "signature": "contains2D(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: contains2D"
+    },
+    {
+      "name": "depth",
+      "overloads": [
+        {
+          "signature": "depth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: depth"
+    },
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> Calibration",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Calibration"
+        }
+      ],
+      "documentation": "Java method: getCalibration"
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid() -> SNTPoint",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTPoint"
+        }
+      ],
+      "documentation": "Java method: getCentroid"
+    },
+    {
+      "name": "getDiagonal",
+      "overloads": [
+        {
+          "signature": "getDiagonal() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getDiagonal"
+    },
+    {
+      "name": "getDimensions",
+      "overloads": [
+        {
+          "signature": "getDimensions() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        },
+        {
+          "signature": "getDimensions(boolean) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: getDimensions"
+    },
+    {
+      "name": "getUnit",
+      "overloads": [
+        {
+          "signature": "getUnit() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getUnit"
+    },
+    {
+      "name": "hasDimensions",
+      "overloads": [
+        {
+          "signature": "hasDimensions() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: hasDimensions"
+    },
+    {
+      "name": "height",
+      "overloads": [
+        {
+          "signature": "height() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: height"
+    },
+    {
+      "name": "inferSpacing",
+      "overloads": [
+        {
+          "signature": "inferSpacing(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: inferSpacing"
+    },
+    {
+      "name": "intersection",
+      "overloads": [
+        {
+          "signature": "intersection(BoundingBox) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: intersection"
+    },
+    {
+      "name": "isScaled",
+      "overloads": [
+        {
+          "signature": "isScaled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isScaled"
+    },
+    {
+      "name": "origin",
+      "overloads": [
+        {
+          "signature": "origin() -> PointInImage",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInImage"
+        }
+      ],
+      "documentation": "Java method: origin"
+    },
+    {
+      "name": "originOpposite",
+      "overloads": [
+        {
+          "signature": "originOpposite() -> PointInImage",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInImage"
+        }
+      ],
+      "documentation": "Java method: originOpposite"
+    },
+    {
+      "name": "setDimensions",
+      "overloads": [
+        {
+          "signature": "setDimensions(long, long, long) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setDimensions"
+    },
+    {
+      "name": "setOrigin",
+      "overloads": [
+        {
+          "signature": "setOrigin(PointInImage) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setOrigin"
+    },
+    {
+      "name": "setOriginOpposite",
+      "overloads": [
+        {
+          "signature": "setOriginOpposite(PointInImage) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setOriginOpposite"
+    },
+    {
+      "name": "setSpacing",
+      "overloads": [
+        {
+          "signature": "setSpacing(double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setSpacing"
+    },
+    {
+      "name": "setUnit",
+      "overloads": [
+        {
+          "signature": "setUnit(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setUnit"
+    },
+    {
+      "name": "toBoundingBox3d",
+      "overloads": [
+        {
+          "signature": "toBoundingBox3d() -> BoundingBox3d",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BoundingBox3d"
+        }
+      ],
+      "documentation": "Java method: toBoundingBox3d"
+    },
+    {
+      "name": "unscaledOrigin",
+      "overloads": [
+        {
+          "signature": "unscaledOrigin() -> PointInImage",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInImage"
+        }
+      ],
+      "documentation": "Java method: unscaledOrigin"
+    },
+    {
+      "name": "unscaledOriginOpposite",
+      "overloads": [
+        {
+          "signature": "unscaledOriginOpposite() -> PointInImage",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInImage"
+        }
+      ],
+      "documentation": "Java method: unscaledOriginOpposite"
+    },
+    {
+      "name": "width",
+      "overloads": [
+        {
+          "signature": "width() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: width"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

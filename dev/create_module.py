@@ -121,7 +121,7 @@ def create_module(module_path: str, curated_classes: list = None, extended_class
     print("   - Update CURATED_CLASSES and EXTENDED_CLASSES")
     print("   - Remove the template checklist section")
     print(f"2. Test: python -c \"import src.pysnt.{python_module_path}; print('Success!')\"")
-    print("3. Run quality control: python scripts/pysnt_utils.py --qc")
+    print("3. Run quality control: python dev/scripts/pysnt_utils.py --qc")
 
     return True
 

@@ -1,0 +1,933 @@
+{
+  "class_name": "Viewer3D",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2025-11-02T09:55:56.008382",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(File;, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "File;"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: add"
+    },
+    {
+      "name": "addColorBarLegend",
+      "overloads": [
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "Any",
+              "java_type": "Font"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorMapper"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addColorBarLegend"
+    },
+    {
+      "name": "addLabel",
+      "overloads": [
+        {
+          "signature": "addLabel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addLabel"
+    },
+    {
+      "name": "addMesh",
+      "overloads": [
+        {
+          "signature": "addMesh(OBJMesh) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "OBJMesh"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: addMesh"
+    },
+    {
+      "name": "addTree",
+      "overloads": [
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addTree"
+    },
+    {
+      "name": "addTrees",
+      "overloads": [
+        {
+          "signature": "addTrees(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTrees(Collection, String, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTrees(Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTrees(Collection, String, String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "String;"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addTrees"
+    },
+    {
+      "name": "annotateLine",
+      "overloads": [
+        {
+          "signature": "annotateLine(Collection, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: annotateLine"
+    },
+    {
+      "name": "annotatePlane",
+      "overloads": [
+        {
+          "signature": "annotatePlane(SNTPoint, SNTPoint, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: annotatePlane"
+    },
+    {
+      "name": "annotatePoint",
+      "overloads": [
+        {
+          "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        },
+        {
+          "signature": "annotatePoint(SNTPoint, String, String, float) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: annotatePoint"
+    },
+    {
+      "name": "annotatePoints",
+      "overloads": [
+        {
+          "signature": "annotatePoints(Collection, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: annotatePoints"
+    },
+    {
+      "name": "annotateSurface",
+      "overloads": [
+        {
+          "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        },
+        {
+          "signature": "annotateSurface(Collection, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: annotateSurface"
+    },
+    {
+      "name": "assignUniqueColors",
+      "overloads": [
+        {
+          "signature": "assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: assignUniqueColors"
+    },
+    {
+      "name": "colorCode",
+      "overloads": [
+        {
+          "signature": "colorCode(String, String, ColorTable) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        },
+        {
+          "signature": "colorCode(Collection, String, ColorTable) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: colorCode"
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: dispose"
+    },
+    {
+      "name": "duplicate",
+      "overloads": [
+        {
+          "signature": "duplicate() -> Viewer3D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Viewer3D"
+        }
+      ],
+      "documentation": "Java method: duplicate"
+    },
+    {
+      "name": "freeze",
+      "overloads": [
+        {
+          "signature": "freeze() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: freeze"
+    },
+    {
+      "name": "getAnnotation",
+      "overloads": [
+        {
+          "signature": "getAnnotation(String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: getAnnotation"
+    },
+    {
+      "name": "getAnnotations",
+      "overloads": [
+        {
+          "signature": "getAnnotations() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getAnnotations"
+    },
+    {
+      "name": "getFrame",
+      "overloads": [
+        {
+          "signature": "getFrame(boolean) -> Frame",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Frame"
+        },
+        {
+          "signature": "getFrame() -> Frame",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Frame"
+        }
+      ],
+      "documentation": "Java method: getFrame"
+    },
+    {
+      "name": "getID",
+      "overloads": [
+        {
+          "signature": "getID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: getID"
+    },
+    {
+      "name": "getManagerPanel",
+      "overloads": [
+        {
+          "signature": "getManagerPanel() -> Viewer3D$ManagerPanel",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Viewer3D$ManagerPanel"
+        }
+      ],
+      "documentation": "Java method: getManagerPanel"
+    },
+    {
+      "name": "getMesh",
+      "overloads": [
+        {
+          "signature": "getMesh(String) -> OBJMesh",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh"
+        }
+      ],
+      "documentation": "Java method: getMesh"
+    },
+    {
+      "name": "getMeshes",
+      "overloads": [
+        {
+          "signature": "getMeshes(boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "getMeshes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getMeshes"
+    },
+    {
+      "name": "getRecorder",
+      "overloads": [
+        {
+          "signature": "getRecorder(boolean) -> ScriptRecorder",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ScriptRecorder"
+        }
+      ],
+      "documentation": "Java method: getRecorder"
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Tree"
+        }
+      ],
+      "documentation": "Java method: getTree"
+    },
+    {
+      "name": "getTrees",
+      "overloads": [
+        {
+          "signature": "getTrees(boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "getTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getTrees"
+    },
+    {
+      "name": "isActive",
+      "overloads": [
+        {
+          "signature": "isActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isActive"
+    },
+    {
+      "name": "isDarkModeOn",
+      "overloads": [
+        {
+          "signature": "isDarkModeOn() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isDarkModeOn"
+    },
+    {
+      "name": "isSNTInstance",
+      "overloads": [
+        {
+          "signature": "isSNTInstance() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isSNTInstance"
+    },
+    {
+      "name": "isSplitDendritesFromAxons",
+      "overloads": [
+        {
+          "signature": "isSplitDendritesFromAxons() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isSplitDendritesFromAxons"
+    },
+    {
+      "name": "loadMesh",
+      "overloads": [
+        {
+          "signature": "loadMesh(String, ColorRGB, double) -> OBJMesh",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh"
+        }
+      ],
+      "documentation": "Java method: loadMesh"
+    },
+    {
+      "name": "loadRefBrain",
+      "overloads": [
+        {
+          "signature": "loadRefBrain(String) -> OBJMesh",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh"
+        }
+      ],
+      "documentation": "Java method: loadRefBrain"
+    },
+    {
+      "name": "logSceneControls",
+      "overloads": [
+        {
+          "signature": "logSceneControls() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: logSceneControls"
+    },
+    {
+      "name": "mergeAnnotations",
+      "overloads": [
+        {
+          "signature": "mergeAnnotations(Collection, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        }
+      ],
+      "documentation": "Java method: mergeAnnotations"
+    },
+    {
+      "name": "rebuild",
+      "overloads": [
+        {
+          "signature": "rebuild(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: rebuild"
+    },
+    {
+      "name": "recordRotation",
+      "overloads": [
+        {
+          "signature": "recordRotation(float, int, File) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: recordRotation"
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: remove"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

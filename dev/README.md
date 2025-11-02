@@ -23,7 +23,8 @@ Development tools and templates for PySNT.
 - Class names: Use exact Java class names. Reflection converters use underscore notation (OuterClass_InnerClass)
 - Module docstring: Include link to Javadoc package summary
 - `placeholder_template.py`: Is the template for creating new PySNT module `__init__.py` files with consistent structure
-- See the `deploy.py` script for how these templates become populated with wrapper classes via Java reflection
+- See the `dev/scripts/` directory for build and deployment scripts
+- Use `dev/scripts/extract_class_signatures.py` and `dev/scripts/generate_stubs.py` for type stub generation
 
 
 ## To Add a New SNT Package
@@ -67,10 +68,10 @@ After creating any module:
 - Update docstrings
 - Remove template sections:
 - Delete the template checklist
-- Generate placeholders:
+- Generate type stubs:
   ```bash
-  python scripts/generate_placeholders.py --dry-run  # Preview
-  python scripts/generate_placeholders.py            # Apply
+  python dev/scripts/extract_class_signatures.py --all-classes --verbose  # Extract signatures
+  python dev/scripts/generate_stubs.py --verbose --overwrite              # Generate stubs
   ```
 - Test the module:
   ```bash
@@ -121,9 +122,10 @@ After creating any module:
     __getattr__ = _module_funcs['create_getattr']('pysnt.analysis.morphology')  # ← Edit this
   ```
 
-4. Generate Placeholders
+4. Generate Type Stubs
   ```bash
-  python scripts/generate_placeholders.py
+  python dev/scripts/extract_class_signatures.py --all-classes --verbose
+  python dev/scripts/generate_stubs.py --verbose --overwrite
   ```
 
 5. Test
@@ -137,8 +139,8 @@ After creating any module:
   ```
 
   ```bash
-  # Run placeholder generation and test
-  python scripts/generate_placeholders.py
+  # Generate type stubs and test
+  python dev/scripts/generate_stubs.py --verbose
   python -c "
   import src.pysnt.new.module as mod
   print('All tests passed!')

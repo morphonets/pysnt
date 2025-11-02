@@ -16,7 +16,7 @@ help:
 # Generate API documentation
 api:
 	@echo "Generating API documentation..."
-	python ../scripts/generate_api_docs.py
+	python ../dev/scripts/generate_api_docs.py
 
 # Clean build directory
 clean:

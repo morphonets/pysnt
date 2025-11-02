@@ -212,13 +212,11 @@ def setup_module_classes(
         python_name = _normalize_class_name_for_python(class_name)
         java_name = _get_java_class_name(class_name)
         
-        # Try all discovery packages to find the right one for this class
-        full_java_class_name = None
-        for pkg in discovery_packages:
-            potential_name = f"{pkg}.{java_name}"
-            # We'll use the first package as the default, but this will be validated during _java_setup
-            if full_java_class_name is None:
-                full_java_class_name = potential_name
+        # For curated classes, prefer the main package_name first, then try discovery packages
+        full_java_class_name = f"{package_name}.{java_name}"
+        
+        # Store all potential packages for validation during _java_setup
+        potential_packages = [package_name] + [pkg for pkg in discovery_packages if pkg != package_name]
         
         # Create dynamic placeholder
         dynamic_class = create_dynamic_placeholder_class(full_java_class_name, class_name)

@@ -137,7 +137,7 @@ Before using this template, make sure to:
 □ Add submodule imports if needed
 □ Remove this checklist section
 □ Test with `python -c "import src.pysnt.your_module; print('Success!')"`
-□ Run quality control: `python scripts/pysnt_utils.py --qc`
+□ Run quality control: `python dev/scripts/pysnt_utils.py --qc`
 
 Example configuration for a (dummy) analysis.morphology package:
 

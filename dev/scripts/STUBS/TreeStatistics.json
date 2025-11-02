@@ -1,0 +1,771 @@
+{
+  "class_name": "TreeStatistics",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-02T09:55:54.825100",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "cancel",
+      "overloads": [
+        {
+          "signature": "cancel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: cancel"
+    },
+    {
+      "name": "context",
+      "overloads": [
+        {
+          "signature": "context() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context"
+        }
+      ],
+      "documentation": "Java method: context"
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: dispose"
+    },
+    {
+      "name": "static fromCollection",
+      "overloads": [
+        {
+          "signature": "static fromCollection(Collection, String) -> TreeStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "TreeStatistics"
+        }
+      ],
+      "documentation": "Java method: static fromCollection"
+    },
+    {
+      "name": "static getAllMetrics",
+      "overloads": [
+        {
+          "signature": "static getAllMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getAllMetrics"
+    },
+    {
+      "name": "getAnnotatedLength",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getAnnotatedLength(int, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getAnnotatedLength(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLength"
+    },
+    {
+      "name": "getAnnotatedLengthHistogram",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLengthHistogram"
+    },
+    {
+      "name": "getAnnotatedLengthsByHemisphere",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLengthsByHemisphere(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLengthsByHemisphere"
+    },
+    {
+      "name": "getAnnotations",
+      "overloads": [
+        {
+          "signature": "getAnnotations(int) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
+          "signature": "getAnnotations() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getAnnotations"
+    },
+    {
+      "name": "getAvgBranchLength",
+      "overloads": [
+        {
+          "signature": "getAvgBranchLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgBranchLength"
+    },
+    {
+      "name": "getAvgContraction",
+      "overloads": [
+        {
+          "signature": "getAvgContraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgContraction"
+    },
+    {
+      "name": "getAvgFractalDimension",
+      "overloads": [
+        {
+          "signature": "getAvgFractalDimension() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgFractalDimension"
+    },
+    {
+      "name": "getAvgFragmentation",
+      "overloads": [
+        {
+          "signature": "getAvgFragmentation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgFragmentation"
+    },
+    {
+      "name": "getAvgPartitionAsymmetry",
+      "overloads": [
+        {
+          "signature": "getAvgPartitionAsymmetry() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgPartitionAsymmetry"
+    },
+    {
+      "name": "getAvgRemoteBifAngle",
+      "overloads": [
+        {
+          "signature": "getAvgRemoteBifAngle() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAvgRemoteBifAngle"
+    },
+    {
+      "name": "getBranchPoints",
+      "overloads": [
+        {
+          "signature": "getBranchPoints(BrainAnnotation, boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
+          "signature": "getBranchPoints(BrainAnnotation) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
+          "signature": "getBranchPoints() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getBranchPoints"
+    },
+    {
+      "name": "getBranches",
+      "overloads": [
+        {
+          "signature": "getBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getBranches"
+    },
+    {
+      "name": "getCableLength",
+      "overloads": [
+        {
+          "signature": "getCableLength(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getCableLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getCableLength(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getCableLength"
+    },
+    {
+      "name": "getCableLengthNorm",
+      "overloads": [
+        {
+          "signature": "getCableLengthNorm(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getCableLengthNorm"
+    },
+    {
+      "name": "getCancelReason",
+      "overloads": [
+        {
+          "signature": "getCancelReason() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getCancelReason"
+    },
+    {
+      "name": "getContext",
+      "overloads": [
+        {
+          "signature": "getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context"
+        }
+      ],
+      "documentation": "Java method: getContext"
+    },
+    {
+      "name": "getConvexAnalyzer",
+      "overloads": [
+        {
+          "signature": "getConvexAnalyzer() -> ConvexHullAnalyzer",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ConvexHullAnalyzer"
+        }
+      ],
+      "documentation": "Java method: getConvexAnalyzer"
+    },
+    {
+      "name": "getConvexHullMetric",
+      "overloads": [
+        {
+          "signature": "getConvexHullMetric(String) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getConvexHullMetric"
+    },
+    {
+      "name": "getDepth",
+      "overloads": [
+        {
+          "signature": "getDepth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getDepth"
+    },
+    {
+      "name": "getDescriptiveStats",
+      "overloads": [
+        {
+          "signature": "getDescriptiveStats(String) -> DescriptiveStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DescriptiveStatistics"
+        }
+      ],
+      "documentation": "Java method: getDescriptiveStats"
+    },
+    {
+      "name": "getFlowPlot",
+      "overloads": [
+        {
+          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getFlowPlot"
+    },
+    {
+      "name": "getFractalDimension",
+      "overloads": [
+        {
+          "signature": "getFractalDimension() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getFractalDimension"
+    },
+    {
+      "name": "getHeight",
+      "overloads": [
+        {
+          "signature": "getHeight() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getHeight"
+    },
+    {
+      "name": "getHighestPathOrder",
+      "overloads": [
+        {
+          "signature": "getHighestPathOrder() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: getHighestPathOrder"
+    },
+    {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getHistogram"
+    },
+    {
+      "name": "getInnerBranches",
+      "overloads": [
+        {
+          "signature": "getInnerBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getInnerBranches"
+    },
+    {
+      "name": "getInnerLength",
+      "overloads": [
+        {
+          "signature": "getInnerLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getInnerLength"
+    },
+    {
+      "name": "getMetric",
+      "overloads": [
+        {
+          "signature": "getMetric(String) -> Number",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Number"
+        }
+      ],
+      "documentation": "Java method: getMetric"
+    },
+    {
+      "name": "static getMetrics",
+      "overloads": [
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static getMetrics(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getMetrics"
+    },
+    {
+      "name": "getNBranchPoints",
+      "overloads": [
+        {
+          "signature": "getNBranchPoints(BrainAnnotation) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: getNBranchPoints"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

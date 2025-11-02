@@ -395,7 +395,7 @@ def main():
     
     # Find project root
     script_dir = Path(__file__).parent
-    project_root = script_dir.parent
+    project_root = script_dir.parent.parent  # dev/scripts -> dev -> project_root
     
     if not (project_root / "src" / "pysnt").exists():
         logger.error("Could not find src/pysnt directory. Run from project root.")

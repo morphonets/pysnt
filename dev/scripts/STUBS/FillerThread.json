@@ -1,0 +1,392 @@
+{
+  "class_name": "FillerThread",
+  "package": "sc.fiji.snt.tracing",
+  "extracted_at": "2025-11-02T09:55:54.271514",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addNode",
+      "overloads": [
+        {
+          "signature": "addNode(DefaultSearchNode, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "DefaultSearchNode"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addNode"
+    },
+    {
+      "name": "addProgressListener",
+      "overloads": [
+        {
+          "signature": "addProgressListener(SearchProgressCallback) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SearchProgressCallback"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addProgressListener"
+    },
+    {
+      "name": "createNewNode",
+      "overloads": [
+        {
+          "signature": "createNewNode(int, int, int, double, double, DefaultSearchNode, byte) -> DefaultSearchNode",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg5",
+              "type": "Any",
+              "java_type": "DefaultSearchNode"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "byte"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DefaultSearchNode"
+        }
+      ],
+      "documentation": "Java method: createNewNode"
+    },
+    {
+      "name": "static fromFill",
+      "overloads": [
+        {
+          "signature": "static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ImageStatistics"
+            },
+            {
+              "name": "arg3",
+              "type": "Any",
+              "java_type": "Fill"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "FillerThread"
+        },
+        {
+          "signature": "static fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageStatistics"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "Fill"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "FillerThread"
+        }
+      ],
+      "documentation": "Java method: static fromFill"
+    },
+    {
+      "name": "getDistanceAtPoint",
+      "overloads": [
+        {
+          "signature": "getDistanceAtPoint(double, double, double) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getDistanceAtPoint"
+    },
+    {
+      "name": "getExitReason",
+      "overloads": [
+        {
+          "signature": "getExitReason() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: getExitReason"
+    },
+    {
+      "name": "getFill",
+      "overloads": [
+        {
+          "signature": "getFill() -> Fill",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Fill"
+        }
+      ],
+      "documentation": "Java method: getFill"
+    },
+    {
+      "name": "getNodesAsImage",
+      "overloads": [
+        {
+          "signature": "getNodesAsImage() -> SearchImageStack",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageStack"
+        }
+      ],
+      "documentation": "Java method: getNodesAsImage"
+    },
+    {
+      "name": "getNodesAsImageFromGoal",
+      "overloads": [
+        {
+          "signature": "getNodesAsImageFromGoal() -> SearchImageStack",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageStack"
+        }
+      ],
+      "documentation": "Java method: getNodesAsImageFromGoal"
+    },
+    {
+      "name": "getNodesAsImageFromStart",
+      "overloads": [
+        {
+          "signature": "getNodesAsImageFromStart() -> SearchImageStack",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageStack"
+        }
+      ],
+      "documentation": "Java method: getNodesAsImageFromStart"
+    },
+    {
+      "name": "getResult",
+      "overloads": [
+        {
+          "signature": "getResult() -> Path",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Path"
+        }
+      ],
+      "documentation": "Java method: getResult"
+    },
+    {
+      "name": "getThreshold",
+      "overloads": [
+        {
+          "signature": "getThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getThreshold"
+    },
+    {
+      "name": "pointsConsideredInSearch",
+      "overloads": [
+        {
+          "signature": "pointsConsideredInSearch() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long"
+        }
+      ],
+      "documentation": "Java method: pointsConsideredInSearch"
+    },
+    {
+      "name": "printStatus",
+      "overloads": [
+        {
+          "signature": "printStatus() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: printStatus"
+    },
+    {
+      "name": "reportFinished",
+      "overloads": [
+        {
+          "signature": "reportFinished(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: reportFinished"
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: run"
+    },
+    {
+      "name": "setSourcePaths",
+      "overloads": [
+        {
+          "signature": "setSourcePaths(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setSourcePaths"
+    },
+    {
+      "name": "setStopAtThreshold",
+      "overloads": [
+        {
+          "signature": "setStopAtThreshold(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setStopAtThreshold"
+    },
+    {
+      "name": "setStoreExtraNodes",
+      "overloads": [
+        {
+          "signature": "setStoreExtraNodes(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setStoreExtraNodes"
+    },
+    {
+      "name": "setThreshold",
+      "overloads": [
+        {
+          "signature": "setThreshold(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setThreshold"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

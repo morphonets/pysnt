@@ -3,12 +3,13 @@
 Prepares PySNT for deployment by generating stubs and API docs.
 
 This script:
-1. Generate type stub files (.pyi) for IDE support
-2. Generate API documentation
-3. Run some quality control validations
+1. Run quality control validations
+2. Generate type stub files (.pyi) from cached signatures
+3. Generate API documentation
+4. Build HTML documentation
 
+Uses the clean cache-only stub generation approach.
 Placeholder classes are created automatically at runtime via setup_module_classes().
-No manual sync or placeholder generation is required.
 """
 
 import argparse
@@ -54,9 +55,9 @@ def main():
         description="Deploy PySNT - generate stubs and documentation"
     )
     parser.add_argument(
-        "--skip-java",
+        "--skip-stubs",
         action="store_true",
-        help="Skip Java stub generation (faster, no JVM required)"
+        help="Skip stub generation (faster, use existing stubs)"
     )
     parser.add_argument(
         "--skip-docs",
@@ -74,7 +75,7 @@ def main():
 
     # Get paths
     script_dir = Path(__file__).parent
-    project_root = script_dir.parent
+    project_root = script_dir.parent.parent  # dev/scripts -> dev -> project_root
     docs_dir = project_root / "docs"
 
     print("🚀 PySNT Deployment Script")
@@ -95,27 +96,33 @@ def main():
     else:
         print("⚠️ Quality control validation failed, but continuing...")
 
-    # 1. Generate stubs (Python + Java with some fallback strategies)
-    if not args.skip_java:
+    # 1. Check cache status first
+    if not args.skip_stubs:
+        total_tasks += 1
+        cmd = [sys.executable, str(script_dir / "generate_stubs.py"), "--check-cache"]
+        
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            if "Missing cache:" in result.stdout and "45/88" in result.stdout:
+                print("⚠️  Many cached signatures are missing!")
+                print("💡 Consider running: python dev/scripts/extract_class_signatures.py --all-classes")
+                print("🔄 Proceeding with available caches...")
+        except:
+            pass  # Continue anyway
+        
+        success_count += 1  # Cache check always succeeds
+
+    # 2. Generate stubs from cache
+    if not args.skip_stubs:
         total_tasks += 1
         cmd = [sys.executable, str(script_dir / "generate_stubs.py"), "--overwrite"]
         if args.verbose:
             cmd.append("--verbose")
 
-        if run_command(cmd, "Generating stub files (Java + Python)"):
+        if run_command(cmd, "Generating stub files from cache"):
             success_count += 1
         else:
-            print("⚠️ stub generation failed, but continuing...")
-
-    else:
-        # Python-only mode
-        total_tasks += 1
-        cmd = [sys.executable, str(script_dir / "generate_stubs.py"), "--overwrite"]
-        if args.verbose:
-            cmd.append("--verbose")
-
-        if run_command(cmd, "Generating Python stub files"):
-            success_count += 1
+            print("⚠️ Stub generation failed, but continuing...")
 
     # 3. Generate API documentation (unless skipped)
     if not args.skip_docs:
@@ -142,17 +149,17 @@ def main():
     if success_count == total_tasks:
         print("🎉 Deployment completed successfully!")
         print("\n💡 Generated files:")
-        print("  • Type stub files (.pyi) with complete method signatures")
-        if not args.skip_java:
-            print("  • Java class stubs using reflection (most complete available)")
+        if not args.skip_stubs:
+            print("  • Type stub files (.pyi) from cached signatures")
+            print("  • High-quality stubs for classes with cached data")
         if not args.skip_docs:
             print("  • API documentation (.rst files)")
             print("  • HTML documentation (docs/_build/html/)")
         
         print("\n💡 Note: Placeholder classes are generated automatically at runtime")
         print("  • No manual sync or placeholder generation needed")
-        print("  • Import timing issues resolved with dynamic placeholders")
-        print("  • Simplified deployment process")
+        print("  • Cache-only stub generation for predictable results")
+        print("  • Run extract_class_signatures.py to improve coverage")
 
         print(f"\nDone.")
         return 0
