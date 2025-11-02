@@ -19,7 +19,7 @@ import logging
 from typing import Any, Dict, List
 
 # Import main public API functions
-from .display import display, register_display_handler
+from ..display import display, register_display_handler
 from .enhancement import enhance_java_object, auto_enhance_java_objects
 
 # Import structured data converter functions for backward compatibility
@@ -42,8 +42,8 @@ from .graph_converters import (
     HAS_NETWORKX
 )
 
-# Import core types
-from .core import SNTObject
+# Import core types and utilities
+from .core import SNTObject, _extract_color_attributes
 
 logger = logging.getLogger(__name__)
 

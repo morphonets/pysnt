@@ -279,7 +279,15 @@ def _get_default_layout_for_graph_type(graph_type: str) -> str:
     str
         Layout algorithm name
     """
-    return DEFAULT_GRAPH_LAYOUTS.get(graph_type, "spring")
+    from ..config import get_option
+    
+    # Try to get from config system first
+    config_key = f'graph.layout.{graph_type}'
+    try:
+        return get_option(config_key)
+    except (KeyError, ValueError):
+        # Fallback to hardcoded defaults
+        return DEFAULT_GRAPH_LAYOUTS.get(graph_type, get_option('graph.layout.default'))
 
 
 def _graph_to_matplotlib(graph, **kwargs) -> Figure:
