@@ -221,60 +221,32 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
             _display_xarray_dataset(xarr, **kwargs)
             return None
 
-        # Method 1: Try xarray's built-in plot method for DataArray
+        # SKIP xarray.plot() to avoid double figure creation
+        # The issue is that xarray.plot() creates a figure, and then _display_array_data also creates one
+        # Let's use only the unified array display system
+        logger.debug("Skipping xarray.plot() to avoid double figure creation, using unified array display")
+        
+        # Method: Convert to numpy and use matplotlib directly
         try:
-            logger.debug("Trying xarray.plot() method...")
+            logger.debug("Trying matplotlib imshow with numpy conversion...")
 
-            # Check for metadata-based RGB detection (most reliable)
-            metadata = kwargs.get('metadata', {})
-            is_rgb = metadata.get('is_rgb', False)
-            
-            # Use metadata title if available and no title override provided
-            if not title and 'image_title' in metadata:
-                title = metadata['image_title']
-            
-            # Fallback to shape-based detection if no metadata available
-            if not is_rgb and hasattr(xarr, 'shape') and len(xarr.shape) == 3 and xarr.shape[2] in [3, 4]:
-                is_rgb = True
-                logger.warning(f"Using fallback RGB detection for xarray shape {xarr.shape}. "
-                              f"Consider using metadata-based detection for reliability.")
-            
-            logger.debug(f"RGB detection result: is_rgb={is_rgb}, metadata_available={bool(metadata)}")
-
-            # Handle different dimensionalities
-            if hasattr(xarr, 'ndim'):
-                if xarr.ndim == 2:
-                    # 2D image - use imshow-style plot
-                    xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
-                elif xarr.ndim == 3:
-                    if is_rgb:
-                        # RGB image - plot directly without colormap
-                        xarr.plot(add_colorbar=False, **kwargs)
-                        if not title:
-                            title = metadata.get('image_title', "RGB image")
-                    else:
-                        # 3D image - plot middle slice
-                        middle_slice = xarr.shape[0] // 2
-                        xarr[middle_slice].plot(cmap=cmap, add_colorbar=True, **kwargs)
-                        if not title:
-                            title = f"Slice {middle_slice} of 3D image"
-                else:
-                    # Higher dimensions - flatten to 2D
-                    xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
+            # Convert to numpy array
+            if hasattr(xarr, 'values'):
+                img_data = xarr.values
+            elif hasattr(xarr, 'data'):
+                img_data = xarr.data
             else:
-                # Fallback - just try to plot
-                xarr.plot(cmap=cmap, add_colorbar=not is_rgb, **kwargs)
+                img_data = np.array(xarr)
 
-            # Add title if provided
-            if title:
-                plt.title(title)
-
-            # Show the plot using unified display system
-            from .visual_display import _show_matplotlib_figure
-            if _show_matplotlib_figure():  # Uses current figure automatically
-                logger.info("Successfully displayed xarray using xarray.plot()")
+            logger.debug(f"Converted to numpy array: shape={img_data.shape}, dtype={img_data.dtype}")
+            # Use unified array display
+            from .visual_display import _display_array_data
+            result = _display_array_data(img_data, "xarray", **kwargs)
+            if result:
+                logger.info("Successfully displayed xarray using unified array display")
+                return result
             else:
-                logger.warning("Failed to display xarray plot")
+                logger.warning("Failed to display xarray using unified array display")
             return None
 
         except Exception as e1:
@@ -392,7 +364,9 @@ def _display_imageplus(obj, **kwargs):
                    f"({'RGB' if metadata.get('is_rgb', False) else 'grayscale'})")
         _display_xarray(xarray_data, **kwargs_with_metadata)
         
-        return xarray_data
+        # Return the original ImagePlus object instead of the xarray to prevent double processing
+        # The display has already been handled by _display_xarray()
+        return obj
 
     except Exception as e:
         _handle_display_error(e, "ImagePlus display", "ImagePlus")

@@ -137,7 +137,20 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[s
     matplotlib.figure.Figure
         The converted matplotlib figure
     """
-    with _temp_file(format_type, temp_dir) as temp_path:
+    # Use temporary directory approach instead of NamedTemporaryFile
+    # This avoids issues with Java SNTChart save methods and file handles
+    with _temp_directory(temp_dir) as temp_chart_dir:
+        temp_path = os.path.join(temp_chart_dir, f"chart.{format_type}")
+        
+        # Initialize chart dimensions if needed
+        try:
+            if chart.getWidth() == 0 or chart.getHeight() == 0:
+                chart.setSize(400, 400)
+                chart.validate()
+                chart.doLayout()
+        except Exception as e:
+            logger.debug(f"Could not initialize chart dimensions: {e}")
+        
         # Save chart using appropriate method
         if format_type == 'svg':
             chart.saveAsSVG(temp_path, scale)

@@ -120,9 +120,8 @@ def _show_matplotlib_figure(fig=None, **kwargs) -> bool:
     logger.debug(f"Showing matplotlib figure with unified display (backend: {matplotlib.get_backend()})")
 
     try:
-        # Make figure current and show
-        plt.figure(fig.number)  # Make this figure current
-        logger.debug(f"Made figure {fig.number} current")
+        # Don't change current figure - just work with the provided figure directly
+        logger.debug(f"Working with figure {fig.number} directly")
 
         # Force drawing and display
         fig.canvas.draw()
