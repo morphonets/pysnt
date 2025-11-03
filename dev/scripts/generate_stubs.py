@@ -221,7 +221,7 @@ class CleanStubGenerator:
         # Add methods
         methods = signatures.get('methods', [])
         for method_info in methods:
-            method_name = method_info['name']
+            method_name = self._clean_method_name(method_info['name'])
             overloads = method_info.get('overloads', [])
             
             if len(overloads) == 1:
@@ -284,6 +284,22 @@ class CleanStubGenerator:
         ])
         
         return '\n'.join(lines)
+
+    def _clean_method_name(self, method_name: str) -> str:
+        """Clean method name by removing Java modifiers and invalid Python syntax."""
+        # Remove Java modifiers that can appear in method names
+        java_modifiers = ['static', 'final', 'synchronized', 'native', 'abstract', 'public', 'private', 'protected']
+        
+        # Split the method name and remove any Java modifiers
+        parts = method_name.split()
+        cleaned_parts = [part for part in parts if part not in java_modifiers]
+        
+        # Join back and take the last part (the actual method name)
+        if cleaned_parts:
+            return cleaned_parts[-1]
+        else:
+            # Fallback if all parts were modifiers
+            return method_name.replace(' ', '_')
 
     def generate_basic_stub(self, class_name: str) -> str:
         """Generate basic stub when no cache is available."""
@@ -395,6 +411,20 @@ class CleanStubGenerator:
             return f"def {func_name}(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = \"headless\") -> None: ..."
         elif func_name in ['show', 'display']:
             return f"def {func_name}(obj: Any, **kwargs: Any) -> Any: ..."
+        elif func_name == 'register_display_handler':
+            return f"def {func_name}(obj_type: str, handler_func: Callable) -> None: ..."
+        elif func_name == 'enhance_java_object':
+            return f"def {func_name}(obj: Any) -> Any: ..."
+        elif func_name == 'register_snt_converters':
+            return f"def {func_name}() -> None: ..."
+        elif func_name == 'list_converters':
+            return f"def {func_name}() -> List[str]: ..."
+        elif func_name == 'to_python':
+            return f"def {func_name}(obj: Any) -> Any: ..."
+        elif func_name == 'from_java':
+            return f"def {func_name}(obj: Any) -> Any: ..."
+        elif func_name == 'ij':
+            return f"def {func_name}() -> Any: ..."
         elif func_name.startswith('get_'):
             return f"def {func_name}() -> Any: ..."
         elif func_name.startswith('set_'):
