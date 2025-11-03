@@ -14,6 +14,7 @@ Subpackages
 
    pysnt.analysis
    pysnt.converters
+   pysnt.display
    pysnt.io
    pysnt.tracing
    pysnt.util

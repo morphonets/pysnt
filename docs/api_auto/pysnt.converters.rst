@@ -14,7 +14,6 @@ Submodules
 
    pysnt.converters.chart_converters
    pysnt.converters.core
-   pysnt.converters.display
    pysnt.converters.enhancement
    pysnt.converters.extractors
    pysnt.converters.graph_converters

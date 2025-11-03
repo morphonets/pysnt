@@ -4,7 +4,7 @@ Type stubs for setup_utils.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union, Callable
 
 def get_config_dir() -> Path: ...
 

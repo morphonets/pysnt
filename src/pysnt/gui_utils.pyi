@@ -4,7 +4,7 @@ Type stubs for gui_utils.py
 Auto-generated stub file.
 """
 
-from typing import Any
+from typing import Any, Dict, List, Optional, Union, Callable
 
 logger: Any
 def is_main_thread() -> bool: ...

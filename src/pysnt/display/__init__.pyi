@@ -1,9 +1,9 @@
 """
-Type stubs for __main__.py
+Type stubs for __init__.py
 
 Auto-generated stub file.
 """
 
 from typing import Any, Dict, List, Optional, Union, Callable
 
-def main() -> Any: ...
+__all__: Any

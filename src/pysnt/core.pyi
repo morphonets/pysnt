@@ -4,7 +4,7 @@ Type stubs for core.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union, Callable
 
 logger: Any
 _ij: Any

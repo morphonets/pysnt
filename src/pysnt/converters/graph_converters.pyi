@@ -4,9 +4,7 @@ Type stubs for graph_converters.py
 Auto-generated stub file.
 """
 
-from typing import Any
-from .core import SNTObject
-from matplotlib.figure import Figure
+from typing import Any, Dict, List, Optional, Union, Callable
 
 logger: Any
 DEFAULT_GRAPH_LAYOUTS: Any
