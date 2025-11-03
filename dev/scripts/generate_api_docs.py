@@ -15,13 +15,13 @@ def generate_api_docs():
 
     # Paths - adjusted for scripts folder location
     script_dir = Path(__file__).parent
-    project_root = script_dir.parent
+    project_root = script_dir.parent.parent  # Go up two levels: scripts -> dev -> project_root
     docs_dir = project_root / "docs"
     src_dir = project_root / "src"
     api_dir = docs_dir / "api_auto"
 
-    # Create API directory
-    api_dir.mkdir(exist_ok=True)
+    # Create API directory (with parents if needed)
+    api_dir.mkdir(parents=True, exist_ok=True)
 
     # Run sphinx-apidoc
     cmd = [
@@ -65,7 +65,7 @@ def fix_javadoc_links():
     """Fix Javadoc link references to make them unique per class."""
     
     script_dir = Path(__file__).parent
-    project_root = script_dir.parent
+    project_root = script_dir.parent.parent  # Go up two levels: scripts -> dev -> project_root
     src_dir = project_root / "src" / "pysnt"
     
     # Find all Python files
@@ -144,7 +144,7 @@ def create_api_index():
     """Create an index file for the auto-generated API docs."""
 
     script_dir = Path(__file__).parent
-    project_root = script_dir.parent
+    project_root = script_dir.parent.parent  # Go up two levels: scripts -> dev -> project_root
     docs_dir = project_root / "docs"
     api_dir = docs_dir / "api_auto"
     index_file = api_dir / "index.rst"
