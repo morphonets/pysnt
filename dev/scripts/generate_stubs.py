@@ -318,6 +318,7 @@ class CleanStubGenerator:
             imported_functions = set()
             imported_classes = set()
             imported_exceptions = set()
+            imported_constants = set()
             
             for node in tree.body:
                 if isinstance(node, ast.ImportFrom):
@@ -326,6 +327,9 @@ class CleanStubGenerator:
                             name = alias.name
                             if name.endswith('Error') or name.endswith('Exception'):
                                 imported_exceptions.add(name)
+                            elif name[0].isupper() and '_' in name:
+                                # Constants like DEFAULT_CMAP, ERROR_MISSING_NETWORKX
+                                imported_constants.add(name)
                             elif name[0].isupper():
                                 imported_classes.add(name)
                             else:
@@ -335,7 +339,17 @@ class CleanStubGenerator:
                     func_sig = self._extract_function_signature(node)
                     module_functions.append(func_sig)
             
+            # Special handling for display.utils module
+            if module_name == 'pysnt.display.utils':
+                module_functions.extend(self._get_display_utils_special_stubs())
+            
             # Add organized function stubs
+            if imported_constants:
+                module_functions.extend(['', '# Constants imported from converters.core'])
+                for const_name in sorted(imported_constants):
+                    const_type = self._get_constant_type(const_name)
+                    module_functions.append(f'{const_name}: {const_type}')
+            
             if imported_functions:
                 module_functions.extend(['', '# Imported functions'])
                 for func_name in sorted(imported_functions):
@@ -354,7 +368,7 @@ class CleanStubGenerator:
                     module_functions.append(f'class {exc_name}(Exception): ...')
             
             if self.verbose:
-                print(f"    📋 Extracted {len(imported_functions)} functions, {len(imported_classes)} classes from {module_name}")
+                print(f"    📋 Extracted {len(imported_functions)} functions, {len(imported_classes)} classes, {len(imported_constants)} constants from {module_name}")
             
         except Exception as e:
             if self.verbose:
@@ -387,8 +401,77 @@ class CleanStubGenerator:
             return f"def {func_name}(value: Any) -> None: ..."
         elif func_name.startswith('is_'):
             return f"def {func_name}() -> bool: ..."
+        elif func_name == '_setup_matplotlib_interactive':
+            return f"def {func_name}() -> Any: ..."
+        elif func_name == '_create_standard_figure':
+            return f"def {func_name}(data: Any, title: Optional[str] = None, cmap: str = 'viridis', add_colorbar: bool = True, is_rgb: bool = False, **kwargs: Any) -> tuple[Any, Any, Any]: ..."
+        elif func_name == '_extract_color_attributes':
+            return f"def {func_name}(color: Any, attr_name: str) -> Dict[str, Any]: ..."
         else:
             return f"def {func_name}(*args: Any, **kwargs: Any) -> Any: ..."
+
+    def _get_constant_type(self, const_name: str) -> str:
+        """Get the type for a constant based on its name."""
+        if const_name in ['DEFAULT_CMAP', 'DEFAULT_NODE_COLOR', 'ERROR_MISSING_NETWORKX']:
+            return 'str'
+        elif const_name == 'DEFAULT_NODE_SIZE':
+            return 'int'
+        else:
+            return 'Any'
+
+    def _get_display_utils_special_stubs(self) -> List[str]:
+        """Get special stub definitions for display.utils module."""
+        return [
+            '',
+            'def _hide_axis_decorations(ax: Any, hide_axis_completely: bool = False) -> None: ...',
+            'def _setup_clean_axis(ax: Any, title: Optional[str] = None, show_title: bool = True, hide_axis_completely: bool = False) -> None: ...',
+            'def _apply_standard_layout(fig: Any, show_overall_title: bool = False, show_panel_titles: bool = False, overall_title: Optional[str] = None) -> None: ...',
+            'def _create_subplot_grid(num_panels: int, panel_layout: Union[str, tuple[int, int]] = "auto", figsize: Optional[tuple[float, float]] = None, source_figures: Optional[List[Any]] = None) -> tuple[Any, List[Any], tuple[int, int]]: ...',
+        ]
+
+    def _generate_display_utils_stub_content(self, tree: ast.AST) -> List[str]:
+        """Generate special stub content for display.utils module."""
+        lines = []
+        
+        # Extract imports and constants
+        imported_constants = set()
+        imported_functions = set()
+        
+        for node in tree.body:
+            if isinstance(node, ast.ImportFrom):
+                if node.names:
+                    for alias in node.names:
+                        name = alias.name
+                        if name[0].isupper() and '_' in name:
+                            # Constants like DEFAULT_CMAP
+                            imported_constants.add(name)
+                        elif name.startswith('_'):
+                            # Functions like _setup_matplotlib_interactive
+                            imported_functions.add(name)
+            elif isinstance(node, ast.FunctionDef):
+                func_sig = self._extract_function_signature(node)
+                lines.append(func_sig)
+            elif isinstance(node, ast.Assign):
+                lines.extend(self._process_assignment(node))
+        
+        # Add constants
+        if imported_constants:
+            lines.extend(['', '# Constants imported from converters.core'])
+            for const_name in sorted(imported_constants):
+                const_type = self._get_constant_type(const_name)
+                lines.append(f'{const_name}: {const_type}')
+        
+        # Add imported functions with proper signatures
+        if imported_functions:
+            lines.extend(['', '# Functions imported from converters.core'])
+            for func_name in sorted(imported_functions):
+                func_sig = self._create_function_signature_from_name(func_name)
+                lines.append(func_sig)
+        
+        # Add our special utility functions
+        lines.extend(self._get_display_utils_special_stubs())
+        
+        return lines
 
     @staticmethod
     def _process_arguments(args: ast.arguments) -> str:
@@ -439,20 +522,24 @@ class CleanStubGenerator:
             'Auto-generated stub file.',
             '"""',
             '',
-            'from typing import Any, Dict, List, Optional, Union, Callable',
+            'from typing import Any, Dict, List, Optional, Union, Callable, Tuple',
             '',
         ]
         
-        # Process top-level nodes
-        for node in tree.body:
-            if isinstance(node, ast.FunctionDef):
-                lines.extend(self._process_function(node))
-                lines.append('')
-            elif isinstance(node, ast.ClassDef):
-                lines.extend(self._process_class(node))
-                lines.append('')
-            elif isinstance(node, ast.Assign):
-                lines.extend(self._process_assignment(node))
+        # Special handling for display.utils module
+        if 'display' in str(py_file) and py_file.name == 'utils.py':
+            lines.extend(self._generate_display_utils_stub_content(tree))
+        else:
+            # Standard processing for other modules
+            for node in tree.body:
+                if isinstance(node, ast.FunctionDef):
+                    lines.extend(self._process_function(node))
+                    lines.append('')
+                elif isinstance(node, ast.ClassDef):
+                    lines.extend(self._process_class(node))
+                    lines.append('')
+                elif isinstance(node, ast.Assign):
+                    lines.extend(self._process_assignment(node))
 
         return '\n'.join(lines)
 
@@ -555,7 +642,7 @@ class CleanStubGenerator:
             stub_lines = [
                 '"""Comprehensive type stubs for Java classes."""',
                 '',
-                'from typing import Any, List, Dict, Optional, Union, overload, Set, Callable',
+                'from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple',
                 '',
             ]
 
