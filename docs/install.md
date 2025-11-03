@@ -118,7 +118,7 @@ pysnt.initialize()
 
 The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
 
-```terminaloutput
+```console
 ❌ Fiji installation not found!
 
 PySNT requires Fiji to function. Here's how to fix this:
@@ -159,7 +159,7 @@ pysnt.info()
 
 This will output detailed system information:
 
-```terminaloutput
+```console
 PySNT version: 0.0.1
 System info:
 PySNT Version Information
@@ -241,7 +241,7 @@ print_java_status()
 
 This will show detailed Java information:
 
-```terminaloutput
+```console
 ☕ Java Installation Status
 ==============================
 ✅ Java available: openjdk version "21.0.8" 2025-07-15 LTS

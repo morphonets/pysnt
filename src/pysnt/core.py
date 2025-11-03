@@ -480,6 +480,78 @@ def is_initialized() -> bool:
     return _jvm_started and _ij is not None
 
 
+def dispose() -> None:
+    """
+    Dispose of PySNT resources and shut down the JVM.
+    
+    This function properly cleans up all resources created by initialize(),
+    including the ImageJ instance and the Java Virtual Machine. After calling
+    dispose(), you will need to call initialize() again to use PySNT functionality.
+    
+    The cleanup process includes:
+    1. Disposing of the ImageJ instance (if available)
+    2. Shutting down the JVM via scyjava
+    3. Resetting internal state variables
+    
+    Notes
+    -----
+    - After calling dispose(), the JVM cannot be restarted in the same Python session
+    - This is a limitation of the JVM architecture - once shut down, it cannot be restarted
+    - If you need to reinitialize PySNT, you must restart your Python session
+    - This function is safe to call multiple times or when PySNT is not initialized
+    
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize()
+    >>> # ... do work with PySNT ...
+    >>> pysnt.dispose()  # Clean shutdown
+    >>> 
+    >>> # To use PySNT again, restart Python session and call initialize()
+    
+    Warnings
+    --------
+    After calling dispose(), you cannot reinitialize PySNT in the same Python session.
+    The JVM cannot be restarted once it has been shut down.
+    """
+    global _ij, _jvm_started
+    
+    logger.info("Disposing PySNT resources...")
+    
+    try:
+        # 1. Dispose of ImageJ instance if available
+        if _ij is not None:
+            try:
+                logger.debug("Disposing ImageJ instance...")
+                _ij.dispose()
+                logger.debug("ImageJ instance disposed successfully")
+            except Exception as e:
+                logger.warning(f"Error disposing ImageJ instance: {e}")
+            finally:
+                _ij = None
+        
+        # 2. Shut down the JVM if it was started
+        if _jvm_started and scyjava.jvm_started():
+            try:
+                logger.debug("Shutting down JVM...")
+                scyjava.shutdown_jvm()
+                logger.debug("JVM shutdown successfully")
+            except Exception as e:
+                logger.warning(f"Error shutting down JVM: {e}")
+        
+        # 3. Reset state variables
+        _jvm_started = False
+        
+        logger.info("PySNT disposal complete")
+        
+    except Exception as e:
+        logger.error(f"Error during PySNT disposal: {e}")
+        # Still reset state even if there were errors
+        _ij = None
+        _jvm_started = False
+        raise RuntimeError(f"PySNT disposal failed: {e}") from e
+
+
 
 
 def setup_dynamic_imports(

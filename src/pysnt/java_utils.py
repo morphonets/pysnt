@@ -1294,6 +1294,7 @@ def discover_java_classes(
     
     This utility function dynamically discovers classes from Java packages using
     a multi-step approach:
+    
     1. First attempts JAR file scanning for .class files
     2. If no known_classes provided, scans pysnt module __init__.py files for 
        CURATED_CLASSES and EXTENDED_CLASSES lists

@@ -1,11 +1,6 @@
 pysnt.display package
 =====================
 
-.. automodule:: pysnt.display
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 Submodules
 ----------
 
@@ -16,3 +11,11 @@ Submodules
    pysnt.display.data_display
    pysnt.display.utils
    pysnt.display.visual_display
+
+Module contents
+---------------
+
+.. automodule:: pysnt.display
+   :members:
+   :show-inheritance:
+   :undoc-members:

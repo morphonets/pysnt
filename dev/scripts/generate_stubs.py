@@ -409,6 +409,8 @@ class CleanStubGenerator:
         """Create a function signature from function name using heuristics."""
         if func_name == 'initialize':
             return f"def {func_name}(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = \"headless\") -> None: ..."
+        elif func_name == 'dispose':
+            return f"def {func_name}() -> None: ..."
         elif func_name in ['show', 'display']:
             return f"def {func_name}(obj: Any, **kwargs: Any) -> Any: ..."
         elif func_name == 'register_display_handler':

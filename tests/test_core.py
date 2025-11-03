@@ -14,6 +14,7 @@ sys.path.insert(0, 'src')
 
 from pysnt.core import (
     initialize, 
+    dispose,
     ij, 
     is_initialized,
     FijiNotFoundError,
@@ -320,6 +321,143 @@ class TestIsInitialized:
         
         result = is_initialized()
         assert result is True
+
+
+class TestDispose:
+    """Test the dispose function."""
+    
+    def setup_method(self):
+        """Reset global state before each test."""
+        import pysnt.core
+        pysnt.core._ij = None
+        pysnt.core._jvm_started = False
+    
+    def test_dispose_not_initialized(self):
+        """Test dispose when not initialized."""
+        # Should not raise an error
+        dispose()
+        
+        import pysnt.core
+        assert pysnt.core._ij is None
+        assert pysnt.core._jvm_started is False
+    
+    def test_dispose_initialized(self):
+        """Test dispose when initialized."""
+        import pysnt.core
+        
+        # Set up initialized state
+        mock_ij = Mock()
+        pysnt.core._ij = mock_ij
+        pysnt.core._jvm_started = True
+        
+        with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+            with patch('pysnt.core.scyjava.shutdown_jvm') as mock_shutdown:
+                dispose()
+                
+                # Check that ImageJ was disposed
+                mock_ij.dispose.assert_called_once()
+                
+                # Check that JVM was shut down
+                mock_shutdown.assert_called_once()
+                
+                # Check that state was reset
+                assert pysnt.core._ij is None
+                assert pysnt.core._jvm_started is False
+    
+    def test_dispose_imagej_dispose_error(self):
+        """Test dispose when ImageJ dispose fails."""
+        import pysnt.core
+        
+        # Set up initialized state
+        mock_ij = Mock()
+        mock_ij.dispose.side_effect = Exception("ImageJ dispose failed")
+        pysnt.core._ij = mock_ij
+        pysnt.core._jvm_started = True
+        
+        with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+            with patch('pysnt.core.scyjava.shutdown_jvm') as mock_shutdown:
+                with patch('pysnt.core.logger') as mock_logger:
+                    dispose()
+                    
+                    # Should log warning but continue
+                    mock_logger.warning.assert_called()
+                    
+                    # JVM should still be shut down
+                    mock_shutdown.assert_called_once()
+                    
+                    # State should still be reset
+                    assert pysnt.core._ij is None
+                    assert pysnt.core._jvm_started is False
+    
+    def test_dispose_jvm_shutdown_error(self):
+        """Test dispose when JVM shutdown fails."""
+        import pysnt.core
+        
+        # Set up initialized state
+        mock_ij = Mock()
+        pysnt.core._ij = mock_ij
+        pysnt.core._jvm_started = True
+        
+        with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+            with patch('pysnt.core.scyjava.shutdown_jvm', side_effect=Exception("JVM shutdown failed")):
+                with patch('pysnt.core.logger') as mock_logger:
+                    dispose()
+                    
+                    # Should log warning
+                    mock_logger.warning.assert_called()
+                    
+                    # ImageJ should still be disposed
+                    mock_ij.dispose.assert_called_once()
+                    
+                    # State should still be reset
+                    assert pysnt.core._ij is None
+                    assert pysnt.core._jvm_started is False
+    
+    def test_dispose_jvm_not_started(self):
+        """Test dispose when JVM was never started."""
+        import pysnt.core
+        
+        # Set up state where _jvm_started is True but JVM is not actually started
+        mock_ij = Mock()
+        pysnt.core._ij = mock_ij
+        pysnt.core._jvm_started = True
+        
+        with patch('pysnt.core.scyjava.jvm_started', return_value=False):
+            with patch('pysnt.core.scyjava.shutdown_jvm') as mock_shutdown:
+                dispose()
+                
+                # ImageJ should be disposed
+                mock_ij.dispose.assert_called_once()
+                
+                # JVM shutdown should not be called
+                mock_shutdown.assert_not_called()
+                
+                # State should be reset
+                assert pysnt.core._ij is None
+                assert pysnt.core._jvm_started is False
+    
+    def test_dispose_multiple_failures(self):
+        """Test dispose when both ImageJ and JVM disposal fail."""
+        import pysnt.core
+        
+        # Set up initialized state
+        mock_ij = Mock()
+        mock_ij.dispose.side_effect = Exception("ImageJ dispose failed")
+        pysnt.core._ij = mock_ij
+        pysnt.core._jvm_started = True
+        
+        with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+            with patch('pysnt.core.scyjava.shutdown_jvm', side_effect=Exception("JVM shutdown failed")):
+                with patch('pysnt.core.logger') as mock_logger:
+                    # Should not raise an error - dispose is resilient
+                    dispose()
+                    
+                    # Should log warnings for both failures
+                    assert mock_logger.warning.call_count == 2
+                    
+                    # State should still be reset despite failures
+                    assert pysnt.core._ij is None
+                    assert pysnt.core._jvm_started is False
 
 
 class TestSetupDynamicImports:

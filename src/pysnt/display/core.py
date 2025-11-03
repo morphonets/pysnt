@@ -54,14 +54,18 @@ def display(obj: Any, **kwargs) -> Any:
         lists of supported objects, etc.)
     **kwargs
         Additional arguments for display (e.g., cmap, title, format, scale, vmin, vmax)
+        
         For ImagePlus objects:
+        
         - frame, t, time, timepoint : int, optional
-            Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
+          Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
+        
         For lists of objects:
+        
         - panel_layout : str or tuple, optional
-            Layout for panels ('auto', 'horizontal', 'vertical', or (rows, cols)) (default: 'auto')
+          Layout for panels ('auto', 'horizontal', 'vertical', or (rows, cols)) (default: 'auto')
         - max_panels : int, optional
-            Maximum number of panels to display (default: 20)
+          Maximum number of panels to display (default: 20)
     Returns
     -------
     Any

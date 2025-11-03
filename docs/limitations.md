@@ -152,4 +152,3 @@ print(f"Main thread: {pysnt.is_main_thread()}")
 print(f"macOS: {pysnt.is_macos()}")
 print(f"GUI safe mode: {pysnt.get_option('display.gui_safe_mode')}")
 ```
-valid_displays = {'pandasgui', 'distribution', 'summary', 'basic'}

@@ -26,6 +26,20 @@ pysnt.initialize()  # initialize with default options
 **Important:** pysnt is only available *after* `pysnt.initialize()` is called.
 ```
 
+### Cleanup and Disposal
+
+When you're done with PySNT, you can properly clean up resources:
+
+```python
+pysnt.dispose()  # Clean shutdown of ImageJ and JVM
+```
+
+```{warning}
+**Important:** After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session. The JVM cannot be restarted once it has been shut down. You must restart your Python session to use PySNT again.
+```
+
+### Advanced Initialization Options
+
 There are also some advanced initialization options:
 
 | Code | Comments |
@@ -34,7 +48,7 @@ There are also some advanced initialization options:
 | `pysnt.initialize('interactive')` | See [pyimagej initialization mode](https://py.imagej.net/en/latest/Initialization.html#how-to-initialize-pyimagej) |
 | `pysnt.initialize(max_heap="8g")` | Configure JVM memory (8GB heap) |
 | `pysnt.initialize(max_heap="16g", min_heap="4g")` | Advanced memory configuration (16GB max, 4GB initial) |
-| `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](../api_auto/pysnt.core.html#module-pysnt.core) |
+| `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](api_auto/pysnt.core.rst) |
 
 ## Setting Options
 
@@ -175,7 +189,7 @@ VonMisesFit = jimport('sc.fiji.snt.analysis.CircularModels.VonMisesFit')
 
 ## Discover SNT Functionality
 
-In addition to obtaining the class lists [described above](#curated-vs-extended-classes), you can use inspection functions to explore SNT's API:
+In addition to obtaining the class lists [described above](#handling-snt-classes), you can use inspection functions to explore SNT's API:
 
 ```python
 import pysnt

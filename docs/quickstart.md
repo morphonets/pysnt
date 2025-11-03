@@ -257,6 +257,19 @@ except Exception as e:
 ```
 
 
+## Cleanup
+
+When you're finished with your analysis session, properly dispose of resources:
+
+```python
+# Clean shutdown when done
+pysnt.dispose()
+```
+
+```{warning}
+After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session. Restart Python to use PySNT again.
+```
+
 ## Next Steps
 
 Now that you understand the basics:

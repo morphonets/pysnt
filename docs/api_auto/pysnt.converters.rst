@@ -1,11 +1,6 @@
 pysnt.converters package
 ========================
 
-.. automodule:: pysnt.converters
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 Submodules
 ----------
 
@@ -18,3 +13,11 @@ Submodules
    pysnt.converters.extractors
    pysnt.converters.graph_converters
    pysnt.converters.structured_data_converters
+
+Module contents
+---------------
+
+.. automodule:: pysnt.converters
+   :members:
+   :show-inheritance:
+   :undoc-members:
