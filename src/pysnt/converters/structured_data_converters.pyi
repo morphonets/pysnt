@@ -4,7 +4,7 @@ Type stubs for structured_data_converters.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 def _is_snt_table(obj: Any) -> bool: ...
 

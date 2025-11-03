@@ -4,7 +4,7 @@ Type stubs for graph_converters.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 logger: Any
 DEFAULT_GRAPH_LAYOUTS: Any

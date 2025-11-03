@@ -4,7 +4,7 @@ Type stubs for chart_converters.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 logger: Any
 def _is_snt_chart(obj: Any) -> bool: ...

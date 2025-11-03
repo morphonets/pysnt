@@ -1,6 +1,6 @@
 """Comprehensive type stubs for Java classes."""
 
-from typing import Any, List, Dict, Optional, Union, overload, Set, Callable
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple
 
 class BiSearchArtist:
     """

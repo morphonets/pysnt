@@ -4,7 +4,7 @@ Type stubs for data_display.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 logger: Any
 def _display_pandas_dataframe(df: Any, **kwargs: Any) -> Any: ...

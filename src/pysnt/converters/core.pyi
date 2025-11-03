@@ -4,7 +4,7 @@ Type stubs for core.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 HAS_PANDASGUI: Any
 _pandasgui_show: Any

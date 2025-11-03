@@ -4,7 +4,7 @@ Type stubs for visual_display.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 logger: Any
 def _display_matplotlib_figure(fig: Figure, **kwargs: Any) -> None: ...
@@ -22,3 +22,7 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
 def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], title: str, figsize: tuple) -> bool: ...
 
 def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], title: str, figsize: tuple) -> bool: ...
+
+def _should_preserve_aspect(image_array: Any) -> Any: ...
+
+def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str, **kwargs: Any) -> Figure: ...

@@ -4,7 +4,7 @@ Type stubs for config.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 class OptionError:
     pass

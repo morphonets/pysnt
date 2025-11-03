@@ -4,7 +4,7 @@ Type stubs for common_module.py
 Auto-generated stub file.
 """
 
-from typing import Any, Dict, List, Optional, Union, Callable
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 
 logger: Any
 def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str) -> Any: ...
