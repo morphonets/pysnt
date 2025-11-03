@@ -27,6 +27,10 @@ from .utils import (
     _extract_display_config,
     _handle_display_error,
     _validate_display_kwargs,
+    _hide_axis_decorations,
+    _setup_clean_axis,
+    _apply_standard_layout,
+    _create_subplot_grid,
 )
 from .utils import register_display_handler
 

@@ -22,6 +22,3 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
 def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], title: str, figsize: tuple) -> bool: ...
 
 def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], title: str, figsize: tuple) -> bool: ...
-
-__version__: Any
-__refactoring_phase__: Any

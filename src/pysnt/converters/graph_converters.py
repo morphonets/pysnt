@@ -348,7 +348,7 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
             node_color=node_color,
             with_labels=True,
             font_size=8,
-            font_weight="bold",
+            font_weight="normal",
             arrows=True if graph.is_directed() else False,
         )
 

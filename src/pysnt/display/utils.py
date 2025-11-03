@@ -185,6 +185,202 @@ def _validate_display_kwargs(**kwargs) -> Dict[str, Any]:
     return validated
 
 
+def _hide_axis_decorations(ax, hide_axis_completely=False):
+    """
+    Hide all axis decorations (ticks, labels, spines).
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        The matplotlib axis to clean up
+    hide_axis_completely : bool, default False
+        If True, calls ax.axis('off') to completely hide the axis including borders.
+        If False, only hides individual decorations but keeps axis frame.
+        
+    Examples
+    --------
+    >>> fig, ax = plt.subplots()
+    >>> ax.imshow(image_data)
+    >>> _hide_axis_decorations(ax)  # Clean but keep frame
+    >>> _hide_axis_decorations(ax, hide_axis_completely=True)  # Completely clean
+    """
+    if hide_axis_completely:
+        # Completely turn off axis - removes all borders and decorations
+        ax.axis('off')
+    else:
+        # Hide individual decorations but keep axis frame
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_xlabel('')
+        ax.set_ylabel('')
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+
+def _setup_clean_axis(ax, title=None, show_title=True, hide_axis_completely=False):
+    """
+    Setup axis with clean formatting and optional title.
+    
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+        The matplotlib axis to setup
+    title : str, optional
+        Title to set on the axis
+    show_title : bool, default True
+        Whether to show the title if provided
+    hide_axis_completely : bool, default False
+        Whether to completely hide the axis (removes borders for combined charts)
+        
+    Examples
+    --------
+    >>> fig, ax = plt.subplots()
+    >>> ax.imshow(image_data)
+    >>> _setup_clean_axis(ax, "My Image", show_title=True)
+    >>> _setup_clean_axis(ax, None, show_title=False, hide_axis_completely=True)
+    """
+    _hide_axis_decorations(ax, hide_axis_completely=hide_axis_completely)
+    if show_title and title:
+        ax.set_title(title, fontsize=10, pad=5)
+
+
+def _apply_standard_layout(fig, show_overall_title=False, show_panel_titles=False, 
+                          overall_title=None):
+    """
+    Apply standardized layout with consistent spacing for display figures.
+    
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        The figure to apply layout to
+    show_overall_title : bool, default False
+        Whether an overall title is being displayed
+    show_panel_titles : bool, default False
+        Whether individual panel titles are being displayed
+    overall_title : str, optional
+        Overall title text (only used if show_overall_title=True)
+        
+    Examples
+    --------
+    >>> fig, axes = plt.subplots(2, 2)
+    >>> # ... populate subplots ...
+    >>> _apply_standard_layout(fig, show_panel_titles=True)
+    """
+    # Set overall title if requested
+    if show_overall_title and overall_title:
+        fig.suptitle(overall_title, fontsize=14, fontweight='normal')
+        top_margin = 0.93
+    else:
+        top_margin = 0.98
+    
+    # Adjust spacing based on panel titles
+    if show_panel_titles:
+        # Need more vertical space for panel titles
+        hspace = 0.25
+    else:
+        # Minimal space without panel titles
+        hspace = 0.05
+    
+    # Apply tight layout with appropriate spacing
+    import matplotlib.pyplot as plt
+    plt.subplots_adjust(left=0.02, right=0.98, top=top_margin, bottom=0.02, 
+                       hspace=hspace, wspace=0.05)
+
+
+def _create_subplot_grid(num_panels, panel_layout='auto', figsize=None, source_figures=None):
+    """
+    Create standardized subplot grid with aspect ratio preservation.
+    
+    Parameters
+    ----------
+    num_panels : int
+        Number of panels/subplots needed
+    panel_layout : str or tuple, default 'auto'
+        Layout specification:
+        - 'auto': Calculate optimal grid layout
+        - 'horizontal': Single row
+        - 'vertical': Single column  
+        - (rows, cols): Explicit grid dimensions
+    figsize : tuple, optional
+        Figure size (width, height). If None, auto-calculated.
+    source_figures : list, optional
+        List of source figures to analyze for aspect ratio preservation
+        
+    Returns
+    -------
+    tuple
+        (fig, axes, (rows, cols)) where:
+        - fig: matplotlib Figure
+        - axes: list of Axes (always flattened for consistency)
+        - (rows, cols): actual grid dimensions used
+        
+    Examples
+    --------
+    >>> fig, axes, (rows, cols) = _create_subplot_grid(4, 'auto')
+    >>> for i, ax in enumerate(axes[:4]):
+    ...     ax.plot(data[i])
+    ...     _setup_clean_axis(ax, f"Panel {i+1}")
+    """
+    import math
+    import matplotlib.pyplot as plt
+    
+    # Determine subplot layout
+    if isinstance(panel_layout, tuple) and len(panel_layout) == 2:
+        rows, cols = panel_layout
+    elif panel_layout == 'horizontal':
+        rows, cols = 1, num_panels
+    elif panel_layout == 'vertical':
+        rows, cols = num_panels, 1
+    else:  # 'auto'
+        # Calculate optimal grid layout
+        cols = math.ceil(math.sqrt(num_panels))
+        rows = math.ceil(num_panels / cols)
+    
+    # Calculate figure size with aspect ratio consideration
+    if figsize is None:
+        # Analyze source figures for aspect ratios if provided
+        if source_figures:
+            aspect_ratios = []
+            for fig in source_figures:
+                try:
+                    fig_width, fig_height = fig.get_size_inches()
+                    aspect_ratios.append(fig_width / fig_height)
+                except Exception:
+                    aspect_ratios.append(4/3)  # Default fallback
+            
+            # Use average aspect ratio, but constrain to reasonable bounds
+            avg_aspect = sum(aspect_ratios) / len(aspect_ratios)
+            avg_aspect = max(0.5, min(2.0, avg_aspect))  # Constrain between 0.5 and 2.0
+            
+            # Calculate panel size based on average aspect ratio
+            panel_height = 3.5  # Base height
+            panel_width = panel_height * avg_aspect
+        else:
+            # Default sizing for unknown content
+            panel_width = 4
+            panel_height = 3
+        
+        figsize = (panel_width * cols, panel_height * rows)
+    
+    # Create figure with tight spacing
+    fig, axes = plt.subplots(rows, cols, figsize=figsize, 
+                            gridspec_kw={'hspace': 0.1, 'wspace': 0.1})
+    
+    # Always return axes as a flat list for consistent handling
+    if num_panels == 1:
+        axes = [axes]
+    elif rows == 1 or cols == 1:
+        axes = axes.flatten() if hasattr(axes, 'flatten') else [axes]
+    else:
+        axes = axes.flatten()
+    
+    return fig, axes, (rows, cols)
+
+
+# Note: _setup_matplotlib_interactive is imported from converters.core
+# and used directly in display functions. No need for additional wrapper.
+
+
 def register_display_handler(obj_type: str, handler_func):
     """
     Register a custom display handler for a specific SNT object type.

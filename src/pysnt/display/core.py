@@ -42,20 +42,26 @@ except ImportError:
 def display(obj: Any, **kwargs) -> Any:
     """
     Enhanced display function that handles raw Java objects, converted SNT objects, matplotlib
-    figures, and xarray objects.
+    figures, xarray objects, and lists of supported objects.
     
     This function automatically tries to convert Java objects using available converters
-    and then displays the result.
+    and then displays the result. For lists, it creates multi-panel displays.
     
     Parameters
     ----------
     obj : Any
-        The object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, etc.)
+        The object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, 
+        lists of supported objects, etc.)
     **kwargs
         Additional arguments for display (e.g., cmap, title, format, scale, vmin, vmax)
         For ImagePlus objects:
         - frame, t, time, timepoint : int, optional
             Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
+        For lists of objects:
+        - panel_layout : str or tuple, optional
+            Layout for panels ('auto', 'horizontal', 'vertical', or (rows, cols)) (default: 'auto')
+        - max_panels : int, optional
+            Maximum number of panels to display (default: 20)
     Returns
     -------
     Any
@@ -75,8 +81,16 @@ def display(obj: Any, **kwargs) -> Any:
     >>> # Works with already converted objects too - returns the same object
     >>> converted = pysnt.to_python(chart)
     >>> same_obj = pysnt.display(converted)  # Returns the matplotlib figure
+    
+    >>> # Display list of SNTChart objects as multi-panel figure
+    >>> charts = [stats.getHistogram('Branch length'), stats.getHistogram('Branch order')]
+    >>> snt_obj = pysnt.display(charts)  # Returns SNTObject with combined matplotlib figure
     """
     logger.debug(f"display() called with object type: {type(obj)}")
+
+    # Check if obj is a list of supported objects
+    if isinstance(obj, (list, tuple)):
+        return _display_object_list(obj, **kwargs)
 
     # Validate and normalize kwargs
     kwargs = _validate_display_kwargs(**kwargs)
@@ -469,6 +483,155 @@ def _display_generic_object(obj: Any, **kwargs) -> Any:
     print("    • Try: print(dir(obj)) to list all attributes")
     
     return obj
+
+
+def _display_object_list(obj_list: list, **kwargs) -> Any:
+    """
+    Handle display of lists of supported objects.
+    
+    Currently supports lists of SNTChart objects, which are displayed as multi-panel figures.
+    
+    Parameters
+    ----------
+    obj_list : list or tuple
+        List of objects to display
+    **kwargs
+        Additional display arguments
+        
+    Returns
+    -------
+    Any
+        The result of the display operation
+    """
+    logger.debug(f"Processing list of {len(obj_list)} objects")
+    
+    if not obj_list:
+        logger.warning("Empty list provided to display")
+        return None
+    
+    # Check if all objects are SNTChart objects
+    from ..converters.chart_converters import _is_snt_chart
+    
+    chart_objects = []
+    other_objects = []
+    
+    for i, obj in enumerate(obj_list):
+        if _is_snt_chart(obj):
+            chart_objects.append(obj)
+        else:
+            other_objects.append((i, type(obj).__name__))
+    
+    if chart_objects and not other_objects:
+        # Pure SNTChart list - use multi-panel display
+        logger.info(f"Detected list of {len(chart_objects)} SNTChart objects")
+        return _display_snt_chart_list(chart_objects, **kwargs)
+    elif chart_objects and other_objects:
+        # Mixed list - warn and display only charts
+        logger.warning(f"Mixed object list detected. Displaying {len(chart_objects)} SNTChart objects, "
+                      f"ignoring {len(other_objects)} other objects: {[name for _, name in other_objects]}")
+        return _display_snt_chart_list(chart_objects, **kwargs)
+    else:
+        # No supported objects for list display
+        logger.warning(f"List contains no supported objects for multi-panel display. "
+                      f"Object types: {[type(obj).__name__ for obj in obj_list]}")
+        logger.info("Falling back to individual display of first object")
+        return display(obj_list[0], **kwargs)
+
+
+def _display_snt_chart_list(chart_list: list, **kwargs) -> Any:
+    """
+    Display a list of SNTChart objects as a multi-panel matplotlib figure.
+    
+    This function converts each SNTChart to a matplotlib figure and combines them
+    into a single multi-panel display using the existing combined chart logic.
+    
+    Parameters
+    ----------
+    chart_list : list
+        List of SNTChart objects to display
+    **kwargs
+        Additional display arguments:
+        - panel_layout : str or tuple, layout for panels (default: 'auto')
+        - max_panels : int, maximum number of panels (default: 20)
+        - title : str, overall figure title (default: auto-generated)
+        
+    Returns
+    -------
+    Any
+        SNTObject containing the combined matplotlib figure
+    """
+    from ..converters.chart_converters import _convert_snt_chart
+    from ..converters.core import _create_converter_result
+    
+    try:
+        # Get parameters
+        max_panels = kwargs.get('max_panels', 20)
+        title = kwargs.get('title', None)  # No default overall title
+        
+        # Limit number of charts
+        if len(chart_list) > max_panels:
+            logger.warning(f"Chart list has {len(chart_list)} items, limiting to {max_panels}")
+            chart_list = chart_list[:max_panels]
+        
+        logger.info(f"Converting {len(chart_list)} SNTChart objects to matplotlib figures")
+        
+        # Convert each chart to matplotlib figure
+        figures = []
+        chart_titles = []
+        
+        for i, chart in enumerate(chart_list):
+            try:
+                # Convert individual chart
+                converted = _convert_snt_chart(chart, **kwargs)
+                
+                if converted.get('error') is not None:
+                    logger.warning(f"Failed to convert chart {i+1}: {converted.get('error')}")
+                    continue
+                
+                figure = converted['data']
+                figures.append(figure)
+                
+                # Get chart title
+                try:
+                    chart_title = chart.getTitle() if hasattr(chart, 'getTitle') else f"Chart {i+1}"
+                except Exception:
+                    chart_title = f"Chart {i+1}"
+                chart_titles.append(chart_title)
+                
+            except Exception as e:
+                logger.warning(f"Failed to convert chart {i+1}: {e}")
+                continue
+        
+        if not figures:
+            logger.error("No charts could be converted successfully")
+            return None
+        
+        logger.info(f"Successfully converted {len(figures)} charts, creating multi-panel figure")
+        
+        # Combine figures into multi-panel display
+        from .visual_display import _combine_matplotlib_figures
+        combined_figure = _combine_matplotlib_figures(figures, chart_titles, title or "", **kwargs)
+        
+        if combined_figure is None:
+            logger.error("Failed to combine charts into multi-panel figure")
+            return None
+        
+        # Create result
+        metadata = {
+            'chart_count': len(chart_list),
+            'displayed_count': len(figures),
+            'panel_layout': kwargs.get('panel_layout', 'auto'),
+            'title': title
+        }
+        
+        logger.info(f"Successfully created multi-panel figure with {len(figures)} charts")
+        return _create_converter_result(combined_figure, 'SNTChart_List', **metadata)
+        
+    except Exception as e:
+        logger.error(f"Failed to display SNTChart list: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
 
 
 # Handler registration system

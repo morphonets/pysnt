@@ -414,7 +414,9 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
             ax.text(0.02, 0.02, legend_text, transform=ax.transAxes,
                     verticalalignment='bottom', bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
         
-        plt.tight_layout()
+        # Apply standard layout for single figure
+        from .utils import _apply_standard_layout
+        _apply_standard_layout(fig, show_overall_title=False, show_panel_titles=False)
         
         logger.info(f"Successfully created NetworkX graph visualization with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges")
         return fig
@@ -665,7 +667,10 @@ def _create_dataset_summary_plot(dataset: Any, display_vars: List[str], title: s
                      ha='center', va='center', transform=ax4.transAxes)
             ax4.axis('off')
 
-        plt.tight_layout()
+        # Apply standard layout
+        from .utils import _apply_standard_layout
+        _apply_standard_layout(fig, show_overall_title=True, show_panel_titles=True, 
+                              overall_title=title)
 
         # Use unified display system
         if _show_matplotlib_figure(fig):
@@ -755,7 +760,10 @@ def _create_dataset_distribution_plot(dataset: Any, display_vars: List[str], tit
         for i in range(n_vars, len(axes)):
             axes[i].set_visible(False)
 
-        plt.tight_layout()
+        # Apply standard layout
+        from .utils import _apply_standard_layout
+        _apply_standard_layout(fig, show_overall_title=True, show_panel_titles=True, 
+                              overall_title=title)
 
         # Use unified display system
         if _show_matplotlib_figure(fig):
@@ -836,7 +844,10 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
 
         ax.set_title(title)
         plt.colorbar(im, ax=ax, shrink=0.8)
-        plt.tight_layout()
+        
+        # Apply standard layout
+        from .utils import _apply_standard_layout
+        _apply_standard_layout(fig, show_overall_title=False, show_panel_titles=False)
 
         # Use unified display system
         if _show_matplotlib_figure(fig):
@@ -851,5 +862,176 @@ def _create_dataset_correlation_plot(dataset: Any, display_vars: List[str], titl
         return False
 
 
-__version__ = "0.1.0-refactoring"
-__refactoring_phase__ = "Phase 4: Visual Functions Nearly Complete"
+def _should_preserve_aspect(image_array):
+    """
+    Determine if an image array should preserve aspect ratio.
+    
+    This function analyzes image content to decide if aspect ratio preservation
+    is important (e.g., for circular/square content vs. rectangular histograms).
+    
+    Parameters
+    ----------
+    image_array : numpy.ndarray
+        The image array to analyze
+        
+    Returns
+    -------
+    bool
+        True if aspect ratio should be preserved, False otherwise
+    """
+    try:
+        height, width = image_array.shape[:2]
+        aspect_ratio = width / height
+        
+        # Preserve aspect for nearly square images (likely polar plots, scatter plots)
+        # Allow some tolerance for rounding
+        if 0.8 <= aspect_ratio <= 1.25:
+            return True
+        
+        # For very rectangular images (histograms, bar charts), allow stretching
+        return False
+        
+    except Exception:
+        # Default to preserving aspect if we can't analyze
+        return True
+
+
+def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str, **kwargs) -> Figure:
+    """
+    Combine multiple matplotlib figures into a single multi-panel figure.
+    
+    This function extracts the content from individual matplotlib figures and
+    arranges them in a grid layout.
+    
+    Parameters
+    ----------
+    figures : list
+        List of matplotlib Figure objects to combine
+    titles : list
+        List of titles for each panel
+    overall_title : str
+        Title for the overall combined figure (suppressed by default)
+    **kwargs
+        Additional layout options:
+        - panel_layout : str or tuple, layout specification (default: 'auto')
+        - figsize : tuple, figure size (default: auto-calculated)
+        - show_overall_title : bool, whether to show overall title (default: False)
+        - show_panel_titles : bool, whether to show individual panel titles (default: False)
+        
+    Returns
+    -------
+    matplotlib.figure.Figure
+        Combined multi-panel figure
+    """
+    plt = _setup_matplotlib_interactive()
+    
+    if not figures:
+        logger.error("No figures provided for combination")
+        return None
+    
+    num_panels = len(figures)
+    panel_layout = kwargs.get('panel_layout', 'auto')
+    show_overall_title = kwargs.get('show_overall_title', False)
+    show_panel_titles = kwargs.get('show_panel_titles', False)
+    
+    # Create standardized subplot grid with aspect ratio preservation
+    from .utils import _create_subplot_grid
+    figsize = kwargs.get('figsize', None)
+    fig, axes, (rows, cols) = _create_subplot_grid(num_panels, panel_layout, figsize, 
+                                                  source_figures=figures)
+    
+    logger.debug(f"Created {rows}x{cols} grid for {num_panels} panels, figsize={fig.get_size_inches()}")
+    
+    # Copy content from each source figure to the combined figure
+    for i, (source_fig, title) in enumerate(zip(figures, titles)):
+        if i >= len(axes):
+            break
+        
+        target_ax = axes[i]
+        
+        try:
+            # Get the first (and typically only) axis from the source figure
+            if len(source_fig.axes) > 0:
+                source_ax = source_fig.axes[0]
+                
+                # Detect if this is a polar plot or other aspect-sensitive content
+                is_polar = any(hasattr(ax, 'name') and ax.name == 'polar' for ax in source_fig.axes)
+                
+                # Copy all children (plots, images, etc.) from source to target
+                for child in source_ax.get_children():
+                    # Handle different types of plot elements
+                    if hasattr(child, 'get_array') and hasattr(child, 'get_extent'):
+                        # Image data (from imshow)
+                        try:
+                            array = child.get_array()
+                            extent = child.get_extent()
+                            cmap = child.get_cmap()
+                            
+                            # Preserve aspect ratio for polar plots and square content
+                            aspect = 'equal' if is_polar or _should_preserve_aspect(array) else 'auto'
+                            target_ax.imshow(array, extent=extent, cmap=cmap, aspect=aspect)
+                        except Exception as e:
+                            logger.debug(f"Could not copy image data from panel {i+1}: {e}")
+                    elif hasattr(child, 'get_xydata'):
+                        # Line data (from plot)
+                        try:
+                            xydata = child.get_xydata()
+                            color = child.get_color()
+                            linewidth = child.get_linewidth()
+                            target_ax.plot(xydata[:, 0], xydata[:, 1], color=color, linewidth=linewidth)
+                        except Exception as e:
+                            logger.debug(f"Could not copy line data from panel {i+1}: {e}")
+                    elif hasattr(child, 'get_paths'):
+                        # Patch data (from bar charts, histograms, etc.)
+                        try:
+                            # This is more complex - for now, we'll skip detailed patch copying
+                            # and rely on the fact that most SNT charts are saved as images
+                            pass
+                        except Exception as e:
+                            logger.debug(f"Could not copy patch data from panel {i+1}: {e}")
+                
+                # Set equal aspect ratio for polar plots to maintain circular shape
+                if is_polar:
+                    target_ax.set_aspect('equal', adjustable='box')
+                
+                # Copy axis properties but hide axes decorations
+                target_ax.set_xlim(source_ax.get_xlim())
+                target_ax.set_ylim(source_ax.get_ylim())
+                
+                # Setup clean axis formatting (completely hide axis for combined charts)
+                from .utils import _setup_clean_axis
+                _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+                
+            else:
+                # No axes in source figure - create placeholder
+                target_ax.text(0.5, 0.5, f'Panel {i+1}\n(No data)', 
+                              ha='center', va='center', transform=target_ax.transAxes)
+                # Setup clean axis formatting for placeholder (completely hide axis)
+                from .utils import _setup_clean_axis
+                _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+            
+        except Exception as e:
+            logger.warning(f"Failed to copy content from figure {i+1}: {e}")
+            # Create error placeholder
+            target_ax.text(0.5, 0.5, f'Panel {i+1}\n(Copy Error)', 
+                          ha='center', va='center', transform=target_ax.transAxes)
+            # Setup clean axis formatting for error placeholder (completely hide axis)
+            from .utils import _setup_clean_axis
+            _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+        
+        # Clean up the source figure to free memory
+        try:
+            plt.close(source_fig)
+        except Exception:
+            pass
+    
+    # Hide unused subplots
+    for i in range(num_panels, len(axes)):
+        axes[i].set_visible(False)
+    
+    # Apply standardized layout
+    from .utils import _apply_standard_layout
+    _apply_standard_layout(fig, show_overall_title, show_panel_titles, overall_title)
+    
+    logger.info(f"Successfully combined {num_panels} figures into {rows}x{cols} grid")
+    return fig

@@ -293,93 +293,99 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
 
         logger.info(f"Found {len(panel_files)} panel files for combined chart")
 
-        # Determine subplot layout
+        # Create subplot grid using new utilities with aspect ratio preservation
         num_panels = len(panel_files)
-        if isinstance(panel_layout, tuple) and len(panel_layout) == 2:
-            rows, cols = panel_layout
-        elif panel_layout == 'horizontal':
-            rows, cols = 1, num_panels
-        elif panel_layout == 'vertical':
-            rows, cols = num_panels, 1
-        else:  # 'auto'
-            # Calculate optimal grid layout
-            cols = math.ceil(math.sqrt(num_panels))
-            rows = math.ceil(num_panels / cols)
-
-        # Create matplotlib figure with subplots
-        fig, axes = plt.subplots(rows, cols, figsize=(4 * cols, 3 * rows))
-
-        # Handle single subplot case
-        if num_panels == 1:
-            axes = [axes]
-        elif rows == 1 or cols == 1:
-            axes = axes.flatten() if hasattr(axes, 'flatten') else [axes]
-        else:
-            axes = axes.flatten()
-
-        # Load and display each panel
-        for i, panel_file in enumerate(panel_files):
-            if i >= len(axes):
-                break
-
-            ax = axes[i]
-
+        
+        # Load panel figures first to analyze aspect ratios
+        panel_figures = []
+        for panel_file in panel_files:
             try:
-                # Load panel image based on format
                 if format_type == 'svg':
                     panel_fig = _svg_to_matplotlib(svg_file=panel_file, dpi=150, figsize=None, background='None')
                 elif format_type == 'pdf':
                     panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, dpi=150, figsize=None)
                 else:  # PNG
                     panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
+                panel_figures.append(panel_fig)
+            except Exception as e:
+                logger.debug(f"Could not load panel figure for aspect analysis: {e}")
+                panel_figures.append(None)
+        
+        # Use new grid creation utility with aspect ratio preservation
+        from ..display.utils import _create_subplot_grid
+        fig, axes, (rows, cols) = _create_subplot_grid(num_panels, panel_layout, 
+                                                      figsize=None, source_figures=panel_figures)
+
+        # Load and display each panel with improved formatting
+        for i, (panel_file, panel_fig) in enumerate(zip(panel_files, panel_figures)):
+            if i >= len(axes):
+                break
+
+            ax = axes[i]
+
+            try:
+                # Use pre-loaded panel figure or load if needed
+                if panel_fig is None:
+                    if format_type == 'svg':
+                        panel_fig = _svg_to_matplotlib(svg_file=panel_file, dpi=150, figsize=None, background='None')
+                    elif format_type == 'pdf':
+                        panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, dpi=150, figsize=None)
+                    else:  # PNG
+                        panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
 
                 # Extract image data from panel figure
                 if panel_fig and len(panel_fig.axes) > 0:
                     panel_ax = panel_fig.axes[0]
+                    
+                    # Detect if this is a polar plot or aspect-sensitive content
+                    is_polar = any(hasattr(ax_check, 'name') and ax_check.name == 'polar' 
+                                 for ax_check in panel_fig.axes)
 
-                    # Copy the panel content to our subplot
+                    # Copy the panel content to our subplot with aspect preservation
                     for child in panel_ax.get_children():
                         if hasattr(child, 'get_array'):  # Image data
                             try:
-                                ax.imshow(child.get_array(), aspect='auto')
-                                ax.set_xticks([])
-                                ax.set_yticks([])
+                                array = child.get_array()
+                                
+                                # Use new aspect ratio logic
+                                from ..display.visual_display import _should_preserve_aspect
+                                aspect = 'equal' if is_polar or _should_preserve_aspect(array) else 'auto'
+                                ax.imshow(array, aspect=aspect)
                             except Exception as e:
                                 logger.debug(f"Could not copy image data from panel {i}: {e}")
 
-                    # Copy title if available
-                    panel_title = panel_ax.get_title()
-                    if panel_title:
-                        ax.set_title(f"Panel {i + 1}: {panel_title}")
+                    # Set equal aspect ratio for polar plots
+                    if is_polar:
+                        ax.set_aspect('equal', adjustable='box')
+
+                    # Use clean axis formatting (no titles by default for consistency)
+                    from ..display.utils import _setup_clean_axis
+                    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
 
                     # Close the temporary panel figure
                     plt.close(panel_fig)
                 else:
                     ax.text(0.5, 0.5, f'Panel {i + 1}\n(Load Error)',
                             ha='center', va='center', transform=ax.transAxes)
-                    ax.set_xticks([])
-                    ax.set_yticks([])
+                    # Use clean axis formatting for error placeholder
+                    from ..display.utils import _setup_clean_axis
+                    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
 
             except Exception as e:
                 logger.warning(f"Failed to load panel {i + 1} from {panel_file}: {e}")
                 ax.text(0.5, 0.5, f'Panel {i + 1}\n(Error)',
                         ha='center', va='center', transform=ax.transAxes)
-                ax.set_xticks([])
-                ax.set_yticks([])
+                # Use clean axis formatting for error placeholder
+                from ..display.utils import _setup_clean_axis
+                _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
 
         # Hide unused subplots
         for i in range(num_panels, len(axes)):
             axes[i].set_visible(False)
 
-        # Add overall title
-        try:
-            chart_title = chart.getTitle()
-            if chart_title:
-                fig.suptitle(f"{chart_title}", fontsize=12)
-        except Exception as e:
-            logger.debug(f"Could not set chart title: {e}")
-
-        plt.tight_layout()
+        # Apply standardized layout (no overall title by default for consistency)
+        from ..display.utils import _apply_standard_layout
+        _apply_standard_layout(fig, show_overall_title=False, show_panel_titles=False)
 
         return fig
 
