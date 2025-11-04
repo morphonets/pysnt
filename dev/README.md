@@ -3,8 +3,8 @@
 Development tools and templates for PySNT.
 
 ## Overview
-- Curate vs Extended classes: In theory, all SNT classes would be treated the same. In practice, we split them in two 
-  groups: 
+- Curate vs Extended classes: In theory, all SNT classes would be treated the same. In practice, we split them in two
+  groups:
   - Curate classes: Most commonly used. These are 1st class citizens with functional autocompletion
   - Extended classes: These are either 'problematic' classes (e.g., objects that cannot be constructed in headless env.).
     These won't have much of auto-completion. Users need to use java_utils to explore extended classes:
@@ -45,7 +45,7 @@ Examples with Class Lists:
 ```bash
 python dev/create_module.py analysis.morphology \
   --curated Class1Name Class2Name Class3Name \
-  --extended Class4Name Class5Name Class6Name 
+  --extended Class4Name Class5Name Class6Name
 ```
 What this creates:
 - Module: `src/pysnt/analysis/morphology/__init__.py` (Java package: sc.fiji.snt.analysis.morphology)
@@ -96,20 +96,20 @@ After creating any module:
 
   ```python
     # 1. Update module docstring
-    
+
     # 2. Fill-in the lists of public classes in the package
     CURATED_CLASSES = [
         "MorphologyAnalyzer",  # Most important classes
         "ShapeMetrics",
         "BranchAnalyzer"
     ]
-    
+
     EXTENDED_CLASSES = [
         "AdvancedMorphology",  # Less common classes
         "DetailedMetrics",
         "InternalUtils"
     ]
-    
+
     # Set package name
     _module_funcs = setup_module_classes(
         package_name="sc.fiji.snt.analysis.morphology",  # ← Edit this
@@ -117,7 +117,7 @@ After creating any module:
         extended_classes=EXTENDED_CLASSES,
         globals_dict=globals(),
     )
-    
+
     # Set module path
     __getattr__ = _module_funcs['create_getattr']('pysnt.analysis.morphology')  # ← Edit this
   ```
@@ -191,4 +191,41 @@ _module_funcs = setup_module_classes(
 from . import submodule1, submodule2
 
 __getattr__ = _module_funcs['create_getattr']('pysnt.new.module', submodules=['submodule1', 'submodule2'])
+```
+
+## Constructor Exception Handling Guide
+
+The `handle_constructor_exceptions()` function in `src/pysnt/common_module.py` provides a centralized way to handle Java constructor issues that arise from the Python-Java bridge.
+
+### Common Issues
+
+1. Varargs Constructor Selection
+**Problem**: Python calls `Constructor(args, String...)` with empty varargs instead of `Constructor(args)`
+**Example**: `MultiTreeStatistics(Collection)` vs `MultiTreeStatistics(Collection, String...)`
+
+2. Overloaded Constructor Ambiguity
+**Problem**: Python can't distinguish between similar constructor signatures
+**Example**: Multiple constructors with different parameter types
+
+3. Parameter Type Conversion
+**Problem**: Python types don't map correctly to expected Java types
+**Example**: Python list vs Java Collection vs Java Array
+
+### Adding New Exception Handlers
+
+To add a new constructor exception handler, modify the `handle_constructor_exceptions()` function:
+
+```python
+def handle_constructor_exceptions(java_class, class_name, *args, **kwargs):
+    # Existing MultiTreeStatistics case
+    if class_name == 'MultiTreeStatistics' and len(args) == 1 and len(kwargs) == 0:
+        return java_class(args[0], "all")
+
+    # NEW CASE: Add another case here
+    if class_name == 'TheProblematicClass' and the_condition:
+        # return fix here
+        return java_class(modified_args)
+
+    # No special handling needed
+    return None
 ```

@@ -56,6 +56,49 @@ def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str = N
                 raise e
             raise RuntimeError("SNT not initialized. Call pysnt.initialize() first.")
     
+    def handle_constructor_exceptions(java_class, class_name, *args, **kwargs):
+        """
+        Handle special cases for Java constructor calls that have issues with the Python-Java bridge.
+        
+        This function provides workarounds for specific Java classes where the Python-Java bridge
+        calls the wrong constructor or has parameter matching issues.
+        
+        Parameters
+        ----------
+        java_class : Java class
+            The imported Java class
+        class_name : str
+            The name of the class being constructed
+        *args, **kwargs
+            Constructor arguments
+            
+        Returns
+        -------
+        Java object or None
+            Returns the constructed Java object if a special case is handled,
+            None if no special handling is needed (use default constructor call)
+        """
+        
+        # MultiTreeStatistics constructor issue:
+        # Python-Java bridge calls MultiTreeStatistics(Collection, String...) with empty varargs
+        # instead of MultiTreeStatistics(Collection), causing "No match for specified type(s)" error
+        if class_name == 'MultiTreeStatistics' and len(args) == 1 and len(kwargs) == 0:
+            # When called with just a collection, add "all" as swcTypes to avoid
+            # the Python-Java bridge calling the wrong constructor
+            return java_class(args[0], "all")
+        
+        # Add more constructor exception cases here as needed:
+        # 
+        # if class_name == 'AnotherProblematicClass' and some_condition:
+        #     return java_class(modified_args)
+        #
+        # if class_name == 'YetAnotherClass' and other_condition:
+        #     # Handle different constructor selection issue
+        #     return java_class(*modified_args, **modified_kwargs)
+        
+        # No special handling needed - use default constructor call
+        return None
+
     class DynamicPlaceholder(metaclass=DynamicPlaceholderMeta):
         def __new__(cls, *args, **kwargs):
             """Dynamic constructor that redirects to Java class if available."""
@@ -63,6 +106,13 @@ def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str = N
                 import scyjava
                 if scyjava.jvm_started():
                     java_class = scyjava.jimport(java_class_name)
+                    
+                    # Check for constructor exceptions first
+                    special_result = handle_constructor_exceptions(java_class, class_name, *args, **kwargs)
+                    if special_result is not None:
+                        return special_result
+                    
+                    # Default constructor call
                     return java_class(*args, **kwargs)
             except ImportError:
                 # JVM not started or class not found

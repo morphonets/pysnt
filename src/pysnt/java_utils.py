@@ -598,17 +598,20 @@ def _show_constructors_from_jreflect(java_object: Any, keyword: str, case_sensit
         
         matching_constructors = []
         for constructor in constructors_info:
-            if _matches_keyword(class_name, keyword, case_sensitive):
-                # Extract parameter types from arguments
-                params = constructor.get('arguments', [])
-                param_types = []
-                for param in params:
-                    if isinstance(param, dict) and 'type' in param:
-                        param_type = str(param['type'])
-                        param_types.append(param_type.split('.')[-1])  # Simple name
-                    else:
-                        param_type = str(param)
-                        param_types.append(param_type.split('.')[-1])
+            # Extract parameter types from arguments
+            params = constructor.get('arguments', [])
+            param_types = []
+            for param in params:
+                if isinstance(param, dict) and 'type' in param:
+                    param_type = str(param['type'])
+                    param_types.append(param_type.split('.')[-1])  # Simple name
+                else:
+                    param_type = str(param)
+                    param_types.append(param_type.split('.')[-1])
+            
+            # Apply keyword filter to constructor signature if keyword is provided
+            constructor_sig = f"{class_name}({', '.join(param_types)})"
+            if not keyword or _matches_keyword(constructor_sig, keyword, case_sensitive):
                 matching_constructors.append(param_types)
         
         if matching_constructors:
@@ -619,8 +622,10 @@ def _show_constructors_from_jreflect(java_object: Any, keyword: str, case_sensit
             
             if len(matching_constructors) > max_results:
                 print(f"  ... and {len(matching_constructors) - max_results} more")
-        else:
+        elif keyword:
             print(f"\n🏗️  Constructors: No matches for '{keyword}'")
+        else:
+            print(f"\n🏗️  Constructors: None found")
             
     except Exception as e:
         print(f"❌ Error getting constructors: {e}")

@@ -269,13 +269,60 @@ class JavaSignatureExtractor:
                 'constructors': []
             }
             
-            # Process methods from inspection output
+            # Process methods and constructors from inspection output
             current_method = None
             method_groups = {}  # Group overloaded methods
+            constructor_list = []  # Store constructors
+            in_constructors_section = False
             
             for line in methods_info:
                 line = line.strip()
-                if not line or line.startswith('=') or 'Methods' in line or 'Fields' in line:
+                if not line or line.startswith('='):
+                    continue
+                
+                # Track sections
+                if 'Constructors' in line:
+                    in_constructors_section = True
+                    continue
+                elif 'Methods' in line or 'Fields' in line:
+                    in_constructors_section = False
+                    continue
+                
+                # Parse constructor lines (format: "  1. ClassName(params)")
+                if in_constructors_section and line and line[0].isdigit():
+                    # Extract constructor signature
+                    if '(' in line and ')' in line:
+                        # Find the constructor signature part
+                        constructor_part = line[line.find('.')+1:].strip()  # Remove "1. " prefix
+                        if '(' in constructor_part:
+                            # Extract parameters from constructor
+                            params_start = constructor_part.find('(')
+                            params_end = constructor_part.rfind(')')
+                            params_str = constructor_part[params_start+1:params_end]
+                            
+                            # Parse parameters
+                            params = []
+                            if params_str.strip():
+                                # Handle special case where params end with semicolon
+                                params_str = params_str.rstrip(';')
+                                param_parts = params_str.split(',')
+                                for i, param in enumerate(param_parts):
+                                    param = param.strip()
+                                    if param:
+                                        param_name = f"arg{i}"
+                                        param_type = self.map_java_type(param)
+                                        params.append({
+                                            'name': param_name,
+                                            'type': param_type,
+                                            'java_type': param
+                                        })
+                            
+                            constructor_list.append({
+                                'signature': f"{class_name}({', '.join([p['java_type'] for p in params])})",
+                                'params': params,
+                                'return_type': 'None',
+                                'java_return_type': 'void'
+                            })
                     continue
                 
                 if line.startswith('•'):
@@ -326,8 +373,16 @@ class JavaSignatureExtractor:
                     'documentation': f"Java method: {method_name}"
                 })
             
+            # Add constructors to class info
+            if constructor_list:
+                class_info_dict['constructors'] = [{
+                    'name': '__init__',
+                    'overloads': constructor_list,
+                    'documentation': f"Java constructors for {class_name}"
+                }]
+            
             if self.verbose:
-                print(f"✅ Extracted {len(class_info_dict['methods'])} methods for {class_name}")
+                print(f"✅ Extracted {len(class_info_dict['methods'])} methods and {len(constructor_list)} constructors for {class_name}")
             
             return class_info_dict
             
