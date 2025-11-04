@@ -65,6 +65,57 @@ def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = Non
             scyjava.config.add_option(arg)
             logger.info(f"Added JVM argument: {arg}")
     
+    # Add logging system properties based on current configuration
+    from .config import get_option
+    try:
+        # Read current logging configuration
+        level = get_option('java.logging.level').lower()
+        suppress_slf4j = get_option('java.logging.suppress_slf4j_warnings')
+        
+        # Add system properties to control logging during JVM startup
+        logging_properties = [
+            # SLF4J configuration
+            f"-Dorg.slf4j.simpleLogger.defaultLogLevel={level}",
+            "-Dorg.slf4j.simpleLogger.showDateTime=false",
+            "-Dorg.slf4j.simpleLogger.showThreadName=false",
+            "-Dorg.slf4j.simpleLogger.showLogName=false",
+            "-Dorg.slf4j.simpleLogger.showShortLogName=false",
+            
+            # Log4j configuration
+            f"-Dlog4j.rootLogger={level.upper()},console",
+            "-Dlog4j.logger.org.apache=ERROR",
+            "-Dlog4j.logger.org.scijava=ERROR",
+            "-Dlog4j.logger.net.imagej=ERROR",
+            
+            # Java util logging
+            f"-Djava.util.logging.level={level.upper()}",
+            "-Djava.util.logging.ConsoleHandler.level=ERROR",
+            
+            # ImageJ/SciJava specific
+            "-Dscijava.log.level=error",
+            "-Dimagej.log.level=error",
+        ]
+        
+        # Add SLF4J warning suppression if requested
+        if suppress_slf4j:
+            slf4j_suppression_properties = [
+                # Try to suppress SLF4J multiple bindings warnings
+                "-Dorg.slf4j.simpleLogger.log.org.slf4j=ERROR",
+                "-Dorg.slf4j.simpleLogger.log.ch.qos.logback=ERROR",
+                # Redirect SLF4J output to null (aggressive suppression)
+                "-Dorg.slf4j.simpleLogger.logFile=System.err",
+            ]
+            logging_properties.extend(slf4j_suppression_properties)
+        
+        for prop in logging_properties:
+            scyjava.config.add_option(prop)
+            logger.debug(f"Added logging property: {prop}")
+        
+        logger.debug("Added logging system properties based on configuration")
+        
+    except Exception as e:
+        logger.debug(f"Failed to add logging properties: {e}")
+    
     logger.info("JVM configuration complete")
 
 
@@ -247,6 +298,17 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             if "headless" == mode:
                 scyjava.config.enable_headless_mode() # System.setProperty("java.awt.headless", "true");
             scyjava.start_jvm()
+            
+        # Configure Java logging after JVM starts
+        try:
+            from .java_utils import configure_java_logging
+            if configure_java_logging():
+                logger.debug("Configured Java logging")
+            else:
+                logger.debug("Some Java logging configuration failed, but continuing")
+        except Exception as e:
+            logger.debug(f"Failed to configure Java logging: {e}")
+            # Don't fail initialization for logging configuration issues
             
         _jvm_started = True
         logger.info("SNT initialization complete")

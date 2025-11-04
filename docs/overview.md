@@ -38,6 +38,30 @@ pysnt.dispose()  # Clean shutdown of ImageJ and JVM
 **Important:** After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session. The JVM cannot be restarted once it has been shut down. You must restart your Python session to use PySNT again.
 ```
 
+### Java Logging Control
+
+You can use the PySNT configuration system to control Java-side logging verbosity:
+
+```python
+# Configure logging levels and frameworks
+pysnt.set_option('java.logging.level', 'ERROR')        # Only show errors, change to 'INFO' for debugging
+pysnt.set_option('java.logging.jpype.silence', True)   # Silence JPype
+pysnt.set_option('java.logging.log4j.silence', True)   # Silence Log4j
+pysnt.set_option('java.logging.slf4j.silence', True)   # Silence SLF4J
+pysnt.set_option('java.logging.jul.silence', True)     # Silence java.util.logging
+
+pysnt.initialize()
+```
+
+**Note on SLF4J Warnings**: You may still see some SLF4J warnings about multiple providers during initialization. These occur during SLF4J's initialization phase before logging configuration takes effect. To minimize them:
+
+```python
+pysnt.set_option('java.logging.level', 'ERROR')
+# Enable aggressive SLF4J suppression
+pysnt.set_option('java.logging.suppress_slf4j_warnings', True)
+pysnt.initialize()
+```
+
 ### Advanced Initialization Options
 
 There are also some advanced initialization options:

@@ -20,10 +20,8 @@ import zipfile
 from pathlib import Path
 from typing import Optional, Dict, Any, Union, List
 
-try:
-    import scyjava
-except ImportError:
-    scyjava = None
+import scyjava # noqa
+import jpype # noqa
 
 logger = logging.getLogger(__name__)
 
@@ -1615,6 +1613,282 @@ def _extract_class_lists_from_content(content: str) -> List[str]:
     
     return classes
 
+
+# Java Logging Control Functions
+
+def configure_java_logging() -> bool:
+    """
+    Configure Java-side logging based on current PySNT configuration options.
+    
+    This function reads the current configuration settings and applies them
+    to various Java logging frameworks to control verbosity.
+    
+    The configuration is controlled via pysnt.set_option():
+    - 'java.logging.level': Logging level (OFF, ERROR, WARN, INFO, DEBUG, TRACE)
+    - 'java.logging.jpype.silence': Whether to silence JPype logging
+    - 'java.logging.log4j.silence': Whether to silence Log4j logging
+    - 'java.logging.slf4j.silence': Whether to silence SLF4J logging
+    - 'java.logging.jul.silence': Whether to silence java.util.logging
+        
+    Returns
+    -------
+    bool
+        True if configuration was successful, False otherwise
+        
+    Examples
+    --------
+    >>> # Configure logging via options
+    >>> pysnt.set_option('java.logging.level', 'ERROR')
+    >>> pysnt.set_option('java.logging.jpype.silence', True)
+    >>> pysnt.configure_java_logging()
+    >>> 
+    >>> # Set to INFO level for debugging
+    >>> pysnt.set_option('java.logging.level', 'INFO')
+    >>> pysnt.configure_java_logging()
+    >>> 
+    >>> # Only silence JPype, keep other logging
+    >>> pysnt.set_option('java.logging.jpype.silence', True)
+    >>> pysnt.set_option('java.logging.log4j.silence', False)
+    >>> pysnt.set_option('java.logging.slf4j.silence', False)
+    >>> pysnt.configure_java_logging()
+    """
+    success = True
+    
+    try:
+        # Import config functions
+        from .config import get_option
+        
+        # Read configuration options
+        level = get_option('java.logging.level')
+        silence_jpype = get_option('java.logging.jpype.silence')
+        silence_log4j = get_option('java.logging.log4j.silence')
+        silence_slf4j = get_option('java.logging.slf4j.silence')
+        silence_java_util_logging = get_option('java.logging.jul.silence')
+        
+        # 1. Configure JPype logging (Python side)
+        if silence_jpype and jpype is not None:
+            try:
+                import logging
+                jpype_logger = logging.getLogger('jpype')
+                if level == "OFF":
+                    jpype_logger.setLevel(logging.CRITICAL + 1)  # Effectively OFF
+                elif level == "ERROR":
+                    jpype_logger.setLevel(logging.ERROR)
+                elif level == "WARN":
+                    jpype_logger.setLevel(logging.WARNING)
+                elif level == "INFO":
+                    jpype_logger.setLevel(logging.INFO)
+                elif level == "DEBUG":
+                    jpype_logger.setLevel(logging.DEBUG)
+                
+                logger.debug(f"Configured JPype logging to {level}")
+            except Exception as e:
+                logger.warning(f"Failed to configure JPype logging: {e}")
+                success = False
+        
+        # 2. Configure Java-side logging (requires JVM to be started)
+        if scyjava is not None and scyjava.jvm_started():
+            try:
+                # Configure Log4j if available
+                if silence_log4j:
+                    success &= _configure_log4j_logging(level)
+                
+                # Configure SLF4J if available  
+                if silence_slf4j:
+                    success &= _configure_slf4j_logging(level)
+                
+                # Configure java.util.logging
+                if silence_java_util_logging:
+                    success &= _configure_jul_logging(level)
+                    
+            except Exception as e:
+                logger.warning(f"Failed to configure Java logging: {e}")
+                success = False
+        else:
+            logger.debug("JVM not started - Java logging configuration will be applied when JVM starts")
+    
+    except Exception as e:
+        logger.error(f"Error configuring Java logging: {e}")
+        success = False
+    
+    return success
+
+
+def _configure_log4j_logging(level: str) -> bool:
+    """Configure Log4j logging if available."""
+    try:
+        # Try Log4j 2.x first
+        try:
+            LogManager = scyjava.jimport('org.apache.logging.log4j.LogManager')
+            Level = scyjava.jimport('org.apache.logging.log4j.Level')
+            Configurator = scyjava.jimport('org.apache.logging.log4j.core.config.Configurator')
+            
+            # Map our levels to Log4j levels
+            level_map = {
+                "OFF": Level.OFF,
+                "ERROR": Level.ERROR, 
+                "WARN": Level.WARN,
+                "INFO": Level.INFO,
+                "DEBUG": Level.DEBUG,
+                "TRACE": Level.TRACE
+            }
+            
+            log4j_level = level_map.get(level, Level.ERROR)
+            
+            # Set root logger level
+            Configurator.setRootLevel(log4j_level)
+            
+            # Also set specific loggers that tend to be verbose
+            verbose_loggers = [
+                "org.scijava",
+                "net.imagej", 
+                "org.apache.commons",
+                "com.github.haifengl",
+            ]
+            
+            for logger_name in verbose_loggers:
+                try:
+                    Configurator.setLevel(logger_name, log4j_level)
+                except:
+                    pass  # Logger might not exist
+            
+            logger.debug(f"Configured Log4j 2.x logging to {level}")
+            return True
+            
+        except ImportError:
+            # Try Log4j 1.x
+            try:
+                Logger = scyjava.jimport('org.apache.log4j.Logger')
+                Level = scyjava.jimport('org.apache.log4j.Level')
+                
+                level_map = {
+                    "OFF": Level.OFF,
+                    "ERROR": Level.ERROR,
+                    "WARN": Level.WARN, 
+                    "INFO": Level.INFO,
+                    "DEBUG": Level.DEBUG
+                }
+                
+                log4j_level = level_map.get(level, Level.ERROR)
+                
+                # Set root logger
+                root_logger = Logger.getRootLogger()
+                root_logger.setLevel(log4j_level)
+                
+                logger.debug(f"Configured Log4j 1.x logging to {level}")
+                return True
+                
+            except ImportError:
+                logger.debug("Log4j not available")
+                return True  # Not an error if Log4j isn't present
+                
+    except Exception as e:
+        logger.warning(f"Failed to configure Log4j: {e}")
+        return False
+
+
+def _configure_slf4j_logging(level: str) -> bool:
+    """Configure SLF4J logging if available."""
+    try:
+        # Try to configure SLF4J
+        try:
+            LoggerFactory = scyjava.jimport('org.slf4j.LoggerFactory')
+            
+            # Try to get Logback configuration (common SLF4J implementation)
+            try:
+                LoggerContext = scyjava.jimport('ch.qos.logback.classic.LoggerContext')
+                Level = scyjava.jimport('ch.qos.logback.classic.Level')
+                
+                level_map = {
+                    "OFF": Level.OFF,
+                    "ERROR": Level.ERROR,
+                    "WARN": Level.WARN,
+                    "INFO": Level.INFO, 
+                    "DEBUG": Level.DEBUG,
+                    "TRACE": Level.TRACE
+                }
+                
+                logback_level = level_map.get(level, Level.ERROR)
+                
+                # Get logger context and set root level
+                context = LoggerFactory.getILoggerFactory()
+                if hasattr(context, 'getLogger'):
+                    root_logger = context.getLogger('ROOT')
+                    if hasattr(root_logger, 'setLevel'):
+                        root_logger.setLevel(logback_level)
+                        
+                        # Set specific verbose loggers
+                        verbose_loggers = [
+                            "org.scijava",
+                            "net.imagej",
+                            "com.github.haifengl",
+                            "org.apache.commons"
+                        ]
+                        
+                        for logger_name in verbose_loggers:
+                            try:
+                                specific_logger = context.getLogger(logger_name)
+                                specific_logger.setLevel(logback_level)
+                            except:
+                                pass
+                
+                logger.debug(f"Configured SLF4J/Logback logging to {level}")
+                return True
+                
+            except ImportError:
+                logger.debug("Logback not available for SLF4J configuration")
+                return True
+                
+        except ImportError:
+            logger.debug("SLF4J not available")
+            return True
+            
+    except Exception as e:
+        logger.warning(f"Failed to configure SLF4J: {e}")
+        return False
+
+
+def _configure_jul_logging(level: str) -> bool:
+    """Configure java.util.logging."""
+    try:
+        Logger = scyjava.jimport('java.util.logging.Logger')
+        Level = scyjava.jimport('java.util.logging.Level')
+        
+        level_map = {
+            "OFF": Level.OFF,
+            "ERROR": Level.SEVERE,
+            "WARN": Level.WARNING,
+            "INFO": Level.INFO,
+            "DEBUG": Level.FINE,
+            "TRACE": Level.FINEST
+        }
+        
+        jul_level = level_map.get(level, Level.SEVERE)
+        
+        # Set root logger
+        root_logger = Logger.getLogger("")
+        root_logger.setLevel(jul_level)
+        
+        # Set specific verbose loggers
+        verbose_loggers = [
+            "org.scijava",
+            "net.imagej",
+            "com.github.haifengl",
+        ]
+        
+        for logger_name in verbose_loggers:
+            try:
+                specific_logger = Logger.getLogger(logger_name)
+                specific_logger.setLevel(jul_level)
+            except:
+                pass
+        
+        logger.debug(f"Configured java.util.logging to {level}")
+        return True
+        
+    except Exception as e:
+        logger.warning(f"Failed to configure java.util.logging: {e}")
+        return False
 
 if __name__ == "__main__":
     # Run Java setup if called directly

@@ -29,11 +29,12 @@ class OptionError(AttributeError, KeyError):
 class _Option:
     """Internal class to represent a configuration option."""
     
-    def __init__(self, key: str, default_value: Any, doc: str, validator: Optional[Callable] = None):
+    def __init__(self, key: str, default_value: Any, doc: str, validator: Optional[Callable] = None, callback: Optional[Callable] = None):
         self.key = key
         self.default_value = default_value
         self.doc = doc
         self.validator = validator
+        self.callback = callback
         self._value = default_value
     
     @property
@@ -44,7 +45,18 @@ class _Option:
     def value(self, val):
         if self.validator:
             val = self.validator(val)
+        old_value = self._value
         self._value = val
+        
+        # Call callback if provided and value actually changed
+        if self.callback and old_value != val:
+            try:
+                self.callback(self.key, old_value, val)
+            except Exception as e:
+                # Don't let callback errors break option setting
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.warning(f"Callback for option '{self.key}' failed: {e}")
 
 
 def _chart_format_validator(value: str) -> str:
@@ -95,9 +107,34 @@ def _graph_type_validator(value: str) -> str:
 _global_config: Dict[str, _Option] = {}
 
 
-def _register_option(key: str, default_value: Any, doc: str, validator: Optional[Callable] = None):
+def _java_logging_callback(key: str, old_value: Any, new_value: Any) -> None:
+    """Callback function that automatically configures Java logging when options change."""
+    try:
+        # Import here to avoid circular imports
+        from .java_utils import configure_java_logging
+        
+        # Only configure if JVM is started or if we're in a context where it makes sense
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Java logging option '{key}' changed from {old_value} to {new_value}, reconfiguring...")
+        
+        # Apply the new configuration
+        success = configure_java_logging()
+        if success:
+            logger.debug("Java logging reconfigured successfully")
+        else:
+            logger.debug("Java logging reconfiguration had some issues")
+            
+    except Exception as e:
+        # Don't let configuration errors break option setting
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Failed to auto-configure Java logging after option change: {e}")
+
+
+def _register_option(key: str, default_value: Any, doc: str, validator: Optional[Callable] = None, callback: Optional[Callable] = None):
     """Register a configuration option."""
-    _global_config[key] = _Option(key, default_value, doc, validator)
+    _global_config[key] = _Option(key, default_value, doc, validator, callback)
 
 
 # Register default options
@@ -199,6 +236,55 @@ _register_option(
     True,
     'Warn when self-loops are detected in neural morphology graphs',
     lambda x: bool(x)
+)
+
+# Java logging configuration options
+_register_option(
+    'java.logging.level',
+    'ERROR',
+    'Java logging level (OFF, ERROR, WARN, INFO, DEBUG, TRACE)',
+    lambda x: str(x).upper() if str(x).upper() in {'OFF', 'ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'} else 'ERROR',
+    _java_logging_callback
+)
+
+_register_option(
+    'java.logging.suppress_slf4j_warnings',
+    True,
+    'Suppress SLF4J multiple bindings warnings during initialization',
+    lambda x: bool(x),
+    _java_logging_callback
+)
+
+_register_option(
+    'java.logging.jpype.silence',
+    True,
+    'Silence JPype logging (Python side)',
+    lambda x: bool(x),
+    _java_logging_callback
+)
+
+_register_option(
+    'java.logging.log4j.silence',
+    True,
+    'Silence Log4j logging (Java side)',
+    lambda x: bool(x),
+    _java_logging_callback
+)
+
+_register_option(
+    'java.logging.slf4j.silence',
+    True,
+    'Silence SLF4J logging (Java side)',
+    lambda x: bool(x),
+    _java_logging_callback
+)
+
+_register_option(
+    'java.logging.jul.silence',
+    True,
+    'Silence java.util.logging (Java side)',
+    lambda x: bool(x),
+    _java_logging_callback
 )
 
 

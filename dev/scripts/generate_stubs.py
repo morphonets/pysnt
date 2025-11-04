@@ -408,7 +408,7 @@ class CleanStubGenerator:
     def _create_function_signature_from_name(self, func_name: str) -> str:
         """Create a function signature from function name using heuristics."""
         if func_name == 'initialize':
-            return f"def {func_name}(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = \"headless\") -> None: ..."
+            return f"def {func_name}(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = \"headless\", max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None) -> None: ..."
         elif func_name == 'dispose':
             return f"def {func_name}() -> None: ..."
         elif func_name in ['show', 'display']:
@@ -418,7 +418,7 @@ class CleanStubGenerator:
         elif func_name == 'enhance_java_object':
             return f"def {func_name}(obj: Any) -> Any: ..."
         elif func_name == 'register_snt_converters':
-            return f"def {func_name}() -> None: ..."
+            return f"def {func_name}() -> bool: ..."
         elif func_name == 'list_converters':
             return f"def {func_name}() -> List[str]: ..."
         elif func_name == 'to_python':
@@ -434,11 +434,11 @@ class CleanStubGenerator:
         elif func_name.startswith('is_'):
             return f"def {func_name}() -> bool: ..."
         elif func_name == '_setup_matplotlib_interactive':
-            return f"def {func_name}() -> Any: ..."
+            return f"def {func_name}() -> Any: ..."  # Returns matplotlib.pyplot module
         elif func_name == '_create_standard_figure':
-            return f"def {func_name}(data: Any, title: Optional[str] = None, cmap: str = 'viridis', add_colorbar: bool = True, is_rgb: bool = False, **kwargs: Any) -> tuple[Any, Any, Any]: ..."
+            return f"def {func_name}(data: Any = None, title: Optional[str] = None, figsize: Optional[tuple[float, float]] = None, dpi: Optional[int] = None, cmap: Optional[str] = None, add_colorbar: bool = True, is_rgb: bool = False, **kwargs: Any) -> tuple[Any, Any, Any]: ..."
         elif func_name == '_extract_color_attributes':
-            return f"def {func_name}(color: Any, attr_name: str) -> Dict[str, Any]: ..."
+            return f"def {func_name}(color_obj: Any, prefix: str = 'color') -> Dict[str, Any]: ..."
         else:
             return f"def {func_name}(*args: Any, **kwargs: Any) -> Any: ..."
 

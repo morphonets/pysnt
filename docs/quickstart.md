@@ -98,7 +98,7 @@ pysnt.display(tree)
 chart = stats.getHistogram("internode distance")
 pysnt.display(chart)
 
-# Display all measuremts in one go
+# Display all measurements in one go
 all_metrics = stats.getMetrics()
 stats.measure('some row description', all_metrics, True) # bool: Split measurements by compartment (axon/dendrites!?)
 pysnt.set_option("display.table_mode", "pandasgui")
@@ -180,6 +180,24 @@ pysnt.initialize(max_heap="8g")
 pysnt.initialize(max_heap="16g", min_heap="4g")
 ```
 
+## Controlling Java Verbosity
+
+You can control Java logging verbosity through configuration options:
+
+```python
+# For debugging, increase verbosity
+pysnt.set_option('java.logging.level', 'INFO')
+pysnt.initialize()
+
+# For minimal logging
+pysnt.set_option('java.logging.level', 'ERROR')
+pysnt.initialize()
+
+# Suppress SLF4J warnings
+pysnt.set_option('java.logging.suppress_slf4j_warnings', True)
+pysnt.initialize()
+```
+
 ## Discovery and Exploration
 
 ### Finding Available Classes
@@ -254,20 +272,6 @@ try:
 except Exception as e:
     print(f"Analysis failed: {e}")
     # Check if tree is valid, has required data, etc.
-```
-
-
-## Cleanup
-
-When you're finished with your analysis session, properly dispose of resources:
-
-```python
-# Clean shutdown when done
-pysnt.dispose()
-```
-
-```{warning}
-After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session. Restart Python to use PySNT again.
 ```
 
 ## Next Steps

@@ -55,6 +55,25 @@ label = tree.getLabel()           # ✓ Correct - call normally
 # label = tree.getLabel(tree)     # ✗ Wrong - don't pass self!
 ```
 
+### Verbose Console Output
+
+Debug messages and warnings may appear when working with Java objects:
+```console
+log4j:WARN No appenders could be found for logger (org.bushe.swing.event.EventService).
+log4j:WARN Please initialize the log4j system properly.
+```
+
+**Workaround:**
+
+These messages can be safely ignored and don't affect functionality. To suppress them, you can configure logging
+at the _start_ of your script, i.e., before calling `pysnt.initialize()`:
+```python
+import pysnt
+pysnt.set_option('java.logging.level', 'OFF') #OFF, ERROR, WARN, INFO, DEBUG, TRACE
+pysnt.initialize()
+```
+
+As the library matures, these messages are expected to be reduced or eliminated.
 
 
 ## Limitations
@@ -152,3 +171,19 @@ print(f"Main thread: {pysnt.is_main_thread()}")
 print(f"macOS: {pysnt.is_macos()}")
 print(f"GUI safe mode: {pysnt.get_option('display.gui_safe_mode')}")
 ```
+
+
+### Disposal
+
+`pysnt.dispose()` can be used to properly dispose of resources:
+
+```python
+# Clean shutdown when done
+pysnt.dispose()
+```
+
+However, after calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session.
+You will need to restart Python to use PySNT again.
+
+**Workaround**:
+Ensure `pysnt.dispose()` is called after PySNT is no longer needed.
