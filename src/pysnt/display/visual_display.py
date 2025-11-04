@@ -506,7 +506,16 @@ def _display_array_data(data, source_type="array", **kwargs):
 
     # Use the new standardized figure creation
     cmap = kwargs.get('cmap', DEFAULT_CMAP)
-    add_colorbar = kwargs.get('add_colorbar', True)
+    
+    # Check if this is a binary image and adjust colorbar default accordingly
+    is_binary = metadata.get('is_binary', False)
+    if is_binary:
+        # For binary images, don't show colorbar by default unless explicitly requested
+        add_colorbar = kwargs.get('add_colorbar', False)
+        logger.debug("Binary image detected - colorbar disabled by default")
+    else:
+        # For non-binary images, show colorbar by default unless explicitly disabled
+        add_colorbar = kwargs.get('add_colorbar', True)
     
     fig, ax, im = _create_standard_figure(
         data=img_data,
@@ -519,7 +528,9 @@ def _display_array_data(data, source_type="array", **kwargs):
 
     # Use unified display system
     if _show_matplotlib_figure(fig):
-        logger.info(f"Successfully displayed {source_type} data as {'RGB' if is_rgb else 'grayscale'} image: '{title}'")
+        image_type_desc = 'RGB' if is_rgb else ('binary' if is_binary else 'grayscale')
+        colorbar_status = 'with colorbar' if add_colorbar else 'without colorbar'
+        logger.info(f"Successfully displayed {source_type} data as {image_type_desc} image {colorbar_status}: '{title}'")
         return {
             'type': Figure,
             'data': data,
@@ -529,6 +540,8 @@ def _display_array_data(data, source_type="array", **kwargs):
                 'displayed_shape': img_data.shape,
                 'title': title,
                 'is_rgb': is_rgb,
+                'is_binary': is_binary,
+                'add_colorbar': add_colorbar,
                 **metadata  # Include original metadata
             },
             'error': None

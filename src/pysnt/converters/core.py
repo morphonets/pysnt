@@ -89,7 +89,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 # Constants for common default values
-DEFAULT_CMAP = "gray"
+DEFAULT_CMAP = "gray_r"
 DEFAULT_NODE_SIZE = 300
 DEFAULT_NODE_COLOR = "lightblue"
 DEFAULT_DPI = 300

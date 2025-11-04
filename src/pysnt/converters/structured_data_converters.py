@@ -206,8 +206,19 @@ def _extract_imageplus_metadata(imageplus: Any, **kwargs) -> dict:
         # ImagePlus.COLOR_RGB = 4, ImagePlus.COLOR_256 = 1, ImagePlus.GRAY8 = 0, etc.
         is_rgb = image_type == 4  # ImagePlus.COLOR_RGB
         
+        # Check if this is a binary image
+        is_binary = False
+        try:
+            processor = imageplus.getProcessor()
+            if processor is not None and hasattr(processor, 'isBinary'):
+                is_binary = processor.isBinary()
+                logger.debug(f"Binary detection: {is_binary}")
+        except Exception as e:
+            logger.debug(f"Could not check binary status: {e}")
+            is_binary = False
+        
         logger.debug(f"ImagePlus metadata: type={image_type}, title='{image_title}', "
-                    f"size={width}x{height}, is_rgb={is_rgb}")
+                    f"size={width}x{height}, is_rgb={is_rgb}, is_binary={is_binary}")
         
         # Extract frame parameter (supports frame=, t=, time=, case-insensitive)
         kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
@@ -227,12 +238,14 @@ def _extract_imageplus_metadata(imageplus: Any, **kwargs) -> dict:
             'image_type': image_type,
             'image_title': image_title,
             'is_rgb': is_rgb,
+            'is_binary': is_binary,
             'width': width,
             'height': height,
             'frame': frame
         }
         
-        logger.debug(f"Extracted metadata for '{image_title}': {'RGB' if is_rgb else 'grayscale'}")
+        image_type_desc = 'RGB' if is_rgb else ('binary' if is_binary else 'grayscale')
+        logger.debug(f"Extracted metadata for '{image_title}': {image_type_desc}")
         return metadata
         
     except Exception as e:
