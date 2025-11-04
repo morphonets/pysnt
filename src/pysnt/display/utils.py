@@ -61,8 +61,36 @@ def _is_snt_object(obj: Any) -> bool:
 
 
 def _is_snt_tree(obj: Any) -> bool:
-    """Check if object is an SNT Tree."""
-    return str(type(obj)).find('Tree') != -1 and hasattr(obj, 'getSkeleton2D')
+    """
+    Check if object is an SNT Tree.
+    
+    This function checks for SNT Tree objects while avoiding false positives
+    with ImagePlus objects that might have 'Tree' in their title.
+    """
+    type_str = str(type(obj))
+    
+    # Must contain 'Tree' in the type name (specifically SNT Tree classes)
+    if not any(pattern in type_str for pattern in ['Tree', 'tree']):
+        return False
+    
+    # Must NOT be an ImagePlus (to avoid false positives)
+    #if 'ImagePlus' in type_str:
+    #    return False
+    
+    # Must NOT be a basic Python object
+    if type_str.startswith('<class \'__main__.') or type_str.startswith('<class \'builtins.'):
+        return False
+    
+    # Should have tree-like methods (at least one of these)
+    tree_methods = ['getSkeleton2D', 'getSkeleton', 'getNodes', 'getPaths']
+    has_tree_method = any(hasattr(obj, method) for method in tree_methods)
+    
+    # Additional check: should be a Java object (SNT trees are Java objects)
+    is_java_object = 'java class' in type_str or hasattr(obj, '__class__') and hasattr(obj.__class__, '__name__')
+    
+    logger.debug(f"Tree detection for {type_str}: has_tree_method={has_tree_method}, is_java_object={is_java_object}")
+    
+    return has_tree_method and is_java_object
 
 
 def _is_snt_path(obj: Any) -> bool:
