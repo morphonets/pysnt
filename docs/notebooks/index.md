@@ -1,7 +1,7 @@
 # <i class="fas fa-book"></i>&hairsp;Tutorials
 
 ```{important}
-This collection of notebooks is not yet complete. It still being updated for SNTv5.
+🚧 This collection of notebooks is not yet complete. It is still being updated for SNTv5. 🚧
 ```
 
 ```{seealso}
@@ -27,7 +27,7 @@ This collection of notebooks is not yet complete. It still being updated for SNT
 
 ```{raw} html
 <ul>
-    <li><a href="./1_single_cell_analysis.html">Introduction to SNT Programming</a></li>
+    <li><a href="./1_single_cell_analysis.html">🆕 Single Cell Analysis</a></li>
     <li><a href="./2_convex_hull.html">Volumetric Quantifications</a></li>
     <li><a href="./3_tree_intersection.html">Spatial intersection Between Trees</a></li>
     <li><a href="./4_persistence_landscape.html">Clustering Morphologies Using Persistent Homology</a></li>
