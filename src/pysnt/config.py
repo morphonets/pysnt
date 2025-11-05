@@ -69,7 +69,7 @@ def _chart_format_validator(value: str) -> str:
 
 def _table_display_validator(value: str) -> str:
     """Validate table display option."""
-    valid_displays = {'pandasgui', 'distribution', 'summary', 'basic'}
+    valid_displays = {'pandasgui', 'heatmap', 'heatmap_norm', 'summary'}
     if value not in valid_displays:
         raise ValueError(f"Invalid table display '{value}'. Must be one of {valid_displays}")
     return value
@@ -148,7 +148,7 @@ _register_option(
 _register_option(
     'display.table_mode',
     'summary',
-    'Default display mode for SNTTables (pandasgui, distribution, summary, or basic)',
+    'Default display mode for SNTTables (pandasgui, heatmap, heatmap_norm, or summary)',
     _table_display_validator
 )
 

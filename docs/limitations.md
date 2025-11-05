@@ -156,9 +156,9 @@ Instead of GUI-enabled modes, you can always use console-safe display modes:
 import pysnt
 
 # Safe display modes
-pysnt.set_option('display.table_mode', 'basic')  # Console table display
-pysnt.set_option('display.table_mode', 'summary')  # Summary statistics
-pysnt.set_option('display.table_mode', 'distribution')  # Distribution plots
+pysnt.set_option('display.table_mode', 'summary')  # Text-based summary
+pysnt.set_option('display.table_mode', 'heatmap')  # Heatmap visualization
+pysnt.set_option('display.table_mode', 'heatmap_norm')  # Normalized heatmap visualization
 pysnt.display(some_table)
 ```
 

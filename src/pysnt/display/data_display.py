@@ -72,13 +72,17 @@ def _display_pandas_dataframe(df, **kwargs):
         # Get display mode from configuration
         table_mode = kwargs.get('table_mode', get_option('display.table_mode')).lower()
         
+        # Handle summary mode specially
+        if table_mode == 'summary':
+            title = kwargs.get('title', 'DataFrame Summary')
+            _summarize_dataframe(df, title)
+            return df
+        
         # Map table mode to display parameters
         if table_mode == 'pandasgui':
             kwargs['use_gui'] = True
-        elif table_mode == 'basic':
-            kwargs['use_gui'] = False
         else:
-            # For other modes (summary, distribution, etc.), use GUI if available
+            # For other modes (heatmap, heatmap_norm, etc.), use GUI if available
             kwargs['use_gui'] = _has_pandasgui()
         
         # Use the existing DataFrame display function
@@ -91,16 +95,27 @@ def _display_pandas_dataframe(df, **kwargs):
             max_cols = config.get('max_cols', get_option('display.max_columns'))
             precision = config.get('precision', get_option('display.precision'))
             
+            # Ensure precision is a valid integer (pandas can't handle None or invalid values)
+            if precision is None or not isinstance(precision, int) or precision < 0:
+                precision = 6  # Default fallback
+            
+            # Handle None values in DataFrame that can cause formatting issues
+            df_display = df.copy()
+            df_display = df_display.fillna('None')
+            
             with pandas.option_context('display.max_rows', max_rows,
                                      'display.max_columns', max_cols,
                                      'display.precision', precision,
                                      'display.width', None):
                 print("pandas.DataFrame:")
-                print(df)
+                print(df_display)
                 print(f"Shape: {df.shape}")
                 if hasattr(df, 'describe'):
                     print("\nSummary statistics:")
-                    print(df.describe())
+                    try:
+                        print(df.describe())
+                    except Exception as e:
+                        print(f"Summary statistics unavailable: {e}")
         
         return df
         
@@ -108,7 +123,14 @@ def _display_pandas_dataframe(df, **kwargs):
         _handle_display_error(e, "pandas DataFrame display", "DataFrame")
         # Fallback to simple print
         print("pandas.DataFrame:")
-        print(df)
+        try:
+            # Handle None values that can cause formatting issues
+            df_display = df.copy()
+            df_display = df_display.fillna('None')
+            print(df_display)
+        except Exception as e2:
+            print(f"DataFrame display failed: {e2}")
+            print(f"DataFrame shape: {df.shape}")
         return df
 
 
@@ -386,7 +408,7 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         The xarray Dataset to display
     **kwargs
         Additional arguments for display:
-        - plot_type: 'auto', 'summary', 'distribution', 'correlation', 'dataframe' (default: uses pysnt.get_option('display.table_mode'))
+        - plot_type: 'auto', 'dataframe', 'heatmap', 'heatmap_norm', 'summary' (default: uses pysnt.get_option('display.table_mode'))
         - max_vars: Maximum number of variables to display (default: 10)
         - figsize: Figure size (default: uses pysnt.get_option('plotting.figure_size'))
         - title: Plot title (default: 'SNT Table Data')
@@ -429,34 +451,29 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         if plot_type == 'pandasgui':
             plot_type = 'dataframe'
             kwargs['use_gui'] = True
-        elif plot_type == 'basic':
-            plot_type = 'dataframe'
-            kwargs['use_gui'] = False
+        elif plot_type == 'heatmap':
+            # Keep as heatmap for special handling
+            pass
+        elif plot_type == 'heatmap_norm':
+            # Keep as heatmap_norm for special handling
+            pass
         
         # Auto-select plot type based on data
         if plot_type == 'auto':
-            if n_vars == 1:
-                plot_type = 'distribution'
-            elif n_vars <= 4:
-                plot_type = 'distribution'
-            else:
-                plot_type = 'summary'
+            plot_type = 'summary'
 
         # Route to appropriate display function
         if plot_type == 'dataframe':
             return _display_dataset_as_dataframe(dataset, **kwargs)
-        elif plot_type in ['summary', 'distribution', 'correlation']:
-            # Import plotting functions from visual_display
-            from .visual_display import _create_dataset_summary_plot, _create_dataset_distribution_plot, _create_dataset_correlation_plot
-            if plot_type == 'summary':
-                return _create_dataset_summary_plot(dataset, display_vars, title, figsize)
-            elif plot_type == 'distribution':
-                return _create_dataset_distribution_plot(dataset, display_vars, title, figsize)
-            elif plot_type == 'correlation':
-                return _create_dataset_correlation_plot(dataset, display_vars, title, figsize)
+        elif plot_type == 'heatmap':
+            return _display_dataset_as_heatmap(dataset, **kwargs)
+        elif plot_type == 'heatmap_norm':
+            return _display_dataset_as_heatmap_normalized(dataset, **kwargs)
+        elif plot_type == 'summary':
+            return _display_dataset_as_summary(dataset, **kwargs)
         else:
             logger.warning(
-                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'summary', 'distribution', 'correlation', 'dataframe', 'pandasgui', 'basic'")
+                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'dataframe', 'pandasgui', 'heatmap', 'heatmap_norm', 'summary'")
             return False
 
     except Exception as e:
@@ -512,6 +529,16 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
         max_rows = config.get('max_rows')
         max_cols = config.get('max_cols')
         precision = config.get('precision')
+        
+        # Ensure precision is a valid integer (pandas can't handle None or invalid values)
+        if precision is None or not isinstance(precision, int) or precision < 0:
+            precision = 6  # Default fallback
+        
+        # Handle None values in DataFrame that can cause formatting issues
+        df_display = df.copy()
+        
+        # Replace None values with 'None' string for display to avoid pandas formatting errors
+        df_display = df_display.fillna('None')
 
         with pandas.option_context('display.max_rows', max_rows,
                                  'display.max_columns', max_cols,
@@ -519,11 +546,15 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
                                  'display.width', None):
             print(f"xarray.Dataset as DataFrame: {title}")
             print(f"Shape: {df.shape}")
-            print(df)
+            print(df_display)
             
             if hasattr(df, 'describe'):
                 print("\nSummary statistics:")
-                print(df.describe())
+                # Use original df for describe() as it handles None values better
+                try:
+                    print(df.describe())
+                except Exception as e:
+                    print(f"Summary statistics unavailable: {e}")
 
         logger.info(f"Successfully displayed Dataset as DataFrame in console: '{title}'")
         return True
@@ -531,3 +562,341 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
     except Exception as e:
         _handle_display_error(e, "Dataset to DataFrame display", "Dataset")
         return False
+
+
+def _display_dataset_as_heatmap(dataset: Any, **kwargs) -> bool:
+    """
+    Display xarray Dataset as a heatmap visualization.
+    
+    This function converts the dataset to a pandas DataFrame, converts all values
+    to numeric (replacing None and empty strings with NaN), and creates a heatmap
+    visualization using matplotlib.
+    
+    Parameters
+    ----------
+    dataset : xarray.Dataset
+        The dataset to display as a heatmap
+    **kwargs
+        Additional arguments for display:
+        - title : str, optional
+          Title for the heatmap (default: "Dataset Comparison Heatmap")
+        - xlabel : str, optional
+          X-axis label (default: "Metrics")
+        - ylabel : str, optional
+          Y-axis label (default: "Datasets")
+        - cmap : str, optional
+          Colormap for the heatmap (default: "viridis")
+        - figsize : tuple, optional
+          Figure size (default: uses pysnt.get_option('plotting.figure_size'))
+        
+    Returns
+    -------
+    bool
+        True if successful, False otherwise
+    """
+    from ..config import get_option
+    
+    logger.debug(f"Displaying xarray Dataset as heatmap: {dataset}")
+
+    try:
+        # Import required libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        
+        # Convert dataset to DataFrame
+        df = dataset.to_dataframe()
+        
+        if df.empty:
+            logger.warning("Dataset is empty, cannot create heatmap")
+            return False
+        
+        logger.info(f"Converting Dataset to heatmap: {df.shape[0]} rows × {df.shape[1]} columns")
+        
+        # Convert to numeric, replacing None and empty strings with NaN
+        df_numeric = df.apply(pd.to_numeric, errors='coerce')
+        
+        # Get display parameters
+        config = _extract_display_config(**kwargs)
+        figsize = config.get('figsize', get_option('plotting.figure_size'))
+        title = kwargs.get('title', 'Dataset Comparison Heatmap')
+        xlabel = kwargs.get('xlabel', 'Metrics')
+        ylabel = kwargs.get('ylabel', 'Datasets')
+        cmap = kwargs.get('cmap', 'viridis')
+        
+        # Setup matplotlib for interactive display
+        _setup_matplotlib_interactive()
+        
+        # Create heatmap
+        fig, ax = plt.subplots(figsize=figsize)
+        im = ax.imshow(df_numeric.values, aspect='auto', cmap=cmap)
+        
+        # NaN values will appear as a different color (white by default)
+        im.cmap.set_bad(color='lightgray')  # Set color for NaN values
+        
+        # Set ticks and labels
+        ax.set_xticks(np.arange(len(df_numeric.columns)))
+        ax.set_yticks(np.arange(len(df_numeric.index)))
+        ax.set_xticklabels(df_numeric.columns, rotation=90, ha='right', fontsize=8)
+        ax.set_yticklabels(df_numeric.index)
+        
+        # Add colorbar
+        cbar = plt.colorbar(im, ax=ax, label='Value')
+        
+        # Labels
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
+        
+        plt.tight_layout()
+        plt.show()
+        
+        logger.info(f"Successfully displayed Dataset as heatmap: '{title}'")
+        return True
+
+    except Exception as e:
+        _handle_display_error(e, "Dataset heatmap display", "Dataset")
+        return False
+
+
+def _display_dataset_as_heatmap_normalized(dataset: Any, **kwargs) -> bool:
+    """
+    Display xarray Dataset as a normalized heatmap visualization.
+    
+    This function converts the dataset to a pandas DataFrame, converts all values
+    to numeric (replacing None and empty strings with NaN), normalizes each column
+    to 0-1 range, and creates a heatmap visualization using matplotlib.
+    
+    Parameters
+    ----------
+    dataset : xarray.Dataset
+        The dataset to display as a normalized heatmap
+    **kwargs
+        Additional arguments for display:
+        - title : str, optional
+          Title for the heatmap (default: "Normalized Dataset Comparison Heatmap")
+        - xlabel : str, optional
+          X-axis label (default: "Metrics")
+        - ylabel : str, optional
+          Y-axis label (default: "Datasets")
+        - cmap : str, optional
+          Colormap for the heatmap (default: "viridis")
+        - figsize : tuple, optional
+          Figure size (default: uses pysnt.get_option('plotting.figure_size'))
+        
+    Returns
+    -------
+    bool
+        True if successful, False otherwise
+    """
+    from ..config import get_option
+    
+    logger.debug(f"Displaying xarray Dataset as normalized heatmap: {dataset}")
+
+    try:
+        # Import required libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        
+        # Convert dataset to DataFrame
+        df = dataset.to_dataframe()
+        
+        if df.empty:
+            logger.warning("Dataset is empty, cannot create normalized heatmap")
+            return False
+        
+        logger.info(f"Converting Dataset to normalized heatmap: {df.shape[0]} rows × {df.shape[1]} columns")
+        
+        # Convert to numeric, replacing None and empty strings with NaN
+        df_numeric = df.apply(pd.to_numeric, errors='coerce')
+        
+        # Normalize each column to 0-1 range
+        # Handle columns that are all NaN or have no variation
+        df_normalized = df_numeric.copy()
+        for col in df_numeric.columns:
+            col_data = df_numeric[col]
+            # Skip normalization if column is all NaN or has no variation
+            if col_data.isna().all():
+                logger.warning(f"Column '{col}' is all NaN, skipping normalization")
+                continue
+            
+            col_min = col_data.min()
+            col_max = col_data.max()
+            
+            if pd.isna(col_min) or pd.isna(col_max):
+                logger.warning(f"Column '{col}' has NaN min/max values, skipping normalization")
+                continue
+                
+            if col_min == col_max:
+                # No variation in column - set to 0.5 (middle of 0-1 range)
+                logger.warning(f"Column '{col}' has no variation (min=max={col_min}), setting to 0.5")
+                df_normalized[col] = 0.5
+            else:
+                # Standard min-max normalization
+                df_normalized[col] = (col_data - col_min) / (col_max - col_min)
+        
+        # Get display parameters
+        config = _extract_display_config(**kwargs)
+        figsize = config.get('figsize', get_option('plotting.figure_size'))
+        title = kwargs.get('title', 'Normalized Dataset Comparison Heatmap')
+        xlabel = kwargs.get('xlabel', 'Metrics')
+        ylabel = kwargs.get('ylabel', 'Datasets')
+        cmap = kwargs.get('cmap', 'viridis')
+        
+        # Setup matplotlib for interactive display
+        _setup_matplotlib_interactive()
+        
+        # Create heatmap
+        fig, ax = plt.subplots(figsize=figsize)
+        im = ax.imshow(df_normalized.values, aspect='auto', cmap=cmap, vmin=0, vmax=1)
+        
+        # NaN values will appear as a different color (white by default)
+        im.cmap.set_bad(color='lightgray')  # Set color for NaN values
+        
+        # Set ticks and labels
+        ax.set_xticks(np.arange(len(df_normalized.columns)))
+        ax.set_yticks(np.arange(len(df_normalized.index)))
+        ax.set_xticklabels(df_normalized.columns, rotation=90, ha='right', fontsize=8)
+        ax.set_yticklabels(df_normalized.index)
+        
+        # Add colorbar with normalized range
+        cbar = plt.colorbar(im, ax=ax, label='Normalized Value (0-1)')
+        
+        # Labels
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
+        
+        plt.tight_layout()
+        plt.show()
+        
+        logger.info(f"Successfully displayed Dataset as normalized heatmap: '{title}'")
+        return True
+
+    except Exception as e:
+        _handle_display_error(e, "Dataset normalized heatmap display", "Dataset")
+        return False
+
+
+def _display_dataset_as_summary(dataset: Any, **kwargs) -> bool:
+    """
+    Display xarray Dataset as a text-based summary.
+    
+    This function converts the dataset to a pandas DataFrame and provides
+    a comprehensive text summary including shape, memory usage, data types,
+    missing values, and data quality issues.
+    
+    Parameters
+    ----------
+    dataset : xarray.Dataset
+        The dataset to summarize
+    **kwargs
+        Additional arguments for display:
+        - title : str, optional
+          Title for the summary (default: "Dataset Summary")
+        
+    Returns
+    -------
+    bool
+        True if successful, False otherwise
+    """
+    logger.debug(f"Displaying xarray Dataset as summary: {dataset}")
+
+    try:
+        # Convert dataset to DataFrame
+        df = dataset.to_dataframe()
+        
+        if df.empty:
+            print("Dataset is empty - no data to summarize")
+            return True
+        
+        # Get title
+        title = kwargs.get('title', 'Dataset Summary')
+        
+        # Call the summary function
+        _summarize_dataframe(df, title)
+        
+        logger.info(f"Successfully displayed Dataset summary: '{title}'")
+        return True
+
+    except Exception as e:
+        _handle_display_error(e, "Dataset summary display", "Dataset")
+        return False
+
+
+def _summarize_dataframe(df, name="DataFrame"):
+    """
+    Pretty-print summary of DataFrame characteristics.
+    
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to summarize
+    name : str
+        Name/title for the summary
+    """
+    import pandas as pd
+    import numpy as np
+    
+    print(f"\n{'='*60}")
+    print(f"  {name}")
+    print(f"{'='*60}")
+
+    # Basic info
+    print(f"Shape: {df.shape[0]:,} rows × {df.shape[1]} columns")
+    print(f"Memory: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
+    print(f"Duplicate rows: {df.duplicated().sum():,}")
+
+    # Missing values (simple version)
+    missing = df.isnull().sum().sum()
+    if missing > 0:
+        print(f"Missing values: {missing:,} ({missing/df.size*100:.1f}%)")
+    else:
+        print("Missing values: None ✓")
+
+    # Column types
+    print(f"{'─'*60}")
+    print("Column Types:")
+    dtype_counts = df.dtypes.value_counts()
+    for dtype, count in dtype_counts.items():
+        print(f"  {dtype}: {count} columns")
+
+    # Numeric columns summary
+    numeric_cols = df.select_dtypes(include=[np.number]).columns
+    if len(numeric_cols) > 0:
+        print(f"{'─'*60}")
+        print(f"Numeric Columns ({len(numeric_cols)}):")
+        for col in numeric_cols[:5]:  # Show first 5
+            col_min = df[col].min()
+            col_max = df[col].max()
+            print(f"  {col}: [{col_min:.2f}, {col_max:.2f}]")
+        if len(numeric_cols) > 5:
+            print(f"  ... and {len(numeric_cols) - 5} more")
+
+    # Categorical/object columns
+    cat_cols = df.select_dtypes(include=['object', 'category']).columns
+    if len(cat_cols) > 0:
+        print(f"{'─'*60}")
+        print(f"Categorical Columns ({len(cat_cols)}):")
+        for col in cat_cols[:5]:  # Show first 5
+            n_unique = df[col].nunique()
+            print(f"  {col}: {n_unique} unique values")
+        if len(cat_cols) > 5:
+            print(f"  ... and {len(cat_cols) - 5} more")
+
+    # Data quality issues
+    issues = []
+    all_nan_cols = df.columns[df.isnull().all()].tolist()
+    if all_nan_cols:
+        issues.append(f"Columns with all NaN: {', '.join(all_nan_cols)}")
+    
+    constant_cols = [col for col in df.columns if df[col].nunique() == 1]
+    if constant_cols:
+        issues.append(f"Constant columns: {', '.join(constant_cols)}")
+
+    if issues:
+        print(f"{'─'*60}")
+        print("⚠ Data Quality Issues:")
+        for issue in issues:
+            print(f"  • {issue}")
+
+    print(f"{'='*60}\n")
