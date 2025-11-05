@@ -26,18 +26,6 @@ pysnt.initialize()  # initialize with default options
 **Important:** pysnt is only available *after* `pysnt.initialize()` is called.
 ```
 
-### Cleanup and Disposal
-
-When you're done with PySNT, you can properly clean up resources:
-
-```python
-pysnt.dispose()  # Clean shutdown of ImageJ and JVM
-```
-
-```{warning}
-**Important:** After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session. The JVM cannot be restarted once it has been shut down. You must restart your Python session to use PySNT again.
-```
-
 ### Java Logging Control
 
 You can use the PySNT configuration system to control Java-side logging verbosity:
@@ -69,7 +57,7 @@ There are also some advanced initialization options:
 | Code | Comments |
 | ---- | -------- |
 |`pysnt.initialize('/path/to/Fiji.app')` | Loads SNT from the specified Fiji installation |
-| `pysnt.initialize('interactive')` | See [pyimagej initialization mode](https://py.imagej.net/en/latest/Initialization.html#how-to-initialize-pyimagej) |
+| `pysnt.initialize(mode='interactive')` | See [pyimagej initialization mode](https://py.imagej.net/en/latest/Initialization.html#how-to-initialize-pyimagej) |
 | `pysnt.initialize(max_heap="8g")` | Configure JVM memory (8GB heap) |
 | `pysnt.initialize(max_heap="16g", min_heap="4g")` | Advanced memory configuration (16GB max, 4GB initial) |
 | `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](api_auto/pysnt.core.rst) |
@@ -361,6 +349,18 @@ print(f"ImageJ version: {ij.getVersion()}")
 specialized_result = (...)  # some specialized SNT operation
 python_equivalent = pysnt.to_python(specialized_result)
 ```
+
+## Cleanup and Disposal
+
+When you're done with PySNT, you can properly clean up resources:
+
+```python
+pysnt.dispose()  # Clean shutdown of JVM and java bridge
+```
+
+**Important:** After calling `pysnt.dispose()`, you cannot reinitialize PySNT in the same Python session.
+The JVM cannot be restarted once it has been shut down. You must restart your Python session to use PySNT again.
+
 
 ## Best Practices
 

@@ -5,9 +5,9 @@
 ```
 
 ```{seealso}
-- [Install](install.md) - Installation instructions
-- [Quickstart](quickstart.md) - Get started quickly
-- [Overview](overview.md) - Tour of pysnt's architecture
+- [Install](../install.md) - Installation instructions
+- [Quickstart](../quickstart.md) - Get started quickly
+- [Overview](../overview.md) - Tour of pysnt's architecture
 - [Limitations and Quirks](../limitations.md) - Known limitations and workarounds
 ```
 

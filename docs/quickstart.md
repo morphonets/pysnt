@@ -278,7 +278,8 @@ except Exception as e:
 
 Now that you understand the basics:
 
-1. **Configure your environment**: Adjust [configurations](overview.md#setting-options) for your needs
-2. **Explore tutorials**: Check out [notebooks](notebooks/index.md) for specific analysis workflows
-3. **Read the API**: Browse the [API reference](api.md) for detailed documentation
-4. **Join the community**: Ask questions on the [ImageJ Forum](https://forum.image.sc/tag/snt)
+1. **Explore pysnt**: Tour [pysnt’s architecture](overview.md)
+2. **Configure your environment**: Adjust [configurations](overview.md#setting-options) for your needs
+3. **Explore tutorials**: Check out [notebooks](notebooks/index.md) for specific analysis workflows
+4. **Read the API**: Browse the [API reference](api.md) for detailed documentation
+5. **Join the community**: Ask questions on the [ImageJ Forum](https://forum.image.sc/tag/snt)
