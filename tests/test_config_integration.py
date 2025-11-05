@@ -35,8 +35,8 @@ class TestConfigIntegration:
         assert pysnt.get_option('display.table_mode') == 'summary'
 
         # Change configuration
-        pysnt.set_option('display.table_mode', 'distribution')
-        assert pysnt.get_option('display.table_mode') == 'distribution'
+        pysnt.set_option('display.table_mode', 'heatmap')
+        assert pysnt.get_option('display.table_mode') == 'heatmap'
 
         # Test that the config module can be imported from converters
         # This should work without errors - the function imports get_table_mode
@@ -89,15 +89,15 @@ class TestConfigIntegration:
         assert result1['mode'] == 'summary'
 
         # Test with context manager
-        with pysnt.option_context(display_chart_format='svg', display_table_mode='distribution'):
+        with pysnt.option_context(display_chart_format='svg', display_table_mode='heatmap'):
             result2 = mock_converter()
             assert result2['format'] == 'svg'
-            assert result2['mode'] == 'distribution'
+            assert result2['mode'] == 'heatmap'
 
             # Test override within context
-            result3 = mock_converter(format='pdf', mode='basic')
+            result3 = mock_converter(format='pdf', mode='heatmap')
             assert result3['format'] == 'pdf'
-            assert result3['mode'] == 'basic'
+            assert result3['mode'] == 'heatmap'
 
         # Values should be restored
         result4 = mock_converter()
@@ -120,7 +120,7 @@ class TestConfigIntegration:
         # These should work
         from pysnt.config import set_option
         set_option('display.chart_format', 'svg')
-        set_option('display.table_mode', 'distribution')
+        set_option('display.table_mode', 'heatmap')
 
         # These should fail
         with pytest.raises(ValueError):

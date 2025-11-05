@@ -1,6 +1,11 @@
 pysnt.analysis package
 ======================
 
+.. automodule:: pysnt.analysis
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 Subpackages
 -----------
 
@@ -10,11 +15,3 @@ Subpackages
    pysnt.analysis.graph
    pysnt.analysis.growth
    pysnt.analysis.sholl
-
-Module contents
----------------
-
-.. automodule:: pysnt.analysis
-   :members:
-   :show-inheritance:
-   :undoc-members:

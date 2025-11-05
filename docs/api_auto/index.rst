@@ -1,9 +1,12 @@
-PySNT API Reference
-===================
 
-This section contains the complete API reference for PySNT, automatically generated from the source code.
+Auto-Generated API Documentation
+=================================
+
+This section contains automatically generated API documentation for all pySNT modules.
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
+   :glob:
+   
+   pysnt*
 
-   pysnt
