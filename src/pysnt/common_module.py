@@ -99,6 +99,95 @@ def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str = N
         # No special handling needed - use default constructor call
         return None
 
+    def create_method_wrapper(java_instance, class_name):
+        """
+        Create a method wrapper for Java instances that need special method handling.
+        
+        This function creates a wrapper around Java instances to handle cases where
+        specific methods need special parameter conversion or handling.
+        
+        Parameters
+        ----------
+        java_instance : Java object
+            The Java instance to wrap
+        class_name : str
+            The name of the Java class
+            
+        Returns
+        -------
+        Wrapper object or None
+            Returns a wrapper object if special handling is needed,
+            None if no special handling is required
+        """
+        
+        # Viewer3D add() method issue:
+        # The add(Object) method fails when called with Python lists because
+        # the Python-Java bridge can't match list type to Object parameter
+        if class_name == 'Viewer3D':
+            return Viewer3DMethodWrapper(java_instance)
+        
+        # Add more method wrapper cases here as needed:
+        # 
+        # if class_name == 'AnotherProblematicClass':
+        #     return AnotherClassMethodWrapper(java_instance)
+        
+        # No special handling needed
+        return None
+
+    class Viewer3DMethodWrapper:
+        """
+        Method wrapper for Viewer3D that handles Python list conversion issues.
+        
+        This wrapper intercepts method calls to handle cases where Python lists
+        need to be converted to Java collections before passing to Java methods.
+        """
+        
+        def __init__(self, java_viewer):
+            """Initialize wrapper with the actual Java Viewer3D instance."""
+            self._java_viewer = java_viewer
+        
+        def add(self, obj):
+            """
+            Add objects to the viewer with automatic Python list conversion.
+            
+            This method handles the conversion of Python lists to Java ArrayList
+            to work around the Python-Java bridge type matching issues.
+            
+            Parameters
+            ----------
+            obj : object
+                Object to add. Can be a Python list, Java ArrayList, or any other object.
+            """
+            # Check if obj is a Python list
+            if isinstance(obj, list):
+                try:
+                    # Convert Python list to Java ArrayList
+                    import scyjava
+                    java_arraylist = scyjava.jimport('java.util.ArrayList')()
+                    for item in obj:
+                        java_arraylist.add(item)
+                    # Call the Java method with the ArrayList
+                    return self._java_viewer.add(java_arraylist)
+                except Exception as e:
+                    # If conversion fails, try the original call and let it fail with the original error
+                    logger.debug(f"Failed to convert Python list to Java ArrayList: {e}")
+                    return self._java_viewer.add(obj)
+            else:
+                # Not a Python list, call directly
+                return self._java_viewer.add(obj)
+        
+        def __getattr__(self, name):
+            """Delegate all other attribute access to the wrapped Java object."""
+            return getattr(self._java_viewer, name)
+        
+        def __repr__(self):
+            """Return representation of the wrapped Java object."""
+            return repr(self._java_viewer)
+        
+        def __str__(self):
+            """Return string representation of the wrapped Java object."""
+            return str(self._java_viewer)
+
     class DynamicPlaceholder(metaclass=DynamicPlaceholderMeta):
         def __new__(cls, *args, **kwargs):
             """Dynamic constructor that redirects to Java class if available."""
@@ -107,13 +196,23 @@ def create_dynamic_placeholder_class(java_class_name: str, javadoc_name: str = N
                 if scyjava.jvm_started():
                     java_class = scyjava.jimport(java_class_name)
                     
-                    # Check for constructor exceptions first
-                    special_result = handle_constructor_exceptions(java_class, class_name, *args, **kwargs)
-                    if special_result is not None:
-                        return special_result
+                    # Extract class name from java_class_name for method wrapper detection
+                    simple_class_name = java_class_name.split('.')[-1]
                     
-                    # Default constructor call
-                    return java_class(*args, **kwargs)
+                    # Check for constructor exceptions first
+                    special_result = handle_constructor_exceptions(java_class, simple_class_name, *args, **kwargs)
+                    if special_result is not None:
+                        java_instance = special_result
+                    else:
+                        # Default constructor call
+                        java_instance = java_class(*args, **kwargs)
+                    
+                    # Check if this class needs method-level wrapping
+                    method_wrapper = create_method_wrapper(java_instance, simple_class_name)
+                    if method_wrapper is not None:
+                        return method_wrapper
+                    
+                    return java_instance
             except ImportError:
                 # JVM not started or class not found
                 pass
