@@ -6,6 +6,7 @@ and SNT-specific object handling.
 """
 
 import logging
+import traceback
 from typing import Any, Callable, Optional, Tuple
 
 # Import utilities from our utils module
@@ -18,7 +19,11 @@ from .utils import (
     _validate_display_kwargs,
 )
 # Import from converters for functions we haven't moved yet
-from ..converters.structured_data_converters import _convert_path_to_xarray
+from ..converters.structured_data_converters import _convert_path_to_xarray, _is_snt_table, _convert_snt_table, _extract_imageplus_metadata
+from ..converters.chart_converters import _is_snt_chart, _convert_snt_chart
+from ..converters.graph_converters import _is_snt_graph, _convert_snt_graph
+from ..converters.core import _create_converter_result
+from .visual_display import _combine_matplotlib_figures
 
 logger = logging.getLogger(__name__)
 
@@ -271,17 +276,14 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
         return 'snt_object', _handle_snt_object_display
 
     # Check for SNTTable objects
-    from ..converters.structured_data_converters import _is_snt_table
     if _is_snt_table(obj):
         return 'snt_table', _display_snt_table
 
     # Check for SNTChart objects
-    from ..converters.chart_converters import _is_snt_chart
     if _is_snt_chart(obj):
         return 'snt_chart', _display_snt_chart
 
     # Check for SNTGraph objects
-    from ..converters.graph_converters import _is_snt_graph
     if _is_snt_graph(obj):
         return 'snt_graph', _display_snt_graph
 
@@ -408,7 +410,6 @@ def _display_snt_table(obj, **kwargs):
     
     try:
         # Convert SNTTable to SNTObject containing xarray Dataset
-        from ..converters.structured_data_converters import _convert_snt_table
         converted = _convert_snt_table(obj, **kwargs)
         
         if converted.get('error') is not None:
@@ -443,7 +444,6 @@ def _display_snt_chart(obj, **kwargs):
     
     try:
         # Convert SNTChart to SNTObject containing matplotlib Figure
-        from ..converters.chart_converters import _convert_snt_chart
         converted = _convert_snt_chart(obj, **kwargs)
         
         if converted.get('error') is not None:
@@ -478,7 +478,6 @@ def _display_snt_graph(obj, **kwargs):
     
     try:
         # Convert SNTGraph to SNTObject containing NetworkX Graph
-        from ..converters.graph_converters import _convert_snt_graph
         converted = _convert_snt_graph(obj, **kwargs)
         
         if converted.get('error') is not None:
@@ -494,21 +493,7 @@ def _display_snt_graph(obj, **kwargs):
 
 
 def _display_with_auto_conversion(obj: Any, **kwargs) -> Any:
-    """
-    Attempt to display a raw Java object by trying available converters.
-    
-    Parameters
-    ----------
-    obj : Any
-        Raw Java object to convert and display
-    **kwargs
-        Display arguments
-        
-    Returns
-    -------
-    Any
-        Converted and displayed object, or None if conversion fails
-    """
+    """Attempt to display a raw Java object by trying available converters."""
     logger.debug(f"Attempting auto-conversion for {type(obj)}")
     
     try:
