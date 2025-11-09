@@ -171,9 +171,9 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[s
 
         # Convert to matplotlib figure
         if format_type == 'svg':
-            fig = _svg_to_matplotlib(svg_file=temp_path, dpi=300, figsize=None, background='None')
+            fig = _svg_to_matplotlib(svg_file=temp_path, figsize=None, background='None')
         elif format_type == 'pdf':
-            fig = _pdf_to_matplotlib(pdf_file=temp_path, dpi=300, figsize=None)
+            fig = _pdf_to_matplotlib(pdf_file=temp_path, figsize=None)
         else:  # PNG
             fig = _png_to_matplotlib(png_file=temp_path, figsize=None)
 
@@ -301,9 +301,9 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
         for panel_file in panel_files:
             try:
                 if format_type == 'svg':
-                    panel_fig = _svg_to_matplotlib(svg_file=panel_file, dpi=150, figsize=None, background='None')
+                    panel_fig = _svg_to_matplotlib(svg_file=panel_file, figsize=None, background='None')
                 elif format_type == 'pdf':
-                    panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, dpi=150, figsize=None)
+                    panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, figsize=None)
                 else:  # PNG
                     panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
                 panel_figures.append(panel_fig)
@@ -327,9 +327,9 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
                 # Use pre-loaded panel figure or load if needed
                 if panel_fig is None:
                     if format_type == 'svg':
-                        panel_fig = _svg_to_matplotlib(svg_file=panel_file, dpi=150, figsize=None, background='None')
+                        panel_fig = _svg_to_matplotlib(svg_file=panel_file, figsize=None, background='None')
                     elif format_type == 'pdf':
-                        panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, dpi=150, figsize=None)
+                        panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, figsize=None)
                     else:  # PNG
                         panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
 
@@ -459,7 +459,7 @@ def _create_figure_with_image(img_array, figsize=None, title=None, dpi=None, tig
     return fig
 
 
-def _svg_to_matplotlib(svg_file, dpi=300, figsize=None, background='white'):
+def _svg_to_matplotlib(svg_file, dpi=None, figsize=None, background='white'):
     """
     Convert an SVG file to a matplotlib Figure object using cairosvg.
 
@@ -478,14 +478,54 @@ def _svg_to_matplotlib(svg_file, dpi=300, figsize=None, background='white'):
         >>> # Custom size
         >>> fig2 = _svg_to_matplotlib('diagram.svg', dpi=600, figsize=(10, 8))
     """
+    from ..config import get_option
+    
     if not HAS_CAIROSVG:
         raise ImportError("cairosvg is required for SVG conversion. Install with: pip install cairosvg")
 
-    png_data = cairosvg.svg2png(
-        url=svg_file,
-        dpi=dpi,
-        background_color=background
-    )
+    # Use config default if DPI not specified
+    if dpi is None:
+        dpi = get_option('display.chart_dpi')
+
+    try:
+        # Try to read and validate SVG file first
+        with open(svg_file, 'rb') as f:
+            svg_content = f.read()
+        
+        # Check if file is actually SVG (should start with <?xml, <!DOCTYPE, or <svg)
+        svg_start = svg_content[:100].decode('utf-8', errors='ignore').strip()
+        if not (svg_start.startswith('<?xml') or svg_start.startswith('<svg') or svg_start.startswith('<!DOCTYPE')):
+            logger.warning(f"SVG file doesn't start with expected XML/SVG header. First 100 chars: {svg_start}")
+            raise ValueError(f"Invalid SVG file format. File starts with: {svg_start[:50]}")
+        
+        # Decode SVG content for text processing
+        svg_text = svg_content.decode('utf-8', errors='ignore')
+        
+        # Fix rendering issues with cairosvg
+        # Replace 'shape-rendering:crispEdges' which cairosvg doesn't support
+        # This fixes thin line rendering issues
+        svg_text = svg_text.replace('shape-rendering:crispEdges', 'shape-rendering:auto')
+        logger.debug("Replaced 'shape-rendering:crispEdges' with 'shape-rendering:auto' for cairosvg compatibility")
+        
+        # Convert back to bytes
+        svg_content = svg_text.encode('utf-8')
+        
+        # Try to convert using the file content directly
+        png_data = cairosvg.svg2png(
+            bytestring=svg_content,
+            dpi=dpi,
+            background_color=background
+        )
+    except Exception as e:
+        logger.error(f"Failed to convert SVG with cairosvg: {e}")
+        # Log first few lines of SVG for debugging
+        try:
+            with open(svg_file, 'r', encoding='utf-8', errors='ignore') as f:
+                first_lines = ''.join(f.readlines()[:5])
+                logger.debug(f"First lines of SVG file:\n{first_lines}")
+        except:
+            pass
+        raise
 
     # Load PNG data as image array
     img = mpimg.imread(BytesIO(png_data), format='PNG')
@@ -500,7 +540,7 @@ def _svg_to_matplotlib(svg_file, dpi=300, figsize=None, background='white'):
     return _create_figure_with_image(img, figsize=figsize, dpi=dpi, tight_layout=True)
 
 
-def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
+def _pdf_to_matplotlib(pdf_file, page=0, dpi=None, figsize=None):
     """
     Convert a PDF file (or specific page) to a matplotlib Figure object using PyMuPDF (fitz).
 
@@ -521,8 +561,14 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
         >>> # Custom size
         >>> fig3 = _pdf_to_matplotlib('document.pdf', figsize=(10, 8))
     """
+    from ..config import get_option
+    
     if not HAS_FITZ:
         raise ImportError("PyMuPDF (fitz) is required for PDF conversion. Install with: pip install PyMuPDF")
+
+    # Use config default if DPI not specified
+    if dpi is None:
+        dpi = get_option('display.chart_dpi')
 
     # Open PDF
     doc = fitz.open(pdf_file)
@@ -541,7 +587,13 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
     mat = fitz.Matrix(zoom, zoom)
 
     # Render page to pixmap (image)
-    pix = pdf_page.get_pixmap(matrix=mat)
+    # Try different rendering flags for better text handling
+    pix = pdf_page.get_pixmap(
+        matrix=mat,
+        alpha=False,  # No alpha channel unless needed
+        annots=False,  # Include annotations
+        clip=None
+    )
 
     # Convert pixmap to numpy array
     img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
@@ -565,7 +617,7 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=300, figsize=None):
     return _create_figure_with_image(
         img,
         figsize=figsize,
-        title=f"PDF Page {page + 1}",
+        title=None,  # Don't add automatic title
         dpi=dpi,
         tight_layout=True
     )

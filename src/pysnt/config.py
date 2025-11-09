@@ -82,6 +82,13 @@ def _positive_int_validator(value: int) -> int:
     return value
 
 
+def _dpi_validator(value: int) -> int:
+    """Validate DPI value."""
+    if not isinstance(value, int) or value < 72 or value > 2400:
+        raise ValueError(f"DPI must be an integer between 72 and 2400, got {value}")
+    return value
+
+
 def _layout_algorithm_validator(value: str) -> str:
     """Validate layout algorithm option."""
     valid_layouts = {
@@ -143,6 +150,13 @@ _register_option(
     'png',
     'Default export format for SNTChart (svg, png, or pdf)',
     _chart_format_validator
+)
+
+_register_option(
+    'display.chart_dpi',
+    300,
+    'Default DPI for chart rendering (72-2400)',
+    _dpi_validator
 )
 
 _register_option(

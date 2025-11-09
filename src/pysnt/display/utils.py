@@ -296,7 +296,7 @@ def _apply_standard_layout(fig, show_overall_title=False, show_panel_titles=Fals
     """
     # Set overall title if requested
     if show_overall_title and overall_title:
-        fig.suptitle(overall_title, fontsize=14, fontweight='normal')
+        fig.suptitle(overall_title, fontweight='normal')
         top_margin = 0.93
     else:
         top_margin = 0.98

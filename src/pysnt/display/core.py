@@ -27,6 +27,278 @@ from .visual_display import _combine_matplotlib_figures
 
 logger = logging.getLogger(__name__)
 
+
+def handle_display_errors(operation_name: str):
+    """
+    Decorator to handle common display operation errors.
+    
+    Parameters
+    ----------
+    operation_name : str
+        Name of the operation for error messages
+        
+    Returns
+    -------
+    decorator
+        Decorator function that handles exceptions
+    """
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                logger.error(f"Failed to {operation_name}: {e}")
+                traceback.print_exc()
+                return None
+        return wrapper
+    return decorator
+
+
+def _convert_objects_to_figures(obj_list, converter_func, obj_type_name, **kwargs):
+    """
+    Generic function to convert a list of objects to matplotlib figures.
+    
+    Parameters
+    ----------
+    obj_list : list
+        List of objects to convert
+    converter_func : callable
+        Function to convert individual objects
+    obj_type_name : str
+        Name of object type for logging
+    **kwargs
+        Additional arguments for conversion (including 'panel_titles' for custom titles)
+        
+    Returns
+    -------
+    tuple
+        (figures, titles) where figures is list of matplotlib figures
+        and titles is list of corresponding titles
+    """
+    figures = []
+    titles = []
+    
+    # Get custom titles if provided
+    custom_titles = kwargs.get('panel_titles', None)
+    
+    for i, obj in enumerate(obj_list):
+        try:
+            # Convert individual object
+            converted = converter_func(obj, **kwargs)
+            
+            if converted is None:
+                logger.warning(f"Failed to convert {obj_type_name} {i+1} - got None")
+                continue
+                
+            if isinstance(converted, dict) and converted.get('error') is not None:
+                logger.warning(f"Failed to convert {obj_type_name} {i+1}: {converted.get('error')}")
+                continue
+            
+            # Extract figure and title
+            if isinstance(converted, dict) and 'data' in converted:
+                figure = converted['data']
+            else:
+                figure = converted
+                
+            # Get title - use custom title if provided, otherwise try to extract from object
+            if custom_titles and i < len(custom_titles):
+                title = custom_titles[i]
+            else:
+                try:
+                    if hasattr(obj, 'getTitle'):
+                        title = obj.getTitle()
+                    elif hasattr(obj, 'getChart') and hasattr(obj.getChart(), 'getTitle'):
+                        title = obj.getChart().getTitle()
+                    else:
+                        title = f"{obj_type_name} {i+1}"
+                except Exception:
+                    title = f"{obj_type_name} {i+1}"
+            
+            figures.append(figure)
+            titles.append(title)
+            
+            logger.debug(f"Successfully converted {obj_type_name} {i+1}: {title}")
+            
+        except Exception as e:
+            logger.warning(f"Failed to convert {obj_type_name} {i+1}: {e}")
+            continue
+    
+    return figures, titles
+
+
+def _convert_viewer2d_to_chart(viewer2d, **kwargs):
+    """Convert a Viewer2D object to an SNTChart."""
+    # Get chart from Viewer2D
+    chart = viewer2d.getChart()
+    if chart is None:
+        return None
+    
+    # Convert chart to matplotlib figure
+    return _convert_snt_chart(chart, **kwargs)
+
+
+def _convert_imageplus_to_xarray(imageplus, index, **kwargs):
+    """Convert a single ImagePlus to xarray data with metadata."""
+    from ..util import ImpUtils
+    from ..core import ij
+    
+    # Extract metadata first
+    metadata = _extract_imageplus_metadata(imageplus, **kwargs)
+    
+    # Convert ImagePlus to xarray using the same method as _display_imageplus
+    frame = int(metadata.get('frame', 1))
+    
+    try:
+        converted_imp = ImpUtils.convertToSimple2D(imageplus, frame)
+    except (TypeError, AttributeError) as e:
+        logger.debug(f"ImpUtils.convertToSimple2D failed for ImagePlus {index+1}: {e}")
+        # Fallback: try direct conversion without ImpUtils
+        converted_imp = imageplus
+    
+    # Use ij().py.from_java() to convert to xarray
+    xarray_data = ij().py.from_java(converted_imp)
+    
+    if xarray_data is None:
+        logger.warning(f"Failed to convert ImagePlus {index+1} to xarray - got None")
+        return None, None, None
+    
+    # Get image title
+    try:
+        image_title = imageplus.getTitle() if hasattr(imageplus, 'getTitle') else f'Image {index+1}'
+    except Exception:
+        image_title = f'Image {index+1}'
+    
+    logger.debug(f"Successfully converted ImagePlus {index+1}: {image_title}")
+    return xarray_data, metadata, image_title
+
+
+def _calculate_figure_size(aspect_ratios, panel_layout, num_panels):
+    """Calculate optimal figure size based on aspect ratios and layout."""
+    avg_aspect = sum(aspect_ratios) / len(aspect_ratios)
+    # Constrain aspect ratio to reasonable bounds
+    avg_aspect = max(0.5, min(2.0, avg_aspect))
+    
+    if panel_layout == 'vertical' or panel_layout == (num_panels, 1):
+        return (6 * avg_aspect, 4 * num_panels)
+    else:
+        return (4 * avg_aspect * num_panels, 4)
+
+
+def _plot_image_panel(ax, xarray_data, metadata, image_title, **kwargs):
+    """Plot a single image panel."""
+    try:
+        is_rgb = metadata.get('is_rgb', False)
+        if is_rgb:
+            im = ax.imshow(xarray_data.values, aspect='equal')
+        else:
+            cmap = kwargs.get('cmap', 'gray')
+            im = ax.imshow(xarray_data.values, cmap=cmap, aspect='equal')
+            if kwargs.get('add_colorbar', False):
+                import matplotlib.pyplot as plt
+                plt.colorbar(im, ax=ax)
+        
+        ax.set_title(image_title)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_aspect('equal', adjustable='box')
+        
+        # Remove spines (boxes) around each panel
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        
+        return True
+    except Exception as e:
+        logger.warning(f"Failed to plot panel: {e}")
+        ax.text(0.5, 0.5, f'{image_title}\n(Plot Error)', 
+               ha='center', va='center', transform=ax.transAxes)
+        ax.set_title(image_title)
+        
+        # Remove spines even for error panels
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        
+        return False
+
+
+def _apply_figure_layout(fig, title, **kwargs):
+    """Apply layout settings to figure."""
+    if title:
+        fig.suptitle(title)
+    
+    use_tight_layout = kwargs.get('tight_layout', True)
+    if use_tight_layout:
+        try:
+            pad = kwargs.get('pad', 1.08)
+            import matplotlib.pyplot as plt
+            import warnings
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", UserWarning)
+                plt.tight_layout(pad=pad)
+            return
+        except Exception as e:
+            logger.debug(f"tight_layout failed: {e}, using subplots_adjust instead")
+    
+    # Manual spacing control
+    import matplotlib.pyplot as plt
+    plt.subplots_adjust(
+        left=kwargs.get('left', 0.02),
+        right=kwargs.get('right', 0.98),
+        top=kwargs.get('top', 0.95 if title else 0.98),
+        bottom=kwargs.get('bottom', 0.02),
+        hspace=kwargs.get('hspace', 0.1),
+        wspace=kwargs.get('wspace', 0.05)
+    )
+
+
+def _create_combined_figure(figures, titles, obj_type_name, obj_count, **kwargs):
+    """
+    Generic function to create a combined multi-panel figure.
+    
+    Parameters
+    ----------
+    figures : list
+        List of matplotlib figures to combine
+    titles : list
+        List of titles for each panel
+    obj_type_name : str
+        Name of object type for metadata
+    obj_count : int
+        Original number of objects
+    **kwargs
+        Additional arguments including title, panel_layout
+        
+    Returns
+    -------
+    SNTObject
+        Combined figure result
+    """
+    if not figures:
+        logger.error(f"No {obj_type_name} objects could be converted successfully")
+        return None
+    
+    logger.info(f"Successfully converted {len(figures)} {obj_type_name} objects, creating multi-panel figure")
+    
+    # Combine figures into multi-panel display
+    title = kwargs.get('title', None)
+    combined_figure = _combine_matplotlib_figures(figures, titles, title or "", **kwargs)
+    
+    if combined_figure is None:
+        logger.error(f"Failed to combine {obj_type_name} objects into multi-panel figure")
+        return None
+    
+    # Create result metadata
+    panel_layout = kwargs.get('panel_layout', 'auto')
+    metadata = {
+        f'{obj_type_name.lower()}_count': obj_count,
+        'displayed_count': len(figures),
+        'panel_layout': panel_layout,
+        'title': title
+    }
+    
+    logger.info(f"Successfully created multi-panel figure with {len(figures)} {obj_type_name} objects")
+    return _create_converter_result(combined_figure, f'{obj_type_name}_List', **metadata)
+
+
 # Try to import optional dependencies
 try:
     import matplotlib.pyplot as plt
@@ -46,91 +318,25 @@ except ImportError:
 
 def display(obj: Any, **kwargs) -> Any:
     """
-    Enhanced display function that handles raw Java objects, converted SNT objects, matplotlib
-    figures, xarray objects, Viewer2D/3D objects, and lists of supported objects.
+    Display any supported object type in the most appropriate way.
     
-    This function automatically tries to convert Java objects using available converters
-    and then displays the result. For lists, it creates multi-panel displays.
-    For Viewer3D objects, it takes a snapshot and displays the RGB image.
-    For Viewer2D objects, it retrieves the underlying SNTChart and displays it.
-    Lists of SNTChart objects and Viewer2D objects are supported for multi-panel display.
+    Handles Java objects, SNT objects, matplotlib figures, xarray objects, 
+    Viewer2D/3D objects, and lists. Automatically converts Java objects 
+    and creates multi-panel displays for lists.
     
     Parameters
     ----------
     obj : Any
-        The object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, 
-        Viewer2D/3D objects, lists of supported objects, etc.)
+        Object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, 
+        Viewer2D/3D objects, lists, etc.)
     **kwargs
-        Additional arguments for display (e.g., cmap, title, format, scale, vmin, vmax, 
-        add_colorbar, figsize)
+        Display arguments (cmap, title, figsize, orthoview, panel_layout, max_panels, etc.)
         
-        For ImagePlus objects:
-        
-        - frame, t, time, timepoint : int, optional
-          Frame/timepoint to display (default: 1). Parameter names are case-insensitive.
-        
-        For Viewer2D objects:
-        
-        - title : str, optional
-          Title for the chart display (default: uses chart's title)
-        - Standard chart display parameters (cmap, figsize, etc.)
-        
-        For Viewer3D objects:
-        
-        - title : str, optional
-          Title for the snapshot display (default: "3D Viewer Snapshot")
-        - add_colorbar : bool, optional
-          Whether to add colorbar (default: False for RGB snapshots)
-        - figsize : tuple, optional
-          Figure size for display
-        
-        For lists of objects:
-        
-        - panel_layout : str or tuple, optional
-          Layout for panels ('auto', 'horizontal', 'vertical', or (rows, cols)) (default: 'auto')
-        - max_panels : int, optional
-          Maximum number of panels to display (default: 20)
     Returns
     -------
     Any
-        The displayed object - either the converted SNTObject (for Java objects), the chart
-        (for Viewer2D objects), the snapshot ImagePlus (for Viewer3D objects), or the 
-        original object (for already converted objects)
-        
-    Examples
-    --------
-    >>> # Direct usage with SNTChart
-    >>> chart = stats.getHistogram('Branch length')
-    >>> snt_obj = pysnt.display(chart)  # Returns SNTObject with matplotlib figure
+        The displayed object (converted SNTObject, chart, snapshot, or original object)
 
-    >>> # Direct usage with ImagePlus
-    >>> skeleton = tree.getSkeleton2D()
-    >>> snt_obj = pysnt.display(skeleton)  # Returns SNTObject with xarray data
-
-    >>> # Direct usage with Viewer2D
-    >>> viewer2d = Viewer2D()
-    >>> viewer2d.add(tree)
-    >>> chart = pysnt.display(viewer2d)  # Returns SNTChart from viewer
-
-    >>> # Direct usage with Viewer3D
-    >>> viewer3d = Viewer3D(False, "headless")
-    >>> viewer3d.add(tree)
-    >>> snapshot = pysnt.display(viewer3d, title="3D Scene")  # Returns snapshot ImagePlus
-
-    >>> # Works with already converted objects too - returns the same object
-    >>> converted = pysnt.to_python(chart)
-    >>> same_obj = pysnt.display(converted)  # Returns the matplotlib figure
-    
-    >>> # Display list of SNTChart objects as multi-panel figure
-    >>> charts = [stats.getHistogram('Branch length'), stats.getHistogram('Branch order')]
-    >>> snt_obj = pysnt.display(charts)  # Returns SNTObject with combined matplotlib figure
-    
-    >>> # Display list of Viewer2D objects as multi-panel figure
-    >>> viewer2d_1 = Viewer2D()
-    >>> viewer2d_1.add(tree1)
-    >>> viewer2d_2 = Viewer2D()
-    >>> viewer2d_2.add(tree2)
-    >>> snt_obj = pysnt.display([viewer2d_1, viewer2d_2])  # Returns SNTObject with combined matplotlib figure
     """
     logger.debug(f"display() called with object type: {type(obj)}")
 
@@ -154,44 +360,8 @@ def display(obj: Any, **kwargs) -> Any:
         # Handle special SNT object types that need preprocessing
         if _is_snt_tree(obj):
             logger.debug(f"Detected SNT Tree: {type(obj)}")
-            try:
-                skeleton = obj.getSkeleton2D()
-                logger.debug(f"Got skeleton from tree: {type(skeleton)}")
-                obj = skeleton
-            except Exception as e:
-                logger.warning(f"Failed to get skeleton from tree: {e}")
-                logger.info("Trying alternative skeleton extraction methods...")
-                
-                # Try alternative methods to get skeleton
-                skeleton = None
-                try:
-                    # Method 1: Check if object has getSkeleton method (without 2D)
-                    if hasattr(obj, 'getSkeleton'):
-                        skeleton = obj.getSkeleton()
-                        logger.debug(f"Got skeleton using getSkeleton(): {type(skeleton)}")
-                    # Method 2: Try to access skeleton via different attribute names
-                    elif hasattr(obj, 'skeleton'):
-                        skeleton = obj.skeleton
-                        logger.debug(f"Got skeleton via .skeleton attribute: {type(skeleton)}")
-                except Exception as e2:
-                    logger.debug(f"Alternative skeleton extraction failed: {e2}")
-                
-                if skeleton is not None:
-                    obj = skeleton
-                    logger.info(f"Successfully extracted skeleton using alternative method: {type(obj)}")
-                else:
-                    logger.warning("All skeleton extraction methods failed, falling back to scyjava conversion")
-                    # Final fallback: try to convert the tree directly using converters
-                    try:
-                        import scyjava as sj
-                        converted = sj.to_python(obj)
-                        if converted is not obj:
-                            obj = converted
-                            logger.debug(f"Converted tree using scyjava: {type(obj)}")
-                        else:
-                            logger.warning("No converter available for tree, will try generic display")
-                    except Exception as e3:
-                        logger.warning(f"scyjava conversion also failed: {e3}")
+            obj = _tree_to_chart(obj)
+
         # Special case: Handle ImagePlus objects that might be skeletons from trees
         elif str(type(obj)).find('ImagePlus') != -1:
             # Check if this ImagePlus might be a skeleton (has "Skel" in title)
@@ -245,6 +415,31 @@ def display(obj: Any, **kwargs) -> Any:
         # Clean up recursion flag
         if '_internal' in kwargs and _recursion_key in kwargs['_internal']:
             del kwargs['_internal'][_recursion_key]
+
+
+def _tree_to_chart(obj):
+    try:
+        from ..viewer import Viewer2D
+        viewer = Viewer2D()
+        viewer.add(obj)
+        if obj.getLabel():
+            viewer.setTitle(obj.getLabel())
+        logger.debug(f"Got Viewer2D from tree: {type(viewer)}")
+        obj = viewer.getChart()
+    except Exception as e:
+        logger.warning(f"Failed to get skeleton from tree: {e}")
+        logger.info("Trying alternative skeleton extraction methods...")
+        # skeleton = None
+        # try:
+        #     # Try alternative methods to get skeleton2D
+        #     skeleton = obj.getSkeleton2D()
+        #     logger.debug(f"Got skeleton using getSkeleton2D(): {type(skeleton)}")
+        # except Exception as e2:
+        #     logger.debug(f"Alternative skeleton extraction failed: {e2}")
+        # if skeleton is not None:
+        #     obj = skeleton
+        #     logger.info(f"Successfully extracted skeleton using alternative method: {type(obj)}")
+    return obj
 
 
 def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
@@ -390,6 +585,7 @@ def _handle_snt_object_display(obj, **kwargs):
         return None
 
 
+@handle_display_errors("display SNTTable")
 def _display_snt_table(obj, **kwargs):
     """
     Handler function for SNTTable display.
@@ -424,6 +620,7 @@ def _display_snt_table(obj, **kwargs):
         return None
 
 
+@handle_display_errors("display SNTChart")
 def _display_snt_chart(obj, **kwargs):
     """
     Handler function for SNTChart display.
@@ -458,6 +655,7 @@ def _display_snt_chart(obj, **kwargs):
         return None
 
 
+@handle_display_errors("display SNTGraph")
 def _display_snt_graph(obj, **kwargs):
     """
     Handler function for SNTGraph display.
@@ -555,21 +753,19 @@ def _display_generic_object(obj: Any, **kwargs) -> Any:
 
 def _display_object_list(obj_list: list, **kwargs) -> Any:
     """
-    Handle display of lists of supported objects.
-    
-    Currently supports lists of SNTChart objects and Viewer2D objects, which are displayed as multi-panel figures.
+    Handle display of lists of supported objects as multi-panel figures.
     
     Parameters
     ----------
     obj_list : list or tuple
         List of objects to display
     **kwargs
-        Additional display arguments
+        Display arguments
         
     Returns
     -------
     Any
-        The result of the display operation
+        Display result
     """
     logger.debug(f"Processing list of {len(obj_list)} objects")
     
@@ -578,10 +774,10 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
         return None
     
     # Check object types in the list
-    from ..converters.chart_converters import _is_snt_chart
-    
     chart_objects = []
     viewer2d_objects = []
+    imageplus_objects = []
+    tree_objects = []
     other_objects = []
     
     for i, obj in enumerate(obj_list):
@@ -589,34 +785,55 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
             chart_objects.append(obj)
         elif _is_viewer2d(obj):
             viewer2d_objects.append(obj)
+        elif str(type(obj)).find('ImagePlus') != -1:
+            imageplus_objects.append(obj)
+        elif _is_snt_tree(obj):
+            tree_objects.append(obj)
         else:
             other_objects.append((i, type(obj).__name__))
     
     # Handle pure lists of supported objects
-    if chart_objects and not viewer2d_objects and not other_objects:
+    if chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not other_objects:
         # Pure SNTChart list - use multi-panel display
         logger.info(f"Detected list of {len(chart_objects)} SNTChart objects")
         return _display_snt_chart_list(chart_objects, **kwargs)
-    elif viewer2d_objects and not chart_objects and not other_objects:
+    elif viewer2d_objects and not chart_objects and not imageplus_objects and not tree_objects and not other_objects:
         # Pure Viewer2D list - use multi-panel display
         logger.info(f"Detected list of {len(viewer2d_objects)} Viewer2D objects")
         return _display_viewer2d_list(viewer2d_objects, **kwargs)
-    elif (chart_objects or viewer2d_objects) and other_objects:
+    elif imageplus_objects and not chart_objects and not viewer2d_objects and not tree_objects and not other_objects:
+        # Pure ImagePlus list - use multi-panel display
+        logger.info(f"Detected list of {len(imageplus_objects)} ImagePlus objects")
+        return _display_imageplus_list(imageplus_objects, **kwargs)
+    elif tree_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not other_objects:
+        # Pure Tree list - use multi-panel display
+        logger.info(f"Detected list of {len(tree_objects)} Tree objects")
+        return _display_tree_list(tree_objects, **kwargs)
+    elif (chart_objects or viewer2d_objects or imageplus_objects or tree_objects) and other_objects:
         # Mixed list - warn and display supported objects
-        supported_count = len(chart_objects) + len(viewer2d_objects)
+        supported_count = len(chart_objects) + len(viewer2d_objects) + len(imageplus_objects) + len(tree_objects)
         logger.warning(f"Mixed object list detected. Displaying {supported_count} supported objects, "
                       f"ignoring {len(other_objects)} other objects: {[name for _, name in other_objects]}")
         
-        # Prioritize charts over viewer2d if both are present
+        # Prioritize charts > viewer2d > imageplus > trees if multiple types are present
         if chart_objects:
             return _display_snt_chart_list(chart_objects, **kwargs)
-        else:
+        elif viewer2d_objects:
             return _display_viewer2d_list(viewer2d_objects, **kwargs)
-    elif chart_objects and viewer2d_objects and not other_objects:
-        # Mixed supported objects - prioritize charts
-        logger.warning(f"Mixed list of {len(chart_objects)} SNTChart and {len(viewer2d_objects)} Viewer2D objects. "
-                      f"Displaying SNTChart objects only.")
-        return _display_snt_chart_list(chart_objects, **kwargs)
+        elif imageplus_objects:
+            return _display_imageplus_list(imageplus_objects, **kwargs)
+        else:
+            return _display_tree_list(tree_objects, **kwargs)
+    elif (chart_objects and viewer2d_objects) or (chart_objects and imageplus_objects) or (viewer2d_objects and imageplus_objects):
+        # Mixed supported objects - prioritize charts > viewer2d > imageplus
+        if chart_objects:
+            logger.warning(f"Mixed list detected. Displaying {len(chart_objects)} SNTChart objects, "
+                          f"ignoring other supported objects.")
+            return _display_snt_chart_list(chart_objects, **kwargs)
+        elif viewer2d_objects:
+            logger.warning(f"Mixed list detected. Displaying {len(viewer2d_objects)} Viewer2D objects, "
+                          f"ignoring ImagePlus objects.")
+            return _display_viewer2d_list(viewer2d_objects, **kwargs)
     else:
         # No supported objects for list display
         logger.warning(f"List contains no supported objects for multi-panel display. "
@@ -625,203 +842,164 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
         return display(obj_list[0], **kwargs)
 
 
+@handle_display_errors("display SNTChart list")
 def _display_snt_chart_list(chart_list: list, **kwargs) -> Any:
-    """
-    Display a list of SNTChart objects as a multi-panel matplotlib figure.
+    """Display a list of SNTChart objects as a multi-panel matplotlib figure."""
+    # Limit number of charts
+    max_panels = kwargs.get('max_panels', 20)
+    if len(chart_list) > max_panels:
+        logger.warning(f"Chart list has {len(chart_list)} items, limiting to {max_panels}")
+        chart_list = chart_list[:max_panels]
     
-    This function converts each SNTChart to a matplotlib figure and combines them
-    into a single multi-panel display using the existing combined chart logic.
+    logger.info(f"Converting {len(chart_list)} SNTChart objects to matplotlib figures")
     
-    Parameters
-    ----------
-    chart_list : list
-        List of SNTChart objects to display
-    **kwargs
-        Additional display arguments:
-        - panel_layout : str or tuple, layout for panels (default: 'auto')
-        - max_panels : int, maximum number of panels (default: 20)
-        - title : str, overall figure title (default: auto-generated)
-        
-    Returns
-    -------
-    Any
-        SNTObject containing the combined matplotlib figure
-    """
-    from ..converters.chart_converters import _convert_snt_chart
-    from ..converters.core import _create_converter_result
+    # Use common conversion logic
+    figures, titles = _convert_objects_to_figures(chart_list, _convert_snt_chart, "SNTChart", **kwargs)
     
-    try:
-        # Get parameters
-        max_panels = kwargs.get('max_panels', 20)
-        title = kwargs.get('title', None)  # No default overall title
-        
-        # Limit number of charts
-        if len(chart_list) > max_panels:
-            logger.warning(f"Chart list has {len(chart_list)} items, limiting to {max_panels}")
-            chart_list = chart_list[:max_panels]
-        
-        logger.info(f"Converting {len(chart_list)} SNTChart objects to matplotlib figures")
-        
-        # Convert each chart to matplotlib figure
-        figures = []
-        chart_titles = []
-        
-        for i, chart in enumerate(chart_list):
-            try:
-                # Convert individual chart
-                converted = _convert_snt_chart(chart, **kwargs)
-                
-                if converted.get('error') is not None:
-                    logger.warning(f"Failed to convert chart {i+1}: {converted.get('error')}")
-                    continue
-                
-                figure = converted['data']
-                figures.append(figure)
-                
-                # Get chart title
-                try:
-                    chart_title = chart.getTitle() if hasattr(chart, 'getTitle') else f"Chart {i+1}"
-                except Exception:
-                    chart_title = f"Chart {i+1}"
-                chart_titles.append(chart_title)
-                
-            except Exception as e:
-                logger.warning(f"Failed to convert chart {i+1}: {e}")
-                continue
-        
-        if not figures:
-            logger.error("No charts could be converted successfully")
-            return None
-        
-        logger.info(f"Successfully converted {len(figures)} charts, creating multi-panel figure")
-        
-        # Combine figures into multi-panel display
-        from .visual_display import _combine_matplotlib_figures
-        combined_figure = _combine_matplotlib_figures(figures, chart_titles, title or "", **kwargs)
-        
-        if combined_figure is None:
-            logger.error("Failed to combine charts into multi-panel figure")
-            return None
-        
-        # Create result
-        metadata = {
-            'chart_count': len(chart_list),
-            'displayed_count': len(figures),
-            'panel_layout': kwargs.get('panel_layout', 'auto'),
-            'title': title
-        }
-        
-        logger.info(f"Successfully created multi-panel figure with {len(figures)} charts")
-        return _create_converter_result(combined_figure, 'SNTChart_List', **metadata)
-        
-    except Exception as e:
-        logger.error(f"Failed to display SNTChart list: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
+    # Use common figure combination logic
+    return _create_combined_figure(figures, titles, "SNTChart", len(chart_list), **kwargs)
 
 
+@handle_display_errors("display Viewer2D list")
 def _display_viewer2d_list(viewer2d_list: list, **kwargs) -> Any:
-    """
-    Display a list of Viewer2D objects as a multi-panel matplotlib figure.
+    """Display a list of Viewer2D objects as a multi-panel matplotlib figure."""
+    # Limit number of viewers
+    max_panels = kwargs.get('max_panels', 20)
+    if len(viewer2d_list) > max_panels:
+        logger.warning(f"Viewer2D list has {len(viewer2d_list)} items, limiting to {max_panels}")
+        viewer2d_list = viewer2d_list[:max_panels]
     
-    This function gets the chart from each Viewer2D object and combines them
-    into a single multi-panel display using the existing combined chart logic.
+    logger.info(f"Extracting charts from {len(viewer2d_list)} Viewer2D objects")
+    
+    # Use common conversion logic with Viewer2D-specific converter
+    figures, titles = _convert_objects_to_figures(viewer2d_list, _convert_viewer2d_to_chart, "Viewer2D", **kwargs)
+    
+    # Use common figure combination logic
+    return _create_combined_figure(figures, titles, "Viewer2D", len(viewer2d_list), **kwargs)
+
+
+@handle_display_errors("display Tree list")
+def _display_tree_list(tree_list: list, **kwargs) -> Any:
+    """Display a list of Tree objects as a multi-panel matplotlib figure."""
+    # Limit number of trees
+    max_panels = kwargs.get('max_panels', 20)
+    if len(tree_list) > max_panels:
+        logger.warning(f"Tree list has {len(tree_list)} items, limiting to {max_panels}")
+        tree_list = tree_list[:max_panels]
+    
+    logger.info(f"Converting {len(tree_list)} Tree objects to 2D skeletons")
+    
+    # Convert each tree to ImagePlus (2D skeleton)
+    displayable_list = []
+    for i, tree in enumerate(tree_list):
+        try:
+            dis_tree = _tree_to_chart(tree)
+            if dis_tree is not None:
+                displayable_list.append(dis_tree)
+                logger.debug(f"Successfully converted Tree {i+1} to skeleton: {tree.getLabel()}")
+            else:
+                logger.warning(f"Tree {i+1} getSkeleton2D() returned None")
+        except Exception as e:
+            logger.warning(f"Failed to convert Tree {i+1} to skeleton: {e}")
+            continue
+    
+    if not displayable_list:
+        logger.error("No Tree objects could be converted to skeletons")
+        return None
+    
+    logger.info(f"Successfully converted {len(displayable_list)} trees, displaying as multi-panel figure")
+    
+    # Use the ImagePlus list display function
+    return _display_snt_chart_list(displayable_list, **kwargs)
+
+
+@handle_display_errors("display ImagePlus list")
+def _display_imageplus_list(imageplus_list: list, **kwargs) -> Any:
+    """
+    Display a list of ImagePlus objects as a multi-panel matplotlib figure.
     
     Parameters
     ----------
-    viewer2d_list : list
-        List of Viewer2D objects to display
+    imageplus_list : list
+        List of ImagePlus objects to display
     **kwargs
-        Additional display arguments:
-        - panel_layout : str or tuple, layout for panels (default: 'auto')
-        - max_panels : int, maximum number of panels (default: 20)
-        - title : str, overall figure title (default: auto-generated)
+        Display arguments (panel_layout, max_panels, title, figsize, etc.)
         
     Returns
     -------
     Any
         SNTObject containing the combined matplotlib figure
     """
-    from ..converters.chart_converters import _convert_snt_chart
-    from ..converters.core import _create_converter_result
-    
     try:
         # Get parameters
         max_panels = kwargs.get('max_panels', 20)
-        title = kwargs.get('title', None)  # No default overall title
+        title = kwargs.get('title', None)
+        panel_layout = kwargs.get('panel_layout', 'auto')
         
-        # Limit number of viewers
-        if len(viewer2d_list) > max_panels:
-            logger.warning(f"Viewer2D list has {len(viewer2d_list)} items, limiting to {max_panels}")
-            viewer2d_list = viewer2d_list[:max_panels]
+        # Limit number of ImagePlus objects
+        if len(imageplus_list) > max_panels:
+            logger.warning(f"ImagePlus list has {len(imageplus_list)} items, limiting to {max_panels}")
+            imageplus_list = imageplus_list[:max_panels]
         
-        logger.info(f"Extracting charts from {len(viewer2d_list)} Viewer2D objects")
+        logger.info(f"Creating multi-panel figure directly from {len(imageplus_list)} ImagePlus objects")
         
-        # Extract charts from each Viewer2D and convert to matplotlib figures
-        figures = []
-        chart_titles = []
+        # Convert each ImagePlus to xarray data
+        xarray_data_list = []
+        image_titles = []
         
-        for i, viewer2d in enumerate(viewer2d_list):
+        for i, imageplus in enumerate(imageplus_list):
             try:
-                # Get chart from Viewer2D
-                chart = viewer2d.getChart()
-                
-                if chart is None:
-                    logger.warning(f"Viewer2D {i+1} returned None chart")
-                    continue
-                
-                # Convert chart to matplotlib figure
-                converted = _convert_snt_chart(chart, **kwargs)
-                
-                if converted.get('error') is not None:
-                    logger.warning(f"Failed to convert chart from Viewer2D {i+1}: {converted.get('error')}")
-                    continue
-                
-                figure = converted['data']
-                figures.append(figure)
-                
-                # Get chart title
-                try:
-                    chart_title = chart.getTitle() if hasattr(chart, 'getTitle') else f"Viewer2D {i+1}"
-                except Exception:
-                    chart_title = f"Viewer2D {i+1}"
-                chart_titles.append(chart_title)
-                
+                xarray_data, metadata, image_title = _convert_imageplus_to_xarray(imageplus, i, **kwargs)
+                if xarray_data is not None:
+                    xarray_data_list.append((xarray_data, metadata))
+                    image_titles.append(image_title)
             except Exception as e:
-                logger.warning(f"Failed to process Viewer2D {i+1}: {e}")
+                logger.warning(f"Failed to convert ImagePlus {i+1}: {e}")
                 continue
         
-        if not figures:
-            logger.error("No charts could be extracted from Viewer2D objects")
+        if not xarray_data_list:
+            logger.error("No ImagePlus objects could be converted successfully")
             return None
         
-        logger.info(f"Successfully extracted {len(figures)} charts from Viewer2D objects, creating multi-panel figure")
+        # Create multi-panel figure directly (reverted to simple approach)
+        import matplotlib.pyplot as plt
+        from .utils import _create_subplot_grid
         
-        # Combine figures into multi-panel display
-        from .visual_display import _combine_matplotlib_figures
-        combined_figure = _combine_matplotlib_figures(figures, chart_titles, title or "", **kwargs)
+        num_panels = len(xarray_data_list)
         
-        if combined_figure is None:
-            logger.error("Failed to combine Viewer2D charts into multi-panel figure")
-            return None
+        # Calculate aspect ratios and figure size
+        aspect_ratios = [(xarray_data.shape[-1] / xarray_data.shape[-2]) for xarray_data, _ in xarray_data_list]
+        figsize = kwargs.get('figsize') or _calculate_figure_size(aspect_ratios, panel_layout, num_panels)
+        
+        fig, axes, (rows, cols) = _create_subplot_grid(num_panels, panel_layout, figsize)
+        
+        logger.debug(f"Created {rows}x{cols} grid for {num_panels} panels")
+        
+        # Plot each image in its subplot
+        for i, ((xarray_data, metadata), image_title) in enumerate(zip(xarray_data_list, image_titles)):
+            if i < len(axes):
+                _plot_image_panel(axes[i], xarray_data, metadata, image_title, **kwargs)
+        
+        # Hide unused subplots
+        for i in range(num_panels, len(axes)):
+            axes[i].set_visible(False)
+        
+        # Apply layout
+        _apply_figure_layout(fig, title, **kwargs)
         
         # Create result
         metadata = {
-            'viewer2d_count': len(viewer2d_list),
-            'displayed_count': len(figures),
-            'panel_layout': kwargs.get('panel_layout', 'auto'),
+            'imageplus_count': len(imageplus_list),
+            'displayed_count': num_panels,
+            'panel_layout': (rows, cols),
             'title': title
         }
         
-        logger.info(f"Successfully created multi-panel figure with {len(figures)} Viewer2D charts")
-        return _create_converter_result(combined_figure, 'Viewer2D_List', **metadata)
+        logger.info(f"Successfully created multi-panel figure with {num_panels} ImagePlus objects")
+        return _create_converter_result(fig, 'ImagePlus_List', **metadata)
         
     except Exception as e:
-        logger.error(f"Failed to display Viewer2D list: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
+        raise  # Let decorator handle it
 
 
 # Handler registration system
@@ -845,64 +1023,140 @@ def _is_viewer3d(obj) -> bool:
     return 'Viewer3D' in class_name and hasattr(obj, 'snapshot')
 
 
+@handle_display_errors("display Viewer3D")
 def _display_viewer3d(obj, **kwargs):
     """
     Handler function for Viewer3D display.
     
-    This function takes a snapshot of the 3D viewer and displays the resulting
-    RGB ImagePlus using the standard ImagePlus display pipeline.
+    Takes a snapshot and displays the RGB image. If orthoview=True, captures 
+    orthogonal views (xy, xz, yz) as a multi-panel figure.
     
     Parameters
     ----------
     obj : Viewer3D
         The Viewer3D object to display
     **kwargs : dict
-        Additional keyword arguments for display
+        Display arguments (orthoview, title, figsize, etc.)
         
     Returns
     -------
-    ImagePlus or None
-        The snapshot ImagePlus if successful, None otherwise
+    ImagePlus or SNTObject
+        Snapshot ImagePlus or combined figure if orthoview=True
     """
-    logger.info("Detected Viewer3D object - taking snapshot...")
+    orthoview = kwargs.pop('orthoview', False)
     
-    try:
-        # Take a snapshot of the 3D viewer
-        snapshot = obj.snapshot()
+    if orthoview:
+        logger.info("Detected Viewer3D object with orthoview=True - capturing orthogonal views...")
+        return _display_viewer3d_orthoview(obj, **kwargs)
+    else:
+        logger.info("Detected Viewer3D object - taking snapshot...")
         
-        if snapshot is None:
-            logger.error("Viewer3D.snapshot() returned None")
+        try:
+            # Take a snapshot of the 3D viewer
+            snapshot = obj.snapshot()
+            from ..util import ImpUtils
+            ImpUtils.crop(snapshot,  0 if obj.isDarkModeOn() else 255)
+
+            if snapshot is None:
+                logger.error("Viewer3D.snapshot() returned None")
+                return None
+            
+            logger.info(f"Successfully captured Viewer3D snapshot: {snapshot}")
+            
+            # Add metadata to indicate this came from a Viewer3D
+            kwargs_with_metadata = kwargs.copy()
+            if 'metadata' not in kwargs_with_metadata:
+                kwargs_with_metadata['metadata'] = {}
+            
+            kwargs_with_metadata['metadata'].update({
+                'source_type': 'Viewer3D',
+                'is_rgb': True,  # Viewer3D snapshots are typically RGB
+                'viewer3d_snapshot': True
+            })
+            
+            # Set default title if not provided
+            if 'title' not in kwargs_with_metadata:
+                kwargs_with_metadata['title'] = "3D Viewer Snapshot"
+            
+            # Display the snapshot using the ImagePlus display pipeline
+            from .data_display import _display_imageplus
+            _display_imageplus(snapshot, **kwargs_with_metadata)
+            
+            # Return the original snapshot ImagePlus
+            return snapshot
+            
+        except Exception as e:
+            raise  # Let decorator handle it
+
+
+@handle_display_errors("display Viewer3D orthogonal views")
+def _display_viewer3d_orthoview(obj, **kwargs):
+    """
+    Display Viewer3D with orthogonal views (xy, xz, yz).
+    
+    Parameters
+    ----------
+    obj : Viewer3D
+        The Viewer3D object to display
+    **kwargs : dict
+        Display arguments
+        
+    Returns
+    -------
+    SNTObject
+        Combined matplotlib figure with orthogonal views
+    """
+    try:
+        # Capture snapshots from three orthogonal views
+        result = []
+        view_modes = ["xy", "xz", "yz"]
+        view_titles = kwargs.get('view_titles', ["XY View", "XZ View", "YZ View"])
+        
+        logger.info("Capturing orthogonal views: xy, xz, yz")
+        for view_mode, view_title in zip(view_modes, view_titles):
+            try:
+                # Take cropped snapshot
+                snapshot = obj.snapshot(view_mode)
+                if snapshot is None:
+                    logger.warning(f"Viewer3D.snapshot() returned None for {view_mode} view")
+                    continue
+                
+                # Add title to snapshot for better identification
+                snapshot.setTitle(view_title)
+                result.append(snapshot)
+                logger.debug(f"Successfully captured {view_mode} view snapshot")
+                
+            except Exception as e:
+                logger.warning(f"Failed to capture {view_mode} view: {e}")
+                continue
+
+        if not result:
+            logger.error("Failed to capture any orthogonal views")
             return None
         
-        logger.info(f"Successfully captured Viewer3D snapshot: {snapshot}")
+        logger.info(f"Successfully captured {len(result)} orthogonal views")
         
-        # Add metadata to indicate this came from a Viewer3D
-        kwargs_with_metadata = kwargs.copy()
-        if 'metadata' not in kwargs_with_metadata:
-            kwargs_with_metadata['metadata'] = {}
+        # Set up kwargs for multi-panel display
+        ortho_kwargs = kwargs.copy()
         
-        kwargs_with_metadata['metadata'].update({
-            'source_type': 'Viewer3D',
-            'is_rgb': True,  # Viewer3D snapshots are typically RGB
-            'viewer3d_snapshot': True
-        })
+        # Don't set a default title - let it be None unless explicitly provided
         
-        # Set default title if not provided
-        if 'title' not in kwargs_with_metadata:
-            kwargs_with_metadata['title'] = "3D Viewer Snapshot"
+        # Set default panel layout for orthogonal views
+        if 'panel_layout' not in ortho_kwargs:
+            if len(result) == 3:
+                ortho_kwargs['panel_layout'] = 'horizontal'  # 1x3 layout for three views
+            else:
+                ortho_kwargs['panel_layout'] = 'auto'
         
-        # Display the snapshot using the ImagePlus display pipeline
-        from .data_display import _display_imageplus
-        _display_imageplus(snapshot, **kwargs_with_metadata)
+        # Display the list of snapshots using the ImagePlus list display functionality
+        display_result = _display_imageplus_list(result, **ortho_kwargs)
         
-        # Return the original snapshot ImagePlus
-        return snapshot
+        # Return the display result (SNTObject with matplotlib figure) instead of raw ImagePlus list
+        # This prevents Jupyter notebooks from printing the raw Java object list
+        return display_result
         
     except Exception as e:
-        logger.error(f"Failed to display Viewer3D: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
+        raise  # Let decorator handle it
 
 
 def _is_viewer2d(obj) -> bool:
@@ -924,6 +1178,7 @@ def _is_viewer2d(obj) -> bool:
     return 'Viewer2D' in class_name and hasattr(obj, 'getChart')
 
 
+@handle_display_errors("display Viewer2D")
 def _display_viewer2d(obj, **kwargs):
     """
     Handler function for Viewer2D display.
@@ -965,22 +1220,11 @@ def _display_viewer2d(obj, **kwargs):
             'viewer2d_chart': True
         })
         
-        # Set default title if not provided
-        if 'title' not in kwargs_with_metadata:
-            try:
-                chart_title = chart.getTitle() if hasattr(chart, 'getTitle') else "2D Viewer"
-                kwargs_with_metadata['title'] = chart_title
-            except:
-                kwargs_with_metadata['title'] = "2D Viewer"
+        # Don't set a default title - let user explicitly provide one if needed
+        # The chart's internal title (like "Reconstruction Plotter") is often not desired
         
-        # Display the chart using the SNTChart display pipeline
-        _display_snt_chart(chart, **kwargs_with_metadata)
-        
-        # Return the original chart
-        return chart
+        # Display the chart using the SNTChart display pipeline and return the result
+        return _display_snt_chart(chart, **kwargs_with_metadata)
         
     except Exception as e:
-        logger.error(f"Failed to display Viewer2D: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
+        raise  # Let decorator handle it

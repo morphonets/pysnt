@@ -50,7 +50,7 @@ def _display_matplotlib_figure(fig: Figure, **kwargs) -> None:
     fig : matplotlib.figure.Figure
         The figure to display
     **kwargs
-        Additional display arguments
+        Additional display arguments (including 'title' to set figure title)
         
     Returns
     -------
@@ -60,6 +60,26 @@ def _display_matplotlib_figure(fig: Figure, **kwargs) -> None:
     import matplotlib
 
     logger.info(f"Displaying matplotlib figure (backend: {matplotlib.get_backend()})")
+
+    # Apply title if provided
+    title = kwargs.get('title')
+    if title:
+        # Auto-adjust fontsize based on DPI if not explicitly provided
+        if 'title_fontsize' in kwargs:
+            title_fontsize = kwargs['title_fontsize']
+        else:
+            # Get figure DPI to determine appropriate font size
+            fig_dpi = fig.get_dpi()
+            if fig_dpi >= 300:
+                title_fontsize = 'xx-small'   # Medium-high DPI needs small font
+            elif fig_dpi >= 150:
+                title_fontsize = 'x-small'     # Medium DPI needs small-ish font
+            else:
+                title_fontsize = 'medium'    # Low DPI can use normal font
+            logger.debug(f"Auto-selected title fontsize '{title_fontsize}' for DPI={fig_dpi}")
+        
+        fig.suptitle(title, fontsize=title_fontsize, fontweight='normal')
+        logger.debug(f"Applied title to figure: {title} (fontsize={title_fontsize})")
 
     # Use the unified display system
     if _show_matplotlib_figure(fig, **kwargs):
@@ -589,6 +609,31 @@ def _should_preserve_aspect(image_array):
         return True
 
 
+def _should_preserve_aspect(array) -> bool:
+    """
+    Determine if an image array should preserve aspect ratio.
+    
+    This function checks if the image data should be displayed with equal aspect ratio
+    to prevent distortion of the original image proportions.
+    
+    Parameters
+    ----------
+    array : numpy.ndarray
+        Image array data
+        
+    Returns
+    -------
+    bool
+        True if aspect ratio should be preserved, False otherwise
+    """
+    try:
+        # Always preserve aspect ratio for image data to prevent distortion
+        # This is especially important for orthogonal views from 3D viewers
+        return True
+    except Exception:
+        return False
+
+
 def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str, **kwargs) -> Figure:
     """
     Combine multiple matplotlib figures into a single multi-panel figure.
@@ -624,8 +669,9 @@ def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str,
     
     num_panels = len(figures)
     panel_layout = kwargs.get('panel_layout', 'auto')
-    show_overall_title = kwargs.get('show_overall_title', False)
-    show_panel_titles = kwargs.get('show_panel_titles', False)
+    # Auto-enable overall title if one is provided
+    show_overall_title = kwargs.get('show_overall_title', bool(overall_title))
+    show_panel_titles = kwargs.get('show_panel_titles', True)  # Changed default to True
     
     # Create standardized subplot grid with aspect ratio preservation
     from .utils import _create_subplot_grid
