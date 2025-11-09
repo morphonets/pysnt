@@ -127,9 +127,10 @@ class JavaSignatureExtractor:
         if hasattr(pysnt, class_name):
             return (getattr(pysnt, class_name), 'pysnt', 'sc.fiji.snt')
         
-        # Try submodules
+        # Try submodules - need to import them explicitly
         submodules = [
             ('analysis', 'sc.fiji.snt.analysis'),
+            ('annotation', 'sc.fiji.snt.annotation'),
             ('viewer', 'sc.fiji.snt.viewer'),
             ('io', 'sc.fiji.snt.io'),
             ('tracing', 'sc.fiji.snt.tracing'),
@@ -138,10 +139,14 @@ class JavaSignatureExtractor:
         
         for module_name, java_package in submodules:
             try:
-                module = getattr(pysnt, module_name)
+                # Import the submodule explicitly
+                import importlib
+                full_module_name = f'pysnt.{module_name}'
+                module = importlib.import_module(full_module_name)
+                
                 if hasattr(module, class_name):
-                    return (getattr(module, class_name), f'pysnt.{module_name}', java_package)
-            except AttributeError:
+                    return (getattr(module, class_name), full_module_name, java_package)
+            except (AttributeError, ImportError) as e:
                 continue
         
         return None
@@ -180,68 +185,109 @@ class JavaSignatureExtractor:
             if self.verbose:
                 print(f"🔍 Extracting signatures for {class_name} from {module_name}...")
             
-            # Create an instance to get the actual Java object for inspection
-            java_instance = None
-            try:
-                if class_name == 'SNTService':
-                    # SNTService can be instantiated directly
-                    java_instance = java_class()
-                elif class_name in ['Tree', 'Path']:
-                    # These might need special handling or demo instances
-                    if class_name == 'Tree':
-                        # Try to get a demo tree
-                        service = pysnt.SNTService()
-                        java_instance = service.demoTree()
+            # Check if this is a dynamic placeholder class and get the real Java class
+            # Do this BEFORE trying to instantiate to avoid getting wrappers
+            is_dynamic_placeholder = (
+                type(java_class).__name__ == 'DynamicPlaceholderMeta' or
+                (hasattr(java_class, '__mro__') and any('DynamicPlaceholder' in str(base) for base in java_class.__mro__))
+            )
+            
+            if is_dynamic_placeholder:
+                if self.verbose:
+                    print(f"📋 Detected dynamic placeholder, using get_class() to get real Java class")
+                try:
+                    # Get the module and use its get_class function
+                    if module_name == 'pysnt':
+                        real_java_class = pysnt.get_class(class_name)
                     else:
-                        # For Path, try to create an empty one or get from tree
-                        service = pysnt.SNTService()
-                        tree = service.demoTree()
-                        paths = tree.list() if hasattr(tree, 'list') else []
-                        if paths:
-                            java_instance = paths[0]
-                        else:
-                            # Fallback to class inspection
-                            java_instance = java_class
-                elif class_name in ['SNTChart', 'SNTTable']:
-                    # These need data to be instantiated, try to get from TreeStatistics
-                    try:
-                        service = pysnt.SNTService()
-                        tree = service.demoTree()
-                        stats = pysnt.analysis.TreeStatistics(tree)
-                        if class_name == 'SNTChart':
-                            java_instance = stats.getHistogram("Branch length")
-                        else:  # SNTTable
-                            java_instance = stats.getSummaryTable()
-                    except Exception as chart_e:
-                        if self.verbose:
-                            print(f"⚠️  Could not create {class_name} from stats: {chart_e}")
-                        java_instance = java_class
-                else:
-                    # Try direct instantiation
-                    try:
+                        # For submodules like pysnt.annotation
+                        import importlib
+                        module = importlib.import_module(module_name)
+                        real_java_class = module.get_class(class_name)
+                    
+                    if self.verbose:
+                        print(f"📋 Got real Java class: {type(real_java_class)}")
+                    java_class = real_java_class
+                    
+                    # For classes that return wrappers when instantiated (like Viewer3D),
+                    # we should use the class directly for inspection
+                    # Set java_instance to the class itself
+                    java_instance = java_class
+                    
+                    if self.verbose:
+                        print(f"📋 Using Java class directly for inspection: {type(java_instance)}")
+                    
+                except Exception as e:
+                    if self.verbose:
+                        print(f"⚠️  Could not get real Java class via get_class(): {e}")
+                    # Continue with the placeholder, might still work
+                    java_instance = None
+            else:
+                java_instance = None
+            
+            # Create an instance to get the actual Java object for inspection
+            # (unless already set above for dynamic placeholders)
+            if java_instance is None:
+                try:
+                    if class_name == 'SNTService':
+                        # SNTService can be instantiated directly
                         java_instance = java_class()
-                    except Exception as inst_e:
-                        if self.verbose:
-                            print(f"⚠️  Could not instantiate {class_name}: {inst_e}")
-                        # For utility classes with static methods, try to get the actual Java class
+                    elif class_name in ['Tree', 'Path']:
+                        # These might need special handling or demo instances
+                        if class_name == 'Tree':
+                            # Try to get a demo tree
+                            service = pysnt.SNTService()
+                            java_instance = service.demoTree()
+                        else:
+                            # For Path, try to create an empty one or get from tree
+                            service = pysnt.SNTService()
+                            tree = service.demoTree()
+                            paths = tree.list() if hasattr(tree, 'list') else []
+                            if paths:
+                                java_instance = paths[0]
+                            else:
+                                # Fallback to class inspection
+                                java_instance = java_class
+                    elif class_name in ['SNTChart', 'SNTTable']:
+                        # These need data to be instantiated, try to get from TreeStatistics
                         try:
-                            import scyjava as sj
-                            full_class_name = f'{java_package}.{class_name}'
-                            java_instance = sj.jimport(full_class_name)
+                            service = pysnt.SNTService()
+                            tree = service.demoTree()
+                            stats = pysnt.analysis.TreeStatistics(tree)
+                            if class_name == 'SNTChart':
+                                java_instance = stats.getHistogram("Branch length")
+                            else:  # SNTTable
+                                java_instance = stats.getSummaryTable()
+                        except Exception as chart_e:
                             if self.verbose:
-                                print(f"📋 Got Java class directly: {java_instance}")
-                        except Exception as java_e:
-                            if self.verbose:
-                                print(f"⚠️  Could not get Java class directly: {java_e}")
+                                print(f"⚠️  Could not create {class_name} from stats: {chart_e}")
                             java_instance = java_class
-                
-                if self.verbose:
-                    print(f"📋 Created instance: {type(java_instance)}")
-                
-            except Exception as e:
-                if self.verbose:
-                    print(f"⚠️  Could not create instance, using class: {e}")
-                java_instance = java_class
+                    else:
+                        # Try direct instantiation
+                        try:
+                            java_instance = java_class()
+                        except Exception as inst_e:
+                            if self.verbose:
+                                print(f"⚠️  Could not instantiate {class_name}: {inst_e}")
+                            # For utility classes with static methods, try to get the actual Java class
+                            try:
+                                import scyjava as sj
+                                full_class_name = f'{java_package}.{class_name}'
+                                java_instance = sj.jimport(full_class_name)
+                                if self.verbose:
+                                    print(f"📋 Got Java class directly: {java_instance}")
+                            except Exception as java_e:
+                                if self.verbose:
+                                    print(f"⚠️  Could not get Java class directly: {java_e}")
+                                java_instance = java_class
+                    
+                        if self.verbose:
+                            print(f"📋 Created instance: {type(java_instance)}")
+                        
+                except Exception as e:
+                    if self.verbose:
+                        print(f"⚠️  Could not create instance, using class: {e}")
+                    java_instance = java_class
             
             # Use pysnt.inspect to get method information
             # Capture the printed output since inspect() returns None
