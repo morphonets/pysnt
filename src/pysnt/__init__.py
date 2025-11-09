@@ -104,6 +104,8 @@ EXTENDED_ROOT_CLASSES = [
 
 # Import submodules for easy access
 from . import analysis
+from . import annotation
+from . import io
 from . import util
 from . import viewer
 from . import tracing
