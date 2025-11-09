@@ -13,22 +13,23 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "ConvexHull2D", "ConvexHull3D",
-    "TreeStatistics", "MultiTreeStatistics",
-    "SNTChart", "SNTTable"
+    "ConvexHull2D", "ConvexHull3D", "ConvexHullAnalyzer",
+    "GroupedTreeStatistics",
+    "MultiTreeColorMapper",
+    "NodeColorMapper", "NodeProfiler", "NodeStatistics",
+    "MultiTreeStatistics",
+    "PathProfiler", "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer",
+    "RootAngleAnalyzer",
+    "TreeColorMapper", "TreeStatistics",
+    "ShollAnalyzer", "SkeletonConverter", "StrahlerAnalyzer", "SNTChart", "SNTTable"
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
     "AbstractConvexHull", "AnalysisUtils", "AnnotationMapper",
-    "CircularModels","ColorMapper", "ConvexHullAnalyzer",
-    "GroupedTreeStatistics",
-    "MultiTreeColorMapper",
-    "NodeColorMapper", "NodeProfiler", "NodeStatistics",
-    "PathProfiler", "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer", "ProfileProcessor",
-    "RoiConverter", "RootAngleAnalyzer",
-    "ShollAnalyzer", "SkeletonConverter", "StrahlerAnalyzer",
-    "TreeColorMapper"
+    "CircularModels", "ColorMapper",
+    "ProfileProcessor",
+    "RoiConverter"
 ]
 
 
