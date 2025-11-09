@@ -1,7 +1,7 @@
 {
   "class_name": "SNTService",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.665827",
+  "extracted_at": "2025-11-09T07:59:47.077084",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -86,12 +86,6 @@
       "name": "demoTree",
       "overloads": [
         {
-          "signature": "demoTree() -> Tree",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Tree"
-        },
-        {
           "signature": "demoTree(String) -> Tree",
           "params": [
             {
@@ -100,7 +94,13 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        },
+        {
+          "signature": "demoTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
           "java_return_type": "Tree"
         }
       ],
@@ -154,7 +154,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeStatistics",
           "java_return_type": "TreeStatistics"
         }
       ],
@@ -292,13 +292,13 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Viewer3D",
           "java_return_type": "Viewer3D"
         },
         {
           "signature": "getRecViewer() -> Viewer3D",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Viewer3D",
           "java_return_type": "Viewer3D"
         }
       ],
@@ -340,7 +340,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeStatistics",
           "java_return_type": "TreeStatistics"
         }
       ],
@@ -352,7 +352,7 @@
         {
           "signature": "getTable() -> SNTTable",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SNTTable",
           "java_return_type": "SNTTable"
         }
       ],
@@ -364,7 +364,7 @@
         {
           "signature": "getTree() -> Tree",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Tree",
           "java_return_type": "Tree"
         },
         {
@@ -376,7 +376,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Tree",
           "java_return_type": "Tree"
         }
       ],
@@ -496,7 +496,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "DirectedWeightedGraph",
               "java_type": "DirectedWeightedGraph"
             }
           ],
@@ -532,7 +532,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             }
           ],
@@ -566,7 +566,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Viewer3D",
           "java_return_type": "Viewer3D"
         }
       ],
@@ -670,5 +670,18 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTService()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTService"
+    }
+  ]
 }

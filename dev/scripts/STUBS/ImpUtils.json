@@ -1,7 +1,7 @@
 {
   "class_name": "ImpUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-02T09:55:54.285516",
+  "extracted_at": "2025-11-09T07:59:46.622439",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -211,6 +211,29 @@
       "documentation": "Java method: static create"
     },
     {
+      "name": "static crop",
+      "overloads": [
+        {
+          "signature": "static crop(ImagePlus, Number) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static crop"
+    },
+    {
       "name": "static demo",
       "overloads": [
         {
@@ -292,6 +315,29 @@
       "documentation": "Java method: static getCurrentImage"
     },
     {
+      "name": "static getForegroundRect",
+      "overloads": [
+        {
+          "signature": "static getForegroundRect(ImagePlus, Number) -> Roi",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Roi"
+        }
+      ],
+      "documentation": "Java method: static getForegroundRect"
+    },
+    {
       "name": "static getFrame",
       "overloads": [
         {
@@ -317,6 +363,18 @@
     {
       "name": "static getMIP",
       "overloads": [
+        {
+          "signature": "static getMIP(ImagePlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
         {
           "signature": "static getMIP(Collection) -> ImagePlus",
           "params": [
@@ -346,18 +404,6 @@
               "name": "arg2",
               "type": "int",
               "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "static getMIP(ImagePlus) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
             }
           ],
           "return_type": "Any",
@@ -542,6 +588,18 @@
       "name": "static open",
       "overloads": [
         {
+          "signature": "static open(File) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
           "signature": "static open(String) -> ImagePlus",
           "params": [
             {
@@ -558,25 +616,13 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             },
             {
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "static open(File) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "File"
             }
           ],
           "return_type": "Any",
@@ -660,6 +706,29 @@
         }
       ],
       "documentation": "Java method: static removeSlices"
+    },
+    {
+      "name": "static rotate90",
+      "overloads": [
+        {
+          "signature": "static rotate90(ImagePlus, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static rotate90"
     },
     {
       "name": "static sameCTDimensions",
@@ -816,6 +885,23 @@
       "name": "static zoomTo",
       "overloads": [
         {
+          "signature": "static zoomTo(ImagePlus, Collection) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
           "signature": "static zoomTo(ImagePlus, double, int, int) -> void",
           "params": [
             {
@@ -841,23 +927,6 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "static zoomTo(ImagePlus, Collection) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
         }
       ],
       "documentation": "Java method: static zoomTo"

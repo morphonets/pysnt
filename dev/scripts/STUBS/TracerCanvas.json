@@ -1,7 +1,7 @@
 {
   "class_name": "TracerCanvas",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.779109",
+  "extracted_at": "2025-11-09T07:59:47.195614",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -223,18 +223,6 @@
       "name": "addPropertyChangeListener",
       "overloads": [
         {
-          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PropertyChangeListener"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
           "params": [
             {
@@ -244,6 +232,18 @@
             },
             {
               "name": "arg1",
+              "type": "Any",
+              "java_type": "PropertyChangeListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
+          "params": [
+            {
+              "name": "arg0",
               "type": "Any",
               "java_type": "PropertyChangeListener"
             }
@@ -306,23 +306,6 @@
       "name": "checkImage",
       "overloads": [
         {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -348,6 +331,23 @@
           ],
           "return_type": "int",
           "java_return_type": "int"
+        },
+        {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
         }
       ],
       "documentation": "Java method: checkImage"
@@ -355,18 +355,6 @@
     {
       "name": "contains",
       "overloads": [
-        {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
         {
           "signature": "contains(int, int) -> boolean",
           "params": [
@@ -379,6 +367,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(Point) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Point"
             }
           ],
           "return_type": "bool",
@@ -426,18 +426,6 @@
       "name": "createImage",
       "overloads": [
         {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image"
-        },
-        {
           "signature": "createImage(int, int) -> Image",
           "params": [
             {
@@ -449,6 +437,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Image"
+        },
+        {
+          "signature": "createImage(ImageProducer) -> Image",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageProducer"
             }
           ],
           "return_type": "Any",
@@ -638,6 +638,94 @@
       "name": "firePropertyChange",
       "overloads": [
         {
+          "signature": "firePropertyChange(String, char, char) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "char"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "char"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "firePropertyChange(String, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "firePropertyChange(String, float, float) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "firePropertyChange(String, long, long) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "firePropertyChange(String, byte, byte) -> void",
           "params": [
             {
@@ -676,94 +764,6 @@
               "name": "arg2",
               "type": "int",
               "java_type": "short"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "firePropertyChange(String, char, char) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "char"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "char"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "firePropertyChange(String, long, long) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "long"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "long"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "firePropertyChange(String, float, float) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "float"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "float"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "firePropertyChange(String, double, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
             }
           ],
           "return_type": "None",

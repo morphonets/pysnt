@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.707790",
+  "extracted_at": "2025-11-09T07:59:47.120743",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -511,23 +511,6 @@
       "name": "checkImage",
       "overloads": [
         {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -553,6 +536,23 @@
           ],
           "return_type": "int",
           "java_return_type": "int"
+        },
+        {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
         }
       ],
       "documentation": "Java method: checkImage"
@@ -560,18 +560,6 @@
     {
       "name": "contains",
       "overloads": [
-        {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
         {
           "signature": "contains(int, int) -> boolean",
           "params": [
@@ -584,6 +572,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(Point) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Point"
             }
           ],
           "return_type": "bool",
@@ -608,18 +608,6 @@
       "name": "createBufferStrategy",
       "overloads": [
         {
-          "signature": "createBufferStrategy(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
           "params": [
             {
@@ -635,6 +623,18 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "createBufferStrategy(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: createBufferStrategy"
@@ -642,18 +642,6 @@
     {
       "name": "createImage",
       "overloads": [
-        {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image"
-        },
         {
           "signature": "createImage(int, int) -> Image",
           "params": [
@@ -666,6 +654,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Image"
+        },
+        {
+          "signature": "createImage(ImageProducer) -> Image",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageProducer"
             }
           ],
           "return_type": "Any",
@@ -853,5 +853,24 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTUI(SNT)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTUI"
+    }
+  ]
 }

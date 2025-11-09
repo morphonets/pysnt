@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.713971",
+  "extracted_at": "2025-11-09T07:59:47.126816",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -12,7 +12,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Viewer3D",
               "java_type": "Viewer3D"
             }
           ],
@@ -69,7 +69,7 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
+          "return_type": "str",
           "java_return_type": "File"
         }
       ],
@@ -118,7 +118,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -136,7 +136,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -150,28 +150,11 @@
       "name": "static findClosestPair",
       "overloads": [
         {
-          "signature": "static findClosestPair(File, String) -> File",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "File"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "File"
-        },
-        {
           "signature": "static findClosestPair(File, String;) -> File",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             },
             {
@@ -180,7 +163,24 @@
               "java_type": "String;"
             }
           ],
-          "return_type": "Any",
+          "return_type": "str",
+          "java_return_type": "File"
+        },
+        {
+          "signature": "static findClosestPair(File, String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
           "java_return_type": "File"
         }
       ],
@@ -217,7 +217,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -324,7 +324,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             },
             {
@@ -373,23 +373,11 @@
       "name": "static getUniquelySuffixedFile",
       "overloads": [
         {
-          "signature": "static getUniquelySuffixedFile(File) -> File",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "File"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "File"
-        },
-        {
           "signature": "static getUniquelySuffixedFile(File, String) -> File",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             },
             {
@@ -398,7 +386,19 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
+          "return_type": "str",
+          "java_return_type": "File"
+        },
+        {
+          "signature": "static getUniquelySuffixedFile(File) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "str",
           "java_return_type": "File"
         }
       ],
@@ -412,11 +412,11 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
-          "return_type": "Any",
+          "return_type": "str",
           "java_return_type": "File"
         }
       ],
@@ -454,7 +454,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -502,7 +502,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Viewer3D",
               "java_type": "Viewer3D"
             }
           ],

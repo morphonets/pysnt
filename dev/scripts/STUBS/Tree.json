@@ -1,7 +1,7 @@
 {
   "class_name": "Tree",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T17:38:00.112778",
+  "extracted_at": "2025-11-09T07:59:47.212572",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,24 +72,24 @@
       "name": "assignImage",
       "overloads": [
         {
-          "signature": "assignImage(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "assignImage(Dataset) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "Dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
@@ -102,6 +102,18 @@
       "name": "static assignUniqueColors",
       "overloads": [
         {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "static assignUniqueColors(Collection, String) -> void",
           "params": [
             {
@@ -113,18 +125,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static assignUniqueColors(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -278,6 +278,18 @@
       "documentation": "Java method: getAssignedValue"
     },
     {
+      "name": "getBPs",
+      "overloads": [
+        {
+          "signature": "getBPs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getBPs"
+    },
+    {
       "name": "getBoundingBox",
       "overloads": [
         {
@@ -317,6 +329,12 @@
       "name": "getConvexHull",
       "overloads": [
         {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull"
+        },
+        {
           "signature": "getConvexHull(String) -> AbstractConvexHull",
           "params": [
             {
@@ -325,12 +343,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull"
-        },
-        {
-          "signature": "getConvexHull() -> AbstractConvexHull",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "AbstractConvexHull"
         }
@@ -469,6 +481,24 @@
       "documentation": "Java method: static getSWCTypeMap"
     },
     {
+      "name": "getSWCTypeNames",
+      "overloads": [
+        {
+          "signature": "getSWCTypeNames(boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getSWCTypeNames"
+    },
+    {
       "name": "getSWCTypes",
       "overloads": [
         {
@@ -553,6 +583,18 @@
       "documentation": "Java method: getSomaNodes"
     },
     {
+      "name": "getTips",
+      "overloads": [
+        {
+          "signature": "getTips() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getTips"
+    },
+    {
       "name": "indexOf",
       "overloads": [
         {
@@ -622,18 +664,6 @@
       "name": "static listFromDir",
       "overloads": [
         {
-          "signature": "static listFromDir(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "static listFromDir(String, String) -> List",
           "params": [
             {
@@ -671,15 +701,9 @@
           ],
           "return_type": "List[Any]",
           "java_return_type": "List"
-        }
-      ],
-      "documentation": "Java method: static listFromDir"
-    },
-    {
-      "name": "static listFromFile",
-      "overloads": [
+        },
         {
-          "signature": "static listFromFile(String) -> Collection",
+          "signature": "static listFromDir(String) -> List",
           "params": [
             {
               "name": "arg0",
@@ -688,48 +712,139 @@
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "Collection"
+          "java_return_type": "List"
         }
       ],
-      "documentation": "Java method: static listFromFile"
-    },
+      "documentation": "Java method: static listFromDir"
+    }
+  ],
+  "fields": [],
+  "constructors": [
     {
-      "name": "static main",
+      "name": "__init__",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "Tree()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String)",
           "params": [
             {
               "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, [I)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
               "type": "Any",
-              "java_type": "String;"
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String, boolean)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java method: static main"
-    },
-    {
-      "name": "merge",
-      "overloads": [
-        {
-          "signature": "merge(Tree) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: merge"
+      "documentation": "Java constructors for Tree"
     }
-  ],
-  "fields": [],
-  "constructors": []
+  ]
 }

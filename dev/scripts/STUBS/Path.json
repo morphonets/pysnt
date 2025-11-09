@@ -1,7 +1,7 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.394817",
+  "extracted_at": "2025-11-09T07:59:46.770283",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -12,7 +12,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Path",
               "java_type": "Path"
             }
           ],
@@ -108,7 +108,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -200,18 +200,6 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Path",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone(boolean) -> Path",
           "params": [
             {
@@ -220,8 +208,20 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
+        },
+        {
+          "signature": "clone() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: clone"
@@ -246,7 +246,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Path",
               "java_type": "Path"
             }
           ],
@@ -264,7 +264,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -276,7 +276,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             },
             {
@@ -309,7 +309,7 @@
         {
           "signature": "createPath() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -436,7 +436,7 @@
         {
           "signature": "findJunctionIndices() -> TreeSet",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Set[Any]",
           "java_return_type": "TreeSet"
         }
       ],
@@ -460,7 +460,7 @@
         {
           "signature": "firstNode() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -514,7 +514,7 @@
         {
           "signature": "getBranchPoint() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -644,24 +644,24 @@
       "name": "getExtensionAngle3D",
       "overloads": [
         {
-          "signature": "getExtensionAngle3D(Vector3d) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Vector3d"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
           "signature": "getExtensionAngle3D(boolean) -> double",
           "params": [
             {
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getExtensionAngle3D(Vector3d) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Vector3d"
             }
           ],
           "return_type": "float",
@@ -760,7 +760,7 @@
         {
           "signature": "getFitted() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -792,5 +792,45 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Path()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Path(double, double, double, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for Path"
+    }
+  ]
 }

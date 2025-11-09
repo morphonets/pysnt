@@ -1,7 +1,7 @@
 {
   "class_name": "PointInImage",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-02T09:55:54.464455",
+  "extracted_at": "2025-11-09T07:59:46.874455",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -12,7 +12,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -30,7 +30,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -48,7 +48,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -64,7 +64,7 @@
         {
           "signature": "clone() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         },
         {
@@ -79,18 +79,6 @@
     {
       "name": "distanceSquaredTo",
       "overloads": [
-        {
-          "signature": "distanceSquaredTo(PointInImage) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PointInImage"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
         {
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
@@ -112,6 +100,18 @@
           ],
           "return_type": "float",
           "java_return_type": "double"
+        },
+        {
+          "signature": "distanceSquaredTo(PointInImage) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
         }
       ],
       "documentation": "Java method: distanceSquaredTo"
@@ -124,7 +124,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -142,7 +142,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -200,7 +200,7 @@
         {
           "signature": "getPath() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -286,7 +286,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -368,7 +368,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Path",
               "java_type": "Path"
             }
           ],
@@ -390,7 +390,7 @@
               "java_type": "PathTransformer"
             }
           ],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -398,5 +398,40 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PointInImage()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PointInImage(double, double, double)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PointInImage"
+    }
+  ]
 }

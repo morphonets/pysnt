@@ -1,7 +1,7 @@
 {
   "class_name": "ConvexHull2D",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-02T09:55:54.244794",
+  "extracted_at": "2025-11-09T07:59:46.588882",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -64,7 +64,7 @@
               "java_type": "AbstractConvexHull;"
             }
           ],
-          "return_type": "Any",
+          "return_type": "ConvexHull2D",
           "java_return_type": "ConvexHull2D"
         }
       ],
@@ -82,7 +82,7 @@
               "java_type": "AbstractConvexHull;"
             }
           ],
-          "return_type": "Any",
+          "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
       ],
@@ -120,5 +120,41 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "ConvexHull2D(Context, Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ConvexHull2D(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for ConvexHull2D"
+    }
+  ]
 }

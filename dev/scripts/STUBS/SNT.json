@@ -1,7 +1,7 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.484414",
+  "extracted_at": "2025-11-09T07:59:46.896474",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -24,7 +24,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "FillerThread",
               "java_type": "FillerThread"
             }
           ],
@@ -65,7 +65,7 @@
             },
             {
               "name": "arg1",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             },
             {
@@ -74,56 +74,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "PointInImage"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "PointInImage"
-            }
-          ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         },
         {
@@ -136,11 +87,60 @@
             },
             {
               "name": "arg1",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg2",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg2",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -280,23 +280,6 @@
       "name": "createCanvas",
       "overloads": [
         {
-          "signature": "createCanvas(ImagePlus, int) -> MultiDThreePanesCanvas",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MultiDThreePanesCanvas"
-        },
-        {
           "signature": "createCanvas(ImagePlus, int) -> InteractiveTracerCanvas",
           "params": [
             {
@@ -312,6 +295,23 @@
           ],
           "return_type": "Any",
           "java_return_type": "InteractiveTracerCanvas"
+        },
+        {
+          "signature": "createCanvas(ImagePlus, int) -> MultiDThreePanesCanvas",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MultiDThreePanesCanvas"
         }
       ],
       "documentation": "Java method: createCanvas"
@@ -609,7 +609,7 @@
         {
           "signature": "getCurrentPath() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -751,12 +751,6 @@
       "name": "getImagePlus",
       "overloads": [
         {
-          "signature": "getImagePlus() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
@@ -765,6 +759,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "getImagePlus() -> ImagePlus",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -809,5 +809,46 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNT(Context, PathAndFillManager)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "PathAndFillManager"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(Context, ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNT"
+    }
+  ]
 }

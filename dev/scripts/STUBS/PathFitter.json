@@ -1,7 +1,7 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.417312",
+  "extracted_at": "2025-11-09T07:59:46.791726",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -34,7 +34,7 @@
         {
           "signature": "call() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -58,7 +58,7 @@
         {
           "signature": "getPath() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -221,5 +221,63 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathFitter(RandomAccessibleInterval, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(SNT, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathFitter"
+    }
+  ]
 }

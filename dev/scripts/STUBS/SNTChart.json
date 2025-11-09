@@ -1,7 +1,7 @@
 {
   "class_name": "SNTChart",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-02T09:55:54.653352",
+  "extracted_at": "2025-11-09T07:59:47.062585",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -436,28 +436,6 @@
       "name": "addPolygon",
       "overloads": [
         {
-          "signature": "addPolygon(Polygon2D, ColorRGB, ColorRGB) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Polygon2D"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addPolygon(Polygon2D, String, String) -> void",
           "params": [
             {
@@ -474,6 +452,28 @@
               "name": "arg2",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPolygon(Polygon2D, ColorRGB, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Polygon2D"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorRGB"
             }
           ],
           "return_type": "None",
@@ -579,23 +579,6 @@
       "name": "annotateCategory",
       "overloads": [
         {
-          "signature": "annotateCategory(String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "annotateCategory(String, String, String) -> void",
           "params": [
             {
@@ -616,6 +599,23 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "annotateCategory(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: annotateCategory"
@@ -624,20 +624,25 @@
       "name": "annotatePoint",
       "overloads": [
         {
-          "signature": "annotatePoint([D, String, String) -> void",
+          "signature": "annotatePoint(double, double, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "[D"
+              "type": "float",
+              "java_type": "double"
             },
             {
               "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "arg3",
               "type": "str",
               "java_type": "String"
             }
@@ -668,25 +673,20 @@
           "java_return_type": "void"
         },
         {
-          "signature": "annotatePoint(double, double, String, String) -> void",
+          "signature": "annotatePoint([D, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "float",
-              "java_type": "double"
+              "type": "Any",
+              "java_type": "[D"
             },
             {
               "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg3",
+              "name": "arg2",
               "type": "str",
               "java_type": "String"
             }
@@ -746,23 +746,6 @@
       "name": "annotateYline",
       "overloads": [
         {
-          "signature": "annotateYline(double, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "annotateYline(double, String, String) -> void",
           "params": [
             {
@@ -777,6 +760,23 @@
             },
             {
               "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "annotateYline(double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
               "type": "str",
               "java_type": "String"
             }
@@ -813,7 +813,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "SNTChart",
               "java_type": "SNTChart"
             }
           ],
@@ -893,23 +893,6 @@
       "name": "checkImage",
       "overloads": [
         {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -929,6 +912,23 @@
             },
             {
               "name": "arg3",
+              "type": "Any",
+              "java_type": "ImageObserver"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image"
+            },
+            {
+              "name": "arg1",
               "type": "Any",
               "java_type": "ImageObserver"
             }
@@ -978,7 +978,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         },
         {
@@ -1010,7 +1010,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         }
       ],
@@ -1018,5 +1018,63 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTChart(String, JFreeChart)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "JFreeChart"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTChart(String, CategoryChart)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "CategoryChart"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTChart(String, XYPlot)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "XYPlot"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTChart"
+    }
+  ]
 }

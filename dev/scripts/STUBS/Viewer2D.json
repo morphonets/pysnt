@@ -1,18 +1,52 @@
 {
   "class_name": "Viewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2025-11-02T09:55:54.890208",
+  "extracted_at": "2025-11-09T08:12:17.315272",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
         {
-          "signature": "add(Tree, String, String, double, double) -> void",
+          "signature": "add(Object) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, String, String, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -40,45 +74,11 @@
           "java_return_type": "void"
         },
         {
-          "signature": "add(Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "add(Tree, String, ColorTable, double, double) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -110,7 +110,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -127,7 +127,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -163,6 +163,24 @@
       "name": "addColorBarLegend",
       "overloads": [
         {
+          "signature": "addColorBarLegend() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorMapper"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "addColorBarLegend(ColorTable, double, double) -> void",
           "params": [
             {
@@ -183,27 +201,49 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
+        }
+      ],
+      "documentation": "Java method: addColorBarLegend"
+    },
+    {
+      "name": "addNodes",
+      "overloads": [
         {
-          "signature": "addColorBarLegend() -> void",
-          "params": [],
+          "signature": "addNodes(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "addColorBarLegend(ColorMapper) -> void",
+          "signature": "addNodes(Collection, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorMapper"
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java method: addColorBarLegend"
+      "documentation": "Java method: addNodes"
     },
     {
       "name": "addPolygon",
@@ -236,7 +276,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             }
           ],
@@ -282,7 +322,7 @@
         {
           "signature": "getChart() -> SNTChart",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         }
       ],
@@ -390,7 +430,7 @@
         {
           "signature": "getMultiViewer() -> MultiViewer2D",
           "params": [],
-          "return_type": "Any",
+          "return_type": "MultiViewer2D",
           "java_return_type": "MultiViewer2D"
         }
       ],
@@ -482,7 +522,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -504,12 +544,12 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
               "name": "arg1",
-              "type": "Any",
+              "type": "Profile",
               "java_type": "Profile"
             },
             {
@@ -526,7 +566,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -548,7 +588,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -856,40 +896,53 @@
           "params": [],
           "return_type": "None",
           "java_return_type": "void"
-        },
+        }
+      ],
+      "documentation": "Java method: show"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
         {
-          "signature": "show(int, int) -> void",
+          "signature": "Viewer2D(Context)",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int"
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Viewer2D()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Viewer2D(Context, Viewer2D)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
             },
             {
               "name": "arg1",
-              "type": "int",
-              "java_type": "int"
+              "type": "Viewer2D",
+              "java_type": "Viewer2D"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java method: show"
-    },
-    {
-      "name": "showPlot",
-      "overloads": [
-        {
-          "signature": "showPlot() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: showPlot"
+      "documentation": "Java constructors for Viewer2D"
     }
-  ],
-  "fields": [],
-  "constructors": []
+  ]
 }

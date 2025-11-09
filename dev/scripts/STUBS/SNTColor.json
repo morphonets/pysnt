@@ -1,7 +1,7 @@
 {
   "class_name": "SNTColor",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-02T09:55:54.657701",
+  "extracted_at": "2025-11-09T07:59:47.068092",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -97,6 +97,18 @@
       "name": "static getDistinctColors",
       "overloads": [
         {
+          "signature": "static getDistinctColors(int) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;"
+        },
+        {
           "signature": "static getDistinctColors(int, String) -> ColorRGB;",
           "params": [
             {
@@ -108,18 +120,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ColorRGB;"
-        },
-        {
-          "signature": "static getDistinctColors(int) -> ColorRGB;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
             }
           ],
           "return_type": "Any",
@@ -244,5 +244,41 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTColor(Color, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTColor(Color)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTColor"
+    }
+  ]
 }

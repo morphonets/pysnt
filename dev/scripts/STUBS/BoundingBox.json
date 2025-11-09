@@ -1,7 +1,7 @@
 {
   "class_name": "BoundingBox",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-02T09:55:54.238195",
+  "extracted_at": "2025-11-09T07:59:46.581107",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -34,7 +34,7 @@
         {
           "signature": "clone() -> BoundingBox",
           "params": [],
-          "return_type": "Any",
+          "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
       ],
@@ -48,7 +48,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
@@ -84,7 +84,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "SNTPoint",
               "java_type": "SNTPoint"
             }
           ],
@@ -96,7 +96,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
@@ -114,7 +114,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "SNTPoint",
               "java_type": "SNTPoint"
             }
           ],
@@ -154,7 +154,7 @@
         {
           "signature": "getCentroid() -> SNTPoint",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SNTPoint",
           "java_return_type": "SNTPoint"
         }
       ],
@@ -258,11 +258,11 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
-          "return_type": "Any",
+          "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
       ],
@@ -286,7 +286,7 @@
         {
           "signature": "origin() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -298,7 +298,7 @@
         {
           "signature": "originOpposite() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -340,7 +340,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -358,7 +358,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
@@ -437,7 +437,7 @@
         {
           "signature": "unscaledOrigin() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -449,7 +449,7 @@
         {
           "signature": "unscaledOriginOpposite() -> PointInImage",
           "params": [],
-          "return_type": "Any",
+          "return_type": "PointInImage",
           "java_return_type": "PointInImage"
         }
       ],
@@ -469,5 +469,30 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BoundingBox()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BoundingBox(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for BoundingBox"
+    }
+  ]
 }

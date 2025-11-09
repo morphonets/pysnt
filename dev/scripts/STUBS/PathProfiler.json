@@ -1,0 +1,857 @@
+{
+  "class_name": "PathProfiler",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-09T07:59:46.840480",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addInput",
+      "overloads": [
+        {
+          "signature": "addInput(String, Class) -> MutableModuleItem",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "type",
+              "java_type": "Class"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MutableModuleItem"
+        },
+        {
+          "signature": "addInput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addInput"
+    },
+    {
+      "name": "addOutput",
+      "overloads": [
+        {
+          "signature": "addOutput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addOutput(String, Class) -> MutableModuleItem",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "type",
+              "java_type": "Class"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MutableModuleItem"
+        }
+      ],
+      "documentation": "Java method: addOutput"
+    },
+    {
+      "name": "assignValues",
+      "overloads": [
+        {
+          "signature": "assignValues(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignValues(Path) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignValues() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignValues(Path, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: assignValues"
+    },
+    {
+      "name": "cancel",
+      "overloads": [
+        {
+          "signature": "cancel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "cancel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: cancel"
+    },
+    {
+      "name": "context",
+      "overloads": [
+        {
+          "signature": "context() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context"
+        }
+      ],
+      "documentation": "Java method: context"
+    },
+    {
+      "name": "findMaxima",
+      "overloads": [
+        {
+          "signature": "findMaxima(Path, int) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I"
+        }
+      ],
+      "documentation": "Java method: findMaxima"
+    },
+    {
+      "name": "findMinima",
+      "overloads": [
+        {
+          "signature": "findMinima(Path, int) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I"
+        }
+      ],
+      "documentation": "Java method: findMinima"
+    },
+    {
+      "name": "getCancelReason",
+      "overloads": [
+        {
+          "signature": "getCancelReason() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getCancelReason"
+    },
+    {
+      "name": "getContext",
+      "overloads": [
+        {
+          "signature": "getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context"
+        }
+      ],
+      "documentation": "Java method: getContext"
+    },
+    {
+      "name": "getDelegateObject",
+      "overloads": [
+        {
+          "signature": "getDelegateObject() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        }
+      ],
+      "documentation": "Java method: getDelegateObject"
+    },
+    {
+      "name": "getInfo",
+      "overloads": [
+        {
+          "signature": "getInfo() -> DynamicCommandInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DynamicCommandInfo"
+        },
+        {
+          "signature": "getInfo() -> MutableModuleInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "MutableModuleInfo"
+        },
+        {
+          "signature": "getInfo() -> ModuleInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ModuleInfo"
+        }
+      ],
+      "documentation": "Java method: getInfo"
+    },
+    {
+      "name": "getInput",
+      "overloads": [
+        {
+          "signature": "getInput(String) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        }
+      ],
+      "documentation": "Java method: getInput"
+    },
+    {
+      "name": "getInputs",
+      "overloads": [
+        {
+          "signature": "getInputs() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getInputs"
+    },
+    {
+      "name": "getOutput",
+      "overloads": [
+        {
+          "signature": "getOutput(String) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        }
+      ],
+      "documentation": "Java method: getOutput"
+    },
+    {
+      "name": "getOutputs",
+      "overloads": [
+        {
+          "signature": "getOutputs() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getOutputs"
+    },
+    {
+      "name": "getPlot",
+      "overloads": [
+        {
+          "signature": "getPlot() -> Plot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Plot"
+        },
+        {
+          "signature": "getPlot(Path) -> Plot",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Plot"
+        },
+        {
+          "signature": "getPlot(int) -> Plot",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Plot"
+        }
+      ],
+      "documentation": "Java method: getPlot"
+    },
+    {
+      "name": "getValues",
+      "overloads": [
+        {
+          "signature": "getValues(Path, int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getValues(Path) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getValues"
+    },
+    {
+      "name": "getXYPlot",
+      "overloads": [
+        {
+          "signature": "getXYPlot() -> XYPlot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "XYPlot"
+        },
+        {
+          "signature": "getXYPlot(int) -> XYPlot",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "XYPlot"
+        }
+      ],
+      "documentation": "Java method: getXYPlot"
+    },
+    {
+      "name": "initialize",
+      "overloads": [
+        {
+          "signature": "initialize() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: initialize"
+    },
+    {
+      "name": "isCanceled",
+      "overloads": [
+        {
+          "signature": "isCanceled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isCanceled"
+    },
+    {
+      "name": "isInputResolved",
+      "overloads": [
+        {
+          "signature": "isInputResolved(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isInputResolved"
+    },
+    {
+      "name": "isOutputResolved",
+      "overloads": [
+        {
+          "signature": "isOutputResolved(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isOutputResolved"
+    },
+    {
+      "name": "isResolved",
+      "overloads": [
+        {
+          "signature": "isResolved(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isResolved"
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static main"
+    },
+    {
+      "name": "preview",
+      "overloads": [
+        {
+          "signature": "preview() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: preview"
+    },
+    {
+      "name": "removeInput",
+      "overloads": [
+        {
+          "signature": "removeInput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: removeInput"
+    },
+    {
+      "name": "removeOutput",
+      "overloads": [
+        {
+          "signature": "removeOutput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: removeOutput"
+    },
+    {
+      "name": "resolveInput",
+      "overloads": [
+        {
+          "signature": "resolveInput(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: resolveInput"
+    },
+    {
+      "name": "resolveOutput",
+      "overloads": [
+        {
+          "signature": "resolveOutput(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: resolveOutput"
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: run"
+    },
+    {
+      "name": "setContext",
+      "overloads": [
+        {
+          "signature": "setContext(Context) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setContext"
+    },
+    {
+      "name": "setInput",
+      "overloads": [
+        {
+          "signature": "setInput(String, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setInput"
+    },
+    {
+      "name": "setInputs",
+      "overloads": [
+        {
+          "signature": "setInputs(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setInputs"
+    },
+    {
+      "name": "setMetric",
+      "overloads": [
+        {
+          "signature": "setMetric(ProfileProcessor$Metric) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ProfileProcessor$Metric"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setMetric"
+    },
+    {
+      "name": "setNodeIndicesAsDistances",
+      "overloads": [
+        {
+          "signature": "setNodeIndicesAsDistances(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setNodeIndicesAsDistances"
+    },
+    {
+      "name": "setOutput",
+      "overloads": [
+        {
+          "signature": "setOutput(String, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setOutput"
+    },
+    {
+      "name": "setOutputs",
+      "overloads": [
+        {
+          "signature": "setOutputs(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setOutputs"
+    },
+    {
+      "name": "setRadius",
+      "overloads": [
+        {
+          "signature": "setRadius(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setRadius"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathProfiler(Path, Dataset)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathProfiler(Tree, Dataset)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathProfiler(Path, ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathProfiler(Tree, ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathProfiler()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathProfiler"
+    }
+  ]
+}

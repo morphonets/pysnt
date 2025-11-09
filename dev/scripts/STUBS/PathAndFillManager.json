@@ -1,30 +1,18 @@
 {
   "class_name": "PathAndFillManager",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-02T09:55:54.406995",
+  "extracted_at": "2025-11-09T07:59:46.782554",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "addPath",
       "overloads": [
         {
-          "signature": "addPath(Path) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addPath(Path, int, int) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Path",
               "java_type": "Path"
             },
             {
@@ -42,11 +30,23 @@
           "java_return_type": "void"
         },
         {
+          "signature": "addPath(Path) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "addPath(Path, boolean, boolean) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Path",
               "java_type": "Path"
             },
             {
@@ -92,7 +92,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             }
           ],
@@ -104,7 +104,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "Tree",
               "java_type": "Tree"
             },
             {
@@ -334,7 +334,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "DirectedWeightedGraph",
               "java_type": "DirectedWeightedGraph"
             },
             {
@@ -399,24 +399,24 @@
       "name": "deletePath",
       "overloads": [
         {
-          "signature": "deletePath(int) -> boolean",
+          "signature": "deletePath(Path) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int"
+              "type": "Path",
+              "java_type": "Path"
             }
           ],
           "return_type": "bool",
           "java_return_type": "boolean"
         },
         {
-          "signature": "deletePath(Path) -> boolean",
+          "signature": "deletePath(int) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "Path"
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "bool",
@@ -429,18 +429,6 @@
       "name": "deletePaths",
       "overloads": [
         {
-          "signature": "deletePaths(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "deletePaths([I) -> void",
           "params": [
             {
@@ -451,6 +439,18 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "deletePaths(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
         }
       ],
       "documentation": "Java method: deletePaths"
@@ -587,7 +587,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -605,7 +605,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -628,7 +628,7 @@
             },
             {
               "name": "arg1",
-              "type": "Any",
+              "type": "str",
               "java_type": "File"
             }
           ],
@@ -668,7 +668,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
       ],
@@ -721,7 +721,7 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -739,7 +739,7 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -762,7 +762,7 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -878,5 +878,45 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathAndFillManager()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathAndFillManager(double, double, double, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathAndFillManager"
+    }
+  ]
 }

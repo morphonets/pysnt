@@ -1,0 +1,397 @@
+{
+  "class_name": "AllenUtils",
+  "package": "sc.fiji.snt.annotation",
+  "extracted_at": "2025-11-09T08:12:17.320723",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static assignAnnotationsFromNodeValues",
+      "overloads": [
+        {
+          "signature": "static assignAnnotationsFromNodeValues(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static assignAnnotationsFromNodeValues"
+    },
+    {
+      "name": "static assignHemisphereTags",
+      "overloads": [
+        {
+          "signature": "static assignHemisphereTags(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static assignHemisphereTags(DirectedWeightedGraph) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static assignHemisphereTags"
+    },
+    {
+      "name": "static assignToLeftHemisphere",
+      "overloads": [
+        {
+          "signature": "static assignToLeftHemisphere(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static assignToLeftHemisphere"
+    },
+    {
+      "name": "static assignToRightHemisphere",
+      "overloads": [
+        {
+          "signature": "static assignToRightHemisphere(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static assignToRightHemisphere"
+    },
+    {
+      "name": "static brainCenter",
+      "overloads": [
+        {
+          "signature": "static brainCenter() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint"
+        }
+      ],
+      "documentation": "Java method: static brainCenter"
+    },
+    {
+      "name": "static getAnatomicalPlane",
+      "overloads": [
+        {
+          "signature": "static getAnatomicalPlane(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static getAnatomicalPlane"
+    },
+    {
+      "name": "static getAxisDefiningSagittalPlane",
+      "overloads": [
+        {
+          "signature": "static getAxisDefiningSagittalPlane() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: static getAxisDefiningSagittalPlane"
+    },
+    {
+      "name": "static getCartesianPlane",
+      "overloads": [
+        {
+          "signature": "static getCartesianPlane(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static getCartesianPlane"
+    },
+    {
+      "name": "static getCompartment",
+      "overloads": [
+        {
+          "signature": "static getCompartment(String) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment"
+        },
+        {
+          "signature": "static getCompartment(int) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment"
+        }
+      ],
+      "documentation": "Java method: static getCompartment"
+    },
+    {
+      "name": "static getHemisphere",
+      "overloads": [
+        {
+          "signature": "static getHemisphere(Tree) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static getHemisphere"
+    },
+    {
+      "name": "static getHighestOntologyDepth",
+      "overloads": [
+        {
+          "signature": "static getHighestOntologyDepth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: static getHighestOntologyDepth"
+    },
+    {
+      "name": "static getOntologies",
+      "overloads": [
+        {
+          "signature": "static getOntologies(int, boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static getOntologies() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getOntologies"
+    },
+    {
+      "name": "static getRootMesh",
+      "overloads": [
+        {
+          "signature": "static getRootMesh(ColorRGB) -> OBJMesh",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh"
+        }
+      ],
+      "documentation": "Java method: static getRootMesh"
+    },
+    {
+      "name": "static getTreeModel",
+      "overloads": [
+        {
+          "signature": "static getTreeModel(boolean) -> DefaultTreeModel",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DefaultTreeModel"
+        }
+      ],
+      "documentation": "Java method: static getTreeModel"
+    },
+    {
+      "name": "static getXYZLabels",
+      "overloads": [
+        {
+          "signature": "static getXYZLabels() -> String;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "String;"
+        }
+      ],
+      "documentation": "Java method: static getXYZLabels"
+    },
+    {
+      "name": "static isLeftHemisphere",
+      "overloads": [
+        {
+          "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "static isLeftHemisphere(Tree) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "static isLeftHemisphere(double, double, double) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isLeftHemisphere"
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static main"
+    },
+    {
+      "name": "static splitByHemisphere",
+      "overloads": [
+        {
+          "signature": "static splitByHemisphere(DirectedWeightedGraph) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static splitByHemisphere"
+    },
+    {
+      "name": "static transferAnnotationIdsToNodeValues",
+      "overloads": [
+        {
+          "signature": "static transferAnnotationIdsToNodeValues(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static transferAnnotationIdsToNodeValues"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

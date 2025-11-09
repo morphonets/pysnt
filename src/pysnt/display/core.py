@@ -18,7 +18,8 @@ from .utils import (
     _handle_display_error,
     _validate_display_kwargs,
 )
-# Import from converters for functions we haven't moved yet
+
+# Import from converters for functions we haven't imported
 from ..converters.structured_data_converters import _convert_path_to_xarray, _is_snt_table, _convert_snt_table, _extract_imageplus_metadata
 from ..converters.chart_converters import _is_snt_chart, _convert_snt_chart
 from ..converters.graph_converters import _is_snt_graph, _convert_snt_graph
@@ -39,8 +40,7 @@ def handle_display_errors(operation_name: str):
         
     Returns
     -------
-    decorator
-        Decorator function that handles exceptions
+    decorator function that handles exceptions
     """
     def decorator(func):
         def wrapper(*args, **kwargs):
