@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 4
 
    pysnt.analysis
+   pysnt.annotation
    pysnt.converters
    pysnt.display
    pysnt.gui

@@ -27,12 +27,12 @@
 
 ```{raw} html
 <ul>
-    <li><a href="./1_single_cell_analysis.html">🆕 Single Cell Analysis</a></li>
+    <li><a href="./01_single_cell_analysis.html">🆕 Single Cell Analysis</a></li>
+    <li><a href="./02_hemisphere_analysis.html">🆕 Hemisphere Analysis</a></li>
     <li><a href="./2_convex_hull.html">Volumetric Quantifications</a></li>
     <li><a href="./3_tree_intersection.html">Spatial intersection Between Trees</a></li>
     <li><a href="./4_persistence_landscape.html">Clustering Morphologies Using Persistent Homology</a></li>
     <li><a href="./5_performance_testing.html">Performance Tests</a></li>
-    <li><a href="./6_hemisphere_analysis.html">Hemisphere Analysis</a></li>
     <li><a href="./7_timelapse_segmentation.html">Timelapse Segmentation</a></li>
 </ul>
 ```
