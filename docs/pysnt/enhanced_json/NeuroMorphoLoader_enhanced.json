@@ -1,0 +1,251 @@
+{
+  "class_name": "NeuroMorphoLoader",
+  "package": "sc.fiji.snt.io",
+  "extracted_at": "2025-11-12T22:36:48.815507",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.555250",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "enableSourceVersion",
+      "overloads": [
+        {
+          "signature": "enableSourceVersion(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable source version URLs, false otherwise",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: enableSourceVersion",
+      "javadoc_description": "Enables or disables the use of source version URLs.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static get",
+      "overloads": [
+        {
+          "signature": "static get(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the ID of the cell to be retrieved (case-sensitive). It may be the neuron name or its qualified filename. E.g., \"cnic_002\" or \"cnic_002.swc\" or \"cnic_002.CNG.swc\". By default, the standardized (CNG) version is assumed. Examples: \"cnic_002\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.CNG.swc\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.swc\" -> Source version of neuron cnic_002 is retrieved",
+              "javadoc_name": "cellId"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the specified neuron as a Tree object, or null if data could not be retrieved",
+          "throws": {
+            "IOException": "- if an error occurs while retrieving the data"
+          }
+        }
+      ],
+      "documentation": "Java method: static get",
+      "javadoc_description": "Convenience method for retrieving SWC data,",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getReader",
+      "overloads": [
+        {
+          "signature": "getReader(String) -> BufferedReader",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the ID of the cell to be retrieved",
+              "javadoc_name": "cellId"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BufferedReader",
+          "return_description": "the character stream containing the data, or null if cell ID was not found or could not be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getReader",
+      "javadoc_description": "Gets the SWC data ('CNG version') associated with the specified cell ID as a reader",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getReconstructionURL",
+      "overloads": [
+        {
+          "signature": "getReconstructionURL(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the ID of the cell to be retrieved",
+              "javadoc_name": "cellId"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the reconstruction URL, or null if cell ID was not found or could not be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getReconstructionURL",
+      "javadoc_description": "Gets the URL of the SWC file ('CNG version') associated with the specified cell ID.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the ID of the cell to be retrieved",
+              "javadoc_name": "cellId"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the data ('CNG version') for the specified cell as a Tree, or null if data could not be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTree",
+      "javadoc_description": "Gets the collection of Paths for the specified cell ID",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isDatabaseAvailable",
+      "overloads": [
+        {
+          "signature": "isDatabaseAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if an HHTP connection could be established, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isDatabaseAvailable",
+      "javadoc_description": "Checks whether a connection to the NeuroMorpho database can be established.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IOException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "NeuroMorphoLoader()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for NeuroMorphoLoader"
+    }
+  ],
+  "javadoc_description": "Importer for retrieving SWC data from neuromorpho.org.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "RemoteSWCLoader"
+    ],
+    "implements": [
+      "RemoteSWCLoader"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "RemoteSWCLoader",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

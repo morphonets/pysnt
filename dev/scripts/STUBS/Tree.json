@@ -1,7 +1,7 @@
 {
   "class_name": "Tree",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:47.212572",
+  "extracted_at": "2025-11-12T22:36:49.162742",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,24 +72,24 @@
       "name": "assignImage",
       "overloads": [
         {
-          "signature": "assignImage(Dataset) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Dataset"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "assignImage(ImagePlus) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignImage(Dataset) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Dataset"
             }
           ],
           "return_type": "None",
@@ -102,18 +102,6 @@
       "name": "static assignUniqueColors",
       "overloads": [
         {
-          "signature": "static assignUniqueColors(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "static assignUniqueColors(Collection, String) -> void",
           "params": [
             {
@@ -125,6 +113,18 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -155,16 +155,16 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
           "signature": "clone() -> Object",
           "params": [],
           "return_type": "Any",
           "java_return_type": "Object"
+        },
+        {
+          "signature": "clone() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
         }
       ],
       "documentation": "Java method: clone"
@@ -293,6 +293,12 @@
       "name": "getBoundingBox",
       "overloads": [
         {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        },
+        {
           "signature": "getBoundingBox(boolean) -> BoundingBox",
           "params": [
             {
@@ -301,12 +307,6 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
-        },
-        {
-          "signature": "getBoundingBox() -> BoundingBox",
-          "params": [],
           "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
@@ -502,6 +502,12 @@
       "name": "getSWCTypes",
       "overloads": [
         {
+          "signature": "getSWCTypes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
           "signature": "getSWCTypes(boolean) -> Set",
           "params": [
             {
@@ -510,12 +516,6 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set"
-        },
-        {
-          "signature": "getSWCTypes() -> Set",
-          "params": [],
           "return_type": "Set[Any]",
           "java_return_type": "Set"
         }
@@ -550,12 +550,6 @@
       "name": "getSkeleton2D",
       "overloads": [
         {
-          "signature": "getSkeleton2D() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
           "signature": "getSkeleton2D(int) -> ImagePlus",
           "params": [
             {
@@ -564,6 +558,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -724,18 +724,24 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Tree()",
-          "params": [],
+          "signature": "Tree(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "Tree(DirectedWeightedGraph, String)",
+          "signature": "Tree(String, String)",
           "params": [
             {
               "name": "arg0",
-              "type": "DirectedWeightedGraph",
-              "java_type": "DirectedWeightedGraph"
+              "type": "str",
+              "java_type": "String"
             },
             {
               "name": "arg1",
@@ -743,6 +749,29 @@
               "java_type": "String"
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, [I)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -776,44 +805,15 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Tree(String, [I)",
+          "signature": "Tree(DirectedWeightedGraph, String)",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
             },
             {
               "name": "arg1",
-              "type": "Any",
-              "java_type": "[I"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Tree(String, String)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Tree(String)",
-          "params": [
-            {
-              "name": "arg0",
               "type": "str",
               "java_type": "String"
             }
@@ -845,6 +845,144 @@
         }
       ],
       "documentation": "Java constructors for Tree"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "AXONAL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AXONAL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DENDRITIC",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field DENDRITIC of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_COLOR",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_COLOR of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_COMPARTMENT",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_COMPARTMENT of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_FRAME_POS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_FRAME_POS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_ID",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_ID of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG_CHANNEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG_CHANNEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG_FRAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG_FRAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_SOURCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_SOURCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_SPATIAL_UNIT",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_SPATIAL_UNIT of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SOMATIC",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SOMATIC of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "UNSET",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field UNSET of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field X_AXIS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field Y_AXIS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field Z_AXIS of type int",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

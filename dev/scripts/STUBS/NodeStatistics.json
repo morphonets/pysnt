@@ -1,7 +1,7 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.722613",
+  "extracted_at": "2025-11-12T22:36:48.831531",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -124,12 +124,6 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "getAnnotatedFrequencies() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
           "signature": "getAnnotatedFrequencies(int) -> Map",
           "params": [
             {
@@ -138,6 +132,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getAnnotatedFrequencies() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         }
@@ -199,6 +199,12 @@
       "name": "getAnnotatedHistogram",
       "overloads": [
         {
+          "signature": "getAnnotatedHistogram() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
           "signature": "getAnnotatedHistogram(int) -> SNTChart",
           "params": [
             {
@@ -209,12 +215,6 @@
           ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getAnnotatedHistogram() -> SNTChart",
-          "params": [],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
         }
       ],
       "documentation": "Java method: getAnnotatedHistogram"
@@ -222,12 +222,6 @@
     {
       "name": "getAnnotatedNodes",
       "overloads": [
-        {
-          "signature": "getAnnotatedNodes() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
         {
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
@@ -237,6 +231,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getAnnotatedNodes() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         }
@@ -334,6 +334,18 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "NodeStatistics(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "NodeStatistics(Collection, Tree)",
           "params": [
             {
@@ -349,21 +361,75 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "NodeStatistics(Collection)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for NodeStatistics"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "BRANCH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NEAREST_NEIGHBOR_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field NEAREST_NEIGHBOR_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VALUES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VALUES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field X_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Y_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Z_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

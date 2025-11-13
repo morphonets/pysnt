@@ -1,7 +1,7 @@
 {
   "class_name": "ColorMaps",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-09T07:59:46.585704",
+  "extracted_at": "2025-11-12T22:36:48.680501",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -48,6 +48,18 @@
       "name": "static applyViridis",
       "overloads": [
         {
+          "signature": "static applyViridis(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "static applyViridis(ImagePlus, int, boolean) -> void",
           "params": [
             {
@@ -64,18 +76,6 @@
               "name": "arg2",
               "type": "bool",
               "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static applyViridis(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
@@ -180,6 +180,32 @@
         }
       ],
       "documentation": "Java constructors for ColorMaps"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ICE",
+      "type": "Any",
+      "java_type": "ColorTable",
+      "documentation": "Field ICE of type ColorTable",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PLASMA",
+      "type": "Any",
+      "java_type": "ColorTable",
+      "documentation": "Field PLASMA of type ColorTable",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VIRIDIS",
+      "type": "Any",
+      "java_type": "ColorTable",
+      "documentation": "Field VIRIDIS of type ColorTable",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "class_name": "AllenCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2025-11-09T08:03:40.114725",
+  "extracted_at": "2025-11-12T22:36:48.632877",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -86,6 +86,12 @@
       "name": "getChildren",
       "overloads": [
         {
+          "signature": "getChildren() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "getChildren(int) -> List",
           "params": [
             {
@@ -94,12 +100,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "getChildren() -> List",
-          "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List"
         }
@@ -134,16 +134,16 @@
       "name": "getParent",
       "overloads": [
         {
-          "signature": "getParent() -> BrainAnnotation",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
-        },
-        {
           "signature": "getParent() -> AllenCompartment",
           "params": [],
           "return_type": "Any",
           "java_return_type": "AllenCompartment"
+        },
+        {
+          "signature": "getParent() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation"
         }
       ],
       "documentation": "Java method: getParent"
@@ -287,18 +287,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "AllenCompartment(UUID)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "UUID"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "AllenCompartment(int)",
           "params": [
             {
@@ -309,9 +297,47 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "AllenCompartment(UUID)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "UUID"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for AllenCompartment"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ANY_HEMISPHERE",
+      "type": "str",
+      "java_type": "char",
+      "documentation": "Field ANY_HEMISPHERE of type char",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "LEFT_HEMISPHERE",
+      "type": "str",
+      "java_type": "char",
+      "documentation": "Field LEFT_HEMISPHERE of type char",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RIGHT_HEMISPHERE",
+      "type": "str",
+      "java_type": "char",
+      "documentation": "Field RIGHT_HEMISPHERE of type char",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

@@ -1,0 +1,659 @@
+{
+  "class_name": "MouseLightLoader",
+  "package": "sc.fiji.snt.io",
+  "extracted_at": "2025-11-12T22:36:48.773791",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.606662",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static demoTrees",
+      "overloads": [
+        {
+          "signature": "static demoTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of Trees, corresponding to the dendritic arbors of cells \"AA0001\", \"AA0002\", \"AA0003\", \"AA0004\"",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static demoTrees",
+      "javadoc_description": "Returns a collection of four demo reconstructions NB: Data is cached locally. No internet connection required.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static extractNodes",
+      "overloads": [
+        {
+          "signature": "static extractNodes(InputStream, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "InputStream",
+              "description": "- the JSON file to be parsed",
+              "javadoc_name": "jsonFile"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the reconstruction nodes as SWCPoints",
+          "throws": {
+            "org.json.JSONException": "- if file is malformed"
+          }
+        },
+        {
+          "signature": "static extractNodes(File, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static extractNodes",
+      "javadoc_description": "Extracts reconstruction(s) from a JSON file.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "extractTrees(File, String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static extractTrees",
+      "overloads": [
+        {
+          "signature": "static extractTrees(InputStream, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "InputStream",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static extractTrees(File, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static extractTrees",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getAllLoaders",
+      "overloads": [
+        {
+          "signature": "static getAllLoaders() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of loaders",
+          "throws": {
+            "IllegalArgumentException": "- if the ML database could not be reached."
+          }
+        }
+      ],
+      "documentation": "Java method: static getAllLoaders",
+      "javadoc_description": "Gets the loaders for all the cells publicly available in the MouseLight database.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDOI",
+      "overloads": [
+        {
+          "signature": "getDOI() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the DOI string, or null if not available",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDOI",
+      "javadoc_description": "Gets the DOI for this neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getID",
+      "overloads": [
+        {
+          "signature": "getID() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the neuron ID",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getID",
+      "javadoc_description": "Gets the neuron ID for this loader.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getJSON",
+      "overloads": [
+        {
+          "signature": "getJSON() -> JSONObject",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "JSONObject",
+          "return_description": "the JSON data (null if data could not be retrieved).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getJSON",
+      "javadoc_description": "Gets all the data associated with this reconstruction as a JSON object.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getNeuronCount",
+      "overloads": [
+        {
+          "signature": "static getNeuronCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of available cells, or -1 if the database could not be reached.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getNeuronCount",
+      "javadoc_description": "Gets the number of cells publicly available in the MouseLight database.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodes",
+      "overloads": [
+        {
+          "signature": "getNodes() -> TreeSet",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "TreeSet",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNodes(String) -> TreeSet",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- 'soma', 'axon', 'dendrite', 'all' (case insensitive). All nodes are retrieved if",
+              "javadoc_name": "compartment"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "TreeSet",
+          "return_description": "the set of nodes of the neuron as SWCPoints.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodes",
+      "javadoc_description": "Script-friendly method to extract the nodes of a cellular compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWC",
+      "overloads": [
+        {
+          "signature": "getSWC() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the SWC data (null if data could not be retrieved).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWC",
+      "javadoc_description": "Gets all the data associated with this reconstruction in the SWC format.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSampleInfo",
+      "overloads": [
+        {
+          "signature": "getSampleInfo() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the sample information as a JSON string, or null if not available",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSampleInfo",
+      "javadoc_description": "Gets sample information for this neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSomaCompartment",
+      "overloads": [
+        {
+          "signature": "getSomaCompartment() -> AllenCompartment",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment",
+          "return_description": "the AllenCompartment containing the soma",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSomaCompartment",
+      "javadoc_description": "Gets the brain compartment containing the soma.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSomaLocation",
+      "overloads": [
+        {
+          "signature": "getSomaLocation() -> SWCPoint",
+          "params": [],
+          "return_type": "SWCPoint",
+          "java_return_type": "SWCPoint",
+          "return_description": "the SWCPoint representing the soma location",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSomaLocation",
+      "javadoc_description": "Gets the soma location for this neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the neuron as a Tree, or null if data could not be retrieved",
+          "throws": {
+            "IllegalArgumentException": "- if retrieval of data for this neuron is not possible"
+          }
+        },
+        {
+          "signature": "getTree(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTree(String, ColorRGB) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTree",
+      "javadoc_description": "Script-friendly method to extract the entire neuron as a collection of Paths.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "idExists",
+      "overloads": [
+        {
+          "signature": "idExists() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the ID exists, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: idExists",
+      "javadoc_description": "Checks if the neuron ID exists in the database.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isDatabaseAvailable",
+      "overloads": [
+        {
+          "signature": "static isDatabaseAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if an HHTP connection could be established",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isDatabaseAvailable",
+      "javadoc_description": "Checks whether a connection to the MouseLight database can be established.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IOException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(File) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the output directory or the output file",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: save",
+      "javadoc_description": "Convenience method to save JSON data.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "saveAsJSON(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "saveAsJSON",
+      "overloads": [
+        {
+          "signature": "saveAsJSON(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the output directory",
+              "javadoc_name": "outputDirectory"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {
+            "IOException": "- if an I/O exception occurred during saving"
+          }
+        }
+      ],
+      "documentation": "Java method: saveAsJSON",
+      "javadoc_description": "Convenience method to save JSON data to a local directory.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "saveAsSWC",
+      "overloads": [
+        {
+          "signature": "saveAsSWC(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the output directory",
+              "javadoc_name": "outputDirectory"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {
+            "IOException": "- if an I/O exception occurred during saving"
+          }
+        }
+      ],
+      "documentation": "Java method: saveAsSWC",
+      "javadoc_description": "Convenience method to save SWC data to a local directory.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "MouseLightLoader(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for MouseLightLoader"
+    }
+  ],
+  "javadoc_description": "Methods for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org *",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Constant Field Values",
+    "Object",
+    "extractTrees(File, String)",
+    "saveAsJSON(String)"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 26,
+      "total_json_methods": 20,
+      "total_matches": 25,
+      "exact_matches": 25,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 1,
+      "unmatched_json": -5,
+      "match_percentage": 96.2
+    },
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

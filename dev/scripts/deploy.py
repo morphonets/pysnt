@@ -64,7 +64,16 @@ def main():
         action="store_true",
         help="Skip documentation generation"
     )
-
+    parser.add_argument(
+        "--skip-enhanced-docs",
+        action="store_true",
+        help="Skip enhanced API documentation (JavaDoc integration)"
+    )
+    parser.add_argument(
+        "--force-enhanced-docs",
+        action="store_true",
+        help="Force regeneration of enhanced API documentation"
+    )
     parser.add_argument(
         "--verbose",
         action="store_true",
@@ -131,6 +140,65 @@ def main():
 
         if run_command(cmd, "Generating API documentation"):
             success_count += 1
+        
+        # 3a. Generate enhanced API documentation (unless skipped)
+        if not args.skip_enhanced_docs:
+            total_tasks += 1
+            print("\n" + "=" * 50)
+            print("Enhanced API Documentation (JavaDoc Integration)")
+            print("=" * 50)
+            
+            try:
+                # Import and run enhanced docs directly
+                sys.path.insert(0, str(script_dir))
+                from enhanced_api_docs.orchestrator import DocumentationOrchestrator
+                from enhanced_api_docs.config import config as enhanced_config
+                
+                # Check if prerequisites are met
+                if enhanced_config.validate():
+                    orchestrator = DocumentationOrchestrator(
+                        dry_run=False,
+                        show_progress=True,
+                        verbose=1 if args.verbose else 0
+                    )
+                    
+                    generation_options = {
+                        'force': args.force_enhanced_docs,
+                        'incremental': not args.force_enhanced_docs,
+                        'components': ['json', 'rst', 'index', 'sphinx'],
+                        'classes': None,
+                        'output_format': 'rst',
+                        'validate_after': True,
+                        'toctree_enabled': True,
+                        'toctree_maxdepth': 3
+                    }
+                    
+                    print("🚀 Generating enhanced API documentation...")
+                    success, results = orchestrator.generate_documentation(generation_options)
+                    
+                    if success:
+                        stats = results.get('statistics', {})
+                        print(f"✅ Enhanced API docs: {stats.get('classes_processed', 0)} classes, "
+                              f"{stats.get('methods_documented', 0)} methods")
+                        success_count += 1
+                    else:
+                        print("⚠️ Enhanced API documentation had issues, but continuing...")
+                else:
+                    print("⚠️ Enhanced API docs prerequisites not met (missing JavaDoc/stubs)")
+                    print("   Skipping enhanced documentation - this is optional")
+                    success_count += 1  # Don't fail deployment for optional feature
+                    
+            except ImportError:
+                print("⚠️ Enhanced API documentation system not available")
+                print("   This is optional - deployment will continue")
+                success_count += 1  # Don't fail deployment for optional feature
+            except Exception as e:
+                print(f"⚠️ Enhanced API documentation failed: {e}")
+                if args.verbose:
+                    import traceback
+                    traceback.print_exc()
+                print("   Continuing with standard documentation...")
+                success_count += 1  # Don't fail deployment for optional feature
 
         # 4. Build HTML documentation
         total_tasks += 1
@@ -153,13 +221,28 @@ def main():
             print("  • Type stub files (.pyi) from cached signatures")
             print("  • High-quality stubs for classes with cached data")
         if not args.skip_docs:
-            print("  • API documentation (.rst files)")
+            print("  • Standard API documentation (.rst files)")
+            if not args.skip_enhanced_docs:
+                print("  • Enhanced API documentation with JavaDoc integration")
+                print("    - Enhanced class docstrings")
+                print("    - Detailed reference pages (*_doc.rst)")
+                print("    - Alphabetical method index (method_index.html)")
+                print("    - Class index (class_index.html)")
+                print("    - Constants index (constants_index.html)")
             print("  • HTML documentation (docs/_build/html/)")
         
         print("\n💡 Note: Placeholder classes are generated automatically at runtime")
         print("  • No manual sync or placeholder generation needed")
         print("  • Cache-only stub generation for predictable results")
         print("  • Run extract_class_signatures.py to improve coverage")
+        
+        if not args.skip_docs and not args.skip_enhanced_docs:
+            print("\n💡 Enhanced API Documentation:")
+            print("  • View method index: docs/_build/html/method_index.html")
+            print("  • View class index: docs/_build/html/class_index.html")
+            print("  • View constants index: docs/_build/html/constants_index.html")
+            print("  • Detailed class docs: docs/pysnt/*_doc.rst")
+            print("  • To update JavaDoc: See dev/scripts/enhanced_api_docs/MAINTENANCE.md")
 
         print(f"\nDone.")
         return 0

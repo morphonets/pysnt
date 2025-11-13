@@ -1,12 +1,63 @@
 {
   "class_name": "Viewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2025-11-09T08:12:17.315272",
+  "extracted_at": "2025-11-12T22:36:49.205741",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
+        {
+          "signature": "add(Tree, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(List, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "add(Object) -> void",
           "params": [
@@ -14,6 +65,38 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, String, ColorTable, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
             }
           ],
           "return_type": "None",
@@ -72,89 +155,6 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, String, ColorTable, double, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg4",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, ColorRGB) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(List, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: add"
@@ -209,18 +209,6 @@
       "name": "addNodes",
       "overloads": [
         {
-          "signature": "addNodes(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addNodes(Collection, String, String) -> void",
           "params": [
             {
@@ -237,6 +225,18 @@
               "name": "arg2",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addNodes(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
             }
           ],
           "return_type": "None",
@@ -540,28 +540,6 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Tree, Profile, ColorTable) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Profile",
-              "java_type": "Profile"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
@@ -578,6 +556,28 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -606,22 +606,22 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Collection, String, String) -> void",
+          "signature": "map(Tree, Profile, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
+              "type": "Tree",
+              "java_type": "Tree"
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String"
+              "type": "Profile",
+              "java_type": "Profile"
             },
             {
               "name": "arg2",
-              "type": "str",
-              "java_type": "String"
+              "type": "Any",
+              "java_type": "ColorTable"
             }
           ],
           "return_type": "None",
@@ -892,8 +892,19 @@
       "name": "show",
       "overloads": [
         {
-          "signature": "show() -> void",
-          "params": [],
+          "signature": "show(int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         }
@@ -906,6 +917,23 @@
     {
       "name": "__init__",
       "overloads": [
+        {
+          "signature": "Viewer2D(Context, Viewer2D)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "arg1",
+              "type": "Viewer2D",
+              "java_type": "Viewer2D"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "Viewer2D(Context)",
           "params": [
@@ -923,26 +951,203 @@
           "params": [],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "Viewer2D(Context, Viewer2D)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            },
-            {
-              "name": "arg1",
-              "type": "Viewer2D",
-              "java_type": "Viewer2D"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for Viewer2D"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "INTER_NODE_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NODE_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field NODE_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_BRANCH_POINTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_BRANCH_POINTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_NODES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_NODES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_SPINES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_SPINES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_AVG_SPINE_DENSITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_AVG_SPINE_DENSITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_REL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_REL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_FRAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_FRAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_MEAN_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_MEAN_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SHOLL_COUNTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SHOLL_COUNTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "STRAHLER_ORDERS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field STRAHLER_ORDERS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TAG_FILENAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field TAG_FILENAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VALUES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VALUES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field X_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Y_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Z_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

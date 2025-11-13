@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:47.126816",
+  "extracted_at": "2025-11-12T22:36:49.084047",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -373,6 +373,18 @@
       "name": "static getUniquelySuffixedFile",
       "overloads": [
         {
+          "signature": "static getUniquelySuffixedFile(File) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File"
+        },
+        {
           "signature": "static getUniquelySuffixedFile(File, String) -> File",
           "params": [
             {
@@ -384,18 +396,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "str",
-          "java_return_type": "File"
-        },
-        {
-          "signature": "static getUniquelySuffixedFile(File) -> File",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
             }
           ],
           "return_type": "str",
@@ -598,5 +598,15 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [],
+  "static_fields": [
+    {
+      "name": "VERSION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VERSION of type String",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
 }

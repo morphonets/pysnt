@@ -1,7 +1,7 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:46.896474",
+  "extracted_at": "2025-11-12T22:36:48.967015",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -56,45 +56,6 @@
       "name": "autoTrace",
       "overloads": [
         {
-          "signature": "autoTrace(List, PointInImage, boolean) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            },
-            {
-              "name": "arg1",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "autoTrace(List, PointInImage) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            },
-            {
-              "name": "arg1",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
           "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
           "params": [
             {
@@ -138,6 +99,45 @@
               "name": "arg2",
               "type": "PointInImage",
               "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "autoTrace(List, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "arg1",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "autoTrace(List, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "arg1",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "Path",
@@ -192,23 +192,6 @@
       "name": "captureView",
       "overloads": [
         {
-          "signature": "captureView(String, boolean) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
           "signature": "captureView(String, ColorRGB) -> ImagePlus",
           "params": [
             {
@@ -220,6 +203,23 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "captureView(String, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "Any",
@@ -751,6 +751,12 @@
       "name": "getImagePlus",
       "overloads": [
         {
+          "signature": "getImagePlus() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
@@ -759,12 +765,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "getImagePlus() -> ImagePlus",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -849,6 +849,32 @@
         }
       ],
       "documentation": "Java constructors for SNT"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "XY_PLANE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field XY_PLANE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "XZ_PLANE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field XZ_PLANE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZY_PLANE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ZY_PLANE of type int",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

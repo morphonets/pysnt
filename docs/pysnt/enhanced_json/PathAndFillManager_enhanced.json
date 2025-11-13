@@ -1,0 +1,1450 @@
+{
+  "class_name": "PathAndFillManager",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:48.862871",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.584582",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addPath",
+      "overloads": [
+        {
+          "signature": "addPath(Path, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addPath(Path, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addPath(Path) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addPath",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addPathAndFillListener",
+      "overloads": [
+        {
+          "signature": "addPathAndFillListener(PathAndFillListener) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PathAndFillListener",
+              "description": "- the listener",
+              "javadoc_name": "listener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addPathAndFillListener",
+      "javadoc_description": "Adds a PathAndFillListener. This is used by the interface to have changes in the path manager reported so that they can be reflected in the UI.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addTree",
+      "overloads": [
+        {
+          "signature": "addTree(Tree, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the collection of paths to be added",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addTree",
+      "javadoc_description": "Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addTrees",
+      "overloads": [
+        {
+          "signature": "addTrees(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of trees to be added",
+              "javadoc_name": "trees"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addTrees",
+      "javadoc_description": "Adds a collection of Trees.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "allPointsIterator",
+      "overloads": [
+        {
+          "signature": "allPointsIterator() -> Iterator",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Iterator",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: allPointsIterator",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "anySelected",
+      "overloads": [
+        {
+          "signature": "anySelected() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: anySelected",
+      "javadoc_description": "Checks whether at least one Path is currently selected in the UI.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "assignSpatialSettings",
+      "overloads": [
+        {
+          "signature": "assignSpatialSettings(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: assignSpatialSettings",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "canvasResized",
+      "overloads": [
+        {
+          "signature": "canvasResized() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: canvasResized",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "characters",
+      "overloads": [
+        {
+          "signature": "characters([C, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[C",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: characters",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clear",
+      "overloads": [
+        {
+          "signature": "clear() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clear",
+      "javadoc_description": "Deletes all paths and fills.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contentAdded",
+      "overloads": [
+        {
+          "signature": "contentAdded(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contentAdded",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contentChanged",
+      "overloads": [
+        {
+          "signature": "contentChanged(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contentChanged",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contentRemoved",
+      "overloads": [
+        {
+          "signature": "contentRemoved(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contentRemoved",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contentSelected",
+      "overloads": [
+        {
+          "signature": "contentSelected(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contentSelected",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static createFromFile",
+      "overloads": [
+        {
+          "signature": "static createFromFile(String, [I) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the absolute path of the file to be imported as per load(String, int...)",
+              "javadoc_name": "filePath"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[I",
+              "description": "",
+              "javadoc_name": "load(String, int...)"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager",
+          "return_description": "the PathAndFillManager instance, or null if file could not be imported",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static createFromFile",
+      "javadoc_description": "Creates a PathAndFillManager instance from imported data",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static createFromGraph",
+      "overloads": [
+        {
+          "signature": "static createFromGraph(DirectedWeightedGraph, boolean) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph",
+              "description": "- The input graph",
+              "javadoc_name": "graph"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static createFromGraph",
+      "javadoc_description": "Create a new PathAndFillManager instance from the graph.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static createFromNodes",
+      "overloads": [
+        {
+          "signature": "static createFromNodes(Collection) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of reconstruction nodes. Nodes will be sorted by id and any duplicate entries pruned.",
+              "javadoc_name": "nodes"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager",
+          "return_description": "the PathAndFillManager instance, or null if file could not be imported",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static createFromNodes",
+      "javadoc_description": "Creates a PathAndFillManager instance from a collection of reconstruction nodes.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "declaration",
+      "overloads": [
+        {
+          "signature": "declaration(String, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: declaration",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "deletePath",
+      "overloads": [
+        {
+          "signature": "deletePath(int) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the path to be deleted",
+              "javadoc_name": "p"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if path was found and successfully deleted",
+          "throws": {}
+        },
+        {
+          "signature": "deletePath(Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: deletePath",
+      "javadoc_description": "Deletes a path.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "deletePaths",
+      "overloads": [
+        {
+          "signature": "deletePaths(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "deletePaths([I) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[I",
+              "description": "- the indices to be deleted",
+              "javadoc_name": "indices"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: deletePaths",
+      "javadoc_description": "Delete paths by position.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "downsampleAll",
+      "overloads": [
+        {
+          "signature": "downsampleAll(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the maximum permitted distance between nodes.",
+              "javadoc_name": "maximumPermittedDistance"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: downsampleAll",
+      "javadoc_description": "Downsamples alls path using Ramer–Douglas–Peucker simplification. Downsampling occurs only between branch points and terminal points.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "endDocument",
+      "overloads": [
+        {
+          "signature": "endDocument() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: endDocument",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "endElement",
+      "overloads": [
+        {
+          "signature": "endElement(String, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "TracesFileFormatException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: endElement",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "endPrefixMapping",
+      "overloads": [
+        {
+          "signature": "endPrefixMapping(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- true to activate headless calls, otherwise false",
+              "javadoc_name": "headless"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: endPrefixMapping",
+      "javadoc_description": "Sets whether this PathAndFillManager instance should run headless.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "error",
+      "overloads": [
+        {
+          "signature": "error(SAXParseException) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SAXParseException",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: error",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "exportAllPathsAsSWC",
+      "overloads": [
+        {
+          "signature": "exportAllPathsAsSWC(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the file path (including common basename) for exported files. The",
+              "javadoc_name": "baseFilename"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: exportAllPathsAsSWC",
+      "javadoc_description": "Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "exportFillsAsCSV",
+      "overloads": [
+        {
+          "signature": "exportFillsAsCSV(File) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the output file",
+              "javadoc_name": "outputFile"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IOException": "- Signals that an I/O exception has occurred."
+          }
+        }
+      ],
+      "documentation": "Java method: exportFillsAsCSV",
+      "javadoc_description": "Export fills as CSV.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "exportToCSV",
+      "overloads": [
+        {
+          "signature": "exportToCSV(File) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the output file",
+              "javadoc_name": "outputFile"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IOException": "- if data could not be stored"
+          }
+        }
+      ],
+      "documentation": "Java method: exportToCSV",
+      "javadoc_description": "Output some potentially useful information about all the Paths managed by this instance as a CSV (comma separated values) file.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "exportTree",
+      "overloads": [
+        {
+          "signature": "exportTree(int, File) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: exportTree",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "fatalError",
+      "overloads": [
+        {
+          "signature": "fatalError(SAXParseException) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SAXParseException",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: fatalError",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox(boolean) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true, BoundingBox dimensions will be computed for all the existing Paths. If false, the last computed BoundingBox will be returned. Also, if BoundingBox is not scaled, its spacing will be computed from the smallest inter-node distance of an arbitrary ' large' Path. Computations of Path boundaries typically occur during import operations.",
+              "javadoc_name": "compute"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "the BoundingBox enclosing existing nodes, or an 'empty' BoundingBox if no computation of boundaries has not yet occurred. Output is never null.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoundingBox",
+      "javadoc_description": "Returns the BoundingBox enclosing all nodes of all existing Paths.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCorrespondences",
+      "overloads": [
+        {
+          "signature": "getCorrespondences(PathAndFillManager, double) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PathAndFillManager",
+              "description": "- the other PathAndFillManager holding the corresponding Paths",
+              "javadoc_name": "other"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the cloud of NearPoint correspondences",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCorrespondences",
+      "javadoc_description": "For each point in this PathAndFillManager, find the corresponding point on the other one. If there's no corresponding one, include a null instead. *",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLoadedFills",
+      "overloads": [
+        {
+          "signature": "getLoadedFills() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLoadedFills",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPath",
+      "overloads": [
+        {
+          "signature": "getPath(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the Path",
+              "javadoc_name": "i"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the Path at the specified index",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPath",
+      "javadoc_description": "Returns the Path at the specified position in the PathAndFillManager list.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathFromID",
+      "overloads": [
+        {
+          "signature": "getPathFromID(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the id of the Path to be retrieved",
+              "javadoc_name": "id"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the Path with the specified id, or null if id was not found.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathFromID",
+      "javadoc_description": "Returns the Path with the specified id.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathFromName",
+      "overloads": [
+        {
+          "signature": "getPathFromName(String, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the name of the Path to be retrieved",
+              "javadoc_name": "name"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the Path with the specified name, or null if name was not found.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathFromName",
+      "javadoc_description": "Returns the Path with the specified name.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPaths",
+      "overloads": [
+        {
+          "signature": "getPaths() -> ArrayList",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList",
+          "return_description": "the paths associated with this PathAndFillManager instance.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPaths",
+      "javadoc_description": "Returns all the paths.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathsFiltered",
+      "overloads": [
+        {
+          "signature": "getPathsFiltered() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the paths associated with this PathAndFillManager instance excluding those that are null or fitted version of o paths.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathsFiltered",
+      "javadoc_description": "Returns the 'de facto' Paths.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathsInROI",
+      "overloads": [
+        {
+          "signature": "getPathsInROI(Roi) -> Collection",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Roi",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathsInROI",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathsStructured",
+      "overloads": [
+        {
+          "signature": "getPathsStructured() -> Path;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Path;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getPathsStructured(Collection) -> Path;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Path;",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathsStructured",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPlugin",
+      "overloads": [
+        {
+          "signature": "getPlugin() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "the SNT instance associated with this PathManager (if any)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPlugin",
+      "javadoc_description": "Gets the SNT instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCFor",
+      "overloads": [
+        {
+          "signature": "getSWCFor(Collection) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of Path objects to convert. Must contain exactly one primary path and form a connected tree structure. Empty paths are automatically skipped. Cannot be null or empty.",
+              "javadoc_name": "paths"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a list of SWCPoint objects representing the neuronal structure in SWC format. Points are ordered by their sequential SWC IDs, with proper parent-child relationships established. The list is never null but may be empty if all input paths are empty.",
+          "throws": {
+            "SWCExportException": "- if the input paths do not form a valid tree structure:"
+          }
+        }
+      ],
+      "documentation": "Java method: getSWCFor",
+      "javadoc_description": "Converts a collection of connected Path objects into SWC points for export.\n\nSWC is the standardized format used for neuromorphological data exchange. The conversion process:\n\nValidates that paths form a proper tree structure with exactly one primary path (tree's root) Uses breadth-first traversal to ensure correct parent-child relationships Assigns sequential SWC IDs starting from 1 Establishes proper parent references based on path connectivity Preserves path properties including SWC type, color, annotations, and custom tags\n\nPath Requirements:\n\nMust contain exactly one primary path (root of the tree) All non-primary paths must have valid parent relationships Paths must form a connected tree structure (no disconnected components) Empty paths (size == 0) are automatically skipped",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for details on the SWC point data structure",
+        "for parent-child relationships",
+        "for branch point coordinates",
+        "for converting entire Tree objects"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSelectedPaths",
+      "overloads": [
+        {
+          "signature": "getSelectedPaths() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "the collection of selected paths",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSelectedPaths",
+      "javadoc_description": "Gets all paths selected in the GUI",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathAndFillManager(double, double, double, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathAndFillManager()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathAndFillManager"
+    }
+  ],
+  "javadoc_description": "The PathAndFillManager is responsible for importing, handling and managing of Paths and Fills. Typically, a PathAndFillManager is accessed from a SNT instance, but accessing a PathAndFillManager directly is useful for batch/headless operations.",
+  "inheritance": {
+    "extends": [
+      "DefaultHandler"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "PathAndFillManager.AllPointsIterator"
+  ],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "for details on the SWC point data structure",
+    "DefaultHandler",
+    "getTrees()",
+    "for converting entire Tree objects",
+    "for branch point coordinates",
+    "Tree.getLabel()",
+    "NeuroMorphoLoader",
+    "for parent-child relationships",
+    "SNTColor.getDistinctColors(int)",
+    "Tree.isEmpty()"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 67,
+      "total_json_methods": 44,
+      "total_matches": 52,
+      "exact_matches": 44,
+      "signature_matches": 8,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 15,
+      "unmatched_json": -8,
+      "match_percentage": 77.6
+    },
+    "unmatched_javadoc_methods": 15,
+    "unmatched_json_methods": 4,
+    "enhancement_quality_score": 0.857
+  }
+}

@@ -1,7 +1,7 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:46.791726",
+  "extracted_at": "2025-11-12T22:36:48.869120",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -26,16 +26,16 @@
       "name": "call",
       "overloads": [
         {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "call() -> Path",
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path"
+        },
+        {
+          "signature": "call() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: call"
@@ -226,12 +226,12 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "PathFitter(RandomAccessibleInterval, Path)",
+          "signature": "PathFitter(SNT, Path)",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "RandomAccessibleInterval"
+              "java_type": "SNT"
             },
             {
               "name": "arg1",
@@ -243,12 +243,12 @@
           "java_return_type": "void"
         },
         {
-          "signature": "PathFitter(SNT, Path)",
+          "signature": "PathFitter(RandomAccessibleInterval, Path)",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "SNT"
+              "java_type": "RandomAccessibleInterval"
             },
             {
               "name": "arg1",
@@ -278,6 +278,72 @@
         }
       ],
       "documentation": "Java constructors for PathFitter"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "DEFAULT_MAX_RADIUS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_MAX_RADIUS of type int",
+      "is_static": true,
+      "is_final": false
+    },
+    {
+      "name": "DEFAULT_MIN_ANGLE",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field DEFAULT_MIN_ANGLE of type double",
+      "is_static": true,
+      "is_final": false
+    },
+    {
+      "name": "FALLBACK_MIN_SEP",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field FALLBACK_MIN_SEP of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FALLBACK_MODE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field FALLBACK_MODE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FALLBACK_NAN",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field FALLBACK_NAN of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "MIDPOINTS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field MIDPOINTS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RADII",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field RADII of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RADII_AND_MIDPOINTS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field RADII_AND_MIDPOINTS of type int",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

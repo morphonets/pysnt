@@ -112,11 +112,12 @@ python -c "import pysnt; print('PySNT imported successfully!')"
 #### Spyder
 1. Make sure Spyder is installed in the 'pysnt' environment:
    ```bash
-    conda activate pysnt
-    conda install spyder
+    mamba activate pysnt
+    mamba install spyder
+    mamba install spyder-notebook -c conda-forge # Optional: support for tutorials notebooks
     ```
 2. Launch Spyder from the activated environment
-3. Open this folder as a project: File → Open Project
+3. Open this folder as a project: Projects → New Project... → Existing Directory
 
 ### Project Structure
 

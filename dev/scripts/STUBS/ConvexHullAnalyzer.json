@@ -1,7 +1,7 @@
 {
   "class_name": "ConvexHullAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.596658",
+  "extracted_at": "2025-11-12T22:36:48.691476",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -341,18 +341,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ConvexHullAnalyzer(AbstractConvexHull)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "ConvexHullAnalyzer(Tree)",
           "params": [
             {
@@ -363,9 +351,79 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "ConvexHullAnalyzer(AbstractConvexHull)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AbstractConvexHull"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for ConvexHullAnalyzer"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "BOUNDARY_SIZE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BOUNDARY_SIZE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BOXIVITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BOXIVITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "COMPACTNESS_3D",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field COMPACTNESS_3D of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ECCENTRICITY_2D",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ECCENTRICITY_2D of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ELONGATION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ELONGATION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ROUNDNESS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ROUNDNESS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SIZE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SIZE of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

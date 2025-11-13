@@ -1,7 +1,7 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:46.770283",
+  "extracted_at": "2025-11-12T22:36:48.852419",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -54,28 +54,6 @@
       "name": "addDiscsTo3DViewer",
       "overloads": [
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color3f"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Content"
-        },
-        {
           "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
@@ -87,6 +65,28 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Color"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Content"
+        },
+        {
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color3f"
             },
             {
               "name": "arg2",
@@ -150,28 +150,6 @@
       "name": "addTo3DViewer",
       "overloads": [
         {
-          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color3f"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
           "params": [
             {
@@ -183,6 +161,28 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Color"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color3f"
             },
             {
               "name": "arg2",
@@ -212,16 +212,16 @@
           "java_return_type": "Path"
         },
         {
-          "signature": "clone() -> Path",
-          "params": [],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
           "signature": "clone() -> Object",
           "params": [],
           "return_type": "Any",
           "java_return_type": "Object"
+        },
+        {
+          "signature": "clone() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path"
         }
       ],
       "documentation": "Java method: clone"
@@ -797,12 +797,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Path()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "Path(double, double, double, String)",
           "params": [
             {
@@ -828,9 +822,177 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "Path()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for Path"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "SWC_APICAL_DENDRITE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_APICAL_DENDRITE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_APICAL_DENDRITE_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_APICAL_DENDRITE_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_AXON",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_AXON of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_AXON_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_AXON_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_CUSTOM",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_CUSTOM of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_CUSTOM2",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_CUSTOM2 of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_CUSTOM2_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_CUSTOM2_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_CUSTOM_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_CUSTOM_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_DENDRITE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_DENDRITE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_DENDRITE_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_DENDRITE_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_END_POINT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_END_POINT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_FORK_POINT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_FORK_POINT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_GLIA_PROCESS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_GLIA_PROCESS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_GLIA_PROCESS_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_GLIA_PROCESS_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_SOMA",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_SOMA of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_SOMA_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_SOMA_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_UNDEFINED",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_UNDEFINED of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_UNDEFINED_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_UNDEFINED_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_UNSPECIFIED",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SWC_UNSPECIFIED of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SWC_UNSPECIFIED_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SWC_UNSPECIFIED_LABEL of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

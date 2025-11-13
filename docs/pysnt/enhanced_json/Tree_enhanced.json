@@ -1,0 +1,1346 @@
+{
+  "class_name": "Tree",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:49.162742",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.634916",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the Path to be added",
+              "javadoc_name": "p"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if Path successful added",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: add",
+      "javadoc_description": "Adds a new Path to this Tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "applyCanvasOffset",
+      "overloads": [
+        {
+          "signature": "applyCanvasOffset(double, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the x offset (in pixels)",
+              "javadoc_name": "xOffset"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyCanvasOffset",
+      "javadoc_description": "Specifies the offset to be used when rendering this Tree in a TracerCanvas. Path coordinates remain unaltered.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "applyProperties",
+      "overloads": [
+        {
+          "signature": "applyProperties(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree whose properties should be copied",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyProperties",
+      "javadoc_description": "Applies properties from another Tree to this Tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "assignImage",
+      "overloads": [
+        {
+          "signature": "assignImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the Dataset providing the spatial calibration. Null allowed.",
+              "javadoc_name": "dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "assignImage(Dataset) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Dataset",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: assignImage",
+      "javadoc_description": "Assigns spatial calibration from a Dataset to this Tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static assignUniqueColors",
+      "overloads": [
+        {
+          "signature": "static assignUniqueColors(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'.",
+              "javadoc_name": "excludedHue"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignUniqueColors",
+      "javadoc_description": "Assigns distinct colors to a collection of Trees.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTColor.getDistinctColors(int, String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "assignValue",
+      "overloads": [
+        {
+          "signature": "assignValue(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the value to be assigned to this Tree.",
+              "javadoc_name": "value"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: assignValue",
+      "javadoc_description": "Assigns a numeric property to this Tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getAssignedValue()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "clone",
+      "overloads": [
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "clone() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "a new Tree that is a deep copy of this tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clone",
+      "javadoc_description": "Creates a deep copy of this Tree.\n\nThis method creates a complete copy of the tree including all paths and their relationships. Each path is cloned individually, and then the parent-child relationships are reconstructed in the cloned tree. This ensures that the cloned tree maintains the same structure as the original while being completely independent.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "downSample",
+      "overloads": [
+        {
+          "signature": "downSample(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: downSample",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "downsample",
+      "overloads": [
+        {
+          "signature": "downsample(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the maximum allowed distance between path nodes.",
+              "javadoc_name": "internodeSpacing"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: downsample",
+      "javadoc_description": "Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing.\n\nNote that 1) upsampling is not supported (cf. {upsample(double)}, and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathDownsampler",
+        "upsample(double)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static fromFile",
+      "overloads": [
+        {
+          "signature": "static fromFile(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the absolute path to the file (.Traces, (e)SWC or JSON) to be imported",
+              "javadoc_name": "filePath"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the Tree instance, or null if file could not be imported",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static fromFile",
+      "javadoc_description": "Script-friendly method for loading a Tree from a reconstruction file.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- index of the element to return",
+              "javadoc_name": "index"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the element at the specified position",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: get",
+      "javadoc_description": "Returns the Path at the specified position.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getApproximatedSurface",
+      "overloads": [
+        {
+          "signature": "getApproximatedSurface() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the approximate surface area or NaN if this Tree's paths have no radius",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getApproximatedSurface",
+      "javadoc_description": "Retrieves an approximate estimate of Tree's surface are by approximating the surface area of each path, and summing to total. The surface of each path is computed assuming the lateral surface area of a conical frustum between nodes.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "Path.getApproximatedSurface()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getApproximatedVolume",
+      "overloads": [
+        {
+          "signature": "getApproximatedVolume() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the approximate volume or NaN if this Tree's paths have no radius",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getApproximatedVolume",
+      "javadoc_description": "Retrieves an approximate estimate of Tree's volume by approximating the volume of each path, and summing to total. The volume of each path is computed assuming the volume of each of inter-node segment to be that of a truncated cone (Frustum).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "Path.getApproximatedVolume()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAssignedValue",
+      "overloads": [
+        {
+          "signature": "getAssignedValue() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the assigned value.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAssignedValue",
+      "javadoc_description": "Retrieves the numeric property assigned to this Tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "assignValue(double)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getBPs",
+      "overloads": [
+        {
+          "signature": "getBPs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of branch points",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getBPs",
+      "javadoc_description": "Gets the branch points (junctions) of the graph. This is simply an alias for `DirectedWeightedGraph.getBPs()`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getBoundingBox(boolean) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if",
+              "javadoc_name": "computeIfUnset"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "the BoundingBox",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoundingBox",
+      "javadoc_description": "Gets the bounding box associated with this tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getColor",
+      "overloads": [
+        {
+          "signature": "getColor() -> ColorRGB",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "return_description": "the Tree color, or null if no color has been assigned",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getColor",
+      "javadoc_description": "Gets the color assigned to this Tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getConvexHull",
+      "overloads": [
+        {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getConvexHull(String) -> AbstractConvexHull",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the description of the point cloud defining the convex hull (i.e., \"tips\"/\"end-points\", \"junctions\"/\"branch points\", or \"all\" (default))",
+              "javadoc_name": "type"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull",
+          "return_description": "the convex hull. Either ConvexHull2D (if this tree is two-dimensional) or ConvexHull3D (if this tree is three-dimensional)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getConvexHull",
+      "javadoc_description": "Retrieves the convex hull of this tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getGraph",
+      "overloads": [
+        {
+          "signature": "getGraph() -> DirectedWeightedGraph",
+          "params": [],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getGraph(boolean) -> DirectedWeightedGraph",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, graph will be simplified so that Tree is only represented by root, branch-points and tips.",
+              "javadoc_name": "simplify"
+            }
+          ],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "return_description": "the Tree's graph with edge weights corresponding to branch lengths",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getGraph",
+      "javadoc_description": "Assembles a DirectedGraph from this Tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getImpContainer",
+      "overloads": [
+        {
+          "signature": "getImpContainer(int, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the pane flag indicating the SNT view for this image e.g., MultiDThreePanes.XY_PLANE",
+              "javadoc_name": "multiDThreePaneView"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "MultiDThreePanes.XY_PLANE"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the empty ImagePlus container",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getImpContainer",
+      "javadoc_description": "Gets an empty image capable of holding the skeletonized version of this tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "overloads": [
+        {
+          "signature": "getLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the Tree label (or null) if none has been set.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLabel",
+      "javadoc_description": "Returns the identifying label of this tree. When importing files, the label typically defaults to the imported filename,",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodes",
+      "overloads": [
+        {
+          "signature": "getNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the points",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodes",
+      "javadoc_description": "Gets all the nodes (path points) forming this tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodesAsSWCPoints",
+      "overloads": [
+        {
+          "signature": "getNodesAsSWCPoints() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: getNodesAsSWCPoints",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodesCount",
+      "overloads": [
+        {
+          "signature": "getNodesCount() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the total node count",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodesCount",
+      "javadoc_description": "Gets the total number of nodes across all paths in this Tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getProperties",
+      "overloads": [
+        {
+          "signature": "getProperties() -> Properties",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Properties",
+          "return_description": "the Properties instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getProperties",
+      "javadoc_description": "Returns the Properties instance holding the persistent set of properties. Useful to associate metadata to this tree. E.g.\n\n\n```\ngetProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);\n```\n",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);",
+        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);"
+      ]
+    },
+    {
+      "name": "getRoot",
+      "overloads": [
+        {
+          "signature": "getRoot() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the root node, or null if the main primary path is undefined for this tree.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRoot",
+      "javadoc_description": "Gets the first node of the main primary path of this tree",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getSWCTypeMap",
+      "overloads": [
+        {
+          "signature": "static getSWCTypeMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map mapping swct type flags (e.g., Path.SWC_AXON, Path.SWC_DENDRITE, etc.) and their respective labels",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getSWCTypeMap",
+      "javadoc_description": "Returns the SWC Type flags used by SNT.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCTypeNames",
+      "overloads": [
+        {
+          "signature": "getSWCTypeNames(boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, includes soma in the returned set; if false, excludes Path.SWC_SOMA from the result",
+              "javadoc_name": "includeSoma"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "a Set containing the SWC type labels (e.g., Path.SWC_AXON_LABEL, `Path.SWC_DENDRITE_LABEL`, etc.) present in the tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCTypeNames",
+      "javadoc_description": "Gets the set of SWC type labels present in this tree with optional soma inclusion in a readable form.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for integer SWC type flags"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSWCTypes",
+      "overloads": [
+        {
+          "signature": "getSWCTypes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getSWCTypes(boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, includes the soma type in the returned set; if false, excludes Path.SWC_SOMA from the result",
+              "javadoc_name": "includeSoma"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "a Set containing the SWC type constants (e.g., Path.SWC_AXON, Path.SWC_DENDRITE, etc.) present in the tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCTypes",
+      "javadoc_description": "Gets the set of SWC types present in this tree with optional soma inclusion.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for the version that includes soma by default",
+        "for individual path SWC types"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSkeleton",
+      "overloads": [
+        {
+          "signature": "getSkeleton(int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the voxel intensities of the skeleton. If",
+              "javadoc_name": "pixelValue"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the skeletonized 16-bit binary image",
+          "throws": {}
+        },
+        {
+          "signature": "getSkeleton() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSkeleton",
+      "javadoc_description": "Retrieves the rasterized skeleton of this tree at 1:1 scaling.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "skeletonize(ImagePlus, int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSkeleton2D",
+      "overloads": [
+        {
+          "signature": "getSkeleton2D(int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the pixel intensities of the skeleton. If",
+              "javadoc_name": "pixelValue"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the skeletonized 16-bit binary image",
+          "throws": {}
+        },
+        {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSkeleton2D",
+      "javadoc_description": "Retrieves a 2D projection of the rasterized skeleton of this tree at 1:1 scaling.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getSkeleton(int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSomaNodes",
+      "overloads": [
+        {
+          "signature": "getSomaNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the soma nodes or null if no Paths are tagged as soma.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSomaNodes",
+      "javadoc_description": "Gets the list of all nodes tagged as Path.SWC_SOMA.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getRoot()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getTips",
+      "overloads": [
+        {
+          "signature": "getTips() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of end points",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getTips",
+      "javadoc_description": "Gets the end points (tips) of the graph. This is simply an alias for `DirectedWeightedGraph.getTips()`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "indexOf",
+      "overloads": [
+        {
+          "signature": "indexOf(Path) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the Path to be searched for",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the path index, or -1 if it was not found",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: indexOf",
+      "javadoc_description": "Returns the index of the specified Path in this Tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "is3D",
+      "overloads": [
+        {
+          "signature": "is3D() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if is 3D",
+          "throws": {
+            "IllegalArgumentException": "- if tree is empty"
+          }
+        }
+      ],
+      "documentation": "Java method: is3D",
+      "javadoc_description": "Assesses whether this Tree has depth.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isAnnotated",
+      "overloads": [
+        {
+          "signature": "isAnnotated() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if at least one node in the Tree has a valid annotation, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isAnnotated",
+      "javadoc_description": "Checks if the nodes of this Tree have been assigned BrainAnnotations (neuropil labels).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isEmpty",
+      "overloads": [
+        {
+          "signature": "isEmpty() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this tree contains no Paths, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isEmpty",
+      "javadoc_description": "Checks if this Tree is empty.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "list",
+      "overloads": [
+        {
+          "signature": "list() -> ArrayList",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList",
+          "return_description": "the paths forming this tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: list",
+      "javadoc_description": "Gets all the paths from this tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static listFromDir",
+      "overloads": [
+        {
+          "signature": "static listFromDir(String, String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static listFromDir(String, String, String;) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static listFromDir(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the directory containing the reconstruction files (.(e)swc, .traces, .json extension)",
+              "javadoc_name": "dir"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of imported Trees. An empty list is retrieved if dir is not a valid, readable directory.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static listFromDir",
+      "javadoc_description": "Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Tree(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, [I)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String, boolean)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for Tree"
+    }
+  ],
+  "javadoc_description": "Utility class to access a Collection of Paths (typically a complete reconstruction). A Tree is the preferred way to group, access and manipulate Paths that share something in common, specially when scripting SNT. Note that a \"Tree\" here is literally a collection of Paths. Very few restrictions are imposed on its topology, although it is generally assumed that the Collection of paths describes a single-rooted structure with no loops.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "TreeProperties",
+      "Cloneable"
+    ],
+    "implements": [
+      "TreeProperties",
+      "Cloneable"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "Constant Field Values",
+    "assignValue(double)",
+    "TreeProperties",
+    "PathDownsampler",
+    "setLabel(String)",
+    "Object",
+    "getAssignedValue()",
+    "for controlling path structure preservation",
+    "Path.getApproximatedSurface()",
+    "getRoot()",
+    "SNTColor.getDistinctColors(int, String)",
+    "getSkeleton()",
+    "downsample(double)",
+    "skeletonize(ImagePlus, int)",
+    "SNTColor.getDistinctColors(int)",
+    "for integer SWC type flags",
+    "for the conversion implementation",
+    "for individual path SWC types",
+    "getSkeleton(int)",
+    "Cloneable",
+    "upsample(double)",
+    "Path.getApproximatedVolume()",
+    "Path.hasNodeColors()",
+    "for the version that includes soma by default",
+    "Path.upsample(double)",
+    "transform(Collection, String, boolean)",
+    "for the graph representation"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 83,
+      "total_json_methods": 39,
+      "total_matches": 49,
+      "exact_matches": 49,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 34,
+      "unmatched_json": -10,
+      "match_percentage": 59.0
+    },
+    "unmatched_javadoc_methods": 34,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.708
+  }
+}

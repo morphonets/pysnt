@@ -1,7 +1,7 @@
 {
   "class_name": "BoundingBox",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-09T07:59:46.581107",
+  "extracted_at": "2025-11-12T22:36:48.677070",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -26,16 +26,16 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone() -> BoundingBox",
           "params": [],
           "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: clone"
@@ -80,24 +80,24 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(SNTPoint) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "contains(BoundingBox) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "BoundingBox",
               "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
             }
           ],
           "return_type": "bool",
@@ -468,7 +468,40 @@
       "documentation": "Java method: width"
     }
   ],
-  "fields": [],
+  "fields": [
+    {
+      "name": "info",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field info of type String",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "xSpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field xSpacing of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "ySpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field ySpacing of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "zSpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field zSpacing of type double",
+      "is_static": false,
+      "is_final": false
+    }
+  ],
   "constructors": [
     {
       "name": "__init__",

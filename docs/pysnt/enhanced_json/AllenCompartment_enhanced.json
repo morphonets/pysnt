@@ -1,0 +1,520 @@
+{
+  "class_name": "AllenCompartment",
+  "package": "sc.fiji.snt.annotation",
+  "extracted_at": "2025-11-12T22:36:48.632877",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.607782",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "acronym",
+      "overloads": [
+        {
+          "signature": "acronym() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the compartment's acronym",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: acronym",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "aliases",
+      "overloads": [
+        {
+          "signature": "aliases() -> String;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "the compartment's alias(es)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: aliases",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "color",
+      "overloads": [
+        {
+          "signature": "color() -> ColorRGB",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "return_description": "the display color of this compartment (if known)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: color",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAncestor",
+      "overloads": [
+        {
+          "signature": "getAncestor(int) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ancestor level as negative 1-based index. E.g.,",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment",
+          "return_description": "the nth ancestor",
+          "throws": {}
+        },
+        {
+          "signature": "getAncestor(int) -> BrainAnnotation",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAncestor",
+      "javadoc_description": "Gets the nth ancestor of this compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAncestors",
+      "overloads": [
+        {
+          "signature": "getAncestors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the \"flattened\" list of ancestors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAncestors",
+      "javadoc_description": "Gets the ancestor ontologies of this compartment as a flat (non-hierarchical) list.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getTreePath()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getChildren",
+      "overloads": [
+        {
+          "signature": "getChildren() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getChildren(int) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- maximum depth that should be considered.",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the \"flattened\" ontologies list",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getChildren",
+      "javadoc_description": "Gets the child ontologies of this compartment as a flat (non-hierarchical) list.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMesh",
+      "overloads": [
+        {
+          "signature": "getMesh() -> OBJMesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh",
+          "return_description": "the mesh associated with this compartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMesh",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOntologyDepth",
+      "overloads": [
+        {
+          "signature": "getOntologyDepth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the ontological depth of this compartment, i.e., its ontological distance relative to the root (e.g., a compartment of hierarchical level 9, has a depth of 8).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOntologyDepth",
+      "javadoc_description": "Gets the ontology depth of this compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getParent",
+      "overloads": [
+        {
+          "signature": "getParent() -> AllenCompartment",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment",
+          "return_description": "the parent of this compartment, of null if this compartment is root.",
+          "throws": {}
+        },
+        {
+          "signature": "getParent() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getParent",
+      "javadoc_description": "Gets the parent of this compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTreePath",
+      "overloads": [
+        {
+          "signature": "getTreePath() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the tree path that uniquely identifies this compartment as a node in the CCF ontologies tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTreePath",
+      "javadoc_description": "Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this compartment in the ontologies hierarchical tree. The elements of the list are ordered with the root ('Whole Brain') as the first element of the list. In practice, this is equivalent to appending this compartment to the list returned by getAncestors().",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUUID",
+      "overloads": [
+        {
+          "signature": "getUUID() -> UUID",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "UUID",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUUID",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "id",
+      "overloads": [
+        {
+          "signature": "id() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the compartment's unique id",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: id",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "includes",
+      "overloads": [
+        {
+          "signature": "includes(BrainAnnotation) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: includes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isChildOf",
+      "overloads": [
+        {
+          "signature": "isChildOf(BrainAnnotation) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the compartment to be tested",
+              "javadoc_name": "parentCompartment"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful, i.e., parentCompartment is not this compartment and getTreePath() contains parentCompartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isChildOf",
+      "javadoc_description": "Assesses if this annotation is a child of a specified compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isMeshAvailable",
+      "overloads": [
+        {
+          "signature": "isMeshAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if a mesh is available.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isMeshAvailable",
+      "javadoc_description": "Checks whether a mesh is known to be available for this compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isParentOf",
+      "overloads": [
+        {
+          "signature": "isParentOf(BrainAnnotation) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the compartment to be tested",
+              "javadoc_name": "childCompartment"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful, i.e., childCompartment is not this compartment and is present in getChildren()",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isParentOf",
+      "javadoc_description": "Assesses if this annotation is the parent of the specified compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "name",
+      "overloads": [
+        {
+          "signature": "name() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the compartment's name",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: name",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "AllenCompartment(int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AllenCompartment(UUID)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "UUID"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for AllenCompartment"
+    }
+  ],
+  "javadoc_description": "Defines an Allen Reference Atlas (ARA) [Allen Mouse Common Coordinate Framework] annotation. A Compartment is defined by either a UUID (as per MouseLight's database) or its unique integer identifier. To improve performance, a compartment's metadata (reference to its mesh, its aliases, etc.) are not loaded at initialization, but retrieved only when such getters are called.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "BrainAnnotation"
+    ],
+    "implements": [
+      "BrainAnnotation"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "BrainAnnotation",
+    "getTreePath()",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 22,
+      "total_json_methods": 18,
+      "total_matches": 19,
+      "exact_matches": 19,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 3,
+      "unmatched_json": -1,
+      "match_percentage": 86.4
+    },
+    "unmatched_javadoc_methods": 3,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

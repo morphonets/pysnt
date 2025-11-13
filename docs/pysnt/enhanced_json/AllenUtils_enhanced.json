@@ -1,0 +1,652 @@
+{
+  "class_name": "AllenUtils",
+  "package": "sc.fiji.snt.annotation",
+  "extracted_at": "2025-11-12T22:36:48.638190",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.560109",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static assignAnnotationsFromNodeValues",
+      "overloads": [
+        {
+          "signature": "static assignAnnotationsFromNodeValues(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree containing paths with node values to be converted to annotations. Must not be null. Paths without node values are skipped. Invalid node values result in null annotations.",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignAnnotationsFromNodeValues",
+      "javadoc_description": "Assigns brain annotations (interpreted as CCF IDs) to node values for all paths in a Tree.\n\nThis method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)`.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "transferAnnotationIdsToNodeValues(Tree)",
+        "Path.hasNodeValues()",
+        "Path.getNodeValue(int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static assignHemisphereTags",
+      "overloads": [
+        {
+          "signature": "static assignHemisphereTags(DirectedWeightedGraph) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignHemisphereTags(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignHemisphereTags",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static assignToLeftHemisphere",
+      "overloads": [
+        {
+          "signature": "static assignToLeftHemisphere(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the tree to assign to the left hemisphere",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignToLeftHemisphere",
+      "javadoc_description": "Assigns a tree to the left hemisphere by mirroring it if necessary.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static assignToRightHemisphere",
+      "overloads": [
+        {
+          "signature": "static assignToRightHemisphere(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the tree to assign to the right hemisphere",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignToRightHemisphere",
+      "javadoc_description": "Assigns a tree to the right hemisphere by mirroring it if necessary.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static brainCenter",
+      "overloads": [
+        {
+          "signature": "static brainCenter() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "the SNT point defining the (X,Y,Z) center of the ARA",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static brainCenter",
+      "javadoc_description": "Returns the spatial centroid of the Allen CCF.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getAnatomicalPlane",
+      "overloads": [
+        {
+          "signature": "static getAnatomicalPlane(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"xy\", \"yz\", or \"xz\"",
+              "javadoc_name": "cartesianPlane"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the cartesian plane. Either \"coronal\", \"sagittal\", \"transverse\", or null if cartesianPlane was not recognized.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getAnatomicalPlane",
+      "javadoc_description": "Retrieves the anatomical plane matching the specified cartesian plane.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getAxisDefiningSagittalPlane",
+      "overloads": [
+        {
+          "signature": "static getAxisDefiningSagittalPlane() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the axis defining the sagittal plane where X=0; Y=1; Z=2;",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getAxisDefiningSagittalPlane",
+      "javadoc_description": "Gets the axis defining the sagittal plane.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getCartesianPlane",
+      "overloads": [
+        {
+          "signature": "static getCartesianPlane(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"sagittal\", \"coronal\", or \"transverse\"",
+              "javadoc_name": "anatomicalPlane"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the cartesian plane. Either \"xy\", \"yz\", \"xz\", or null if anatomicalPlane was not recognized.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getCartesianPlane",
+      "javadoc_description": "Retrieves the Cartesian plane matching the specified anatomical plane.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getCompartment",
+      "overloads": [
+        {
+          "signature": "static getCompartment(int) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the name or acronym (case-insensitive) identifying the compartment",
+              "javadoc_name": "nameOrAcronym"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment",
+          "return_description": "the compartment whose name or acronym matches the specified string or null if no match was found",
+          "throws": {}
+        },
+        {
+          "signature": "static getCompartment(String) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getCompartment",
+      "javadoc_description": "Constructs a compartment from its CCF name or acronym",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getHemisphere",
+      "overloads": [
+        {
+          "signature": "static getHemisphere(Tree) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree to be tested",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the hemisphere label: either \"left\", or \"right\"",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getHemisphere",
+      "javadoc_description": "Checks the hemisphere a neuron belongs to.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getHighestOntologyDepth",
+      "overloads": [
+        {
+          "signature": "static getHighestOntologyDepth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the max number of ontology levels.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getHighestOntologyDepth",
+      "javadoc_description": "Gets the maximum number of ontology levels in the Allen CCF.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getOntologies",
+      "overloads": [
+        {
+          "signature": "static getOntologies() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getOntologies(int, boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontology depth",
+              "javadoc_name": "depth"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the \"flattened\" list of compartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getOntologies",
+      "javadoc_description": "Gets a flat (non-hierarchical) list of all the compartments of the specified ontology depth.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getRootMesh",
+      "overloads": [
+        {
+          "signature": "static getRootMesh(ColorRGB) -> OBJMesh",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "- the color to be assigned to the mesh",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh",
+          "return_description": "a reference to the retrieved mesh",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getRootMesh",
+      "javadoc_description": "Retrieves the surface contours for the Allen Mouse Brain Atlas (CCF), bundled with SNT.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getTreeModel",
+      "overloads": [
+        {
+          "signature": "static getTreeModel(boolean) -> DefaultTreeModel",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- Whether only compartments with known meshes should be included",
+              "javadoc_name": "meshesOnly"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DefaultTreeModel",
+          "return_description": "the Allen CCF tree data model",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getTreeModel",
+      "javadoc_description": "Retrieves the Allen CCF hierarchical tree data.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getXYZLabels",
+      "overloads": [
+        {
+          "signature": "static getXYZLabels() -> String;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "the anatomical descriptions associated with the Cartesian X,Y,Z axes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getXYZLabels",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isLeftHemisphere",
+      "overloads": [
+        {
+          "signature": "static isLeftHemisphere(Tree) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static isLeftHemisphere(double, double, double) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isLeftHemisphere",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static splitByHemisphere",
+      "overloads": [
+        {
+          "signature": "static splitByHemisphere(DirectedWeightedGraph) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static splitByHemisphere",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static transferAnnotationIdsToNodeValues",
+      "overloads": [
+        {
+          "signature": "static transferAnnotationIdsToNodeValues(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree containing paths with brain annotations to be transferred. Must not be null and must contain valid annotations.",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if the tree contains no brain annotations"
+          }
+        }
+      ],
+      "documentation": "Java method: static transferAnnotationIdsToNodeValues",
+      "javadoc_description": "Transfers brain annotation IDs to node values for all paths in a Tree.\n\nThis is useful for preserving annotation information when saving data to TRACES files. Note that this method overwrites any existing node values. Nodes without annotations (null) are assigned BRAIN_ROOT_ID.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "assignAnnotationsFromNodeValues(Tree)",
+        "Path.hasNodeAnnotations()",
+        "Path.getNodeAnnotation(int)"
+      ],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Utility methods for accessing/handling AllenCompartments",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Constant Field Values",
+    "Path.hasNodeValues()",
+    "Path.getNodeAnnotation(int)",
+    "transferAnnotationIdsToNodeValues(Tree)",
+    "Path.getNodeValue(int)",
+    "Path.hasNodeAnnotations()",
+    "assignAnnotationsFromNodeValues(Tree)",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 24,
+      "total_json_methods": 19,
+      "total_matches": 24,
+      "exact_matches": 24,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -5,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

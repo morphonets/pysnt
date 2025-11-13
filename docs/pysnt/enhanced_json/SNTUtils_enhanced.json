@@ -1,0 +1,964 @@
+{
+  "class_name": "SNTUtils",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:49.084047",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.608393",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static addViewer",
+      "overloads": [
+        {
+          "signature": "static addViewer(Viewer3D) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Viewer3D",
+              "java_type": "Viewer3D",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static addViewer",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static buildDate",
+      "overloads": [
+        {
+          "signature": "static buildDate() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the implementation date or an empty strong if date could not be retrieved.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static buildDate",
+      "javadoc_description": "Retrieves Sholl Analysis implementation date",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static csvQuoteAndPrint",
+      "overloads": [
+        {
+          "signature": "static csvQuoteAndPrint(PrintWriter, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PrintWriter",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static csvQuoteAndPrint",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static downloadToTempFile",
+      "overloads": [
+        {
+          "signature": "static downloadToTempFile(String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the URL of the file to download",
+              "javadoc_name": "fileUrl"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "the downloaded file",
+          "throws": {
+            "IOException": "- if an I/O error occurs"
+          }
+        }
+      ],
+      "documentation": "Java method: static downloadToTempFile",
+      "javadoc_description": "Downloads a file from the specified URL to a temporary file",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static error",
+      "overloads": [
+        {
+          "signature": "static error(String, Throwable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Throwable",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static error(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static error",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static extractReadableTimeStamp",
+      "overloads": [
+        {
+          "signature": "static extractReadableTimeStamp(File) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static extractReadableTimeStamp",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static fileAvailable",
+      "overloads": [
+        {
+          "signature": "static fileAvailable(File) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static fileAvailable",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static findClosestPair",
+      "overloads": [
+        {
+          "signature": "static findClosestPair(File, String;) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static findClosestPair(File, String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static findClosestPair",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static formatDouble",
+      "overloads": [
+        {
+          "signature": "static formatDouble(double, int) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static formatDouble",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getBackupCopies",
+      "overloads": [
+        {
+          "signature": "static getBackupCopies(File) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the TRACES file",
+              "javadoc_name": "tracesFile"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of backup files. An empty list is retrieved if none could be found.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getBackupCopies",
+      "javadoc_description": "Retrieves a list of time-stamped backup files associated with a TRACES file",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getContext",
+      "overloads": [
+        {
+          "signature": "static getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "the context of the active ImageJ instance. Never null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getContext",
+      "javadoc_description": "Convenience method to access the context of the running Fiji instance",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getDecimalFormat",
+      "overloads": [
+        {
+          "signature": "static getDecimalFormat(double, int) -> DecimalFormat",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DecimalFormat",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDecimalFormat",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getElapsedTime",
+      "overloads": [
+        {
+          "signature": "static getElapsedTime(long) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getElapsedTime",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getInstance",
+      "overloads": [
+        {
+          "signature": "static getInstance() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getInstance",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getPluginInstance",
+      "overloads": [
+        {
+          "signature": "static getPluginInstance() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getPluginInstance",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getReadableVersion",
+      "overloads": [
+        {
+          "signature": "static getReadableVersion() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getReadableVersion",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getReconstructionFiles",
+      "overloads": [
+        {
+          "signature": "static getReconstructionFiles(File, String) -> File;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the directory containing the reconstruction files (.(e)swc, .traces, .json extension)",
+              "javadoc_name": "dir"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "File;",
+          "return_description": "the array of files. An empty list is retrieved if dir is not a valid, readable directory.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getReconstructionFiles",
+      "javadoc_description": "Retrieves a list of reconstruction files stored in a common directory matching the specified criteria.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getSanitizedUnit",
+      "overloads": [
+        {
+          "signature": "static getSanitizedUnit(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getSanitizedUnit",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getTimeStamp",
+      "overloads": [
+        {
+          "signature": "static getTimeStamp() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getTimeStamp",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getUniquelySuffixedFile",
+      "overloads": [
+        {
+          "signature": "static getUniquelySuffixedFile(File) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getUniquelySuffixedFile(File, String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getUniquelySuffixedFile",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getUniquelySuffixedTifFile",
+      "overloads": [
+        {
+          "signature": "static getUniquelySuffixedTifFile(File) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getUniquelySuffixedTifFile",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isContextSet",
+      "overloads": [
+        {
+          "signature": "static isContextSet() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isContextSet",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isDebugMode",
+      "overloads": [
+        {
+          "signature": "static isDebugMode() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "the debug flag",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isDebugMode",
+      "javadoc_description": "Assesses if SNT is running in debug mode",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isReconstructionFile",
+      "overloads": [
+        {
+          "signature": "static isReconstructionFile(File) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isReconstructionFile",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static log",
+      "overloads": [
+        {
+          "signature": "static log(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static log",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static randomPaths",
+      "overloads": [
+        {
+          "signature": "static randomPaths() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of random Paths",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static randomPaths",
+      "javadoc_description": "Generates a list of random paths. Only useful for debugging purposes",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static removeViewer",
+      "overloads": [
+        {
+          "signature": "static removeViewer(Viewer3D) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Viewer3D",
+              "java_type": "Viewer3D",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static removeViewer",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static setContext",
+      "overloads": [
+        {
+          "signature": "static setContext(Context) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static setContext",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static setDebugMode",
+      "overloads": [
+        {
+          "signature": "static setDebugMode(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- verbose flag",
+              "javadoc_name": "b"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static setDebugMode",
+      "javadoc_description": "Enables/disables debug mode",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static setIsLoading",
+      "overloads": [
+        {
+          "signature": "static setIsLoading(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static setIsLoading",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static startApp",
+      "overloads": [
+        {
+          "signature": "static startApp() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "a reference to the SNT instance just started.s",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static startApp",
+      "javadoc_description": "Convenience method to start up SNT's GUI.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static stripExtension",
+      "overloads": [
+        {
+          "signature": "static stripExtension(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static stripExtension",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Static utilities for SNT",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 35,
+      "total_json_methods": 32,
+      "total_matches": 35,
+      "exact_matches": 35,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -3,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "class_name": "InsectBrainLoader",
+  "package": "sc.fiji.snt.io",
+  "extracted_at": "2025-11-12T22:36:48.734525",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.630302",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "getAnnotations",
+      "overloads": [
+        {
+          "signature": "getAnnotations() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of InsectBrainCompartment annotations, or null if not available",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotations",
+      "javadoc_description": "Gets the brain compartment annotations for this neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMeshes",
+      "overloads": [
+        {
+          "signature": "getMeshes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of OBJMesh objects representing brain compartments",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMeshes",
+      "javadoc_description": "Gets the 3D meshes associated with this neuron's brain compartments.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNeuronInfo",
+      "overloads": [
+        {
+          "signature": "getNeuronInfo() -> InsectBrainLoader$NeuronInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "InsectBrainLoader$NeuronInfo",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNeuronInfo",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the data for the specified cell as a Tree, or null if data could not be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTree",
+      "javadoc_description": "Gets the collection of Paths for the specified cell ID",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "idExists",
+      "overloads": [
+        {
+          "signature": "idExists() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if the neuron id specified in the constructor was found in the database",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: idExists",
+      "javadoc_description": "Checks whether the neuron to be loaded was found in the database.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isDatabaseAvailable",
+      "overloads": [
+        {
+          "signature": "static isDatabaseAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if an HTTP connection could be established",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isDatabaseAvailable",
+      "javadoc_description": "Checks whether a connection to the Insect Brain Database can be established.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "InsectBrainLoader(int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for InsectBrainLoader"
+    }
+  ],
+  "javadoc_description": "Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.org *",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "InsectBrainLoader.NeuronInfo"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

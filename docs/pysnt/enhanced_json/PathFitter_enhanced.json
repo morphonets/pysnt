@@ -1,0 +1,452 @@
+{
+  "class_name": "PathFitter",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:48.869120",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.610460",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "applySettings",
+      "overloads": [
+        {
+          "signature": "applySettings(PathFitter) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PathFitter",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applySettings",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "call",
+      "overloads": [
+        {
+          "signature": "call() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the reference to the computed result. This Path is automatically set as the fitted version of input Path.",
+          "throws": {
+            "IllegalArgumentException": "- If path already has been fitted, and its fitted version not nullified"
+          }
+        },
+        {
+          "signature": "call() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: call",
+      "javadoc_description": "Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by setMaxRadius(int). Note that connectivity of path may need to be rebuilt upon fit.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setScope(int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMaxRadius",
+      "overloads": [
+        {
+          "signature": "getMaxRadius() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the maximum radius currently being considered, or DEFAULT_MAX_RADIUS if setMaxRadius(int) has not been called",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMaxRadius",
+      "javadoc_description": "Gets the current max radius (in pixels)",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPath",
+      "overloads": [
+        {
+          "signature": "getPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the path being fitted",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPath",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSucceeded",
+      "overloads": [
+        {
+          "signature": "getSucceeded() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if fit was successful, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSucceeded",
+      "javadoc_description": "Checks whether the fit succeeded.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "readPreferences",
+      "overloads": [
+        {
+          "signature": "readPreferences() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: readPreferences",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setImage",
+      "overloads": [
+        {
+          "signature": "setImage(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the Image containing the signal to which the fit will be performed",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setImage",
+      "javadoc_description": "Sets the target image",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMaxRadius",
+      "overloads": [
+        {
+          "signature": "setMaxRadius(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the new maximum radius",
+              "javadoc_name": "maxRadius"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMaxRadius",
+      "javadoc_description": "Sets the max radius (side search) for constraining the fit.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setProgressCallback",
+      "overloads": [
+        {
+          "signature": "setProgressCallback(int, MultiTaskProgress) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "MultiTaskProgress",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setProgressCallback",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRadiusFallback",
+      "overloads": [
+        {
+          "signature": "setRadiusFallback(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRadiusFallback",
+      "javadoc_description": "Sets the fallback strategy for radii at locations in which fitting failed",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setReplaceNodes",
+      "overloads": [
+        {
+          "signature": "setReplaceNodes(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true, the nodes of the input Path will be replaced by those of the fitted result. If false, the fitted result is kept as a separated Path linked to the input as per Path.getFitted(). Note that in the latter case, some topological operations (e.g., forking) performed on the fitted result may not percolate to the non-fitted Path.",
+              "javadoc_name": "replaceNodes"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setReplaceNodes",
+      "javadoc_description": "Sets whether fitting should occur \"in place\".",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setScope",
+      "overloads": [
+        {
+          "signature": "setScope(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- Either RADII, MIDPOINTS, or RADII_AND_MIDPOINTS",
+              "javadoc_name": "scope"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setScope",
+      "javadoc_description": "Sets the fitting scope.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setShowAnnotatedView",
+      "overloads": [
+        {
+          "signature": "setShowAnnotatedView(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true, an interactive stack (cross-section view) of the fit is displayed. Note that this is probably only useful if SNT's UI is visible and functional.",
+              "javadoc_name": "showAnnotatedView"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setShowAnnotatedView",
+      "javadoc_description": "Sets whether an interactive image of the result should be displayed.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathFitter(SNT, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(RandomAccessibleInterval, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathFitter"
+    }
+  ],
+  "javadoc_description": "Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "Callable",
+      "Path"
+    ],
+    "implements": [
+      "Callable",
+      "Path"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Path",
+    "Constant Field Values",
+    "Callable",
+    "setScope(int)",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 13,
+      "total_json_methods": 13,
+      "total_matches": 13,
+      "exact_matches": 13,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

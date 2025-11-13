@@ -1,0 +1,93 @@
+{
+  "class_name": "CrossoverFinder",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2025-11-12T22:36:48.693288",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.546617",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static find",
+      "overloads": [
+        {
+          "signature": "static find(Collection, CrossoverFinder$Config) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of paths",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "CrossoverFinder$Config",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static find",
+      "javadoc_description": "Entry point: detect crossover events for a collection of paths using the given config.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "CrossoverFinder()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for CrossoverFinder"
+    }
+  ],
+  "javadoc_description": "Utility to detect crossover locations between paths: spatially close locations between paths that look like intersections in the image but are not topological joins in the traced graph.\n\nHere, a crossover is defined as a spatial location where two distinct paths approach within a distance threshold (in real units) for at least minRunNodes consecutive node pairs, but do not share an actual tracing node at that location. Optional geometric filtering by crossing angle is supported.\n\nUsage: \n```\nCrossoverFinder.Config cfg = new CrossoverFinder.Config()\n      .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)\n      .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)\n      .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate\n      .sameCTOnly(true)        // ignore pairs from different channel/time\n      .includeSelfCrossovers(false) // whether crossover events within the same path should be detected\n  List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);\n```\n",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "CrossoverFinder.Config",
+    "CrossoverFinder.CrossoverEvent"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 1,
+      "total_json_methods": 1,
+      "total_matches": 1,
+      "exact_matches": 1,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

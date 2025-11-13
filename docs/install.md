@@ -4,7 +4,7 @@ This section covers everything you need to get PySNT up and running.
 
 ```{toctree}
 :maxdepth: 2
-
+:hidden:
 quickstart
 overview
 limitations

@@ -18,6 +18,16 @@ api:
 	@echo "Generating API documentation..."
 	python ../dev/scripts/generate_api_docs.py
 
+# Generate enhanced API documentation with method index
+enhanced-api:
+	@echo "Generating enhanced API documentation with method index..."
+	python ../dev/scripts/generate_enhanced_api_docs.py
+
+# Integrated build process (standard + enhanced)
+integrated-api:
+	@echo "Running integrated API documentation build..."
+	python ../dev/scripts/build_integration.py
+
 # Clean build directory
 clean:
 	@echo "Cleaning build directory..."
@@ -29,9 +39,29 @@ html: api
 	@echo "Building HTML documentation..."
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+# Build HTML documentation with method index
+html-enhanced: enhanced-api
+	@echo "Building HTML documentation with method index..."
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# Build HTML documentation with integrated process (recommended)
+html-integrated: integrated-api
+	@echo "Building HTML documentation with integrated API generation..."
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
 # Build HTML and open in browser
 html-open: html
 	@echo "Opening documentation in browser..."
+	@python -c "import webbrowser; webbrowser.open('file://$(PWD)/$(BUILDDIR)/html/index.html')"
+
+# Build HTML and open in browser
+html-enhanced-open: html-enhanced
+	@echo "Opening enhanced documentation in browser..."
+	@python -c "import webbrowser; webbrowser.open('file://$(PWD)/$(BUILDDIR)/html/index.html')"
+
+# Build integrated HTML and open in browser (recommended)
+html-integrated-open: html-integrated
+	@echo "Opening integrated documentation in browser..."
 	@python -c "import webbrowser; webbrowser.open('file://$(PWD)/$(BUILDDIR)/html/index.html')"
 
 # Live reload server for development

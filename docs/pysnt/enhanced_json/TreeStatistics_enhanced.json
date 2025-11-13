@@ -1,0 +1,1321 @@
+{
+  "class_name": "TreeStatistics",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-12T22:36:49.192988",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.625590",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "cancel",
+      "overloads": [
+        {
+          "signature": "cancel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the table to be used by this TreeStatistics instance",
+              "javadoc_name": "table"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: cancel",
+      "javadoc_description": "Sets the table for this TreeStatistics instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "summarize(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "context",
+      "overloads": [
+        {
+          "signature": "context() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: context",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "Clears internal caches and mappings to free memory.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static fromCollection",
+      "overloads": [
+        {
+          "signature": "static fromCollection(Collection, String) -> TreeStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of trees",
+              "javadoc_name": "trees"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "TreeStatistics",
+          "java_return_type": "TreeStatistics",
+          "return_description": "the TreeStatistics instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static fromCollection",
+      "javadoc_description": "Creates a TreeStatistics instance from a group of Trees and a specific metric for convenient retrieval of histograms",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getAllMetrics",
+      "overloads": [
+        {
+          "signature": "static getAllMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of available metrics",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getAllMetrics",
+      "javadoc_description": "Gets the list of supported metrics.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedLength",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLength(int, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLength(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the brain compartments as keys, and cable lengths as values.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLength",
+      "javadoc_description": "Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedLengthHistogram",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "depth"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the annotated length histogram",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLengthHistogram",
+      "javadoc_description": "Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedLengthsByHemisphere",
+      "overloads": [
+        {
+          "signature": "getAnnotatedLengthsByHemisphere(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the brain compartments as keys, and cable lengths per hemisphere as values.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLengthsByHemisphere",
+      "javadoc_description": "Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron in the two brain hemispheres. Lengths are absolute and not normalized to the cells' cable length.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotations",
+      "overloads": [
+        {
+          "signature": "getAnnotations(int) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the max. ontological depth of the compartments to be retrieved",
+              "javadoc_name": "depth"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "the set of brain compartments (BrainAnnotations)",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotations() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotations",
+      "javadoc_description": "Retrieves the brain compartments (neuropil labels) associated with the Tree being measured innervated by the analyzed neuron.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAvgBranchLength",
+      "overloads": [
+        {
+          "signature": "getAvgBranchLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average branch length",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgBranchLength",
+      "javadoc_description": "Gets average length for all the branches of the analyzed tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgContraction",
+      "overloads": [
+        {
+          "signature": "getAvgContraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average branch contraction",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgContraction",
+      "javadoc_description": "Gets average contraction for all the branches of the analyzed tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgFractalDimension",
+      "overloads": [
+        {
+          "signature": "getAvgFractalDimension() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average fractal dimension",
+          "throws": {
+            "IllegalArgumentException": "- if the tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgFractalDimension",
+      "javadoc_description": "Gets the average fractal dimension of the analyzed tree. Note that branches with less than 5 points are ignored during the computation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgFragmentation",
+      "overloads": [
+        {
+          "signature": "getAvgFragmentation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average no. of branch nodes (average branch fragmentation)",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgFragmentation",
+      "javadoc_description": "Gets the average no. of nodes (fragmentation) for all the branches of the analyzed tree.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgPartitionAsymmetry",
+      "overloads": [
+        {
+          "signature": "getAvgPartitionAsymmetry() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average partition asymmetry",
+          "throws": {
+            "IllegalArgumentException": "- if the tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgPartitionAsymmetry",
+      "javadoc_description": "Gets the average partition asymmetry of the analyzed tree. Note that branch points with more than 2 children are ignored during the computation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgRemoteBifAngle",
+      "overloads": [
+        {
+          "signature": "getAvgRemoteBifAngle() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average remote bifurcation angle",
+          "throws": {
+            "IllegalArgumentException": "- if the tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgRemoteBifAngle",
+      "javadoc_description": "Gets the average remote bifurcation angle of the analyzed tree. Note that branch points with more than 2 children are ignored during the computation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBranchPoints",
+      "overloads": [
+        {
+          "signature": "getBranchPoints(BrainAnnotation, boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getBranchPoints() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getBranchPoints(BrainAnnotation) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the BrainAnnotation to be queried.",
+              "javadoc_name": "annot"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "the branch points positions, or an empty set if no branch points were retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBranchPoints",
+      "javadoc_description": "Gets the position of all the branch points in the analyzed tree associated with the specified annotation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBranches",
+      "overloads": [
+        {
+          "signature": "getBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of branches as Path objects.",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getBranches",
+      "javadoc_description": "Gets all the branches in the analyzed tree. A branch is defined as the Path composed of all the nodes between two branching points or between one branching point and a termination point.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "StrahlerAnalyzer.getBranches()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getCableLength",
+      "overloads": [
+        {
+          "signature": "getCableLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getCableLength(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the query compartment (null not allowed)",
+              "javadoc_name": "compartment"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the filtered cable length",
+          "throws": {}
+        },
+        {
+          "signature": "getCableLength(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCableLength",
+      "javadoc_description": "Gets the cable length associated with the specified compartment (neuropil label).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCableLengthNorm",
+      "overloads": [
+        {
+          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the query compartment (null not allowed)",
+              "javadoc_name": "compartment"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the filtered cable length normalized to total cable length",
+          "throws": {}
+        },
+        {
+          "signature": "getCableLengthNorm(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCableLengthNorm",
+      "javadoc_description": "Gets the cable length associated with the specified compartment (neuropil label) as a ratio of total length.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCancelReason",
+      "overloads": [
+        {
+          "signature": "getCancelReason() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCancelReason",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getContext",
+      "overloads": [
+        {
+          "signature": "getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getContext",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getConvexAnalyzer",
+      "overloads": [
+        {
+          "signature": "getConvexAnalyzer() -> ConvexHullAnalyzer",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ConvexHullAnalyzer",
+          "return_description": "the ConvexHullAnalyzer instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getConvexAnalyzer",
+      "javadoc_description": "Gets the ConvexHullAnalyzer instance associated with this TreeStatistics instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getConvexHullMetric",
+      "overloads": [
+        {
+          "signature": "getConvexHullMetric(String) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the metric to be retrieved, one of ConvexHullAnalyzer.supportedMetrics()",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the convex hull metric",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getConvexHullMetric",
+      "javadoc_description": "Convenience method to obtain a single-value metric from ConvexHullAnalyzer",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getConvexAnalyzer()",
+        "ConvexHullAnalyzer.get(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getDepth",
+      "overloads": [
+        {
+          "signature": "getDepth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the bounding box depth",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDepth",
+      "javadoc_description": "Returns the depth of the BoundingBox box of the tree being measured",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDescriptiveStats",
+      "overloads": [
+        {
+          "signature": "getDescriptiveStats(String) -> DescriptiveStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (N_NODES, NODE_RADIUS, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DescriptiveStatistics",
+          "return_description": "the DescriptiveStatistics object.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDescriptiveStats",
+      "javadoc_description": "Computes the `DescriptiveStatistics` for the specified measurement.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFlowPlot",
+      "overloads": [
+        {
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of getAllMetrics() metrics are currently not supported.",
+              "javadoc_name": "feature"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "getAllMetrics()"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the SNTChart holding the flow plot",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFlowPlot",
+      "javadoc_description": "Assembles a Flow plot (aka Sankey diagram) for the specified feature.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFractalDimension",
+      "overloads": [
+        {
+          "signature": "getFractalDimension() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a list containing the fractal dimension of each branch",
+          "throws": {
+            "IllegalArgumentException": "- if the tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getFractalDimension",
+      "javadoc_description": "Gets the fractal dimension of each branch in the analyzed tree. Note that branches with less than 5 points are ignored.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "StrahlerAnalyzer.getBranches()",
+        "Path.getFractalDimension()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getHeight",
+      "overloads": [
+        {
+          "signature": "getHeight() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the bounding box height",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHeight",
+      "javadoc_description": "Returns the height of the BoundingBox box of the tree being measured",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getHighestPathOrder",
+      "overloads": [
+        {
+          "signature": "getHighestPathOrder() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the highest Path order, or -1 if Paths in the Tree have no defined order",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHighestPathOrder",
+      "javadoc_description": "Gets the highest path order of the analyzed tree",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getStrahlerNumber()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (N_NODES, NODE_RADIUS, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the frame holding the histogram",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHistogram",
+      "javadoc_description": "Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInnerBranches",
+      "overloads": [
+        {
+          "signature": "getInnerBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list containing the \"inner\" branches. Note that these branches (Path segments) will not carry any connectivity information.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInnerBranches",
+      "javadoc_description": "Retrieves the branches of highest Strahler order in the Tree. This typically correspond to the most 'internal' branches of the Tree in direct sequence from the root.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getPrimaryPaths()",
+        "StrahlerAnalyzer.getBranches()",
+        "StrahlerAnalyzer.getHighestBranchOrder()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getInnerLength",
+      "overloads": [
+        {
+          "signature": "getInnerLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the length sum of all inner branches",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInnerLength",
+      "javadoc_description": "Gets the cable length of inner branches",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getInnerBranches()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMetric",
+      "overloads": [
+        {
+          "signature": "getMetric(String) -> Number",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the single-value metric to be computed (case-insensitive). While it is expected to be an element of getAllMetrics(), if isExactMetricMatch() is set,",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "Union[int, float]",
+          "java_return_type": "Number",
+          "return_description": "the computed value (average if metric is associated with multiple values)",
+          "throws": {
+            "UnknownMetricException": "- if metric is not recognized"
+          }
+        }
+      ],
+      "documentation": "Java method: getMetric",
+      "javadoc_description": "Computes the specified metric.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getMetrics()",
+        "setExactMetricMatch(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static getMetrics",
+      "overloads": [
+        {
+          "signature": "static getMetrics(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of commonly used metrics.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getMetrics",
+      "javadoc_description": "Gets the list of most commonly used metrics.",
+      "category": "Analysis",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [
+        "getMetrics(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getNBranchPoints",
+      "overloads": [
+        {
+          "signature": "getNBranchPoints(BrainAnnotation, boolean) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the BrainAnnotation to be queried.",
+              "javadoc_name": "annot"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of branch points",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNBranchPoints",
+      "javadoc_description": "Gets the number of branch points in the analyzed tree associated with the specified annotation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "TreeStatistics(Tree)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "TreeStatistics(Collection, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for TreeStatistics"
+    }
+  ],
+  "javadoc_description": "Computes summary and descriptive statistics from properties of Paths and Nodes in a Tree, including convenience methods to plot distributions of such data. For analysis of groups of Trees have a look at MultiTreeStatistics and `GroupedTreeStatistics`.",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "getRootAngleAnalyzer()",
+    "Constant Field Values",
+    "getStrahlerNumber()",
+    "AllenCompartment.getOntologyDepth()",
+    "run()",
+    "getFlowPlot(String, Collection, String, double, boolean)",
+    "DirectedWeightedGraph.getNodeStatistics(String)",
+    "setExactMetricMatch(boolean)",
+    "StrahlerAnalyzer.getBranches()",
+    "setTable(DefaultGenericTable)",
+    "summarize(boolean)",
+    "summarize(String, boolean)",
+    "getInnerBranches()",
+    "getPrimaryPaths()",
+    "getPrimaryBranches()",
+    "getTerminalBranches()",
+    "Path.getFractalDimension()",
+    "StrahlerAnalyzer.getRootAssociatedBranches()",
+    "ConvexHullAnalyzer.get(String)",
+    "StrahlerAnalyzer.getHighestBranchOrder()",
+    "getConvexAnalyzer()",
+    "getMetrics(String)",
+    "resetRestrictions()",
+    "getMetrics()",
+    "getParsedTree()",
+    "Path.hasNodeValues()",
+    "AllenCompartment",
+    "getHistogram(String)",
+    "PathProfiler.assignValues()"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 98,
+      "total_json_methods": 35,
+      "total_matches": 53,
+      "exact_matches": 47,
+      "signature_matches": 6,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 45,
+      "unmatched_json": -18,
+      "match_percentage": 54.1
+    },
+    "unmatched_javadoc_methods": 45,
+    "unmatched_json_methods": 3,
+    "enhancement_quality_score": 0.337
+  }
+}

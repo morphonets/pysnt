@@ -39,14 +39,9 @@ EXTENDED_CLASSES = [
 # Placeholder classes for IDE support - will be replaced with Java classes
 class FlyCircuitLoader:
     """
-    Curated SNT class from io package with method signatures.
+    Absurdly simple importer for retrieving SWC data from FlyCircuit.
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_FlyCircuitLoader_javadoc`_.
-    
-    .. _io_FlyCircuitLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/FlyCircuitLoader.html
+    **All Methods and Attributes:** See `FlyCircuitLoader detailed documentation </flycircuitloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -59,14 +54,9 @@ class FlyCircuitLoader:
 
 class InsectBrainLoader:
     """
-    Curated SNT class from io package with method signatures.
+    Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.org *
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_InsectBrainLoader_javadoc`_.
-    
-    .. _io_InsectBrainLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/InsectBrainLoader.html
+    **All Methods and Attributes:** See `InsectBrainLoader detailed documentation </insectbrainloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -79,14 +69,9 @@ class InsectBrainLoader:
 
 class MouseLightLoader:
     """
-    Curated SNT class from io package with method signatures.
+    Methods for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org *
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_MouseLightLoader_javadoc`_.
-    
-    .. _io_MouseLightLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/MouseLightLoader.html
+    **All Methods and Attributes:** See `MouseLightLoader detailed documentation </mouselightloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -99,14 +84,9 @@ class MouseLightLoader:
 
 class MouseLightQuerier:
     """
-    Curated SNT class from io package with method signatures.
+    Importer for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_MouseLightQuerier_javadoc`_.
-    
-    .. _io_MouseLightQuerier_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/MouseLightQuerier.html
+    **All Methods and Attributes:** See `MouseLightQuerier detailed documentation </mouselightquerier_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -119,14 +99,9 @@ class MouseLightQuerier:
 
 class NeuroMorphoLoader:
     """
-    Curated SNT class from io package with method signatures.
+    Importer for retrieving SWC data from neuromorpho.org.
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_NeuroMorphoLoader_javadoc`_.
-    
-    .. _io_NeuroMorphoLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/NeuroMorphoLoader.html
+    **All Methods and Attributes:** See `NeuroMorphoLoader detailed documentation </neuromorpholoader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -139,14 +114,9 @@ class NeuroMorphoLoader:
 
 class RemoteSWCLoader:
     """
-    Curated SNT class from io package with method signatures.
+    Importers downloading remote SWC files should extend this interface.
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_RemoteSWCLoader_javadoc`_.
-    
-    .. _io_RemoteSWCLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/RemoteSWCLoader.html
+    **All Methods and Attributes:** See `RemoteSWCLoader detailed documentation </remoteswcloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -159,14 +129,9 @@ class RemoteSWCLoader:
 
 class WekaModelLoader:
     """
-    Curated SNT class from io package with method signatures.
+    GUI command for Loading pre-trained models from Labkit/TWS as secondary image layer.
     
-    Available for direct import after JVM initialization.
-    Call pysnt.initialize() before using this class.
-    
-    See `io_WekaModelLoader_javadoc`_.
-    
-    .. _io_WekaModelLoader_javadoc: https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/WekaModelLoader.html
+    **All Methods and Attributes:** See `WekaModelLoader detailed documentation </wekamodelloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):

@@ -1,7 +1,7 @@
 {
   "class_name": "Fill",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:46.602520",
+  "extracted_at": "2025-11-12T22:36:48.702797",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -165,24 +165,24 @@
       "name": "setSourcePaths",
       "overloads": [
         {
-          "signature": "setSourcePaths(Path;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Path;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "setSourcePaths(Set) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Set[Any]",
               "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "setSourcePaths(Path;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Path;"
             }
           ],
           "return_type": "None",
@@ -284,7 +284,56 @@
       "documentation": "Java method: writeXML"
     }
   ],
-  "fields": [],
+  "fields": [
+    {
+      "name": "distanceThreshold",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field distanceThreshold of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "metric",
+      "type": "Any",
+      "java_type": "SNT$CostType",
+      "documentation": "Field metric of type SNT$CostType",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "spacing_units",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field spacing_units of type String",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "x_spacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field x_spacing of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "y_spacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field y_spacing of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "z_spacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field z_spacing of type double",
+      "is_static": false,
+      "is_final": false
+    }
+  ],
   "constructors": [
     {
       "name": "__init__",

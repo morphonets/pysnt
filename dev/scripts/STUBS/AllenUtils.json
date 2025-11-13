@@ -1,7 +1,7 @@
 {
   "class_name": "AllenUtils",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2025-11-09T08:12:17.320723",
+  "extracted_at": "2025-11-12T22:36:48.638190",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -26,24 +26,24 @@
       "name": "static assignHemisphereTags",
       "overloads": [
         {
-          "signature": "static assignHemisphereTags(Tree) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "static assignHemisphereTags(DirectedWeightedGraph) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "DirectedWeightedGraph",
               "java_type": "DirectedWeightedGraph"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static assignHemisphereTags(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
             }
           ],
           "return_type": "None",
@@ -152,24 +152,24 @@
       "name": "static getCompartment",
       "overloads": [
         {
-          "signature": "static getCompartment(String) -> AllenCompartment",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "AllenCompartment"
-        },
-        {
           "signature": "static getCompartment(int) -> AllenCompartment",
           "params": [
             {
               "name": "arg0",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment"
+        },
+        {
+          "signature": "static getCompartment(String) -> AllenCompartment",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "Any",
@@ -212,6 +212,12 @@
       "name": "static getOntologies",
       "overloads": [
         {
+          "signature": "static getOntologies() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "static getOntologies(int, boolean) -> List",
           "params": [
             {
@@ -225,12 +231,6 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "static getOntologies() -> List",
-          "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List"
         }
@@ -289,24 +289,24 @@
       "name": "static isLeftHemisphere",
       "overloads": [
         {
-          "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "static isLeftHemisphere(Tree) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
             }
           ],
           "return_type": "bool",
@@ -393,5 +393,23 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [],
+  "static_fields": [
+    {
+      "name": "BRAIN_ROOT_ID",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field BRAIN_ROOT_ID of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VERSION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VERSION of type String",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
 }

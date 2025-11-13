@@ -217,10 +217,8 @@ html[data-mode="dark"] .api-overview-btn:hover {
     display: none !important;
 }
 
-/* Hide toctree with "Documentation" caption (index page) */
-.toctree-wrapper {
-    display: none !important;
-}
+/* Note: Index page toctree is already hidden via :hidden: directive in RST */
+/* No need to hide toctrees globally - let them show where intended */
 
 /* Automatically add external link icons to all external links (except source code links) */
 a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before,

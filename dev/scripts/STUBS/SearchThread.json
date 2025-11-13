@@ -1,7 +1,7 @@
 {
   "class_name": "SearchThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2025-11-02T09:55:54.743349",
+  "extracted_at": "2025-11-12T22:36:49.097772",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -135,7 +135,7 @@
         {
           "signature": "getResult() -> Path",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -196,6 +196,121 @@
       "documentation": "Java method: run"
     }
   ],
-  "fields": [],
-  "constructors": []
+  "fields": [
+    {
+      "name": "imgDepth",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgDepth of type int",
+      "is_static": false,
+      "is_final": true
+    },
+    {
+      "name": "imgHeight",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgHeight of type int",
+      "is_static": false,
+      "is_final": true
+    },
+    {
+      "name": "imgWidth",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgWidth of type int",
+      "is_static": false,
+      "is_final": true
+    }
+  ],
+  "constructors": [],
+  "static_fields": [
+    {
+      "name": "CANCELLED",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field CANCELLED of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CLOSED_FROM_GOAL",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field CLOSED_FROM_GOAL of type byte",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CLOSED_FROM_START",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field CLOSED_FROM_START of type byte",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "EXIT_REASONS_STRINGS",
+      "type": "Any",
+      "java_type": "String;",
+      "documentation": "Field EXIT_REASONS_STRINGS of type String;",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FREE",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field FREE of type byte",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "OPEN_FROM_GOAL",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field OPEN_FROM_GOAL of type byte",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "OPEN_FROM_START",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field OPEN_FROM_START of type byte",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "OUT_OF_MEMORY",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field OUT_OF_MEMORY of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "POINTS_EXHAUSTED",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field POINTS_EXHAUSTED of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SUCCESS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SUCCESS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TIMED_OUT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field TIMED_OUT of type int",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
 }

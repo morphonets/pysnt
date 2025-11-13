@@ -296,9 +296,16 @@ class JavaSignatureExtractor:
             
             captured_output = io.StringIO()
             with redirect_stdout(captured_output):
+                # Request fields explicitly
                 pysnt.inspect(java_instance, methods=True, fields=True, constructors=True)
             
             methods_info = captured_output.getvalue().split('\n')
+            
+            if self.verbose:
+                print(f"📋 Captured {len(methods_info)} lines of inspection output")
+                # Print first few lines to debug
+                for i, line in enumerate(methods_info[:20]):
+                    print(f"  Line {i}: {line}")
             
             if not methods_info or len(methods_info) < 5:
                 print(f"❌ Failed to inspect {class_name} - no reflection data available")
@@ -315,11 +322,14 @@ class JavaSignatureExtractor:
                 'constructors': []
             }
             
-            # Process methods and constructors from inspection output
+            # Process methods, constructors, and fields from inspection output
             current_method = None
             method_groups = {}  # Group overloaded methods
             constructor_list = []  # Store constructors
+            field_list = []  # Store non-static fields
+            static_field_list = []  # Store static fields (constants)
             in_constructors_section = False
+            in_fields_section = False
             
             for line in methods_info:
                 line = line.strip()
@@ -329,9 +339,15 @@ class JavaSignatureExtractor:
                 # Track sections
                 if 'Constructors' in line:
                     in_constructors_section = True
+                    in_fields_section = False
                     continue
-                elif 'Methods' in line or 'Fields' in line:
+                elif 'Fields' in line:
+                    in_fields_section = True
                     in_constructors_section = False
+                    continue
+                elif 'Methods' in line:
+                    in_constructors_section = False
+                    in_fields_section = False
                     continue
                 
                 # Parse constructor lines (format: "  1. ClassName(params)")
@@ -369,6 +385,36 @@ class JavaSignatureExtractor:
                                 'return_type': 'None',
                                 'java_return_type': 'void'
                             })
+                    continue
+                
+                # Parse field lines (format: "  • [static] [final] fieldName: fieldType")
+                if in_fields_section and line.startswith('•'):
+                    field_line = line[1:].strip()  # Remove bullet point
+                    if ':' in field_line:
+                        # Check for modifiers
+                        is_static = field_line.startswith('static ')
+                        is_final = 'final ' in field_line
+                        
+                        # Remove modifiers to get field name and type
+                        field_line_clean = field_line.replace('static ', '').replace('final ', '')
+                        field_name, field_type = field_line_clean.split(':', 1)
+                        field_name = field_name.strip()
+                        field_type = field_type.strip()
+                        
+                        field_data = {
+                            'name': field_name,
+                            'type': self.map_java_type(field_type),
+                            'java_type': field_type,
+                            'documentation': f"Field {field_name} of type {field_type}",
+                            'is_static': is_static,
+                            'is_final': is_final
+                        }
+                        
+                        # Separate static and non-static fields
+                        if is_static:
+                            static_field_list.append(field_data)
+                        else:
+                            field_list.append(field_data)
                     continue
                 
                 if line.startswith('•'):
@@ -427,8 +473,16 @@ class JavaSignatureExtractor:
                     'documentation': f"Java constructors for {class_name}"
                 }]
             
+            # Add fields to class info
+            if field_list:
+                class_info_dict['fields'] = field_list
+            
+            # Add static fields (constants) to class info
+            if static_field_list:
+                class_info_dict['static_fields'] = static_field_list
+            
             if self.verbose:
-                print(f"✅ Extracted {len(class_info_dict['methods'])} methods and {len(constructor_list)} constructors for {class_name}")
+                print(f"✅ Extracted {len(class_info_dict['methods'])} methods, {len(constructor_list)} constructors, {len(field_list)} fields, and {len(static_field_list)} static fields for {class_name}")
             
             return class_info_dict
             
@@ -469,8 +523,11 @@ class JavaSignatureExtractor:
         all_classes = []
         
         try:
-            # Get the source directory
-            src_dir = Path(__file__).parent.parent / "src" / "pysnt"
+            # Get the source directory - go up to project root first
+            # __file__ is dev/scripts/extract_class_signatures.py
+            # .parent.parent.parent gets us to project root
+            project_root = Path(__file__).parent.parent.parent
+            src_dir = project_root / "src" / "pysnt"
             
             if self.verbose:
                 print(f"🔍 Scanning {src_dir} for CURATED_CLASSES...")

@@ -1,0 +1,830 @@
+{
+  "class_name": "BoundingBox",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2025-11-12T22:36:48.677070",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.630723",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "append",
+      "overloads": [
+        {
+          "signature": "append(Iterator) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Iterator",
+              "description": "- the iterator of the points Collection",
+              "javadoc_name": "iterator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: append",
+      "javadoc_description": "Computes the bounding box of the specified point cloud and appends it to this bounding box, resizing it as needed.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clone",
+      "overloads": [
+        {
+          "signature": "clone() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "a new BoundingBox that is a copy of this bounding box",
+          "throws": {}
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clone",
+      "javadoc_description": "Creates a copy of this BoundingBox.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "combine",
+      "overloads": [
+        {
+          "signature": "combine(BoundingBox) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "- the bounding box to be combined.",
+              "javadoc_name": "other"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: combine",
+      "javadoc_description": "Combines this bounding box with another one. It is assumed both boxes share the same voxel spacing/Calibration.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "compute",
+      "overloads": [
+        {
+          "signature": "compute(Iterator) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Iterator",
+              "description": "- the iterator of the points Collection",
+              "javadoc_name": "iterator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: compute",
+      "javadoc_description": "Computes a new positioning so that this box encloses the specified point cloud.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contains",
+      "overloads": [
+        {
+          "signature": "contains(BoundingBox) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "contains(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contains",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "contains2D",
+      "overloads": [
+        {
+          "signature": "contains2D(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: contains2D",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "depth",
+      "overloads": [
+        {
+          "signature": "depth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: depth",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> Calibration",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "return_description": "the Calibration object",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCalibration",
+      "javadoc_description": "Creates a Calibration object using information from this BoundingBox",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCentroid",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDiagonal",
+      "overloads": [
+        {
+          "signature": "getDiagonal() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the diagonal of BoundingBox",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDiagonal",
+      "javadoc_description": "Gets the box diagonal",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDimensions",
+      "overloads": [
+        {
+          "signature": "getDimensions() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getDimensions(boolean) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true, dimensions are retrieved in real world units, otherwise in (\"pixel\") units",
+              "javadoc_name": "scaled"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "the BoundingBox dimensions {width, height, depth}.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDimensions",
+      "javadoc_description": "Gets this BoundingBox dimensions.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUnit",
+      "overloads": [
+        {
+          "signature": "getUnit() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the unit",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUnit",
+      "javadoc_description": "Gets the length unit of voxel spacing",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasDimensions",
+      "overloads": [
+        {
+          "signature": "hasDimensions() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasDimensions",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "height",
+      "overloads": [
+        {
+          "signature": "height() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: height",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "inferSpacing",
+      "overloads": [
+        {
+          "signature": "inferSpacing(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the point collection",
+              "javadoc_name": "points"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: inferSpacing",
+      "javadoc_description": "Infers the voxel spacing of this box from the inter-node distances of a Collection of SWCPoints.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "intersection",
+      "overloads": [
+        {
+          "signature": "intersection(BoundingBox) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "- the second bounding box.",
+              "javadoc_name": "other"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "The intersection cuboid.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: intersection",
+      "javadoc_description": "Retrieves the intersection cuboid between this bounding with another bounding box. It is assumed both boxes share the same voxel spacing/Calibration.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isScaled",
+      "overloads": [
+        {
+          "signature": "isScaled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if voxel spacing has been specified",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isScaled",
+      "javadoc_description": "Checks whether this BoundingBox is spatially calibrated, i.e., if voxel spacing has been specified",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "origin",
+      "overloads": [
+        {
+          "signature": "origin() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the origin",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: origin",
+      "javadoc_description": "Retrieves the origin of this box.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "originOpposite",
+      "overloads": [
+        {
+          "signature": "originOpposite() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the origin",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: originOpposite",
+      "javadoc_description": "Retrieves the origin opposite of this box.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDimensions",
+      "overloads": [
+        {
+          "signature": "setDimensions(long, long, long) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "long",
+              "description": "- the uncalibrated width",
+              "javadoc_name": "uncalibratedWidth"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- If origin has not been set or compute(Iterator) has not been called",
+            "compute(Iterator)": ""
+          }
+        }
+      ],
+      "documentation": "Java method: setDimensions",
+      "javadoc_description": "Sets the dimensions of this bounding box using uncalibrated (pixel) lengths.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOrigin",
+      "overloads": [
+        {
+          "signature": "setOrigin(PointInImage) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- the new origin",
+              "javadoc_name": "origin"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOrigin",
+      "javadoc_description": "Sets the origin for this box, i.e., its (xMin, yMin, zMin) vertex.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOriginOpposite",
+      "overloads": [
+        {
+          "signature": "setOriginOpposite(PointInImage) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- the new origin opposite.",
+              "javadoc_name": "originOpposite"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOriginOpposite",
+      "javadoc_description": "Sets the origin opposite for this box, i.e., its (xMax, yMax, zMax) vertex.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSpacing",
+      "overloads": [
+        {
+          "signature": "setSpacing(double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the 'voxel width' of the bounding box",
+              "javadoc_name": "xSpacing"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSpacing",
+      "javadoc_description": "Sets the voxel spacing.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setUnit",
+      "overloads": [
+        {
+          "signature": "setUnit(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the new unit",
+              "javadoc_name": "unit"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setUnit",
+      "javadoc_description": "Sets the default length unit for voxel spacing (typically um, for SWC reconstructions)",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toBoundingBox3d",
+      "overloads": [
+        {
+          "signature": "toBoundingBox3d() -> BoundingBox3d",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BoundingBox3d",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toBoundingBox3d",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "unscaledOrigin",
+      "overloads": [
+        {
+          "signature": "unscaledOrigin() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the unscaled origin",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: unscaledOrigin",
+      "javadoc_description": "Retrieves the origin of this box in unscaled (\"pixel\" units)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "unscaledOriginOpposite",
+      "overloads": [
+        {
+          "signature": "unscaledOriginOpposite() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the unscaled origin opposite",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: unscaledOriginOpposite",
+      "javadoc_description": "Retrieves the origin opposite of this box in unscaled (\"pixel\" units)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "width",
+      "overloads": [
+        {
+          "signature": "width() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: width",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [
+    {
+      "name": "info",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field info of type String"
+    },
+    {
+      "name": "xSpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field xSpacing of type double"
+    },
+    {
+      "name": "ySpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field ySpacing of type double"
+    },
+    {
+      "name": "zSpacing",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field zSpacing of type double"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BoundingBox()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BoundingBox(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for BoundingBox"
+    }
+  ],
+  "javadoc_description": "A BoundingBox contains information (including spatial calibration) of a tracing canvas bounding box, i.e., the minimum bounding cuboid containing all nodes (SNTPoints) of a reconstructed structure.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "Cloneable"
+    ],
+    "implements": [
+      "Cloneable"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Cloneable",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 33,
+      "total_json_methods": 28,
+      "total_matches": 30,
+      "exact_matches": 30,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 3,
+      "unmatched_json": -2,
+      "match_percentage": 90.9
+    },
+    "unmatched_javadoc_methods": 3,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "class_name": "PCAnalyzer",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-12T22:36:48.834998",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.618078",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static getPrincipalAxes",
+      "overloads": [
+        {
+          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of points to analyze",
+              "javadoc_name": "points"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails",
+          "throws": {}
+        },
+        {
+          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getPrincipalAxes(Tree, boolean) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getPrincipalAxes(Tree) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getPrincipalAxes",
+      "javadoc_description": "Computes the principal axes for a collection of SNTPoints.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getVariancePercentages",
+      "overloads": [
+        {
+          "signature": "static getVariancePercentages(PCAnalyzer$PrincipalAxis;) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PCAnalyzer$PrincipalAxis;",
+              "description": "- the array of three PrincipalAxis objects (primary, secondary, tertiary)",
+              "javadoc_name": "axes"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "array of three percentages (primary, secondary, tertiary) that sum to 100%, or null if axes is null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getVariancePercentages",
+      "javadoc_description": "Computes the variance percentages for an array of principal axes. This is a convenience method that returns the percentage of total variance explained by each principal axis.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static orientTowardDirection",
+      "overloads": [
+        {
+          "signature": "static orientTowardDirection(PCAnalyzer$PrincipalAxis;, [D) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PCAnalyzer$PrincipalAxis;",
+              "description": "- the principal axes to orient",
+              "javadoc_name": "axes"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "oriented principal axes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static orientTowardDirection",
+      "javadoc_description": "Orients principal axes so the primary axis points toward a reference direction, i.e., the primary axis is oriented to minimize the angle with the reference direction. If the primary axis points away from the reference (dot product < 0), it's flipped.\\",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static orientTowardTips",
+      "overloads": [
+        {
+          "signature": "static orientTowardTips(PCAnalyzer$PrincipalAxis;, Tree) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PCAnalyzer$PrincipalAxis;",
+              "description": "- the principal axes to orient",
+              "javadoc_name": "axes"
+            },
+            {
+              "name": "arg1",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "oriented principal axes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static orientTowardTips",
+      "javadoc_description": "Convenience method to orient existing principal axes toward a tree's tips centroid. For several topologies, this orients the primary axis is so it aligns with the general growth direction of the arbor.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PCAnalyzer()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PCAnalyzer"
+    }
+  ],
+  "javadoc_description": "Utility class for performing Principal Component Analysis (PCA) on various SNT data structures including Trees, Paths, and collections of SNTPoints.\n\nThis class provides methods to compute the principal axes of 3D point data, which represent the directions of maximum variance in the data. This is useful for analyzing the overall orientation and shape characteristics of neuronal structures, meshes, and other 3D geometries.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "PCAnalyzer.PrincipalAxis"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 4,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -3,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

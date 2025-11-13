@@ -1,0 +1,64 @@
+# Enhanced API Documentation Configuration
+# This file allows customization of the documentation generation process
+
+javadoc:
+  # Path to JavaDoc ZIP file (relative to dev/scripts/)
+  source_zip: "SNT-v5.0.0-pre-release3_javadocs.zip"
+  # Directory to extract JavaDoc files
+  extract_dir: "javadoc_extracted"
+  # Base URL for online JavaDoc links
+  base_url: "https://javadoc.scijava.org/SNT/"
+
+json_stubs:
+  # Directory containing reflection-based JSON stub files
+  directory: "STUBS"
+  # Pattern to match JSON stub files
+  file_pattern: "*.json"
+
+output:
+  # Main output directory for enhanced documentation
+  docs_dir: "../../docs/pysnt"
+  # Directory for individual class pages  
+  class_pages_dir: "../../docs/pysnt"
+  # Method index file
+  index_file: "../../docs/api_auto/api_index.rst"
+
+generation:
+  # Method categories for organization
+  categories:
+    - "Getters"
+    - "Setters"
+    - "Analysis"
+    - "I/O Operations"
+    - "Visualization"
+    - "Utilities"
+    - "Static Methods"
+  
+  # Include code examples from JavaDoc
+  include_examples: true
+  # Include deprecated methods in documentation
+  include_deprecated: false
+  # Depth for cross-reference generation
+  cross_reference_depth: 2
+
+sphinx:
+  # Integrate with existing Sphinx documentation
+  integrate_with_existing: true
+  # Maximum depth for table of contents
+  toctree_maxdepth: 3
+  # Add to main documentation index
+  add_to_main_index: true
+
+caching:
+  # Enable caching for performance
+  enable_cache: true
+  # Cache directory
+  cache_dir: "cache"
+  # Cache time-to-live in days
+  cache_ttl_days: 7
+
+logging:
+  # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  # Log message format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

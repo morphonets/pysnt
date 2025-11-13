@@ -1,6 +1,7 @@
 # -- RTD Environment Setup -------------------------------------------------
 import os
 import sys
+sys.path.insert(0, os.path.abspath('../dev/scripts'))
 
 # Set stable timezone and locale before any imports
 os.environ['TZ'] = 'UTC'
@@ -51,17 +52,20 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx_design",
     "sphinx_copybutton",            # Copy-to-clipboard buttons for code blocks
+    'enhanced_api_docs.sphinx_javadoc_extension'
 ]
 
 # Mock imports for Read the Docs (avoid importing heavy dependencies)
 import sys
+sys.path.insert(0, os.path.abspath('../dev/scripts'))
 from unittest.mock import MagicMock
 
 class MockModule(MagicMock):
-    @classmethod
-    def __getattr__(cls, name):
+    def __getattr__(self, name):
         if name in ('__version__', 'version'):
             return '1.0.0'
+        if name == '__name__':
+            return 'mock_module'
         return MagicMock()
 
 MOCK_MODULES = [

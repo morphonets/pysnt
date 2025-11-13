@@ -1,7 +1,7 @@
 {
   "class_name": "PointInImage",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-09T07:59:46.874455",
+  "extracted_at": "2025-11-12T22:36:48.943833",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -80,6 +80,18 @@
       "name": "distanceSquaredTo",
       "overloads": [
         {
+          "signature": "distanceSquaredTo(PointInImage) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
             {
@@ -96,18 +108,6 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
-          "signature": "distanceSquaredTo(PointInImage) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
@@ -210,12 +210,6 @@
       "name": "getUnscaledPoint",
       "overloads": [
         {
-          "signature": "getUnscaledPoint() -> PointInCanvas",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "PointInCanvas"
-        },
-        {
           "signature": "getUnscaledPoint(int) -> PointInCanvas",
           "params": [
             {
@@ -224,6 +218,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas"
+        },
+        {
+          "signature": "getUnscaledPoint() -> PointInCanvas",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "PointInCanvas"
         }
@@ -397,7 +397,56 @@
       "documentation": "Java method: transform"
     }
   ],
-  "fields": [],
+  "fields": [
+    {
+      "name": "onPath",
+      "type": "Path",
+      "java_type": "Path",
+      "documentation": "Field onPath of type Path",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "radius",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field radius of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "v",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field v of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "x",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field x of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "y",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field y of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "z",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field z of type double",
+      "is_static": false,
+      "is_final": false
+    }
+  ],
   "constructors": [
     {
       "name": "__init__",

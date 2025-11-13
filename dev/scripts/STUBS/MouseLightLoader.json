@@ -1,7 +1,7 @@
 {
   "class_name": "MouseLightLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-09T08:12:17.340042",
+  "extracted_at": "2025-11-12T22:36:48.773791",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -20,12 +20,12 @@
       "name": "static extractNodes",
       "overloads": [
         {
-          "signature": "static extractNodes(File, String) -> Map",
+          "signature": "static extractNodes(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File"
+              "type": "Any",
+              "java_type": "InputStream"
             },
             {
               "name": "arg1",
@@ -37,12 +37,12 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "static extractNodes(InputStream, String) -> Map",
+          "signature": "static extractNodes(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
+              "type": "str",
+              "java_type": "File"
             },
             {
               "name": "arg1",
@@ -60,12 +60,12 @@
       "name": "static extractTrees",
       "overloads": [
         {
-          "signature": "static extractTrees(File, String) -> Map",
+          "signature": "static extractTrees(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File"
+              "type": "Any",
+              "java_type": "InputStream"
             },
             {
               "name": "arg1",
@@ -77,12 +77,12 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "static extractTrees(InputStream, String) -> Map",
+          "signature": "static extractTrees(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
+              "type": "str",
+              "java_type": "File"
             },
             {
               "name": "arg1",
@@ -160,6 +160,12 @@
       "name": "getNodes",
       "overloads": [
         {
+          "signature": "getNodes() -> TreeSet",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "TreeSet"
+        },
+        {
           "signature": "getNodes(String) -> TreeSet",
           "params": [
             {
@@ -168,12 +174,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Set[Any]",
-          "java_return_type": "TreeSet"
-        },
-        {
-          "signature": "getNodes() -> TreeSet",
-          "params": [],
           "return_type": "Set[Any]",
           "java_return_type": "TreeSet"
         }
@@ -315,24 +315,24 @@
       "name": "save",
       "overloads": [
         {
-          "signature": "save(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "save(File) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "str",
               "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "bool",
@@ -397,6 +397,32 @@
         }
       ],
       "documentation": "Java constructors for MouseLightLoader"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "AXON",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AXON of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DENDRITE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field DENDRITE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SOMA",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SOMA of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

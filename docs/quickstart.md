@@ -4,7 +4,7 @@ Get up and running with PySNT quickly! This guide covers essential workflows and
 
 ```{seealso}
 - [PySNT Overview](overview.md) - Core concepts and detailed usage patterns
-- [Limitations and Quirks](limitations.md) - Known limitations and workarounds
+- [Quirks and Limitations](limitations.md) - Known limitations and workarounds
 - [API Reference](api.md) - Complete function and class documentation
 ```
 

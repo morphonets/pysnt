@@ -1,7 +1,7 @@
 {
   "class_name": "PathManagerUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-09T07:59:46.831421",
+  "extracted_at": "2025-11-12T22:36:48.902986",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -30,6 +30,45 @@
     {
       "name": "add",
       "overloads": [
+        {
+          "signature": "add(Component, Object, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Component, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "add(String, Component) -> Component",
           "params": [
@@ -75,45 +114,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "Component"
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         },
         {
           "signature": "add(PopupMenu) -> void",
@@ -326,18 +326,6 @@
       "name": "addPropertyChangeListener",
       "overloads": [
         {
-          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PropertyChangeListener"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
           "params": [
             {
@@ -347,6 +335,18 @@
             },
             {
               "name": "arg1",
+              "type": "Any",
+              "java_type": "PropertyChangeListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
+          "params": [
+            {
+              "name": "arg0",
               "type": "Any",
               "java_type": "PropertyChangeListener"
             }
@@ -451,24 +451,24 @@
       "name": "applyResourceBundle",
       "overloads": [
         {
-          "signature": "applyResourceBundle(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "applyResourceBundle(ResourceBundle) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "ResourceBundle"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "applyResourceBundle(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -480,18 +480,6 @@
     {
       "name": "applySelectionFilter",
       "overloads": [
-        {
-          "signature": "applySelectionFilter(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "applySelectionFilter(String, Number, Number) -> void",
           "params": [
@@ -526,6 +514,18 @@
               "name": "arg1",
               "type": "Union[int, float]",
               "java_type": "Number"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "applySelectionFilter(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -648,6 +648,18 @@
       "name": "contains",
       "overloads": [
         {
+          "signature": "contains(Point) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Point"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
           "signature": "contains(int, int) -> boolean",
           "params": [
             {
@@ -659,18 +671,6 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point"
             }
           ],
           "return_type": "bool",
@@ -695,6 +695,18 @@
       "name": "createBufferStrategy",
       "overloads": [
         {
+          "signature": "createBufferStrategy(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
           "params": [
             {
@@ -710,18 +722,6 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "createBufferStrategy(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: createBufferStrategy"
@@ -729,6 +729,18 @@
     {
       "name": "createImage",
       "overloads": [
+        {
+          "signature": "createImage(ImageProducer) -> Image",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageProducer"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Image"
+        },
         {
           "signature": "createImage(int, int) -> Image",
           "params": [
@@ -745,18 +757,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "Image"
-        },
-        {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image"
         }
       ],
       "documentation": "Java method: createImage"
@@ -764,6 +764,23 @@
     {
       "name": "createVolatileImage",
       "overloads": [
+        {
+          "signature": "createVolatileImage(int, int) -> VolatileImage",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VolatileImage"
+        },
         {
           "signature": "createVolatileImage(int, int, ImageCapabilities) -> VolatileImage",
           "params": [
@@ -781,23 +798,6 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ImageCapabilities"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "VolatileImage"
-        },
-        {
-          "signature": "createVolatileImage(int, int) -> VolatileImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
             }
           ],
           "return_type": "Any",
@@ -898,6 +898,152 @@
         }
       ],
       "documentation": "Java constructors for PathManagerUI"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ABORT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ABORT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ALLBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ALLBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BOTTOM_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field BOTTOM_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CENTER_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field CENTER_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_MODALITY_TYPE",
+      "type": "Any",
+      "java_type": "Dialog$ModalityType",
+      "documentation": "Field DEFAULT_MODALITY_TYPE of type Dialog$ModalityType",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DISPOSE_ON_CLOSE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DISPOSE_ON_CLOSE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DO_NOTHING_ON_CLOSE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DO_NOTHING_ON_CLOSE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ERROR",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ERROR of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "EXIT_ON_CLOSE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field EXIT_ON_CLOSE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FRAMEBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field FRAMEBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HEIGHT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field HEIGHT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HIDE_ON_CLOSE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field HIDE_ON_CLOSE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "LEFT_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field LEFT_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PROPERTIES",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field PROPERTIES of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RIGHT_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field RIGHT_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SOMEBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SOMEBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TOP_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field TOP_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "WIDTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field WIDTH of type int",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

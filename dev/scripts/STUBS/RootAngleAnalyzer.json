@@ -1,7 +1,7 @@
 {
   "class_name": "RootAngleAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.879279",
+  "extracted_at": "2025-11-12T22:36:48.950959",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -65,6 +65,18 @@
       "documentation": "Java method: getCramerVonMisesStatistic"
     },
     {
+      "name": "getDensityPlot",
+      "overloads": [
+        {
+          "signature": "getDensityPlot() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getDensityPlot"
+    },
+    {
       "name": "static getDensityPlot",
       "overloads": [
         {
@@ -83,18 +95,6 @@
       "documentation": "Java method: static getDensityPlot"
     },
     {
-      "name": "getDensityPlot",
-      "overloads": [
-        {
-          "signature": "getDensityPlot() -> SNTChart",
-          "params": [],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: getDensityPlot"
-    },
-    {
       "name": "getDescriptiveStatistics",
       "overloads": [
         {
@@ -105,24 +105,6 @@
         }
       ],
       "documentation": "Java method: getDescriptiveStatistics"
-    },
-    {
-      "name": "getHistogram",
-      "overloads": [
-        {
-          "signature": "getHistogram(boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: getHistogram"
     },
     {
       "name": "static getHistogram",
@@ -148,6 +130,24 @@
       "documentation": "Java method: static getHistogram"
     },
     {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getHistogram"
+    },
+    {
       "name": "getTaggedGraph",
       "overloads": [
         {
@@ -162,6 +162,28 @@
     {
       "name": "getTaggedTree",
       "overloads": [
+        {
+          "signature": "getTaggedTree(String, double, double) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        },
         {
           "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
           "params": [
@@ -191,28 +213,6 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ColorTable"
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
-          "signature": "getTaggedTree(String, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
             }
           ],
           "return_type": "Tree",
@@ -325,6 +325,32 @@
         }
       ],
       "documentation": "Java constructors for RootAngleAnalyzer"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "BALANCING_FACTOR",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BALANCING_FACTOR of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CENTRIPETAL_BIAS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CENTRIPETAL_BIAS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "MEAN_DIRECTION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field MEAN_DIRECTION of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

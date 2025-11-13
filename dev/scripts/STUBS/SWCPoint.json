@@ -1,7 +1,7 @@
 {
   "class_name": "SWCPoint",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-09T07:59:47.134320",
+  "extracted_at": "2025-11-12T22:36:49.090663",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -98,24 +98,24 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(SWCPoint) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SWCPoint",
-              "java_type": "SWCPoint"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "compareTo(Object) -> int",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "Object"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
+          "signature": "compareTo(SWCPoint) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
             }
           ],
           "return_type": "int",
@@ -127,6 +127,18 @@
     {
       "name": "distanceSquaredTo",
       "overloads": [
+        {
+          "signature": "distanceSquaredTo(PointInImage) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
         {
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
@@ -144,18 +156,6 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
-          "signature": "distanceSquaredTo(PointInImage) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
@@ -317,12 +317,6 @@
       "name": "getUnscaledPoint",
       "overloads": [
         {
-          "signature": "getUnscaledPoint() -> PointInCanvas",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "PointInCanvas"
-        },
-        {
           "signature": "getUnscaledPoint(int) -> PointInCanvas",
           "params": [
             {
@@ -331,6 +325,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas"
+        },
+        {
+          "signature": "getUnscaledPoint() -> PointInCanvas",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "PointInCanvas"
         }
@@ -606,7 +606,80 @@
       "documentation": "Java method: zSeparationFromPreviousPoint"
     }
   ],
-  "fields": [],
+  "fields": [
+    {
+      "name": "id",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field id of type int",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "onPath",
+      "type": "Path",
+      "java_type": "Path",
+      "documentation": "Field onPath of type Path",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "parent",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field parent of type int",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "radius",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field radius of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "type",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field type of type int",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "v",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field v of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "x",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field x of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "y",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field y of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "z",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field z of type double",
+      "is_static": false,
+      "is_final": false
+    }
+  ],
   "constructors": [
     {
       "name": "__init__",

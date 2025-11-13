@@ -7,6 +7,6 @@ This section contains automatically generated API documentation for all pySNT mo
 .. toctree::
    :maxdepth: 2
    :glob:
-   
+   :hidden:
    pysnt*
 

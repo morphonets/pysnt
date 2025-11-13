@@ -1,0 +1,447 @@
+{
+  "class_name": "BiSearch",
+  "package": "sc.fiji.snt.tracing",
+  "extracted_at": "2025-11-12T22:36:48.664918",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.571324",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addProgressListener",
+      "overloads": [
+        {
+          "signature": "addProgressListener(SearchProgressCallback) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SearchProgressCallback",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addProgressListener",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodesAsImage",
+      "overloads": [
+        {
+          "signature": "getNodesAsImage() -> SearchImageStack",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageStack",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodesAsImage",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getResult",
+      "overloads": [
+        {
+          "signature": "getResult() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getResult",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "pointsConsideredInSearch",
+      "overloads": [
+        {
+          "signature": "pointsConsideredInSearch() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: pointsConsideredInSearch",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "printStatus",
+      "overloads": [
+        {
+          "signature": "printStatus() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: printStatus",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reportFinished",
+      "overloads": [
+        {
+          "signature": "reportFinished(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reportFinished",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: run",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [
+    {
+      "name": "imgDepth",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgDepth of type int"
+    },
+    {
+      "name": "imgHeight",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgHeight of type int"
+    },
+    {
+      "name": "imgWidth",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field imgWidth of type int"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BiSearch(SNT, int, int, int, int, int, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BiSearch(SNT, int, int, int, int, int, int, Cost, Heuristic)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg7",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "arg8",
+              "type": "Any",
+              "java_type": "Heuristic"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BiSearch(SNT, RandomAccessibleInterval, int, int, int, int, int, int, Cost, Heuristic)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg7",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg8",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "arg9",
+              "type": "Any",
+              "java_type": "Heuristic"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BiSearch(RandomAccessibleInterval, Calibration, int, int, int, int, int, int, int, long, SNT$SearchImageType, Cost, Heuristic)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg7",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg8",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg9",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg10",
+              "type": "Any",
+              "java_type": "SNT$SearchImageType"
+            },
+            {
+              "name": "arg11",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "arg12",
+              "type": "Any",
+              "java_type": "Heuristic"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for BiSearch"
+    }
+  ],
+  "javadoc_description": "A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. \"Yet another bidirectional algorithm for shortest paths,\" Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.\n\nThe search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.",
+  "inheritance": {
+    "extends": [
+      "AbstractSearch"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "AbstractSearch"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

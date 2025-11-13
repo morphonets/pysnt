@@ -1,7 +1,7 @@
 {
   "class_name": "NodeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.709413",
+  "extracted_at": "2025-11-12T22:36:48.819719",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -56,12 +56,6 @@
       "name": "getColorTable",
       "overloads": [
         {
-          "signature": "getColorTable() -> ColorTable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ColorTable"
-        },
-        {
           "signature": "getColorTable(String) -> ColorTable",
           "params": [
             {
@@ -70,6 +64,12 @@
               "java_type": "String"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "ColorTable"
+        },
+        {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ColorTable"
         }
@@ -170,23 +170,6 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(String, ColorTable) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorTable"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(String, String) -> void",
           "params": [
             {
@@ -198,6 +181,23 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(String, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorTable"
             }
           ],
           "return_type": "None",
@@ -284,18 +284,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "NodeColorMapper(NodeStatistics)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "NodeStatistics"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "NodeColorMapper(NodeStatistics, Context)",
           "params": [
             {
@@ -311,9 +299,87 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "NodeColorMapper(NodeStatistics)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "NodeStatistics"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for NodeColorMapper"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "BRANCH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NEAREST_NEIGHBOR_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field NEAREST_NEIGHBOR_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VALUES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VALUES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field X_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Y_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Z_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

@@ -1,0 +1,615 @@
+{
+  "class_name": "ConvexHullAnalyzer",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-12T22:36:48.691476",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.554702",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "cancel",
+      "overloads": [
+        {
+          "signature": "cancel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: cancel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "context",
+      "overloads": [
+        {
+          "signature": "context() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: context",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dump",
+      "overloads": [
+        {
+          "signature": "dump(SNTTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTTable",
+              "java_type": "SNTTable",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dump",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(String) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the name of the metric to retrieve",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the computed value for the metric",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: get",
+      "javadoc_description": "Gets the value of a specific convex hull metric.\n\nRetrieves the computed value for the specified metric name. The metric must be one of the supported metrics returned by supportedMetrics().",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "supportedMetrics()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnalysis",
+      "overloads": [
+        {
+          "signature": "getAnalysis() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "a map of metric names to their computed values",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnalysis",
+      "javadoc_description": "Gets all computed convex hull analysis metrics.\n\nReturns a map containing all the computed convex hull metrics and their values. The metrics are computed lazily and cached for subsequent calls. If the hull cannot be computed, all metrics return NaN.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoundarySize",
+      "overloads": [
+        {
+          "signature": "getBoundarySize() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the boundary size of the convex hull",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoundarySize",
+      "javadoc_description": "Gets the boundary size (perimeter for 2D hulls or surface area for 3D hulls) of the convex hull.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoxivity",
+      "overloads": [
+        {
+          "signature": "getBoxivity() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the boxivity value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoxivity",
+      "javadoc_description": "Gets the boxivity of the convex hull, which measures how box-like the convex hull is. Values closer to 1 indicate a more box-like shape.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCancelReason",
+      "overloads": [
+        {
+          "signature": "getCancelReason() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCancelReason",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCentroid",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCompactness",
+      "overloads": [
+        {
+          "signature": "getCompactness() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCompactness",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getContext",
+      "overloads": [
+        {
+          "signature": "getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getContext",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getEccentricity",
+      "overloads": [
+        {
+          "signature": "getEccentricity() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getEccentricity",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getElongation",
+      "overloads": [
+        {
+          "signature": "getElongation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the elongation value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getElongation",
+      "javadoc_description": "Gets the elongation of the convex hull, which measures how elongated the convex hull is. Higher values indicate more elongated shapes.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getHull",
+      "overloads": [
+        {
+          "signature": "getHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull",
+          "return_description": "the convex hull object",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHull",
+      "javadoc_description": "Gets the convex hull object being analyzed. The hull is initialized if needed.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRoundness",
+      "overloads": [
+        {
+          "signature": "getRoundness() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the roundness value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRoundness",
+      "javadoc_description": "Gets the roundness of the convex hull, which measures how round or circular the convex hull is. Values closer to 1 indicate a more round shape.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSize",
+      "overloads": [
+        {
+          "signature": "getSize() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the size of the convex hull",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSize",
+      "javadoc_description": "Gets the size (area or volume) of the convex hull, which is the area for 2D hulls or the volume for 3D hulls.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the tree being analyzed, or null if the analyzer was created directly from a convex hull.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTree",
+      "javadoc_description": "Gets the tree being analyzed.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUnit",
+      "overloads": [
+        {
+          "signature": "getUnit(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the supported metric to be queried (case-sensitive)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "physical unit",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUnit",
+      "javadoc_description": "Returns the physical unit associated with the specified metric.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "supportedMetrics()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "isCanceled",
+      "overloads": [
+        {
+          "signature": "isCanceled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isCanceled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "- command line arguments (not used)",
+              "javadoc_name": "args"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "InterruptedException": "- if the execution is interrupted"
+          }
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: run",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setContext",
+      "overloads": [
+        {
+          "signature": "setContext(Context) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setContext",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLabel",
+      "overloads": [
+        {
+          "signature": "setLabel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- a string describing the analysis",
+              "javadoc_name": "analysisLabel"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLabel",
+      "javadoc_description": "Sets the optional description for the analysis",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static supportedMetrics",
+      "overloads": [
+        {
+          "signature": "static supportedMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of supported metric names that can be computed by this analyzer",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static supportedMetrics",
+      "javadoc_description": "Gets the list of metrics supported by ConvexHullAnalyzer.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "ConvexHullAnalyzer(Tree)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ConvexHullAnalyzer(AbstractConvexHull)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AbstractConvexHull"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for ConvexHullAnalyzer"
+    }
+  ],
+  "javadoc_description": "Class for Convex Hull measurements of a Tree.",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "ConvexHullCmd",
+    "Constant Field Values",
+    "supportedMetrics()"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 20,
+      "total_json_methods": 24,
+      "total_matches": 20,
+      "exact_matches": 20,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 4,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 4,
+    "enhancement_quality_score": 1.0
+  }
+}

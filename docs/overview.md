@@ -9,13 +9,13 @@ This overview describes how PySNT works under the hood by covering PySNT's archi
 
 ```{seealso}
 - [Quickstart](quickstart.md) - Step-by-step introduction and workflows
-- [Limitations and Quirks](limitations.md) - Known limitations and workarounds
+- [Quirks and Limitations](limitations.md) - Known limitations and workarounds
 - [API Reference](api.md) - Complete function and class documentation
 ```
 
 ## Initializing
 
-Once installed, `pysnt` is imported as any other module. However *it is only available once the gateway is initialized*:
+Once installed, `pysnt` is imported as any other module. 3However, *it is only available once the gateway is initialized*:
 
 ```python
 import pysnt
@@ -23,7 +23,7 @@ pysnt.initialize()  # initialize with default options
 ```
 
 ```{important}
-**Important:** pysnt is only available *after* `pysnt.initialize()` is called.
+pysnt is only available *after* `pysnt.initialize()` is called.
 ```
 
 ### Java Logging Control

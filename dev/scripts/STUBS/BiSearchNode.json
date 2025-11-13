@@ -1,7 +1,7 @@
 {
   "class_name": "BiSearchNode",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2025-11-02T09:55:54.231773",
+  "extracted_at": "2025-11-12T22:36:48.671337",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -136,7 +136,7 @@
         {
           "signature": "getPredecessorFromGoal() -> BiSearchNode",
           "params": [],
-          "return_type": "Any",
+          "return_type": "BiSearchNode",
           "java_return_type": "BiSearchNode"
         }
       ],
@@ -148,7 +148,7 @@
         {
           "signature": "getPredecessorFromStart() -> BiSearchNode",
           "params": [],
-          "return_type": "Any",
+          "return_type": "BiSearchNode",
           "java_return_type": "BiSearchNode"
         }
       ],
@@ -327,7 +327,7 @@
             },
             {
               "name": "arg2",
-              "type": "Any",
+              "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             },
             {
@@ -360,7 +360,7 @@
             },
             {
               "name": "arg2",
-              "type": "Any",
+              "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
@@ -388,7 +388,7 @@
             },
             {
               "name": "arg2",
-              "type": "Any",
+              "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
@@ -529,7 +529,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
@@ -547,7 +547,7 @@
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
+              "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
@@ -672,5 +672,92 @@
     }
   ],
   "fields": [],
-  "constructors": []
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BiSearchNode()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BiSearchNode(int, int, int, double, double, double, double, BiSearchNode, BiSearchNode)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg5",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg6",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg7",
+              "type": "BiSearchNode",
+              "java_type": "BiSearchNode"
+            },
+            {
+              "name": "arg8",
+              "type": "BiSearchNode",
+              "java_type": "BiSearchNode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BiSearchNode(int, int, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for BiSearchNode"
+    }
+  ]
 }

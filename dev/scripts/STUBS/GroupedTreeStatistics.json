@@ -1,7 +1,7 @@
 {
   "class_name": "GroupedTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.610597",
+  "extracted_at": "2025-11-12T22:36:48.717836",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -71,50 +71,6 @@
       "name": "getBoxPlot",
       "overloads": [
         {
-          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getBoxPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
           "signature": "getBoxPlot(String) -> SNTChart",
           "params": [
             {
@@ -152,15 +108,9 @@
           ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: getBoxPlot"
-    },
-    {
-      "name": "getFlowPlot",
-      "overloads": [
+        },
         {
-          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "signature": "getBoxPlot(String, Collection) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -171,9 +121,64 @@
               "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
             },
             {
               "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getBoxPlot"
+    },
+    {
+      "name": "getFlowPlot",
+      "overloads": [
+        {
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
               "type": "bool",
               "java_type": "boolean"
             }
@@ -231,7 +236,7 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -240,16 +245,11 @@
             },
             {
               "name": "arg1",
-              "type": "int",
-              "java_type": "int"
+              "type": "List[Any]",
+              "java_type": "Collection"
             },
             {
               "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
               "type": "bool",
               "java_type": "boolean"
             }

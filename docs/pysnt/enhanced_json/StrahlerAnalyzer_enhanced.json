@@ -1,0 +1,523 @@
+{
+  "class_name": "StrahlerAnalyzer",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-12T22:36:49.110853",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.624600",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static classify",
+      "overloads": [
+        {
+          "signature": "static classify(DirectedWeightedGraph, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static classify",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "Clears internal caches and mappings to free memory.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgBifurcationRatio",
+      "overloads": [
+        {
+          "signature": "getAvgBifurcationRatio() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average bifurcation ratio of the parsed tree. In a complete binary tree, the bifurcation ratio is 2.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAvgBifurcationRatio",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgContractions",
+      "overloads": [
+        {
+          "signature": "getAvgContractions() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAvgContractions",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgExtensionAngle",
+      "overloads": [
+        {
+          "signature": "getAvgExtensionAngle(boolean, int) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the Strahler order",
+              "javadoc_name": "order"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average relative extension angle in degrees, or Double.NaN if no valid angles",
+          "throws": {
+            "IllegalArgumentException": "- if order is invalid"
+          }
+        }
+      ],
+      "documentation": "Java method: getAvgExtensionAngle",
+      "javadoc_description": "Gets the average relative extension angle for branches of a specific Strahler order.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgExtensionAngles",
+      "overloads": [
+        {
+          "signature": "getAvgExtensionAngles(boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "map with Strahler order as key and average relative extension angle as value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAvgExtensionAngles",
+      "javadoc_description": "Gets a map of average relative extension angles for all Strahler orders.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAvgFragmentations",
+      "overloads": [
+        {
+          "signature": "getAvgFragmentations() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAvgFragmentations",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBifurcationRatios",
+      "overloads": [
+        {
+          "signature": "getBifurcationRatios() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the bifurcation ratios obtained as the ratio of no. of branches between consecutive orders (Horton-Strahler numbers as key and ratios as value).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBifurcationRatios",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBranchCounts",
+      "overloads": [
+        {
+          "signature": "getBranchCounts() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the number of branches on each order (Horton-Strahler numbers as key and branch count as value).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBranchCounts",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBranchPointCounts",
+      "overloads": [
+        {
+          "signature": "getBranchPointCounts() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the number of branch points on each order (Horton-Strahler numbers as key and branch points count as value).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBranchPointCounts",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBranches",
+      "overloads": [
+        {
+          "signature": "getBranches(int) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": ""
+          }
+        },
+        {
+          "signature": "getBranches() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBranches",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getExtensionAngles",
+      "overloads": [
+        {
+          "signature": "getExtensionAngles(boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "map with Strahler order as key and list of relative extension angles as values",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getExtensionAngles",
+      "javadoc_description": "Gets a map of relative extension angles for all branches in each Strahler order.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getGraph",
+      "overloads": [
+        {
+          "signature": "getGraph() -> DirectedWeightedGraph",
+          "params": [],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "return_description": "the graph of the tree being parsed.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getGraph",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getHighestBranchOrder",
+      "overloads": [
+        {
+          "signature": "getHighestBranchOrder() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the highest Horton-Strahler number associated with a branch in the parsed tree. Either getRootNumber() or getRootNumber()-1.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHighestBranchOrder",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLengths",
+      "overloads": [
+        {
+          "signature": "getLengths() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the cable lengh associated to each order ( Horton-Strahler numbers as key and cable length as value).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLengths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRelativeExtensionAngle",
+      "overloads": [
+        {
+          "signature": "getRelativeExtensionAngle(Path) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the branch path to analyze",
+              "javadoc_name": "branch"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the relative extension angle in degrees (0-180°), or Double.NaN if computation fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRelativeExtensionAngle",
+      "javadoc_description": "Computes the relative extension angle for a StrahlerAnalyzer branch by finding the parent direction from the graph structure.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRootAssociatedBranches",
+      "overloads": [
+        {
+          "signature": "getRootAssociatedBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRootAssociatedBranches",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRootNumber",
+      "overloads": [
+        {
+          "signature": "getRootNumber() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the highest Horton-Strahler number in the parsed tree.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRootNumber",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "StrahlerAnalyzer(Tree)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for StrahlerAnalyzer"
+    }
+  ],
+  "javadoc_description": "Class to perform Horton-Strahler analysis on a Tree.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 20,
+      "total_json_methods": 19,
+      "total_matches": 20,
+      "exact_matches": 20,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -1,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

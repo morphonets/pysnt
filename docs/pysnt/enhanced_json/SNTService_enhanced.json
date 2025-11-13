@@ -1,0 +1,1154 @@
+{
+  "class_name": "SNTService",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:49.030384",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.587581",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "assignValues",
+      "overloads": [
+        {
+          "signature": "assignValues(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true, only selected paths will be assigned values, otherwise voxel intensities will be assigned to all paths",
+              "javadoc_name": "selectedPathsOnly"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: assignValues",
+      "javadoc_description": "Assigns pixel intensities at each Path node, storing them as Path values. Assigned intensities are those of the channel and time point currently being traced. Assumes SNT has been initialized with a valid image.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathProfiler",
+        "Path.setNodeValues(double[])"
+      ],
+      "examples": []
+    },
+    {
+      "name": "compareTo",
+      "overloads": [
+        {
+          "signature": "compareTo(Object) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "compareTo(Prioritized) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Prioritized",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: compareTo",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "context",
+      "overloads": [
+        {
+          "signature": "context() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: context",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "demoImage",
+      "overloads": [
+        {
+          "signature": "demoImage(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the demo image, or null if data could no be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: demoImage",
+      "javadoc_description": "Returns one of the demo images bundled with SNT image associated with the demo (fractal) tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "demoTree(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "demoTree",
+      "overloads": [
+        {
+          "signature": "demoTree(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- a string describing the type of demo tree. Either 'fractal' for the L-system toy neuron, 'pyramidal' for the dendritic arbor of mouse pyramidal cell (MouseLight's cell AA0001), 'OP1'for the DIADEM OP_1 reconstruction, or 'DG' for the dentate gyrus granule cell (Neuromorpho's Beining archive)",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "demoTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: demoTree",
+      "javadoc_description": "Returns a demo tree.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "demoImage(String)",
+        "demoTrees()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "demoTreeImage",
+      "overloads": [
+        {
+          "signature": "demoTreeImage() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "a reference to the image tree, or null if data could not be retrieved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: demoTreeImage",
+      "javadoc_description": "Returns the image associated with the demo (fractal) tree.",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [
+        "demoTree()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "demoTrees",
+      "overloads": [
+        {
+          "signature": "demoTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of Trees, corresponding to the dendritic arbors of cells \"AA0001\", \"AA0002\", \"AA0003\", \"AA0004\" (MouseLight database IDs).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: demoTrees",
+      "javadoc_description": "Returns a collection of four demo reconstructions (dendrites from pyramidal cells from the MouseLight database). NB: Data is cached locally. No internet connection required.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "Quits SNT. Does nothing if SNT is currently not running.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAnalyzer",
+      "overloads": [
+        {
+          "signature": "getAnalyzer(boolean) -> TreeStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "TreeStatistics",
+          "java_return_type": "TreeStatistics",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnalyzer",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getContext",
+      "overloads": [
+        {
+          "signature": "getContext() -> Context",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Context",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getContext",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getIdentifier",
+      "overloads": [
+        {
+          "signature": "getIdentifier() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getIdentifier",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInfo",
+      "overloads": [
+        {
+          "signature": "getInfo() -> PluginInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PluginInfo",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInfo",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInstance",
+      "overloads": [
+        {
+          "signature": "getInstance() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "the SNT instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInstance",
+      "javadoc_description": "Returns a reference to the active SNT instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLocation",
+      "overloads": [
+        {
+          "signature": "getLocation() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLocation",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOrCreateSciViewSNT",
+      "overloads": [
+        {
+          "signature": "getOrCreateSciViewSNT() -> SciViewSNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SciViewSNT",
+          "return_description": "",
+          "throws": {
+            "NoClassDefFoundError": ""
+          }
+        }
+      ],
+      "documentation": "Java method: getOrCreateSciViewSNT",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathAndFillManager",
+      "overloads": [
+        {
+          "signature": "getPathAndFillManager() -> PathAndFillManager",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager",
+          "return_description": "the PathAndFillManager instance",
+          "throws": {
+            "UnsupportedOperationException": "- if no SNT instance exists."
+          }
+        }
+      ],
+      "documentation": "Java method: getPathAndFillManager",
+      "javadoc_description": "Returns the PathAndFillManager associated with the current SNT instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPaths",
+      "overloads": [
+        {
+          "signature": "getPaths() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "all the listed paths, or null if the Path Manager is empty",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: getPaths",
+      "javadoc_description": "Gets the paths currently listed in the Path Manager",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getTree(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPlugin",
+      "overloads": [
+        {
+          "signature": "getPlugin() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPlugin",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPriority",
+      "overloads": [
+        {
+          "signature": "getPriority() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPriority",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRecViewer",
+      "overloads": [
+        {
+          "signature": "getRecViewer() -> Viewer3D",
+          "params": [],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getRecViewer(int) -> Viewer3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the unique numeric ID of the Reconstruction Viewer to be retrieved (as used by the \"Script This Viewer\" command, and typically displayed in the Viewer's window title)",
+              "javadoc_name": "id"
+            }
+          ],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "return_description": "The standalone Viewer3D instance, or null if id was not recognized",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRecViewer",
+      "javadoc_description": "Returns a reference to an opened Reconstruction Viewer (standalone instance). *",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSciViewSNT",
+      "overloads": [
+        {
+          "signature": "getSciViewSNT() -> SciViewSNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SciViewSNT",
+          "return_description": "",
+          "throws": {
+            "UnsupportedOperationException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: getSciViewSNT",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSelectedPaths",
+      "overloads": [
+        {
+          "signature": "getSelectedPaths() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "the paths currently selected, or null if no selection exists",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: getSelectedPaths",
+      "javadoc_description": "Gets the paths currently selected in the Path Manager list.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getTree(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getStatistics",
+      "overloads": [
+        {
+          "signature": "getStatistics(boolean) -> TreeStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If true only selected paths will be considered",
+              "javadoc_name": "selectedPathsOnly"
+            }
+          ],
+          "return_type": "TreeStatistics",
+          "java_return_type": "TreeStatistics",
+          "return_description": "the TreeStatistics instance",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: getStatistics",
+      "javadoc_description": "Returns a TreeStatistics instance constructed from current Paths.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTable",
+      "overloads": [
+        {
+          "signature": "getTable() -> SNTTable",
+          "params": [],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "return_description": "SNT measurements table (a DefaultGenericTable)",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: getTable",
+      "javadoc_description": "Returns a reference to SNT's main table of measurements.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the Tree holding the Path collection",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        },
+        {
+          "signature": "getTree(boolean) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTree",
+      "javadoc_description": "Gets the collection of paths listed in the Path Manager as a Tree object.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTrees",
+      "overloads": [
+        {
+          "signature": "getTrees() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "the Tree holding the Path collection",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: getTrees",
+      "javadoc_description": "Gets the collection of paths listed in the Path Manager as a Tree object.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUI",
+      "overloads": [
+        {
+          "signature": "getUI() -> SNTUI",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTUI",
+          "return_description": "the SNTUI window, or null if SNT is not running, or is running without GUI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUI",
+      "javadoc_description": "Returns a reference to SNT's UI.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getVersion",
+      "overloads": [
+        {
+          "signature": "getVersion() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getVersion",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "initialize",
+      "overloads": [
+        {
+          "signature": "initialize(ImagePlus, boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "initialize(String, boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "initialize(boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the image to be traced (null not allowed)",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "the SNT instance.",
+          "throws": {
+            "InterruptedException": ""
+          }
+        },
+        {
+          "signature": "initialize() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: initialize",
+      "javadoc_description": "Initializes SNT.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isActive",
+      "overloads": [
+        {
+          "signature": "isActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this SNTService is active, tied to the active instance of SNT",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isActive",
+      "javadoc_description": "Gets whether SNT is running.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadGraph",
+      "overloads": [
+        {
+          "signature": "loadGraph(DirectedWeightedGraph) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "UnsupportedOperationException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: loadGraph",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadTracings",
+      "overloads": [
+        {
+          "signature": "loadTracings(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either a \"SWC\", \"TRACES\" or \"JSON\" file path. URLs defining remote files also supported. Null not allowed.",
+              "javadoc_name": "filePathOrURL"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: loadTracings",
+      "javadoc_description": "Loads the specified tracings file.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadTree",
+      "overloads": [
+        {
+          "signature": "loadTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree to be loaded (null not allowed).",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: loadTree",
+      "javadoc_description": "Loads the specified tree. Note that if SNT has not been properly initialized, spatial calibration mismatches may occur. In that case, assign the spatial calibration of the image to {#@code Tree} using `Tree.assignImage(ImagePlus)`, before loading it.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "log",
+      "overloads": [
+        {
+          "signature": "log() -> LogService",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "LogService",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: log",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "newRecViewer",
+      "overloads": [
+        {
+          "signature": "newRecViewer(boolean) -> Viewer3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "return_description": "The standalone Viewer3D instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: newRecViewer",
+      "javadoc_description": "Instantiates a new standalone Reconstruction Viewer.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "registerEventHandlers",
+      "overloads": [
+        {
+          "signature": "registerEventHandlers() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: registerEventHandlers",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the saving output file path. If",
+              "javadoc_name": "filePath"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if paths exist and file was successfully written.",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: save",
+      "javadoc_description": "Saves all the existing paths to a file.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setContext",
+      "overloads": [
+        {
+          "signature": "setContext(Context) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setContext",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setInfo",
+      "overloads": [
+        {
+          "signature": "setInfo(PluginInfo) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PluginInfo",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setInfo",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setPriority",
+      "overloads": [
+        {
+          "signature": "setPriority(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setPriority",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateViewers",
+      "overloads": [
+        {
+          "signature": "updateViewers() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateViewers",
+      "javadoc_description": "Script-friendly method for updating (refreshing) all viewers currently in use by SNT. Does nothing if no SNT instance exists.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTService()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTService"
+    }
+  ],
+  "javadoc_description": "Service for accessing and scripting the active instance of SNT.",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "PathProfiler",
+    "demoTree(String)",
+    "demoTreeImage()",
+    "demoImage(String)",
+    "getTree(boolean)",
+    "demoTrees()",
+    "Path.setNodeValues(double[])",
+    "demoTree()"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 34,
+      "total_json_methods": 41,
+      "total_matches": 34,
+      "exact_matches": 34,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 7,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 12,
+    "enhancement_quality_score": 1.0
+  }
+}

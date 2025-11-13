@@ -66,7 +66,7 @@
 Set up your environment and launch your first script with step-by-step guidance.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Analysis Tools  
+::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Analysis Tools
 :link: notebooks/2_convex_hull
 :link-type: doc
 :img-top: _static/convexhull.png
@@ -91,7 +91,7 @@ Optimized algorithms for large-scale morphological analysis and batch processing
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
-:link: notebooks/index 
+:link: notebooks/index
 :link-type: doc
 :img-top: _static/group0exemplars.png
 
@@ -116,6 +116,12 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
     <a href="api.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
         <i class="fas fa-code"></i> Python API Reference
+    </a>
+    <a href="api_auto/method_index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fa-solid fa-list-ul"></i> Method Index
+    </a>
+    <a href="api_auto/class_index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
+        <i class="fas fa-list"></i> Class Index
     </a>
     <a href="notebooks/index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
         <i class="fas fa-book"></i> Tutorials

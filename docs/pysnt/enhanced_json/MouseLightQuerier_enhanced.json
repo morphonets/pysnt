@@ -1,0 +1,248 @@
+{
+  "class_name": "MouseLightQuerier",
+  "package": "sc.fiji.snt.io",
+  "extracted_at": "2025-11-12T22:36:48.776091",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.619216",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static getAllIDs",
+      "overloads": [
+        {
+          "signature": "static getAllIDs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of all neuron IDs",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getAllIDs",
+      "javadoc_description": "Gets all available neuron IDs from the database.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getIDs",
+      "overloads": [
+        {
+          "signature": "static getIDs(String, boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getIDs(Collection, boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getIDs(AllenCompartment) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AllenCompartment",
+              "description": "- the collection of IDs or DOIs to search for",
+              "javadoc_name": "idsOrDOIs"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of matching neuron IDs",
+          "throws": {}
+        },
+        {
+          "signature": "static getIDs(Collection) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getIDs",
+      "javadoc_description": "Gets neuron IDs matching the specified collection of IDs or DOIs.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getNeuronCount",
+      "overloads": [
+        {
+          "signature": "static getNeuronCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of available cells, or -1 if the database could not be reached.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getNeuronCount",
+      "javadoc_description": "Gets the number of cells publicly available in the MouseLight database.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isDatabaseAvailable",
+      "overloads": [
+        {
+          "signature": "static isDatabaseAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if an HHTP connection could be established",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isDatabaseAvailable",
+      "javadoc_description": "Checks whether a connection to the MouseLight database can be established.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static setCCFVersion",
+      "overloads": [
+        {
+          "signature": "static setCCFVersion(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- Either \"3\" (the default), or \"2.5\" (MouseLight legacy)",
+              "javadoc_name": "version"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static setCCFVersion",
+      "javadoc_description": "Sets the version of the Common Coordinate Framework to be used by the Querier.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Importer for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 9,
+      "total_json_methods": 6,
+      "total_matches": 9,
+      "exact_matches": 9,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -3,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

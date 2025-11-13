@@ -348,6 +348,12 @@ def info():
     print_version(detailed=True)
 
 
+# Import docstring enhancements
+try:
+    from . import _docstring_enhancements
+except ImportError:
+    pass  # Enhancements not available
+
 __all__ = [
     # Functions
     "initialize",

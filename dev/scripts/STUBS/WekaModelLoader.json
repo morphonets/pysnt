@@ -1,7 +1,7 @@
 {
   "class_name": "WekaModelLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-09T08:03:40.170515",
+  "extracted_at": "2025-11-12T22:36:49.226889",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -43,18 +43,6 @@
       "name": "addOutput",
       "overloads": [
         {
-          "signature": "addOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addOutput(String, Class) -> MutableModuleItem",
           "params": [
             {
@@ -70,6 +58,18 @@
           ],
           "return_type": "Any",
           "java_return_type": "MutableModuleItem"
+        },
+        {
+          "signature": "addOutput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: addOutput"
@@ -77,6 +77,12 @@
     {
       "name": "cancel",
       "overloads": [
+        {
+          "signature": "cancel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "cancel(String) -> void",
           "params": [
@@ -86,12 +92,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "cancel() -> void",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }
@@ -150,10 +150,10 @@
       "name": "getInfo",
       "overloads": [
         {
-          "signature": "getInfo() -> DynamicCommandInfo",
+          "signature": "getInfo() -> ModuleInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "DynamicCommandInfo"
+          "java_return_type": "ModuleInfo"
         },
         {
           "signature": "getInfo() -> MutableModuleInfo",
@@ -162,10 +162,10 @@
           "java_return_type": "MutableModuleInfo"
         },
         {
-          "signature": "getInfo() -> ModuleInfo",
+          "signature": "getInfo() -> DynamicCommandInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ModuleInfo"
+          "java_return_type": "DynamicCommandInfo"
         }
       ],
       "documentation": "Java method: getInfo"

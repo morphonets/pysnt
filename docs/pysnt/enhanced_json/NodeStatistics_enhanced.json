@@ -1,0 +1,579 @@
+{
+  "class_name": "NodeStatistics",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2025-11-12T22:36:48.831531",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.552780",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "assignBranches",
+      "overloads": [
+        {
+          "signature": "assignBranches(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the association tree",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: assignBranches",
+      "javadoc_description": "Associates the nodes being analyzed to the branches of the specified tree",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static computeNearestNeighborDistances",
+      "overloads": [
+        {
+          "signature": "static computeNearestNeighborDistances(List) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- the list of points",
+              "javadoc_name": "points"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static computeNearestNeighborDistances",
+      "javadoc_description": "Computes nearest neighbor distances. Assigns the computed value to the v value of each point",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "filter",
+      "overloads": [
+        {
+          "signature": "filter(String, double, double) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (X_COORDINATES, Y_COORDINATES, BRANCH_ORDER, etc.)",
+              "javadoc_name": "metric"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "X_COORDINATES"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "Y_COORDINATES"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the filtered list.",
+          "throws": {
+            "UnknownMetricException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: filter",
+      "javadoc_description": "Filters the current pool of nodes matching a measurement-based criterion.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(BrainAnnotation, boolean) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "get(BrainAnnotation) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the query compartment (null not allowed)",
+              "javadoc_name": "compartment"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of filtered nodes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: get",
+      "javadoc_description": "Gets the list of nodes associated with the specified compartment (neuropil label).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedFrequencies",
+      "overloads": [
+        {
+          "signature": "getAnnotatedFrequencies(int, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedFrequencies(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the brain compartments as keys, and frequencies as values.",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedFrequencies() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedFrequencies",
+      "javadoc_description": "Retrieves the count frequencies across brain compartment.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedFrequenciesByHemisphere",
+      "overloads": [
+        {
+          "signature": "getAnnotatedFrequenciesByHemisphere(int, Tree) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedFrequenciesByHemisphere",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedFrequencyHistogram",
+      "overloads": [
+        {
+          "signature": "getAnnotatedFrequencyHistogram(int, String, Tree) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "depth"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the annotated frequencies histogram",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedFrequencyHistogram",
+      "javadoc_description": "Retrieves the histogram of count frequencies across brain areas of the specified ontology level across the specified hemisphere.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedHistogram",
+      "overloads": [
+        {
+          "signature": "getAnnotatedHistogram() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedHistogram(int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "depth"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the annotated frequencies histogram",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedHistogram",
+      "javadoc_description": "Retrieves the histogram of count frequencies across brain areas of the specified ontology level.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AllenCompartment.getOntologyDepth()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getAnnotatedNodes",
+      "overloads": [
+        {
+          "signature": "getAnnotatedNodes(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ontological depth of the compartments to be considered",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the map containing the brain annotations as keys, and list of nodes as values.",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedNodes() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnnotatedNodes",
+      "javadoc_description": "Splits the nodes being analyzed into groups sharing the same brain annotation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDescriptiveStatistics",
+      "overloads": [
+        {
+          "signature": "getDescriptiveStatistics(String) -> DescriptiveStatistics",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (X_COORDINATES, Y_COORDINATES, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DescriptiveStatistics",
+          "return_description": "the DescriptiveStatistics object.",
+          "throws": {
+            "UnknownMetricException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: getDescriptiveStatistics",
+      "javadoc_description": "Computes the `DescriptiveStatistics` for the specified measurement.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (X_COORDINATES, RADIUS, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the frame holding the histogram",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHistogram",
+      "javadoc_description": "Gets the relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getMetrics",
+      "overloads": [
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of supported metrics",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getMetrics",
+      "javadoc_description": "Gets the list of supported metrics.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLabel",
+      "overloads": [
+        {
+          "signature": "setLabel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the descriptive label",
+              "javadoc_name": "label"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLabel",
+      "javadoc_description": "Sets a descriptive label to this statistic analysis to be used in histograms, etc.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "NodeStatistics(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "NodeStatistics(Collection, Tree)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for NodeStatistics"
+    }
+  ],
+  "javadoc_description": "Computes summary and descriptive statistics from a Collection of nodes, including convenience methods to plot distributions of such data.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "AllenCompartment.getOntologyDepth()",
+    "Constant Field Values",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 19,
+      "total_json_methods": 14,
+      "total_matches": 18,
+      "exact_matches": 18,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 1,
+      "unmatched_json": -4,
+      "match_percentage": 94.7
+    },
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 1,
+    "enhancement_quality_score": 1.0
+  }
+}

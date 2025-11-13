@@ -1,0 +1,310 @@
+{
+  "class_name": "InsectBrainCompartment",
+  "package": "sc.fiji.snt.annotation",
+  "extracted_at": "2025-11-12T22:36:48.732146",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.588696",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "acronym",
+      "overloads": [
+        {
+          "signature": "acronym() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the compartment's acronym",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: acronym",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "aliases",
+      "overloads": [
+        {
+          "signature": "aliases() -> String;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "the compartment's alias(es)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: aliases",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "color",
+      "overloads": [
+        {
+          "signature": "color() -> ColorRGB",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "return_description": "the display color of this compartment (if known)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: color",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAncestor",
+      "overloads": [
+        {
+          "signature": "getAncestor(int) -> BrainAnnotation",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ancestor level as negative 1-based index. E.g.,",
+              "javadoc_name": "level"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "the ancestor of this compartment at the nth level",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAncestor",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMesh",
+      "overloads": [
+        {
+          "signature": "getMesh() -> OBJMesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh",
+          "return_description": "the mesh associated with this compartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMesh",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOntologyDepth",
+      "overloads": [
+        {
+          "signature": "getOntologyDepth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOntologyDepth",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getParent",
+      "overloads": [
+        {
+          "signature": "getParent() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "the parent of this compartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getParent",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "id",
+      "overloads": [
+        {
+          "signature": "id() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the compartment's unique id",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: id",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isChildOf",
+      "overloads": [
+        {
+          "signature": "isChildOf(BrainAnnotation) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether this compartment is a sub-compartment of annotation",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isChildOf",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isMeshAvailable",
+      "overloads": [
+        {
+          "signature": "isMeshAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether a mesh is available for this compartment",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isMeshAvailable",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isParentOf",
+      "overloads": [
+        {
+          "signature": "isParentOf(BrainAnnotation) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether this compartment is a parentCompartment of annotation",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isParentOf",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "name",
+      "overloads": [
+        {
+          "signature": "name() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the compartment's name",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: name",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "BrainAnnotation"
+    ],
+    "implements": [
+      "BrainAnnotation"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "BrainAnnotation",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 14,
+      "total_json_methods": 12,
+      "total_matches": 12,
+      "exact_matches": 12,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 2,
+      "unmatched_json": 0,
+      "match_percentage": 85.7
+    },
+    "unmatched_javadoc_methods": 2,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

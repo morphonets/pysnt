@@ -1,7 +1,7 @@
 {
   "class_name": "MultiTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.695486",
+  "extracted_at": "2025-11-12T22:36:48.805333",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -102,6 +102,18 @@
           "java_return_type": "Map"
         },
         {
+          "signature": "getAnnotatedLength(int) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
           "signature": "getAnnotatedLength(int, String, boolean) -> Map",
           "params": [
             {
@@ -122,18 +134,6 @@
           ],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
-        },
-        {
-          "signature": "getAnnotatedLength(int) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
         }
       ],
       "documentation": "Java method: getAnnotatedLength"
@@ -142,19 +142,8 @@
       "name": "getAnnotatedLengthHistogram",
       "overloads": [
         {
-          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
+          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
+          "params": [],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         },
@@ -171,8 +160,19 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
-          "params": [],
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         }
@@ -201,12 +201,6 @@
       "name": "getAnnotations",
       "overloads": [
         {
-          "signature": "getAnnotations() -> Set",
-          "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set"
-        },
-        {
           "signature": "getAnnotations(int) -> Set",
           "params": [
             {
@@ -215,6 +209,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
+          "signature": "getAnnotations() -> Set",
+          "params": [],
           "return_type": "Set[Any]",
           "java_return_type": "Set"
         }
@@ -537,6 +537,28 @@
           "java_return_type": "SNTChart"
         },
         {
+          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
           "signature": "getFlowPlot(String, int) -> SNTChart",
           "params": [
             {
@@ -554,7 +576,7 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -565,11 +587,6 @@
               "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection"
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
@@ -602,23 +619,6 @@
               "name": "arg4",
               "type": "bool",
               "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
             }
           ],
           "return_type": "SNTChart",
@@ -766,6 +766,18 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "MultiTreeStatistics(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "MultiTreeStatistics(Collection, String)",
           "params": [
             {
@@ -781,21 +793,411 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "MultiTreeStatistics(Collection)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for MultiTreeStatistics"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ASSIGNED_VALUE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ASSIGNED_VALUE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_BRANCH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_BRANCH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_CONTRACTION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_CONTRACTION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_FRACTAL_DIMENSION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_FRACTAL_DIMENSION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_FRAGMENTATION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_FRAGMENTATION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_PARTITION_ASYMMETRY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_PARTITION_ASYMMETRY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_REMOTE_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_REMOTE_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "AVG_SPINE_DENSITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AVG_SPINE_DENSITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_CONTRACTION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_CONTRACTION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_EXTENSION_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_EXTENSION_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_EXTENSION_ANGLE_REL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_EXTENSION_ANGLE_REL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_EXTENSION_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_EXTENSION_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_EXTENSION_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_EXTENSION_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_EXTENSION_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_EXTENSION_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_FRACTAL_DIMENSION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_FRACTAL_DIMENSION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_MEAN_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_MEAN_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_SURFACE_AREA",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_SURFACE_AREA of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BRANCH_VOLUME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field BRANCH_VOLUME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "COMPLEXITY_INDEX_ACI",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field COMPLEXITY_INDEX_ACI of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "COMPLEXITY_INDEX_DCI",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field COMPLEXITY_INDEX_DCI of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONTRACTION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONTRACTION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_BOUNDARY_SIZE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_BOUNDARY_SIZE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_BOXIVITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_BOXIVITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_CENTROID_ROOT_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_CENTROID_ROOT_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_COMPACTNESS_3D",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_COMPACTNESS_3D of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_ECCENTRICITY_2D",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_ECCENTRICITY_2D of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_ELONGATION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_ELONGATION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_ROUNDNESS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_ROUNDNESS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CONVEX_HULL_SIZE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CONVEX_HULL_SIZE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEPTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field DEPTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FRACTAL_DIMENSION",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field FRACTAL_DIMENSION of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "GRAPH_DIAMETER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field GRAPH_DIAMETER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "GRAPH_DIAMETER_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field GRAPH_DIAMETER_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "GRAPH_DIAMETER_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field GRAPH_DIAMETER_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "GRAPH_DIAMETER_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field GRAPH_DIAMETER_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "GRAPH_DIAMETER_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field GRAPH_DIAMETER_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HEIGHT",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field HEIGHT of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HIGHEST_PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field HIGHEST_PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_EXTENSION_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_EXTENSION_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_EXTENSION_ANGLE_REL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_EXTENSION_ANGLE_REL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_EXTENSION_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_EXTENSION_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_EXTENSION_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_EXTENSION_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_EXTENSION_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_EXTENSION_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INNER_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INNER_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_DISTANCE_SQUARED",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_DISTANCE_SQUARED of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field LENGTH of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

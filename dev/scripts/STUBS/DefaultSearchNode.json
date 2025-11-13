@@ -1,7 +1,7 @@
 {
   "class_name": "DefaultSearchNode",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2025-11-02T09:55:54.254257",
+  "extracted_at": "2025-11-12T22:36:48.697030",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -31,7 +31,7 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -64,7 +64,7 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Path",
           "java_return_type": "Path"
         }
       ],
@@ -215,6 +215,134 @@
       "documentation": "Java method: setPredecessor"
     }
   ],
-  "fields": [],
-  "constructors": []
+  "fields": [
+    {
+      "name": "f",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field f of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "g",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field g of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "h",
+      "type": "float",
+      "java_type": "double",
+      "documentation": "Field h of type double",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "heapHandle",
+      "type": "Any",
+      "java_type": "AddressableHeap$Handle",
+      "documentation": "Field heapHandle of type AddressableHeap$Handle",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "predecessor",
+      "type": "Any",
+      "java_type": "DefaultSearchNode",
+      "documentation": "Field predecessor of type DefaultSearchNode",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "searchStatus",
+      "type": "int",
+      "java_type": "byte",
+      "documentation": "Field searchStatus of type byte",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "x",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field x of type int",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "y",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field y of type int",
+      "is_static": false,
+      "is_final": false
+    },
+    {
+      "name": "z",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field z of type int",
+      "is_static": false,
+      "is_final": false
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "DefaultSearchNode()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "DefaultSearchNode(int, int, int, double, double, DefaultSearchNode, byte)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg5",
+              "type": "Any",
+              "java_type": "DefaultSearchNode"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "byte"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for DefaultSearchNode"
+    }
+  ]
 }

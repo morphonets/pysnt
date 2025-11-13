@@ -1,7 +1,7 @@
 {
   "class_name": "ImpUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-09T07:59:46.622439",
+  "extracted_at": "2025-11-12T22:36:48.728584",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -64,18 +64,6 @@
       "name": "static combineSkeletons",
       "overloads": [
         {
-          "signature": "static combineSkeletons(Collection) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
           "signature": "static combineSkeletons(Collection, boolean) -> ImagePlus",
           "params": [
             {
@@ -87,6 +75,18 @@
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static combineSkeletons(Collection) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "Any",
@@ -588,6 +588,23 @@
       "name": "static open",
       "overloads": [
         {
+          "signature": "static open(String, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
           "signature": "static open(File) -> ImagePlus",
           "params": [
             {
@@ -618,23 +635,6 @@
               "name": "arg0",
               "type": "str",
               "java_type": "File"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "static open(String, String) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
             },
             {
               "name": "arg1",

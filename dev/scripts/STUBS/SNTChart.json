@@ -1,7 +1,7 @@
 {
   "class_name": "SNTChart",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:47.062585",
+  "extracted_at": "2025-11-12T22:36:49.017914",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -49,6 +49,45 @@
       "name": "add",
       "overloads": [
         {
+          "signature": "add(Component, Object, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Component, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "add(String, Component) -> Component",
           "params": [
             {
@@ -93,45 +132,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "Component"
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         },
         {
           "signature": "add(PopupMenu) -> void",
@@ -624,25 +624,20 @@
       "name": "annotatePoint",
       "overloads": [
         {
-          "signature": "annotatePoint(double, double, String, String) -> void",
+          "signature": "annotatePoint([D, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "float",
-              "java_type": "double"
+              "type": "Any",
+              "java_type": "[D"
             },
             {
               "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg3",
+              "name": "arg2",
               "type": "str",
               "java_type": "String"
             }
@@ -673,20 +668,25 @@
           "java_return_type": "void"
         },
         {
-          "signature": "annotatePoint([D, String, String) -> void",
+          "signature": "annotatePoint(double, double, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "[D"
+              "type": "float",
+              "java_type": "double"
             },
             {
               "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "arg3",
               "type": "str",
               "java_type": "String"
             }
@@ -700,6 +700,23 @@
     {
       "name": "annotateXline",
       "overloads": [
+        {
+          "signature": "annotateXline(double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "annotateXline(double, String, String) -> void",
           "params": [
@@ -715,23 +732,6 @@
             },
             {
               "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "annotateXline(double, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg1",
               "type": "str",
               "java_type": "String"
             }
@@ -982,32 +982,12 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "static combine(Collection, String, int, int, boolean) -> SNTChart",
+          "signature": "static combine(Collection) -> SNTChart",
           "params": [
             {
               "name": "arg0",
               "type": "List[Any]",
               "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
@@ -1022,23 +1002,6 @@
     {
       "name": "__init__",
       "overloads": [
-        {
-          "signature": "SNTChart(String, JFreeChart)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "JFreeChart"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "SNTChart(String, CategoryChart)",
           "params": [
@@ -1072,9 +1035,356 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "SNTChart(String, JFreeChart)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "JFreeChart"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for SNTChart"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ABORT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ABORT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ALLBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ALLBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "BOTTOM_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field BOTTOM_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CENTER_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field CENTER_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "COPY_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field COPY_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_BUFFER_USED",
+      "type": "bool",
+      "java_type": "boolean",
+      "documentation": "Field DEFAULT_BUFFER_USED of type boolean",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_HEIGHT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_HEIGHT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_MAXIMUM_DRAW_HEIGHT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_MAXIMUM_DRAW_HEIGHT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_MAXIMUM_DRAW_WIDTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_MAXIMUM_DRAW_WIDTH of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_MINIMUM_DRAW_HEIGHT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_MINIMUM_DRAW_HEIGHT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_MINIMUM_DRAW_WIDTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_MINIMUM_DRAW_WIDTH of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_WIDTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_WIDTH of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DEFAULT_ZOOM_TRIGGER_DISTANCE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field DEFAULT_ZOOM_TRIGGER_DISTANCE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ERROR",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field ERROR of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "FRAMEBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field FRAMEBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HEIGHT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field HEIGHT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "LEFT_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field LEFT_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NO_SUCH_PAGE",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field NO_SUCH_PAGE of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PAGE_EXISTS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field PAGE_EXISTS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PRINT_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PRINT_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PROPERTIES",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field PROPERTIES of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PROPERTIES_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PROPERTIES_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "RIGHT_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field RIGHT_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SAVE_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SAVE_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SOMEBITS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SOMEBITS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TOOL_TIP_TEXT_KEY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field TOOL_TIP_TEXT_KEY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TOP_ALIGNMENT",
+      "type": "float",
+      "java_type": "float",
+      "documentation": "Field TOP_ALIGNMENT of type float",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "UNDEFINED_CONDITION",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field UNDEFINED_CONDITION of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "WHEN_ANCESTOR_OF_FOCUSED_COMPONENT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field WHEN_ANCESTOR_OF_FOCUSED_COMPONENT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "WHEN_FOCUSED",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field WHEN_FOCUSED of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "WHEN_IN_FOCUSED_WINDOW",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field WHEN_IN_FOCUSED_WINDOW of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "WIDTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field WIDTH of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_IN_BOTH_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_IN_BOTH_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_IN_DOMAIN_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_IN_DOMAIN_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_IN_RANGE_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_IN_RANGE_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_OUT_BOTH_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_OUT_BOTH_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_OUT_DOMAIN_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_OUT_DOMAIN_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_OUT_RANGE_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_OUT_RANGE_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_RESET_BOTH_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_RESET_BOTH_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_RESET_DOMAIN_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_RESET_DOMAIN_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ZOOM_RESET_RANGE_COMMAND",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ZOOM_RESET_RANGE_COMMAND of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "class_name": "MultiTreeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.671104",
+  "extracted_at": "2025-11-12T22:36:48.783832",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -233,28 +233,6 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Tree, Profile, ColorTable) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Profile",
-              "java_type": "Profile"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
@@ -271,6 +249,28 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -299,22 +299,22 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Collection, String, String) -> void",
+          "signature": "map(Tree, Profile, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
+              "type": "Tree",
+              "java_type": "Tree"
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String"
+              "type": "Profile",
+              "java_type": "Profile"
             },
             {
               "name": "arg2",
-              "type": "str",
-              "java_type": "String"
+              "type": "Any",
+              "java_type": "ColorTable"
             }
           ],
           "return_type": "None",
@@ -472,6 +472,256 @@
         }
       ],
       "documentation": "Java constructors for MultiTreeColorMapper"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ASSIGNED_VALUE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ASSIGNED_VALUE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CABLE_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CABLE_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HIGHEST_PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field HIGHEST_PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ID",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ID of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NODE_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field NODE_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_BRANCHES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_BRANCHES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_BRANCH_POINTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_BRANCH_POINTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_NODES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_NODES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_SPINES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_SPINES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_TIPS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_TIPS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_AVG_SPINE_DENSITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_AVG_SPINE_DENSITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_REL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_REL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_FRAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_FRAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_MEAN_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_MEAN_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SHOLL_COUNTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SHOLL_COUNTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "STRAHLER_NUMBER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field STRAHLER_NUMBER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "STRAHLER_ORDERS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field STRAHLER_ORDERS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TAG_FILENAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field TAG_FILENAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VALUES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VALUES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field X_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Y_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Z_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
     }
   ]
 }

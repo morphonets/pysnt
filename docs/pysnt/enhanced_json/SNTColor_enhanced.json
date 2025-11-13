@@ -1,0 +1,448 @@
+{
+  "class_name": "SNTColor",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2025-11-12T22:36:49.022604",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.553365",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static alphaColor",
+      "overloads": [
+        {
+          "signature": "static alphaColor(Color, double) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the input color",
+              "javadoc_name": "c"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the color with an alpha component",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static alphaColor",
+      "javadoc_description": "Adds an alpha component to an AWT color.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static average",
+      "overloads": [
+        {
+          "signature": "static average(Collection) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the colors to be averaged",
+              "javadoc_name": "colors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the averaged color. Note that an average will never be accurate because the RGB space is not linear. Color.BLACK is returned if all colors in input collection are null;",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static average",
+      "javadoc_description": "Averages a collection of colors",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "color",
+      "overloads": [
+        {
+          "signature": "color() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the AWT color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: color",
+      "javadoc_description": "Retrieves the AWT color",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static colorToString",
+      "overloads": [
+        {
+          "signature": "static colorToString(Color) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the input AWT color",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the converted string",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static colorToString",
+      "javadoc_description": "Returns the color encoded as hex string with the format #rrggbbaa.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static contrastColor",
+      "overloads": [
+        {
+          "signature": "static contrastColor(Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the input color",
+              "javadoc_name": "c"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "Either white or black, as per hue of input color.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static contrastColor",
+      "javadoc_description": "Returns a suitable 'contrast' color.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getDistinctColors",
+      "overloads": [
+        {
+          "signature": "static getDistinctColors(int, String) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getDistinctColors(int) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;",
+          "return_description": "the maximum contrast colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDistinctColors",
+      "javadoc_description": "Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getDistinctColorsAWT",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsAWT(int) -> Color;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color;",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsAWT",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static interpolateNullEntries",
+      "overloads": [
+        {
+          "signature": "static interpolateNullEntries(Color;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color;",
+              "description": "- the color array",
+              "javadoc_name": "colors"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static interpolateNullEntries",
+      "javadoc_description": "Replaces null colors in an array with the average of flanking non-null colors.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTypeDefined",
+      "overloads": [
+        {
+          "signature": "isTypeDefined() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if an SWC integer flag has been specified",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTypeDefined",
+      "javadoc_description": "Checks if an SWC type has been defined.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAWTColor",
+      "overloads": [
+        {
+          "signature": "setAWTColor(Color) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the new color",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAWTColor",
+      "javadoc_description": "Re-assigns an AWT color.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSWCType",
+      "overloads": [
+        {
+          "signature": "setSWCType(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the new SWC type",
+              "javadoc_name": "swcType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSWCType",
+      "javadoc_description": "Re-assigns a SWC type integer flag",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static stringToColor",
+      "overloads": [
+        {
+          "signature": "static stringToColor(String) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the input string",
+              "javadoc_name": "hex"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the converted AWT color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static stringToColor",
+      "javadoc_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "type",
+      "overloads": [
+        {
+          "signature": "type() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the SWC type integer flag",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: type",
+      "javadoc_description": "Retrieves the SWC type",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTColor(Color, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTColor(Color)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SNTColor"
+    }
+  ],
+  "javadoc_description": "A simple class for handling Colors including the ability to map an AWT Color to a SWC type integer tag.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 17,
+      "total_json_methods": 13,
+      "total_matches": 14,
+      "exact_matches": 14,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 3,
+      "unmatched_json": -1,
+      "match_percentage": 82.4
+    },
+    "unmatched_javadoc_methods": 3,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.989
+  }
+}

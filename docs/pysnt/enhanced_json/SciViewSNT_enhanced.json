@@ -1,0 +1,277 @@
+{
+  "class_name": "SciViewSNT",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2025-11-12T22:36:49.093080",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-13T22:40:29.555021",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addTree",
+      "overloads": [
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree to be added. The Tree's label will be used as identifier. It is expected to be unique when rendering multiple Trees, if not (or no label exists) a unique label will be generated.",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addTree",
+      "javadoc_description": "Adds a tree to the associated SciView instance. A new SciView instance is automatically instantiated if setSciView(SciView) has not been called.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "Tree.getLabel()",
+        "Tree.setColor(ColorRGB)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSciView",
+      "overloads": [
+        {
+          "signature": "getSciView() -> SciView",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SciView",
+          "return_description": "the SciView instance. It is never null: A new instance is created if none has been specified",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSciView",
+      "javadoc_description": "Gets the SciView instance currently in use.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTreeAsSceneryNode",
+      "overloads": [
+        {
+          "signature": "getTreeAsSceneryNode(Tree) -> Node",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the tree previously added to SciView using addTree(Tree)",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Node",
+          "return_description": "the scenery Node",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTreeAsSceneryNode",
+      "javadoc_description": "Gets the specified Tree as a Scenery Node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "InterruptedException": ""
+          }
+        }
+      ],
+      "documentation": "Java method: static main",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeTree",
+      "overloads": [
+        {
+          "signature": "removeTree(Tree) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the tree previously added to SciView using addTree(Tree)",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if tree was successfully removed.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeTree",
+      "javadoc_description": "Removes the specified Tree.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "addTree(Tree)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setSciView",
+      "overloads": [
+        {
+          "signature": "setSciView(SciView) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SciView",
+              "description": "- the SciView instance. Null allowed.",
+              "javadoc_name": "sciView"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSciView",
+      "javadoc_description": "Sets the SciView to be used.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncPathManagerList",
+      "overloads": [
+        {
+          "signature": "syncPathManagerList() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if Path Manager list is not empty and synchronization was successful",
+          "throws": {
+            "IllegalArgumentException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: syncPathManagerList",
+      "javadoc_description": "(Re)loads the current list of Paths in the Path Manager list.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SciViewSNT(SNT)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SciViewSNT(SciView)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SciView"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SciViewSNT(Context)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SciViewSNT"
+    }
+  ],
+  "javadoc_description": "Bridges SNT to SciView, allowing Trees to be rendered as scenery objects",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Tree.getLabel()",
+    "Tree.setColor(ColorRGB)",
+    "addTree(Tree)",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

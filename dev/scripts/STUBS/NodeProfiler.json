@@ -1,7 +1,7 @@
 {
   "class_name": "NodeProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-09T07:59:46.716862",
+  "extracted_at": "2025-11-12T22:36:48.826437",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -43,18 +43,6 @@
       "name": "addOutput",
       "overloads": [
         {
-          "signature": "addOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addOutput(String, Class) -> MutableModuleItem",
           "params": [
             {
@@ -70,6 +58,18 @@
           ],
           "return_type": "Any",
           "java_return_type": "MutableModuleItem"
+        },
+        {
+          "signature": "addOutput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: addOutput"
@@ -77,6 +77,12 @@
     {
       "name": "cancel",
       "overloads": [
+        {
+          "signature": "cancel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "cancel(String) -> void",
           "params": [
@@ -86,12 +92,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "cancel() -> void",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }
@@ -150,10 +150,10 @@
       "name": "getInfo",
       "overloads": [
         {
-          "signature": "getInfo() -> DynamicCommandInfo",
+          "signature": "getInfo() -> ModuleInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "DynamicCommandInfo"
+          "java_return_type": "ModuleInfo"
         },
         {
           "signature": "getInfo() -> MutableModuleInfo",
@@ -162,10 +162,10 @@
           "java_return_type": "MutableModuleInfo"
         },
         {
-          "signature": "getInfo() -> ModuleInfo",
+          "signature": "getInfo() -> DynamicCommandInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ModuleInfo"
+          "java_return_type": "DynamicCommandInfo"
         }
       ],
       "documentation": "Java method: getInfo"
@@ -269,6 +269,18 @@
       "name": "getTable",
       "overloads": [
         {
+          "signature": "getTable(Path) -> SNTTable",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable"
+        },
+        {
           "signature": "getTable(Path, int) -> SNTTable",
           "params": [
             {
@@ -280,18 +292,6 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
-            }
-          ],
-          "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
-        },
-        {
-          "signature": "getTable(Path) -> SNTTable",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
             }
           ],
           "return_type": "SNTTable",
@@ -764,6 +764,12 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "NodeProfiler()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "NodeProfiler(Dataset)",
           "params": [
             {
@@ -772,12 +778,6 @@
               "java_type": "Dataset"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "NodeProfiler()",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }
