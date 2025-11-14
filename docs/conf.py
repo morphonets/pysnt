@@ -209,6 +209,12 @@ html_theme_options = {
     # Icon links for navbar end
     "icon_links": [
         {
+            "name": "API",
+            "url": "/api.html",
+            "icon": "fa fa-code",
+            "type": "fontawesome",
+        },
+        {
             "name": "GitHub",
             "url": "https://github.com/morphonets/pysnt",
             "icon": "fab fa-github-square",

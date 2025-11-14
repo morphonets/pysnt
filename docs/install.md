@@ -294,7 +294,7 @@ pysnt.show_config_status()
 pysnt.list_classes()
 ```
 
-```{note}
+```{tip}
 Do [reach out](https://forum.image.sc/tag/snt) if you run into issues!
 ```
 
@@ -304,7 +304,7 @@ Once PySNT is installed and working:
 
 1. **[Quickstart](quickstart.md)** - Learn essential workflows and concepts
 2. **[PySNT Overview](overview.md)** - Dive deeper into core functionality and patterns
-3. **[API Reference](api.md)** - Complete documentation of all functions and classes
+3. **[API Reference](api.md)** - Documentation of all functions and classes
 
 [snt]: https://imagej.net/SNT
 [api]: https://morphonets.github.io/SNT

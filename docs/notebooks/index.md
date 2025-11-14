@@ -1,7 +1,14 @@
 # <i class="fas fa-book"></i>&hairsp;Tutorials
 
-```{important}
-🚧 This collection of notebooks is not yet complete. It is still being updated for SNTv5. 🚧
+### Running Notebooks Locally
+1. **Install PySNT** following the [installation guide](../install.md)
+2. **Download notebooks**: Find them in the `./docs/notebooks/` directory of PySNT's source code, or use the download button (↓) at the top of each notebook page
+3. **Open in Jupyter Lab** or your preferred IDE within your pysnt environment
+
+```{note}
+If you haven't installed PySNT's GUI dependencies, you'll need to install `ipykernel` first:
+```bash
+pip install ipykernel # or mamba install -n pysnt ipykernel
 ```
 
 ```{seealso}
@@ -11,28 +18,26 @@
 - [Limitations and Quirks](../limitations.md) - Known limitations and workarounds
 ```
 
-### Running Notebooks Locally
-1. **Install PySNT** following the [installation guide](../install.md)
-2. **Download notebooks**: Find them in the `./docs/notebooks/` directory of PySNT's source code, or use the download button (↓) at the top of each notebook page
-3. **Open in Jupyter Lab** or your preferred IDE within your pysnt environment
-
-  ```{note}
-  If you haven't installed PySNT's GUI dependencies, you'll need to install `ipykernel` first:
-  ```bash
-  pip install ipykernel # or mamba install -n pysnt ipykernel
-  ```
-
-
 ## Available Tutorials
 
-```{raw} html
-<ol>
-    <li><a href="./01_single_cell_analysis.html">🆕 Single Cell Analysis</a></li>
-    <li><a href="./02_hemisphere_analysis.html">🆕 Hemisphere Analysis</a></li>
-    <li><a href="./2_convex_hull.html">Volumetric Quantifications</a></li>
-    <li><a href="./3_tree_intersection.html">Spatial intersection Between Trees</a></li>
-    <li><a href="./4_persistence_landscape.html">Clustering Morphologies Using Persistent Homology</a></li>
-    <li><a href="./5_performance_testing.html">Performance Tests</a></li>
-    <li><a href="./7_timelapse_segmentation.html">Timelapse Segmentation</a></li>
-</ol>
+```{important}
+🚧 **Work in Progress:** This notebook collection is being updated for SNT v5. 🚧
+
+- <i class="fas fa-star"></i> **Updated** — Compatible with SNT v5 and the latest pysnt version
+- <i class="fas fa-clock-rotate-left"></i> **Legacy** — Not yet updated and use outdated syntax
+
+Check the icon at the top of each notebook to verify its status.
+```
+
+```{toctree}
+:maxdepth: 1
+:caption: Tutorial Notebooks
+
+01_single_cell_analysis
+02_hemisphere_analysis
+03_convex_hull
+3_tree_intersection
+4_persistence_landscape
+5_performance_testing
+7_timelapse_segmentation
 ```

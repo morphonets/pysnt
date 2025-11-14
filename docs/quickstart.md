@@ -224,8 +224,12 @@ pysnt.display(methods)
 hits = pysnt.find_members(TreeStatistics, "length")
 pysnt.display(hits)
 
+# Get help on specific classes
+pysnt.initialize()
+help(TreeStatistics) # works only _AFTER_ pysnt.initialize()
+
 # Get help on specific methods
-help(TreeStatistics.getCableLength)
+help(TreeStatistics.getCableLength) # works only _AFTER_ pysnt.initialize()
 ```
 
 ## Configuration Best Practices
