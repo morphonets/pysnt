@@ -319,3 +319,53 @@ def linkcode_resolve(domain, info):
     except Exception:
         # If anything goes wrong, just don't provide a link
         return None
+
+
+# Sphinx setup hook to ensure docstring enhancements are applied
+def setup(app):
+    """Sphinx setup hook to apply docstring enhancements."""
+    
+    def apply_enhancements_after_import(app, what, name, obj, options, lines):
+        """Apply docstring enhancements after autodoc imports a module."""
+        # This runs after autodoc imports each object
+        # We need to re-apply enhancements here
+        if what in ('class', 'module'):
+            try:
+                import sys
+                import os
+                import importlib.util
+                
+                # Load the enhancements dictionary
+                src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
+                enhancements_path = os.path.join(src_path, 'pysnt', '_docstring_enhancements.py')
+                
+                # Load the module to get the enhanced_docstrings dict
+                spec = importlib.util.spec_from_file_location("_temp_enhancements", enhancements_path)
+                if spec and spec.loader:
+                    temp_module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(temp_module)
+                    
+                    # Get the class name from the full name
+                    if what == 'class':
+                        class_name = name.split('.')[-1]
+                        # Check if we have an enhancement for this class
+                        if hasattr(temp_module, 'enhance_class_docstrings'):
+                            # Get the enhanced_docstrings dict from the module
+                            import re
+                            with open(enhancements_path, 'r') as f:
+                                content = f.read()
+                                # Extract the docstring for this class
+                                pattern = f'"{class_name}":\\s*\'"""([^"]*?)"""\''.replace('"""', '"""')
+                                match = re.search(f'"{class_name}":\\s*\'"""(.+?)"""\'', content, re.DOTALL)
+                                if match:
+                                    enhanced_doc = match.group(1)
+                                    # Replace the lines with the enhanced docstring
+                                    lines.clear()
+                                    lines.extend(enhanced_doc.split('\\n'))
+                                    print(f"✓ Enhanced {name}")
+            except Exception as e:
+                pass  # Silently fail for individual classes
+    
+    # Connect to autodoc-process-docstring event
+    app.connect('autodoc-process-docstring', apply_enhancements_after_import)
+    print("✓ PySNT docstring enhancement hook registered")
