@@ -13,13 +13,13 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
+    "Annotation3D",
     "MultiViewer2D", "MultiViewer3D",
     "Viewer2D", "Viewer3D"
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "Annotation3D",
     "Bvv",
     "ColorTableMapper",
     "GraphViewer"
@@ -61,6 +61,7 @@ __all__ = [
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",
     # Curated classes (always available for direct import)
+    "Annotation3D",
     "MultiViewer2D",
     "MultiViewer3D", 
     "Viewer2D",

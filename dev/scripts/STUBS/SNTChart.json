@@ -1,7 +1,7 @@
 {
   "class_name": "SNTChart",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:49.017914",
+  "extracted_at": "2025-11-19T11:06:20.653922",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -579,6 +579,23 @@
       "name": "annotateCategory",
       "overloads": [
         {
+          "signature": "annotateCategory(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "annotateCategory(String, String, String) -> void",
           "params": [
             {
@@ -599,23 +616,6 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "annotateCategory(String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: annotateCategory"
@@ -623,28 +623,6 @@
     {
       "name": "annotatePoint",
       "overloads": [
-        {
-          "signature": "annotatePoint([D, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "[D"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "annotatePoint(double, double, String) -> void",
           "params": [
@@ -687,6 +665,28 @@
             },
             {
               "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "annotatePoint([D, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
               "type": "str",
               "java_type": "String"
             }
@@ -893,6 +893,23 @@
       "name": "checkImage",
       "overloads": [
         {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -912,23 +929,6 @@
             },
             {
               "name": "arg3",
-              "type": "Any",
-              "java_type": "ImageObserver"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image"
-            },
-            {
-              "name": "arg1",
               "type": "Any",
               "java_type": "ImageObserver"
             }
@@ -955,7 +955,7 @@
       "name": "static combine",
       "overloads": [
         {
-          "signature": "static combine(Collection, int, int, boolean) -> SNTChart",
+          "signature": "static combine(Collection, boolean) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -964,16 +964,6 @@
             },
             {
               "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg3",
               "type": "bool",
               "java_type": "boolean"
             }

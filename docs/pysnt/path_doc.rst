@@ -225,7 +225,7 @@ Visualization Methods
    
 
 
-.. py:method:: addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus)
+.. py:method:: addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus)
 
    
 
@@ -235,7 +235,7 @@ Visualization Methods
    Adds this path to the specified 3D viewer universe with the given Color3f.
 
 
-.. py:method:: drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean)
+.. py:method:: drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int)
 
    
 
@@ -259,12 +259,12 @@ Other Methods
    
 
 
-.. py:method:: compareTo(Object)
+.. py:method:: compareTo(Path)
 
    
 
 
-.. py:method:: contains(PointInImage)
+.. py:method:: contains(PointInImage, double)
 
    Checks if this path contains the specified point within the given tolerance.
 

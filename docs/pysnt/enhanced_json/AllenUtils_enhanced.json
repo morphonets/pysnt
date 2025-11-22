@@ -1,9 +1,9 @@
 {
   "class_name": "AllenUtils",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2025-11-12T22:36:48.638190",
+  "extracted_at": "2025-11-19T11:06:20.233426",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.560109",
+  "enhancement_timestamp": "2025-11-22T08:11:21.300849",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -238,12 +238,12 @@
       "name": "static getCompartment",
       "overloads": [
         {
-          "signature": "static getCompartment(int) -> AllenCompartment",
+          "signature": "static getCompartment(String) -> AllenCompartment",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "type": "str",
+              "java_type": "String",
               "description": "- the name or acronym (case-insensitive) identifying the compartment",
               "javadoc_name": "nameOrAcronym"
             }
@@ -254,12 +254,12 @@
           "throws": {}
         },
         {
-          "signature": "static getCompartment(String) -> AllenCompartment",
+          "signature": "static getCompartment(int) -> AllenCompartment",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -449,22 +449,6 @@
       "name": "static isLeftHemisphere",
       "overloads": [
         {
-          "signature": "static isLeftHemisphere(Tree) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
           "params": [
             {
@@ -472,7 +456,7 @@
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "bool",
@@ -501,6 +485,22 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static isLeftHemisphere(Tree) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             }
@@ -623,13 +623,13 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "Path.hasNodeValues()",
-    "Path.getNodeAnnotation(int)",
-    "transferAnnotationIdsToNodeValues(Tree)",
     "Path.getNodeValue(int)",
-    "Path.hasNodeAnnotations()",
     "assignAnnotationsFromNodeValues(Tree)",
+    "transferAnnotationIdsToNodeValues(Tree)",
+    "Path.getNodeAnnotation(int)",
+    "Path.hasNodeAnnotations()",
+    "Path.hasNodeValues()",
+    "Constant Field Values",
     "Object"
   ],
   "enhancement_metadata": {

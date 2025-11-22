@@ -153,7 +153,7 @@ Getters Methods
    
 
 
-.. py:method:: getImagePlus()
+.. py:method:: getImagePlus(int)
 
    Gets the Image associated with a view pane.
 

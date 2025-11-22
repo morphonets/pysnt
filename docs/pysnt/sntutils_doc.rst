@@ -195,7 +195,7 @@ Other Methods
    
 
 
-.. py:method:: static error(String, Throwable)
+.. py:method:: static error(String)
 
    
 
@@ -210,7 +210,7 @@ Other Methods
    
 
 
-.. py:method:: static findClosestPair(File, String;)
+.. py:method:: static findClosestPair(File, String)
 
    
 

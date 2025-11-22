@@ -3,7 +3,7 @@ Static Methods Methods
 
 Static utility methods that can be called without object instances.
 
-Total methods in this category: **176**
+Total methods in this category: **177**
 
 .. contents:: Classes in this Category
    :local:
@@ -117,11 +117,11 @@ This method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)
 
    Constructs a compartment from its CCF name or acronym
 
-   **Signature:** ``static getCompartment(int) -> AllenCompartment``
+   **Signature:** ``static getCompartment(String) -> AllenCompartment``
 
    **Parameters:**
 
-   * **arg0** (``int``): - the name or acronym (case-insensitive) identifying the compartment
+   * **arg0** (``str``): - the name or acronym (case-insensitive) identifying the compartment
 
    **Returns:** (``Any``) the compartment whose name or acronym matches the specified string or null if no match was found
 
@@ -185,11 +185,11 @@ This method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)
 
 .. method:: static isLeftHemisphere(arg0)
 
-   **Signature:** ``static isLeftHemisphere(Tree) -> boolean``
+   **Signature:** ``static isLeftHemisphere(SNTPoint) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
+   * **arg0** (``SNTPoint``)
 
    **Returns:** ``bool``
 
@@ -226,6 +226,20 @@ This is useful for preserving annotation information when saving data to TRACES 
    * **arg0** (``Tree``): - the Tree containing paths with brain annotations to be transferred. Must not be null and must contain valid annotations.
 
    **Returns:** ``None``
+
+
+Annotation3D
+------------
+
+.. method:: static meshToDrawable(arg0)
+
+   **Signature:** ``static meshToDrawable(Mesh) -> Drawable``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
 
 
 ColorMaps
@@ -334,15 +348,16 @@ CrossoverFinder
 FillerThread
 ------------
 
-.. method:: static fromFill(arg0, arg1, arg2)
+.. method:: static fromFill(arg0, arg1, arg2, arg3)
 
-   **Signature:** ``static fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread``
+   **Signature:** ``static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread``
 
    **Parameters:**
 
    * **arg0** (``Any``)
    * **arg1** (``Any``)
    * **arg2** (``Any``)
+   * **arg3** (``Any``)
 
    **Returns:** ``FillerThread``
 
@@ -786,14 +801,13 @@ ImpUtils
 
    **Returns:** ``float``
 
-.. method:: static open(arg0, arg1)
+.. method:: static open(arg0)
 
-   **Signature:** ``static open(String, String) -> ImagePlus``
+   **Signature:** ``static open(File) -> ImagePlus``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``str``)
 
    **Returns:** ``Any``
 
@@ -918,16 +932,18 @@ ImpUtils
 
    **Returns:** ``Any``
 
-.. method:: static zoomTo(arg0, arg1)
+.. method:: static zoomTo(arg0, arg1, arg2, arg3)
 
-   **Signature:** ``static zoomTo(ImagePlus, Collection) -> double``
+   **Signature:** ``static zoomTo(ImagePlus, double, int, int) -> void``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``List[Any]``)
+   * **arg1** (``float``)
+   * **arg2** (``int``)
+   * **arg3** (``int``)
 
-   **Returns:** ``float``
+   **Returns:** ``None``
 
 
 InsectBrainLoader
@@ -1025,22 +1041,22 @@ MouseLightLoader
 
    Extracts reconstruction(s) from a JSON file.
 
-   **Signature:** ``static extractNodes(InputStream, String) -> Map``
+   **Signature:** ``static extractNodes(File, String) -> Map``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the JSON file to be parsed
+   * **arg0** (``str``): - the JSON file to be parsed
    * **arg1** (``str``)
 
    **Returns:** (``Dict[str, Any]``) the map containing the reconstruction nodes as SWCPoints
 
 .. method:: static extractTrees(arg0, arg1)
 
-   **Signature:** ``static extractTrees(InputStream, String) -> Map``
+   **Signature:** ``static extractTrees(File, String) -> Map``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``str``)
 
    **Returns:** ``Dict[str, Any]``
@@ -1083,18 +1099,17 @@ MouseLightQuerier
 
    **Returns:** (``List[Any]``) list of all neuron IDs
 
-.. method:: static getIDs(arg0, arg1)
+.. method:: static getIDs(arg0)
 
    Gets neuron IDs matching the specified collection of IDs or DOIs.
 
-   **Signature:** ``static getIDs(String, boolean) -> List``
+   **Signature:** ``static getIDs(AllenCompartment) -> List``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``bool``)
+   * **arg0** (``Any``): - the collection of IDs or DOIs to search for
 
-   **Returns:** ``List[Any]``
+   **Returns:** (``List[Any]``) list of matching neuron IDs
 
 .. method:: static isDatabaseAvailable()
 
@@ -1142,11 +1157,11 @@ MultiTreeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Collection) -> void``
+   **Signature:** ``static unMap(Tree) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``Tree``)
 
    **Returns:** ``None``
 
@@ -1235,11 +1250,11 @@ NodeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Collection) -> void``
+   **Signature:** ``static unMap(Tree) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``Tree``)
 
    **Returns:** ``None``
 
@@ -1487,18 +1502,16 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: static combine(arg0, arg1, arg2, arg3)
+.. method:: static combine(arg0, arg1)
 
    Combines a collection of charts into a multipanel montage.
 
-   **Signature:** ``static combine(Collection, int, int, boolean) -> SNTChart``
+   **Signature:** ``static combine(Collection, boolean) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``List[Any]``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``bool``)
+   * **arg1** (``bool``)
 
    **Returns:** ``SNTChart``
 
@@ -1579,14 +1592,13 @@ SNTUtils
 
    **Returns:** ``None``
 
-.. method:: static error(arg0, arg1)
+.. method:: static error(arg0)
 
-   **Signature:** ``static error(String, Throwable) -> void``
+   **Signature:** ``static error(String) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -1602,12 +1614,12 @@ SNTUtils
 
 .. method:: static findClosestPair(arg0, arg1)
 
-   **Signature:** ``static findClosestPair(File, String;) -> File``
+   **Signature:** ``static findClosestPair(File, String) -> File``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``Any``)
+   * **arg1** (``str``)
 
    **Returns:** ``str``
 
@@ -1836,16 +1848,18 @@ SkeletonConverter
 
    **Returns:** ``None``
 
-.. method:: static skeletonize(arg0, arg1)
+.. method:: static skeletonize(arg0, arg1, arg2, arg3)
 
    Convenience method to skeletonize a thresholded image using Skeletonize3D_.
 
-   **Signature:** ``static skeletonize(ImagePlus, boolean) -> void``
+   **Signature:** ``static skeletonize(ImagePlus, double, double, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.
-   * **arg1** (``bool``)
+   * **arg0** (``Any``)
+   * **arg1** (``float``)
+   * **arg2** (``float``)
+   * **arg3** (``bool``)
 
    **Returns:** ``None``
 
@@ -1928,11 +1942,11 @@ TreeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Collection) -> void``
+   **Signature:** ``static unMap(Tree) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``Tree``)
 
    **Returns:** ``None``
 
@@ -2083,4 +2097,4 @@ ZBAtlasUtils
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

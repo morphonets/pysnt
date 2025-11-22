@@ -8,50 +8,52 @@
    :caption: Complete API Reference
    :hidden:
 
-   ../../api_auto/index
-   ../../api_auto/pysnt
-   ../../api_auto/pysnt.analysis
-   ../../api_auto/pysnt.analysis.graph
-   ../../api_auto/pysnt.analysis.growth
-   ../../api_auto/pysnt.analysis.sholl
-   ../../api_auto/pysnt.analysis.sholl.gui
-   ../../api_auto/pysnt.analysis.sholl.math
-   ../../api_auto/pysnt.analysis.sholl.parsers
-   ../../api_auto/pysnt.annotation
-   ../../api_auto/pysnt.converters
-   ../../api_auto/pysnt.converters.chart_converters
-   ../../api_auto/pysnt.converters.core
-   ../../api_auto/pysnt.converters.enhancement
-   ../../api_auto/pysnt.converters.extractors
-   ../../api_auto/pysnt.converters.graph_converters
-   ../../api_auto/pysnt.converters.structured_data_converters
-   ../../api_auto/pysnt.core
-   ../../api_auto/pysnt.display
-   ../../api_auto/pysnt.display.core
-   ../../api_auto/pysnt.display.data_display
-   ../../api_auto/pysnt.display.utils
-   ../../api_auto/pysnt.display.visual_display
-   ../../api_auto/pysnt.gui
-   ../../api_auto/pysnt.gui.cmds
-   ../../api_auto/pysnt.io
-   ../../api_auto/pysnt.tracing
-   ../../api_auto/pysnt.tracing.artist
-   ../../api_auto/pysnt.tracing.cost
-   ../../api_auto/pysnt.tracing.heuristic
-   ../../api_auto/pysnt.tracing.image
-   ../../api_auto/pysnt.util
-   ../../api_auto/pysnt.viewer
-   ../../api_auto/pysnt.common_module
-   ../../api_auto/pysnt.config
-   ../../api_auto/pysnt.gui_utils
-   ../../api_auto/pysnt.java_utils
-   ../../api_auto/pysnt.setup_utils
-   ../../api_auto/method_index
+   ../api_auto/index
+   ../api_auto/pysnt
+   ../api_auto/pysnt.analysis
+   ../api_auto/pysnt.analysis.graph
+   ../api_auto/pysnt.analysis.growth
+   ../api_auto/pysnt.analysis.sholl
+   ../api_auto/pysnt.analysis.sholl.gui
+   ../api_auto/pysnt.analysis.sholl.math
+   ../api_auto/pysnt.analysis.sholl.parsers
+   ../api_auto/pysnt.annotation
+   ../api_auto/pysnt.converters
+   ../api_auto/pysnt.converters.chart_converters
+   ../api_auto/pysnt.converters.core
+   ../api_auto/pysnt.converters.enhancement
+   ../api_auto/pysnt.converters.extractors
+   ../api_auto/pysnt.converters.graph_converters
+   ../api_auto/pysnt.converters.structured_data_converters
+   ../api_auto/pysnt.core
+   ../api_auto/pysnt.display
+   ../api_auto/pysnt.display.core
+   ../api_auto/pysnt.display.data_display
+   ../api_auto/pysnt.display.utils
+   ../api_auto/pysnt.display.visual_display
+   ../api_auto/pysnt.gui
+   ../api_auto/pysnt.gui.cmds
+   ../api_auto/pysnt.io
+   ../api_auto/pysnt.tracing
+   ../api_auto/pysnt.tracing.artist
+   ../api_auto/pysnt.tracing.cost
+   ../api_auto/pysnt.tracing.heuristic
+   ../api_auto/pysnt.tracing.image
+   ../api_auto/pysnt.util
+   ../api_auto/pysnt.viewer
+   ../api_auto/pysnt.common_module
+   ../api_auto/pysnt.config
+   ../api_auto/pysnt.gui_utils
+   ../api_auto/pysnt.java_utils
+   ../api_auto/pysnt.setup_utils
+   ../api_auto/method_index
+   ../api_auto/class_index
+   ../api_auto/constants_index
 
 
 **Package:** ``sc.fiji.snt.util``
 
-Enhanced documentation for SNTColor class.
+A simple class for handling Colors including the ability to map an AWT Color to a SWC type integer tag.
 
 
 Methods
@@ -62,17 +64,17 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getDistinctColors(int))
+.. py:method:: static getDistinctColors(int, String)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion
 
 
-.. py:method:: static getDistinctColorsAWT(int))
+.. py:method:: static getDistinctColorsAWT(int)
 
    
 
 
-.. py:method:: isTypeDefined())
+.. py:method:: isTypeDefined()
 
    Checks if an SWC type has been defined.
 
@@ -81,12 +83,12 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setAWTColor(Color))
+.. py:method:: setAWTColor(Color)
 
    Re-assigns an AWT color.
 
 
-.. py:method:: setSWCType(int))
+.. py:method:: setSWCType(int)
 
    Re-assigns a SWC type integer flag
 
@@ -95,42 +97,42 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static alphaColor(Color, double))
+.. py:method:: static alphaColor(Color, double)
 
    Adds an alpha component to an AWT color.
 
 
-.. py:method:: static average(Collection))
+.. py:method:: static average(Collection)
 
    Averages a collection of colors
 
 
-.. py:method:: color())
+.. py:method:: color()
 
    Retrieves the AWT color
 
 
-.. py:method:: static colorToString(Color))
+.. py:method:: static colorToString(Color)
 
    Returns the color encoded as hex string with the format #rrggbbaa.
 
 
-.. py:method:: static contrastColor(Color))
+.. py:method:: static contrastColor(Color)
 
    Returns a suitable 'contrast' color.
 
 
-.. py:method:: static interpolateNullEntries(Color;))
+.. py:method:: static interpolateNullEntries(Color;)
 
    Replaces null colors in an array with the average of flanking non-null colors.
 
 
-.. py:method:: static stringToColor(String))
+.. py:method:: static stringToColor(String)
 
    Returns an AWT Color from a (#)RRGGBB(AA) hex string.
 
 
-.. py:method:: type())
+.. py:method:: type()
 
    Retrieves the SWC type
 
@@ -138,9 +140,8 @@ Other Methods
 See Also
 --------
 
-* `Package API <../../api_auto/pysnt.util.html#pysnt.util.SNTColor>`_
-* `Main API Documentation <../../api_auto/pysnt.util#SNTColor>`_
-* `SNTColor JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/SNTColor.html>`_
-* :doc:`Method Index </api_auto/method_index>`
+* `Package API <../api_auto/pysnt.util.html#pysnt.util.SNTColor>`_
+* `SNTColor JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/SNTColor.html>`_
 * :doc:`Class Index </api_auto/class_index>`
-
+* :doc:`Method Index </api_auto/method_index>`
+* :doc:`Constants Index </api_auto/constants_index>`

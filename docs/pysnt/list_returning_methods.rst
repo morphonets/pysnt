@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: return type containing 'List'
-Total matching methods: **88**
+Total matching methods: **87**
 
 Matching Methods
 ----------------
@@ -71,10 +71,6 @@ Matching Methods
      - :class:`PathStatistics`
      - ``List[Any]``
      - Gets all the paths being analyzed as branches. In PathStatistics, all paths are considered as branches since each path...
-   * - :meth:`StrahlerAnalyzer.getBranches`
-     - :class:`StrahlerAnalyzer`
-     - ``List[Any]``
-     - No description available
    * - :meth:`TreeStatistics.getBranches`
      - :class:`TreeStatistics`
      - ``List[Any]``
@@ -370,4 +366,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-11-13 22:40:29*
+*Filtered index generated on 2025-11-22 08:11:21*

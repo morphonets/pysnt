@@ -1,9 +1,9 @@
 {
   "class_name": "FillerThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2025-11-12T22:36:48.710737",
+  "extracted_at": "2025-11-19T11:06:20.316577",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.588902",
+  "enhancement_timestamp": "2025-11-22T08:11:21.328939",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -143,28 +143,35 @@
       "name": "static fromFill",
       "overloads": [
         {
-          "signature": "static fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread",
+          "signature": "static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "ImagePlus",
+              "java_type": "RandomAccessibleInterval",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
               "name": "arg1",
               "type": "Any",
-              "java_type": "ImageStatistics",
+              "java_type": "Calibration",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "Any",
-              "java_type": "Fill",
+              "java_type": "ImageStatistics",
               "description": "",
               "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "Any",
+              "java_type": "Fill",
+              "description": "",
+              "javadoc_name": "param_3"
             }
           ],
           "return_type": "FillerThread",
@@ -173,31 +180,24 @@
           "throws": {}
         },
         {
-          "signature": "static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread",
+          "signature": "static fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "RandomAccessibleInterval",
+              "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": null
             },
             {
               "name": "arg1",
               "type": "Any",
-              "java_type": "Calibration",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
               "java_type": "ImageStatistics",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "arg2",
               "type": "Any",
               "java_type": "Fill",
               "description": "",
@@ -871,8 +871,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "SearchThread",
-    "getFill()"
+    "getFill()",
+    "SearchThread"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

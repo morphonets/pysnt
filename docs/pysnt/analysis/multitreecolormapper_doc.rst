@@ -8,50 +8,54 @@
    :caption: Complete API Reference
    :hidden:
 
-   ../../api_auto/index
-   ../../api_auto/pysnt
-   ../../api_auto/pysnt.analysis
-   ../../api_auto/pysnt.analysis.graph
-   ../../api_auto/pysnt.analysis.growth
-   ../../api_auto/pysnt.analysis.sholl
-   ../../api_auto/pysnt.analysis.sholl.gui
-   ../../api_auto/pysnt.analysis.sholl.math
-   ../../api_auto/pysnt.analysis.sholl.parsers
-   ../../api_auto/pysnt.annotation
-   ../../api_auto/pysnt.converters
-   ../../api_auto/pysnt.converters.chart_converters
-   ../../api_auto/pysnt.converters.core
-   ../../api_auto/pysnt.converters.enhancement
-   ../../api_auto/pysnt.converters.extractors
-   ../../api_auto/pysnt.converters.graph_converters
-   ../../api_auto/pysnt.converters.structured_data_converters
-   ../../api_auto/pysnt.core
-   ../../api_auto/pysnt.display
-   ../../api_auto/pysnt.display.core
-   ../../api_auto/pysnt.display.data_display
-   ../../api_auto/pysnt.display.utils
-   ../../api_auto/pysnt.display.visual_display
-   ../../api_auto/pysnt.gui
-   ../../api_auto/pysnt.gui.cmds
-   ../../api_auto/pysnt.io
-   ../../api_auto/pysnt.tracing
-   ../../api_auto/pysnt.tracing.artist
-   ../../api_auto/pysnt.tracing.cost
-   ../../api_auto/pysnt.tracing.heuristic
-   ../../api_auto/pysnt.tracing.image
-   ../../api_auto/pysnt.util
-   ../../api_auto/pysnt.viewer
-   ../../api_auto/pysnt.common_module
-   ../../api_auto/pysnt.config
-   ../../api_auto/pysnt.gui_utils
-   ../../api_auto/pysnt.java_utils
-   ../../api_auto/pysnt.setup_utils
-   ../../api_auto/method_index
+   ../api_auto/index
+   ../api_auto/pysnt
+   ../api_auto/pysnt.analysis
+   ../api_auto/pysnt.analysis.graph
+   ../api_auto/pysnt.analysis.growth
+   ../api_auto/pysnt.analysis.sholl
+   ../api_auto/pysnt.analysis.sholl.gui
+   ../api_auto/pysnt.analysis.sholl.math
+   ../api_auto/pysnt.analysis.sholl.parsers
+   ../api_auto/pysnt.annotation
+   ../api_auto/pysnt.converters
+   ../api_auto/pysnt.converters.chart_converters
+   ../api_auto/pysnt.converters.core
+   ../api_auto/pysnt.converters.enhancement
+   ../api_auto/pysnt.converters.extractors
+   ../api_auto/pysnt.converters.graph_converters
+   ../api_auto/pysnt.converters.structured_data_converters
+   ../api_auto/pysnt.core
+   ../api_auto/pysnt.display
+   ../api_auto/pysnt.display.core
+   ../api_auto/pysnt.display.data_display
+   ../api_auto/pysnt.display.utils
+   ../api_auto/pysnt.display.visual_display
+   ../api_auto/pysnt.gui
+   ../api_auto/pysnt.gui.cmds
+   ../api_auto/pysnt.io
+   ../api_auto/pysnt.tracing
+   ../api_auto/pysnt.tracing.artist
+   ../api_auto/pysnt.tracing.cost
+   ../api_auto/pysnt.tracing.heuristic
+   ../api_auto/pysnt.tracing.image
+   ../api_auto/pysnt.util
+   ../api_auto/pysnt.viewer
+   ../api_auto/pysnt.common_module
+   ../api_auto/pysnt.config
+   ../api_auto/pysnt.gui_utils
+   ../api_auto/pysnt.java_utils
+   ../api_auto/pysnt.setup_utils
+   ../api_auto/method_index
+   ../api_auto/class_index
+   ../api_auto/constants_index
 
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Enhanced documentation for MultiTreeColorMapper class.
+Class for color coding groups of Trees.
+
+After a mapping property and a color table (LUT) are specified, the mapping proceeds as follows: 1) Each Tree in the group is measured for the mapping property; 2) each measurement is mapped to a LUT entry that is used to color each Tree. Mapping limits can be optionally specified
 
 
 Methods
@@ -62,57 +66,57 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getAvailableLuts())
+.. py:method:: getAvailableLuts()
 
    
 
 
-.. py:method:: getColor(double))
+.. py:method:: getColor(double)
 
    
 
 
-.. py:method:: getColorRGB(double))
+.. py:method:: getColorRGB(double)
 
    
 
 
-.. py:method:: getColorTable(String))
+.. py:method:: getColorTable(String)
 
    
 
 
-.. py:method:: static getMetrics(String))
+.. py:method:: static getMetrics(String)
 
    Gets the list of supported mapping metrics.
 
 
-.. py:method:: getMinMax())
+.. py:method:: getMinMax()
 
    
 
 
-.. py:method:: getMultiViewer())
+.. py:method:: getMultiViewer()
 
    Description copied from class: TreeColorMapper
 
 
-.. py:method:: getNaNColor())
+.. py:method:: getNaNColor()
 
    
 
 
-.. py:method:: static getSingleValueMetrics())
+.. py:method:: static getSingleValueMetrics()
 
    Gets the list of single-value mapping metrics.
 
 
-.. py:method:: isIntegerScale())
+.. py:method:: isIntegerScale()
 
    
 
 
-.. py:method:: isNodeMapping())
+.. py:method:: isNodeMapping()
 
    
 
@@ -121,12 +125,12 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setMinMax(double, double))
+.. py:method:: setMinMax(double, double)
 
    
 
 
-.. py:method:: setNaNColor(Color))
+.. py:method:: setNaNColor(Color)
 
    
 
@@ -135,32 +139,32 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;))
+.. py:method:: static main(String;)
 
    
 
 
-.. py:method:: map(String, ColorTable))
+.. py:method:: map(String, ColorTable)
 
    Description copied from class: ColorMapper
 
 
-.. py:method:: mapRootDistanceToCentroid(AllenCompartment, ColorTable))
+.. py:method:: mapRootDistanceToCentroid(AllenCompartment, ColorTable)
 
    
 
 
-.. py:method:: mapTrees(List, String))
+.. py:method:: mapTrees(List, String)
 
    
 
 
-.. py:method:: sortedMappedTrees())
+.. py:method:: sortedMappedTrees()
 
    
 
 
-.. py:method:: static unMap(Collection))
+.. py:method:: static unMap(Tree)
 
    
 
@@ -168,9 +172,8 @@ Other Methods
 See Also
 --------
 
-* `Package API <../../api_auto/pysnt.analysis.html#pysnt.analysis.MultiTreeColorMapper>`_
-* `Main API Documentation <../../api_auto/pysnt.analysis#MultiTreeColorMapper>`_
-* `MultiTreeColorMapper JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/MultiTreeColorMapper.html>`_
-* :doc:`Method Index </api_auto/method_index>`
+* `Package API <../api_auto/pysnt.analysis.html#pysnt.analysis.MultiTreeColorMapper>`_
+* `MultiTreeColorMapper JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/MultiTreeColorMapper.html>`_
 * :doc:`Class Index </api_auto/class_index>`
-
+* :doc:`Method Index </api_auto/method_index>`
+* :doc:`Constants Index </api_auto/constants_index>`

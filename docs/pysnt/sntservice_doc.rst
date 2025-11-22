@@ -119,7 +119,7 @@ Getters Methods
    
 
 
-.. py:method:: getRecViewer()
+.. py:method:: getRecViewer(int)
 
    Returns a reference to an opened Reconstruction Viewer (standalone instance). *
 

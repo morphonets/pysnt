@@ -2,6 +2,17 @@
 
 from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple
 
+class Annotation3D:
+    """
+    Annotation3D - No cached signatures available.
+    
+    Run: python dev/scripts/extract_class_signatures.py --all-classes
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 class MultiViewer2D:
     """
     MultiViewer2D - No cached signatures available.

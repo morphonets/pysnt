@@ -1,7 +1,7 @@
 {
   "class_name": "PathProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.910695",
+  "extracted_at": "2025-11-19T11:06:20.538147",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -90,6 +90,23 @@
           "java_return_type": "void"
         },
         {
+          "signature": "assignValues(Path, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "assignValues(int) -> void",
           "params": [
             {
@@ -104,23 +121,6 @@
         {
           "signature": "assignValues() -> void",
           "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "assignValues(Path, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
           "return_type": "None",
           "java_return_type": "void"
         }
@@ -333,18 +333,6 @@
       "name": "getPlot",
       "overloads": [
         {
-          "signature": "getPlot(int) -> Plot",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Plot"
-        },
-        {
           "signature": "getPlot(Path) -> Plot",
           "params": [
             {
@@ -361,6 +349,18 @@
           "params": [],
           "return_type": "Any",
           "java_return_type": "Plot"
+        },
+        {
+          "signature": "getPlot(int) -> Plot",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Plot"
         }
       ],
       "documentation": "Java method: getPlot"
@@ -368,6 +368,18 @@
     {
       "name": "getValues",
       "overloads": [
+        {
+          "signature": "getValues(Path) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
         {
           "signature": "getValues(Path, int) -> Map",
           "params": [
@@ -384,18 +396,6 @@
           ],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
-        },
-        {
-          "signature": "getValues(Path) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
         }
       ],
       "documentation": "Java method: getValues"
@@ -403,6 +403,12 @@
     {
       "name": "getXYPlot",
       "overloads": [
+        {
+          "signature": "getXYPlot() -> XYPlot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "XYPlot"
+        },
         {
           "signature": "getXYPlot(int) -> XYPlot",
           "params": [
@@ -412,12 +418,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "XYPlot"
-        },
-        {
-          "signature": "getXYPlot() -> XYPlot",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "XYPlot"
         }

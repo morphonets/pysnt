@@ -1,9 +1,9 @@
 {
   "class_name": "PathProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.910695",
+  "extracted_at": "2025-11-19T11:06:20.538147",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.617127",
+  "enhancement_timestamp": "2025-11-22T08:11:21.356815",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -130,6 +130,29 @@
           }
         },
         {
+          "signature": "assignValues(Path, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "assignValues(int) -> void",
           "params": [
             {
@@ -148,29 +171,6 @@
         {
           "signature": "assignValues() -> void",
           "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "assignValues(Path, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
@@ -509,22 +509,6 @@
       "name": "getPlot",
       "overloads": [
         {
-          "signature": "getPlot(int) -> Plot",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Plot",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getPlot(Path) -> Plot",
           "params": [
             {
@@ -547,6 +531,22 @@
           "java_return_type": "Plot",
           "return_description": "the plot",
           "throws": {}
+        },
+        {
+          "signature": "getPlot(int) -> Plot",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Plot",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: getPlot",
@@ -560,6 +560,22 @@
     {
       "name": "getValues",
       "overloads": [
+        {
+          "signature": "getValues(Path) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to be profiled",
+              "javadoc_name": "p"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the profile map",
+          "throws": {}
+        },
         {
           "signature": "getValues(Path, int) -> Map",
           "params": [
@@ -582,22 +598,6 @@
           "java_return_type": "Map",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "getValues(Path) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
-              "description": "- the path to be profiled",
-              "javadoc_name": "p"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "the profile map",
-          "throws": {}
         }
       ],
       "documentation": "Java method: getValues",
@@ -611,6 +611,14 @@
     {
       "name": "getXYPlot",
       "overloads": [
+        {
+          "signature": "getXYPlot() -> XYPlot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "XYPlot",
+          "return_description": "",
+          "throws": {}
+        },
         {
           "signature": "getXYPlot(int) -> XYPlot",
           "params": [
@@ -628,14 +636,6 @@
           "throws": {
             "IllegalArgumentException": ""
           }
-        },
-        {
-          "signature": "getXYPlot() -> XYPlot",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "XYPlot",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: getXYPlot",
@@ -1283,8 +1283,8 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "CommonDynamicCmd",
     "Constant Field Values",
+    "CommonDynamicCmd",
     "Path.setNodeValues(double[])"
   ],
   "enhancement_metadata": {

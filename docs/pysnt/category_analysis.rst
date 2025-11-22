@@ -151,13 +151,9 @@ Returns paths that have children, representing non-terminal segments. Note: This
 
    **Returns:** (``List[Any]``) the list of paths with children
 
-.. method:: static getMetrics(arg0)
+.. method:: static getMetrics()
 
-   **Signature:** ``static getMetrics(String) -> List``
-
-   **Parameters:**
-
-   * **arg0** (``str``)
+   **Signature:** ``static getMetrics() -> List``
 
    **Returns:** ``List[Any]``
 
@@ -218,4 +214,4 @@ Viewer2D
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

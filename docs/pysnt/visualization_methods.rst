@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Visualization'
-Total matching methods: **25**
+Total matching methods: **26**
 
 Matching Methods
 ----------------
@@ -35,6 +35,10 @@ Matching Methods
      - :class:`SNTColor`
      - ``Any``
      - Retrieves the AWT color
+   * - :meth:`Annotation3D.colorCode`
+     - :class:`Annotation3D`
+     - ``None``
+     - No description available
    * - :meth:`Viewer3D.colorCode`
      - :class:`Viewer3D`
      - ``Any``
@@ -118,4 +122,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-11-13 22:40:29*
+*Filtered index generated on 2025-11-22 08:11:21*

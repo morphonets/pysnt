@@ -1,9 +1,9 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:48.852419",
+  "extracted_at": "2025-11-19T11:06:20.472305",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.548378",
+  "enhancement_timestamp": "2025-11-22T08:11:21.289467",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -80,7 +80,7 @@
       "name": "addDiscsTo3DViewer",
       "overloads": [
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
           "params": [
             {
               "name": "arg0",
@@ -92,7 +92,7 @@
             {
               "name": "arg1",
               "type": "Any",
-              "java_type": "Color",
+              "java_type": "Color3f",
               "description": "",
               "javadoc_name": "param_1"
             },
@@ -110,7 +110,7 @@
           "throws": {}
         },
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
               "name": "arg0",
@@ -122,7 +122,7 @@
             {
               "name": "arg1",
               "type": "Any",
-              "java_type": "Color3f",
+              "java_type": "Color",
               "description": "",
               "javadoc_name": null
             },
@@ -310,18 +310,18 @@
           "throws": {}
         },
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "clone() -> Path",
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
           "return_description": "",
           "throws": {}
         }
@@ -338,12 +338,12 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(Object) -> int",
+          "signature": "compareTo(Path) -> int",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "Object",
+              "type": "Path",
+              "java_type": "Path",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -354,12 +354,12 @@
           "throws": {}
         },
         {
-          "signature": "compareTo(Path) -> int",
+          "signature": "compareTo(Object) -> int",
           "params": [
             {
               "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
+              "type": "Any",
+              "java_type": "Object",
               "description": "",
               "javadoc_name": null
             }
@@ -382,22 +382,6 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(PointInImage) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "PointInImage",
-              "java_type": "PointInImage",
-              "description": "- the point to check",
-              "javadoc_name": "point"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "true if the path contains the point within tolerance",
-          "throws": {}
-        },
-        {
           "signature": "contains(PointInImage, double) -> boolean",
           "params": [
             {
@@ -418,6 +402,22 @@
           "return_type": "bool",
           "java_return_type": "boolean",
           "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "contains(PointInImage) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- the point to check",
+              "javadoc_name": "point"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the path contains the point within tolerance",
           "throws": {}
         }
       ],
@@ -536,7 +536,7 @@
       "name": "drawPathAsPoints",
       "overloads": [
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
           "params": [
             {
               "name": "arg0",
@@ -561,8 +561,8 @@
             },
             {
               "name": "arg3",
-              "type": "int",
-              "java_type": "int",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": "param_3"
             },
@@ -575,10 +575,17 @@
             },
             {
               "name": "arg5",
-              "type": "bool",
-              "java_type": "boolean",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": "param_5"
+            },
+            {
+              "name": "arg6",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_6"
             }
           ],
           "return_type": "None",
@@ -587,7 +594,7 @@
           "throws": {}
         },
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
           "params": [
             {
               "name": "arg0",
@@ -612,8 +619,8 @@
             },
             {
               "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
@@ -626,15 +633,8 @@
             },
             {
               "name": "arg5",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg6",
-              "type": "int",
-              "java_type": "int",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -1336,54 +1336,54 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Path",
-    "Constant Field Values",
+    "for hierarchical position information",
+    "for getting the parent of this path",
+    "to establish a parent-child relationship",
+    "to check if this path has a parent",
+    "getExtensionAngles3D()",
     "getBranchPoints()",
-    "for the specific branching point",
-    "StrahlerAnalyzer",
-    "getExtensionAngleXY()",
-    "getExtensionAngle3D(Vector3d)",
-    "for the hierarchical level (parent order + 1)",
-    "for setting radius on all nodes",
-    "for setting the count",
-    "hasRadii()",
+    "PointInImage.v",
+    "Constant Field Values",
+    "upsample(double)",
+    "Cloneable",
+    "to check if this path is already independent",
     "Object",
+    "hasNodeColors()",
     "getName()",
     "getExtensionAngle3D(boolean)",
-    "getNodeColors()",
-    "to check if this path is already independent",
-    "getExtensionAngles3D()",
-    "SNTPoint.getHemisphere()",
-    "for getting the current count",
-    "PointInImage.v",
-    "to establish a parent-child relationship",
-    "to get the branching point",
-    "getExtensionAngleFromVertical()",
     "SNTPoint.getAnnotation()",
-    "for establishing parent-child relationships",
-    "hasNodeColors()",
     "findJunctions()",
-    "setName(String)",
-    "for creating parent-child relationships",
-    "to access paths that branch from this path",
-    "PathProfiler.assignValues()",
-    "Comparable",
     "for disconnecting this path",
-    "Cloneable",
-    "to get the current branch point (before detaching)",
-    "to access child paths branching from this path",
-    "upsample(double)",
-    "findJunctionIndices()",
-    "for getting the radius of a specific node",
-    "for hierarchical position information",
-    "getApproximatedVolume()",
-    "to retrieve the parent path",
-    "for checking if this is a root path",
-    "for getting the parent of this path",
+    "getExtensionAngle3D(Vector3d)",
+    "getExtensionAngleFromVertical()",
+    "hasRadii()",
+    "Path",
     "setRadius(double)",
-    "to check if this path has a parent",
+    "for getting the radius of a specific node",
+    "for checking if this is a root path",
+    "for setting radius on all nodes",
+    "to retrieve the parent path",
+    "for establishing parent-child relationships",
+    "getExtensionAngleXY()",
+    "for getting the current count",
+    "to access paths that branch from this path",
+    "StrahlerAnalyzer",
+    "SNTPoint.getHemisphere()",
+    "getApproximatedVolume()",
+    "Comparable",
+    "for the specific branching point",
+    "to get the branching point",
+    "for setting the count",
+    "to access child paths branching from this path",
+    "for the deprecated version with child inclusion option",
     "getExtensionDirection3D()",
-    "for the deprecated version with child inclusion option"
+    "getNodeColors()",
+    "findJunctionIndices()",
+    "PathProfiler.assignValues()",
+    "for the hierarchical level (parent order + 1)",
+    "for creating parent-child relationships",
+    "setName(String)",
+    "to get the current branch point (before detaching)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

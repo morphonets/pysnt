@@ -1,9 +1,9 @@
 {
   "class_name": "GroupedTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.717836",
+  "extracted_at": "2025-11-19T11:06:20.324888",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.552512",
+  "enhancement_timestamp": "2025-11-22T08:11:21.293408",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -109,22 +109,6 @@
       "name": "getBoxPlot",
       "overloads": [
         {
-          "signature": "getBoxPlot(String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
           "params": [
             {
@@ -138,6 +122,43 @@
               "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
@@ -185,33 +206,12 @@
           "throws": {}
         },
         {
-          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
+          "signature": "getBoxPlot(String) -> SNTChart",
           "params": [
             {
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -271,6 +271,29 @@
           "throws": {}
         },
         {
+          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
+              "javadoc_name": "feature"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "TreeStatistics.getAllMetrics()"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the SNTChart holding the flow plot",
+          "throws": {}
+        },
+        {
           "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
           "params": [
             {
@@ -312,29 +335,6 @@
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, int) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
-              "javadoc_name": "feature"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": "TreeStatistics.getAllMetrics()"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "the SNTChart holding the flow plot",
           "throws": {}
         },
         {
@@ -642,14 +642,14 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "MultiTreeStatistics",
-    "TreeStatistics",
     "getFlowPlot(String, Collection, String, double, boolean)",
-    "Object",
+    "MultiTreeStatistics",
+    "MultiTreeStatistics.getMetrics()",
+    "setMinNBins(int)",
     "TreeStatistics.getMetric(String)",
     "getHistogram(String)",
-    "MultiTreeStatistics.getMetrics()",
-    "setMinNBins(int)"
+    "TreeStatistics",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

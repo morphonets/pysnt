@@ -3,10 +3,63 @@ Setters Methods
 
 Methods that modify values or properties of objects.
 
-Total methods in this category: **258**
+Total methods in this category: **262**
 
 .. contents:: Classes in this Category
    :local:
+
+Annotation3D
+------------
+
+.. method:: setBoundingBoxColor(arg0)
+
+   Determines whether the mesh bounding box should be displayed.
+
+   **Signature:** ``setBoundingBoxColor(ColorRGB) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the color of the mesh bounding box. If null, no bounding box is displayed
+
+   **Returns:** ``None``
+
+.. method:: setColor(arg0, arg1)
+
+   Script friendly method to assign a color to the annotation.
+
+   **Signature:** ``setColor(String, double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - the color to render the imported file, either a 1) HTML color codes starting with hash (
+   * **arg1** (``float``): ), a color preset ("red", "blue", etc.), or integer triples of the form
+
+   **Returns:** ``None``
+
+.. method:: setTransparency(arg0)
+
+   Script friendly method to assign a transparency to the annotation.
+
+   **Signature:** ``setTransparency(double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the color transparency (in percentage)
+
+   **Returns:** ``None``
+
+.. method:: setWireframeColor(arg0)
+
+   Assigns a wireframe color to the annotation.
+
+   **Signature:** ``setWireframeColor(ColorRGB) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the wireframe color. Ignored if the annotation has no wireframe.
+
+   **Returns:** ``None``
+
 
 BiSearch
 --------
@@ -375,11 +428,11 @@ Fill
 
    Sets the source paths for the filled structure using a set of paths.
 
-   **Signature:** ``setSourcePaths(Set) -> void``
+   **Signature:** ``setSourcePaths(Path;) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Set[Any]``): - the set of new source paths
+   * **arg0** (``Any``): - the set of new source paths
 
    **Returns:** ``None``
 
@@ -675,16 +728,15 @@ MultiViewer2D
 
    **Returns:** ``None``
 
-.. method:: setColorBarLegend(arg0, arg1, arg2, arg3)
+.. method:: setColorBarLegend(arg0, arg1, arg2)
 
-   **Signature:** ``setColorBarLegend(ColorTable, double, double, int) -> void``
+   **Signature:** ``setColorBarLegend(String, double, double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``float``)
    * **arg2** (``float``)
-   * **arg3** (``int``)
 
    **Returns:** ``None``
 
@@ -1064,15 +1116,13 @@ Path
 PathAndFillManager
 ------------------
 
-.. method:: addPath(arg0, arg1, arg2)
+.. method:: addPath(arg0)
 
-   **Signature:** ``addPath(Path, int, int) -> void``
+   **Signature:** ``addPath(Path) -> void``
 
    **Parameters:**
 
    * **arg0** (``Path``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
 
    **Returns:** ``None``
 
@@ -1088,16 +1138,15 @@ PathAndFillManager
 
    **Returns:** ``None``
 
-.. method:: addTree(arg0, arg1)
+.. method:: addTree(arg0)
 
    Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.
 
-   **Signature:** ``addTree(Tree, String) -> void``
+   **Signature:** ``addTree(Tree) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
-   * **arg1** (``str``)
+   * **arg0** (``Tree``): - the collection of paths to be added
 
    **Returns:** ``None``
 
@@ -1958,13 +2007,14 @@ SNTService
 SNTTable
 --------
 
-.. method:: addAll(arg0)
+.. method:: addAll(arg0, arg1)
 
-   **Signature:** ``addAll(Collection) -> boolean``
+   **Signature:** ``addAll(int, Collection) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``int``)
+   * **arg1** (``List[Any]``)
 
    **Returns:** ``bool``
 
@@ -2660,15 +2710,13 @@ Viewer2D
 
    **Returns:** ``None``
 
-.. method:: addNodes(arg0, arg1, arg2)
+.. method:: addNodes(arg0)
 
-   **Signature:** ``addNodes(Collection, String, String) -> void``
+   **Signature:** ``addNodes(Map) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg0** (``Dict[str, Any]``)
 
    **Returns:** ``None``
 
@@ -2802,15 +2850,20 @@ When enabled, both X and Y axes will use the same scale to maintain equal aspect
 Viewer3D
 --------
 
-.. method:: addColorBarLegend(arg0)
+.. method:: addColorBarLegend(arg0, arg1, arg2, arg3, arg4, arg5)
 
    Adds a color bar legend (LUT ramp).
 
-   **Signature:** ``addColorBarLegend(ColorMapper) -> void``
+   **Signature:** ``addColorBarLegend(ColorTable, double, double, Font, int, int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the color table
+   * **arg0** (``Any``)
+   * **arg1** (``float``)
+   * **arg2** (``float``)
+   * **arg3** (``Any``)
+   * **arg4** (``int``)
+   * **arg5** (``int``)
 
    **Returns:** ``None``
 
@@ -2962,4 +3015,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

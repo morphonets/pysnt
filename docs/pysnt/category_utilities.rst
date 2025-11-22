@@ -583,26 +583,25 @@ InteractiveTracerCanvas
 
    **Returns:** ``Any``
 
-.. method:: checkImage(arg0, arg1, arg2, arg3)
+.. method:: checkImage(arg0, arg1)
 
-   **Signature:** ``checkImage(Image, int, int, ImageObserver) -> int``
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``Any``)
+   * **arg1** (``Any``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0)
+.. method:: contains(arg0, arg1)
 
-   **Signature:** ``contains(Point) -> boolean``
+   **Signature:** ``contains(int, int) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``int``)
+   * **arg1** (``int``)
 
    **Returns:** ``bool``
 
@@ -616,24 +615,26 @@ InteractiveTracerCanvas
 
    **Returns:** ``None``
 
-.. method:: createImage(arg0)
+.. method:: createImage(arg0, arg1)
 
-   **Signature:** ``createImage(ImageProducer) -> Image``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``Any``
-
-.. method:: createVolatileImage(arg0, arg1)
-
-   **Signature:** ``createVolatileImage(int, int) -> VolatileImage``
+   **Signature:** ``createImage(int, int) -> Image``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: createVolatileImage(arg0, arg1, arg2)
+
+   **Signature:** ``createVolatileImage(int, int, ImageCapabilities) -> VolatileImage``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``Any``)
 
    **Returns:** ``Any``
 
@@ -675,25 +676,21 @@ InteractiveTracerCanvas
 
    **Returns:** ``None``
 
-.. method:: enable(arg0)
+.. method:: enable()
 
-   **Signature:** ``enable(boolean) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``bool``)
+   **Signature:** ``enable() -> void``
 
    **Returns:** ``None``
 
 .. method:: firePropertyChange(arg0, arg1, arg2)
 
-   **Signature:** ``firePropertyChange(String, char, char) -> void``
+   **Signature:** ``firePropertyChange(String, byte, byte) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg1** (``int``)
+   * **arg2** (``int``)
 
    **Returns:** ``None``
 
@@ -935,18 +932,17 @@ NodeStatistics
 
    **Returns:** (``List[Any]``) the filtered list.
 
-.. method:: get(arg0, arg1)
+.. method:: get(arg0)
 
    Gets the list of nodes associated with the specified compartment (neuropil label).
 
-   **Signature:** ``get(BrainAnnotation, boolean) -> List``
+   **Signature:** ``get(BrainAnnotation) -> List``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``bool``)
+   * **arg0** (``Any``): - the query compartment (null not allowed)
 
-   **Returns:** ``List[Any]``
+   **Returns:** (``List[Any]``) the list of filtered nodes
 
 
 Path
@@ -980,25 +976,26 @@ Limitations: This method only clones the immediate children and does not recursi
 
 .. method:: compareTo(arg0)
 
-   **Signature:** ``compareTo(Object) -> int``
+   **Signature:** ``compareTo(Path) -> int``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Path``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0)
+.. method:: contains(arg0, arg1)
 
    Checks if this path contains the specified point within the given tolerance.
 
-   **Signature:** ``contains(PointInImage) -> boolean``
+   **Signature:** ``contains(PointInImage, double) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``PointInImage``): - the point to check
+   * **arg0** (``PointInImage``)
+   * **arg1** (``float``)
 
-   **Returns:** (``bool``) true if the path contains the point within tolerance
+   **Returns:** ``bool``
 
 .. method:: detachFromParent()
 
@@ -1265,17 +1262,16 @@ PathManagerUI
 
    **Returns:** ``None``
 
-.. method:: applySelectionFilter(arg0, arg1, arg2)
+.. method:: applySelectionFilter(arg0, arg1)
 
    Selects paths matching a morphometric criteria.
 
-   **Signature:** ``applySelectionFilter(String, Number, Number) -> void``
+   **Signature:** ``applySelectionFilter(String, Number) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``)
    * **arg1** (``Union[int, float]``)
-   * **arg2** (``Union[int, float]``)
 
    **Returns:** ``None``
 
@@ -1307,26 +1303,25 @@ PathManagerUI
 
    **Returns:** ``Any``
 
-.. method:: checkImage(arg0, arg1, arg2, arg3)
+.. method:: checkImage(arg0, arg1)
 
-   **Signature:** ``checkImage(Image, int, int, ImageObserver) -> int``
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``Any``)
+   * **arg1** (``Any``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0)
+.. method:: contains(arg0, arg1)
 
-   **Signature:** ``contains(Point) -> boolean``
+   **Signature:** ``contains(int, int) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``int``)
+   * **arg1** (``int``)
 
    **Returns:** ``bool``
 
@@ -1346,24 +1341,26 @@ PathManagerUI
 
    **Returns:** ``None``
 
-.. method:: createImage(arg0)
+.. method:: createImage(arg0, arg1)
 
-   **Signature:** ``createImage(ImageProducer) -> Image``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``Any``
-
-.. method:: createVolatileImage(arg0, arg1)
-
-   **Signature:** ``createVolatileImage(int, int) -> VolatileImage``
+   **Signature:** ``createImage(int, int) -> Image``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: createVolatileImage(arg0, arg1, arg2)
+
+   **Signature:** ``createVolatileImage(int, int, ImageCapabilities) -> VolatileImage``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``Any``)
 
    **Returns:** ``Any``
 
@@ -1829,17 +1826,16 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: annotateCategory(arg0, arg1, arg2)
+.. method:: annotateCategory(arg0, arg1)
 
    Annotates the specified category (Category plots only).
 
-   **Signature:** ``annotateCategory(String, String, String) -> void``
+   **Signature:** ``annotateCategory(String, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - the category to be annotated. Ignored if it does not exist in category axis.
    * **arg1** (``str``)
-   * **arg2** (``str``)
 
    **Returns:** ``None``
 
@@ -1847,12 +1843,12 @@ SNTChart
 
    Highlights a point in a histogram/XY plot by drawing a labeled arrow at the specified location.
 
-   **Signature:** ``annotatePoint([D, String, String) -> void``
+   **Signature:** ``annotatePoint(double, double, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the array holding the focal point coordinates of the profile
-   * **arg1** (``str``)
+   * **arg0** (``float``): - the array holding the focal point coordinates of the profile
+   * **arg1** (``float``)
    * **arg2** (``str``)
 
    **Returns:** ``None``
@@ -1942,16 +1938,14 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: checkImage(arg0, arg1, arg2, arg3)
+.. method:: checkImage(arg0, arg1)
 
-   **Signature:** ``checkImage(Image, int, int, ImageObserver) -> int``
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``Any``)
+   * **arg1** (``Any``)
 
    **Returns:** ``int``
 
@@ -2233,11 +2227,11 @@ Iterates through all cells in the table and replaces null values with the provid
 
 .. method:: geColumnStats(arg0, arg1, arg2)
 
-   **Signature:** ``geColumnStats(String, int, int) -> SummaryStatistics``
+   **Signature:** ``geColumnStats(int, int, int) -> SummaryStatistics``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``int``)
    * **arg1** (``int``)
    * **arg2** (``int``)
 
@@ -2342,26 +2336,25 @@ SNTUI
 
    **Returns:** ``None``
 
-.. method:: checkImage(arg0, arg1, arg2, arg3)
+.. method:: checkImage(arg0, arg1)
 
-   **Signature:** ``checkImage(Image, int, int, ImageObserver) -> int``
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``Any``)
+   * **arg1** (``Any``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0)
+.. method:: contains(arg0, arg1)
 
-   **Signature:** ``contains(Point) -> boolean``
+   **Signature:** ``contains(int, int) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``int``)
+   * **arg1** (``int``)
 
    **Returns:** ``bool``
 
@@ -2383,24 +2376,26 @@ SNTUI
 
    **Returns:** ``None``
 
-.. method:: createImage(arg0)
+.. method:: createImage(arg0, arg1)
 
-   **Signature:** ``createImage(ImageProducer) -> Image``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``Any``
-
-.. method:: createVolatileImage(arg0, arg1)
-
-   **Signature:** ``createVolatileImage(int, int) -> VolatileImage``
+   **Signature:** ``createImage(int, int) -> Image``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: createVolatileImage(arg0, arg1, arg2)
+
+   **Signature:** ``createVolatileImage(int, int, ImageCapabilities) -> VolatileImage``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``Any``)
 
    **Returns:** ``Any``
 
@@ -2442,13 +2437,9 @@ SNTUI
 
    **Returns:** ``None``
 
-.. method:: enable(arg0)
+.. method:: enable()
 
-   **Signature:** ``enable(boolean) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``bool``)
+   **Signature:** ``enable() -> void``
 
    **Returns:** ``None``
 
@@ -2718,26 +2709,25 @@ TracerCanvas
 
    **Returns:** ``Any``
 
-.. method:: checkImage(arg0, arg1, arg2, arg3)
+.. method:: checkImage(arg0, arg1)
 
-   **Signature:** ``checkImage(Image, int, int, ImageObserver) -> int``
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``int``)
-   * **arg2** (``int``)
-   * **arg3** (``Any``)
+   * **arg1** (``Any``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0)
+.. method:: contains(arg0, arg1)
 
-   **Signature:** ``contains(Point) -> boolean``
+   **Signature:** ``contains(int, int) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``int``)
+   * **arg1** (``int``)
 
    **Returns:** ``bool``
 
@@ -2751,24 +2741,26 @@ TracerCanvas
 
    **Returns:** ``None``
 
-.. method:: createImage(arg0)
+.. method:: createImage(arg0, arg1)
 
-   **Signature:** ``createImage(ImageProducer) -> Image``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``Any``
-
-.. method:: createVolatileImage(arg0, arg1)
-
-   **Signature:** ``createVolatileImage(int, int) -> VolatileImage``
+   **Signature:** ``createImage(int, int) -> Image``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: createVolatileImage(arg0, arg1, arg2)
+
+   **Signature:** ``createVolatileImage(int, int, ImageCapabilities) -> VolatileImage``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``Any``)
 
    **Returns:** ``Any``
 
@@ -2810,25 +2802,21 @@ TracerCanvas
 
    **Returns:** ``None``
 
-.. method:: enable(arg0)
+.. method:: enable()
 
-   **Signature:** ``enable(boolean) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``bool``)
+   **Signature:** ``enable() -> void``
 
    **Returns:** ``None``
 
 .. method:: firePropertyChange(arg0, arg1, arg2)
 
-   **Signature:** ``firePropertyChange(String, char, char) -> void``
+   **Signature:** ``firePropertyChange(String, byte, byte) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg1** (``int``)
+   * **arg2** (``int``)
 
    **Returns:** ``None``
 
@@ -2932,7 +2920,7 @@ Tree
 
    Assigns spatial calibration from a Dataset to this Tree.
 
-   **Signature:** ``assignImage(ImagePlus) -> void``
+   **Signature:** ``assignImage(Dataset) -> void``
 
    **Parameters:**
 
@@ -3024,13 +3012,13 @@ TreeColorMapper
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
 
-   **Signature:** ``map(Tree, String, String) -> void``
+   **Signature:** ``map(Tree, LinearProfileStats, ColorTable) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg1** (``Any``)
+   * **arg2** (``Any``)
 
    **Returns:** ``None``
 
@@ -3084,13 +3072,13 @@ Viewer2D
 
 .. method:: map(arg0, arg1, arg2)
 
-   **Signature:** ``map(Tree, String, String) -> void``
+   **Signature:** ``map(Tree, LinearProfileStats, ColorTable) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg1** (``Any``)
+   * **arg2** (``Any``)
 
    **Returns:** ``None``
 
@@ -3105,16 +3093,11 @@ Viewer2D
 
    **Returns:** ``None``
 
-.. method:: show(arg0, arg1)
+.. method:: show()
 
    Displays the current plot on a dedicated frame *
 
-   **Signature:** ``show(int, int) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``int``): - the preferred frame width
-   * **arg1** (``int``)
+   **Signature:** ``show() -> void``
 
    **Returns:** ``None``
 
@@ -3171,18 +3154,20 @@ Viewer3D
 
    **Returns:** ``Any``
 
-.. method:: annotatePoint(arg0, arg1)
+.. method:: annotatePoint(arg0, arg1, arg2, arg3)
 
    Adds a highlighting point annotation to this viewer.
 
-   **Signature:** ``annotatePoint(SNTPoint, String) -> Annotation3D``
+   **Signature:** ``annotatePoint(SNTPoint, String, String, float) -> Annotation3D``
 
    **Parameters:**
 
-   * **arg0** (``SNTPoint``): - the node to be highlighted
+   * **arg0** (``SNTPoint``)
    * **arg1** (``str``)
+   * **arg2** (``str``)
+   * **arg3** (``float``)
 
-   **Returns:** (``Any``) the Annotation3D
+   **Returns:** ``Any``
 
 .. method:: annotatePoints(arg0, arg1)
 
@@ -3197,19 +3182,18 @@ Viewer3D
 
    **Returns:** (``Any``) the Annotation3D
 
-.. method:: annotateSurface(arg0, arg1, arg2)
+.. method:: annotateSurface(arg0, arg1)
 
    Computes a convex hull from a collection of points and adds it to the scene as an annotation.
 
-   **Signature:** ``annotateSurface(Collection, String, boolean) -> Annotation3D``
+   **Signature:** ``annotateSurface(Collection, String) -> Annotation3D``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``List[Any]``): - the collection of points defining the convex set.
    * **arg1** (``str``)
-   * **arg2** (``bool``)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the Annotation3D
 
 .. method:: dispose()
 
@@ -3355,4 +3339,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

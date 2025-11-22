@@ -41,7 +41,7 @@ class FlyCircuitLoader:
     """
     Absurdly simple importer for retrieving SWC data from FlyCircuit.
     
-    **All Methods and Attributes:** See `FlyCircuitLoader detailed documentation </flycircuitloader_doc.html>`_.
+    **All Methods and Attributes:** See `FlyCircuitLoader detailed documentation <../pysnt/io/flycircuitloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -56,7 +56,7 @@ class InsectBrainLoader:
     """
     Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.org *
     
-    **All Methods and Attributes:** See `InsectBrainLoader detailed documentation </insectbrainloader_doc.html>`_.
+    **All Methods and Attributes:** See `InsectBrainLoader detailed documentation <../pysnt/io/insectbrainloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -71,7 +71,7 @@ class MouseLightLoader:
     """
     Methods for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org *
     
-    **All Methods and Attributes:** See `MouseLightLoader detailed documentation </mouselightloader_doc.html>`_.
+    **All Methods and Attributes:** See `MouseLightLoader detailed documentation <../pysnt/io/mouselightloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -86,7 +86,7 @@ class MouseLightQuerier:
     """
     Importer for retrieving reconstructions from MouseLight's online database at ml-neuronbrowser.janelia.org
     
-    **All Methods and Attributes:** See `MouseLightQuerier detailed documentation </mouselightquerier_doc.html>`_.
+    **All Methods and Attributes:** See `MouseLightQuerier detailed documentation <../pysnt/io/mouselightquerier_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -101,7 +101,7 @@ class NeuroMorphoLoader:
     """
     Importer for retrieving SWC data from neuromorpho.org.
     
-    **All Methods and Attributes:** See `NeuroMorphoLoader detailed documentation </neuromorpholoader_doc.html>`_.
+    **All Methods and Attributes:** See `NeuroMorphoLoader detailed documentation <../pysnt/io/neuromorpholoader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -116,7 +116,7 @@ class RemoteSWCLoader:
     """
     Importers downloading remote SWC files should extend this interface.
     
-    **All Methods and Attributes:** See `RemoteSWCLoader detailed documentation </remoteswcloader_doc.html>`_.
+    **All Methods and Attributes:** See `RemoteSWCLoader detailed documentation <../pysnt/io/remoteswcloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):
@@ -131,7 +131,7 @@ class WekaModelLoader:
     """
     GUI command for Loading pre-trained models from Labkit/TWS as secondary image layer.
     
-    **All Methods and Attributes:** See `WekaModelLoader detailed documentation </wekamodelloader_doc.html>`_.
+    **All Methods and Attributes:** See `WekaModelLoader detailed documentation <../pysnt/io/wekamodelloader_doc.html>`_.
     """
     
     def __getattr__(self, name: str):

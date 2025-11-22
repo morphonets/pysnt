@@ -1,9 +1,9 @@
 {
   "class_name": "MouseLightLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-12T22:36:48.773791",
+  "extracted_at": "2025-11-19T11:06:20.389019",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.606662",
+  "enhancement_timestamp": "2025-11-22T08:11:21.346810",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -30,12 +30,12 @@
       "name": "static extractNodes",
       "overloads": [
         {
-          "signature": "static extractNodes(InputStream, String) -> Map",
+          "signature": "static extractNodes(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream",
+              "type": "str",
+              "java_type": "File",
               "description": "- the JSON file to be parsed",
               "javadoc_name": "jsonFile"
             },
@@ -55,12 +55,12 @@
           }
         },
         {
-          "signature": "static extractNodes(File, String) -> Map",
+          "signature": "static extractNodes(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File",
+              "type": "Any",
+              "java_type": "InputStream",
               "description": "",
               "javadoc_name": null
             },
@@ -92,12 +92,12 @@
       "name": "static extractTrees",
       "overloads": [
         {
-          "signature": "static extractTrees(InputStream, String) -> Map",
+          "signature": "static extractTrees(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream",
+              "type": "str",
+              "java_type": "File",
               "description": "",
               "javadoc_name": "param_0"
             },
@@ -115,12 +115,12 @@
           "throws": {}
         },
         {
-          "signature": "static extractTrees(File, String) -> Map",
+          "signature": "static extractTrees(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File",
+              "type": "Any",
+              "java_type": "InputStream",
               "description": "",
               "javadoc_name": null
             },
@@ -368,16 +368,6 @@
       "name": "getTree",
       "overloads": [
         {
-          "signature": "getTree() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "the neuron as a Tree, or null if data could not be retrieved",
-          "throws": {
-            "IllegalArgumentException": "- if retrieval of data for this neuron is not possible"
-          }
-        },
-        {
           "signature": "getTree(String) -> Tree",
           "params": [
             {
@@ -392,6 +382,16 @@
           "java_return_type": "Tree",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the neuron as a Tree, or null if data could not be retrieved",
+          "throws": {
+            "IllegalArgumentException": "- if retrieval of data for this neuron is not possible"
+          }
         },
         {
           "signature": "getTree(String, ColorRGB) -> Tree",
@@ -635,9 +635,9 @@
   "since_version": null,
   "see_also": [
     "Constant Field Values",
+    "saveAsJSON(String)",
     "Object",
-    "extractTrees(File, String)",
-    "saveAsJSON(String)"
+    "extractTrees(File, String)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

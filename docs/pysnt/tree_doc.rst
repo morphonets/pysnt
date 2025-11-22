@@ -100,7 +100,7 @@ Getters Methods
    Gets the branch points (junctions) of the graph. This is simply an alias for `DirectedWeightedGraph.getBPs()`.
 
 
-.. py:method:: getBoundingBox()
+.. py:method:: getBoundingBox(boolean)
 
    Gets the bounding box associated with this tree.
 
@@ -110,7 +110,7 @@ Getters Methods
    Gets the color assigned to this Tree.
 
 
-.. py:method:: getConvexHull()
+.. py:method:: getConvexHull(String)
 
    Retrieves the convex hull of this tree.
 
@@ -183,7 +183,7 @@ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
    Retrieves the rasterized skeleton of this tree at 1:1 scaling.
 
 
-.. py:method:: getSkeleton2D(int)
+.. py:method:: getSkeleton2D()
 
    Retrieves a 2D projection of the rasterized skeleton of this tree at 1:1 scaling.
 
@@ -246,7 +246,7 @@ Other Methods
    Applies properties from another Tree to this Tree.
 
 
-.. py:method:: assignImage(ImagePlus)
+.. py:method:: assignImage(Dataset)
 
    Assigns spatial calibration from a Dataset to this Tree.
 

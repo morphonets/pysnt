@@ -1,9 +1,9 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.831531",
+  "extracted_at": "2025-11-19T11:06:20.451251",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.552780",
+  "enhancement_timestamp": "2025-11-22T08:11:21.293654",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -110,6 +110,22 @@
       "name": "get",
       "overloads": [
         {
+          "signature": "get(BrainAnnotation) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the query compartment (null not allowed)",
+              "javadoc_name": "compartment"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of filtered nodes",
+          "throws": {}
+        },
+        {
           "signature": "get(BrainAnnotation, boolean) -> List",
           "params": [
             {
@@ -130,22 +146,6 @@
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "get(BrainAnnotation) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation",
-              "description": "- the query compartment (null not allowed)",
-              "javadoc_name": "compartment"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "the list of filtered nodes",
           "throws": {}
         }
       ],
@@ -339,6 +339,14 @@
       "name": "getAnnotatedNodes",
       "overloads": [
         {
+          "signature": "getAnnotatedNodes() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
             {
@@ -352,14 +360,6 @@
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map",
           "return_description": "the map containing the brain annotations as keys, and list of nodes as values.",
-          "throws": {}
-        },
-        {
-          "signature": "getAnnotatedNodes() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -555,8 +555,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "AllenCompartment.getOntologyDepth()",
     "Constant Field Values",
+    "AllenCompartment.getOntologyDepth()",
     "Object"
   ],
   "enhancement_metadata": {

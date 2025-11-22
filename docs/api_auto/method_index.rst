@@ -3,7 +3,7 @@ Method Index
 
 This page provides an index of all methods available in the SNT API.
 
-Total methods: **1365** across **72** classes.
+Total methods: **1379** across **73** classes.
 
 
 A
@@ -244,6 +244,7 @@ C
 * `AllenCompartment.color <../pysnt/allencompartment_doc.html#color>`_ - No description available
 * `InsectBrainCompartment.color <../pysnt/insectbraincompartment_doc.html#color>`_ - No description available
 * `SNTColor.color <../pysnt/sntcolor_doc.html#color>`_ - Retrieves the AWT color
+* `Annotation3D.colorCode <../pysnt/annotation3d_doc.html#colorcode>`_ - No description available
 * `Viewer3D.colorCode <../pysnt/viewer3d_doc.html#colorcode>`_ - Runs TreeColorMapper on the specified Tree.
 * `BoundingBox.combine <../pysnt/boundingbox_doc.html#combine>`_ - Combines this bounding box with another one. It is assumed both boxes share the same voxel spacing/Calibration.
 * `DefaultSearchNode.compareTo <../pysnt/defaultsearchnode_doc.html#compareto>`_ - No description available
@@ -485,6 +486,7 @@ G
 * `InteractiveTracerCanvas.getBackground <../pysnt/interactivetracercanvas_doc.html#getbackground>`_ - No description available
 * `TracerCanvas.getBackground <../pysnt/tracercanvas_doc.html#getbackground>`_ - No description available
 * `PersistenceAnalyzer.getBarcode <../pysnt/persistenceanalyzer_doc.html#getbarcode>`_ *has examples* - Gets the persistence barcode for the specified filter function. The barcode is a simplified representation of the...
+* `Annotation3D.getBarycentre <../pysnt/annotation3d_doc.html#getbarycentre>`_ - Returns the center of this annotation bounding box.
 * `InteractiveTracerCanvas.getBaseline <../pysnt/interactivetracercanvas_doc.html#getbaseline>`_ - No description available
 * `TracerCanvas.getBaseline <../pysnt/tracercanvas_doc.html#getbaseline>`_ - No description available
 * `StrahlerAnalyzer.getBifurcationRatios <../pysnt/strahleranalyzer_doc.html#getbifurcationratios>`_ - No description available
@@ -528,6 +530,7 @@ G
 * `Viewer2D.getChart <../pysnt/viewer2d_doc.html#getchart>`_ - Gets the current viewer as a SNTChart object
 * `AllenCompartment.getChildren <../pysnt/allencompartment_doc.html#getchildren>`_ - Gets the child ontologies of this compartment as a flat (non-hierarchical) list.
 * `Path.getChildren <../pysnt/path_doc.html#getchildren>`_ - Gets the list of child paths that branch from this path. Returns the collection of paths that have this path as their...
+* `Annotation3D.getColor <../pysnt/annotation3d_doc.html#getcolor>`_ - No description available
 * `MultiTreeColorMapper.getColor <../pysnt/multitreecolormapper_doc.html#getcolor>`_ - No description available
 * `NodeColorMapper.getColor <../pysnt/nodecolormapper_doc.html#getcolor>`_ - No description available
 * `Path.getColor <../pysnt/path_doc.html#getcolor>`_ - Gets the color of this Path
@@ -593,6 +596,7 @@ G
 * `BoundingBox.getDimensions <../pysnt/boundingbox_doc.html#getdimensions>`_ - Gets this BoundingBox dimensions.
 * `FillerThread.getDistanceAtPoint <../pysnt/fillerthread_doc.html#getdistanceatpoint>`_ - No description available
 * `SNT.getDrawDiameters <../pysnt/snt_doc.html#getdrawdiameters>`_ - No description available
+* `Annotation3D.getDrawable <../pysnt/annotation3d_doc.html#getdrawable>`_ - Returns the AbstractDrawable associated with this annotation.
 * `ConvexHullAnalyzer.getEccentricity <../pysnt/convexhullanalyzer_doc.html#geteccentricity>`_ - No description available
 * `Path.getEditableNodeIndex <../pysnt/path_doc.html#geteditablenodeindex>`_ - Gets the position of the node tagged as 'editable', if any.
 * `ConvexHullAnalyzer.getElongation <../pysnt/convexhullanalyzer_doc.html#getelongation>`_ - Gets the elongation of the convex hull, which measures how elongated the convex hull is. Higher values indicate more...
@@ -689,6 +693,7 @@ G
 * `SNTService.getInstance <../pysnt/sntservice_doc.html#getinstance>`_ - Returns a reference to the active SNT instance.
 * `Viewer2D.getJFreeChart <../pysnt/viewer2d_doc.html#getjfreechart>`_ - Gets the current viewer as a JFreeChart object
 * `MouseLightLoader.getJSON <../pysnt/mouselightloader_doc.html#getjson>`_ - Gets all the data associated with this reconstruction as a JSON object.
+* `Annotation3D.getLabel <../pysnt/annotation3d_doc.html#getlabel>`_ - Gets the annotation label
 * `Tree.getLabel <../pysnt/tree_doc.html#getlabel>`_ - Returns the identifying label of this tree. When importing files, the label typically defaults to the imported filename,
 * `PersistenceAnalyzer.getLandscape <../pysnt/persistenceanalyzer_doc.html#getlandscape>`_ - Gets the persistence landscape as a vectorized representation. Persistence landscapes transform persistence diagrams...
 * `SNTTable.getLast <../pysnt/snttable_doc.html#getlast>`_ - No description available
@@ -852,6 +857,7 @@ G
 * `SNTService.getTrees <../pysnt/sntservice_doc.html#gettrees>`_ - Gets the collection of paths listed in the Path Manager as a Tree object.
 * `SkeletonConverter.getTrees <../pysnt/skeletonconverter_doc.html#gettrees>`_ - Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph...
 * `Viewer3D.getTrees <../pysnt/viewer3d_doc.html#gettrees>`_ - Returns all trees added to this viewer.
+* `Annotation3D.getType <../pysnt/annotation3d_doc.html#gettype>`_ - Gets the type of this annotation.
 * `SNTService.getUI <../pysnt/sntservice_doc.html#getui>`_ - Returns a reference to SNT's UI.
 * `AllenCompartment.getUUID <../pysnt/allencompartment_doc.html#getuuid>`_ - No description available
 * `BoundingBox.getUnit <../pysnt/boundingbox_doc.html#getunit>`_ - Gets the length unit of voxel spacing
@@ -861,6 +867,7 @@ G
 * `NodeProfiler.getValues <../pysnt/nodeprofiler_doc.html#getvalues>`_ - Gets the profile for the specified path as a map of lists of pixel intensities (profile indices as keys)
 * `PathProfiler.getValues <../pysnt/pathprofiler_doc.html#getvalues>`_ - Gets the profile for the specified path as a map of lists, with distances (or indices) stored under X_VALUES...
 * `SNTService.getVersion <../pysnt/sntservice_doc.html#getversion>`_ - No description available
+* `Annotation3D.getVolume <../pysnt/annotation3d_doc.html#getvolume>`_ - No description available
 * `Fill.getVolume <../pysnt/fill_doc.html#getvolume>`_ - Returns the Fill volume. It assumes that the volume is just the number of sub-threshold nodes multiplied by x_spacing *...
 * `BiSearchNode.getX <../pysnt/bisearchnode_doc.html#getx>`_ - No description available
 * `DefaultSearchNode.getX <../pysnt/defaultsearchnode_doc.html#getx>`_ - No description available
@@ -919,6 +926,7 @@ I
 * `WekaModelLoader.isCanceled <../pysnt/wekamodelloader_doc.html#iscanceled>`_ - No description available
 * `AllenCompartment.isChildOf <../pysnt/allencompartment_doc.html#ischildof>`_ - Assesses if this annotation is a child of a specified compartment.
 * `InsectBrainCompartment.isChildOf <../pysnt/insectbraincompartment_doc.html#ischildof>`_ - No description available
+* `Annotation3D.isColorCodeAllowed <../pysnt/annotation3d_doc.html#iscolorcodeallowed>`_ - No description available
 * `Viewer3D.isDarkModeOn <../pysnt/viewer3d_doc.html#isdarkmodeon>`_ - Checks if scene is being rendered under dark or light background.
 * `FlyCircuitLoader.isDatabaseAvailable <../pysnt/flycircuitloader_doc.html#isdatabaseavailable>`_ - Checks whether a connection to the FlyCircuit database can be established.
 * `NeuroMorphoLoader.isDatabaseAvailable <../pysnt/neuromorpholoader_doc.html#isdatabaseavailable>`_ - Checks whether a connection to the NeuroMorpho database can be established.
@@ -1062,6 +1070,8 @@ S
 * `SWCPoint.setAnnotation <../pysnt/swcpoint_doc.html#setannotation>`_ - Description copied from interface: SNTPoint
 * `MultiViewer2D.setAxesVisible <../pysnt/multiviewer2d_doc.html#setaxesvisible>`_ - No description available
 * `Viewer2D.setAxesVisible <../pysnt/viewer2d_doc.html#setaxesvisible>`_ - No description available
+* `Annotation3D.setBoundingBoxColor <../pysnt/annotation3d_doc.html#setboundingboxcolor>`_ - Determines whether the mesh bounding box should be displayed.
+* `Annotation3D.setColor <../pysnt/annotation3d_doc.html#setcolor>`_ - Script friendly method to assign a color to the annotation.
 * `SWCPoint.setColor <../pysnt/swcpoint_doc.html#setcolor>`_ - Sets the color of this point.
 * `MultiViewer2D.setColorBarLegend <../pysnt/multiviewer2d_doc.html#setcolorbarlegend>`_ - No description available
 * `SkeletonConverter.setConnectComponents <../pysnt/skeletonconverter_doc.html#setconnectcomponents>`_ - Sets whether to connect nearby skeleton components. Controls whether disconnected skeleton components should be...
@@ -1162,6 +1172,7 @@ S
 * `SkeletonConverter.setShortestPath <../pysnt/skeletonconverter_doc.html#setshortestpath>`_ - Sets whether to calculate the longest shortest-path in the skeleton result.
 * `PathFitter.setShowAnnotatedView <../pysnt/pathfitter_doc.html#setshowannotatedview>`_ - Sets whether an interactive image of the result should be displayed.
 * `SkeletonConverter.setSilent <../pysnt/skeletonconverter_doc.html#setsilent>`_ - Sets whether to run skeleton analysis in silent mode. Setting this to false will display both the tagged skeleton image...
+* `Annotation3D.setSize <../pysnt/annotation3d_doc.html#setsize>`_ - Sets the annotation width.
 * `Fill.setSourcePaths <../pysnt/fill_doc.html#setsourcepaths>`_ - Sets the source paths for the filled structure using a set of paths.
 * `FillerThread.setSourcePaths <../pysnt/fillerthread_doc.html#setsourcepaths>`_ - No description available
 * `BoundingBox.setSpacing <../pysnt/boundingbox_doc.html#setspacing>`_ - Sets the voxel spacing.
@@ -1178,10 +1189,12 @@ S
 * `MultiViewer2D.setTitle <../pysnt/multiviewer2d_doc.html#settitle>`_ - Sets the title of this Viewer's frame.
 * `MultiViewer3D.setTitle <../pysnt/multiviewer3d_doc.html#settitle>`_ - Sets the title of the Viewer's frame.
 * `Viewer2D.setTitle <../pysnt/viewer2d_doc.html#settitle>`_ - Sets the plot display title.
+* `Annotation3D.setTransparency <../pysnt/annotation3d_doc.html#settransparency>`_ - Script friendly method to assign a transparency to the annotation.
 * `BoundingBox.setUnit <../pysnt/boundingbox_doc.html#setunit>`_ - Sets the default length unit for voxel spacing (typically um, for SWC reconstructions)
 * `SkeletonConverter.setVerbose <../pysnt/skeletonconverter_doc.html#setverbose>`_ - Sets whether to run skeleton analysis in verbose mode. Controls whether the skeleton analysis should provide detailed...
 * `MultiViewer3D.setViewMode <../pysnt/multiviewer3d_doc.html#setviewmode>`_ - No description available
 * `PathStraightener.setWidth <../pysnt/pathstraightener_doc.html#setwidth>`_ - Sets the width of the straightened path image.
+* `Annotation3D.setWireframeColor <../pysnt/annotation3d_doc.html#setwireframecolor>`_ - Assigns a wireframe color to the annotation.
 * `BiSearchNode.setX <../pysnt/bisearchnode_doc.html#setx>`_ - No description available
 * `MultiViewer2D.setXrange <../pysnt/multiviewer2d_doc.html#setxrange>`_ - Sets a manual range for the viewers' X-axis. Calling setXrange(-1, -1) enables auto-range (the default). Must be called...
 * `Viewer2D.setXrange <../pysnt/viewer2d_doc.html#setxrange>`_ - Sets a manual range for the viewers' X-axis. Calling setXrange(-1, -1) enables auto-range (the default). Must be called...
@@ -1371,6 +1384,7 @@ S
 * `VFBUtils.static main <../pysnt/vfbutils_doc.html#static main>`_ - No description available
 * `Viewer2D.static main <../pysnt/viewer2d_doc.html#static main>`_ - No description available
 * `ImgUtils.static maxDimension <../pysnt/imgutils_doc.html#static maxdimension>`_ - No description available
+* `Annotation3D.static meshToDrawable <../pysnt/annotation3d_doc.html#static meshtodrawable>`_ - No description available
 * `ImpUtils.static nextZoomLevel <../pysnt/imputils_doc.html#static nextzoomlevel>`_ - No description available
 * `SNTPoint.static of <../pysnt/sntpoint_doc.html#static of>`_ - No description available
 * `ImpUtils.static open <../pysnt/imputils_doc.html#static open>`_ - No description available

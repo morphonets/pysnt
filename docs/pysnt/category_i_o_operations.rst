@@ -102,18 +102,19 @@ Path
 
    **Returns:** (``Path``) the empty path
 
-.. method:: drawPathAsPoints(arg0, arg1, arg2, arg3, arg4, arg5)
+.. method:: drawPathAsPoints(arg0, arg1, arg2, arg3, arg4, arg5, arg6)
 
-   **Signature:** ``drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void``
+   **Signature:** ``drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void``
 
    **Parameters:**
 
    * **arg0** (``Any``)
    * **arg1** (``Any``)
    * **arg2** (``Any``)
-   * **arg3** (``int``)
+   * **arg3** (``bool``)
    * **arg4** (``bool``)
-   * **arg5** (``bool``)
+   * **arg5** (``int``)
+   * **arg6** (``int``)
 
    **Returns:** ``None``
 
@@ -422,4 +423,4 @@ Viewer3D
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

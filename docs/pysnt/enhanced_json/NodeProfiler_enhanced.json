@@ -1,9 +1,9 @@
 {
   "class_name": "NodeProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.826437",
+  "extracted_at": "2025-11-19T11:06:20.446178",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.624963",
+  "enhancement_timestamp": "2025-11-22T08:11:21.364528",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -411,22 +411,6 @@
       "name": "getTable",
       "overloads": [
         {
-          "signature": "getTable(Path) -> SNTTable",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
-              "description": "- the path to be profiled, using its CT positions in the image",
-              "javadoc_name": "path"
-            }
-          ],
-          "return_type": "SNTTable",
-          "java_return_type": "SNTTable",
-          "return_description": "the profiled raw data in tabular form (1 column-per profiled node)",
-          "throws": {}
-        },
-        {
           "signature": "getTable(Path, int) -> SNTTable",
           "params": [
             {
@@ -447,6 +431,22 @@
           "return_type": "SNTTable",
           "java_return_type": "SNTTable",
           "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTable(Path) -> SNTTable",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to be profiled, using its CT positions in the image",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "return_description": "the profiled raw data in tabular form (1 column-per profiled node)",
           "throws": {}
         }
       ],

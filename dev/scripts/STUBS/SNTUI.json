@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:49.079031",
+  "extracted_at": "2025-11-19T11:06:20.720673",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -511,6 +511,23 @@
       "name": "checkImage",
       "overloads": [
         {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -536,23 +553,6 @@
           ],
           "return_type": "int",
           "java_return_type": "int"
-        },
-        {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
         }
       ],
       "documentation": "Java method: checkImage"
@@ -560,18 +560,6 @@
     {
       "name": "contains",
       "overloads": [
-        {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
         {
           "signature": "contains(int, int) -> boolean",
           "params": [
@@ -584,6 +572,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(Point) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Point"
             }
           ],
           "return_type": "bool",
@@ -643,18 +643,6 @@
       "name": "createImage",
       "overloads": [
         {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image"
-        },
-        {
           "signature": "createImage(int, int) -> Image",
           "params": [
             {
@@ -670,6 +658,18 @@
           ],
           "return_type": "Any",
           "java_return_type": "Image"
+        },
+        {
+          "signature": "createImage(ImageProducer) -> Image",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageProducer"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Image"
         }
       ],
       "documentation": "Java method: createImage"
@@ -677,23 +677,6 @@
     {
       "name": "createVolatileImage",
       "overloads": [
-        {
-          "signature": "createVolatileImage(int, int) -> VolatileImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "VolatileImage"
-        },
         {
           "signature": "createVolatileImage(int, int, ImageCapabilities) -> VolatileImage",
           "params": [
@@ -711,6 +694,23 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ImageCapabilities"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VolatileImage"
+        },
+        {
+          "signature": "createVolatileImage(int, int) -> VolatileImage",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "Any",
@@ -795,6 +795,12 @@
       "name": "enable",
       "overloads": [
         {
+          "signature": "enable() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "enable(boolean) -> void",
           "params": [
             {
@@ -803,12 +809,6 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "enable() -> void",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

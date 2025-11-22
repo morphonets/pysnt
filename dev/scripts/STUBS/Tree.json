@@ -1,7 +1,7 @@
 {
   "class_name": "Tree",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:49.162742",
+  "extracted_at": "2025-11-19T11:06:20.810262",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,24 +72,24 @@
       "name": "assignImage",
       "overloads": [
         {
-          "signature": "assignImage(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "assignImage(Dataset) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "Dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
@@ -293,12 +293,6 @@
       "name": "getBoundingBox",
       "overloads": [
         {
-          "signature": "getBoundingBox() -> BoundingBox",
-          "params": [],
-          "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
-        },
-        {
           "signature": "getBoundingBox(boolean) -> BoundingBox",
           "params": [
             {
@@ -307,6 +301,12 @@
               "java_type": "boolean"
             }
           ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        },
+        {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
           "return_type": "BoundingBox",
           "java_return_type": "BoundingBox"
         }
@@ -329,12 +329,6 @@
       "name": "getConvexHull",
       "overloads": [
         {
-          "signature": "getConvexHull() -> AbstractConvexHull",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull"
-        },
-        {
           "signature": "getConvexHull(String) -> AbstractConvexHull",
           "params": [
             {
@@ -343,6 +337,12 @@
               "java_type": "String"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull"
+        },
+        {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "AbstractConvexHull"
         }
@@ -550,6 +550,12 @@
       "name": "getSkeleton2D",
       "overloads": [
         {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
           "signature": "getSkeleton2D(int) -> ImagePlus",
           "params": [
             {
@@ -558,12 +564,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "getSkeleton2D() -> ImagePlus",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -681,6 +681,18 @@
           "java_return_type": "List"
         },
         {
+          "signature": "static listFromDir(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "static listFromDir(String, String, String;) -> List",
           "params": [
             {
@@ -697,18 +709,6 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "String;"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "static listFromDir(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
             }
           ],
           "return_type": "List[Any]",

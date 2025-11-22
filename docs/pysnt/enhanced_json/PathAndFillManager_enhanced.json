@@ -1,37 +1,23 @@
 {
   "class_name": "PathAndFillManager",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:48.862871",
+  "extracted_at": "2025-11-19T11:06:20.486006",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.584582",
+  "enhancement_timestamp": "2025-11-22T08:11:21.324754",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "addPath",
       "overloads": [
         {
-          "signature": "addPath(Path, int, int) -> void",
+          "signature": "addPath(Path) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Path",
               "java_type": "Path",
               "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "None",
@@ -70,14 +56,28 @@
           "throws": {}
         },
         {
-          "signature": "addPath(Path) -> void",
+          "signature": "addPath(Path, int, int) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Path",
               "java_type": "Path",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -126,6 +126,22 @@
       "name": "addTree",
       "overloads": [
         {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the collection of paths to be added",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "addTree(Tree, String) -> void",
           "params": [
             {
@@ -141,22 +157,6 @@
               "java_type": "String",
               "description": "",
               "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "addTree(Tree) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
-              "description": "- the collection of paths to be added",
-              "javadoc_name": "tree"
             }
           ],
           "return_type": "None",
@@ -1420,15 +1420,15 @@
   "since_version": null,
   "see_also": [
     "for details on the SWC point data structure",
-    "DefaultHandler",
     "getTrees()",
     "for converting entire Tree objects",
     "for branch point coordinates",
-    "Tree.getLabel()",
-    "NeuroMorphoLoader",
     "for parent-child relationships",
     "SNTColor.getDistinctColors(int)",
-    "Tree.isEmpty()"
+    "DefaultHandler",
+    "Tree.isEmpty()",
+    "NeuroMorphoLoader",
+    "Tree.getLabel()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

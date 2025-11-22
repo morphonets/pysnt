@@ -1,7 +1,7 @@
 {
   "class_name": "ImpUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-12T22:36:48.728584",
+  "extracted_at": "2025-11-19T11:06:20.337026",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -588,23 +588,6 @@
       "name": "static open",
       "overloads": [
         {
-          "signature": "static open(String, String) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
           "signature": "static open(File) -> ImagePlus",
           "params": [
             {
@@ -621,6 +604,23 @@
           "params": [
             {
               "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static open(String, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
               "type": "str",
               "java_type": "String"
             }
@@ -885,23 +885,6 @@
       "name": "static zoomTo",
       "overloads": [
         {
-          "signature": "static zoomTo(ImagePlus, Collection) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
           "signature": "static zoomTo(ImagePlus, double, int, int) -> void",
           "params": [
             {
@@ -927,6 +910,23 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "static zoomTo(ImagePlus, Collection) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
         }
       ],
       "documentation": "Java method: static zoomTo"

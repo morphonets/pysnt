@@ -1,9 +1,9 @@
 {
   "class_name": "Tree",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:49.162742",
+  "extracted_at": "2025-11-19T11:06:20.810262",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.634916",
+  "enhancement_timestamp": "2025-11-22T08:11:21.374556",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -108,12 +108,12 @@
       "name": "assignImage",
       "overloads": [
         {
-          "signature": "assignImage(ImagePlus) -> void",
+          "signature": "assignImage(Dataset) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "ImagePlus",
+              "java_type": "Dataset",
               "description": "- the Dataset providing the spatial calibration. Null allowed.",
               "javadoc_name": "dataset"
             }
@@ -124,12 +124,12 @@
           "throws": {}
         },
         {
-          "signature": "assignImage(Dataset) -> void",
+          "signature": "assignImage(ImagePlus) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "Dataset",
+              "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": null
             }
@@ -466,14 +466,6 @@
       "name": "getBoundingBox",
       "overloads": [
         {
-          "signature": "getBoundingBox() -> BoundingBox",
-          "params": [],
-          "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getBoundingBox(boolean) -> BoundingBox",
           "params": [
             {
@@ -487,6 +479,14 @@
           "return_type": "BoundingBox",
           "java_return_type": "BoundingBox",
           "return_description": "the BoundingBox",
+          "throws": {}
+        },
+        {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -522,14 +522,6 @@
       "name": "getConvexHull",
       "overloads": [
         {
-          "signature": "getConvexHull() -> AbstractConvexHull",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getConvexHull(String) -> AbstractConvexHull",
           "params": [
             {
@@ -543,6 +535,14 @@
           "return_type": "Any",
           "java_return_type": "AbstractConvexHull",
           "return_description": "the convex hull. Either ConvexHull2D (if this tree is two-dimensional) or ConvexHull3D (if this tree is three-dimensional)",
+          "throws": {}
+        },
+        {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -883,6 +883,14 @@
       "name": "getSkeleton2D",
       "overloads": [
         {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getSkeleton2D(int) -> ImagePlus",
           "params": [
             {
@@ -896,14 +904,6 @@
           "return_type": "Any",
           "java_return_type": "ImagePlus",
           "return_description": "the skeletonized 16-bit binary image",
-          "throws": {}
-        },
-        {
-          "signature": "getSkeleton2D() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -1098,6 +1098,22 @@
           "throws": {}
         },
         {
+          "signature": "static listFromDir(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the directory containing the reconstruction files (.(e)swc, .traces, .json extension)",
+              "javadoc_name": "dir"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of imported Trees. An empty list is retrieved if dir is not a valid, readable directory.",
+          "throws": {}
+        },
+        {
           "signature": "static listFromDir(String, String, String;) -> List",
           "params": [
             {
@@ -1125,22 +1141,6 @@
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static listFromDir(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the directory containing the reconstruction files (.(e)swc, .traces, .json extension)",
-              "javadoc_name": "dir"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "the list of imported Trees. An empty list is retrieved if dir is not a valid, readable directory.",
           "throws": {}
         }
       ],
@@ -1298,33 +1298,33 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
     "assignValue(double)",
-    "TreeProperties",
-    "PathDownsampler",
-    "setLabel(String)",
-    "Object",
-    "getAssignedValue()",
-    "for controlling path structure preservation",
-    "Path.getApproximatedSurface()",
-    "getRoot()",
-    "SNTColor.getDistinctColors(int, String)",
     "getSkeleton()",
-    "downsample(double)",
-    "skeletonize(ImagePlus, int)",
-    "SNTColor.getDistinctColors(int)",
-    "for integer SWC type flags",
-    "for the conversion implementation",
-    "for individual path SWC types",
-    "getSkeleton(int)",
-    "Cloneable",
     "upsample(double)",
+    "Constant Field Values",
+    "Cloneable",
+    "for the graph representation",
+    "Object",
     "Path.getApproximatedVolume()",
-    "Path.hasNodeColors()",
-    "for the version that includes soma by default",
+    "downsample(double)",
+    "Path.getApproximatedSurface()",
+    "for integer SWC type flags",
+    "SNTColor.getDistinctColors(int)",
+    "getSkeleton(int)",
     "Path.upsample(double)",
-    "transform(Collection, String, boolean)",
-    "for the graph representation"
+    "for the version that includes soma by default",
+    "SNTColor.getDistinctColors(int, String)",
+    "for controlling path structure preservation",
+    "skeletonize(ImagePlus, int)",
+    "TreeProperties",
+    "for the conversion implementation",
+    "getRoot()",
+    "setLabel(String)",
+    "getAssignedValue()",
+    "PathDownsampler",
+    "for individual path SWC types",
+    "Path.hasNodeColors()",
+    "transform(Collection, String, boolean)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

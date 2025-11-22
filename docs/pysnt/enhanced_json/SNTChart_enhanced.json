@@ -1,9 +1,9 @@
 {
   "class_name": "SNTChart",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:49.017914",
+  "extracted_at": "2025-11-19T11:06:20.653922",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.589313",
+  "enhancement_timestamp": "2025-11-22T08:11:21.329342",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -867,6 +867,29 @@
       "name": "annotateCategory",
       "overloads": [
         {
+          "signature": "annotateCategory(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the category to be annotated. Ignored if it does not exist in category axis.",
+              "javadoc_name": "category"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "annotateCategory(String, String, String) -> void",
           "params": [
             {
@@ -895,29 +918,6 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "annotateCategory(String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the category to be annotated. Ignored if it does not exist in category axis.",
-              "javadoc_name": "category"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: annotateCategory",
@@ -932,19 +932,19 @@
       "name": "annotatePoint",
       "overloads": [
         {
-          "signature": "annotatePoint([D, String, String) -> void",
+          "signature": "annotatePoint(double, double, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "[D",
+              "type": "float",
+              "java_type": "double",
               "description": "- the array holding the focal point coordinates of the profile",
               "javadoc_name": "coordinates"
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String",
+              "type": "float",
+              "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
@@ -954,36 +954,6 @@
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_2"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "annotatePoint(double, double, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -1017,6 +987,36 @@
             },
             {
               "name": "arg3",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "annotatePoint([D, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -1331,6 +1331,29 @@
       "name": "checkImage",
       "overloads": [
         {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -1356,29 +1379,6 @@
             },
             {
               "name": "arg3",
-              "type": "Any",
-              "java_type": "ImageObserver",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
               "type": "Any",
               "java_type": "ImageObserver",
               "description": "",
@@ -1423,7 +1423,7 @@
       "name": "static combine",
       "overloads": [
         {
-          "signature": "static combine(Collection, int, int, boolean) -> SNTChart",
+          "signature": "static combine(Collection, boolean) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -1434,20 +1434,6 @@
             },
             {
               "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
               "type": "bool",
               "java_type": "boolean",
               "description": "",

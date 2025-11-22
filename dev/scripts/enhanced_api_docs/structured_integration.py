@@ -350,24 +350,66 @@ def enhance_class_docstrings():
 def _apply_enhanced_docstrings(enhanced_docstrings):
     """Apply enhanced docstrings to classes in loaded modules."""
     import sys
+    import os
+    from pathlib import Path
     
-    # List of modules to check for classes
-    module_names = [
-        'pysnt',
-        'pysnt.analysis', 
-        'pysnt.util',
-        'pysnt.viewer',
-        'pysnt.tracing',
-        'pysnt.gui',
-        'pysnt.io',
-        'pysnt.converters',
-        'pysnt.display'
-    ]
+    # Automatically discover all pysnt submodules
+    module_names = ['pysnt']  # Start with main module
+    
+    # Find the pysnt package directory
+    try:
+        # Try to find pysnt in sys.path or relative to this file
+        pysnt_dir = None
+        for path in sys.path:
+            potential_dir = Path(path) / 'pysnt'
+            if potential_dir.is_dir() and (potential_dir / '__init__.py').exists():
+                pysnt_dir = potential_dir
+                break
+        
+        # If not found in sys.path, try relative to common locations
+        if not pysnt_dir:
+            # Try relative to this file (for when generating docs)
+            script_dir = Path(__file__).parent.parent.parent.parent  # Go up to project root
+            potential_dir = script_dir / 'src' / 'pysnt'
+            if potential_dir.is_dir() and (potential_dir / '__init__.py').exists():
+                pysnt_dir = potential_dir
+        
+        # Discover submodules
+        if pysnt_dir:
+            for item in sorted(pysnt_dir.iterdir()):
+                if item.is_dir() and not item.name.startswith('_') and not item.name.startswith('.'):
+                    # Check if it's a Python package (has __init__.py)
+                    if (item / '__init__.py').exists():
+                        module_names.append(f'pysnt.{item.name}')
+    except Exception:
+        # If discovery fails, fall back to known modules
+        module_names = [
+            'pysnt',
+            'pysnt.analysis',
+            'pysnt.annotation',
+            'pysnt.converters',
+            'pysnt.display',
+            'pysnt.gui',
+            'pysnt.io',
+            'pysnt.tracing',
+            'pysnt.util',
+            'pysnt.viewer'
+        ]
     
     for module_name in module_names:
+        # Try to get the module from sys.modules, or import it
+        module = None
         if module_name in sys.modules:
             module = sys.modules[module_name]
-            
+        else:
+            # Try to import the module
+            try:
+                module = __import__(module_name, fromlist=[''])
+            except (ImportError, Exception):
+                # Module not available, skip it
+                continue
+        
+        if module:
             for class_name, enhanced_docstring in enhanced_docstrings.items():
                 if hasattr(module, class_name):
                     class_obj = getattr(module, class_name)
@@ -463,9 +505,20 @@ enhance_class_docstrings()
     
     def _get_detailed_doc_filename(self, class_name: str) -> str:
         """Get the detailed documentation filename for a class."""
-        # Use simple flat filename in api_auto directory
         class_name_lower = class_name.lower()
-        return f"{class_name_lower}_doc.rst"
+        
+        # Get the package for this class to create hierarchical structure
+        package_info = self._get_package_info(class_name)
+        package = package_info.get('package', 'sc.fiji.snt')
+        
+        # Extract submodule from package (e.g., 'sc.fiji.snt.viewer' -> 'viewer')
+        if package.startswith('sc.fiji.snt.'):
+            submodule = package.replace('sc.fiji.snt.', '')
+            # Create path like 'viewer/annotation3d_doc.rst'
+            return f"{submodule}/{class_name_lower}_doc.rst"
+        else:
+            # For main package classes, use flat structure
+            return f"{class_name_lower}_doc.rst"
     
     def _create_detailed_doc_content(self, class_name: str, class_data: Dict[str, Any]) -> str:
         """Create detailed documentation content for a class."""
@@ -846,8 +899,10 @@ See Also
         """Get the link to the detailed documentation file."""
         detailed_doc_filename = self._get_detailed_doc_filename(class_name)
         # Convert file path to web path (remove .rst extension, convert to HTML)
-        web_path = detailed_doc_filename.replace('.rst', '.html').replace('/', '/')
-        return f"/{web_path}"
+        web_path = detailed_doc_filename.replace('.rst', '.html')
+        # Use relative path from api_auto/ to pysnt/
+        # api_auto/pysnt.annotation.html -> ../pysnt/allencompartment_doc.html
+        return f"../pysnt/{web_path}"
     
     def _update_cross_references(self):
         """Update cross-references in the main API documentation."""

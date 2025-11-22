@@ -3,7 +3,7 @@ Visualization Methods
 
 Methods that create visual representations, plots, or graphical displays.
 
-Total methods in this category: **25**
+Total methods in this category: **26**
 
 .. contents:: Classes in this Category
    :local:
@@ -16,6 +16,21 @@ AllenCompartment
    **Signature:** ``color() -> ColorRGB``
 
    **Returns:** (``Any``) the display color of this compartment (if known)
+
+
+Annotation3D
+------------
+
+.. method:: colorCode(arg0, arg1)
+
+   **Signature:** ``colorCode(String, String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - one of COLORMAPS, i.e., "grayscale", "hotcold", "rgb", "redgreen", "whiteblue", etc.
+   * **arg1** (``str``)
+
+   **Returns:** ``None``
 
 
 ColorMaps
@@ -315,4 +330,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-11-13 22:40:29*
+*Category index generated on 2025-11-22 08:11:21*

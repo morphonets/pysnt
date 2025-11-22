@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Setters'
-Total matching methods: **258**
+Total matching methods: **262**
 
 Matching Methods
 ----------------
@@ -547,6 +547,14 @@ Matching Methods
      - :class:`Viewer2D`
      - ``None``
      - No description available
+   * - :meth:`Annotation3D.setBoundingBoxColor`
+     - :class:`Annotation3D`
+     - ``None``
+     - Determines whether the mesh bounding box should be displayed.
+   * - :meth:`Annotation3D.setColor`
+     - :class:`Annotation3D`
+     - ``None``
+     - Script friendly method to assign a color to the annotation.
    * - :meth:`SWCPoint.setColor`
      - :class:`SWCPoint`
      - ``None``
@@ -1003,6 +1011,10 @@ Matching Methods
      - :class:`Viewer2D`
      - ``None``
      - Sets the plot display title.
+   * - :meth:`Annotation3D.setTransparency`
+     - :class:`Annotation3D`
+     - ``None``
+     - Script friendly method to assign a transparency to the annotation.
    * - :meth:`BoundingBox.setUnit`
      - :class:`BoundingBox`
      - ``None``
@@ -1019,6 +1031,10 @@ Matching Methods
      - :class:`PathStraightener`
      - ``None``
      - Sets the width of the straightened path image.
+   * - :meth:`Annotation3D.setWireframeColor`
+     - :class:`Annotation3D`
+     - ``None``
+     - Assigns a wireframe color to the annotation.
    * - :meth:`BiSearchNode.setX`
      - :class:`BiSearchNode`
      - ``None``
@@ -1050,4 +1066,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-11-13 22:40:29*
+*Filtered index generated on 2025-11-22 08:11:21*

@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Getters'
-Total matching methods: **532**
+Total matching methods: **540**
 
 Matching Methods
 ----------------
@@ -363,6 +363,10 @@ Matching Methods
      - :class:`PersistenceAnalyzer`
      - ``List[Any]``
      - Gets the persistence barcode for the specified filter function. The barcode is a simplified representation of the...
+   * - :meth:`Annotation3D.getBarycentre`
+     - :class:`Annotation3D`
+     - ``SNTPoint``
+     - Returns the center of this annotation bounding box.
    * - :meth:`InteractiveTracerCanvas.getBaseline`
      - :class:`InteractiveTracerCanvas`
      - ``int``
@@ -437,7 +441,7 @@ Matching Methods
      - Gets all the paths being analyzed as branches. In PathStatistics, all paths are considered as branches since each path...
    * - :meth:`StrahlerAnalyzer.getBranches`
      - :class:`StrahlerAnalyzer`
-     - ``List[Any]``
+     - ``Dict[str, Any]``
      - No description available
    * - :meth:`TreeStatistics.getBranches`
      - :class:`TreeStatistics`
@@ -535,6 +539,10 @@ Matching Methods
      - :class:`Path`
      - ``List[Any]``
      - Gets the list of child paths that branch from this path. Returns the collection of paths that have this path as their...
+   * - :meth:`Annotation3D.getColor`
+     - :class:`Annotation3D`
+     - ``Any``
+     - No description available
    * - :meth:`MultiTreeColorMapper.getColor`
      - :class:`MultiTreeColorMapper`
      - ``Any``
@@ -795,6 +803,10 @@ Matching Methods
      - :class:`SNT`
      - ``bool``
      - No description available
+   * - :meth:`Annotation3D.getDrawable`
+     - :class:`Annotation3D`
+     - ``Any``
+     - Returns the AbstractDrawable associated with this annotation.
    * - :meth:`ConvexHullAnalyzer.getEccentricity`
      - :class:`ConvexHullAnalyzer`
      - ``float``
@@ -1179,6 +1191,10 @@ Matching Methods
      - :class:`MouseLightLoader`
      - ``Any``
      - Gets all the data associated with this reconstruction as a JSON object.
+   * - :meth:`Annotation3D.getLabel`
+     - :class:`Annotation3D`
+     - ``str``
+     - Gets the annotation label
    * - :meth:`Tree.getLabel`
      - :class:`Tree`
      - ``str``
@@ -1831,6 +1847,10 @@ Matching Methods
      - :class:`Viewer3D`
      - ``List[Any]``
      - Returns all trees added to this viewer.
+   * - :meth:`Annotation3D.getType`
+     - :class:`Annotation3D`
+     - ``str``
+     - Gets the type of this annotation.
    * - :meth:`SNTService.getUI`
      - :class:`SNTService`
      - ``Any``
@@ -1866,6 +1886,10 @@ Matching Methods
    * - :meth:`SNTService.getVersion`
      - :class:`SNTService`
      - ``str``
+     - No description available
+   * - :meth:`Annotation3D.getVolume`
+     - :class:`Annotation3D`
+     - ``float``
      - No description available
    * - :meth:`Fill.getVolume`
      - :class:`Fill`
@@ -1985,6 +2009,10 @@ Matching Methods
      - Assesses if this annotation is a child of a specified compartment.
    * - :meth:`InsectBrainCompartment.isChildOf`
      - :class:`InsectBrainCompartment`
+     - ``bool``
+     - No description available
+   * - :meth:`Annotation3D.isColorCodeAllowed`
+     - :class:`Annotation3D`
      - ``bool``
      - No description available
    * - :meth:`Viewer3D.isDarkModeOn`
@@ -2127,6 +2155,10 @@ Matching Methods
      - :class:`SkeletonConverter`
      - ``None``
      - Sets whether to prune components below a threshold length from the result.
+   * - :meth:`Annotation3D.setSize`
+     - :class:`Annotation3D`
+     - ``None``
+     - Sets the annotation width.
    * - :meth:`ConvexHull2D.size`
      - :class:`ConvexHull2D`
      - ``float``
@@ -2146,4 +2178,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-11-13 22:40:29*
+*Filtered index generated on 2025-11-22 08:11:21*

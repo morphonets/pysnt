@@ -1,9 +1,9 @@
 {
   "class_name": "PathStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.933663",
+  "extracted_at": "2025-11-19T11:06:20.563107",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.631440",
+  "enhancement_timestamp": "2025-11-22T08:11:21.370926",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -135,29 +135,6 @@
       "name": "getAnnotatedLength",
       "overloads": [
         {
-          "signature": "getAnnotatedLength(int, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getAnnotatedLength(int, String, boolean) -> Map",
           "params": [
             {
@@ -178,6 +155,29 @@
               "name": "arg2",
               "type": "bool",
               "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLength(int, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -216,8 +216,23 @@
       "name": "getAnnotatedLengthHistogram",
       "overloads": [
         {
-          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
-          "params": [],
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
@@ -240,23 +255,8 @@
           "throws": {}
         },
         {
-          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
+          "params": [],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
@@ -788,6 +788,73 @@
       "name": "getFlowPlot",
       "overloads": [
         {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
           "params": [
             {
@@ -868,73 +935,6 @@
               "name": "arg2",
               "type": "bool",
               "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -1091,24 +1091,6 @@
       "name": "getMetric",
       "overloads": [
         {
-          "signature": "getMetric(String) -> Number",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the name of the metric to retrieve",
-              "javadoc_name": "metric"
-            }
-          ],
-          "return_type": "Union[int, float]",
-          "java_return_type": "Number",
-          "return_description": "the metric value for the specified path",
-          "throws": {
-            "UnknownMetricException": "- if the metric is not recognized"
-          }
-        },
-        {
           "signature": "getMetric(String, Path) -> Number",
           "params": [
             {
@@ -1130,6 +1112,24 @@
           "java_return_type": "Number",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "getMetric(String) -> Number",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the name of the metric to retrieve",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "Union[int, float]",
+          "java_return_type": "Number",
+          "return_description": "the metric value for the specified path",
+          "throws": {
+            "UnknownMetricException": "- if the metric is not recognized"
+          }
         }
       ],
       "documentation": "Java method: getMetric",
@@ -1144,6 +1144,14 @@
       "name": "static getMetrics",
       "overloads": [
         {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "static getMetrics(String) -> List",
           "params": [
             {
@@ -1154,14 +1162,6 @@
               "javadoc_name": null
             }
           ],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getMetrics() -> List",
-          "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "",
@@ -1226,19 +1226,19 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Path",
-    "Constant Field Values",
-    "TreeStatistics.getMetrics()",
     "StrahlerAnalyzer.getHighestBranchOrder()",
-    "TreeStatistics",
-    "TreeStatistics.getPrimaryBranches()",
-    "TreeStatistics.setExactMetricMatch(boolean)",
-    "TreeStatistics.getPrimaryPaths()",
-    "TreeStatistics.getInnerBranches()",
+    "StrahlerAnalyzer.getBranches()",
     "TreeStatistics.getTerminalBranches()",
+    "TreeStatistics.getInnerBranches()",
     "StrahlerAnalyzer.getRootAssociatedBranches()",
+    "TreeStatistics.getPrimaryBranches()",
+    "Constant Field Values",
+    "TreeStatistics.getPrimaryPaths()",
+    "Path",
     "Tree",
-    "StrahlerAnalyzer.getBranches()"
+    "TreeStatistics",
+    "TreeStatistics.setExactMetricMatch(boolean)",
+    "TreeStatistics.getMetrics()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

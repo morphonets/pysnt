@@ -1,9 +1,9 @@
 {
   "class_name": "NodeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.819719",
+  "extracted_at": "2025-11-19T11:06:20.439156",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.552163",
+  "enhancement_timestamp": "2025-11-22T08:11:21.293077",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -86,6 +86,14 @@
       "name": "getColorTable",
       "overloads": [
         {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorTable",
+          "return_description": "the current color table",
+          "throws": {}
+        },
+        {
           "signature": "getColorTable(String) -> ColorTable",
           "params": [
             {
@@ -99,14 +107,6 @@
           "return_type": "Any",
           "java_return_type": "ColorTable",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getColorTable() -> ColorTable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ColorTable",
-          "return_description": "the current color table",
           "throws": {}
         }
       ],
@@ -391,12 +391,12 @@
       "name": "static unMap",
       "overloads": [
         {
-          "signature": "static unMap(Collection) -> void",
+          "signature": "static unMap(Tree) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "type": "Tree",
+              "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             }
@@ -407,12 +407,12 @@
           "throws": {}
         },
         {
-          "signature": "static unMap(Tree) -> void",
+          "signature": "static unMap(Collection) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -481,8 +481,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "ColorMapper",
-    "Constant Field Values"
+    "Constant Field Values",
+    "ColorMapper"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

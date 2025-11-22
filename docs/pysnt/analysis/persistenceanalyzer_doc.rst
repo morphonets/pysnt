@@ -8,50 +8,86 @@
    :caption: Complete API Reference
    :hidden:
 
-   ../../api_auto/index
-   ../../api_auto/pysnt
-   ../../api_auto/pysnt.analysis
-   ../../api_auto/pysnt.analysis.graph
-   ../../api_auto/pysnt.analysis.growth
-   ../../api_auto/pysnt.analysis.sholl
-   ../../api_auto/pysnt.analysis.sholl.gui
-   ../../api_auto/pysnt.analysis.sholl.math
-   ../../api_auto/pysnt.analysis.sholl.parsers
-   ../../api_auto/pysnt.annotation
-   ../../api_auto/pysnt.converters
-   ../../api_auto/pysnt.converters.chart_converters
-   ../../api_auto/pysnt.converters.core
-   ../../api_auto/pysnt.converters.enhancement
-   ../../api_auto/pysnt.converters.extractors
-   ../../api_auto/pysnt.converters.graph_converters
-   ../../api_auto/pysnt.converters.structured_data_converters
-   ../../api_auto/pysnt.core
-   ../../api_auto/pysnt.display
-   ../../api_auto/pysnt.display.core
-   ../../api_auto/pysnt.display.data_display
-   ../../api_auto/pysnt.display.utils
-   ../../api_auto/pysnt.display.visual_display
-   ../../api_auto/pysnt.gui
-   ../../api_auto/pysnt.gui.cmds
-   ../../api_auto/pysnt.io
-   ../../api_auto/pysnt.tracing
-   ../../api_auto/pysnt.tracing.artist
-   ../../api_auto/pysnt.tracing.cost
-   ../../api_auto/pysnt.tracing.heuristic
-   ../../api_auto/pysnt.tracing.image
-   ../../api_auto/pysnt.util
-   ../../api_auto/pysnt.viewer
-   ../../api_auto/pysnt.common_module
-   ../../api_auto/pysnt.config
-   ../../api_auto/pysnt.gui_utils
-   ../../api_auto/pysnt.java_utils
-   ../../api_auto/pysnt.setup_utils
-   ../../api_auto/method_index
+   ../api_auto/index
+   ../api_auto/pysnt
+   ../api_auto/pysnt.analysis
+   ../api_auto/pysnt.analysis.graph
+   ../api_auto/pysnt.analysis.growth
+   ../api_auto/pysnt.analysis.sholl
+   ../api_auto/pysnt.analysis.sholl.gui
+   ../api_auto/pysnt.analysis.sholl.math
+   ../api_auto/pysnt.analysis.sholl.parsers
+   ../api_auto/pysnt.annotation
+   ../api_auto/pysnt.converters
+   ../api_auto/pysnt.converters.chart_converters
+   ../api_auto/pysnt.converters.core
+   ../api_auto/pysnt.converters.enhancement
+   ../api_auto/pysnt.converters.extractors
+   ../api_auto/pysnt.converters.graph_converters
+   ../api_auto/pysnt.converters.structured_data_converters
+   ../api_auto/pysnt.core
+   ../api_auto/pysnt.display
+   ../api_auto/pysnt.display.core
+   ../api_auto/pysnt.display.data_display
+   ../api_auto/pysnt.display.utils
+   ../api_auto/pysnt.display.visual_display
+   ../api_auto/pysnt.gui
+   ../api_auto/pysnt.gui.cmds
+   ../api_auto/pysnt.io
+   ../api_auto/pysnt.tracing
+   ../api_auto/pysnt.tracing.artist
+   ../api_auto/pysnt.tracing.cost
+   ../api_auto/pysnt.tracing.heuristic
+   ../api_auto/pysnt.tracing.image
+   ../api_auto/pysnt.util
+   ../api_auto/pysnt.viewer
+   ../api_auto/pysnt.common_module
+   ../api_auto/pysnt.config
+   ../api_auto/pysnt.gui_utils
+   ../api_auto/pysnt.java_utils
+   ../api_auto/pysnt.setup_utils
+   ../api_auto/method_index
+   ../api_auto/class_index
+   ../api_auto/constants_index
 
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Enhanced documentation for PersistenceAnalyzer class.
+Performs persistent homology analysis on neuronal Trees.
+
+This class implements the algorithm described in Kanari, L. et al. "A Topological Representation of Branching Neuronal Morphologies" (Neuroinformatics 16, 3–13, 2018) to extract topological features from neuronal morphologies.
+
+Core Concepts
+
+Filter Functions: Mathematical functions that assign scalar values to each node in the tree based on various morphological properties (distance from root, branch order, spatial coordinates, etc.).
+
+Persistence Diagram: A collection of 2D points (birth, death) representing when topological features (branches) appear and disappear during a filtration process. Each point corresponds to a branch in the neuronal tree.
+
+Persistence: The "lifespan" of a topological feature, calculated as death - birth. High persistence indicates morphologically significant branches, while low persistence may represent noise or minor branches.
+
+Supported Filter Functions
+
+Geodesic: Path distance from node to root along the tree structure Radial: Euclidean (straight-line) distance from node to root Centrifugal: Reverse Strahler number (branch order from tips) Path Order: SNT path order hierarchy X, Y, Z: Spatial coordinates for directional analysis
+
+Usage Example 
+```
+// Create analyzer for a neuronal tree
+PersistenceAnalyzer analyzer = new PersistenceAnalyzer(tree);
+
+// Get persistence diagram using geodesic distance
+List<List<Double>> diagram = analyzer.getDiagram("geodesic");
+
+// Each inner list contains [birth, death] values
+for (List<Double> pair : diagram) {
+    double birth = pair.get(0);
+    double death = pair.get(1);
+    double persistence = death - birth;
+    System.out.println("Branch: birth=" + birth + ", death=" + death + ", persistence=" + persistence);
+}
+
+// Get persistence landscape
+double[] landscape = analyzer.getLandscape("geodesic", 5, 100);
+```
 
 
 Methods
@@ -62,7 +98,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getBarcode(String))
+.. py:method:: getBarcode(String)
 
    Gets the persistence barcode for the specified filter function.
 
@@ -90,14 +126,14 @@ for (int i = 0; i < Math.min(5, barcode.size()); i++) {
 
 
 
-.. py:method:: static getDescriptors())
+.. py:method:: static getDescriptors()
 
    Gets a list of supported descriptor functions for persistence analysis.
 
 Returns the string identifiers for all available filter functions that can be used with getDiagram(String), getBarcode(String), and other analysis methods. These descriptors are case-insensitive when used in method calls.
 
 
-.. py:method:: getDiagram(String))
+.. py:method:: getDiagram(String)
 
    Gets the persistence diagram for the specified filter function.
 
@@ -124,7 +160,7 @@ for (List<Double> point : diagram) {
 
 
 
-.. py:method:: getDiagramNodes(String))
+.. py:method:: getDiagramNodes(String)
 
    Gets the tree nodes associated with each point in the persistence diagram.
 
@@ -158,7 +194,7 @@ for (int i = 0; i < diagram.size(); i++) {
 
 
 
-.. py:method:: getLandscape(String, int, int))
+.. py:method:: getLandscape(String, int, int)
 
    Gets the persistence landscape as a vectorized representation.
 
@@ -173,7 +209,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;))
+.. py:method:: static main(String;)
 
    
 
@@ -181,9 +217,8 @@ Other Methods
 See Also
 --------
 
-* `Package API <../../api_auto/pysnt.analysis.html#pysnt.analysis.PersistenceAnalyzer>`_
-* `Main API Documentation <../../api_auto/pysnt.analysis#PersistenceAnalyzer>`_
-* `PersistenceAnalyzer JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/PersistenceAnalyzer.html>`_
-* :doc:`Method Index </api_auto/method_index>`
+* `Package API <../api_auto/pysnt.analysis.html#pysnt.analysis.PersistenceAnalyzer>`_
+* `PersistenceAnalyzer JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/PersistenceAnalyzer.html>`_
 * :doc:`Class Index </api_auto/class_index>`
-
+* :doc:`Method Index </api_auto/method_index>`
+* :doc:`Constants Index </api_auto/constants_index>`

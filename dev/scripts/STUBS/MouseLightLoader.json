@@ -1,7 +1,7 @@
 {
   "class_name": "MouseLightLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-12T22:36:48.773791",
+  "extracted_at": "2025-11-19T11:06:20.389019",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -20,12 +20,12 @@
       "name": "static extractNodes",
       "overloads": [
         {
-          "signature": "static extractNodes(InputStream, String) -> Map",
+          "signature": "static extractNodes(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
+              "type": "str",
+              "java_type": "File"
             },
             {
               "name": "arg1",
@@ -37,12 +37,12 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "static extractNodes(File, String) -> Map",
+          "signature": "static extractNodes(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File"
+              "type": "Any",
+              "java_type": "InputStream"
             },
             {
               "name": "arg1",
@@ -60,12 +60,12 @@
       "name": "static extractTrees",
       "overloads": [
         {
-          "signature": "static extractTrees(InputStream, String) -> Map",
+          "signature": "static extractTrees(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
+              "type": "str",
+              "java_type": "File"
             },
             {
               "name": "arg1",
@@ -77,12 +77,12 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "static extractTrees(File, String) -> Map",
+          "signature": "static extractTrees(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File"
+              "type": "Any",
+              "java_type": "InputStream"
             },
             {
               "name": "arg1",
@@ -232,12 +232,6 @@
       "name": "getTree",
       "overloads": [
         {
-          "signature": "getTree() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
           "signature": "getTree(String) -> Tree",
           "params": [
             {
@@ -246,6 +240,12 @@
               "java_type": "String"
             }
           ],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        },
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
           "return_type": "Tree",
           "java_return_type": "Tree"
         },

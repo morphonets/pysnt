@@ -1,7 +1,7 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:48.831531",
+  "extracted_at": "2025-11-19T11:06:20.451251",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,6 +72,18 @@
       "name": "get",
       "overloads": [
         {
+          "signature": "get(BrainAnnotation) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "get(BrainAnnotation, boolean) -> List",
           "params": [
             {
@@ -83,18 +95,6 @@
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "get(BrainAnnotation) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "List[Any]",
@@ -223,6 +223,12 @@
       "name": "getAnnotatedNodes",
       "overloads": [
         {
+          "signature": "getAnnotatedNodes() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
             {
@@ -231,12 +237,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
-          "signature": "getAnnotatedNodes() -> Map",
-          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         }

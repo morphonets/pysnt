@@ -1,9 +1,9 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:48.967015",
+  "extracted_at": "2025-11-19T11:06:20.599439",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.610672",
+  "enhancement_timestamp": "2025-11-22T08:11:21.350608",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -1171,14 +1171,6 @@
       "name": "getImagePlus",
       "overloads": [
         {
-          "signature": "getImagePlus() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
@@ -1192,6 +1184,14 @@
           "return_type": "Any",
           "java_return_type": "ImagePlus",
           "return_description": "the image associate with the specified view, or null if the view is not available",
+          "throws": {}
+        },
+        {
+          "signature": "getImagePlus() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -1329,15 +1329,15 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "isSecondaryDataAvailable()",
-    "autoTrace(List, PointInImage)",
-    "MultiDThreePanes",
-    "loadSecondaryImage(ImagePlus)",
-    "rebuildDisplayCanvases()",
-    "getSecondaryDataAsImp()",
+    "HessianGenerationCallback",
     "loadSecondaryImage(File)",
+    "getSecondaryDataAsImp()",
+    "autoTrace(List, PointInImage)",
+    "isSecondaryDataAvailable()",
     "SearchProgressCallback",
-    "HessianGenerationCallback"
+    "rebuildDisplayCanvases()",
+    "MultiDThreePanes",
+    "loadSecondaryImage(ImagePlus)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

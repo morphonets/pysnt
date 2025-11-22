@@ -1,7 +1,7 @@
 {
   "class_name": "SNTTable",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:49.044241",
+  "extracted_at": "2025-11-19T11:06:20.681452",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,18 +72,6 @@
       "name": "addAll",
       "overloads": [
         {
-          "signature": "addAll(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "addAll(int, Collection) -> boolean",
           "params": [
             {
@@ -93,6 +81,18 @@
             },
             {
               "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "addAll(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -522,12 +522,12 @@
       "name": "geColumnStats",
       "overloads": [
         {
-          "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
+          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
+              "type": "int",
+              "java_type": "int"
             },
             {
               "name": "arg1",
@@ -544,12 +544,12 @@
           "java_return_type": "SummaryStatistics"
         },
         {
-          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
+          "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int"
+              "type": "str",
+              "java_type": "String"
             },
             {
               "name": "arg1",
@@ -646,18 +646,6 @@
           "java_return_type": "Object"
         },
         {
-          "signature": "get(String) -> Column",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Column"
-        },
-        {
           "signature": "get(int, int) -> Object",
           "params": [
             {
@@ -690,6 +678,18 @@
           ],
           "return_type": "Any",
           "java_return_type": "Object"
+        },
+        {
+          "signature": "get(String) -> Column",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Column"
         }
       ],
       "documentation": "Java method: get"

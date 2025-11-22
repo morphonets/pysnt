@@ -1,7 +1,7 @@
 {
   "class_name": "Viewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2025-11-12T22:36:49.205741",
+  "extracted_at": "2025-11-19T11:06:20.855264",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -209,6 +209,18 @@
       "name": "addNodes",
       "overloads": [
         {
+          "signature": "addNodes(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "addNodes(Collection, String, String) -> void",
           "params": [
             {
@@ -225,18 +237,6 @@
               "name": "arg2",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addNodes(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map"
             }
           ],
           "return_type": "None",
@@ -518,28 +518,6 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(Tree, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
@@ -584,7 +562,29 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Tree, String, ColorTable) -> void",
+          "signature": "map(Tree, Profile, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Profile",
+              "java_type": "Profile"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, String, String) -> void",
           "params": [
             {
               "name": "arg0",
@@ -598,15 +598,15 @@
             },
             {
               "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "map(Tree, Profile, ColorTable) -> void",
+          "signature": "map(Tree, String, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
@@ -615,8 +615,8 @@
             },
             {
               "name": "arg1",
-              "type": "Profile",
-              "java_type": "Profile"
+              "type": "str",
+              "java_type": "String"
             },
             {
               "name": "arg2",
@@ -892,19 +892,8 @@
       "name": "show",
       "overloads": [
         {
-          "signature": "show(int, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
+          "signature": "show() -> void",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

@@ -64,7 +64,7 @@ Utilities Methods
 ~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: checkImage(Image, int, int, ImageObserver)
+.. py:method:: checkImage(Image, ImageObserver)
 
    
 
@@ -187,7 +187,7 @@ Other Methods
    
 
 
-.. py:method:: contains(Point)
+.. py:method:: contains(int, int)
 
    
 
@@ -197,12 +197,12 @@ Other Methods
    
 
 
-.. py:method:: createImage(ImageProducer)
+.. py:method:: createImage(int, int)
 
    
 
 
-.. py:method:: createVolatileImage(int, int)
+.. py:method:: createVolatileImage(int, int, ImageCapabilities)
 
    
 
@@ -242,12 +242,12 @@ Other Methods
    
 
 
-.. py:method:: enable(boolean)
+.. py:method:: enable()
 
    
 
 
-.. py:method:: firePropertyChange(String, char, char)
+.. py:method:: firePropertyChange(String, byte, byte)
 
    
 

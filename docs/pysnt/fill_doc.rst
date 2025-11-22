@@ -141,7 +141,7 @@ Setters Methods
    Sets the cost metric for the filled structure.
 
 
-.. py:method:: setSourcePaths(Set)
+.. py:method:: setSourcePaths(Path;)
 
    Sets the source paths for the filled structure using a set of paths.
 

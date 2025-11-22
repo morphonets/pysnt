@@ -64,7 +64,7 @@ Utilities Methods
 ~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: checkImage(Image, int, int, ImageObserver)
+.. py:method:: checkImage(Image, ImageObserver)
 
    
 
@@ -183,7 +183,7 @@ Other Methods
    Changes this UI to a new state. Does nothing if newState is the current UI state
 
 
-.. py:method:: contains(Point)
+.. py:method:: contains(int, int)
 
    
 
@@ -198,12 +198,12 @@ Other Methods
    
 
 
-.. py:method:: createImage(ImageProducer)
+.. py:method:: createImage(int, int)
 
    
 
 
-.. py:method:: createVolatileImage(int, int)
+.. py:method:: createVolatileImage(int, int, ImageCapabilities)
 
    
 
@@ -233,7 +233,7 @@ Other Methods
    
 
 
-.. py:method:: enable(boolean)
+.. py:method:: enable()
 
    
 

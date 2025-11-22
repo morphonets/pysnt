@@ -1,9 +1,9 @@
 {
   "class_name": "SkeletonConverter",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:49.107317",
+  "extracted_at": "2025-11-19T11:06:20.752524",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.636789",
+  "enhancement_timestamp": "2025-11-22T08:11:21.376497",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -487,29 +487,6 @@
       "name": "static skeletonize",
       "overloads": [
         {
-          "signature": "static skeletonize(ImagePlus, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
-              "javadoc_name": "imp"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "static skeletonize(ImagePlus, double, double, boolean) -> void",
           "params": [
             {
@@ -539,6 +516,29 @@
               "java_type": "boolean",
               "description": "",
               "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static skeletonize(ImagePlus, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
+              "javadoc_name": "imp"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
             }
           ],
           "return_type": "None",
@@ -657,13 +657,13 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "setMaxConnectDist(double)",
-    "Constant Field Values",
-    "setConnectComponents(boolean)",
-    "setPruneByLength(boolean)",
     "setRootRoi(Roi, int)",
-    "Object",
-    "setPruneMode(int)"
+    "setPruneByLength(boolean)",
+    "setConnectComponents(boolean)",
+    "setPruneMode(int)",
+    "Constant Field Values",
+    "setMaxConnectDist(double)",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

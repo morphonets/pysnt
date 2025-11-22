@@ -1,7 +1,7 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:48.852419",
+  "extracted_at": "2025-11-19T11:06:20.472305",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -54,28 +54,6 @@
       "name": "addDiscsTo3DViewer",
       "overloads": [
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Content"
-        },
-        {
           "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
           "params": [
             {
@@ -87,6 +65,28 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Color3f"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Content"
+        },
+        {
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color"
             },
             {
               "name": "arg2",
@@ -212,16 +212,16 @@
           "java_return_type": "Path"
         },
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone() -> Path",
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path"
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: clone"
@@ -230,24 +230,24 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "compareTo(Path) -> int",
           "params": [
             {
               "name": "arg0",
               "type": "Path",
               "java_type": "Path"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
+          "signature": "compareTo(Object) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object"
             }
           ],
           "return_type": "int",
@@ -260,18 +260,6 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(PointInImage) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "contains(PointInImage, double) -> boolean",
           "params": [
             {
@@ -283,6 +271,18 @@
               "name": "arg1",
               "type": "float",
               "java_type": "double"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(PointInImage) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
             }
           ],
           "return_type": "bool",
@@ -349,43 +349,6 @@
       "name": "drawPathAsPoints",
       "overloads": [
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "TracerCanvas"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Graphics2D"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "Color"
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean"
-            },
-            {
-              "name": "arg5",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
           "params": [
             {
@@ -422,6 +385,43 @@
               "name": "arg6",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "TracerCanvas"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Graphics2D"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg5",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",

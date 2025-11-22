@@ -157,7 +157,7 @@ Other Methods
    
 
 
-.. py:method:: addAll(Collection)
+.. py:method:: addAll(int, Collection)
 
    
 
@@ -241,7 +241,7 @@ Iterates through all cells in the table and replaces null values with the provid
    
 
 
-.. py:method:: geColumnStats(String, int, int)
+.. py:method:: geColumnStats(int, int, int)
 
    
 

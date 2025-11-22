@@ -1,6 +1,6 @@
 
-``VFBUtils`` Class Documentation
-=============================
+``Annotation3D`` Class Documentation
+=================================
 
 
 .. toctree::
@@ -51,9 +51,9 @@
    ../api_auto/constants_index
 
 
-**Package:** ``sc.fiji.snt.annotation``
+**Package:** ``sc.fiji.snt.viewer``
 
-Utility methods for accessing/handling Virtual Fly Brain (VFB) annotations
+An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in Viewer3D that can be used to highlight nodes in a Tree or locations in a mesh.
 
 
 Methods
@@ -64,36 +64,84 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getMesh(String, ColorRGB)
+.. py:method:: getBarycentre()
 
-   Retrieves the mesh associated with the specified VFB id.
-
-
-.. py:method:: static getRefBrain(String)
-
-   Retrieves the surface mesh of an adult Drosophila template brain. No Internet connection is required, as these meshes (detailed on the nat.flybrains documentation) are bundled with SNT.
+   Returns the center of this annotation bounding box.
 
 
-.. py:method:: static getXYZLabels()
+.. py:method:: getColor()
 
    
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: getDrawable()
 
-   Checks whether a connection to the Virtual Fly Brain database can be established.
+   Returns the AbstractDrawable associated with this annotation.
+
+
+.. py:method:: getLabel()
+
+   Gets the annotation label
+
+
+.. py:method:: getType()
+
+   Gets the type of this annotation.
+
+
+.. py:method:: getVolume()
+
+   
+
+
+.. py:method:: isColorCodeAllowed()
+
+   
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setBoundingBoxColor(ColorRGB)
+
+   Determines whether the mesh bounding box should be displayed.
+
+
+.. py:method:: setColor(String, double)
+
+   Script friendly method to assign a color to the annotation.
+
+
+.. py:method:: setSize(Number)
+
+   Sets the annotation width.
+
+
+.. py:method:: setTransparency(double)
+
+   Script friendly method to assign a transparency to the annotation.
+
+
+.. py:method:: setWireframeColor(ColorRGB)
+
+   Assigns a wireframe color to the annotation.
+
+
+Visualization Methods
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: static meshToDrawable(Mesh)
+
+   
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static brainBarycentre(String)
-
-   Returns the spatial centroid of an adult Drosophila template brain.
-
-
-.. py:method:: static main(String;)
+.. py:method:: colorCode(String, String)
 
    
 
@@ -101,8 +149,8 @@ Other Methods
 See Also
 --------
 
-* `Package API <../api_auto/pysnt.annotation.html#pysnt.annotation.VFBUtils>`_
-* `VFBUtils JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/annotation/VFBUtils.html>`_
+* `Package API <../api_auto/pysnt.viewer.html#pysnt.viewer.Annotation3D>`_
+* `Annotation3D JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/viewer/Annotation3D.html>`_
 * :doc:`Class Index </api_auto/class_index>`
 * :doc:`Method Index </api_auto/method_index>`
 * :doc:`Constants Index </api_auto/constants_index>`

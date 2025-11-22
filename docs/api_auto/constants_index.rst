@@ -3,7 +3,7 @@ Constants Index
 
 This page provides an index of all public static fields (constants) available in the SNT API.
 
-Total constants: **498** across **32** classes.
+Total constants: **499** across **33** classes.
 
 
 A
@@ -105,6 +105,7 @@ C
 * `FillerThread.CLOSED_FROM_START <../pysnt/fillerthread_doc.html>`_ (``byte``) - Field CLOSED_FROM_START of type byte
 * `TracerThread.CLOSED_FROM_START <../pysnt/tracerthread_doc.html>`_ (``byte``) - Field CLOSED_FROM_START of type byte
 * `SearchThread.CLOSED_FROM_START <../pysnt/searchthread_doc.html>`_ (``byte``) - Field CLOSED_FROM_START of type byte
+* `Annotation3D.COLORMAPS <../pysnt/annotation3d_doc.html>`_ (``List``) - Field COLORMAPS of type List
 * `ConvexHullAnalyzer.COMPACTNESS_3D <../pysnt/convexhullanalyzer_doc.html>`_ (``String``) - Field COMPACTNESS_3D of type String
 * `MultiTreeStatistics.COMPLEXITY_INDEX_ACI <../pysnt/multitreestatistics_doc.html>`_ (``String``) - Field COMPLEXITY_INDEX_ACI of type String
 * `TreeStatistics.COMPLEXITY_INDEX_ACI <../pysnt/treestatistics_doc.html>`_ (``String``) - Field COMPLEXITY_INDEX_ACI of type String

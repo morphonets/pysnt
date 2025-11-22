@@ -1,9 +1,9 @@
 {
   "class_name": "TracerCanvas",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-12T22:36:49.143364",
+  "extracted_at": "2025-11-19T11:06:20.791850",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.583884",
+  "enhancement_timestamp": "2025-11-22T08:11:21.324073",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -472,6 +472,29 @@
       "name": "checkImage",
       "overloads": [
         {
+          "signature": "checkImage(Image, ImageObserver) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImageObserver",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "checkImage(Image, int, int, ImageObserver) -> int",
           "params": [
             {
@@ -507,29 +530,6 @@
           "java_return_type": "int",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: checkImage",
@@ -544,22 +544,6 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "contains(int, int) -> boolean",
           "params": [
             {
@@ -573,6 +557,22 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "contains(Point) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Point",
               "description": "",
               "javadoc_name": null
             }
@@ -646,22 +646,6 @@
       "name": "createImage",
       "overloads": [
         {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "createImage(int, int) -> Image",
           "params": [
             {
@@ -675,6 +659,22 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Image",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "createImage(ImageProducer) -> Image",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageProducer",
               "description": "",
               "javadoc_name": null
             }
@@ -697,29 +697,6 @@
       "name": "createVolatileImage",
       "overloads": [
         {
-          "signature": "createVolatileImage(int, int) -> VolatileImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "VolatileImage",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "createVolatileImage(int, int, ImageCapabilities) -> VolatileImage",
           "params": [
             {
@@ -740,6 +717,29 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ImageCapabilities",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VolatileImage",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "createVolatileImage(int, int) -> VolatileImage",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -934,6 +934,14 @@
       "name": "enable",
       "overloads": [
         {
+          "signature": "enable() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "enable(boolean) -> void",
           "params": [
             {
@@ -944,14 +952,6 @@
               "javadoc_name": null
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "enable() -> void",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
@@ -969,126 +969,6 @@
     {
       "name": "firePropertyChange",
       "overloads": [
-        {
-          "signature": "firePropertyChange(String, char, char) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "char",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "char",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "firePropertyChange(String, double, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "firePropertyChange(String, float, float) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "float",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "float",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "firePropertyChange(String, long, long) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "long",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "long",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "firePropertyChange(String, byte, byte) -> void",
           "params": [
@@ -1140,6 +1020,126 @@
               "name": "arg2",
               "type": "int",
               "java_type": "short",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "firePropertyChange(String, char, char) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "char",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "char",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "firePropertyChange(String, long, long) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "firePropertyChange(String, float, float) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "firePropertyChange(String, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
               "description": "",
               "javadoc_name": null
             }
@@ -1327,8 +1327,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Serialized Form",
-    "MultiDThreePanesCanvas"
+    "MultiDThreePanesCanvas",
+    "Serialized Form"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

@@ -8,50 +8,52 @@
    :caption: Complete API Reference
    :hidden:
 
-   ../../api_auto/index
-   ../../api_auto/pysnt
-   ../../api_auto/pysnt.analysis
-   ../../api_auto/pysnt.analysis.graph
-   ../../api_auto/pysnt.analysis.growth
-   ../../api_auto/pysnt.analysis.sholl
-   ../../api_auto/pysnt.analysis.sholl.gui
-   ../../api_auto/pysnt.analysis.sholl.math
-   ../../api_auto/pysnt.analysis.sholl.parsers
-   ../../api_auto/pysnt.annotation
-   ../../api_auto/pysnt.converters
-   ../../api_auto/pysnt.converters.chart_converters
-   ../../api_auto/pysnt.converters.core
-   ../../api_auto/pysnt.converters.enhancement
-   ../../api_auto/pysnt.converters.extractors
-   ../../api_auto/pysnt.converters.graph_converters
-   ../../api_auto/pysnt.converters.structured_data_converters
-   ../../api_auto/pysnt.core
-   ../../api_auto/pysnt.display
-   ../../api_auto/pysnt.display.core
-   ../../api_auto/pysnt.display.data_display
-   ../../api_auto/pysnt.display.utils
-   ../../api_auto/pysnt.display.visual_display
-   ../../api_auto/pysnt.gui
-   ../../api_auto/pysnt.gui.cmds
-   ../../api_auto/pysnt.io
-   ../../api_auto/pysnt.tracing
-   ../../api_auto/pysnt.tracing.artist
-   ../../api_auto/pysnt.tracing.cost
-   ../../api_auto/pysnt.tracing.heuristic
-   ../../api_auto/pysnt.tracing.image
-   ../../api_auto/pysnt.util
-   ../../api_auto/pysnt.viewer
-   ../../api_auto/pysnt.common_module
-   ../../api_auto/pysnt.config
-   ../../api_auto/pysnt.gui_utils
-   ../../api_auto/pysnt.java_utils
-   ../../api_auto/pysnt.setup_utils
-   ../../api_auto/method_index
+   ../api_auto/index
+   ../api_auto/pysnt
+   ../api_auto/pysnt.analysis
+   ../api_auto/pysnt.analysis.graph
+   ../api_auto/pysnt.analysis.growth
+   ../api_auto/pysnt.analysis.sholl
+   ../api_auto/pysnt.analysis.sholl.gui
+   ../api_auto/pysnt.analysis.sholl.math
+   ../api_auto/pysnt.analysis.sholl.parsers
+   ../api_auto/pysnt.annotation
+   ../api_auto/pysnt.converters
+   ../api_auto/pysnt.converters.chart_converters
+   ../api_auto/pysnt.converters.core
+   ../api_auto/pysnt.converters.enhancement
+   ../api_auto/pysnt.converters.extractors
+   ../api_auto/pysnt.converters.graph_converters
+   ../api_auto/pysnt.converters.structured_data_converters
+   ../api_auto/pysnt.core
+   ../api_auto/pysnt.display
+   ../api_auto/pysnt.display.core
+   ../api_auto/pysnt.display.data_display
+   ../api_auto/pysnt.display.utils
+   ../api_auto/pysnt.display.visual_display
+   ../api_auto/pysnt.gui
+   ../api_auto/pysnt.gui.cmds
+   ../api_auto/pysnt.io
+   ../api_auto/pysnt.tracing
+   ../api_auto/pysnt.tracing.artist
+   ../api_auto/pysnt.tracing.cost
+   ../api_auto/pysnt.tracing.heuristic
+   ../api_auto/pysnt.tracing.image
+   ../api_auto/pysnt.util
+   ../api_auto/pysnt.viewer
+   ../api_auto/pysnt.common_module
+   ../api_auto/pysnt.config
+   ../api_auto/pysnt.gui_utils
+   ../api_auto/pysnt.java_utils
+   ../api_auto/pysnt.setup_utils
+   ../api_auto/method_index
+   ../api_auto/class_index
+   ../api_auto/constants_index
 
 
 **Package:** ``sc.fiji.snt.util``
 
-Enhanced documentation for ColorMaps class.
+Utilities for colormaps and IJ lookup tables
 
 
 Methods
@@ -62,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static get(String))
+.. py:method:: static get(String)
 
    Returns a 'core' color table from its title
 
@@ -71,27 +73,27 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static applyPlasma(ImagePlus))
+.. py:method:: static applyPlasma(ImagePlus)
 
    Applies the "plasma" colormap to the specified (non-RGB) image
 
 
-.. py:method:: static applyViridis(ImagePlus, int, boolean))
+.. py:method:: static applyViridis(ImagePlus)
 
    Applies the "viridis" colormap to the specified (non-RGB) image
 
 
-.. py:method:: static discreteColors(ColorTable, int))
+.. py:method:: static discreteColors(ColorTable, int)
 
    
 
 
-.. py:method:: static discreteColorsAWT(ColorTable, int))
+.. py:method:: static discreteColorsAWT(ColorTable, int)
 
    
 
 
-.. py:method:: static glasbeyColorsAWT(int))
+.. py:method:: static glasbeyColorsAWT(int)
 
    
 
@@ -99,9 +101,8 @@ Other Methods
 See Also
 --------
 
-* `Package API <../../api_auto/pysnt.util.html#pysnt.util.ColorMaps>`_
-* `Main API Documentation <../../api_auto/pysnt.util#ColorMaps>`_
-* `ColorMaps JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/ColorMaps.html>`_
-* :doc:`Method Index </api_auto/method_index>`
+* `Package API <../api_auto/pysnt.util.html#pysnt.util.ColorMaps>`_
+* `ColorMaps JavaDoc <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/util/ColorMaps.html>`_
 * :doc:`Class Index </api_auto/class_index>`
-
+* :doc:`Method Index </api_auto/method_index>`
+* :doc:`Constants Index </api_auto/constants_index>`

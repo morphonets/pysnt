@@ -1,9 +1,9 @@
 {
   "class_name": "SNTTable",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-12T22:36:49.044241",
+  "extracted_at": "2025-11-19T11:06:20.681452",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-11-13T22:40:29.619466",
+  "enhancement_timestamp": "2025-11-22T08:11:21.359102",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -100,10 +100,17 @@
       "name": "addAll",
       "overloads": [
         {
-          "signature": "addAll(Collection) -> boolean",
+          "signature": "addAll(int, Collection) -> boolean",
           "params": [
             {
               "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -116,17 +123,10 @@
           "throws": {}
         },
         {
-          "signature": "addAll(int, Collection) -> boolean",
+          "signature": "addAll(Collection) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -786,12 +786,12 @@
       "name": "geColumnStats",
       "overloads": [
         {
-          "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
+          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": "param_0"
             },
@@ -816,12 +816,12 @@
           "throws": {}
         },
         {
-          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
+          "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
@@ -962,22 +962,6 @@
           "throws": {}
         },
         {
-          "signature": "get(String) -> Column",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Column",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "get(int, int) -> Object",
           "params": [
             {
@@ -1020,6 +1004,22 @@
           ],
           "return_type": "Any",
           "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "get(String) -> Column",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Column",
           "return_description": "",
           "throws": {}
         }

@@ -1,0 +1,537 @@
+{
+  "class_name": "Annotation3D",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2025-11-20T08:52:34.923176",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2025-11-22T08:11:21.374018",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "colorCode",
+      "overloads": [
+        {
+          "signature": "colorCode(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- one of COLORMAPS, i.e., \"grayscale\", \"hotcold\", \"rgb\", \"redgreen\", \"whiteblue\", etc.",
+              "javadoc_name": "colormap"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "COLORMAPS"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: colorCode",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBarycentre",
+      "overloads": [
+        {
+          "signature": "getBarycentre() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "the barycentre of this annotation. All coordinates are set to Double.NaN if the bounding box is not available.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBarycentre",
+      "javadoc_description": "Returns the center of this annotation bounding box.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getColor",
+      "overloads": [
+        {
+          "signature": "getColor() -> ColorRGB",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getColor",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDrawable",
+      "overloads": [
+        {
+          "signature": "getDrawable() -> Drawable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Drawable",
+          "return_description": "the AbstractDrawable",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDrawable",
+      "javadoc_description": "Returns the AbstractDrawable associated with this annotation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "overloads": [
+        {
+          "signature": "getLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the label, as listed in Reconstruction Viewer's list.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLabel",
+      "javadoc_description": "Gets the annotation label",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getType",
+      "overloads": [
+        {
+          "signature": "getType() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the annotation type. Either cloud (point cloud), surface, line, plane, or mixed (composite shape).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getType",
+      "javadoc_description": "Gets the type of this annotation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getVolume",
+      "overloads": [
+        {
+          "signature": "getVolume() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getVolume",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isColorCodeAllowed",
+      "overloads": [
+        {
+          "signature": "isColorCodeAllowed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isColorCodeAllowed",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static meshToDrawable",
+      "overloads": [
+        {
+          "signature": "static meshToDrawable(Mesh) -> Drawable",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Mesh",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Drawable",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static meshToDrawable",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBoundingBoxColor",
+      "overloads": [
+        {
+          "signature": "setBoundingBoxColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "- the color of the mesh bounding box. If null, no bounding box is displayed",
+              "javadoc_name": "boundingBoxColor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBoundingBoxColor",
+      "javadoc_description": "Determines whether the mesh bounding box should be displayed.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(String, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the color to render the imported file, either a 1) HTML color codes starting with hash (",
+              "javadoc_name": "color"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "), a color preset (\"red\", \"blue\", etc.), or integer triples of the form",
+              "javadoc_name": "#"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setColor(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setColor(ColorRGB, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setColor",
+      "javadoc_description": "Script friendly method to assign a color to the annotation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSize",
+      "overloads": [
+        {
+          "signature": "setSize(Number) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Union[int, float]",
+              "java_type": "Number",
+              "description": "- the new width. A negative value will set width to Viewer3D's default.",
+              "javadoc_name": "floatSize"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSize",
+      "javadoc_description": "Sets the annotation width.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTransparency",
+      "overloads": [
+        {
+          "signature": "setTransparency(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the color transparency (in percentage)",
+              "javadoc_name": "transparencyPercent"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTransparency",
+      "javadoc_description": "Script friendly method to assign a transparency to the annotation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setWireframeColor",
+      "overloads": [
+        {
+          "signature": "setWireframeColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "- the wireframe color. Ignored if the annotation has no wireframe.",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setWireframeColor(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setWireframeColor",
+      "javadoc_description": "Assigns a wireframe color to the annotation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Annotation3D(AbstractConvexHull, ColorRGB, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AbstractConvexHull"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(Polygon2D, ColorRGB, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Polygon2D"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(Mesh, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Mesh"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(Mesh, ColorRGB, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Mesh"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for Annotation3D"
+    }
+  ],
+  "javadoc_description": "An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in Viewer3D that can be used to highlight nodes in a Tree or locations in a mesh.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 17,
+      "total_json_methods": 14,
+      "total_matches": 17,
+      "exact_matches": 17,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -3,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}
