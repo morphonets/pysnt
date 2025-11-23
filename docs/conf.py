@@ -210,7 +210,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "API",
-            "url": "/api.html",
+            "url": "/en/latest/api.html",
             "icon": "fa fa-code",
             "type": "fontawesome",
         },
