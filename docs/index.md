@@ -6,11 +6,13 @@
         </div>
         <div style="flex: 1;">
             <h1 style="margin: 0 0 0.5rem 0; font-size: 3rem; font-weight: 700;">PySNT</h1>
-            <h2 style="margin: 0; font-size: 1.5rem; font-weight: 300; color: #666;">Trace, analyze, and quantify neuronal morphology — from Python.</h2>
+            <h2 style="margin: 0; font-size: 1.5rem; font-weight: 340; color: #666;">Trace, analyze, and quantify neuronal morphology — from Python.</h2>
         </div>
     </div>
-    <p style="margin: 0; font-size: 1.1rem; line-height: 1.6;">PySNT brings <a href="https://github.com/morphonets/SNT" target="_blank">SNT</a>'s tracing tools and neuroanatomy analytics to Python. Use it interactively in notebooks or to automate large-scale studies.</p>
-</div>
+    <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">
+    PySNT brings <a href="https://github.com/morphonets/SNT" target="_blank">SNT</a>'s tracing tools and neuroanatomy analytics to Python, providing a unified toolkit for morphometry that works interactively in notebooks or for automating large-scale studies.
+    </p>
+    </div>
 
 <style>
 /* Logo styling for dark mode compatibility */
@@ -61,49 +63,47 @@
 ::::{grid-item-card} <i class="fa-solid fa-rocket"></i> Getting Started
 :link: install
 :link-type: doc
-:img-top: _static/AA0100skel2d.png
+:img-top: _static/front_page/tutorial01a.png
 
 Set up your environment and launch your first script with step-by-step guidance.
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Analysis Tools
-:link: notebooks/2_convex_hull
+:link: notebooks/01_single_cell_analysis
 :link-type: doc
-:img-top: _static/convexhull.png
+:img-top: _static/front_page/tutorial01b.png
 
-Comprehensive morphological analysis.
+Comprehensive morphological analysis: quantify, transform, and compare neuronal morphology at single-cell and population levels.
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-chart-bar"></i> Visualizations
-:link: notebooks/index
+:link: notebooks/03_convex_hull
 :link-type: doc
 :img-top: _static/intersection-overview.png
 
-Create publication-ready plots and interactive visualizations of neuronal data.
+Generate publication-ready figures and interactive 3D visualizations of neuronal morphology.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-gauge-high"></i> Performance
-:link: notebooks/index
-:link-type: doc
-:img-top: _static/AA0100annot.png
+::::{grid-item-card} <i class="fa-solid fa-crosshairs"></i> Ground Truth Generation
+:link: https://imagej.net/plugins/snt/#overview
+:img-top: _static/front_page/op1_tubeness_fit.png
 
-Optimized algorithms for large-scale morphological analysis and batch processing.
+Curate ML training data with quality control tools: refine traces, detect crossovers, and validate reconstructions.
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
-:link: notebooks/index
+:link: notebooks/02_hemisphere_analysis
 :link-type: doc
-:img-top: _static/group0exemplars.png
+:img-top: _static/front_page/tutorial03a.png
 
-Specialized tools for public datasets.
+Specialized tools for reference brains, atlases, public datasets, and projectomes.
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-boxes-stacked"></i> Much More
-:link: notebooks/index
-:link-type: doc
-:img-top: _static/snt-growth-analysis.png
+:link: https://imagej.net/plugins/snt/#overview
+:img-top: _static/front_page/sankey-flow-plot-with-tooltip.png
 
-Single cell morphometry, Population Comparisons, Neurite growth analys, ...
+Specialized analyses: Sholl, Strahler, persistence diagrams, graph theory, and growth dynamics
 ::::
 
 :::::
@@ -122,9 +122,6 @@ Single cell morphometry, Population Comparisons, Neurite growth analys, ...
     </a>
     <a href="api_auto/class_index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
         <i class="fas fa-list"></i> Class Index
-    </a>
-    <a href="notebooks/index.html" style="text-decoration: none; color: #2980b9; font-weight: 500;">
-        <i class="fas fa-book"></i> Tutorials
     </a>
     <a href="https://javadoc.scijava.org/SNT" target="_blank" style="text-decoration: none; color: #2980b9; font-weight: 500;">
         <i class="fas fa-coffee"></i> SNT Java API
