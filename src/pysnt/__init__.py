@@ -15,7 +15,7 @@ from typing import Dict, Any, List
 logger = logging.getLogger(__name__)
 
 # Import main initialization
-from .core import initialize, dispose, FijiNotFoundError, ij
+from .core import initialize, dispose, FijiNotFoundError, ij, is_initialized, get_mode
 
 # Import PyImageJ integration functions
 from .core import to_python, from_java, show
@@ -359,6 +359,8 @@ __all__ = [
     "initialize",
     "dispose",
     "ij",
+    "is_initialized",
+    "get_mode",
     "inspect",
     "get_methods",
     "get_fields",

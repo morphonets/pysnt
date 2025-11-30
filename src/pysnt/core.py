@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 # Global state
 _ij = None
 _jvm_started = False
+_mode = None
 
 
 class FijiNotFoundError(RuntimeError):
@@ -186,7 +187,7 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # Shift parameters: fiji_path is actually the mode
         mode = fiji_path
         fiji_path = None
-    global _ij, _jvm_started
+    global _ij, _jvm_started, _mode
     
     if _jvm_started:
         logger.info("SNT already initialized")
@@ -292,6 +293,9 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # Initialize PyImageJ from local Fiji
         logger.info(f"Initializing ImageJ with Fiji at: {fiji_path}")
         _ij = imagej.init(fiji_path, mode=mode)
+        
+        # Store the mode for later retrieval
+        _mode = mode
         
         # Start JVM if not already started
         if not scyjava.jvm_started():
@@ -542,6 +546,39 @@ def is_initialized() -> bool:
     return _jvm_started and _ij is not None
 
 
+def get_mode() -> Optional[str]:
+    """
+    Get the initialization mode used.
+    
+    Returns the mode that was specified when initialize() was called.
+    This indicates how the ImageJ/Fiji environment was started.
+    
+    Returns
+    -------
+    str or None
+        The mode used during initialization:
+        - "headless": No GUI, for batch processing and scripts
+        - "gui": Full GUI mode with ImageJ windows
+        - "interactive": Interactive mode with some GUI elements
+        - "interactive:force": Force interactive mode
+        - None: If SNT has not been initialized yet
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize("headless")
+    >>> pysnt.get_mode()
+    'headless'
+    >>> 
+    >>> # Check mode before performing GUI operations
+    >>> if pysnt.get_mode() in ["gui", "interactive"]:
+    ...     pysnt.show(image)
+    ... else:
+    ...     print("GUI not available in headless mode")
+    """
+    return _mode
+
+
 def dispose() -> None:
     """
     Dispose of PySNT resources and shut down the JVM.
@@ -576,7 +613,7 @@ def dispose() -> None:
     After calling dispose(), you cannot reinitialize PySNT in the same Python session.
     The JVM cannot be restarted once it has been shut down.
     """
-    global _ij, _jvm_started
+    global _ij, _jvm_started, _mode
     
     logger.info("Disposing PySNT resources...")
     
@@ -603,6 +640,7 @@ def dispose() -> None:
         
         # 3. Reset state variables
         _jvm_started = False
+        _mode = None
         
         logger.info("PySNT disposal complete")
         
@@ -611,6 +649,7 @@ def dispose() -> None:
         # Still reset state even if there were errors
         _ij = None
         _jvm_started = False
+        _mode = None
         raise RuntimeError(f"PySNT disposal failed: {e}") from e
 
 
