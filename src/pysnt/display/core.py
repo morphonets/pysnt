@@ -402,10 +402,10 @@ def display(obj: Any, **kwargs) -> Any:
             return obj
         elif obj_type == 'snt_object':
             return _handle_snt_object_display(obj, **kwargs)
-        elif obj_type in ['snt_table', 'snt_chart', 'snt_graph', 'pandas_dataframe']:
+        elif obj_type in ['snt_table', 'snt_chart', 'snt_graph', 'pandas_dataframe', 'networkx_graph']:
             return handler(obj, **kwargs)
         else:
-            # For other types (imageplus, numpy_array, java_object)
+            # For other types (imageplus, numpy_array, java_object, viewer3d, viewer2d)
             return handler(obj, **kwargs)
 
     except Exception as e:
@@ -499,6 +499,10 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     if HAS_PANDAS and isinstance(obj, pandas.DataFrame):
         from .data_display import _display_pandas_dataframe
         return 'pandas_dataframe', _display_pandas_dataframe
+
+    # Check for NetworkX graphs (direct, not wrapped in SNTObject)
+    if hasattr(obj, 'number_of_nodes') and hasattr(obj, 'number_of_edges'):
+        return 'networkx_graph', _display_networkx_graph
 
     # Check numpy arrays
     if hasattr(obj, 'shape') and hasattr(obj, 'dtype') and hasattr(obj, 'ndim'):
@@ -1225,6 +1229,61 @@ def _display_viewer2d(obj, **kwargs):
         
         # Display the chart using the SNTChart display pipeline and return the result
         return _display_snt_chart(chart, **kwargs_with_metadata)
+        
+    except Exception as e:
+        raise  # Let decorator handle it
+
+
+@handle_display_errors("display NetworkX graph")
+def _display_networkx_graph(graph, **kwargs):
+    """
+    Handler function for direct NetworkX graph display.
+    
+    This function handles NetworkX graphs that are passed directly to display(),
+    not wrapped in an SNTObject. It creates a matplotlib visualization of the graph.
+    
+    Parameters
+    ----------
+    graph : networkx.Graph
+        The NetworkX graph to display (DiGraph, Graph, MultiGraph, etc.)
+    **kwargs : dict
+        Display arguments including:
+        - layout: str, layout algorithm (default: 'spring')
+        - node_color: str or list, node colors (default: 'lightblue')
+        - node_size: int or list, node sizes (default: 500)
+        - edge_color: str or list, edge colors (default: 'gray')
+        - edge_width: float or list, edge widths (default: 2)
+        - with_labels: bool, show node labels (default: True)
+        - arrows: bool, show arrows for directed graphs (default: True)
+        - arrowsize: int, arrow size (default: 10)
+        - title: str, figure title
+        - figsize: tuple, figure size (default: (10, 8))
+        
+    Returns
+    -------
+    networkx.Graph
+        The original graph object
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> import networkx as nx
+    >>> G = nx.karate_club_graph()
+    >>> pysnt.display(G, layout='circular', title='Karate Club')
+    """
+    logger.info(f"Displaying NetworkX graph ({type(graph).__name__} with {graph.number_of_nodes()} nodes, {graph.number_of_edges()} edges)")
+    
+    try:
+        # Set default graph type for layout selection
+        if 'graph_type' not in kwargs:
+            kwargs['graph_type'] = 'Unknown'
+        
+        # Create matplotlib figure from NetworkX graph
+        from .visual_display import _graph_to_matplotlib, _display_matplotlib_figure
+        fig = _graph_to_matplotlib(graph, **kwargs)
+        _display_matplotlib_figure(fig, **kwargs)
+        
+        return graph
         
     except Exception as e:
         raise  # Let decorator handle it

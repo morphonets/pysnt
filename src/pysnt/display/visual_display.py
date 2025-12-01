@@ -239,6 +239,9 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
         - edge_color: str or list, edge colors (default: 'gray')
         - edge_width: float or list, edge widths (default: 2)
         - with_labels: bool, whether to show node labels (default: True)
+        - arrows: bool, whether to draw arrows for directed graphs (default: True)
+        - arrowsize: int, size of arrows (default: 10)
+        - arrowstyle: str, style of arrows (default: '->')
         - figsize: tuple, figure size (default: (10, 8))
         - title: str, plot title (default: 'NetworkX Graph')
         - seed: int, random seed for layout (default: 42)
@@ -267,6 +270,9 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
     title = kwargs.get('title', graph_type)
     seed = kwargs.get('seed', 42)
     use_node_positions = kwargs.get('use_node_positions', True)
+    arrows = kwargs.get('arrows', True)
+    arrowsize = kwargs.get('arrowsize', 10)
+    arrowstyle = kwargs.get('arrowstyle', '->')
     
     # Create figure
     fig, ax = plt.subplots(figsize=figsize)
@@ -411,13 +417,13 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
                 width=edge_width,
                 with_labels=with_labels,
                 ax=ax,
-                arrows=True,           # Ensure arrows are drawn for directed graphs
-                arrowsize=10,          # Smaller arrows to reduce visual clutter
-                arrowstyle='->'        # Simple arrow style
+                arrows=arrows,
+                arrowsize=arrowsize,
+                arrowstyle=arrowstyle
                 )
         
-        # Add title and labels
-        ax.set_title(title, fontsize=14, fontweight='normal')
+        # Note: Title is handled by _display_matplotlib_figure via fig.suptitle()
+        # Don't set ax.set_title() here to avoid duplication
         
         # Add graph statistics as text
         stats_text = f"Nodes: {graph.number_of_nodes()}, Edges: {graph.number_of_edges()}"
