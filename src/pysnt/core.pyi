@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Optional, Union, Callable, Tuple
 logger: Any
 _ij: Any
 _jvm_started: Any
+_mode: Any
 class FijiNotFoundError:
     pass
 
@@ -25,6 +26,8 @@ def _validate_fiji_path(fiji_path: str) -> bool: ...
 def ij() -> Any: ...
 
 def is_initialized() -> bool: ...
+
+def get_mode() -> Optional[str]: ...
 
 def dispose() -> None: ...
 

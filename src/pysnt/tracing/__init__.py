@@ -1553,6 +1553,90 @@ The search distance function (Cost) and heuristic estimate (Heuristic) are suppl
 
 The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
     
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
+    **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/tracing/bisearch_doc.html>`_.
+    """
+    """
+    A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
+
+The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
+    
     **All Methods and Attributes:** See `BiSearch detailed documentation <../pysnt/bisearch_doc.html>`_.
     """
     """
