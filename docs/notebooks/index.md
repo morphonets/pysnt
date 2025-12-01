@@ -36,8 +36,8 @@ Check the icon at the top of each notebook to verify its status.
 01_single_cell_analysis
 02_hemisphere_analysis
 03_convex_hull
-3_tree_intersection
-4_persistence_landscape
-5_performance_testing
+04_tree_intersection.ipynb
+5_persistence_landscape
+6_performance_testing
 7_timelapse_segmentation
 ```
