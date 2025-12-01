@@ -50,6 +50,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.linkcode",          # Add source code links
     "sphinx.ext.githubpages",
+    "sphinx.ext.mathjax",           # Math rendering with MathJax
     "sphinx_design",
     "sphinx_copybutton",            # Copy-to-clipboard buttons for code blocks
     'enhanced_api_docs.sphinx_javadoc_extension'
@@ -129,6 +130,8 @@ myst_enable_extensions = [
     "colon_fence",
     "deflist",
     "substitution",
+    "dollarmath",      # Enable $...$ and $$...$$ for inline and display math
+    "amsmath",         # Enable advanced math environments
 ]
 
 # Custom MyST substitutions for FontAwesome icons
