@@ -38,6 +38,4 @@ Check the icon at the top of each notebook to verify its status.
 03_convex_hull
 04_tree_intersection.ipynb
 5_persistence_landscape
-6_performance_testing
-7_timelapse_segmentation
 ```
