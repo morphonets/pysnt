@@ -37,5 +37,6 @@ Check the icon at the top of each notebook to verify its status.
 02_hemisphere_analysis
 03_convex_hull
 04_tree_intersection.ipynb
+05_napari_viewer.ipynb
 5_persistence_landscape
 ```

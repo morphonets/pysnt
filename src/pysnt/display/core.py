@@ -426,6 +426,7 @@ def _tree_to_chart(obj):
             viewer.setTitle(obj.getLabel())
         logger.debug(f"Got Viewer2D from tree: {type(viewer)}")
         obj = viewer.getChart()
+        return obj
     except Exception as e:
         logger.warning(f"Failed to get skeleton from tree: {e}")
         logger.info("Trying alternative skeleton extraction methods...")
