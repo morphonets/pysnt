@@ -3,6 +3,32 @@
 /* Import Font Awesome */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 
+/* PyData Sphinx Theme fonts */
+:root {
+  /* Base system font stack */
+  --pst-font-family-base-system: -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  
+  /* Monospace system font stack */
+  --pst-font-family-monospace-system: SFMono-Regular, Menlo, Monaco, Consolas,
+    Liberation Mono, Courier New, monospace;
+}
+
+/* Apply to body text */
+body {
+  font-family: var(--pst-font-family-base-system) !important;
+}
+
+/* Apply to headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pst-font-family-base-system) !important;
+}
+
+/* Apply to code blocks */
+code, pre, .rst-content code, .rst-content pre {
+  font-family: var(--pst-font-family-monospace-system) !important;
+}
+
 /* Hide "Show Source" and other unwanted elements */
 .bd-header-article .btn-source,
 .bd-header-article .btn-edit,
@@ -218,7 +244,6 @@ html[data-mode="dark"] .api-overview-btn:hover {
 }
 
 /* Note: Index page toctree is already hidden via :hidden: directive in RST */
-/* No need to hide toctrees globally - let them show where intended */
 
 /* Automatically add external link icons to all external links (except source code links) */
 a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):not(.viewcode-link)::before,
