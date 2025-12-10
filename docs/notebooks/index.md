@@ -28,14 +28,5 @@ pip install ipykernel # or mamba install -n pysnt ipykernel
 03_convex_hull
 04_tree_intersection.ipynb
 05_napari_viewer.ipynb
-5_persistence_landscape
-```
-
-```{important}
-🚧 **Work in Progress:** This notebook collection is being updated for SNT v5. 🚧
-
-- <i class="fas fa-star"></i> **Updated** — Compatible with SNT v5 and the latest pysnt version
-- <i class="fas fa-clock-rotate-left"></i> **Legacy** — Not yet updated and use outdated syntax
-
-Check the icon at the top of each notebook to verify its status.
+06_persistence_landscape
 ```

@@ -76,6 +76,14 @@ Set up your environment and launch your first script with step-by-step guidance.
 Comprehensive morphological analysis: quantify, transform, and compare neuronal morphology at single-cell and population levels.
 ::::
 
+::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
+:link: notebooks/02_hemisphere_analysis
+:link-type: doc
+:img-top: _static/front_page/tutorial03a.png
+
+Specialized tools for reference brains, atlases, public datasets, and projectomes.
+::::
+
 ::::{grid-item-card} <i class="fa-solid fa-chart-bar"></i> Visualizations
 :link: notebooks/03_convex_hull
 :link-type: doc
