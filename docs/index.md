@@ -99,14 +99,6 @@ Generate publication-ready figures and interactive 3D visualizations of neuronal
 Curate ML training data with quality control tools: refine traces, detect crossovers, and validate reconstructions.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
-:link: notebooks/02_hemisphere_analysis
-:link-type: doc
-:img-top: _static/front_page/tutorial03a.png
-
-Specialized tools for reference brains, atlases, public datasets, and projectomes.
-::::
-
 ::::{grid-item-card} <i class="fa-solid fa-boxes-stacked"></i> Much More
 :link: https://imagej.net/plugins/snt/#overview
 :img-top: _static/front_page/sankey-flow-plot-with-tooltip.png
