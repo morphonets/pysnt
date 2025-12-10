@@ -236,7 +236,26 @@ html_context = {
     "github_repo": "pysnt",
     "github_version": "main",
     "doc_path": "docs",
+    "display_github": True,
 }
+
+html_extra_path = ['_static/robots.txt']
+
+# OpenSearch configuration for better search engine indexing
+html_use_opensearch = 'https://pysnt.readthedocs.io'
+
+# Add meta tags for better SEO
+html_meta = {
+    'description': 'PySNT: Python interface to SNT (Simple Neurite Tracer) for neuronal morphology analysis and tracing',
+    'keywords': 'neuroscience, morphology, neuron, tracing, SNT, ImageJ, Fiji, analysis',
+    'author': 'SNT contributors',
+    'robots': 'index, follow',
+    'google-site-verification': 'v1xvVIrbqEYvulUApAPA3ZgLi7RtkwdppWQ00Kk_sjQ'
+}
+
+# Generate sitemap
+html_baseurl = 'https://pysnt.readthedocs.io/en/latest/'
+sitemap_url_scheme = "{link}"
 
 # Images produced by notebooks
 nb_render_image_options = {"align": "center"}
