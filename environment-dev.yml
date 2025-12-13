@@ -20,6 +20,11 @@ dependencies:
   - cairosvg>=2.8.2
   - mupdf>=1.25.6
 
+  # OME-ZARR support dependencies
+  - zarr>=2.10.0
+  - fsspec>=2023.1.0
+  - s3fs>=2023.1.0
+
   # macOS-specific dependencies
   - pyobjc-core  # [osx]
   - pyobjc-framework-cocoa  # [osx]
@@ -27,6 +32,9 @@ dependencies:
   # Pip dependencies
   - pip
   - pip:
+    # OME-ZARR support (imglyb not available via conda)
+    - imglyb>=2.1.0
+    
     # Optional GUI dependencies
     - pandasgui>=0.2.15
     

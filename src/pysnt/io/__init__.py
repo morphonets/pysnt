@@ -163,6 +163,9 @@ __getattr__ = _module_funcs["create_getattr"]("pysnt.io")
 __dir__ = _module_funcs["create_dir"]()
 
 
+# Import image format utilities
+from .image_formats import imgplus_from_zarr
+
 # Static __all__ with curated classes always available
 # This ensures IDEs know these symbols are available for import
 __all__ = [
@@ -172,6 +175,8 @@ __all__ = [
     "list_classes",
     "get_curated_classes",
     "get_extended_classes",
+    # Image format utilities
+    "imgplus_from_zarr",
     # Constants (standard for all modules)
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",

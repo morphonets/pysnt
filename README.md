@@ -149,6 +149,14 @@ pysnt/
 - networkx - SNTGraph to NetworkX graph conversion
 - pandasgui - Interactive DataFrame display
 
+#### Optional Dependencies (OME-ZARR Support)
+- zarr - OME-ZARR format support for local and remote data
+- imglyb - NumPy to ImageJ ImgPlus conversion
+- fsspec - Remote filesystem access (HTTP/HTTPS/S3)
+- s3fs - Amazon S3 specific support
+
+Install with: `pip install pysnt[zarr]` or `pip install pysnt[all]`
+
 ### Need Help?
 
 - 📖 **Documentation**: [pysnt.readthedocs.io](https://pysnt.readthedocs.io)

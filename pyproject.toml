@@ -47,6 +47,13 @@ gui = [
     "pandasgui>=0.2.15",
     "ipykernel>=7.1.0",
 ]
+# OME-ZARR support for remote data access
+zarr = [
+    "zarr>=2.10.0",
+    "imglyb>=2.1.0",
+    "fsspec>=2023.1.0",
+    "s3fs>=2023.1.0",
+]
 # All optional features
 all = [
     "pandas>=2.3.3",
@@ -54,6 +61,10 @@ all = [
     "PyMuPDF>=1.26.3",
     "pandasgui>=0.2.15",
     "ipykernel>=7.1.0",
+    "zarr>=2.10.0",
+    "imglyb>=2.1.0",
+    "fsspec>=2023.1.0",
+    "s3fs>=2023.1.0",
 ]
 # Development dependencies
 dev = [
@@ -62,6 +73,11 @@ dev = [
     "black",
     "flake8",
     "mypy",
+    # Include zarr dependencies for development
+    "zarr>=2.10.0",
+    "imglyb>=2.1.0",
+    "fsspec>=2023.1.0",
+    "s3fs>=2023.1.0",
 ]
 # Documentation dependencies
 docs = [
