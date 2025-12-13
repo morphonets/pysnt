@@ -330,12 +330,28 @@ def display(obj: Any, **kwargs) -> Any:
         Object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, 
         Viewer2D/3D objects, lists, etc.)
     **kwargs
-        Display arguments (cmap, title, figsize, orthoview, panel_layout, max_panels, etc.)
+        Display arguments including:
+        - cmap: str, colormap for grayscale images
+        - title: str, display title
+        - figsize: tuple, figure size
+        - orthoview: bool, for 3D viewers
+        - panel_layout: str, layout for multi-panel displays
+        - max_panels: int, maximum panels to display
+        - origin: str, origin for image display ('upper', 'lower', 'auto')
+          - 'upper': Image convention (y increases downward) 
+          - 'lower': Cartesian convention (y increases upward)
+          - 'auto': Automatic selection based on source type (default)
+          - Note: Only applies to ImagePlus and xarray data.
         
     Returns
     -------
     Any
-        The displayed object (converted SNTObject, chart, snapshot, or original object)
+        Return value depends on input type:
+        - matplotlib.Figure, xarray objects: Returns the original object
+        - SNT objects (charts, graphs, tables): Returns SNTObject dictionary with converted data
+        - Viewer3D: Returns snapshot ImagePlus
+        - Lists: Returns SNTObject dictionary with combined multi-panel figure
+        - Other objects: Returns result from specific handler or None on error
 
     """
     logger.debug(f"display() called with object type: {type(obj)}")
@@ -360,6 +376,8 @@ def display(obj: Any, **kwargs) -> Any:
         # Handle special SNT object types that need preprocessing
         if _is_snt_tree(obj):
             logger.debug(f"Detected SNT Tree: {type(obj)}")
+            # Note: origin parameter has no effect on trees since they're converted to 
+            # pre-rendered to SNTChart. To flip tree coordinates, modify the tree before display
             obj = _tree_to_chart(obj)
 
         # Special case: Handle ImagePlus objects that might be skeletons from trees

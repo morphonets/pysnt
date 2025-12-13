@@ -473,6 +473,7 @@ def _display_array_data(data, source_type="array", **kwargs):
         - title: str, optional title override
         - is_rgb: bool, optional RGB flag override
         - add_colorbar: bool, whether to add colorbar (default: True for grayscale)
+        - origin: str, origin for imshow ('upper', 'lower', 'auto') - only for ImagePlus sources
         
     Returns
     -------
@@ -543,9 +544,24 @@ def _display_array_data(data, source_type="array", **kwargs):
         # For non-binary images, show colorbar by default unless explicitly disabled
         add_colorbar = kwargs.get('add_colorbar', True)
     
+    # Handle origin parameter for ImagePlus objects
+    origin = kwargs.get('origin', 'auto')
+    if origin == 'auto':
+        # Determine origin based on source type
+        if source_type == "xarray" and metadata.get('source_type') == 'ImagePlus':
+            # For ImagePlus objects, use 'upper' (image convention) by default
+            origin = 'upper'
+            logger.debug("Auto-detected origin='upper' for ImagePlus source")
+        else:
+            # For other sources (charts, arrays), use matplotlib default
+            origin = 'upper'  # matplotlib default
+    
     # Remove conflicting parameters from kwargs to avoid "multiple values" error
     filtered_kwargs = {k: v for k, v in kwargs.items() 
-                      if k not in ['data', 'title', 'cmap', 'add_colorbar', 'is_rgb']}
+                      if k not in ['data', 'title', 'cmap', 'add_colorbar', 'is_rgb', 'origin']}
+    
+    # Add origin to filtered_kwargs for imshow
+    filtered_kwargs['origin'] = origin
     
     fig, ax, im = _create_standard_figure(
         data=img_data,
@@ -572,6 +588,7 @@ def _display_array_data(data, source_type="array", **kwargs):
                 'is_rgb': is_rgb,
                 'is_binary': is_binary,
                 'add_colorbar': add_colorbar,
+                'origin': origin,
                 **metadata  # Include original metadata
             },
             'error': None
