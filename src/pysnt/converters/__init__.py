@@ -30,6 +30,9 @@ from .structured_data_converters import (
     _extract_imageplus_metadata
 )
 
+# Import tree converter functions
+from .tree_converters import tree_to_points
+
 # Import graph converter functions for backward compatibility
 from .graph_converters import (
     _is_snt_graph,
@@ -70,6 +73,7 @@ def _initialize_converters():
     from .structured_data_converters import _is_snt_table, _convert_snt_table
     from .chart_converters import _is_snt_chart, _convert_snt_chart
     from .graph_converters import _is_snt_graph, _convert_snt_graph
+    from .tree_converters import _is_snt_tree, _convert_tree_to_points
     
     # Define converters
     SNT_CONVERTERS = [
@@ -87,6 +91,11 @@ def _initialize_converters():
             predicate=_is_snt_graph,
             converter=_convert_snt_graph,
             name="SNTGraph"
+        ),
+        sj.Converter(
+            predicate=_is_snt_tree,
+            converter=_convert_tree_to_points,
+            name="SNTTree"
         )
     ]
 
@@ -188,6 +197,9 @@ __all__ = [
     "_diagnose_graph_structure",
     "_get_default_layout_for_graph_type",
     "_graph_to_matplotlib",
+    
+    # Tree converter functions
+    "tree_to_points",
     
     # Constants
     "HAS_NETWORKX"

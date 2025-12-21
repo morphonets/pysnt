@@ -22,7 +22,7 @@ from .core import to_python, from_java, show, extract_figure
 
 # Import converter utilities
 from .converters import (
-    register_snt_converters, register_display_handler, list_converters, display, enhance_java_object
+    register_snt_converters, register_display_handler, list_converters, display, enhance_java_object, tree_to_points
 )
 
 # Import Java utilities
@@ -377,6 +377,7 @@ __all__ = [
     "list_converters",
     "display",
     "enhance_java_object",
+    "tree_to_points",
     # Configuration system
     "get_option",
     "set_option", 
