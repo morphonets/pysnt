@@ -68,13 +68,14 @@ PySNT provides a pandas-style configuration system that allows you to customize 
 
 | Setting                            | Type  | Description                                                                       | Default  |
 |------------------------------------|-------|-----------------------------------------------------------------------------------|----------|
+| debug_mode                         | bool  | Toggle SNT's debug mode. May need to be called after `pysnt.initialize()`         | False    |
 | display.chart_format               | str   | Default export format for SNTChart (svg, png, or pdf)                             | png      |
 | display.gui_safe_mode              | bool  | Use safe GUI mode to avoid threading issues on macOS                              | True     |
 | display.max_columns                | int   | Maximum number of columns to display in table outputs                             | 20       |
 | display.max_rows                   | int   | Maximum number of rows to display in table outputs                                | 100      |
-| display.precision                  | int   | Number of decimal places to display for floating point numbers                    | 6        |
+| display.precision                  | int   | Number of decimal places to display for floating point numbers                     | 6        |
 | display.table_mode                 | str   | Default display mode for SNTTables (pandasgui, heatmap, heatmap_norm, or summary) | summary  |
-| plotting.figure_size               | tuple | Default figure size for plots as (width, height) in inches                        | (8, 8)   |
+| plotting.figure_size                | tuple | Default figure size for plots as (width, height) in inches                         | (8, 8)   |
 | pyplot.ion                         | bool  | Enable matplotlib interactive mode (plt.ion()) for better plot display            | True     |
 | graph.processing.warn_self_loops   | bool  | Warn when self-loops are detected in neural morphology graphs                     | True     |
 | graph.layout.AnnotationGraph       | str   | Default layout algorithm for AnnotationGraph (brain regions)                      | circular |

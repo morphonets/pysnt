@@ -114,6 +114,33 @@ def _graph_type_validator(value: str) -> str:
 _global_config: Dict[str, _Option] = {}
 
 
+def _debug_mode_callback(key: str, old_value: Any, new_value: Any) -> None:
+    """Callback function that automatically configures SNT debug mode when the option changes."""
+    try:
+        # Import here to avoid circular imports and ensure SNT is available
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Debug mode option '{key}' changed from {old_value} to {new_value}, configuring SNT...")
+        
+        # Import SNTUtils dynamically
+        try:
+            import scyjava
+            if scyjava.jvm_started():
+                SNTUtils = scyjava.jimport("sc.fiji.snt.SNTUtils")
+                SNTUtils.setDebugMode(bool(new_value))
+                logger.debug(f"SNT debug mode set to {bool(new_value)}")
+            else:
+                logger.debug("JVM not started, SNT debug mode will be set when JVM starts")
+        except Exception as e:
+            logger.debug(f"Failed to set SNT debug mode: {e}")
+            
+    except Exception as e:
+        # Don't let configuration errors break option setting
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Failed to configure SNT debug mode after option change: {e}")
+
+
 def _java_logging_callback(key: str, old_value: Any, new_value: Any) -> None:
     """Callback function that automatically configures Java logging when options change."""
     try:
@@ -299,6 +326,14 @@ _register_option(
     'Silence java.util.logging (Java side)',
     lambda x: bool(x),
     _java_logging_callback
+)
+
+_register_option(
+    'debug_mode',
+    False,
+    'Enable/disable SNT debug mode (calls SNTUtils.setDebugMode())',
+    lambda x: bool(x),
+    _debug_mode_callback
 )
 
 
