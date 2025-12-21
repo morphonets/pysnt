@@ -41,7 +41,7 @@ except ImportError:
     nx = None
 
 
-def _display_matplotlib_figure(fig: Figure, **kwargs) -> None:
+def _display_matplotlib_figure(fig: Figure, show: bool = True, **kwargs) -> None:
     """
     Display a matplotlib figure using the unified display system.
     
@@ -81,32 +81,39 @@ def _display_matplotlib_figure(fig: Figure, **kwargs) -> None:
         fig.suptitle(title, fontsize=title_fontsize, fontweight='normal')
         logger.debug(f"Applied title to figure: {title} (fontsize={title_fontsize})")
 
-    # Use the unified display system
-    if _show_matplotlib_figure(fig, **kwargs):
-        logger.info("Successfully displayed figure using unified display system")
-    else:
-        # Fallback methods if unified display fails
-        try:
-            # Method 2: Use figure's show method directly
-            fig.show()
-            logger.info("Successfully displayed figure using fig.show()")
-        except Exception as e2:
-            logger.debug(f"fig.show() failed: {e2}")
+    # Conditionally display based on show parameter
+    if show:
+        # Use the unified display system
+        if _show_matplotlib_figure(fig, **kwargs):
+            logger.info("Successfully displayed figure using unified display system")
+        else:
+            # Fallback methods if unified display fails
             try:
-                # Method 3: Force display using canvas manager
-                if hasattr(fig.canvas, 'manager') and hasattr(fig.canvas.manager, 'show'):
-                    fig.canvas.manager.show()
-                    logger.info("Successfully displayed figure using canvas.manager.show()")
-                else:
-                    # Fallback: draw and flush events
-                    fig.canvas.draw()
-                    fig.canvas.flush_events()
-                    logger.info("Drew figure and flushed events as fallback")
-            except Exception as e3:
-                logger.debug(f"canvas manager show failed: {e3}")
-                # Method 4: Save and display info as fallback
-                logger.warning(f"Could not display figure directly. Figure created with {len(fig.axes)} axes.")
-                logger.info("Figure is available but display failed - you may need to call plt.show() manually")
+                # Method 2: Use figure's show method directly
+                fig.show()
+                logger.info("Successfully displayed figure using fig.show()")
+            except Exception as e2:
+                logger.debug(f"fig.show() failed: {e2}")
+                try:
+                    # Method 3: Force display using canvas manager
+                    if hasattr(fig.canvas, 'manager') and hasattr(fig.canvas.manager, 'show'):
+                        fig.canvas.manager.show()
+                        logger.info("Successfully displayed figure using canvas.manager.show()")
+                    else:
+                        # Fallback: draw and flush events
+                        fig.canvas.draw()
+                        fig.canvas.flush_events()
+                        logger.info("Drew figure and flushed events as fallback")
+                except Exception as e3:
+                    logger.debug(f"canvas manager show failed: {e3}")
+                    # Method 4: Save and display info as fallback
+                    logger.warning(f"Could not display figure directly. Figure created with {len(fig.axes)} axes.")
+                    logger.info("Figure is available but display failed - you may need to call plt.show() manually")
+    else:
+        logger.debug("Figure created but not displayed (show=False)")
+        # Close the figure to prevent Jupyter from auto-displaying it
+        import matplotlib.pyplot as plt
+        plt.close(fig)
 
 
 def _show_matplotlib_figure(fig=None, **kwargs) -> bool:
@@ -457,7 +464,7 @@ def _graph_to_matplotlib(graph, **kwargs) -> Figure:
         return fig
 
 
-def _display_array_data(data, source_type="array", **kwargs):
+def _display_array_data(data, source_type="array", show: bool = True, **kwargs):
     """
     Unified array display for numpy arrays, xarray values, etc.
     
@@ -573,13 +580,22 @@ def _display_array_data(data, source_type="array", **kwargs):
     )
 
     # Use unified display system
-    if _show_matplotlib_figure(fig):
+    if show and _show_matplotlib_figure(fig):
         image_type_desc = 'RGB' if is_rgb else ('binary' if is_binary else 'grayscale')
         colorbar_status = 'with colorbar' if add_colorbar else 'without colorbar'
         logger.info(f"Successfully displayed {source_type} data as {image_type_desc} image {colorbar_status}: '{title}'")
-        return {
+    elif not show:
+        logger.debug(f"Figure created but not displayed (show=False)")
+        # Close the figure to prevent Jupyter from auto-displaying it
+        import matplotlib.pyplot as plt
+        plt.close(fig)
+    
+    # Always return the SNTObject regardless of show parameter
+    image_type_desc = 'RGB' if is_rgb else ('binary' if is_binary else 'grayscale')
+    colorbar_status = 'with colorbar' if add_colorbar else 'without colorbar'
+    return {
             'type': Figure,
-            'data': data,
+            'data': fig,  # Return the matplotlib figure for display chaining
             'metadata': {
                 'source_type': source_type,
                 'original_shape': original_shape,
@@ -589,13 +605,12 @@ def _display_array_data(data, source_type="array", **kwargs):
                 'is_binary': is_binary,
                 'add_colorbar': add_colorbar,
                 'origin': origin,
+                'original_data': data,  # Store original data in metadata
                 **metadata  # Include original metadata
             },
             'error': None
         }
-    else:
-        logger.warning(f"Failed to display {source_type} figure")
-        return None
+
 
 
 def _should_preserve_aspect(image_array):
@@ -653,6 +668,23 @@ def _should_preserve_aspect(array) -> bool:
         # Always preserve aspect ratio for image data to prevent distortion
         # This is especially important for orthogonal views from 3D viewers
         return True
+    except Exception:
+        return False
+
+
+def _source_has_colorbar(fig):
+    """Check if a matplotlib figure has a colorbar."""
+    try:
+        # Check if there are more axes than expected (colorbar creates additional axes)
+        if len(fig.axes) > 1:
+            return True
+        # Check for colorbar-specific attributes
+        for ax in fig.axes:
+            if hasattr(ax, 'collections') and ax.collections:
+                for collection in ax.collections:
+                    if hasattr(collection, 'colorbar') and collection.colorbar is not None:
+                        return True
+        return False
     except Exception:
         return False
 
@@ -719,6 +751,10 @@ def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str,
                 # Detect if this is a polar plot or other aspect-sensitive content
                 is_polar = any(hasattr(ax, 'name') and ax.name == 'polar' for ax in source_fig.axes)
                 
+                # Detect if this figure contains image data (for colorbar and axes handling)
+                has_image_data = False
+                image_mappable = None
+                
                 # Copy all children (plots, images, etc.) from source to target
                 for child in source_ax.get_children():
                     # Handle different types of plot elements
@@ -728,10 +764,23 @@ def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str,
                             array = child.get_array()
                             extent = child.get_extent()
                             cmap = child.get_cmap()
+                            vmin = child.get_clim()[0] if hasattr(child, 'get_clim') else None
+                            vmax = child.get_clim()[1] if hasattr(child, 'get_clim') else None
+                            
+                            # Preserve origin parameter from source image
+                            origin = 'upper'  # matplotlib default
+                            if hasattr(child, 'origin'):
+                                origin = child.origin
+                            elif hasattr(child, 'get_origin'):
+                                origin = child.get_origin()
                             
                             # Preserve aspect ratio for polar plots and square content
                             aspect = 'equal' if is_polar or _should_preserve_aspect(array) else 'auto'
-                            target_ax.imshow(array, extent=extent, cmap=cmap, aspect=aspect)
+                            im = target_ax.imshow(array, extent=extent, cmap=cmap, aspect=aspect, 
+                                                vmin=vmin, vmax=vmax, origin=origin)
+                            
+                            has_image_data = True
+                            image_mappable = im
                         except Exception as e:
                             logger.debug(f"Could not copy image data from panel {i+1}: {e}")
                     elif hasattr(child, 'get_xydata'):
@@ -756,13 +805,43 @@ def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str,
                 if is_polar:
                     target_ax.set_aspect('equal', adjustable='box')
                 
-                # Copy axis properties but hide axes decorations
+                # Determine axis handling based on source type and content
+                figure_source_types = kwargs.get('figure_source_types', [])
+                source_type = figure_source_types[i] if i < len(figure_source_types) else 'Unknown'
+                
+                # ImagePlus sources should show axes and colorbars
+                is_imageplus_source = source_type == 'ImagePlus'
+                
+                # Copy axis properties
                 target_ax.set_xlim(source_ax.get_xlim())
                 target_ax.set_ylim(source_ax.get_ylim())
                 
-                # Setup clean axis formatting (completely hide axis for combined charts)
-                from .utils import _setup_clean_axis
-                _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+                if has_image_data and is_imageplus_source:
+                    # For ImagePlus data, preserve axes with ticks and labels
+                    if show_panel_titles and title:
+                        target_ax.set_title(title, fontsize=10, pad=5)
+                    
+                    # Copy axis labels and ticks from source if they exist
+                    if hasattr(source_ax, 'get_xlabel') and source_ax.get_xlabel():
+                        target_ax.set_xlabel(source_ax.get_xlabel())
+                    if hasattr(source_ax, 'get_ylabel') and source_ax.get_ylabel():
+                        target_ax.set_ylabel(source_ax.get_ylabel())
+                    
+                    # Keep axis ticks and spines visible for ImagePlus
+                    # (Don't call _setup_clean_axis which would hide them)
+                    
+                    # Add colorbar for image data if there was one in the source
+                    if image_mappable is not None and _source_has_colorbar(source_fig):
+                        try:
+                            plt.colorbar(image_mappable, ax=target_ax, shrink=0.8)
+                        except Exception as e:
+                            logger.debug(f"Could not add colorbar to panel {i+1}: {e}")
+                else:
+                    # For chart data (SNTChart, Tree, etc.) or non-ImagePlus, hide axis decorations
+                    # Use explicit axis hiding to ensure it works after setting limits
+                    target_ax.axis('off')
+                    if show_panel_titles and title:
+                        target_ax.set_title(title, fontsize=10, pad=5)
                 
             else:
                 # No axes in source figure - create placeholder
@@ -774,12 +853,18 @@ def _combine_matplotlib_figures(figures: list, titles: list, overall_title: str,
             
         except Exception as e:
             logger.warning(f"Failed to copy content from figure {i+1}: {e}")
-            # Create error placeholder
-            target_ax.text(0.5, 0.5, f'Panel {i+1}\n(Copy Error)', 
-                          ha='center', va='center', transform=target_ax.transAxes)
-            # Setup clean axis formatting for error placeholder (completely hide axis)
-            from .utils import _setup_clean_axis
-            _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+            # Create error placeholder - check if target_ax is valid
+            try:
+                if hasattr(target_ax, 'text'):
+                    target_ax.text(0.5, 0.5, f'Panel {i+1}\n(Copy Error)', 
+                                  ha='center', va='center', transform=target_ax.transAxes)
+                    # Setup clean axis formatting for error placeholder (completely hide axis)
+                    from .utils import _setup_clean_axis
+                    _setup_clean_axis(target_ax, title, show_panel_titles, hide_axis_completely=True)
+                else:
+                    logger.error(f"target_ax is not a valid axes object: {type(target_ax)}")
+            except Exception as e2:
+                logger.error(f"Failed to create error placeholder for panel {i+1}: {e2}")
         
         # Clean up the source figure to free memory
         try:

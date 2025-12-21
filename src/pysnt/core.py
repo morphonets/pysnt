@@ -831,6 +831,50 @@ def show(obj, **kwargs):
         raise RuntimeError("PyImageJ integration not available. Ensure PyImageJ is installed.")
 
 
+def extract_figure(display_result):
+    """
+    Extract matplotlib figure from display result.
+    
+    This convenience function extracts the underlying data (typically a matplotlib figure)
+    from an SNTObject dictionary returned by pysnt.display(). If the input is already
+    a matplotlib figure or other object, it returns it unchanged.
+    
+    Parameters
+    ----------
+    display_result : Any
+        Result from pysnt.display() - can be:
+        - SNTObject dictionary (data will be extracted)
+        - matplotlib.Figure (returned as-is)
+        - Any other object (returned as-is)
+        
+    Returns
+    -------
+    Any
+        The extracted data (typically matplotlib.Figure) or the original object
+        
+    Examples
+    --------
+    >>> import pysnt
+    >>> pysnt.initialize()
+    >>> 
+    >>> # Extract figure from display result
+    >>> result = pysnt.display(tree)
+    >>> fig = pysnt.extract_figure(result)  # matplotlib.Figure
+    >>> 
+    >>> # Works with lists for multi-panel display
+    >>> fig1 = pysnt.extract_figure(pysnt.display(img))
+    >>> fig2 = pysnt.extract_figure(pysnt.display(tree))
+    >>> pysnt.display([fig1, fig2], panel_layout=(1,2))
+    >>> 
+    >>> # Also works with objects that aren't SNTObject dicts
+    >>> fig = plt.figure()
+    >>> same_fig = pysnt.extract_figure(fig)  # Returns fig unchanged
+    """
+    if isinstance(display_result, dict) and 'data' in display_result:
+        return display_result['data']
+    return display_result
+
+
 
 
 

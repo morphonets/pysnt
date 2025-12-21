@@ -45,7 +45,7 @@ except ImportError:
     plt = None
 
 
-def _display_pandas_dataframe(df, **kwargs):
+def _display_pandas_dataframe(df, show: bool = True, **kwargs):
     """
     Handler function for pandas DataFrame display.
     
@@ -209,7 +209,7 @@ def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
         return False
 
 
-def _display_xarray(xarr: Any, **kwargs) -> None:
+def _display_xarray(xarr: Any, show: bool = True, **kwargs) -> None:
     """
     Display a xarray DataArray or Dataset using matplotlib.
     
@@ -263,7 +263,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
             logger.debug(f"Converted to numpy array: shape={img_data.shape}, dtype={img_data.dtype}")
             # Use unified array display
             from .visual_display import _display_array_data
-            result = _display_array_data(img_data, "xarray", **kwargs)
+            result = _display_array_data(img_data, "xarray", show=show, **kwargs)
             if result:
                 logger.info("Successfully displayed xarray using unified array display")
                 return result
@@ -292,7 +292,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
                 logger.debug(f"Converted to numpy array: shape={img_data.shape}, dtype={img_data.dtype}")
                 # Use unified array display
                 from .visual_display import _display_array_data
-                result = _display_array_data(img_data, "xarray", **kwargs)
+                result = _display_array_data(img_data, "xarray", show=show, **kwargs)
                 if result:
                     logger.info("Successfully displayed xarray using unified array display")
                     return result
@@ -320,7 +320,7 @@ def _display_xarray(xarr: Any, **kwargs) -> None:
         _handle_display_error(e, "xarray display", str(type(xarr)))
 
 
-def _display_imageplus(obj, **kwargs):
+def _display_imageplus(obj, show: bool = True, **kwargs):
     """
     Handler function for ImagePlus display.
     
@@ -331,6 +331,9 @@ def _display_imageplus(obj, **kwargs):
     ----------
     obj : ImagePlus
         The ImagePlus object to display
+    show : bool, default True
+        Whether to display the figure immediately. If False, creates the figure 
+        but doesn't show it (useful for chaining: fig1 = pysnt.display(obj, show=False))
     **kwargs : dict
         Additional keyword arguments:
         - frame, t, time, timepoint : int, optional
@@ -340,8 +343,15 @@ def _display_imageplus(obj, **kwargs):
 
     Returns
     -------
-    xarray or None
-        Converted xarray object if successful, None otherwise
+    dict or None
+        SNTObject dictionary containing:
+        {
+            'data': xarray.DataArray,     # Converted image data
+            'metadata': dict,             # Image metadata (title, RGB flag, dimensions, etc.)
+            'original_type': 'ImagePlus', # Original object type
+            'error': None                 # Error message if conversion failed
+        }
+        Returns None if conversion fails.
     """
     logger.info("Detected ImagePlus object - extracting metadata and converting...")
     try:
@@ -384,11 +394,20 @@ def _display_imageplus(obj, **kwargs):
         # Display the xarray data with metadata
         logger.info(f"Displaying ImagePlus '{metadata.get('image_title', 'Unknown')}' "
                    f"({'RGB' if metadata.get('is_rgb', False) else 'grayscale'})")
-        _display_xarray(xarray_data, **kwargs_with_metadata)
+        display_result = _display_xarray(xarray_data, show=show, **kwargs_with_metadata)
         
-        # Return the original ImagePlus object instead of the xarray to prevent double processing
-        # The display has already been handled by _display_xarray()
-        return obj
+        # Return the display result (which contains the matplotlib figure) for display chaining
+        if display_result is not None:
+            # Update metadata to indicate this came from ImagePlus
+            display_result['metadata']['source_type'] = 'ImagePlus'
+            display_result['metadata'].update(metadata)
+            return display_result
+        else:
+            # Fallback: return SNTObject with xarray data if display failed
+            from ..converters.core import _create_converter_result
+            metadata_copy = metadata.copy()
+            metadata_copy.pop('source_type', None)
+            return _create_converter_result(xarray_data, 'ImagePlus', **metadata_copy)
 
     except Exception as e:
         _handle_display_error(e, "ImagePlus display", "ImagePlus")

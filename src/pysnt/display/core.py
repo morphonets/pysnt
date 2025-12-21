@@ -316,7 +316,7 @@ except ImportError:
     pandas = None
 
 
-def display(obj: Any, **kwargs) -> Any:
+def display(obj: Any, show: bool = True, **kwargs) -> Any:
     """
     Display any supported object type in the most appropriate way.
     
@@ -329,6 +329,9 @@ def display(obj: Any, **kwargs) -> Any:
     obj : Any
         Object to display (Java objects, SNTObjects, matplotlib figures, xarray objects, 
         Viewer2D/3D objects, lists, etc.)
+    show : bool, default True
+        Whether to display the figure immediately. If False, creates the figure 
+        but doesn't show it (useful for chaining: fig1 = pysnt.display(obj, show=False))
     **kwargs
         Display arguments including:
         - cmap: str, colormap for grayscale images
@@ -348,8 +351,8 @@ def display(obj: Any, **kwargs) -> Any:
     Any
         Return value depends on input type:
         - matplotlib.Figure, xarray objects: Returns the original object
-        - SNT objects (charts, graphs, tables): Returns SNTObject dictionary with converted data
-        - Viewer3D: Returns snapshot ImagePlus
+        - SNT objects (charts, graphs, tables, ImagePlus): Returns SNTObject dictionary with converted data
+        - Viewer3D: Returns snapshot ImagePlus (for backward compatibility)
         - Lists: Returns SNTObject dictionary with combined multi-panel figure
         - Other objects: Returns result from specific handler or None on error
 
@@ -358,7 +361,7 @@ def display(obj: Any, **kwargs) -> Any:
 
     # Check if obj is a list of supported objects
     if isinstance(obj, (list, tuple)):
-        return _display_object_list(obj, **kwargs)
+        return _display_object_list(obj, show=show, **kwargs)
 
     # Validate and normalize kwargs
     kwargs = _validate_display_kwargs(**kwargs)
@@ -410,21 +413,21 @@ def display(obj: Any, **kwargs) -> Any:
             logger.info(f"Displaying matplotlib figure directly with {len(obj.axes)} axes")
             # Import from visual_display module
             from .visual_display import _display_matplotlib_figure
-            _display_matplotlib_figure(obj, **kwargs)
+            _display_matplotlib_figure(obj, show=show, **kwargs)
             return obj
         elif obj_type == 'xarray':
             logger.info(f"Displaying xarray object: {type(obj)}")
             # Import from data_display module
             from .data_display import _display_xarray
-            _display_xarray(obj, **kwargs)
+            _display_xarray(obj, show=show, **kwargs)
             return obj
         elif obj_type == 'snt_object':
-            return _handle_snt_object_display(obj, **kwargs)
+            return _handle_snt_object_display(obj, show=show, **kwargs)
         elif obj_type in ['snt_table', 'snt_chart', 'snt_graph', 'pandas_dataframe', 'networkx_graph']:
-            return handler(obj, **kwargs)
+            return handler(obj, show=show, **kwargs)
         else:
             # For other types (imageplus, numpy_array, java_object, viewer3d, viewer2d)
-            return handler(obj, **kwargs)
+            return handler(obj, show=show, **kwargs)
 
     except Exception as e:
         _handle_display_error(e, "Display operation", str(type(obj)))
@@ -526,13 +529,13 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     # Check numpy arrays
     if hasattr(obj, 'shape') and hasattr(obj, 'dtype') and hasattr(obj, 'ndim'):
         from .visual_display import _display_array_data
-        return 'numpy_array', lambda arr, **kw: _display_array_data(arr, "numpy array", **kw)
+        return 'numpy_array', lambda arr, show=True, **kw: _display_array_data(arr, "numpy array", show=show, **kw)
 
     # Default to Java object conversion
     return 'java_object', _display_with_auto_conversion
 
 
-def _handle_snt_object_display(obj, **kwargs):
+def _handle_snt_object_display(obj, show: bool = True, **kwargs):
     """Handle display of SNTObject dictionaries."""
     logger.debug("Object is a converted SNTObject")
     
@@ -546,7 +549,7 @@ def _handle_snt_object_display(obj, **kwargs):
     if isinstance(data, Figure):
         logger.info(f"Displaying matplotlib figure from SNTObject with {len(data.axes)} axes")
         from .visual_display import _display_matplotlib_figure
-        _display_matplotlib_figure(data, **kwargs)
+        _display_matplotlib_figure(data, show=show, **kwargs)
         return obj
     elif _is_xarray_object(data):
         # Get size information safely for xarray objects
@@ -568,7 +571,7 @@ def _handle_snt_object_display(obj, **kwargs):
         
         # Display the xarray data with metadata
         from .data_display import _display_xarray
-        _display_xarray(data, **kwargs_with_metadata)
+        _display_xarray(data, show=show, **kwargs_with_metadata)
         return obj
     elif hasattr(data, 'shape') and hasattr(data, 'dtype'):  # numpy array
         logger.info(f"Displaying numpy array (size: {data.size})")
@@ -592,7 +595,7 @@ def _handle_snt_object_display(obj, **kwargs):
             # Create matplotlib figure from NetworkX graph
             from .visual_display import _graph_to_matplotlib, _display_matplotlib_figure
             fig = _graph_to_matplotlib(data, **kwargs_with_type)
-            _display_matplotlib_figure(fig, **kwargs)
+            _display_matplotlib_figure(fig, show=show, **kwargs)
             return obj
         except Exception as e:
             logger.error(f"Failed to display NetworkX graph: {e}")
@@ -609,7 +612,7 @@ def _handle_snt_object_display(obj, **kwargs):
 
 
 @handle_display_errors("display SNTTable")
-def _display_snt_table(obj, **kwargs):
+def _display_snt_table(obj, show: bool = True, **kwargs):
     """
     Handler function for SNTTable display.
     
@@ -636,7 +639,7 @@ def _display_snt_table(obj, **kwargs):
             return None
             
         # Display the converted SNTObject
-        return _handle_snt_object_display(converted, **kwargs)
+        return _handle_snt_object_display(converted, show=show, **kwargs)
         
     except Exception as e:
         _handle_display_error(e, "SNTTable display", "SNTTable")
@@ -644,7 +647,7 @@ def _display_snt_table(obj, **kwargs):
 
 
 @handle_display_errors("display SNTChart")
-def _display_snt_chart(obj, **kwargs):
+def _display_snt_chart(obj, show: bool = True, **kwargs):
     """
     Handler function for SNTChart display.
     
@@ -671,7 +674,7 @@ def _display_snt_chart(obj, **kwargs):
             return None
             
         # Display the converted SNTObject
-        return _handle_snt_object_display(converted, **kwargs)
+        return _handle_snt_object_display(converted, show=show, **kwargs)
         
     except Exception as e:
         _handle_display_error(e, "SNTChart display", "SNTChart")
@@ -679,7 +682,7 @@ def _display_snt_chart(obj, **kwargs):
 
 
 @handle_display_errors("display SNTGraph")
-def _display_snt_graph(obj, **kwargs):
+def _display_snt_graph(obj, show: bool = True, **kwargs):
     """
     Handler function for SNTGraph display.
     
@@ -706,14 +709,14 @@ def _display_snt_graph(obj, **kwargs):
             return None
             
         # Display the converted SNTObject
-        return _handle_snt_object_display(converted, **kwargs)
+        return _handle_snt_object_display(converted, show=show, **kwargs)
         
     except Exception as e:
         _handle_display_error(e, "SNTGraph display", "SNTGraph")
         return None
 
 
-def _display_with_auto_conversion(obj: Any, **kwargs) -> Any:
+def _display_with_auto_conversion(obj: Any, show: bool = True, **kwargs) -> Any:
     """Attempt to display a raw Java object by trying available converters."""
     logger.debug(f"Attempting auto-conversion for {type(obj)}")
     
@@ -774,14 +777,20 @@ def _display_generic_object(obj: Any, **kwargs) -> Any:
     return obj
 
 
-def _display_object_list(obj_list: list, **kwargs) -> Any:
+def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
     """
     Handle display of lists of supported objects as multi-panel figures.
+    
+    Automatically extracts matplotlib figures from SNTObject dictionaries
+    to support seamless chaining like: pysnt.display([pysnt.display(obj1), pysnt.display(obj2)])
     
     Parameters
     ----------
     obj_list : list or tuple
-        List of objects to display
+        List of objects to display. Can include:
+        - Raw objects (ImagePlus, Tree, etc.)
+        - matplotlib.Figure objects  
+        - SNTObject dictionaries (data will be auto-extracted)
     **kwargs
         Display arguments
         
@@ -796,11 +805,30 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
         logger.warning("Empty list provided to display")
         return None
     
+    # Auto-extract data from SNTObject dictionaries for seamless chaining
+    processed_list = []
+    source_types = []  # Track source types for extracted figures
+    
+    for i, obj in enumerate(obj_list):
+        if isinstance(obj, dict) and 'data' in obj and 'type' in obj:
+            # This is an SNTObject dictionary - extract the matplotlib figure/data
+            source_type = obj.get('metadata', {}).get('source_type', 'Unknown')
+            logger.debug(f"Auto-extracting data from SNTObject dictionary at index {i} (source_type: {source_type})")
+            processed_list.append(obj['data'])
+            source_types.append(source_type)
+        else:
+            processed_list.append(obj)
+            source_types.append('Unknown')
+    
+    # Update obj_list to use processed objects
+    obj_list = processed_list
+    
     # Check object types in the list
     chart_objects = []
     viewer2d_objects = []
     imageplus_objects = []
     tree_objects = []
+    matplotlib_figures = []
     other_objects = []
     
     for i, obj in enumerate(obj_list):
@@ -812,51 +840,72 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
             imageplus_objects.append(obj)
         elif _is_snt_tree(obj):
             tree_objects.append(obj)
+        elif HAS_MATPLOTLIB and isinstance(obj, Figure):
+            # Matplotlib figures (extracted from SNTObject dictionaries)
+            matplotlib_figures.append(obj)
         else:
             other_objects.append((i, type(obj).__name__))
     
     # Handle pure lists of supported objects
-    if chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not other_objects:
+    if chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure SNTChart list - use multi-panel display
         logger.info(f"Detected list of {len(chart_objects)} SNTChart objects")
-        return _display_snt_chart_list(chart_objects, **kwargs)
-    elif viewer2d_objects and not chart_objects and not imageplus_objects and not tree_objects and not other_objects:
+        return _display_snt_chart_list(chart_objects, show=show, **kwargs)
+    elif viewer2d_objects and not chart_objects and not imageplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure Viewer2D list - use multi-panel display
         logger.info(f"Detected list of {len(viewer2d_objects)} Viewer2D objects")
-        return _display_viewer2d_list(viewer2d_objects, **kwargs)
-    elif imageplus_objects and not chart_objects and not viewer2d_objects and not tree_objects and not other_objects:
+        return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
+    elif imageplus_objects and not chart_objects and not viewer2d_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure ImagePlus list - use multi-panel display
         logger.info(f"Detected list of {len(imageplus_objects)} ImagePlus objects")
-        return _display_imageplus_list(imageplus_objects, **kwargs)
-    elif tree_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not other_objects:
+        return _display_imageplus_list(imageplus_objects, show=show, **kwargs)
+    elif tree_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not matplotlib_figures and not other_objects:
         # Pure Tree list - use multi-panel display
         logger.info(f"Detected list of {len(tree_objects)} Tree objects")
-        return _display_tree_list(tree_objects, **kwargs)
-    elif (chart_objects or viewer2d_objects or imageplus_objects or tree_objects) and other_objects:
+        return _display_tree_list(tree_objects, show=show, **kwargs)
+    elif matplotlib_figures and not chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not other_objects:
+        # Pure matplotlib.Figure list - use multi-panel display
+        logger.info(f"Detected list of {len(matplotlib_figures)} matplotlib Figure objects")
+        
+        # Extract source types for the matplotlib figures
+        figure_source_types = []
+        for i, obj in enumerate(processed_list):
+            if HAS_MATPLOTLIB and isinstance(obj, Figure):
+                figure_source_types.append(source_types[i])
+        
+        return _display_matplotlib_figure_list(matplotlib_figures, figure_source_types=figure_source_types, show=show, **kwargs)
+    elif (chart_objects or viewer2d_objects or imageplus_objects or tree_objects or matplotlib_figures) and other_objects:
         # Mixed list - warn and display supported objects
-        supported_count = len(chart_objects) + len(viewer2d_objects) + len(imageplus_objects) + len(tree_objects)
+        supported_count = len(chart_objects) + len(viewer2d_objects) + len(imageplus_objects) + len(tree_objects) + len(matplotlib_figures)
         logger.warning(f"Mixed object list detected. Displaying {supported_count} supported objects, "
                       f"ignoring {len(other_objects)} other objects: {[name for _, name in other_objects]}")
         
-        # Prioritize charts > viewer2d > imageplus > trees if multiple types are present
+        # Prioritize charts > viewer2d > imageplus > matplotlib > trees if multiple types are present
         if chart_objects:
-            return _display_snt_chart_list(chart_objects, **kwargs)
+            return _display_snt_chart_list(chart_objects, show=show, **kwargs)
         elif viewer2d_objects:
-            return _display_viewer2d_list(viewer2d_objects, **kwargs)
+            return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
         elif imageplus_objects:
-            return _display_imageplus_list(imageplus_objects, **kwargs)
+            return _display_imageplus_list(imageplus_objects, show=show, **kwargs)
+        elif matplotlib_figures:
+            # Extract source types for the matplotlib figures
+            figure_source_types = []
+            for i, obj in enumerate(processed_list):
+                if HAS_MATPLOTLIB and isinstance(obj, Figure):
+                    figure_source_types.append(source_types[i])
+            return _display_matplotlib_figure_list(matplotlib_figures, figure_source_types=figure_source_types, show=show, **kwargs)
         else:
-            return _display_tree_list(tree_objects, **kwargs)
+            return _display_tree_list(tree_objects, show=show, **kwargs)
     elif (chart_objects and viewer2d_objects) or (chart_objects and imageplus_objects) or (viewer2d_objects and imageplus_objects):
         # Mixed supported objects - prioritize charts > viewer2d > imageplus
         if chart_objects:
             logger.warning(f"Mixed list detected. Displaying {len(chart_objects)} SNTChart objects, "
                           f"ignoring other supported objects.")
-            return _display_snt_chart_list(chart_objects, **kwargs)
+            return _display_snt_chart_list(chart_objects, show=show, **kwargs)
         elif viewer2d_objects:
             logger.warning(f"Mixed list detected. Displaying {len(viewer2d_objects)} Viewer2D objects, "
                           f"ignoring ImagePlus objects.")
-            return _display_viewer2d_list(viewer2d_objects, **kwargs)
+            return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
     else:
         # No supported objects for list display
         logger.warning(f"List contains no supported objects for multi-panel display. "
@@ -866,7 +915,7 @@ def _display_object_list(obj_list: list, **kwargs) -> Any:
 
 
 @handle_display_errors("display SNTChart list")
-def _display_snt_chart_list(chart_list: list, **kwargs) -> Any:
+def _display_snt_chart_list(chart_list: list, show: bool = True, **kwargs) -> Any:
     """Display a list of SNTChart objects as a multi-panel matplotlib figure."""
     # Limit number of charts
     max_panels = kwargs.get('max_panels', 20)
@@ -884,7 +933,7 @@ def _display_snt_chart_list(chart_list: list, **kwargs) -> Any:
 
 
 @handle_display_errors("display Viewer2D list")
-def _display_viewer2d_list(viewer2d_list: list, **kwargs) -> Any:
+def _display_viewer2d_list(viewer2d_list: list, show: bool = True, **kwargs) -> Any:
     """Display a list of Viewer2D objects as a multi-panel matplotlib figure."""
     # Limit number of viewers
     max_panels = kwargs.get('max_panels', 20)
@@ -902,7 +951,7 @@ def _display_viewer2d_list(viewer2d_list: list, **kwargs) -> Any:
 
 
 @handle_display_errors("display Tree list")
-def _display_tree_list(tree_list: list, **kwargs) -> Any:
+def _display_tree_list(tree_list: list, show: bool = True, **kwargs) -> Any:
     """Display a list of Tree objects as a multi-panel matplotlib figure."""
     # Limit number of trees
     max_panels = kwargs.get('max_panels', 20)
@@ -933,11 +982,79 @@ def _display_tree_list(tree_list: list, **kwargs) -> Any:
     logger.info(f"Successfully converted {len(displayable_list)} trees, displaying as multi-panel figure")
     
     # Use the ImagePlus list display function
-    return _display_snt_chart_list(displayable_list, **kwargs)
+    return _display_snt_chart_list(displayable_list, show=show, **kwargs)
+
+
+@handle_display_errors("display matplotlib Figure list")
+def _display_matplotlib_figure_list(figure_list: list, figure_source_types: list = None, show: bool = True, **kwargs) -> Any:
+    """
+    Display a list of matplotlib Figure objects as a multi-panel figure.
+    
+    This function handles matplotlib figures that have been extracted from
+    SNTObject dictionaries during auto-extraction.
+    
+    Parameters
+    ----------
+    figure_list : list
+        List of matplotlib.Figure objects to display
+    **kwargs
+        Display arguments (panel_layout, title, figsize, etc.)
+        
+    Returns
+    -------
+    Any
+        SNTObject containing the combined matplotlib figure
+    """
+    try:
+        # Get parameters
+        title = kwargs.get('title', None)
+        
+        logger.info(f"Creating multi-panel figure from {len(figure_list)} matplotlib Figure objects")
+        
+        # Extract titles from figures or use custom titles if provided
+        custom_titles = kwargs.get('panel_titles', None)
+        titles = []
+        
+        for i, fig in enumerate(figure_list):
+            # Use custom title if provided, otherwise extract from figure
+            if custom_titles and i < len(custom_titles):
+                titles.append(custom_titles[i])
+            elif hasattr(fig, '_suptitle') and fig._suptitle:
+                titles.append(fig._suptitle.get_text())
+            else:
+                titles.append(f"Figure {i+1}")
+        
+        # Use existing multi-panel combination logic
+        from .visual_display import _combine_matplotlib_figures
+        
+        # Pass source type information if available
+        if figure_source_types:
+            kwargs['figure_source_types'] = figure_source_types
+        
+        combined_figure = _combine_matplotlib_figures(figure_list, titles, title or "", **kwargs)
+        
+        if combined_figure is None:
+            logger.error("Failed to combine matplotlib figures into multi-panel figure")
+            return None
+        
+        # Create result metadata
+        panel_layout = kwargs.get('panel_layout', 'auto')
+        metadata = {
+            'figure_count': len(figure_list),
+            'panel_layout': panel_layout,
+            'title': title
+        }
+        
+        logger.info(f"Successfully created multi-panel figure with {len(figure_list)} matplotlib figures")
+        from ..converters.core import _create_converter_result
+        return _create_converter_result(combined_figure, 'matplotlib_figure_list', **metadata)
+        
+    except Exception as e:
+        raise  # Let decorator handle it
 
 
 @handle_display_errors("display ImagePlus list")
-def _display_imageplus_list(imageplus_list: list, **kwargs) -> Any:
+def _display_imageplus_list(imageplus_list: list, show: bool = True, **kwargs) -> Any:
     """
     Display a list of ImagePlus objects as a multi-panel matplotlib figure.
     
@@ -1047,7 +1164,7 @@ def _is_viewer3d(obj) -> bool:
 
 
 @handle_display_errors("display Viewer3D")
-def _display_viewer3d(obj, **kwargs):
+def _display_viewer3d(obj, show: bool = True, **kwargs):
     """
     Handler function for Viewer3D display.
     
@@ -1070,7 +1187,7 @@ def _display_viewer3d(obj, **kwargs):
     
     if orthoview:
         logger.info("Detected Viewer3D object with orthoview=True - capturing orthogonal views...")
-        return _display_viewer3d_orthoview(obj, **kwargs)
+        return _display_viewer3d_orthoview(obj, show=show, **kwargs)
     else:
         logger.info("Detected Viewer3D object - taking snapshot...")
         
@@ -1103,7 +1220,7 @@ def _display_viewer3d(obj, **kwargs):
             
             # Display the snapshot using the ImagePlus display pipeline
             from .data_display import _display_imageplus
-            _display_imageplus(snapshot, **kwargs_with_metadata)
+            _display_imageplus(snapshot, show=show, **kwargs_with_metadata)
             
             # Return the original snapshot ImagePlus
             return snapshot
@@ -1113,7 +1230,7 @@ def _display_viewer3d(obj, **kwargs):
 
 
 @handle_display_errors("display Viewer3D orthogonal views")
-def _display_viewer3d_orthoview(obj, **kwargs):
+def _display_viewer3d_orthoview(obj, show: bool = True, **kwargs):
     """
     Display Viewer3D with orthogonal views (xy, xz, yz).
     
@@ -1172,7 +1289,7 @@ def _display_viewer3d_orthoview(obj, **kwargs):
                 ortho_kwargs['panel_layout'] = 'auto'
         
         # Display the list of snapshots using the ImagePlus list display functionality
-        display_result = _display_imageplus_list(result, **ortho_kwargs)
+        display_result = _display_imageplus_list(result, show=show, **ortho_kwargs)
         
         # Return the display result (SNTObject with matplotlib figure) instead of raw ImagePlus list
         # This prevents Jupyter notebooks from printing the raw Java object list
@@ -1202,7 +1319,7 @@ def _is_viewer2d(obj) -> bool:
 
 
 @handle_display_errors("display Viewer2D")
-def _display_viewer2d(obj, **kwargs):
+def _display_viewer2d(obj, show: bool = True, **kwargs):
     """
     Handler function for Viewer2D display.
     
@@ -1247,14 +1364,14 @@ def _display_viewer2d(obj, **kwargs):
         # The chart's internal title (like "Reconstruction Plotter") is often not desired
         
         # Display the chart using the SNTChart display pipeline and return the result
-        return _display_snt_chart(chart, **kwargs_with_metadata)
+        return _display_snt_chart(chart, show=show, **kwargs_with_metadata)
         
     except Exception as e:
         raise  # Let decorator handle it
 
 
 @handle_display_errors("display NetworkX graph")
-def _display_networkx_graph(graph, **kwargs):
+def _display_networkx_graph(graph, show: bool = True, **kwargs):
     """
     Handler function for direct NetworkX graph display.
     
@@ -1300,7 +1417,7 @@ def _display_networkx_graph(graph, **kwargs):
         # Create matplotlib figure from NetworkX graph
         from .visual_display import _graph_to_matplotlib, _display_matplotlib_figure
         fig = _graph_to_matplotlib(graph, **kwargs)
-        _display_matplotlib_figure(fig, **kwargs)
+        _display_matplotlib_figure(fig, show=show, **kwargs)
         
         return graph
         

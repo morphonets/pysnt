@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 from .core import initialize, dispose, FijiNotFoundError, ij, is_initialized, get_mode
 
 # Import PyImageJ integration functions
-from .core import to_python, from_java, show
+from .core import to_python, from_java, show, extract_figure
 
 # Import converter utilities
 from .converters import (
@@ -369,7 +369,8 @@ __all__ = [
     # PyImageJ integration
     "to_python",
     "from_java",  # backward compatibility alias
-    "show", 
+    "show",
+    "extract_figure", 
     # Converter utilities
     "register_snt_converters",
     "register_display_handler",
