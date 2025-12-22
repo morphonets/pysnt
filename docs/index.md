@@ -1,3 +1,7 @@
+---
+title: PySNT, The Neuronal Morphometry Framework for Python
+---
+
 ```{raw} html
 <div class="hero-header" style="margin: 2rem 0;">
     <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
@@ -93,7 +97,7 @@ Generate publication-ready figures and interactive 3D visualizations of neuronal
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-crosshairs"></i> Ground Truth Generation
-:link: https://imagej.net/plugins/snt/#overview
+:link: notebooks/07_curvature_optimization
 :img-top: _static/front_page/op1_tubeness_fit.png
 
 Curate ML training data with quality control tools: refine traces, detect crossovers, and validate reconstructions.
