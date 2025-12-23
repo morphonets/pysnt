@@ -162,9 +162,20 @@ get_extended_classes = _module_funcs["get_extended_classes"]
 __getattr__ = _module_funcs["create_getattr"]("pysnt.io")
 __dir__ = _module_funcs["create_dir"]()
 
-
 # Import image format utilities
-from .image_formats import imgplus_from_zarr
+from .images import (
+    imgplus_from_zarr,
+    inspect_zarr,
+    detect_zarr_layout,
+    get_available_levels,
+    get_dataset_path,
+    get_dataset_path_from_metadata,
+    get_zattrs_path,
+    # Layout constants
+    LAYOUT_BIOFORMATS2RAW,
+    LAYOUT_OME_NGFF,
+    LAYOUT_UNKNOWN,
+)
 
 # Static __all__ with curated classes always available
 # This ensures IDEs know these symbols are available for import
@@ -176,7 +187,17 @@ __all__ = [
     "get_curated_classes",
     "get_extended_classes",
     # Image format utilities
+    "detect_zarr_layout",
+    "get_available_levels",
+    "get_dataset_path",
+    "get_dataset_path_from_metadata",
+    "get_zattrs_path",
     "imgplus_from_zarr",
+    "inspect_zarr",
+    # Layout constants
+    "LAYOUT_BIOFORMATS2RAW",
+    "LAYOUT_OME_NGFF",
+    "LAYOUT_UNKNOWN",
     # Constants (standard for all modules)
     "CURATED_CLASSES",
     "EXTENDED_CLASSES",

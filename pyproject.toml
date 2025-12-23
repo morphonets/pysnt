@@ -25,6 +25,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
+    "imglyb>=2.1.0",
     "scyjava>=1.12.1",
     "pyimagej>=1.7.0",
     "numpy>=2.3.3",
@@ -50,9 +51,7 @@ gui = [
 # OME-ZARR support for remote data access
 zarr = [
     "zarr>=2.10.0",
-    "imglyb>=2.1.0",
     "fsspec>=2023.1.0",
-    "s3fs>=2023.1.0",
 ]
 # All optional features
 all = [
@@ -64,7 +63,6 @@ all = [
     "zarr>=2.10.0",
     "imglyb>=2.1.0",
     "fsspec>=2023.1.0",
-    "s3fs>=2023.1.0",
 ]
 # Development dependencies
 dev = [
@@ -75,9 +73,7 @@ dev = [
     "mypy",
     # Include zarr dependencies for development
     "zarr>=2.10.0",
-    "imglyb>=2.1.0",
     "fsspec>=2023.1.0",
-    "s3fs>=2023.1.0",
 ]
 # Documentation dependencies
 docs = [

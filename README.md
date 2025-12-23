@@ -135,6 +135,7 @@ pysnt/
 ### Dependencies
 #### Core Dependencies (Required)
 - install-jdk - Java management
+- imglyb - ImgLib2 to NumPy conversions
 - matplotlib - Used extensively for plotting and figure creation
 - numpy - Used throughout for array operations
 - pyimagej - ImageJ integration
@@ -151,9 +152,7 @@ pysnt/
 
 #### Optional Dependencies (OME-ZARR Support)
 - zarr - OME-ZARR format support for local and remote data
-- imglyb - NumPy to ImageJ ImgPlus conversion
 - fsspec - Remote filesystem access (HTTP/HTTPS/S3)
-- s3fs - Amazon S3 specific support
 
 Install with: `pip install pysnt[zarr]` or `pip install pysnt[all]`
 
