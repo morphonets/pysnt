@@ -1,6 +1,6 @@
 <p align="center"><img src="./docs/_static/snt_logo.svg" alt="SNT" width="150"></p>
 <h1 align="center">PySNT</h1>
-<h2 align="center">Python wrapper for SNT, the ImageJ framework  for Neuroanatomy</h2>
+<h2 align="center">Python wrapper for SNT, the framework for quantification of neuronal anatomy</h2>
 <div align="center">
   <!-- License -->
   <a href="https://github.com/morphonets/SNT/blob/master/LICENSE.txt">
@@ -58,6 +58,7 @@
     | SNTChart        | matplotlib Figure                |
     | SNTGraph        | NetworkX graph                   |
     | SNTTable        | xarray Dataset; pandas DataFrame |
+    | ImgPlus/RAI     | xarray; numpy                    |
     | ImagePlus       | xarray; numpy (via ScyJava)      |
     | Collections     | lists/dicts, etc. (via ScyJava)  |
 
