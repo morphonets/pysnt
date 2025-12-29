@@ -512,6 +512,10 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     if _is_viewer2d(obj):
         return 'viewer2d', _display_viewer2d
 
+    # Check for ImgPlus objects (before ImagePlus check since ImgPlus is more specific)
+    if str(type(obj)).find('ImgPlus') != -1:
+        return 'imgplus', _display_imgplus
+
     # Check for ImagePlus objects
     if str(type(obj)).find('ImagePlus') != -1:
         from .data_display import _display_imageplus
@@ -526,8 +530,15 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     if hasattr(obj, 'number_of_nodes') and hasattr(obj, 'number_of_edges'):
         return 'networkx_graph', _display_networkx_graph
 
+    # Check for ImgLib2 RandomAccessibleInterval objects (before numpy array check)
+    if (hasattr(obj, 'numDimensions') and hasattr(obj, 'dimension') and 
+        not ('ImgPlus' in str(type(obj)))):
+        logger.debug(f"Detected ImgLib2 object: {type(obj)}")
+        return 'imglib2_rai', _display_imglib2_rai
+
     # Check numpy arrays
     if hasattr(obj, 'shape') and hasattr(obj, 'dtype') and hasattr(obj, 'ndim'):
+        logger.debug(f"Detected numpy-like object: {type(obj)}")
         from .visual_display import _display_array_data
         return 'numpy_array', lambda arr, show=True, **kw: _display_array_data(arr, "numpy array", show=show, **kw)
 
@@ -827,6 +838,7 @@ def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
     chart_objects = []
     viewer2d_objects = []
     imageplus_objects = []
+    imgplus_objects = []
     tree_objects = []
     matplotlib_figures = []
     other_objects = []
@@ -836,6 +848,8 @@ def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
             chart_objects.append(obj)
         elif _is_viewer2d(obj):
             viewer2d_objects.append(obj)
+        elif str(type(obj)).find('ImgPlus') != -1:
+            imgplus_objects.append(obj)
         elif str(type(obj)).find('ImagePlus') != -1:
             imageplus_objects.append(obj)
         elif _is_snt_tree(obj):
@@ -847,23 +861,27 @@ def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
             other_objects.append((i, type(obj).__name__))
     
     # Handle pure lists of supported objects
-    if chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
+    if chart_objects and not viewer2d_objects and not imageplus_objects and not imgplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure SNTChart list - use multi-panel display
         logger.info(f"Detected list of {len(chart_objects)} SNTChart objects")
         return _display_snt_chart_list(chart_objects, show=show, **kwargs)
-    elif viewer2d_objects and not chart_objects and not imageplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
+    elif viewer2d_objects and not chart_objects and not imageplus_objects and not imgplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure Viewer2D list - use multi-panel display
         logger.info(f"Detected list of {len(viewer2d_objects)} Viewer2D objects")
         return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
-    elif imageplus_objects and not chart_objects and not viewer2d_objects and not tree_objects and not matplotlib_figures and not other_objects:
+    elif imgplus_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
+        # Pure ImgPlus list - use multi-panel display
+        logger.info(f"Detected list of {len(imgplus_objects)} ImgPlus objects")
+        return _display_imgplus_list(imgplus_objects, show=show, **kwargs)
+    elif imageplus_objects and not chart_objects and not viewer2d_objects and not imgplus_objects and not tree_objects and not matplotlib_figures and not other_objects:
         # Pure ImagePlus list - use multi-panel display
         logger.info(f"Detected list of {len(imageplus_objects)} ImagePlus objects")
         return _display_imageplus_list(imageplus_objects, show=show, **kwargs)
-    elif tree_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not matplotlib_figures and not other_objects:
+    elif tree_objects and not chart_objects and not viewer2d_objects and not imageplus_objects and not imgplus_objects and not matplotlib_figures and not other_objects:
         # Pure Tree list - use multi-panel display
         logger.info(f"Detected list of {len(tree_objects)} Tree objects")
         return _display_tree_list(tree_objects, show=show, **kwargs)
-    elif matplotlib_figures and not chart_objects and not viewer2d_objects and not imageplus_objects and not tree_objects and not other_objects:
+    elif matplotlib_figures and not chart_objects and not viewer2d_objects and not imageplus_objects and not imgplus_objects and not tree_objects and not other_objects:
         # Pure matplotlib.Figure list - use multi-panel display
         logger.info(f"Detected list of {len(matplotlib_figures)} matplotlib Figure objects")
         
@@ -874,17 +892,19 @@ def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
                 figure_source_types.append(source_types[i])
         
         return _display_matplotlib_figure_list(matplotlib_figures, figure_source_types=figure_source_types, show=show, **kwargs)
-    elif (chart_objects or viewer2d_objects or imageplus_objects or tree_objects or matplotlib_figures) and other_objects:
+    elif (chart_objects or viewer2d_objects or imageplus_objects or imgplus_objects or tree_objects or matplotlib_figures) and other_objects:
         # Mixed list - warn and display supported objects
-        supported_count = len(chart_objects) + len(viewer2d_objects) + len(imageplus_objects) + len(tree_objects) + len(matplotlib_figures)
+        supported_count = len(chart_objects) + len(viewer2d_objects) + len(imageplus_objects) + len(imgplus_objects) + len(tree_objects) + len(matplotlib_figures)
         logger.warning(f"Mixed object list detected. Displaying {supported_count} supported objects, "
                       f"ignoring {len(other_objects)} other objects: {[name for _, name in other_objects]}")
         
-        # Prioritize charts > viewer2d > imageplus > matplotlib > trees if multiple types are present
+        # Prioritize charts > viewer2d > imgplus > imageplus > matplotlib > trees if multiple types are present
         if chart_objects:
             return _display_snt_chart_list(chart_objects, show=show, **kwargs)
         elif viewer2d_objects:
             return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
+        elif imgplus_objects:
+            return _display_imgplus_list(imgplus_objects, show=show, **kwargs)
         elif imageplus_objects:
             return _display_imageplus_list(imageplus_objects, show=show, **kwargs)
         elif matplotlib_figures:
@@ -896,16 +916,20 @@ def _display_object_list(obj_list: list, show: bool = True, **kwargs) -> Any:
             return _display_matplotlib_figure_list(matplotlib_figures, figure_source_types=figure_source_types, show=show, **kwargs)
         else:
             return _display_tree_list(tree_objects, show=show, **kwargs)
-    elif (chart_objects and viewer2d_objects) or (chart_objects and imageplus_objects) or (viewer2d_objects and imageplus_objects):
-        # Mixed supported objects - prioritize charts > viewer2d > imageplus
+    elif (chart_objects and viewer2d_objects) or (chart_objects and imageplus_objects) or (chart_objects and imgplus_objects) or (viewer2d_objects and imageplus_objects) or (viewer2d_objects and imgplus_objects) or (imageplus_objects and imgplus_objects):
+        # Mixed supported objects - prioritize charts > viewer2d > imgplus > imageplus
         if chart_objects:
             logger.warning(f"Mixed list detected. Displaying {len(chart_objects)} SNTChart objects, "
                           f"ignoring other supported objects.")
             return _display_snt_chart_list(chart_objects, show=show, **kwargs)
         elif viewer2d_objects:
             logger.warning(f"Mixed list detected. Displaying {len(viewer2d_objects)} Viewer2D objects, "
-                          f"ignoring ImagePlus objects.")
+                          f"ignoring other objects.")
             return _display_viewer2d_list(viewer2d_objects, show=show, **kwargs)
+        elif imgplus_objects:
+            logger.warning(f"Mixed list detected. Displaying {len(imgplus_objects)} ImgPlus objects, "
+                          f"ignoring ImagePlus objects.")
+            return _display_imgplus_list(imgplus_objects, show=show, **kwargs)
     else:
         # No supported objects for list display
         logger.warning(f"List contains no supported objects for multi-panel display. "
@@ -983,6 +1007,85 @@ def _display_tree_list(tree_list: list, show: bool = True, **kwargs) -> Any:
     
     # Use the ImagePlus list display function
     return _display_snt_chart_list(displayable_list, show=show, **kwargs)
+
+
+@handle_display_errors("display ImgPlus list")
+def _display_imgplus_list(imgplus_list: list, show: bool = True, **kwargs) -> Any:
+    """
+    Display a list of ImgPlus objects as a multi-panel matplotlib figure.
+    
+    Converts each ImgPlus to ImagePlus using ImgUtils.toImagePlus() and then
+    uses the existing ImagePlus list display functionality.
+    
+    Parameters
+    ----------
+    imgplus_list : list
+        List of ImgPlus objects to display
+    **kwargs
+        Display arguments (panel_layout, max_panels, title, figsize, etc.)
+        
+    Returns
+    -------
+    Any
+        SNTObject containing the combined matplotlib figure
+    """
+    try:
+        # Get parameters
+        max_panels = kwargs.get('max_panels', 20)
+        
+        # Limit number of ImgPlus objects
+        if len(imgplus_list) > max_panels:
+            logger.warning(f"ImgPlus list has {len(imgplus_list)} items, limiting to {max_panels}")
+            imgplus_list = imgplus_list[:max_panels]
+        
+        logger.info(f"Converting {len(imgplus_list)} ImgPlus objects to ImagePlus for display")
+        
+        # Convert each ImgPlus to ImagePlus
+        import scyjava
+        ImgUtils = scyjava.jimport("sc.fiji.snt.util.ImgUtils")
+        
+        imageplus_list = []
+        for i, imgplus in enumerate(imgplus_list):
+            try:
+                imageplus = ImgUtils.toImagePlus(imgplus)
+                if imageplus is not None:
+                    # Preserve name from ImgPlus if available
+                    try:
+                        name = imgplus.getName() if hasattr(imgplus, 'getName') else f"ImgPlus {i+1}"
+                        imageplus.setTitle(name)
+                    except Exception:
+                        imageplus.setTitle(f"ImgPlus {i+1}")
+                    
+                    imageplus_list.append(imageplus)
+                    logger.debug(f"Successfully converted ImgPlus {i+1} to ImagePlus")
+                else:
+                    logger.warning(f"ImgUtils.toImagePlus() returned None for ImgPlus {i+1}")
+            except Exception as e:
+                logger.warning(f"Failed to convert ImgPlus {i+1}: {e}")
+                continue
+        
+        if not imageplus_list:
+            logger.error("No ImgPlus objects could be converted to ImagePlus")
+            return None
+        
+        logger.info(f"Successfully converted {len(imageplus_list)} ImgPlus objects, displaying as ImagePlus list")
+        
+        # Add metadata to indicate these came from ImgPlus objects
+        kwargs_with_metadata = kwargs.copy()
+        if 'metadata' not in kwargs_with_metadata:
+            kwargs_with_metadata['metadata'] = {}
+        
+        kwargs_with_metadata['metadata'].update({
+            'source_type': 'ImgPlus_List',
+            'imgplus_conversion': True,
+            'original_count': len(imgplus_list)
+        })
+        
+        # Use the existing ImagePlus list display functionality
+        return _display_imageplus_list(imageplus_list, show=show, **kwargs_with_metadata)
+        
+    except Exception as e:
+        raise  # Let decorator handle it
 
 
 @handle_display_errors("display matplotlib Figure list")
@@ -1365,6 +1468,100 @@ def _display_viewer2d(obj, show: bool = True, **kwargs):
         
         # Display the chart using the SNTChart display pipeline and return the result
         return _display_snt_chart(chart, show=show, **kwargs_with_metadata)
+        
+    except Exception as e:
+        raise  # Let decorator handle it
+
+
+@handle_display_errors("display ImgLib2 RandomAccessibleInterval")
+def _display_imglib2_rai(obj, show: bool = True, **kwargs):
+    """
+    Handler function for RandomAccessibleInterval display.
+
+    Converts RandomAccessibleInterval to ImagePlus using ImgUtils and leverages
+    existing MIP functionality.
+
+    Parameters
+    ----------
+    obj : RandomAccessibleInterval
+        The RandomAccessibleInterval object to display
+    **kwargs : dict
+        Display arguments
+
+    Returns
+    -------
+    Any
+        Result from ImagePlus display pipeline
+    """
+    logger.info("Detected RandomAccessibleInterval object - converting to ImagePlus for display...")
+
+    try:
+        import scyjava
+        ImgUtils = scyjava.jimport("sc.fiji.snt.util.ImgUtils")
+        title = kwargs.get('title', "RAI")
+        imageplus = ImgUtils.raiToImp(obj, title)
+        if imageplus is None:
+            logger.error("ImgUtils.raiToImp() returned None")
+            return None
+
+        # Add metadata to indicate this came from an ImgPlus
+        kwargs_with_metadata = kwargs.copy()
+        if 'metadata' not in kwargs_with_metadata:
+            kwargs_with_metadata['metadata'] = {}
+        kwargs_with_metadata['metadata'].update({
+            'source_type': 'RandomAccessibleInterval',
+            'rai_conversion': True
+        })
+
+        # Display using the ImagePlus display pipeline (which handles MIP for large images)
+        from .data_display import _display_imageplus
+        return _display_imageplus(imageplus, show=show, **kwargs_with_metadata)
+
+    except Exception as e:
+        raise  # Let decorator handle it
+
+
+@handle_display_errors("display ImgPlus")
+def _display_imgplus(obj, show: bool = True, **kwargs):
+    """
+    Handler function for ImgPlus display.
+    
+    Converts ImgPlus to ImagePlus using ImgUtils and leverages existing MIP functionality.
+    
+    Parameters
+    ----------
+    obj : ImgPlus
+        The ImgPlus object to display
+    **kwargs : dict
+        Display arguments
+        
+    Returns
+    -------
+    Any
+        Result from ImagePlus display pipeline
+    """
+    logger.info("Detected ImgPlus object - converting to ImagePlus for display...")
+    
+    try:
+        import scyjava
+        ImgUtils = scyjava.jimport("sc.fiji.snt.util.ImgUtils")
+        imageplus = ImgUtils.toImagePlus(obj)
+        if imageplus is None:
+            logger.error("ImgUtils.toImagePlus() returned None")
+            return None
+
+        # Add metadata to indicate this came from an ImgPlus
+        kwargs_with_metadata = kwargs.copy()
+        if 'metadata' not in kwargs_with_metadata:
+            kwargs_with_metadata['metadata'] = {}
+        kwargs_with_metadata['metadata'].update({
+            'source_type': 'ImgPlus',
+            'imgplus_conversion': True
+        })
+        
+        # Display using the ImagePlus display pipeline (which handles MIP for large images)
+        from .data_display import _display_imageplus
+        return _display_imageplus(imageplus, show=show, **kwargs_with_metadata)
         
     except Exception as e:
         raise  # Let decorator handle it
