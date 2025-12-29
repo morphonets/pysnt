@@ -18,3 +18,4 @@ Submodules
    pysnt.converters.extractors
    pysnt.converters.graph_converters
    pysnt.converters.structured_data_converters
+   pysnt.converters.tree_converters

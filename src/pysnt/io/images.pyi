@@ -1,0 +1,29 @@
+"""
+Type stubs for images.py
+
+Auto-generated stub file.
+"""
+
+from typing import Any, Dict, List, Optional, Union, Callable, Tuple
+
+logger: Any
+LAYOUT_BIOFORMATS2RAW: Any
+LAYOUT_OME_NGFF: Any
+LAYOUT_UNKNOWN: Any
+def detect_zarr_layout(path: Union[str, Path]) -> str: ...
+
+def get_dataset_path(layout: str, level: int, series: int) -> str: ...
+
+def get_dataset_path_from_metadata(path: Union[str, Path], level: int, series: int) -> Tuple[str, dict]: ...
+
+def get_zattrs_path(layout: str, zarr_path: str, series: int) -> str: ...
+
+def get_available_levels(path: Union[str, Path], series: int) -> list: ...
+
+def imgplus_from_zarr(path: Union[str, Path], level: int, series: int) -> Any: ...
+
+def _imgplus_from_zarr_n5(path_str: str, level: int, series: int) -> Any: ...
+
+def inspect_zarr(path: Union[str, Path], max_depth: int) -> dict: ...
+
+def _inspect_zarr_n5(path_str: str, max_depth: int) -> dict: ...

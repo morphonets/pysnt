@@ -5,3 +5,11 @@ pysnt.io package
    :members:
    :show-inheritance:
    :undoc-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pysnt.io.images

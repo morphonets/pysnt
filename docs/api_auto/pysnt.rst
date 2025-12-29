@@ -16,6 +16,7 @@ Subpackages
    pysnt.annotation
    pysnt.converters
    pysnt.display
+   pysnt.filter
    pysnt.gui
    pysnt.io
    pysnt.tracing
