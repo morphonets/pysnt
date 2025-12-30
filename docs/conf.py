@@ -172,7 +172,7 @@ html_css_files = [
     "custom.css",
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 ]
-html_title = "PySNT"
+html_title = "PySNT: Quantification of neuronal anatomy in Python"
 
 html_theme_options = {
     "navigation_with_keys": True,
