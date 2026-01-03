@@ -3,7 +3,7 @@ Constants Index
 
 This page provides an index of all public static fields (constants) available in the SNT API.
 
-Total constants: **499** across **33** classes.
+Total constants: **500** across **35** classes.
 
 
 A
@@ -148,7 +148,6 @@ D
 * `ShollAnalyzer.DECAY <../pysnt/shollanalyzer_doc.html>`_ (``String``) - Field DECAY of type String
 * `SNTChart.DEFAULT_BUFFER_USED <../pysnt/sntchart_doc.html>`_ (``boolean``) - Field DEFAULT_BUFFER_USED of type boolean
 * `SNTChart.DEFAULT_HEIGHT <../pysnt/sntchart_doc.html>`_ (``int``) - Field DEFAULT_HEIGHT of type int
-* `PathFitter.DEFAULT_MAX_RADIUS <../pysnt/pathfitter_doc.html>`_ (``int``) - Field DEFAULT_MAX_RADIUS of type int
 * `SNTChart.DEFAULT_MAXIMUM_DRAW_HEIGHT <../pysnt/sntchart_doc.html>`_ (``int``) - Field DEFAULT_MAXIMUM_DRAW_HEIGHT of type int
 * `SNTChart.DEFAULT_MAXIMUM_DRAW_WIDTH <../pysnt/sntchart_doc.html>`_ (``int``) - Field DEFAULT_MAXIMUM_DRAW_WIDTH of type int
 * `PathFitter.DEFAULT_MIN_ANGLE <../pysnt/pathfitter_doc.html>`_ (``double``) - Field DEFAULT_MIN_ANGLE of type double
@@ -363,6 +362,8 @@ N
 * `TreeColorMapper.N_SPINES <../pysnt/treecolormapper_doc.html>`_ (``String``) - Field N_SPINES of type String
 * `MultiTreeColorMapper.N_SPINES <../pysnt/multitreecolormapper_doc.html>`_ (``String``) - Field N_SPINES of type String
 * `MultiTreeColorMapper.N_TIPS <../pysnt/multitreecolormapper_doc.html>`_ (``String``) - Field N_TIPS of type String
+* `Frangi.NAME <../pysnt/frangi_doc.html>`_ (``String``) - Field NAME of type String
+* `Tubeness.NAME <../pysnt/tubeness_doc.html>`_ (``String``) - Field NAME of type String
 * `NodeColorMapper.NEAREST_NEIGHBOR_DISTANCE <../pysnt/nodecolormapper_doc.html>`_ (``String``) - Field NEAREST_NEIGHBOR_DISTANCE of type String
 * `NodeStatistics.NEAREST_NEIGHBOR_DISTANCE <../pysnt/nodestatistics_doc.html>`_ (``String``) - Field NEAREST_NEIGHBOR_DISTANCE of type String
 * `SNTChart.NO_SUCH_PAGE <../pysnt/sntchart_doc.html>`_ (``int``) - Field NO_SUCH_PAGE of type int
