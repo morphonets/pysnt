@@ -21,7 +21,8 @@ def load_class_info() -> List[Dict[str, str]]:
     docs_dir = Path('docs/pysnt')
     all_classes = []
     
-    for doc_file in docs_dir.glob('*_doc.rst'):
+    # Search recursively for all *_doc.rst files in subdirectories
+    for doc_file in docs_dir.rglob('*_doc.rst'):
         try:
             with open(doc_file, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -32,7 +33,11 @@ def load_class_info() -> List[Dict[str, str]]:
                 continue
             
             class_name = class_match.group(1)
-            filename = doc_file.stem.replace('_doc', '')
+            
+            # Calculate relative path from docs/pysnt to the file
+            relative_path = doc_file.relative_to(docs_dir)
+            # Remove the _doc.rst suffix and add .html
+            filename = str(relative_path).replace('_doc.rst', '')
             
             # Extract package from **Package:** ``package.name``
             package_match = re.search(r'\*\*Package:\*\* ``([^`]+)``', content)
@@ -96,7 +101,7 @@ Total classes: **{len(classes)}**
             content += "-" * len(current_letter) + "\n\n"
         
         # Create link to class documentation
-        class_link = f"../pysnt/{cls['filename']}_doc.html"
+        class_link = f"../pysnt/{cls['filename']}.html"
         
         # Format: * ClassName (package) - description
         content += f"* `{cls['name']} <{class_link}>`_ (``{cls['package']}``) - {cls['description']}\n"
