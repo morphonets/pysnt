@@ -302,12 +302,11 @@ class MethodIndexGenerator:
             
             for method in methods:
                 # Create link to detailed doc file with anchor to specific method
-                # Convert class name to lowercase for file naming (e.g., Tree -> tree_doc.rst)
-                class_lower = method.class_name.lower()
-                doc_file = f"../pysnt/{class_lower}_doc"
-                # Create anchor for the method (sanitize method name for HTML anchor)
-                method_anchor = method.method_name.lower().replace('_', '-')
-                method_link = f"`{method.class_name}.{method.method_name} <{doc_file}.html#{method_anchor}>`_"
+                # Determine the correct file path based on class package structure
+                doc_file_path = self._get_doc_file_path(method.class_name, method.package)
+                # Create anchor for the method (use proper camelCase, not lowercase)
+                method_anchor = method.method_name.lower()
+                method_link = f"`{method.class_name}.{method.method_name} <{doc_file_path}.html#{method_anchor}>`_"
                 rst_lines.append(f"* {method_link} - {method.short_description}")
             
             rst_lines.append("")
@@ -484,6 +483,51 @@ class MethodIndexGenerator:
         }
         return descriptions.get(category, f'Methods in the {category} category.')
     
+    def _get_doc_file_path(self, class_name: str, package: str) -> str:
+        """
+        Determine the correct documentation file path based on class name and package.
+        
+        Args:
+            class_name: Name of the class
+            package: Package name of the class
+            
+        Returns:
+            Relative path to the documentation file
+        """
+        # Convert class name to lowercase for file naming
+        class_lower = class_name.lower()
+        
+        # Determine subdirectory based on package structure
+        if package and '.' in package:
+            # Extract the package parts after 'sc.fiji.snt'
+            package_parts = package.split('.')
+            if len(package_parts) >= 3 and package_parts[:3] == ['sc', 'fiji', 'snt']:
+                # Get the subpackage parts (everything after sc.fiji.snt)
+                subpackage_parts = package_parts[3:]
+                
+                if subpackage_parts:
+                    # Handle main subpackages
+                    main_subpackage = subpackage_parts[0]
+                    
+                    # Map known subpackages to their directories
+                    subdir_mapping = {
+                        'annotation': 'annotation',
+                        'analysis': 'analysis', 
+                        'filter': 'filter',
+                        'io': 'io',
+                        'tracing': 'tracing',
+                        'util': 'util',
+                        'viewer': 'viewer'
+                    }
+                    
+                    if main_subpackage in subdir_mapping:
+                        # For subpackages like tracing.artist, we still put them in the main directory
+                        # since the documentation structure doesn't create nested subdirectories
+                        return f"../pysnt/{subdir_mapping[main_subpackage]}/{class_lower}_doc"
+        
+        # Default to main pysnt directory
+        return f"../pysnt/{class_lower}_doc"
+    
     def _sanitize_filename(self, filename: str) -> str:
         """Sanitize filename for file system compatibility."""
         sanitized = re.sub(r'[^\w\-_.]', '_', filename)
@@ -599,12 +643,11 @@ class MethodIndexGenerator:
                 method_key = f"{method.class_name}.{method.method_name}"
                 
                 # Create link to detailed doc file with anchor to specific method
-                # Convert class name to lowercase for file naming (e.g., Tree -> tree_doc.rst)
-                class_lower = method.class_name.lower()
-                doc_file = f"../pysnt/{class_lower}_doc"
-                # Create anchor for the method (sanitize method name for HTML anchor)
-                method_anchor = method.method_name.lower().replace('_', '-')
-                method_link = f"`{method.class_name}.{method.method_name} <{doc_file}.html#{method_anchor}>`_"
+                # Determine the correct file path based on class package structure
+                doc_file_path = self._get_doc_file_path(method.class_name, method.package)
+                # Create anchor for the method (use exact method name case)
+                method_anchor = method.method_name
+                method_link = f"`{method.class_name}.{method.method_name} <{doc_file_path}.html#{method_anchor}>`_"
                 
                 # Enhanced information (removed redundant class name in parentheses)
                 info_parts = []
