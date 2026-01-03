@@ -1,7 +1,7 @@
 {
   "class_name": "Tree",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.810262",
+  "extracted_at": "2026-01-02T22:36:45.019687",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -102,6 +102,18 @@
       "name": "static assignUniqueColors",
       "overloads": [
         {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "static assignUniqueColors(Collection, String) -> void",
           "params": [
             {
@@ -113,18 +125,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static assignUniqueColors(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -155,16 +155,16 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone() -> Tree",
           "params": [],
           "return_type": "Tree",
           "java_return_type": "Tree"
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: clone"
@@ -329,6 +329,12 @@
       "name": "getConvexHull",
       "overloads": [
         {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull"
+        },
+        {
           "signature": "getConvexHull(String) -> AbstractConvexHull",
           "params": [
             {
@@ -337,12 +343,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull"
-        },
-        {
-          "signature": "getConvexHull() -> AbstractConvexHull",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "AbstractConvexHull"
         }
@@ -502,12 +502,6 @@
       "name": "getSWCTypes",
       "overloads": [
         {
-          "signature": "getSWCTypes() -> Set",
-          "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set"
-        },
-        {
           "signature": "getSWCTypes(boolean) -> Set",
           "params": [
             {
@@ -518,6 +512,12 @@
           ],
           "return_type": "Set[Any]",
           "java_return_type": "Set"
+        },
+        {
+          "signature": "getSWCTypes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
         }
       ],
       "documentation": "Java method: getSWCTypes"
@@ -525,6 +525,12 @@
     {
       "name": "getSkeleton",
       "overloads": [
+        {
+          "signature": "getSkeleton() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
         {
           "signature": "getSkeleton(int) -> ImagePlus",
           "params": [
@@ -536,12 +542,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "getSkeleton() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
         }
       ],
       "documentation": "Java method: getSkeleton"
@@ -549,12 +549,6 @@
     {
       "name": "getSkeleton2D",
       "overloads": [
-        {
-          "signature": "getSkeleton2D() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
         {
           "signature": "getSkeleton2D(int) -> ImagePlus",
           "params": [
@@ -564,6 +558,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -664,35 +664,6 @@
       "name": "static listFromDir",
       "overloads": [
         {
-          "signature": "static listFromDir(String, String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "static listFromDir(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "static listFromDir(String, String, String;) -> List",
           "params": [
             {
@@ -713,6 +684,35 @@
           ],
           "return_type": "List[Any]",
           "java_return_type": "List"
+        },
+        {
+          "signature": "static listFromDir(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static listFromDir(String, String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
         }
       ],
       "documentation": "Java method: static listFromDir"
@@ -724,10 +724,15 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Tree(String)",
+          "signature": "Tree(Collection, String)",
           "params": [
             {
               "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
               "type": "str",
               "java_type": "String"
             }
@@ -736,17 +741,35 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Tree(String, String)",
+          "signature": "Tree(DirectedWeightedGraph, String)",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
             },
             {
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -770,18 +793,12 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Tree()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Tree(Collection, String)",
+          "signature": "Tree(String, String)",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
+              "type": "str",
+              "java_type": "String"
             },
             {
               "name": "arg1",
@@ -793,27 +810,10 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Tree(Collection)",
+          "signature": "Tree(String)",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Tree(DirectedWeightedGraph, String)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "DirectedWeightedGraph",
-              "java_type": "DirectedWeightedGraph"
-            },
-            {
-              "name": "arg1",
               "type": "str",
               "java_type": "String"
             }

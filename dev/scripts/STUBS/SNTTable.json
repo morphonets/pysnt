@@ -1,41 +1,12 @@
 {
   "class_name": "SNTTable",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.681452",
+  "extracted_at": "2026-01-02T22:36:44.887993",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Column) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Column"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "add(int, Column) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Column"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "add(int, Object) -> void",
           "params": [
@@ -64,6 +35,35 @@
           ],
           "return_type": "bool",
           "java_return_type": "boolean"
+        },
+        {
+          "signature": "add(int, Column) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Column"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Column) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Column"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
         }
       ],
       "documentation": "Java method: add"
@@ -71,6 +71,18 @@
     {
       "name": "addAll",
       "overloads": [
+        {
+          "signature": "addAll(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
         {
           "signature": "addAll(int, Collection) -> boolean",
           "params": [
@@ -81,18 +93,6 @@
             },
             {
               "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "addAll(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -206,6 +206,12 @@
       "name": "appendColumn",
       "overloads": [
         {
+          "signature": "appendColumn() -> Column",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Column"
+        },
+        {
           "signature": "appendColumn(String) -> Column",
           "params": [
             {
@@ -216,12 +222,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "Column"
-        },
-        {
-          "signature": "appendColumn() -> Column",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Column"
         }
       ],
       "documentation": "Java method: appendColumn"
@@ -230,24 +230,24 @@
       "name": "appendColumns",
       "overloads": [
         {
-          "signature": "appendColumns(int) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "appendColumns(String;) -> List",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "String;"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "appendColumns(int) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "List[Any]",
@@ -572,12 +572,12 @@
       "name": "geRowStats",
       "overloads": [
         {
-          "signature": "geRowStats(int, int, int) -> SummaryStatistics",
+          "signature": "geRowStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int"
+              "type": "str",
+              "java_type": "String"
             },
             {
               "name": "arg1",
@@ -594,12 +594,12 @@
           "java_return_type": "SummaryStatistics"
         },
         {
-          "signature": "geRowStats(String, int, int) -> SummaryStatistics",
+          "signature": "geRowStats(int, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
+              "type": "int",
+              "java_type": "int"
             },
             {
               "name": "arg1",
@@ -646,21 +646,16 @@
           "java_return_type": "Object"
         },
         {
-          "signature": "get(int, int) -> Object",
+          "signature": "get(String) -> Column",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Object"
+          "java_return_type": "Column"
         },
         {
           "signature": "get(String, int) -> Object",
@@ -680,16 +675,21 @@
           "java_return_type": "Object"
         },
         {
-          "signature": "get(String) -> Column",
+          "signature": "get(int, int) -> Object",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Column"
+          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: get"
@@ -833,23 +833,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "SNTTable(String, char)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "char"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "SNTTable(String)",
           "params": [
             {
@@ -876,6 +859,23 @@
         {
           "signature": "SNTTable()",
           "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTTable(String, char)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "char"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         }

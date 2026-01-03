@@ -169,7 +169,7 @@ SNTColor
 
    Returns the color encoded as hex string with the format #rrggbbaa.
 
-   **Signature:** ``static colorToString(Color) -> String``
+   **Signature:** ``static colorToString(Object) -> String``
 
    **Parameters:**
 
@@ -189,18 +189,17 @@ SNTColor
 
    **Returns:** (``Any``) Either white or black, as per hue of input color.
 
-.. method:: static getDistinctColors(arg0, arg1)
+.. method:: static getDistinctColors(arg0)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion
 
-   **Signature:** ``static getDistinctColors(int, String) -> ColorRGB;``
+   **Signature:** ``static getDistinctColors(int) -> ColorRGB;``
 
    **Parameters:**
 
-   * **arg0** (``int``)
-   * **arg1** (``str``)
+   * **arg0** (``int``): - the number of colors to be retrieved
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the maximum contrast colors
 
 .. method:: static getDistinctColorsAWT(arg0)
 
@@ -212,17 +211,16 @@ SNTColor
 
    **Returns:** ``Any``
 
-.. method:: static stringToColor(arg0)
+.. method:: static getDistinctColorsHex(arg0, arg1)
 
-   Returns an AWT Color from a (#)RRGGBB(AA) hex string.
-
-   **Signature:** ``static stringToColor(String) -> Color``
+   **Signature:** ``static getDistinctColorsHex(int, String) -> String;``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the input string
+   * **arg0** (``int``)
+   * **arg1** (``str``)
 
-   **Returns:** (``Any``) the converted AWT color
+   **Returns:** ``Any``
 
 
 SNTService
@@ -276,16 +274,15 @@ SNTUtils
 Tree
 ----
 
-.. method:: static assignUniqueColors(arg0, arg1)
+.. method:: static assignUniqueColors(arg0)
 
    Assigns distinct colors to a collection of Trees.
 
-   **Signature:** ``static assignUniqueColors(Collection, String) -> void``
+   **Signature:** ``static assignUniqueColors(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
-   * **arg1** (``str``)
+   * **arg0** (``List[Any]``): - an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'.
 
    **Returns:** ``None``
 
@@ -330,4 +327,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

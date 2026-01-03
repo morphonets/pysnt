@@ -1,9 +1,9 @@
 {
   "class_name": "SNTColor",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.658140",
+  "extracted_at": "2026-01-02T22:36:44.863751",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.397824",
+  "enhancement_timestamp": "2026-01-02T22:43:26.151824",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -93,12 +93,12 @@
       "name": "static colorToString",
       "overloads": [
         {
-          "signature": "static colorToString(Color) -> String",
+          "signature": "static colorToString(Object) -> String",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "Color",
+              "java_type": "Object",
               "description": "- the input AWT color",
               "javadoc_name": "color"
             }
@@ -146,8 +146,52 @@
       "examples": []
     },
     {
+      "name": "static fromHex",
+      "overloads": [
+        {
+          "signature": "static fromHex(String) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the input string",
+              "javadoc_name": "hex"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the converted AWT color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static fromHex",
+      "javadoc_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static getDistinctColors",
       "overloads": [
+        {
+          "signature": "static getDistinctColors(int) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;",
+          "return_description": "the maximum contrast colors",
+          "throws": {}
+        },
         {
           "signature": "static getDistinctColors(int, String) -> ColorRGB;",
           "params": [
@@ -169,22 +213,6 @@
           "return_type": "Any",
           "java_return_type": "ColorRGB;",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getDistinctColors(int) -> ColorRGB;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "- the number of colors to be retrieved",
-              "javadoc_name": "nColors"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ColorRGB;",
-          "return_description": "the maximum contrast colors",
           "throws": {}
         }
       ],
@@ -217,6 +245,57 @@
         }
       ],
       "documentation": "Java method: static getDistinctColorsAWT",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getDistinctColorsHex",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsHex(int, String) -> String;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getDistinctColorsHex(int) -> String;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsHex",
       "javadoc_description": "",
       "category": "Visualization",
       "deprecated": false,
@@ -329,34 +408,6 @@
       "examples": []
     },
     {
-      "name": "static stringToColor",
-      "overloads": [
-        {
-          "signature": "static stringToColor(String) -> Color",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the input string",
-              "javadoc_name": "hex"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Color",
-          "return_description": "the converted AWT color",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static stringToColor",
-      "javadoc_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
-      "category": "Visualization",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "type",
       "overloads": [
         {
@@ -371,6 +422,34 @@
       "documentation": "Java method: type",
       "javadoc_description": "Retrieves the SWC type",
       "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static valueOf",
+      "overloads": [
+        {
+          "signature": "static valueOf(String) -> ColorRGB",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static valueOf",
+      "javadoc_description": "",
+      "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -431,18 +510,18 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 17,
-      "total_json_methods": 13,
+      "total_json_methods": 15,
       "total_matches": 14,
-      "exact_matches": 14,
-      "signature_matches": 0,
+      "exact_matches": 13,
+      "signature_matches": 1,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 3,
-      "unmatched_json": -1,
+      "unmatched_json": 1,
       "match_percentage": 82.4
     },
     "unmatched_javadoc_methods": 3,
-    "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.989
+    "unmatched_json_methods": 2,
+    "enhancement_quality_score": 0.927
   }
 }

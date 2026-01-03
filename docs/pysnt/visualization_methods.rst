@@ -99,6 +99,10 @@ Matching Methods
      - :class:`SNTColor`
      - ``Any``
      - No description available
+   * - :meth:`SNTColor.static getDistinctColorsHex`
+     - :class:`SNTColor`
+     - ``Any``
+     - No description available
    * - :meth:`ColorMaps.static glasbeyColorsAWT`
      - :class:`ColorMaps`
      - ``Any``
@@ -107,10 +111,6 @@ Matching Methods
      - :class:`SNTUtils`
      - ``None``
      - No description available
-   * - :meth:`SNTColor.static stringToColor`
-     - :class:`SNTColor`
-     - ``Any``
-     - Returns an AWT Color from a (#)RRGGBB(AA) hex string.
    * - :meth:`SNTService.updateViewers`
      - :class:`SNTService`
      - ``None``
@@ -122,4 +122,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-12-29 16:01:49*
+*Filtered index generated on 2026-01-02 22:43:26*

@@ -152,12 +152,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Column)
+.. py:method:: add(int, Object)
 
    
 
 
-.. py:method:: addAll(int, Collection)
+.. py:method:: addAll(Collection)
 
    
 
@@ -182,12 +182,12 @@ Other Methods
    
 
 
-.. py:method:: appendColumn(String)
+.. py:method:: appendColumn()
 
    
 
 
-.. py:method:: appendColumns(int)
+.. py:method:: appendColumns(String;)
 
    
 
@@ -246,7 +246,7 @@ Iterates through all cells in the table and replaces null values with the provid
    
 
 
-.. py:method:: geRowStats(int, int, int)
+.. py:method:: geRowStats(String, int, int)
 
    
 

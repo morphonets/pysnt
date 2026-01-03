@@ -108,7 +108,7 @@ Getters Methods
    Gets the box diagonal
 
 
-.. py:method:: getDimensions(boolean)
+.. py:method:: getDimensions()
 
    Gets this BoundingBox dimensions.
 
@@ -180,7 +180,7 @@ Other Methods
    Combines this bounding box with another one. It is assumed both boxes share the same voxel spacing/Calibration.
 
 
-.. py:method:: contains(BoundingBox)
+.. py:method:: contains(SNTPoint)
 
    
 
@@ -218,6 +218,16 @@ Other Methods
 .. py:method:: originOpposite()
 
    Retrieves the origin opposite of this box.
+
+
+.. py:method:: scale([D)
+
+   
+
+
+.. py:method:: shift([D)
+
+   
 
 
 .. py:method:: toBoundingBox3d()

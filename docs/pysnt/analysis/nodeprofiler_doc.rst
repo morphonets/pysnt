@@ -104,7 +104,7 @@ Getters Methods
    
 
 
-.. py:method:: getPlot(Path)
+.. py:method:: getPlot(Path, int)
 
    
 
@@ -206,12 +206,12 @@ Other Methods
    
 
 
-.. py:method:: addOutput(String, Class)
+.. py:method:: addOutput(ModuleItem)
 
    
 
 
-.. py:method:: cancel()
+.. py:method:: cancel(String)
 
    
 

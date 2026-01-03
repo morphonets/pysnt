@@ -164,7 +164,7 @@ Other Methods
    
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: static unMap(Collection)
 
    
 

@@ -64,6 +64,11 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: static getCalibration(ImgPlus)
+
+   
+
+
 .. py:method:: static getCtSlice(Dataset, int, int)
 
    
@@ -74,6 +79,16 @@ Getters Methods
    Get a view of the ImagePlus at the specified channel and frame.
 
 
+.. py:method:: static getOrigin(ImgPlus, AxisType)
+
+   
+
+
+.. py:method:: static getOrigins(ImgPlus)
+
+   
+
+
 Other Methods
 ~~~~~~~~~~~~~
 
@@ -81,6 +96,31 @@ Other Methods
 .. py:method:: static createIntervals([J, [J)
 
    Partition the source dimensions into a list of Intervals with given dimensions. If the block dimensions are not multiples of the image dimensions, some blocks will have slightly different dimensions.
+
+
+.. py:method:: static crop(ImgPlus, [J, [J, boolean)
+
+   
+
+
+.. py:method:: static dropSingletonDimensions(ImgPlus)
+
+   
+
+
+.. py:method:: static findSpatialAxisIndices(ImgPlus)
+
+   
+
+
+.. py:method:: static findSpatialAxisIndicesWithFallback(ImgPlus)
+
+   
+
+
+.. py:method:: static imgPlusToCalibration(ImgPlus)
+
+   
 
 
 .. py:method:: static impToRealRai5d(ImagePlus)
@@ -118,6 +158,16 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 .. py:method:: static subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long)
 
    Get a 3D sub-volume of an image, given two corner points and specified padding. If the input is 2D, a singleton dimension is added. If necessary, the computed sub-volume is clamped at the min and max of each dimension of the input interval.
+
+
+.. py:method:: static toImagePlus(ImgPlus)
+
+   
+
+
+.. py:method:: static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String)
+
+   
 
 
 See Also

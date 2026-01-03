@@ -3,7 +3,7 @@ Getters Methods
 
 Methods that retrieve values or properties from objects.
 
-Total methods in this category: **540**
+Total methods in this category: **544**
 
 .. contents:: Classes in this Category
    :local:
@@ -31,13 +31,17 @@ AllenCompartment
 
    **Returns:** (``List[Any]``) the "flattened" list of ancestors
 
-.. method:: getChildren()
+.. method:: getChildren(arg0)
 
    Gets the child ontologies of this compartment as a flat (non-hierarchical) list.
 
-   **Signature:** ``getChildren() -> List``
+   **Signature:** ``getChildren(int) -> List``
 
-   **Returns:** ``List[Any]``
+   **Parameters:**
+
+   * **arg0** (``int``): - maximum depth that should be considered.
+
+   **Returns:** (``List[Any]``) the "flattened" ontologies list
 
 .. method:: getMesh()
 
@@ -57,9 +61,9 @@ AllenCompartment
 
    Gets the parent of this compartment.
 
-   **Signature:** ``getParent() -> AllenCompartment``
+   **Signature:** ``getParent() -> BrainAnnotation``
 
-   **Returns:** (``Any``) the parent of this compartment, of null if this compartment is root.
+   **Returns:** ``Any``
 
 .. method:: getTreePath()
 
@@ -337,17 +341,13 @@ BoundingBox
 
    **Returns:** (``float``) the diagonal of BoundingBox
 
-.. method:: getDimensions(arg0)
+.. method:: getDimensions()
 
    Gets this BoundingBox dimensions.
 
-   **Signature:** ``getDimensions(boolean) -> [D``
+   **Signature:** ``getDimensions() -> [D``
 
-   **Parameters:**
-
-   * **arg0** (``bool``): - If true, dimensions are retrieved in real world units, otherwise in ("pixel") units
-
-   **Returns:** (``Any``) the BoundingBox dimensions {width, height, depth}.
+   **Returns:** ``Any``
 
 .. method:: getUnit()
 
@@ -756,23 +756,37 @@ FlyCircuitLoader
    **Returns:** (``bool``) true, if an HHTP connection could be established, false otherwise
 
 
+Frangi
+------
+
+.. method:: getArity()
+
+   **Signature:** ``getArity() -> int``
+
+   **Returns:** ``int``
+
+.. method:: getIndependentInstance()
+
+   **Signature:** ``getIndependentInstance() -> UnaryComputerOp``
+
+   **Returns:** ``Any``
+
+
 GroupedTreeStatistics
 ---------------------
 
-.. method:: getBoxPlot(arg0, arg1, arg2, arg3)
+.. method:: getBoxPlot(arg0, arg1)
 
    Assembles a Box and Whisker Plot for the specified feature.
 
-   **Signature:** ``getBoxPlot(String, Collection, double, boolean) -> SNTChart``
+   **Signature:** ``getBoxPlot(String, Collection) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - the feature ("Cable length", "No. of branch points", "No. of tips", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.
    * **arg1** (``List[Any]``)
-   * **arg2** (``float``)
-   * **arg3** (``bool``)
 
-   **Returns:** ``SNTChart``
+   **Returns:** (``SNTChart``) the box plot
 
 .. method:: getFlowPlot(arg0, arg1, arg2, arg3)
 
@@ -1050,17 +1064,13 @@ MouseLightLoader
 
    **Returns:** (``SWCPoint``) the SWCPoint representing the soma location
 
-.. method:: getTree(arg0)
+.. method:: getTree()
 
    Script-friendly method to extract the entire neuron as a collection of Paths.
 
-   **Signature:** ``getTree(String) -> Tree``
+   **Signature:** ``getTree() -> Tree``
 
-   **Parameters:**
-
-   * **arg0** (``str``)
-
-   **Returns:** ``Tree``
+   **Returns:** (``Tree``) the neuron as a Tree, or null if data could not be retrieved
 
 .. method:: static getNeuronCount()
 
@@ -1184,14 +1194,13 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``Dict[str, Any]``) the map containing the brain compartments as keys, and cable lengths as values.
 
-.. method:: getAnnotatedLengthHistogram(arg0, arg1)
+.. method:: getAnnotatedLengthHistogram(arg0)
 
-   **Signature:** ``getAnnotatedLengthHistogram(int, String) -> SNTChart``
+   **Signature:** ``getAnnotatedLengthHistogram(int) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``int``)
-   * **arg1** (``str``)
 
    **Returns:** ``SNTChart``
 
@@ -1207,17 +1216,13 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``Dict[str, Any]``) the map containing the brain compartments as keys, and cable lengths per hemisphere as values.
 
-.. method:: getAnnotations(arg0)
+.. method:: getAnnotations()
 
    Description copied from class: TreeStatistics
 
-   **Signature:** ``getAnnotations(int) -> Set``
+   **Signature:** ``getAnnotations() -> Set``
 
-   **Parameters:**
-
-   * **arg0** (``int``): - the max. ontological depth of the compartments to be retrieved
-
-   **Returns:** (``Set[Any]``) the set of brain compartments (BrainAnnotations)
+   **Returns:** ``Set[Any]``
 
 .. method:: getAvgBranchLength()
 
@@ -1255,6 +1260,16 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** ``float``
 
+.. method:: getBoxPlot(arg0)
+
+   **Signature:** ``getBoxPlot(String) -> SNTChart``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``SNTChart``
+
 .. method:: getBranchPoints()
 
    Description copied from class: TreeStatistics
@@ -1271,17 +1286,13 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``List[Any]``) the list of branches as Path objects.
 
-.. method:: getCableLength(arg0)
+.. method:: getCableLength()
 
    Description copied from class: TreeStatistics
 
-   **Signature:** ``getCableLength(BrainAnnotation) -> double``
+   **Signature:** ``getCableLength() -> double``
 
-   **Parameters:**
-
-   * **arg0** (``Any``): - the query compartment (null not allowed). All of its children will be considered
-
-   **Returns:** (``float``) the filtered cable length
+   **Returns:** ``float``
 
 .. method:: getCableLengthNorm(arg0)
 
@@ -1339,18 +1350,21 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``Any``) the DescriptiveStatistics object.
 
-.. method:: getFlowPlot(arg0, arg1)
+.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
 
    Description copied from class: TreeStatistics
 
-   **Signature:** ``getFlowPlot(String, Collection) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the feature ("Cable length", "No. of branch points", "No. of tips", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.
+   * **arg0** (``str``)
    * **arg1** (``List[Any]``)
+   * **arg2** (``str``)
+   * **arg3** (``float``)
+   * **arg4** (``bool``)
 
-   **Returns:** (``SNTChart``) the SNTChart holding the flow plot
+   **Returns:** ``SNTChart``
 
 .. method:: getFractalDimension()
 
@@ -1494,13 +1508,17 @@ NodeColorMapper
 
    **Returns:** ``Any``
 
-.. method:: getColorTable()
+.. method:: getColorTable(arg0)
 
    Description copied from class: ColorMapper
 
-   **Signature:** ``getColorTable() -> ColorTable``
+   **Signature:** ``getColorTable(String) -> ColorTable``
 
-   **Returns:** (``Any``) the current color table
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``Any``
 
 .. method:: getMinMax()
 
@@ -1540,9 +1558,13 @@ NodeColorMapper
 NodeProfiler
 ------------
 
-.. method:: cancel()
+.. method:: cancel(arg0)
 
-   **Signature:** ``cancel() -> void``
+   **Signature:** ``cancel(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
 
    **Returns:** ``None``
 
@@ -1566,7 +1588,7 @@ NodeProfiler
 
 .. method:: getInfo()
 
-   **Signature:** ``getInfo() -> ModuleInfo``
+   **Signature:** ``getInfo() -> DynamicCommandInfo``
 
    **Returns:** ``Any``
 
@@ -1602,15 +1624,16 @@ NodeProfiler
 
    **Returns:** ``Dict[str, Any]``
 
-.. method:: getPlot(arg0)
+.. method:: getPlot(arg0, arg1)
 
-   **Signature:** ``getPlot(Path) -> Plot``
+   **Signature:** ``getPlot(Path, int) -> Plot``
 
    **Parameters:**
 
-   * **arg0** (``Path``): - the path to be profiled
+   * **arg0** (``Path``)
+   * **arg1** (``int``)
 
-   **Returns:** (``Any``) The profile (Mean±SD of all the profiled data)
+   **Returns:** ``Any``
 
 .. method:: getTable(arg0, arg1)
 
@@ -1677,16 +1700,11 @@ NodeProfiler
 NodeStatistics
 --------------
 
-.. method:: getAnnotatedFrequencies(arg0, arg1)
+.. method:: getAnnotatedFrequencies()
 
    Retrieves the count frequencies across brain compartment.
 
-   **Signature:** ``getAnnotatedFrequencies(int, String) -> Map``
-
-   **Parameters:**
-
-   * **arg0** (``int``)
-   * **arg1** (``str``)
+   **Signature:** ``getAnnotatedFrequencies() -> Map``
 
    **Returns:** ``Dict[str, Any]``
 
@@ -1723,13 +1741,17 @@ NodeStatistics
 
    **Returns:** ``SNTChart``
 
-.. method:: getAnnotatedNodes()
+.. method:: getAnnotatedNodes(arg0)
 
    Splits the nodes being analyzed into groups sharing the same brain annotation.
 
-   **Signature:** ``getAnnotatedNodes() -> Map``
+   **Signature:** ``getAnnotatedNodes(int) -> Map``
 
-   **Returns:** ``Dict[str, Any]``
+   **Parameters:**
+
+   * **arg0** (``int``): - the ontological depth of the compartments to be considered
+
+   **Returns:** (``Dict[str, Any]``) the map containing the brain annotations as keys, and list of nodes as values.
 
 .. method:: getDescriptiveStatistics(arg0)
 
@@ -2085,9 +2107,13 @@ PathAndFillManager
 
    **Returns:** ``List[Any]``
 
-.. method:: getPathsStructured()
+.. method:: getPathsStructured(arg0)
 
-   **Signature:** ``getPathsStructured() -> Path;``
+   **Signature:** ``getPathsStructured(Collection) -> Path;``
+
+   **Parameters:**
+
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``Any``
 
@@ -2131,14 +2157,6 @@ Must contain exactly one primary path (root of the tree) All non-primary paths m
 PathFitter
 ----------
 
-.. method:: getMaxRadius()
-
-   Gets the current max radius (in pixels)
-
-   **Signature:** ``getMaxRadius() -> int``
-
-   **Returns:** (``int``) the maximum radius currently being considered, or DEFAULT_MAX_RADIUS if setMaxRadius(int) has not been called
-
 .. method:: getPath()
 
    **Signature:** ``getPath() -> Path``
@@ -2157,9 +2175,13 @@ PathFitter
 PathProfiler
 ------------
 
-.. method:: cancel()
+.. method:: cancel(arg0)
 
-   **Signature:** ``cancel() -> void``
+   **Signature:** ``cancel(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
 
    **Returns:** ``None``
 
@@ -2183,7 +2205,7 @@ PathProfiler
 
 .. method:: getInfo()
 
-   **Signature:** ``getInfo() -> ModuleInfo``
+   **Signature:** ``getInfo() -> DynamicCommandInfo``
 
    **Returns:** ``Any``
 
@@ -2219,17 +2241,13 @@ PathProfiler
 
    **Returns:** ``Dict[str, Any]``
 
-.. method:: getPlot(arg0)
+.. method:: getPlot()
 
    Gets the plot profile as an ImageJ plot (all channels included).
 
-   **Signature:** ``getPlot(Path) -> Plot``
+   **Signature:** ``getPlot() -> Plot``
 
-   **Parameters:**
-
-   * **arg0** (``Path``)
-
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the plot
 
 .. method:: getValues(arg0)
 
@@ -2243,13 +2261,17 @@ PathProfiler
 
    **Returns:** (``Dict[str, Any]``) the profile map
 
-.. method:: getXYPlot()
+.. method:: getXYPlot(arg0)
 
    Gets the plot profile as an PlotService plot. It is recommended to call `DynamicCommand.setContext(org.scijava.Context)` beforehand.
 
-   **Signature:** ``getXYPlot() -> XYPlot``
+   **Signature:** ``getXYPlot(int) -> XYPlot``
 
-   **Returns:** ``Any``
+   **Parameters:**
+
+   * **arg0** (``int``): - the channel to be parsed (base-0 index)
+
+   **Returns:** (``Any``) the plot
 
 .. method:: isCanceled()
 
@@ -2337,26 +2359,24 @@ Path identification information (name, SWC type) All requested morphometric meas
 
    **Returns:** ``None``
 
-.. method:: getAnnotatedLength(arg0, arg1, arg2)
+.. method:: getAnnotatedLength(arg0, arg1)
 
-   **Signature:** ``getAnnotatedLength(int, String, boolean) -> Map``
+   **Signature:** ``getAnnotatedLength(int, String) -> Map``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``str``)
-   * **arg2** (``bool``)
 
    **Returns:** ``Dict[str, Any]``
 
-.. method:: getAnnotatedLengthHistogram(arg0, arg1)
+.. method:: getAnnotatedLengthHistogram(arg0)
 
-   **Signature:** ``getAnnotatedLengthHistogram(int, String) -> SNTChart``
+   **Signature:** ``getAnnotatedLengthHistogram(int) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``int``)
-   * **arg1** (``str``)
 
    **Returns:** ``SNTChart``
 
@@ -2441,9 +2461,13 @@ In PathStatistics, all paths are considered as branches since each path represen
 
    **Returns:** (``List[Any]``) the list of all paths
 
-.. method:: getCableLength()
+.. method:: getCableLength(arg0)
 
-   **Signature:** ``getCableLength() -> double``
+   **Signature:** ``getCableLength(BrainAnnotation) -> double``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
 
    **Returns:** ``float``
 
@@ -2501,17 +2525,14 @@ In PathStatistics, all paths are considered as branches since each path represen
 
    **Returns:** ``Any``
 
-.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
+.. method:: getFlowPlot(arg0, arg1)
 
-   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, Collection) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``str``)
    * **arg1** (``List[Any]``)
-   * **arg2** (``str``)
-   * **arg3** (``float``)
-   * **arg4** (``bool``)
 
    **Returns:** ``SNTChart``
 
@@ -2944,11 +2965,11 @@ RootAngleAnalyzer
 
    Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.
 
-   **Signature:** ``getTaggedTree(String, double, double) -> Tree``
+   **Signature:** ``getTaggedTree(ColorTable, double, double) -> Tree``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``Any``)
    * **arg1** (``float``)
    * **arg2** (``float``)
 
@@ -3078,17 +3099,13 @@ SNT
 
    **Returns:** ``Any``
 
-.. method:: getImagePlus(arg0)
+.. method:: getImagePlus()
 
    Gets the Image associated with a view pane.
 
-   **Signature:** ``getImagePlus(int) -> ImagePlus``
+   **Signature:** ``getImagePlus() -> ImagePlus``
 
-   **Parameters:**
-
-   * **arg0** (``int``): - the flag specifying the view either MultiDThreePanes.XY_PLANE, MultiDThreePanes.XZ_PLANE or MultiDThreePanes.ZY_PLANE.
-
-   **Returns:** (``Any``) the image associate with the specified view, or null if the view is not available
+   **Returns:** ``Any``
 
 .. method:: getLoadedData()
 
@@ -3920,17 +3937,13 @@ Tree
 
    **Returns:** (``Any``) the Tree color, or null if no color has been assigned
 
-.. method:: getConvexHull(arg0)
+.. method:: getConvexHull()
 
    Retrieves the convex hull of this tree.
 
-   **Signature:** ``getConvexHull(String) -> AbstractConvexHull``
+   **Signature:** ``getConvexHull() -> AbstractConvexHull``
 
-   **Parameters:**
-
-   * **arg0** (``str``): - the description of the point cloud defining the convex hull (i.e., "tips"/"end-points", "junctions"/"branch points", or "all" (default))
-
-   **Returns:** (``Any``) the convex hull. Either ConvexHull2D (if this tree is two-dimensional) or ConvexHull3D (if this tree is three-dimensional)
+   **Returns:** ``Any``
 
 .. method:: getGraph()
 
@@ -4027,33 +4040,37 @@ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
 
    **Returns:** (``Set[Any]``) a Set containing the SWC type labels (e.g., Path.SWC_AXON_LABEL, `Path.SWC_DENDRITE_LABEL`, etc.) present in the tree
 
-.. method:: getSWCTypes()
+.. method:: getSWCTypes(arg0)
 
    Gets the set of SWC types present in this tree with optional soma inclusion.
 
-   **Signature:** ``getSWCTypes() -> Set``
-
-   **Returns:** ``Set[Any]``
-
-.. method:: getSkeleton(arg0)
-
-   Retrieves the rasterized skeleton of this tree at 1:1 scaling.
-
-   **Signature:** ``getSkeleton(int) -> ImagePlus``
+   **Signature:** ``getSWCTypes(boolean) -> Set``
 
    **Parameters:**
 
-   * **arg0** (``int``): - the voxel intensities of the skeleton. If
+   * **arg0** (``bool``): - if true, includes the soma type in the returned set; if false, excludes Path.SWC_SOMA from the result
 
-   **Returns:** (``Any``) the skeletonized 16-bit binary image
+   **Returns:** (``Set[Any]``) a Set containing the SWC type constants (e.g., Path.SWC_AXON, Path.SWC_DENDRITE, etc.) present in the tree
 
-.. method:: getSkeleton2D()
+.. method:: getSkeleton()
+
+   Retrieves the rasterized skeleton of this tree at 1:1 scaling.
+
+   **Signature:** ``getSkeleton() -> ImagePlus``
+
+   **Returns:** ``Any``
+
+.. method:: getSkeleton2D(arg0)
 
    Retrieves a 2D projection of the rasterized skeleton of this tree at 1:1 scaling.
 
-   **Signature:** ``getSkeleton2D() -> ImagePlus``
+   **Signature:** ``getSkeleton2D(int) -> ImagePlus``
 
-   **Returns:** ``Any``
+   **Parameters:**
+
+   * **arg0** (``int``): - the pixel intensities of the skeleton. If
+
+   **Returns:** (``Any``) the skeletonized 16-bit binary image
 
 .. method:: getSomaNodes()
 
@@ -4177,32 +4194,30 @@ TreeStatistics
 
    **Returns:** ``None``
 
-.. method:: getAnnotatedLength(arg0, arg1, arg2)
+.. method:: getAnnotatedLength(arg0, arg1)
 
    Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.
 
-   **Signature:** ``getAnnotatedLength(int, String, boolean) -> Map``
+   **Signature:** ``getAnnotatedLength(int, String) -> Map``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``str``)
-   * **arg2** (``bool``)
 
    **Returns:** ``Dict[str, Any]``
 
-.. method:: getAnnotatedLengthHistogram(arg0, arg1)
+.. method:: getAnnotatedLengthHistogram(arg0)
 
    Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.
 
-   **Signature:** ``getAnnotatedLengthHistogram(int, String) -> SNTChart``
+   **Signature:** ``getAnnotatedLengthHistogram(int) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``int``)
-   * **arg1** (``str``)
+   * **arg0** (``int``): - the ontological depth of the compartments to be considered
 
-   **Returns:** ``SNTChart``
+   **Returns:** (``SNTChart``) the annotated length histogram
 
 .. method:: getAnnotatedLengthsByHemisphere(arg0)
 
@@ -4297,13 +4312,17 @@ TreeStatistics
 
    **Returns:** (``List[Any]``) the list of branches as Path objects.
 
-.. method:: getCableLength()
+.. method:: getCableLength(arg0)
 
    Gets the cable length associated with the specified compartment (neuropil label).
 
-   **Signature:** ``getCableLength() -> double``
+   **Signature:** ``getCableLength(BrainAnnotation) -> double``
 
-   **Returns:** ``float``
+   **Parameters:**
+
+   * **arg0** (``Any``): - the query compartment (null not allowed)
+
+   **Returns:** (``float``) the filtered cable length
 
 .. method:: getCableLengthNorm(arg0)
 
@@ -4369,21 +4388,18 @@ TreeStatistics
 
    **Returns:** (``Any``) the DescriptiveStatistics object.
 
-.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
+.. method:: getFlowPlot(arg0, arg1)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 
-   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, Collection) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - the feature ("Cable length", "No. of branch points", "No. of tips", etc.). Note that the majority of getAllMetrics() metrics are currently not supported.
    * **arg1** (``List[Any]``)
-   * **arg2** (``str``)
-   * **arg3** (``float``)
-   * **arg4** (``bool``)
 
-   **Returns:** ``SNTChart``
+   **Returns:** (``SNTChart``) the SNTChart holding the flow plot
 
 .. method:: getFractalDimension()
 
@@ -4460,6 +4476,22 @@ TreeStatistics
    * **arg0** (``Any``): - the BrainAnnotation to be queried.
 
    **Returns:** (``int``) the number of branch points
+
+
+Tubeness
+--------
+
+.. method:: getArity()
+
+   **Signature:** ``getArity() -> int``
+
+   **Returns:** ``int``
+
+.. method:: getIndependentInstance()
+
+   **Signature:** ``getIndependentInstance() -> UnaryComputerOp``
+
+   **Returns:** ``Any``
 
 
 Viewer2D
@@ -4714,9 +4746,13 @@ Returns the AWT Frame that contains this viewer's 3D canvas and UI components. I
 WekaModelLoader
 ---------------
 
-.. method:: cancel()
+.. method:: cancel(arg0)
 
-   **Signature:** ``cancel() -> void``
+   **Signature:** ``cancel(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
 
    **Returns:** ``None``
 
@@ -4740,7 +4776,7 @@ WekaModelLoader
 
 .. method:: getInfo()
 
-   **Signature:** ``getInfo() -> ModuleInfo``
+   **Signature:** ``getInfo() -> DynamicCommandInfo``
 
    **Returns:** ``Any``
 
@@ -4815,4 +4851,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

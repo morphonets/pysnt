@@ -1,9 +1,9 @@
 {
   "class_name": "TreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.842266",
+  "extracted_at": "2026-01-02T22:36:45.050868",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.470160",
+  "enhancement_timestamp": "2026-01-02T22:43:26.225435",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -135,36 +135,6 @@
       "name": "getAnnotatedLength",
       "overloads": [
         {
-          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getAnnotatedLength(int, String) -> Map",
           "params": [
             {
@@ -202,6 +172,36 @@
           "java_return_type": "Map",
           "return_description": "the map containing the brain compartments as keys, and cable lengths as values.",
           "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: getAnnotatedLength",
@@ -217,29 +217,6 @@
     {
       "name": "getAnnotatedLengthHistogram",
       "overloads": [
-        {
-          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
           "params": [
@@ -259,6 +236,29 @@
         {
           "signature": "getAnnotatedLengthHistogram() -> SNTChart",
           "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
@@ -562,14 +562,6 @@
       "name": "getCableLength",
       "overloads": [
         {
-          "signature": "getCableLength() -> double",
-          "params": [],
-          "return_type": "float",
-          "java_return_type": "double",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getCableLength(BrainAnnotation) -> double",
           "params": [
             {
@@ -583,6 +575,14 @@
           "return_type": "float",
           "java_return_type": "double",
           "return_description": "the filtered cable length",
+          "throws": {}
+        },
+        {
+          "signature": "getCableLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
           "throws": {}
         },
         {
@@ -811,6 +811,29 @@
       "name": "getFlowPlot",
       "overloads": [
         {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of getAllMetrics() metrics are currently not supported.",
+              "javadoc_name": "feature"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "getAllMetrics()"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the SNTChart holding the flow plot",
+          "throws": {}
+        },
+        {
           "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
           "params": [
             {
@@ -843,66 +866,6 @@
             },
             {
               "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of getAllMetrics() metrics are currently not supported.",
-              "javadoc_name": "feature"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": "getAllMetrics()"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "the SNTChart holding the flow plot",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -956,6 +919,43 @@
             },
             {
               "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -1154,14 +1154,6 @@
       "name": "static getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "the list of commonly used metrics.",
-          "throws": {}
-        },
-        {
           "signature": "static getMetrics(String) -> List",
           "params": [
             {
@@ -1175,6 +1167,14 @@
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of commonly used metrics.",
           "throws": {}
         }
       ],
@@ -1264,35 +1264,35 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "getStrahlerNumber()",
-    "Path.getFractalDimension()",
-    "getMetrics(String)",
-    "summarize(String, boolean)",
-    "StrahlerAnalyzer.getHighestBranchOrder()",
-    "AllenCompartment.getOntologyDepth()",
-    "run()",
-    "getParsedTree()",
-    "summarize(boolean)",
-    "getHistogram(String)",
-    "getRootAngleAnalyzer()",
-    "getPrimaryBranches()",
-    "getConvexAnalyzer()",
-    "getTerminalBranches()",
-    "resetRestrictions()",
-    "PathProfiler.assignValues()",
-    "AllenCompartment",
-    "getPrimaryPaths()",
-    "StrahlerAnalyzer.getBranches()",
-    "Constant Field Values",
-    "getMetrics()",
-    "ConvexHullAnalyzer.get(String)",
-    "setTable(DefaultGenericTable)",
-    "getInnerBranches()",
-    "getFlowPlot(String, Collection, String, double, boolean)",
-    "setExactMetricMatch(boolean)",
     "DirectedWeightedGraph.getNodeStatistics(String)",
-    "Path.hasNodeValues()"
+    "getMetrics(String)",
+    "ConvexHullAnalyzer.get(String)",
+    "summarize(String, boolean)",
+    "getMetrics()",
+    "getParsedTree()",
+    "Path.hasNodeValues()",
+    "getTerminalBranches()",
+    "AllenCompartment",
+    "getConvexAnalyzer()",
+    "getInnerBranches()",
+    "setExactMetricMatch(boolean)",
+    "getPrimaryBranches()",
+    "getFlowPlot(String, Collection, String, double, boolean)",
+    "getPrimaryPaths()",
+    "resetRestrictions()",
+    "getStrahlerNumber()",
+    "setTable(DefaultGenericTable)",
+    "StrahlerAnalyzer.getHighestBranchOrder()",
+    "summarize(boolean)",
+    "StrahlerAnalyzer.getBranches()",
+    "getHistogram(String)",
+    "Constant Field Values",
+    "Path.getFractalDimension()",
+    "AllenCompartment.getOntologyDepth()",
+    "PathProfiler.assignValues()",
+    "run()",
+    "StrahlerAnalyzer.getRootAssociatedBranches()",
+    "getRootAngleAnalyzer()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

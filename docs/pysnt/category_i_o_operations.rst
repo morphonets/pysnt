@@ -138,13 +138,13 @@ PathAndFillManager
 
    Delete paths by position.
 
-   **Signature:** ``deletePaths(Collection) -> boolean``
+   **Signature:** ``deletePaths([I) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``Any``): - the indices to be deleted
 
-   **Returns:** ``bool``
+   **Returns:** ``None``
 
 .. method:: exportAllPathsAsSWC(arg0)
 
@@ -324,13 +324,14 @@ SNTUtils
 
    **Returns:** (``Any``) the array of files. An empty list is retrieved if dir is not a valid, readable directory.
 
-.. method:: static getUniquelySuffixedFile(arg0)
+.. method:: static getUniquelySuffixedFile(arg0, arg1)
 
-   **Signature:** ``static getUniquelySuffixedFile(File) -> File``
+   **Signature:** ``static getUniquelySuffixedFile(File, String) -> File``
 
    **Parameters:**
 
    * **arg0** (``str``)
+   * **arg1** (``str``)
 
    **Returns:** ``str``
 
@@ -423,4 +424,4 @@ Viewer3D
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

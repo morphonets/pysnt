@@ -64,12 +64,17 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getDistinctColors(int, String)
+.. py:method:: static getDistinctColors(int)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion
 
 
 .. py:method:: static getDistinctColorsAWT(int)
+
+   
+
+
+.. py:method:: static getDistinctColorsHex(int, String)
 
    
 
@@ -112,7 +117,7 @@ Other Methods
    Retrieves the AWT color
 
 
-.. py:method:: static colorToString(Color)
+.. py:method:: static colorToString(Object)
 
    Returns the color encoded as hex string with the format #rrggbbaa.
 
@@ -122,19 +127,24 @@ Other Methods
    Returns a suitable 'contrast' color.
 
 
+.. py:method:: static fromHex(String)
+
+   Returns an AWT Color from a (#)RRGGBB(AA) hex string.
+
+
 .. py:method:: static interpolateNullEntries(Color;)
 
    Replaces null colors in an array with the average of flanking non-null colors.
 
 
-.. py:method:: static stringToColor(String)
-
-   Returns an AWT Color from a (#)RRGGBB(AA) hex string.
-
-
 .. py:method:: type()
 
    Retrieves the SWC type
+
+
+.. py:method:: static valueOf(String)
+
+   
 
 
 See Also

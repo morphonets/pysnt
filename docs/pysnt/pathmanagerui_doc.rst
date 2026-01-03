@@ -83,7 +83,7 @@ Other Methods
    
 
 
-.. py:method:: add(Component, Object, int)
+.. py:method:: add(String, Component)
 
    Runs a menu command with options.
 
@@ -143,7 +143,7 @@ Other Methods
    
 
 
-.. py:method:: addPropertyChangeListener(String, PropertyChangeListener)
+.. py:method:: addPropertyChangeListener(PropertyChangeListener)
 
    
 
@@ -173,7 +173,7 @@ Other Methods
    Applies a default (built-in) tag to selected Path(s).
 
 
-.. py:method:: applyResourceBundle(ResourceBundle)
+.. py:method:: applyResourceBundle(String)
 
    
 
@@ -208,7 +208,7 @@ Other Methods
    
 
 
-.. py:method:: createBufferStrategy(int)
+.. py:method:: createBufferStrategy(int, BufferCapabilities)
 
    
 

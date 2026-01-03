@@ -1,0 +1,988 @@
+{
+  "class_name": "Tree",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-01-02T22:23:57.725758",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: add"
+    },
+    {
+      "name": "applyCanvasOffset",
+      "overloads": [
+        {
+          "signature": "applyCanvasOffset(double, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: applyCanvasOffset"
+    },
+    {
+      "name": "applyProperties",
+      "overloads": [
+        {
+          "signature": "applyProperties(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: applyProperties"
+    },
+    {
+      "name": "assignImage",
+      "overloads": [
+        {
+          "signature": "assignImage(Dataset) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Dataset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "assignImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: assignImage"
+    },
+    {
+      "name": "static assignUniqueColors",
+      "overloads": [
+        {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static assignUniqueColors(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static assignUniqueColors"
+    },
+    {
+      "name": "assignValue",
+      "overloads": [
+        {
+          "signature": "assignValue(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: assignValue"
+    },
+    {
+      "name": "clone",
+      "overloads": [
+        {
+          "signature": "clone() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        },
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        }
+      ],
+      "documentation": "Java method: clone"
+    },
+    {
+      "name": "downSample",
+      "overloads": [
+        {
+          "signature": "downSample(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: downSample"
+    },
+    {
+      "name": "downsample",
+      "overloads": [
+        {
+          "signature": "downsample(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: downsample"
+    },
+    {
+      "name": "static fromFile",
+      "overloads": [
+        {
+          "signature": "static fromFile(String) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        }
+      ],
+      "documentation": "Java method: static fromFile"
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        }
+      ],
+      "documentation": "Java method: get"
+    },
+    {
+      "name": "getApproximatedSurface",
+      "overloads": [
+        {
+          "signature": "getApproximatedSurface() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getApproximatedSurface"
+    },
+    {
+      "name": "getApproximatedVolume",
+      "overloads": [
+        {
+          "signature": "getApproximatedVolume() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getApproximatedVolume"
+    },
+    {
+      "name": "getAssignedValue",
+      "overloads": [
+        {
+          "signature": "getAssignedValue() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAssignedValue"
+    },
+    {
+      "name": "getBPs",
+      "overloads": [
+        {
+          "signature": "getBPs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getBPs"
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox(boolean) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        },
+        {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: getBoundingBox"
+    },
+    {
+      "name": "getColor",
+      "overloads": [
+        {
+          "signature": "getColor() -> ColorRGB",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB"
+        }
+      ],
+      "documentation": "Java method: getColor"
+    },
+    {
+      "name": "getConvexHull",
+      "overloads": [
+        {
+          "signature": "getConvexHull() -> AbstractConvexHull",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull"
+        },
+        {
+          "signature": "getConvexHull(String) -> AbstractConvexHull",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractConvexHull"
+        }
+      ],
+      "documentation": "Java method: getConvexHull"
+    },
+    {
+      "name": "getGraph",
+      "overloads": [
+        {
+          "signature": "getGraph() -> DirectedWeightedGraph",
+          "params": [],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph"
+        },
+        {
+          "signature": "getGraph(boolean) -> DirectedWeightedGraph",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph"
+        }
+      ],
+      "documentation": "Java method: getGraph"
+    },
+    {
+      "name": "getImpContainer",
+      "overloads": [
+        {
+          "signature": "getImpContainer(int, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: getImpContainer"
+    },
+    {
+      "name": "getLabel",
+      "overloads": [
+        {
+          "signature": "getLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getLabel"
+    },
+    {
+      "name": "getNodes",
+      "overloads": [
+        {
+          "signature": "getNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getNodes"
+    },
+    {
+      "name": "getNodesAsSWCPoints",
+      "overloads": [
+        {
+          "signature": "getNodesAsSWCPoints() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getNodesAsSWCPoints"
+    },
+    {
+      "name": "getNodesCount",
+      "overloads": [
+        {
+          "signature": "getNodesCount() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long"
+        }
+      ],
+      "documentation": "Java method: getNodesCount"
+    },
+    {
+      "name": "getProperties",
+      "overloads": [
+        {
+          "signature": "getProperties() -> Properties",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Properties"
+        }
+      ],
+      "documentation": "Java method: getProperties"
+    },
+    {
+      "name": "getRoot",
+      "overloads": [
+        {
+          "signature": "getRoot() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage"
+        }
+      ],
+      "documentation": "Java method: getRoot"
+    },
+    {
+      "name": "static getSWCTypeMap",
+      "overloads": [
+        {
+          "signature": "static getSWCTypeMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: static getSWCTypeMap"
+    },
+    {
+      "name": "getSWCTypeNames",
+      "overloads": [
+        {
+          "signature": "getSWCTypeNames(boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getSWCTypeNames"
+    },
+    {
+      "name": "getSWCTypes",
+      "overloads": [
+        {
+          "signature": "getSWCTypes(boolean) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
+          "signature": "getSWCTypes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getSWCTypes"
+    },
+    {
+      "name": "getSkeleton",
+      "overloads": [
+        {
+          "signature": "getSkeleton() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "getSkeleton(int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: getSkeleton"
+    },
+    {
+      "name": "getSkeleton2D",
+      "overloads": [
+        {
+          "signature": "getSkeleton2D(int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "getSkeleton2D() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: getSkeleton2D"
+    },
+    {
+      "name": "getSomaNodes",
+      "overloads": [
+        {
+          "signature": "getSomaNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getSomaNodes"
+    },
+    {
+      "name": "getTips",
+      "overloads": [
+        {
+          "signature": "getTips() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getTips"
+    },
+    {
+      "name": "indexOf",
+      "overloads": [
+        {
+          "signature": "indexOf(Path) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: indexOf"
+    },
+    {
+      "name": "is3D",
+      "overloads": [
+        {
+          "signature": "is3D() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: is3D"
+    },
+    {
+      "name": "isAnnotated",
+      "overloads": [
+        {
+          "signature": "isAnnotated() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isAnnotated"
+    },
+    {
+      "name": "isEmpty",
+      "overloads": [
+        {
+          "signature": "isEmpty() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isEmpty"
+    },
+    {
+      "name": "list",
+      "overloads": [
+        {
+          "signature": "list() -> ArrayList",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList"
+        }
+      ],
+      "documentation": "Java method: list"
+    },
+    {
+      "name": "static listFromDir",
+      "overloads": [
+        {
+          "signature": "static listFromDir(String, String, String;) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "String;"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static listFromDir(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static listFromDir(String, String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static listFromDir"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Tree(Collection, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, [I)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tree(DirectedWeightedGraph, String, boolean)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for Tree"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "AXONAL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field AXONAL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "DENDRITIC",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field DENDRITIC of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_COLOR",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_COLOR of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_COMPARTMENT",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_COMPARTMENT of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_FRAME_POS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_FRAME_POS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_ID",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_ID of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG_CHANNEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG_CHANNEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_IMG_FRAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_IMG_FRAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_LABEL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_LABEL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_SOURCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_SOURCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "KEY_SPATIAL_UNIT",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field KEY_SPATIAL_UNIT of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SOMATIC",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SOMATIC of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "UNSET",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field UNSET of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field X_AXIS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field Y_AXIS of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_AXIS",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field Z_AXIS of type int",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
+}

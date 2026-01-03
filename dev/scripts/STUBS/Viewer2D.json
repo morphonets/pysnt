@@ -1,63 +1,12 @@
 {
   "class_name": "Viewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2025-11-19T11:06:20.855264",
+  "extracted_at": "2026-01-02T22:36:45.068938",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Tree, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, ColorRGB) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(List, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "add(Object) -> void",
           "params": [
@@ -65,38 +14,6 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Tree, String, ColorTable, double, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg4",
-              "type": "float",
-              "java_type": "double"
             }
           ],
           "return_type": "None",
@@ -155,6 +72,89 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, String, ColorTable, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Tree, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(List, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: add"
@@ -162,24 +162,6 @@
     {
       "name": "addColorBarLegend",
       "overloads": [
-        {
-          "signature": "addColorBarLegend() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addColorBarLegend(ColorMapper) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorMapper"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "addColorBarLegend(ColorTable, double, double) -> void",
           "params": [
@@ -197,6 +179,24 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorMapper"
             }
           ],
           "return_type": "None",
@@ -518,34 +518,12 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
+          "signature": "map(Tree, String, String) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "LinearProfileStats"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "map(Collection, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
             },
             {
               "name": "arg1",
@@ -584,7 +562,7 @@
           "java_return_type": "void"
         },
         {
-          "signature": "map(Tree, String, String) -> void",
+          "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
@@ -593,13 +571,13 @@
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String"
+              "type": "Any",
+              "java_type": "LinearProfileStats"
             },
             {
               "name": "arg2",
-              "type": "str",
-              "java_type": "String"
+              "type": "Any",
+              "java_type": "ColorTable"
             }
           ],
           "return_type": "None",
@@ -622,6 +600,28 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -907,23 +907,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Viewer2D(Context, Viewer2D)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            },
-            {
-              "name": "arg1",
-              "type": "Viewer2D",
-              "java_type": "Viewer2D"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "Viewer2D(Context)",
           "params": [
             {
@@ -938,6 +921,23 @@
         {
           "signature": "Viewer2D()",
           "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Viewer2D(Context, Viewer2D)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "arg1",
+              "type": "Viewer2D",
+              "java_type": "Viewer2D"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         }

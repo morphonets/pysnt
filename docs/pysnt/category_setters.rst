@@ -3,7 +3,7 @@ Setters Methods
 
 Methods that modify values or properties of objects.
 
-Total methods in this category: **262**
+Total methods in this category: **268**
 
 .. contents:: Classes in this Category
    :local:
@@ -52,11 +52,11 @@ Annotation3D
 
    Assigns a wireframe color to the annotation.
 
-   **Signature:** ``setWireframeColor(ColorRGB) -> void``
+   **Signature:** ``setWireframeColor(String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the wireframe color. Ignored if the annotation has no wireframe.
+   * **arg0** (``str``): - the wireframe color. Ignored if the annotation has no wireframe.
 
    **Returns:** ``None``
 
@@ -531,19 +531,54 @@ FillerThread
    **Returns:** ``None``
 
 
-GroupedTreeStatistics
----------------------
+Frangi
+------
 
-.. method:: addGroup(arg0, arg1)
+.. method:: setEnvironment(arg0)
 
-   Adds a comparison group to the analysis queue.
-
-   **Signature:** ``addGroup(Collection, String) -> void``
+   **Signature:** ``setEnvironment(OpEnvironment) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the collection of Trees to be analyzed
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setInput(arg0)
+
+   **Signature:** ``setInput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setOutput(arg0)
+
+   **Signature:** ``setOutput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+
+GroupedTreeStatistics
+---------------------
+
+.. method:: addGroup(arg0, arg1, arg2)
+
+   Adds a comparison group to the analysis queue.
+
+   **Signature:** ``addGroup(Collection, String, String;) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``List[Any]``)
    * **arg1** (``str``)
+   * **arg2** (``Any``)
 
    **Returns:** ``None``
 
@@ -942,16 +977,15 @@ NodeProfiler
 
    **Returns:** ``Any``
 
-.. method:: addOutput(arg0, arg1)
+.. method:: addOutput(arg0)
 
-   **Signature:** ``addOutput(String, Class) -> MutableModuleItem``
+   **Signature:** ``addOutput(ModuleItem) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``type``)
+   * **arg0** (``Any``)
 
-   **Returns:** ``Any``
+   **Returns:** ``None``
 
 .. method:: removeInput(arg0)
 
@@ -1138,15 +1172,16 @@ PathAndFillManager
 
    **Returns:** ``None``
 
-.. method:: addTree(arg0)
+.. method:: addTree(arg0, arg1)
 
    Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.
 
-   **Signature:** ``addTree(Tree) -> void``
+   **Signature:** ``addTree(Tree, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``): - the collection of paths to be added
+   * **arg0** (``Tree``)
+   * **arg1** (``str``)
 
    **Returns:** ``None``
 
@@ -1166,6 +1201,18 @@ PathAndFillManager
 PathFitter
 ----------
 
+.. method:: setCrossSectionRadius(arg0)
+
+   Sets the max radius (side search) for constraining the fit.
+
+   **Signature:** ``setCrossSectionRadius(double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the new maximum radius
+
+   **Returns:** ``None``
+
 .. method:: setImage(arg0)
 
    Sets the target image
@@ -1178,15 +1225,13 @@ PathFitter
 
    **Returns:** ``None``
 
-.. method:: setMaxRadius(arg0)
+.. method:: setNodeRadiusFallback(arg0)
 
-   Sets the max radius (side search) for constraining the fit.
-
-   **Signature:** ``setMaxRadius(int) -> void``
+   **Signature:** ``setNodeRadiusFallback(int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``int``): - the new maximum radius
+   * **arg0** (``int``)
 
    **Returns:** ``None``
 
@@ -1198,18 +1243,6 @@ PathFitter
 
    * **arg0** (``int``)
    * **arg1** (``Any``)
-
-   **Returns:** ``None``
-
-.. method:: setRadiusFallback(arg0)
-
-   Sets the fallback strategy for radii at locations in which fitting failed
-
-   **Signature:** ``setRadiusFallback(int) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``int``)
 
    **Returns:** ``None``
 
@@ -1359,14 +1392,13 @@ PathManagerUI
 
    **Returns:** ``None``
 
-.. method:: addPropertyChangeListener(arg0, arg1)
+.. method:: addPropertyChangeListener(arg0)
 
-   **Signature:** ``addPropertyChangeListener(String, PropertyChangeListener) -> void``
+   **Signature:** ``addPropertyChangeListener(PropertyChangeListener) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``Any``)
+   * **arg0** (``Any``)
 
    **Returns:** ``None``
 
@@ -1423,16 +1455,15 @@ PathProfiler
 
    **Returns:** ``Any``
 
-.. method:: addOutput(arg0, arg1)
+.. method:: addOutput(arg0)
 
-   **Signature:** ``addOutput(String, Class) -> MutableModuleItem``
+   **Signature:** ``addOutput(ModuleItem) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``type``)
+   * **arg0** (``Any``)
 
-   **Returns:** ``Any``
+   **Returns:** ``None``
 
 .. method:: removeInput(arg0)
 
@@ -2007,14 +2038,13 @@ SNTService
 SNTTable
 --------
 
-.. method:: addAll(arg0, arg1)
+.. method:: addAll(arg0)
 
-   **Signature:** ``addAll(int, Collection) -> boolean``
+   **Signature:** ``addAll(Collection) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``int``)
-   * **arg1** (``List[Any]``)
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``bool``
 
@@ -2172,14 +2202,13 @@ SNTUI
 
    **Returns:** ``None``
 
-.. method:: addPropertyChangeListener(arg0, arg1)
+.. method:: addPropertyChangeListener(arg0)
 
-   **Signature:** ``addPropertyChangeListener(String, PropertyChangeListener) -> void``
+   **Signature:** ``addPropertyChangeListener(PropertyChangeListener) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``Any``)
+   * **arg0** (``Any``)
 
    **Returns:** ``None``
 
@@ -2699,14 +2728,54 @@ TreeColorMapper
    **Returns:** ``None``
 
 
+Tubeness
+--------
+
+.. method:: setEnvironment(arg0)
+
+   **Signature:** ``setEnvironment(OpEnvironment) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setInput(arg0)
+
+   **Signature:** ``setInput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setOutput(arg0)
+
+   **Signature:** ``setOutput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+
 Viewer2D
 --------
 
-.. method:: addColorBarLegend()
+.. method:: addColorBarLegend(arg0, arg1, arg2)
 
    Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note that when performing mapping to different measurements, the legend reflects only the last mapped measurement.
 
-   **Signature:** ``addColorBarLegend() -> void``
+   **Signature:** ``addColorBarLegend(ColorTable, double, double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``float``)
+   * **arg2** (``float``)
 
    **Returns:** ``None``
 
@@ -2850,20 +2919,15 @@ When enabled, both X and Y axes will use the same scale to maintain equal aspect
 Viewer3D
 --------
 
-.. method:: addColorBarLegend(arg0, arg1, arg2, arg3, arg4, arg5)
+.. method:: addColorBarLegend(arg0)
 
    Adds a color bar legend (LUT ramp).
 
-   **Signature:** ``addColorBarLegend(ColorTable, double, double, Font, int, int) -> void``
+   **Signature:** ``addColorBarLegend(ColorMapper) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``float``)
-   * **arg2** (``float``)
-   * **arg3** (``Any``)
-   * **arg4** (``int``)
-   * **arg5** (``int``)
+   * **arg0** (``Any``): - the color table
 
    **Returns:** ``None``
 
@@ -2918,16 +2982,15 @@ WekaModelLoader
 
    **Returns:** ``Any``
 
-.. method:: addOutput(arg0, arg1)
+.. method:: addOutput(arg0)
 
-   **Signature:** ``addOutput(String, Class) -> MutableModuleItem``
+   **Signature:** ``addOutput(ModuleItem) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``type``)
+   * **arg0** (``Any``)
 
-   **Returns:** ``Any``
+   **Returns:** ``None``
 
 .. method:: removeInput(arg0)
 
@@ -3015,4 +3078,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

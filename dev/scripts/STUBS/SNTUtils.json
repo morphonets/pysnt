@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.726181",
+  "extracted_at": "2026-01-02T22:36:44.932862",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -79,18 +79,6 @@
       "name": "static error",
       "overloads": [
         {
-          "signature": "static error(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "static error(String, Throwable) -> void",
           "params": [
             {
@@ -102,6 +90,18 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Throwable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static error(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -373,18 +373,6 @@
       "name": "static getUniquelySuffixedFile",
       "overloads": [
         {
-          "signature": "static getUniquelySuffixedFile(File) -> File",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
-            }
-          ],
-          "return_type": "str",
-          "java_return_type": "File"
-        },
-        {
           "signature": "static getUniquelySuffixedFile(File, String) -> File",
           "params": [
             {
@@ -396,6 +384,18 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File"
+        },
+        {
+          "signature": "static getUniquelySuffixedFile(File) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
             }
           ],
           "return_type": "str",

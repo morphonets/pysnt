@@ -1,7 +1,7 @@
 {
   "class_name": "PathManagerUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.529505",
+  "extracted_at": "2026-01-02T22:36:44.734887",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -30,45 +30,6 @@
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "add(String, Component) -> Component",
           "params": [
@@ -114,6 +75,45 @@
           ],
           "return_type": "Any",
           "java_return_type": "Component"
+        },
+        {
+          "signature": "add(Component, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "add(Component, Object, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         },
         {
           "signature": "add(PopupMenu) -> void",
@@ -326,6 +326,18 @@
       "name": "addPropertyChangeListener",
       "overloads": [
         {
+          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PropertyChangeListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
           "params": [
             {
@@ -335,18 +347,6 @@
             },
             {
               "name": "arg1",
-              "type": "Any",
-              "java_type": "PropertyChangeListener"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
               "type": "Any",
               "java_type": "PropertyChangeListener"
             }
@@ -451,24 +451,24 @@
       "name": "applyResourceBundle",
       "overloads": [
         {
-          "signature": "applyResourceBundle(ResourceBundle) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ResourceBundle"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "applyResourceBundle(String) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "applyResourceBundle(ResourceBundle) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ResourceBundle"
             }
           ],
           "return_type": "None",
@@ -695,18 +695,6 @@
       "name": "createBufferStrategy",
       "overloads": [
         {
-          "signature": "createBufferStrategy(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
           "params": [
             {
@@ -718,6 +706,18 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "BufferCapabilities"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "createBufferStrategy(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "None",

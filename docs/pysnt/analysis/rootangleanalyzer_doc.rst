@@ -94,12 +94,12 @@ Getters Methods
    
 
 
-.. py:method:: getHistogram(boolean)
+.. py:method:: static getHistogram(List, boolean)
 
    
 
 
-.. py:method:: static getHistogram(List, boolean)
+.. py:method:: getHistogram(boolean)
 
    
 
@@ -109,7 +109,7 @@ Getters Methods
    
 
 
-.. py:method:: getTaggedTree(String, double, double)
+.. py:method:: getTaggedTree(ColorTable, double, double)
 
    Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.
 

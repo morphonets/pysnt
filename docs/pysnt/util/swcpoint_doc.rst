@@ -236,7 +236,7 @@ Other Methods
    Converts a collection of SWC points into a Reader.
 
 
-.. py:method:: compareTo(Object)
+.. py:method:: compareTo(SWCPoint)
 
    
 

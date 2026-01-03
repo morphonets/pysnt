@@ -1,9 +1,9 @@
 {
   "class_name": "NodeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.439156",
+  "extracted_at": "2026-01-02T22:36:44.645742",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.396639",
+  "enhancement_timestamp": "2026-01-02T22:43:26.150576",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -86,14 +86,6 @@
       "name": "getColorTable",
       "overloads": [
         {
-          "signature": "getColorTable() -> ColorTable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ColorTable",
-          "return_description": "the current color table",
-          "throws": {}
-        },
-        {
           "signature": "getColorTable(String) -> ColorTable",
           "params": [
             {
@@ -107,6 +99,14 @@
           "return_type": "Any",
           "java_return_type": "ColorTable",
           "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorTable",
+          "return_description": "the current color table",
           "throws": {}
         }
       ],
@@ -270,7 +270,7 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(String, String) -> void",
+          "signature": "map(String, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
@@ -281,8 +281,8 @@
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "ColorTable",
               "description": "",
               "javadoc_name": "X_COORDINATES"
             }
@@ -293,7 +293,7 @@
           "throws": {}
         },
         {
-          "signature": "map(String, ColorTable) -> void",
+          "signature": "map(String, String) -> void",
           "params": [
             {
               "name": "arg0",
@@ -304,8 +304,8 @@
             },
             {
               "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorTable",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -391,12 +391,12 @@
       "name": "static unMap",
       "overloads": [
         {
-          "signature": "static unMap(Tree) -> void",
+          "signature": "static unMap(Collection) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -407,12 +407,12 @@
           "throws": {}
         },
         {
-          "signature": "static unMap(Collection) -> void",
+          "signature": "static unMap(Tree) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "type": "Tree",
+              "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             }
@@ -438,6 +438,18 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "NodeColorMapper(NodeStatistics)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "NodeStatistics"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "NodeColorMapper(NodeStatistics, Context)",
           "params": [
             {
@@ -449,18 +461,6 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Context"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "NodeColorMapper(NodeStatistics)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "NodeStatistics"
             }
           ],
           "return_type": "None",
@@ -481,8 +481,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "ColorMapper"
+    "ColorMapper",
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

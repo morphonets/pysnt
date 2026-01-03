@@ -1,24 +1,12 @@
 {
   "class_name": "Viewer3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2025-11-19T11:06:20.869916",
+  "extracted_at": "2026-01-02T22:36:45.083274",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "add(File;, String) -> void",
           "params": [
@@ -35,6 +23,18 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "add(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: add"
@@ -43,7 +43,19 @@
       "name": "addColorBarLegend",
       "overloads": [
         {
-          "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
+          "signature": "addColorBarLegend(ColorMapper) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorMapper"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double) -> void",
           "params": [
             {
               "name": "arg0",
@@ -59,33 +71,6 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "Font"
-            },
-            {
-              "name": "arg4",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg5",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addColorBarLegend(ColorMapper) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorMapper"
             }
           ],
           "return_type": "None",
@@ -119,7 +104,7 @@
           "java_return_type": "void"
         },
         {
-          "signature": "addColorBarLegend(ColorTable, double, double) -> void",
+          "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
           "params": [
             {
               "name": "arg0",
@@ -135,6 +120,21 @@
               "name": "arg2",
               "type": "float",
               "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "Any",
+              "java_type": "Font"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg5",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "None",
@@ -201,24 +201,7 @@
       "name": "addTrees",
       "overloads": [
         {
-          "signature": "addTrees(Collection, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addTrees(Collection, String) -> void",
+          "signature": "addTrees(Collection, String, String;) -> void",
           "params": [
             {
               "name": "arg0",
@@ -229,6 +212,11 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "String;"
             }
           ],
           "return_type": "None",
@@ -257,7 +245,24 @@
           "java_return_type": "void"
         },
         {
-          "signature": "addTrees(Collection, String, String;) -> void",
+          "signature": "addTrees(Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTrees(Collection, String) -> void",
           "params": [
             {
               "name": "arg0",
@@ -268,11 +273,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "String;"
             }
           ],
           "return_type": "None",
@@ -364,6 +364,23 @@
       "name": "annotatePoint",
       "overloads": [
         {
+          "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        },
+        {
           "signature": "annotatePoint(SNTPoint, String, String, float) -> Annotation3D",
           "params": [
             {
@@ -385,23 +402,6 @@
               "name": "arg3",
               "type": "float",
               "java_type": "float"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
-        },
-        {
-          "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
             }
           ],
           "return_type": "Any",
@@ -437,23 +437,6 @@
       "name": "annotateSurface",
       "overloads": [
         {
-          "signature": "annotateSurface(Collection, String) -> Annotation3D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
-        },
-        {
           "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
           "params": [
             {
@@ -470,6 +453,23 @@
               "name": "arg2",
               "type": "bool",
               "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Annotation3D"
+        },
+        {
+          "signature": "annotateSurface(Collection, String) -> Annotation3D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "Any",
@@ -944,8 +944,14 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Viewer3D()",
-          "params": [],
+          "signature": "Viewer3D(boolean)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -962,14 +968,8 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Viewer3D(boolean)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
+          "signature": "Viewer3D()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         },

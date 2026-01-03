@@ -1,7 +1,7 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.472305",
+  "extracted_at": "2026-01-02T22:36:44.680592",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -150,28 +150,6 @@
       "name": "addTo3DViewer",
       "overloads": [
         {
-          "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
           "params": [
             {
@@ -192,6 +170,28 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java method: addTo3DViewer"
@@ -199,6 +199,18 @@
     {
       "name": "clone",
       "overloads": [
+        {
+          "signature": "clone() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        },
+        {
+          "signature": "clone() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
         {
           "signature": "clone(boolean) -> Path",
           "params": [
@@ -210,18 +222,6 @@
           ],
           "return_type": "Path",
           "java_return_type": "Path"
-        },
-        {
-          "signature": "clone() -> Path",
-          "params": [],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
         }
       ],
       "documentation": "Java method: clone"
@@ -230,24 +230,24 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(Path) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "compareTo(Object) -> int",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "Object"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int"
+        },
+        {
+          "signature": "compareTo(Path) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
             }
           ],
           "return_type": "int",
@@ -260,6 +260,18 @@
       "name": "contains",
       "overloads": [
         {
+          "signature": "contains(PointInImage) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
           "signature": "contains(PointInImage, double) -> boolean",
           "params": [
             {
@@ -271,18 +283,6 @@
               "name": "arg1",
               "type": "float",
               "java_type": "double"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "contains(PointInImage) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
             }
           ],
           "return_type": "bool",
@@ -797,6 +797,12 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "Path()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "Path(double, double, double, String)",
           "params": [
             {
@@ -820,12 +826,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Path()",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

@@ -114,7 +114,7 @@ Getters Methods
    
 
 
-.. py:method:: static getUniquelySuffixedFile(File)
+.. py:method:: static getUniquelySuffixedFile(File, String)
 
    
 
@@ -195,7 +195,7 @@ Other Methods
    
 
 
-.. py:method:: static error(String)
+.. py:method:: static error(String, Throwable)
 
    
 

@@ -110,7 +110,7 @@ Getters Methods
    Gets the color assigned to this Tree.
 
 
-.. py:method:: getConvexHull(String)
+.. py:method:: getConvexHull()
 
    Retrieves the convex hull of this tree.
 
@@ -173,17 +173,17 @@ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
    Gets the set of SWC type labels present in this tree with optional soma inclusion in a readable form.
 
 
-.. py:method:: getSWCTypes()
+.. py:method:: getSWCTypes(boolean)
 
    Gets the set of SWC types present in this tree with optional soma inclusion.
 
 
-.. py:method:: getSkeleton(int)
+.. py:method:: getSkeleton()
 
    Retrieves the rasterized skeleton of this tree at 1:1 scaling.
 
 
-.. py:method:: getSkeleton2D()
+.. py:method:: getSkeleton2D(int)
 
    Retrieves a 2D projection of the rasterized skeleton of this tree at 1:1 scaling.
 
@@ -222,7 +222,7 @@ I/O Operations Methods
    Script-friendly method for loading a Tree from a reconstruction file.
 
 
-.. py:method:: static listFromDir(String, String)
+.. py:method:: static listFromDir(String, String, String;)
 
    Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.
 
@@ -251,7 +251,7 @@ Other Methods
    Assigns spatial calibration from a Dataset to this Tree.
 
 
-.. py:method:: static assignUniqueColors(Collection, String)
+.. py:method:: static assignUniqueColors(Collection)
 
    Assigns distinct colors to a collection of Trees.
 

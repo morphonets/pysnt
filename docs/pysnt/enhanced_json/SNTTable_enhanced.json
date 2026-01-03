@@ -1,53 +1,14 @@
 {
   "class_name": "SNTTable",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.681452",
+  "extracted_at": "2026-01-02T22:36:44.887993",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.464097",
+  "enhancement_timestamp": "2026-01-02T22:43:26.219055",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Column) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Column",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(int, Column) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Column",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "add(int, Object) -> void",
           "params": [
@@ -86,6 +47,45 @@
           "java_return_type": "boolean",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "add(int, Column) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Column",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Column) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Column",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: add",
@@ -100,17 +100,10 @@
       "name": "addAll",
       "overloads": [
         {
-          "signature": "addAll(int, Collection) -> boolean",
+          "signature": "addAll(Collection) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -123,10 +116,17 @@
           "throws": {}
         },
         {
-          "signature": "addAll(Collection) -> boolean",
+          "signature": "addAll(int, Collection) -> boolean",
           "params": [
             {
               "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -302,6 +302,14 @@
       "name": "appendColumn",
       "overloads": [
         {
+          "signature": "appendColumn() -> Column",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Column",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "appendColumn(String) -> Column",
           "params": [
             {
@@ -312,14 +320,6 @@
               "javadoc_name": null
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Column",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "appendColumn() -> Column",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "Column",
           "return_description": "",
@@ -338,12 +338,12 @@
       "name": "appendColumns",
       "overloads": [
         {
-          "signature": "appendColumns(int) -> List",
+          "signature": "appendColumns(String;) -> List",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "type": "Any",
+              "java_type": "String;",
               "description": "",
               "javadoc_name": null
             }
@@ -354,12 +354,12 @@
           "throws": {}
         },
         {
-          "signature": "appendColumns(String;) -> List",
+          "signature": "appendColumns(int) -> List",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -858,12 +858,12 @@
       "name": "geRowStats",
       "overloads": [
         {
-          "signature": "geRowStats(int, int, int) -> SummaryStatistics",
+          "signature": "geRowStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": "param_0"
             },
@@ -888,12 +888,12 @@
           "throws": {}
         },
         {
-          "signature": "geRowStats(String, int, int) -> SummaryStatistics",
+          "signature": "geRowStats(int, int, int) -> SummaryStatistics",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
@@ -962,25 +962,18 @@
           "throws": {}
         },
         {
-          "signature": "get(int, int) -> Object",
+          "signature": "get(String) -> Column",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Object",
+          "java_return_type": "Column",
           "return_description": "",
           "throws": {}
         },
@@ -1008,18 +1001,25 @@
           "throws": {}
         },
         {
-          "signature": "get(String) -> Column",
+          "signature": "get(int, int) -> Object",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Column",
+          "java_return_type": "Object",
           "return_description": "",
           "throws": {}
         }
@@ -1251,23 +1251,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "SNTTable(String, char)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "char"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "SNTTable(String)",
           "params": [
             {
@@ -1294,6 +1277,23 @@
         {
           "signature": "SNTTable()",
           "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTTable(String, char)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "char"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         }

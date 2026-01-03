@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Analysis'
-Total matching methods: **18**
+Total matching methods: **20**
 
 Matching Methods
 ----------------
@@ -25,6 +25,14 @@ Matching Methods
      - No description available
    * - :meth:`ConvexHull3D.compute`
      - :class:`ConvexHull3D`
+     - ``None``
+     - No description available
+   * - :meth:`Frangi.compute`
+     - :class:`Frangi`
+     - ``None``
+     - No description available
+   * - :meth:`Tubeness.compute`
+     - :class:`Tubeness`
      - ``None``
      - No description available
    * - :meth:`NodeStatistics.static computeNearestNeighborDistances`
@@ -90,4 +98,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-12-29 16:01:49*
+*Filtered index generated on 2026-01-02 22:43:26*

@@ -1,7 +1,7 @@
 {
   "class_name": "PathAndFillManager",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.486006",
+  "extracted_at": "2026-01-02T22:36:44.691788",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -14,28 +14,6 @@
               "name": "arg0",
               "type": "Path",
               "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addPath(Path, boolean, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "None",
@@ -58,6 +36,28 @@
               "name": "arg2",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPath(Path, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",
@@ -88,18 +88,6 @@
       "name": "addTree",
       "overloads": [
         {
-          "signature": "addTree(Tree) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addTree(Tree, String) -> void",
           "params": [
             {
@@ -111,6 +99,18 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
             }
           ],
           "return_type": "None",
@@ -429,18 +429,6 @@
       "name": "deletePaths",
       "overloads": [
         {
-          "signature": "deletePaths(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "deletePaths([I) -> void",
           "params": [
             {
@@ -451,6 +439,18 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "deletePaths(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
         }
       ],
       "documentation": "Java method: deletePaths"
@@ -814,12 +814,6 @@
       "name": "getPathsStructured",
       "overloads": [
         {
-          "signature": "getPathsStructured() -> Path;",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Path;"
-        },
-        {
           "signature": "getPathsStructured(Collection) -> Path;",
           "params": [
             {
@@ -828,6 +822,12 @@
               "java_type": "Collection"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "Path;"
+        },
+        {
+          "signature": "getPathsStructured() -> Path;",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "Path;"
         }
@@ -883,6 +883,12 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "PathAndFillManager()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "PathAndFillManager(double, double, double, String)",
           "params": [
             {
@@ -906,12 +912,6 @@
               "java_type": "String"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "PathAndFillManager()",
-          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

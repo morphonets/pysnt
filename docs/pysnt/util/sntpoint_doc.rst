@@ -117,7 +117,7 @@ Other Methods
    Computes the average position of a collection of SNTPoints.
 
 
-.. py:method:: static of(Number;)
+.. py:method:: static of(Number, Number, Number)
 
    
 

@@ -118,7 +118,7 @@ Getters Methods
    
 
 
-.. py:method:: getPathsStructured()
+.. py:method:: getPathsStructured(Collection)
 
    
 
@@ -189,7 +189,7 @@ Other Methods
    Adds a PathAndFillListener. This is used by the interface to have changes in the path manager reported so that they can be reflected in the UI.
 
 
-.. py:method:: addTree(Tree)
+.. py:method:: addTree(Tree, String)
 
    Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.
 
@@ -264,7 +264,7 @@ Other Methods
    Deletes a path.
 
 
-.. py:method:: deletePaths(Collection)
+.. py:method:: deletePaths([I)
 
    Delete paths by position.
 

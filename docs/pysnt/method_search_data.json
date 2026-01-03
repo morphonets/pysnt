@@ -121,19 +121,11 @@
       "full_class_name": "sc.fiji.snt.Path",
       "category": "Utilities",
       "short_description": "Creates a copy of this Path with optional inclusion of immediate children. This method creates a clone of this path and...",
-      "signature": "clone(boolean) -> Path",
-      "return_type": "Path",
-      "java_return_type": "Path",
-      "parameters": [
-        [
-          "arg0",
-          "bool",
-          "- if true, includes clones of immediate child paths; if false, returns a clone without children"
-        ]
-      ],
-      "parameter_types": [
-        "bool"
-      ],
+      "signature": "clone() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -145,18 +137,18 @@
       "full_class_name": "sc.fiji.snt.Path",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "compareTo(Path) -> int",
+      "signature": "compareTo(Object) -> int",
       "return_type": "int",
       "java_return_type": "int",
       "parameters": [
         [
           "arg0",
-          "Path",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "Path"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -169,24 +161,18 @@
       "full_class_name": "sc.fiji.snt.Path",
       "category": "Utilities",
       "short_description": "Checks if this path contains the specified point within the given tolerance.",
-      "signature": "contains(PointInImage, double) -> boolean",
+      "signature": "contains(PointInImage) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
       "parameters": [
         [
           "arg0",
           "PointInImage",
-          ""
-        ],
-        [
-          "arg1",
-          "float",
-          ""
+          "- the point to check"
         ]
       ],
       "parameter_types": [
-        "PointInImage",
-        "float"
+        "PointInImage"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1123,11 +1109,19 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeColorMapper",
       "category": "Getters",
       "short_description": "Description copied from class: ColorMapper",
-      "signature": "getColorTable() -> ColorTable",
+      "signature": "getColorTable(String) -> ColorTable",
       "return_type": "Any",
       "java_return_type": "ColorTable",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -1259,7 +1253,7 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeColorMapper",
       "category": "Utilities",
       "short_description": "Maps nodes after the specified measurement. Mapping bounds are automatically determined.",
-      "signature": "map(String, String) -> void",
+      "signature": "map(String, ColorTable) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -1270,13 +1264,13 @@
         ],
         [
           "arg1",
-          "str",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
         "str",
-        "str"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1343,18 +1337,18 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeColorMapper",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static unMap(Tree) -> void",
+      "signature": "static unMap(Collection) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Tree",
+          "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
-        "Tree"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1415,19 +1409,11 @@
       "full_class_name": "sc.fiji.snt.analysis.PathStraightener",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "straighten(int) -> ImageProcessor",
+      "signature": "straighten() -> ImagePlus",
       "return_type": "Any",
-      "java_return_type": "ImageProcessor",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          "- the channel to bes straightened"
-        ]
-      ],
-      "parameter_types": [
-        "int"
-      ],
+      "java_return_type": "ImagePlus",
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -1439,24 +1425,30 @@
       "full_class_name": "sc.fiji.snt.analysis.GroupedTreeStatistics",
       "category": "Setters",
       "short_description": "Adds a comparison group to the analysis queue.",
-      "signature": "addGroup(Collection, String) -> void",
+      "signature": "addGroup(Collection, String, String;) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "List[Any]",
-          "- the collection of Trees to be analyzed"
+          ""
         ],
         [
           "arg1",
           "str",
           ""
+        ],
+        [
+          "arg2",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
         "List[Any]",
-        "str"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1493,36 +1485,24 @@
       "full_class_name": "sc.fiji.snt.analysis.GroupedTreeStatistics",
       "category": "Getters",
       "short_description": "Assembles a Box and Whisker Plot for the specified feature.",
-      "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
+      "signature": "getBoxPlot(String, Collection) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
           "str",
-          ""
+          "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported."
         ],
         [
           "arg1",
           "List[Any]",
           ""
-        ],
-        [
-          "arg2",
-          "float",
-          ""
-        ],
-        [
-          "arg3",
-          "bool",
-          ""
         ]
       ],
       "parameter_types": [
         "str",
-        "List[Any]",
-        "float",
-        "bool"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1857,18 +1837,24 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeStatistics",
       "category": "Utilities",
       "short_description": "Gets the list of nodes associated with the specified compartment (neuropil label).",
-      "signature": "get(BrainAnnotation) -> List",
+      "signature": "get(BrainAnnotation, boolean) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
       "parameters": [
         [
           "arg0",
           "Any",
-          "- the query compartment (null not allowed)"
+          ""
+        ],
+        [
+          "arg1",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "Any",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -1881,25 +1867,11 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeStatistics",
       "category": "Getters",
       "short_description": "Retrieves the count frequencies across brain compartment.",
-      "signature": "getAnnotatedFrequencies(int, String) -> Map",
+      "signature": "getAnnotatedFrequencies() -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "int",
-        "str"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -1993,11 +1965,19 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeStatistics",
       "category": "Getters",
       "short_description": "Splits the nodes being analyzed into groups sharing the same brain annotation.",
-      "signature": "getAnnotatedNodes() -> Map",
+      "signature": "getAnnotatedNodes(int) -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          "- the ontological depth of the compartments to be considered"
+        ]
+      ],
+      "parameter_types": [
+        "int"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -2255,7 +2235,7 @@
       "full_class_name": "sc.fiji.snt.util.SNTColor",
       "category": "Visualization",
       "short_description": "Returns the color encoded as hex string with the format #rrggbbaa.",
-      "signature": "static colorToString(Color) -> String",
+      "signature": "static colorToString(Object) -> String",
       "return_type": "str",
       "java_return_type": "String",
       "parameters": [
@@ -2297,30 +2277,48 @@
       "has_examples": false
     },
     {
+      "method_name": "static fromHex",
+      "class_name": "SNTColor",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.SNTColor",
+      "category": "Static Methods",
+      "short_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
+      "signature": "static fromHex(String) -> Color",
+      "return_type": "Any",
+      "java_return_type": "Color",
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          "- the input string"
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "static getDistinctColors",
       "class_name": "SNTColor",
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.SNTColor",
       "category": "Visualization",
       "short_description": "Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details...",
-      "signature": "static getDistinctColors(int, String) -> ColorRGB;",
+      "signature": "static getDistinctColors(int) -> ColorRGB;",
       "return_type": "Any",
       "java_return_type": "ColorRGB;",
       "parameters": [
         [
           "arg0",
           "int",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
+          "- the number of colors to be retrieved"
         ]
       ],
       "parameter_types": [
-        "int",
-        "str"
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -2345,6 +2343,36 @@
       ],
       "parameter_types": [
         "int"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static getDistinctColorsHex",
+      "class_name": "SNTColor",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.SNTColor",
+      "category": "Visualization",
+      "short_description": "No description available",
+      "signature": "static getDistinctColorsHex(int, String) -> String;",
+      "return_type": "Any",
+      "java_return_type": "String;",
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          ""
+        ],
+        [
+          "arg1",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "int",
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -2439,30 +2467,6 @@
       "has_examples": false
     },
     {
-      "method_name": "static stringToColor",
-      "class_name": "SNTColor",
-      "package": "sc.fiji.snt.util",
-      "full_class_name": "sc.fiji.snt.util.SNTColor",
-      "category": "Visualization",
-      "short_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
-      "signature": "static stringToColor(String) -> Color",
-      "return_type": "Any",
-      "java_return_type": "Color",
-      "parameters": [
-        [
-          "arg0",
-          "str",
-          "- the input string"
-        ]
-      ],
-      "parameter_types": [
-        "str"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
       "method_name": "type",
       "class_name": "SNTColor",
       "package": "sc.fiji.snt.util",
@@ -2479,30 +2483,48 @@
       "has_examples": false
     },
     {
+      "method_name": "static valueOf",
+      "class_name": "SNTColor",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.SNTColor",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static valueOf(String) -> ColorRGB",
+      "return_type": "Any",
+      "java_return_type": "ColorRGB",
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "add",
       "class_name": "Viewer2D",
       "package": "sc.fiji.snt.viewer",
       "full_class_name": "sc.fiji.snt.viewer.Viewer2D",
       "category": "Utilities",
       "short_description": "Appends a tree to the viewer rendered after the specified measurement.",
-      "signature": "add(Tree, String) -> void",
+      "signature": "add(Object) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Tree",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
+          "Any",
+          "- the tree to be plotted"
         ]
       ],
       "parameter_types": [
-        "Tree",
-        "str"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -2515,11 +2537,31 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer2D",
       "category": "Setters",
       "short_description": "Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note...",
-      "signature": "addColorBarLegend() -> void",
+      "signature": "addColorBarLegend(ColorTable, double, double) -> void",
       "return_type": "None",
       "java_return_type": "void",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "float",
+          ""
+        ],
+        [
+          "arg2",
+          "float",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "float",
+        "float"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -2857,7 +2899,7 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer2D",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
+      "signature": "map(Tree, String, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -2868,19 +2910,19 @@
         ],
         [
           "arg1",
-          "Any",
+          "str",
           ""
         ],
         [
           "arg2",
-          "Any",
+          "str",
           ""
         ]
       ],
       "parameter_types": [
         "Tree",
-        "Any",
-        "Any"
+        "str",
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -4305,7 +4347,7 @@
       "full_class_name": "sc.fiji.snt.analysis.TreeColorMapper",
       "category": "Utilities",
       "short_description": "Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.",
-      "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
+      "signature": "map(Tree, String, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -4316,19 +4358,19 @@
         ],
         [
           "arg1",
-          "Any",
+          "str",
           ""
         ],
         [
           "arg2",
-          "Any",
+          "str",
           ""
         ]
       ],
       "parameter_types": [
         "Tree",
-        "Any",
-        "Any"
+        "str",
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -4425,18 +4467,18 @@
       "full_class_name": "sc.fiji.snt.analysis.TreeColorMapper",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static unMap(Tree) -> void",
+      "signature": "static unMap(Collection) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Tree",
+          "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
-        "Tree"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -4575,7 +4617,7 @@
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+      "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
@@ -4583,16 +4625,10 @@
           "arg0",
           "int",
           ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
         ]
       ],
       "parameter_types": [
-        "int",
-        "str"
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -4629,19 +4665,11 @@
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
       "category": "Getters",
       "short_description": "Description copied from class: TreeStatistics",
-      "signature": "getAnnotations(int) -> Set",
+      "signature": "getAnnotations() -> Set",
       "return_type": "Set[Any]",
       "java_return_type": "Set",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          "- the max. ontological depth of the compartments to be retrieved"
-        ]
-      ],
-      "parameter_types": [
-        "int"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -4743,6 +4771,30 @@
       "has_examples": false
     },
     {
+      "method_name": "getBoxPlot",
+      "class_name": "MultiTreeStatistics",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getBoxPlot(String) -> SNTChart",
+      "return_type": "SNTChart",
+      "java_return_type": "SNTChart",
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "getBranchPoints",
       "class_name": "MultiTreeStatistics",
       "package": "sc.fiji.snt.analysis",
@@ -4781,19 +4833,11 @@
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
       "category": "Getters",
       "short_description": "Description copied from class: TreeStatistics",
-      "signature": "getCableLength(BrainAnnotation) -> double",
+      "signature": "getCableLength() -> double",
       "return_type": "float",
       "java_return_type": "double",
-      "parameters": [
-        [
-          "arg0",
-          "Any",
-          "- the query compartment (null not allowed). All of its children will be considered"
-        ]
-      ],
-      "parameter_types": [
-        "Any"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -4941,24 +4985,42 @@
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
       "category": "Getters",
       "short_description": "Description copied from class: TreeStatistics",
-      "signature": "getFlowPlot(String, Collection) -> SNTChart",
+      "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
           "str",
-          "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported."
+          ""
         ],
         [
           "arg1",
           "List[Any]",
           ""
+        ],
+        [
+          "arg2",
+          "str",
+          ""
+        ],
+        [
+          "arg3",
+          "float",
+          ""
+        ],
+        [
+          "arg4",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
         "str",
-        "List[Any]"
+        "List[Any]",
+        "str",
+        "float",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -5451,18 +5513,30 @@
       "full_class_name": "sc.fiji.snt.annotation.AllenUtils",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static isLeftHemisphere(SNTPoint) -> boolean",
+      "signature": "static isLeftHemisphere(double, double, double) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
       "parameters": [
         [
           "arg0",
-          "SNTPoint",
+          "float",
+          ""
+        ],
+        [
+          "arg1",
+          "float",
+          ""
+        ],
+        [
+          "arg2",
+          "float",
           ""
         ]
       ],
       "parameter_types": [
-        "SNTPoint"
+        "float",
+        "float",
+        "float"
       ],
       "deprecated": false,
       "since_version": null,
@@ -5677,30 +5751,6 @@
       "has_examples": false
     },
     {
-      "method_name": "getHistogram",
-      "class_name": "RootAngleAnalyzer",
-      "package": "sc.fiji.snt.analysis",
-      "full_class_name": "sc.fiji.snt.analysis.RootAngleAnalyzer",
-      "category": "Getters",
-      "short_description": "No description available",
-      "signature": "getHistogram(boolean) -> SNTChart",
-      "return_type": "SNTChart",
-      "java_return_type": "SNTChart",
-      "parameters": [
-        [
-          "arg0",
-          "bool",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "bool"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
       "method_name": "static getHistogram",
       "class_name": "RootAngleAnalyzer",
       "package": "sc.fiji.snt.analysis",
@@ -5731,6 +5781,30 @@
       "has_examples": false
     },
     {
+      "method_name": "getHistogram",
+      "class_name": "RootAngleAnalyzer",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.RootAngleAnalyzer",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getHistogram(boolean) -> SNTChart",
+      "return_type": "SNTChart",
+      "java_return_type": "SNTChart",
+      "parameters": [
+        [
+          "arg0",
+          "bool",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "bool"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "getTaggedGraph",
       "class_name": "RootAngleAnalyzer",
       "package": "sc.fiji.snt.analysis",
@@ -5753,13 +5827,13 @@
       "full_class_name": "sc.fiji.snt.analysis.RootAngleAnalyzer",
       "category": "Getters",
       "short_description": "Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.",
-      "signature": "getTaggedTree(String, double, double) -> Tree",
+      "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
       "return_type": "Tree",
       "java_return_type": "Tree",
       "parameters": [
         [
           "arg0",
-          "str",
+          "Any",
           ""
         ],
         [
@@ -5774,7 +5848,7 @@
         ]
       ],
       "parameter_types": [
-        "str",
+        "Any",
         "float",
         "float"
       ],
@@ -6803,30 +6877,24 @@
       "full_class_name": "sc.fiji.snt.PathManagerUI",
       "category": "Utilities",
       "short_description": "Runs a menu command with options.",
-      "signature": "add(Component, Object, int) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
+      "signature": "add(String, Component) -> Component",
+      "return_type": "Any",
+      "java_return_type": "Component",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           ""
         ],
         [
           "arg1",
           "Any",
           ""
-        ],
-        [
-          "arg2",
-          "int",
-          ""
         ]
       ],
       "parameter_types": [
-        "Any",
-        "Any",
-        "int"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -7095,23 +7163,17 @@
       "full_class_name": "sc.fiji.snt.PathManagerUI",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
+      "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "str",
-          ""
-        ],
-        [
-          "arg1",
           "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "str",
         "Any"
       ],
       "deprecated": false,
@@ -7245,18 +7307,18 @@
       "full_class_name": "sc.fiji.snt.PathManagerUI",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "applyResourceBundle(ResourceBundle) -> void",
+      "signature": "applyResourceBundle(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -7455,7 +7517,7 @@
       "full_class_name": "sc.fiji.snt.PathManagerUI",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "createBufferStrategy(int) -> void",
+      "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -7463,10 +7525,16 @@
           "arg0",
           "int",
           ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
-        "int"
+        "int",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -7911,30 +7979,24 @@
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
       "short_description": "Updates the status bar.",
-      "signature": "add(Component, Object, int) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
+      "signature": "add(String, Component) -> Component",
+      "return_type": "Any",
+      "java_return_type": "Component",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           ""
         ],
         [
           "arg1",
           "Any",
           ""
-        ],
-        [
-          "arg2",
-          "int",
-          ""
         ]
       ],
       "parameter_types": [
-        "Any",
-        "Any",
-        "int"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -8203,23 +8265,17 @@
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
+      "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "str",
-          ""
-        ],
-        [
-          "arg1",
           "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "str",
         "Any"
       ],
       "deprecated": false,
@@ -8329,18 +8385,18 @@
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "applyResourceBundle(ResourceBundle) -> void",
+      "signature": "applyResourceBundle(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -8493,7 +8549,7 @@
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "createBufferStrategy(int) -> void",
+      "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -8501,10 +8557,16 @@
           "arg0",
           "int",
           ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
-        "int"
+        "int",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -8719,24 +8781,18 @@
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "findComponentAt(int, int) -> Component",
+      "signature": "findComponentAt(Point) -> Component",
       "return_type": "Any",
       "java_return_type": "Component",
       "parameters": [
         [
           "arg0",
-          "int",
-          ""
-        ],
-        [
-          "arg1",
-          "int",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "int",
-        "int"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -9085,18 +9141,18 @@
       "full_class_name": "sc.fiji.snt.util.SWCPoint",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "compareTo(Object) -> int",
+      "signature": "compareTo(SWCPoint) -> int",
       "return_type": "int",
       "java_return_type": "int",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "SWCPoint",
           ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "SWCPoint"
       ],
       "deprecated": false,
       "since_version": null,
@@ -10319,7 +10375,7 @@
       "full_class_name": "sc.fiji.snt.TracerCanvas",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "createBufferStrategy(int) -> void",
+      "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -10327,10 +10383,16 @@
           "arg0",
           "int",
           ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
-        "int"
+        "int",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -10779,18 +10841,24 @@
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "Setters",
       "short_description": "Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.",
-      "signature": "addTree(Tree) -> void",
+      "signature": "addTree(Tree, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Tree",
-          "- the collection of paths to be added"
+          ""
+        ],
+        [
+          "arg1",
+          "str",
+          ""
         ]
       ],
       "parameter_types": [
-        "Tree"
+        "Tree",
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -11079,18 +11147,18 @@
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "I/O Operations",
       "short_description": "Delete paths by position.",
-      "signature": "deletePaths(Collection) -> boolean",
-      "return_type": "bool",
-      "java_return_type": "boolean",
+      "signature": "deletePaths([I) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "List[Any]",
-          ""
+          "Any",
+          "- the indices to be deleted"
         ]
       ],
       "parameter_types": [
-        "List[Any]"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -11573,11 +11641,19 @@
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getPathsStructured() -> Path;",
+      "signature": "getPathsStructured(Collection) -> Path;",
       "return_type": "Any",
       "java_return_type": "Path;",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "List[Any]",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "List[Any]"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -13391,30 +13467,24 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "add(Component, Object, int) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
+      "signature": "add(String, Component) -> Component",
+      "return_type": "Any",
+      "java_return_type": "Component",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           ""
         ],
         [
           "arg1",
           "Any",
           ""
-        ],
-        [
-          "arg2",
-          "int",
-          ""
         ]
       ],
       "parameter_types": [
-        "Any",
-        "Any",
-        "int"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -13893,7 +13963,31 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Utilities",
       "short_description": "Adds a subtitle to the chart.",
-      "signature": "annotate(String, String, String) -> void",
+      "signature": "annotate(String) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          "- the subtitle text"
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "annotateCategory",
+      "class_name": "SNTChart",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.SNTChart",
+      "category": "Utilities",
+      "short_description": "Annotates the specified category (Category plots only).",
+      "signature": "annotateCategory(String, String, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -13915,36 +14009,6 @@
       ],
       "parameter_types": [
         "str",
-        "str",
-        "str"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "annotateCategory",
-      "class_name": "SNTChart",
-      "package": "sc.fiji.snt.analysis",
-      "full_class_name": "sc.fiji.snt.analysis.SNTChart",
-      "category": "Utilities",
-      "short_description": "Annotates the specified category (Category plots only).",
-      "signature": "annotateCategory(String, String) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
-      "parameters": [
-        [
-          "arg0",
-          "str",
-          "- the category to be annotated. Ignored if it does not exist in category axis."
-        ],
-        [
-          "arg1",
-          "str",
-          ""
-        ]
-      ],
-      "parameter_types": [
         "str",
         "str"
       ],
@@ -13959,18 +14023,18 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Utilities",
       "short_description": "Highlights a point in a histogram/XY plot by drawing a labeled arrow at the specified location.",
-      "signature": "annotatePoint(double, double, String) -> void",
+      "signature": "annotatePoint([D, String, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "float",
+          "Any",
           "- the array holding the focal point coordinates of the profile"
         ],
         [
           "arg1",
-          "float",
+          "str",
           ""
         ],
         [
@@ -13980,8 +14044,8 @@
         ]
       ],
       "parameter_types": [
-        "float",
-        "float",
+        "Any",
+        "str",
         "str"
       ],
       "deprecated": false,
@@ -13995,37 +14059,7 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Utilities",
       "short_description": "Annotates the specified X-value (XY plots and histograms).",
-      "signature": "annotateXline(double, String) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
-      "parameters": [
-        [
-          "arg0",
-          "float",
-          "- the X value to be annotated."
-        ],
-        [
-          "arg1",
-          "str",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "float",
-        "str"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "annotateYline",
-      "class_name": "SNTChart",
-      "package": "sc.fiji.snt.analysis",
-      "full_class_name": "sc.fiji.snt.analysis.SNTChart",
-      "category": "Utilities",
-      "short_description": "Annotates the specified Y-value (XY plots and histograms).",
-      "signature": "annotateYline(double, String, String) -> void",
+      "signature": "annotateXline(double, String, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -14048,6 +14082,36 @@
       "parameter_types": [
         "float",
         "str",
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "annotateYline",
+      "class_name": "SNTChart",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.SNTChart",
+      "category": "Utilities",
+      "short_description": "Annotates the specified Y-value (XY plots and histograms).",
+      "signature": "annotateYline(double, String) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "float",
+          "- the Y value to be annotated."
+        ],
+        [
+          "arg1",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "float",
         "str"
       ],
       "deprecated": false,
@@ -14243,23 +14307,35 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Static Methods",
       "short_description": "Combines a collection of charts into a multipanel montage.",
-      "signature": "static combine(Collection, boolean) -> SNTChart",
+      "signature": "static combine(Collection, int, int, boolean) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
           "List[Any]",
-          ""
+          "- input charts"
         ],
         [
           "arg1",
+          "int",
+          ""
+        ],
+        [
+          "arg2",
+          "int",
+          ""
+        ],
+        [
+          "arg3",
           "bool",
           ""
         ]
       ],
       "parameter_types": [
         "List[Any]",
+        "int",
+        "int",
         "bool"
       ],
       "deprecated": false,
@@ -14523,18 +14599,24 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Utilities",
       "short_description": "Script friendly method to add a supported object (Tree, OBJMesh, AbstractDrawable, etc.) to this viewer. Note that...",
-      "signature": "add(Object) -> void",
+      "signature": "add(File;, String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Any",
-          "- the object to be added. No exception is triggered if null"
+          ""
+        ],
+        [
+          "arg1",
+          "str",
+          ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "Any",
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -14547,48 +14629,18 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Setters",
       "short_description": "Adds a color bar legend (LUT ramp).",
-      "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
+      "signature": "addColorBarLegend(ColorMapper) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Any",
-          ""
-        ],
-        [
-          "arg1",
-          "float",
-          ""
-        ],
-        [
-          "arg2",
-          "float",
-          ""
-        ],
-        [
-          "arg3",
-          "Any",
-          ""
-        ],
-        [
-          "arg4",
-          "int",
-          ""
-        ],
-        [
-          "arg5",
-          "int",
-          ""
+          "- the color table"
         ]
       ],
       "parameter_types": [
-        "Any",
-        "float",
-        "float",
-        "Any",
-        "int",
-        "int"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -14775,36 +14827,24 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Utilities",
       "short_description": "Adds a highlighting point annotation to this viewer.",
-      "signature": "annotatePoint(SNTPoint, String, String, float) -> Annotation3D",
+      "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
       "return_type": "Any",
       "java_return_type": "Annotation3D",
       "parameters": [
         [
           "arg0",
           "SNTPoint",
-          ""
+          "- the node to be highlighted"
         ],
         [
           "arg1",
           "str",
           ""
-        ],
-        [
-          "arg2",
-          "str",
-          ""
-        ],
-        [
-          "arg3",
-          "float",
-          ""
         ]
       ],
       "parameter_types": [
         "SNTPoint",
-        "str",
-        "str",
-        "float"
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -14847,24 +14887,30 @@
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Utilities",
       "short_description": "Computes a convex hull from a collection of points and adds it to the scene as an annotation.",
-      "signature": "annotateSurface(Collection, String) -> Annotation3D",
+      "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
       "return_type": "Any",
       "java_return_type": "Annotation3D",
       "parameters": [
         [
           "arg0",
           "List[Any]",
-          "- the collection of points defining the convex set."
+          ""
         ],
         [
           "arg1",
           "str",
           ""
+        ],
+        [
+          "arg2",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
         "List[Any]",
-        "str"
+        "str",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -15453,13 +15499,13 @@
       "full_class_name": "sc.fiji.snt.io.MouseLightLoader",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static extractTrees(File, String) -> Map",
+      "signature": "static extractTrees(InputStream, String) -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
       "parameters": [
         [
           "arg0",
-          "str",
+          "Any",
           ""
         ],
         [
@@ -15469,7 +15515,7 @@
         ]
       ],
       "parameter_types": [
-        "str",
+        "Any",
         "str"
       ],
       "deprecated": false,
@@ -15643,19 +15689,11 @@
       "full_class_name": "sc.fiji.snt.io.MouseLightLoader",
       "category": "Getters",
       "short_description": "Script-friendly method to extract the entire neuron as a collection of Paths.",
-      "signature": "getTree(String) -> Tree",
+      "signature": "getTree() -> Tree",
       "return_type": "Tree",
       "java_return_type": "Tree",
-      "parameters": [
-        [
-          "arg0",
-          "str",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "str"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -15723,7 +15761,7 @@
       "full_class_name": "sc.fiji.snt.io.MouseLightLoader",
       "category": "Utilities",
       "short_description": "Convenience method to save JSON data.",
-      "signature": "save(File) -> boolean",
+      "signature": "save(String) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
       "parameters": [
@@ -15819,6 +15857,144 @@
       "has_examples": false
     },
     {
+      "method_name": "static crop",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static crop(ImgPlus, [J, [J, boolean) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ],
+        [
+          "arg2",
+          "Any",
+          ""
+        ],
+        [
+          "arg3",
+          "bool",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any",
+        "Any",
+        "bool"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static dropSingletonDimensions",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static dropSingletonDimensions(ImgPlus) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static findSpatialAxisIndices",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static findSpatialAxisIndices(ImgPlus) -> [I",
+      "return_type": "Any",
+      "java_return_type": "[I",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static findSpatialAxisIndicesWithFallback",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I",
+      "return_type": "Any",
+      "java_return_type": "[I",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static getCalibration",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static getCalibration(ImgPlus) -> Calibration",
+      "return_type": "Any",
+      "java_return_type": "Calibration",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "static getCtSlice",
       "class_name": "ImgUtils",
       "package": "sc.fiji.snt.util",
@@ -15885,6 +16061,84 @@
         "Any",
         "int",
         "int"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static getOrigin",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static getOrigin(ImgPlus, AxisType) -> double",
+      "return_type": "float",
+      "java_return_type": "double",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static getOrigins",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static getOrigins(ImgPlus) -> [D",
+      "return_type": "Any",
+      "java_return_type": "[D",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static imgPlusToCalibration",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static imgPlusToCalibration(ImgPlus) -> Calibration",
+      "return_type": "Any",
+      "java_return_type": "Calibration",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -16143,6 +16397,66 @@
       "has_examples": false
     },
     {
+      "method_name": "static toImagePlus",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static toImagePlus(ImgPlus) -> ImagePlus",
+      "return_type": "Any",
+      "java_return_type": "ImagePlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static wrapWithAxes",
+      "class_name": "ImgUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImgUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ],
+        [
+          "arg2",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any",
+        "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "acronym",
       "class_name": "AllenCompartment",
       "package": "sc.fiji.snt.annotation",
@@ -16237,11 +16551,19 @@
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Getters",
       "short_description": "Gets the child ontologies of this compartment as a flat (non-hierarchical) list.",
-      "signature": "getChildren() -> List",
+      "signature": "getChildren(int) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          "- maximum depth that should be considered."
+        ]
+      ],
+      "parameter_types": [
+        "int"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -16285,9 +16607,9 @@
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Getters",
       "short_description": "Gets the parent of this compartment.",
-      "signature": "getParent() -> AllenCompartment",
+      "signature": "getParent() -> BrainAnnotation",
       "return_type": "Any",
-      "java_return_type": "AllenCompartment",
+      "java_return_type": "BrainAnnotation",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -16507,24 +16829,18 @@
       "full_class_name": "sc.fiji.snt.io.WekaModelLoader",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addOutput(String, Class) -> MutableModuleItem",
-      "return_type": "Any",
-      "java_return_type": "MutableModuleItem",
+      "signature": "addOutput(ModuleItem) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "str",
-          ""
-        ],
-        [
-          "arg1",
-          "type",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "str",
-        "type"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -16537,11 +16853,19 @@
       "full_class_name": "sc.fiji.snt.io.WekaModelLoader",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "cancel() -> void",
+      "signature": "cancel(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -16617,9 +16941,9 @@
       "full_class_name": "sc.fiji.snt.io.WekaModelLoader",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getInfo() -> ModuleInfo",
+      "signature": "getInfo() -> DynamicCommandInfo",
       "return_type": "Any",
-      "java_return_type": "ModuleInfo",
+      "java_return_type": "DynamicCommandInfo",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -17265,7 +17589,7 @@
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static error(String) -> void",
+      "signature": "static error(String, Throwable) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -17273,10 +17597,16 @@
           "arg0",
           "str",
           ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
-        "str"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -17593,7 +17923,7 @@
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "I/O Operations",
       "short_description": "No description available",
-      "signature": "static getUniquelySuffixedFile(File) -> File",
+      "signature": "static getUniquelySuffixedFile(File, String) -> File",
       "return_type": "str",
       "java_return_type": "File",
       "parameters": [
@@ -17601,9 +17931,15 @@
           "arg0",
           "str",
           ""
+        ],
+        [
+          "arg1",
+          "str",
+          ""
         ]
       ],
       "parameter_types": [
+        "str",
         "str"
       ],
       "deprecated": false,
@@ -18343,6 +18679,22 @@
       "has_examples": false
     },
     {
+      "method_name": "applyFit",
+      "class_name": "PathFitter",
+      "package": "sc.fiji.snt",
+      "full_class_name": "sc.fiji.snt.PathFitter",
+      "category": "Utilities",
+      "short_description": "Sets the fallback strategy for radii at locations in which fitting failed",
+      "signature": "applyFit() -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "applySettings",
       "class_name": "PathFitter",
       "package": "sc.fiji.snt",
@@ -18373,25 +18725,9 @@
       "full_class_name": "sc.fiji.snt.PathFitter",
       "category": "Utilities",
       "short_description": "Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input...",
-      "signature": "call() -> Path",
-      "return_type": "Path",
-      "java_return_type": "Path",
-      "parameters": [],
-      "parameter_types": [],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "getMaxRadius",
-      "class_name": "PathFitter",
-      "package": "sc.fiji.snt",
-      "full_class_name": "sc.fiji.snt.PathFitter",
-      "category": "Getters",
-      "short_description": "Gets the current max radius (in pixels)",
-      "signature": "getMaxRadius() -> int",
-      "return_type": "int",
-      "java_return_type": "int",
+      "signature": "call() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -18447,6 +18783,30 @@
       "has_examples": false
     },
     {
+      "method_name": "setCrossSectionRadius",
+      "class_name": "PathFitter",
+      "package": "sc.fiji.snt",
+      "full_class_name": "sc.fiji.snt.PathFitter",
+      "category": "Setters",
+      "short_description": "Sets the max radius (side search) for constraining the fit.",
+      "signature": "setCrossSectionRadius(double) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "float",
+          "- the new maximum radius"
+        ]
+      ],
+      "parameter_types": [
+        "float"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "setImage",
       "class_name": "PathFitter",
       "package": "sc.fiji.snt",
@@ -18471,20 +18831,20 @@
       "has_examples": false
     },
     {
-      "method_name": "setMaxRadius",
+      "method_name": "setNodeRadiusFallback",
       "class_name": "PathFitter",
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathFitter",
       "category": "Setters",
-      "short_description": "Sets the max radius (side search) for constraining the fit.",
-      "signature": "setMaxRadius(int) -> void",
+      "short_description": "No description available",
+      "signature": "setNodeRadiusFallback(int) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "int",
-          "- the new maximum radius"
+          ""
         ]
       ],
       "parameter_types": [
@@ -18519,30 +18879,6 @@
       "parameter_types": [
         "int",
         "Any"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "setRadiusFallback",
-      "class_name": "PathFitter",
-      "package": "sc.fiji.snt",
-      "full_class_name": "sc.fiji.snt.PathFitter",
-      "category": "Setters",
-      "short_description": "Sets the fallback strategy for radii at locations in which fitting failed",
-      "signature": "setRadiusFallback(int) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -18691,7 +19027,7 @@
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Utilities",
       "short_description": "Automatically traces a path from a point A to a point B. See `autoTrace(List, PointInImage)` for details.",
-      "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+      "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
       "return_type": "Path",
       "java_return_type": "Path",
       "parameters": [
@@ -18709,18 +19045,12 @@
           "arg2",
           "PointInImage",
           ""
-        ],
-        [
-          "arg3",
-          "bool",
-          ""
         ]
       ],
       "parameter_types": [
         "SNTPoint",
         "SNTPoint",
-        "PointInImage",
-        "bool"
+        "PointInImage"
       ],
       "deprecated": false,
       "since_version": null,
@@ -19483,19 +19813,11 @@
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Getters",
       "short_description": "Gets the Image associated with a view pane.",
-      "signature": "getImagePlus(int) -> ImagePlus",
+      "signature": "getImagePlus() -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          "- the flag specifying the view either MultiDThreePanes.XY_PLANE, MultiDThreePanes.XZ_PLANE or MultiDThreePanes.ZY_PLANE."
-        ]
-      ],
-      "parameter_types": [
-        "int"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -19947,18 +20269,18 @@
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeColorMapper",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static unMap(Tree) -> void",
+      "signature": "static unMap(Collection) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Tree",
+          "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
-        "Tree"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -20149,24 +20471,18 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addOutput(String, Class) -> MutableModuleItem",
-      "return_type": "Any",
-      "java_return_type": "MutableModuleItem",
+      "signature": "addOutput(ModuleItem) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "str",
-          ""
-        ],
-        [
-          "arg1",
-          "type",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "str",
-        "type"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -20179,18 +20495,24 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Utilities",
       "short_description": "Retrieves pixel intensities at each node of the Path storing them as Path values",
-      "signature": "assignValues(Path) -> void",
+      "signature": "assignValues(Path, int) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Path",
-          "- the Path to be profiled"
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
         ]
       ],
       "parameter_types": [
-        "Path"
+        "Path",
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -20203,11 +20525,19 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "cancel() -> void",
+      "signature": "cancel(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -20343,9 +20673,9 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getInfo() -> ModuleInfo",
+      "signature": "getInfo() -> DynamicCommandInfo",
       "return_type": "Any",
-      "java_return_type": "ModuleInfo",
+      "java_return_type": "DynamicCommandInfo",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -20439,19 +20769,11 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Getters",
       "short_description": "Gets the plot profile as an ImageJ plot (all channels included).",
-      "signature": "getPlot(Path) -> Plot",
+      "signature": "getPlot() -> Plot",
       "return_type": "Any",
       "java_return_type": "Plot",
-      "parameters": [
-        [
-          "arg0",
-          "Path",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "Path"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -20487,11 +20809,19 @@
       "full_class_name": "sc.fiji.snt.analysis.PathProfiler",
       "category": "Getters",
       "short_description": "Gets the plot profile as an PlotService plot. It is recommended to call...",
-      "signature": "getXYPlot() -> XYPlot",
+      "signature": "getXYPlot(int) -> XYPlot",
       "return_type": "Any",
       "java_return_type": "XYPlot",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          "- the channel to be parsed (base-0 index)"
+        ]
+      ],
+      "parameter_types": [
+        "int"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -21213,18 +21543,18 @@
       "full_class_name": "sc.fiji.snt.analysis.PCAnalyzer",
       "category": "Static Methods",
       "short_description": "Computes the principal axes for a collection of SNTPoints.",
-      "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
+      "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
       "return_type": "Any",
       "java_return_type": "PCAnalyzer$PrincipalAxis;",
       "parameters": [
         [
           "arg0",
-          "List[Any]",
+          "Any",
           "- the collection of points to analyze"
         ]
       ],
       "parameter_types": [
-        "List[Any]"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -21755,7 +22085,7 @@
       "full_class_name": "sc.fiji.snt.InteractiveTracerCanvas",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "createBufferStrategy(int) -> void",
+      "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
@@ -21763,10 +22093,16 @@
           "arg0",
           "int",
           ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
-        "int"
+        "int",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -22295,18 +22631,30 @@
       "full_class_name": "sc.fiji.snt.util.SNTPoint",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static of(Number;) -> PointInImage",
+      "signature": "static of(Number, Number, Number) -> PointInImage",
       "return_type": "PointInImage",
       "java_return_type": "PointInImage",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "Union[int, float]",
+          ""
+        ],
+        [
+          "arg1",
+          "Union[int, float]",
+          ""
+        ],
+        [
+          "arg2",
+          "Union[int, float]",
           ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "Union[int, float]",
+        "Union[int, float]",
+        "Union[int, float]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -22383,18 +22731,24 @@
       "full_class_name": "sc.fiji.snt.io.MouseLightQuerier",
       "category": "Static Methods",
       "short_description": "Gets neuron IDs matching the specified collection of IDs or DOIs.",
-      "signature": "static getIDs(AllenCompartment) -> List",
+      "signature": "static getIDs(String, boolean) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
       "parameters": [
         [
           "arg0",
-          "Any",
-          "- the collection of IDs or DOIs to search for"
+          "str",
+          ""
+        ],
+        [
+          "arg1",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "str",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -22511,17 +22865,23 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "add(Column) -> boolean",
-      "return_type": "bool",
-      "java_return_type": "boolean",
+      "signature": "add(int, Object) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
       "parameters": [
         [
           "arg0",
+          "int",
+          ""
+        ],
+        [
+          "arg1",
           "Any",
           ""
         ]
       ],
       "parameter_types": [
+        "int",
         "Any"
       ],
       "deprecated": false,
@@ -22535,23 +22895,17 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addAll(int, Collection) -> boolean",
+      "signature": "addAll(Collection) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
       "parameters": [
         [
           "arg0",
-          "int",
-          ""
-        ],
-        [
-          "arg1",
           "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
-        "int",
         "List[Any]"
       ],
       "deprecated": false,
@@ -22673,19 +23027,11 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "appendColumn(String) -> Column",
+      "signature": "appendColumn() -> Column",
       "return_type": "Any",
       "java_return_type": "Column",
-      "parameters": [
-        [
-          "arg0",
-          "str",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "str"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -22697,18 +23043,18 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "appendColumns(int) -> List",
+      "signature": "appendColumns(String;) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
       "parameters": [
         [
           "arg0",
-          "int",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "int"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -23057,13 +23403,13 @@
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "geRowStats(int, int, int) -> SummaryStatistics",
+      "signature": "geRowStats(String, int, int) -> SummaryStatistics",
       "return_type": "Any",
       "java_return_type": "SummaryStatistics",
       "parameters": [
         [
           "arg0",
-          "int",
+          "str",
           ""
         ],
         [
@@ -23078,7 +23424,7 @@
         ]
       ],
       "parameter_types": [
-        "int",
+        "str",
         "int",
         "int"
       ],
@@ -23805,24 +24151,18 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeProfiler",
       "category": "Setters",
       "short_description": "No description available",
-      "signature": "addOutput(String, Class) -> MutableModuleItem",
-      "return_type": "Any",
-      "java_return_type": "MutableModuleItem",
+      "signature": "addOutput(ModuleItem) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "str",
-          ""
-        ],
-        [
-          "arg1",
-          "type",
+          "Any",
           ""
         ]
       ],
       "parameter_types": [
-        "str",
-        "type"
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -23835,11 +24175,19 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeProfiler",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "cancel() -> void",
+      "signature": "cancel(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -23915,9 +24263,9 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeProfiler",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getInfo() -> ModuleInfo",
+      "signature": "getInfo() -> DynamicCommandInfo",
       "return_type": "Any",
-      "java_return_type": "ModuleInfo",
+      "java_return_type": "DynamicCommandInfo",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -24011,18 +24359,24 @@
       "full_class_name": "sc.fiji.snt.analysis.NodeProfiler",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getPlot(Path) -> Plot",
+      "signature": "getPlot(Path, int) -> Plot",
       "return_type": "Any",
       "java_return_type": "Plot",
       "parameters": [
         [
           "arg0",
           "Path",
-          "- the path to be profiled"
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
         ]
       ],
       "parameter_types": [
-        "Path"
+        "Path",
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -24785,6 +25139,310 @@
       "has_examples": false
     },
     {
+      "method_name": "accept",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "accept(RandomAccessibleInterval) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "andThen",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "andThen(Consumer) -> Consumer",
+      "return_type": "Any",
+      "java_return_type": "Consumer",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static apply",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static apply(ImgPlus, [D, double, int) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ],
+        [
+          "arg2",
+          "float",
+          ""
+        ],
+        [
+          "arg3",
+          "int",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any",
+        "float",
+        "int"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "compute",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Analysis",
+      "short_description": "No description available",
+      "signature": "compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getArity",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getArity() -> int",
+      "return_type": "int",
+      "java_return_type": "int",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getIndependentInstance",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getIndependentInstance() -> UnaryComputerOp",
+      "return_type": "Any",
+      "java_return_type": "UnaryComputerOp",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "in",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "in() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "initialize",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "initialize() -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "ops",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "ops() -> OpEnvironment",
+      "return_type": "Any",
+      "java_return_type": "OpEnvironment",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "out",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "out() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "run",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "run() -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setEnvironment",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setEnvironment(OpEnvironment) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setInput",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setInput(Object) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setOutput",
+      "class_name": "Frangi",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Frangi",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setOutput(Object) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "cancel",
       "class_name": "TreeStatistics",
       "package": "sc.fiji.snt.analysis",
@@ -24893,45 +25551,9 @@
       "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
       "category": "Getters",
       "short_description": "Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.",
-      "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+      "signature": "getAnnotatedLength(int, String) -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
-        ],
-        [
-          "arg2",
-          "bool",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "int",
-        "str",
-        "bool"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "getAnnotatedLengthHistogram",
-      "class_name": "TreeStatistics",
-      "package": "sc.fiji.snt.analysis",
-      "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
-      "category": "Getters",
-      "short_description": "Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the...",
-      "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-      "return_type": "SNTChart",
-      "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
@@ -24947,6 +25569,30 @@
       "parameter_types": [
         "int",
         "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getAnnotatedLengthHistogram",
+      "class_name": "TreeStatistics",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
+      "category": "Getters",
+      "short_description": "Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the...",
+      "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
+      "return_type": "SNTChart",
+      "java_return_type": "SNTChart",
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          "- the ontological depth of the compartments to be considered"
+        ]
+      ],
+      "parameter_types": [
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -25149,11 +25795,19 @@
       "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
       "category": "Getters",
       "short_description": "Gets the cable length associated with the specified compartment (neuropil label).",
-      "signature": "getCableLength() -> double",
+      "signature": "getCableLength(BrainAnnotation) -> double",
       "return_type": "float",
       "java_return_type": "double",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          "- the query compartment (null not allowed)"
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -25301,42 +25955,24 @@
       "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
       "category": "Getters",
       "short_description": "Assembles a Flow plot (aka Sankey diagram) for the specified feature.",
-      "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+      "signature": "getFlowPlot(String, Collection) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
           "str",
-          ""
+          "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of getAllMetrics() metrics are currently not supported."
         ],
         [
           "arg1",
           "List[Any]",
           ""
-        ],
-        [
-          "arg2",
-          "str",
-          ""
-        ],
-        [
-          "arg3",
-          "float",
-          ""
-        ],
-        [
-          "arg4",
-          "bool",
-          ""
         ]
       ],
       "parameter_types": [
         "str",
-        "List[Any]",
-        "str",
-        "float",
-        "bool"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -25929,9 +26565,9 @@
       "full_class_name": "sc.fiji.snt.util.BoundingBox",
       "category": "Utilities",
       "short_description": "Creates a copy of this BoundingBox.",
-      "signature": "clone() -> BoundingBox",
-      "return_type": "BoundingBox",
-      "java_return_type": "BoundingBox",
+      "signature": "clone() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -25993,18 +26629,18 @@
       "full_class_name": "sc.fiji.snt.util.BoundingBox",
       "category": "Utilities",
       "short_description": "No description available",
-      "signature": "contains(BoundingBox) -> boolean",
+      "signature": "contains(SNTPoint) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
       "parameters": [
         [
           "arg0",
-          "BoundingBox",
+          "SNTPoint",
           ""
         ]
       ],
       "parameter_types": [
-        "BoundingBox"
+        "SNTPoint"
       ],
       "deprecated": false,
       "since_version": null,
@@ -26105,19 +26741,11 @@
       "full_class_name": "sc.fiji.snt.util.BoundingBox",
       "category": "Getters",
       "short_description": "Gets this BoundingBox dimensions.",
-      "signature": "getDimensions(boolean) -> [D",
+      "signature": "getDimensions() -> [D",
       "return_type": "Any",
       "java_return_type": "[D",
-      "parameters": [
-        [
-          "arg0",
-          "bool",
-          "- If true, dimensions are retrieved in real world units, otherwise in (\"pixel\") units"
-        ]
-      ],
-      "parameter_types": [
-        "bool"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -26267,6 +26895,30 @@
       "has_examples": false
     },
     {
+      "method_name": "scale",
+      "class_name": "BoundingBox",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.BoundingBox",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "scale([D) -> BoundingBox",
+      "return_type": "BoundingBox",
+      "java_return_type": "BoundingBox",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "setDimensions",
       "class_name": "BoundingBox",
       "package": "sc.fiji.snt.util",
@@ -26411,6 +27063,30 @@
       ],
       "parameter_types": [
         "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "shift",
+      "class_name": "BoundingBox",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.BoundingBox",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "shift([D) -> BoundingBox",
+      "return_type": "BoundingBox",
+      "java_return_type": "BoundingBox",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -26589,45 +27265,9 @@
       "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+      "signature": "getAnnotatedLength(int, String) -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
-        ],
-        [
-          "arg2",
-          "bool",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "int",
-        "str",
-        "bool"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "getAnnotatedLengthHistogram",
-      "class_name": "PathStatistics",
-      "package": "sc.fiji.snt.analysis",
-      "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
-      "category": "Getters",
-      "short_description": "No description available",
-      "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-      "return_type": "SNTChart",
-      "java_return_type": "SNTChart",
       "parameters": [
         [
           "arg0",
@@ -26643,6 +27283,30 @@
       "parameter_types": [
         "int",
         "str"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getAnnotatedLengthHistogram",
+      "class_name": "PathStatistics",
+      "package": "sc.fiji.snt.analysis",
+      "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
+      "return_type": "SNTChart",
+      "java_return_type": "SNTChart",
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "int"
       ],
       "deprecated": false,
       "since_version": null,
@@ -26845,11 +27509,19 @@
       "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getCableLength() -> double",
+      "signature": "getCableLength(BrainAnnotation) -> double",
       "return_type": "float",
       "java_return_type": "double",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -26997,7 +27669,7 @@
       "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
       "category": "Getters",
       "short_description": "No description available",
-      "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+      "signature": "getFlowPlot(String, Collection) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
       "parameters": [
@@ -27010,29 +27682,11 @@
           "arg1",
           "List[Any]",
           ""
-        ],
-        [
-          "arg2",
-          "str",
-          ""
-        ],
-        [
-          "arg3",
-          "float",
-          ""
-        ],
-        [
-          "arg4",
-          "bool",
-          ""
         ]
       ],
       "parameter_types": [
         "str",
-        "List[Any]",
-        "str",
-        "float",
-        "bool"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -27179,11 +27833,19 @@
       "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
       "category": "Analysis",
       "short_description": "No description available",
-      "signature": "static getMetrics() -> List",
+      "signature": "static getMetrics(String) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "str",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "str"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -27681,18 +28343,30 @@
       "full_class_name": "sc.fiji.snt.util.ColorMaps",
       "category": "Static Methods",
       "short_description": "Applies the \"plasma\" colormap to the specified (non-RGB) image",
-      "signature": "static applyPlasma(ImagePlus) -> void",
+      "signature": "static applyPlasma(ImagePlus, int, boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Any",
-          "- A non-RGB image"
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
+        ],
+        [
+          "arg2",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "Any",
+        "int",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -27705,18 +28379,30 @@
       "full_class_name": "sc.fiji.snt.util.ColorMaps",
       "category": "Static Methods",
       "short_description": "Applies the \"viridis\" colormap to the specified (non-RGB) image",
-      "signature": "static applyViridis(ImagePlus) -> void",
+      "signature": "static applyViridis(ImagePlus, int, boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Any",
-          "- A non-RGB image"
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
+        ],
+        [
+          "arg2",
+          "bool",
+          ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "Any",
+        "int",
+        "bool"
       ],
       "deprecated": false,
       "since_version": null,
@@ -28105,18 +28791,18 @@
       "full_class_name": "sc.fiji.snt.viewer.Annotation3D",
       "category": "Setters",
       "short_description": "Assigns a wireframe color to the annotation.",
-      "signature": "setWireframeColor(ColorRGB) -> void",
+      "signature": "setWireframeColor(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "str",
           "- the wireframe color. Ignored if the annotation has no wireframe."
         ]
       ],
       "parameter_types": [
-        "Any"
+        "str"
       ],
       "deprecated": false,
       "since_version": null,
@@ -28377,24 +29063,18 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Visualization",
       "short_description": "Assigns distinct colors to a collection of Trees.",
-      "signature": "static assignUniqueColors(Collection, String) -> void",
+      "signature": "static assignUniqueColors(Collection) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "List[Any]",
-          ""
-        ],
-        [
-          "arg1",
-          "str",
-          ""
+          "- an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'."
         ]
       ],
       "parameter_types": [
-        "List[Any]",
-        "str"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -28431,9 +29111,9 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Utilities",
       "short_description": "Creates a deep copy of this Tree. This method creates a complete copy of the tree including all paths and their...",
-      "signature": "clone() -> Object",
-      "return_type": "Any",
-      "java_return_type": "Object",
+      "signature": "clone() -> Tree",
+      "return_type": "Tree",
+      "java_return_type": "Tree",
       "parameters": [],
       "parameter_types": [],
       "deprecated": false,
@@ -28623,19 +29303,11 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Getters",
       "short_description": "Retrieves the convex hull of this tree.",
-      "signature": "getConvexHull(String) -> AbstractConvexHull",
+      "signature": "getConvexHull() -> AbstractConvexHull",
       "return_type": "Any",
       "java_return_type": "AbstractConvexHull",
-      "parameters": [
-        [
-          "arg0",
-          "str",
-          "- the description of the point cloud defining the convex hull (i.e., \"tips\"/\"end-points\", \"junctions\"/\"branch points\", or \"all\" (default))"
-        ]
-      ],
-      "parameter_types": [
-        "str"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -28829,11 +29501,19 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Getters",
       "short_description": "Gets the set of SWC types present in this tree with optional soma inclusion.",
-      "signature": "getSWCTypes() -> Set",
+      "signature": "getSWCTypes(boolean) -> Set",
       "return_type": "Set[Any]",
       "java_return_type": "Set",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "bool",
+          "- if true, includes the soma type in the returned set; if false, excludes Path.SWC_SOMA from the result"
+        ]
+      ],
+      "parameter_types": [
+        "bool"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -28845,19 +29525,11 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Getters",
       "short_description": "Retrieves the rasterized skeleton of this tree at 1:1 scaling.",
-      "signature": "getSkeleton(int) -> ImagePlus",
+      "signature": "getSkeleton() -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
-      "parameters": [
-        [
-          "arg0",
-          "int",
-          "- the voxel intensities of the skeleton. If"
-        ]
-      ],
-      "parameter_types": [
-        "int"
-      ],
+      "parameters": [],
+      "parameter_types": [],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -28869,11 +29541,19 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Getters",
       "short_description": "Retrieves a 2D projection of the rasterized skeleton of this tree at 1:1 scaling.",
-      "signature": "getSkeleton2D() -> ImagePlus",
+      "signature": "getSkeleton2D(int) -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
-      "parameters": [],
-      "parameter_types": [],
+      "parameters": [
+        [
+          "arg0",
+          "int",
+          "- the pixel intensities of the skeleton. If"
+        ]
+      ],
+      "parameter_types": [
+        "int"
+      ],
       "deprecated": false,
       "since_version": null,
       "has_examples": false
@@ -29005,7 +29685,7 @@
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Static Methods",
       "short_description": "Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.",
-      "signature": "static listFromDir(String, String) -> List",
+      "signature": "static listFromDir(String, String, String;) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
       "parameters": [
@@ -29018,11 +29698,17 @@
           "arg1",
           "str",
           ""
+        ],
+        [
+          "arg2",
+          "Any",
+          ""
         ]
       ],
       "parameter_types": [
         "str",
-        "str"
+        "str",
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -29425,35 +30111,23 @@
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Static Methods",
       "short_description": "Convenience method to skeletonize a thresholded image using Skeletonize3D_.",
-      "signature": "static skeletonize(ImagePlus, double, double, boolean) -> void",
+      "signature": "static skeletonize(ImagePlus, boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
       "parameters": [
         [
           "arg0",
           "Any",
-          ""
+          "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground."
         ],
         [
           "arg1",
-          "float",
-          ""
-        ],
-        [
-          "arg2",
-          "float",
-          ""
-        ],
-        [
-          "arg3",
           "bool",
           ""
         ]
       ],
       "parameter_types": [
         "Any",
-        "float",
-        "float",
         "bool"
       ],
       "deprecated": false,
@@ -29485,6 +30159,306 @@
       "parameter_types": [
         "Any",
         "bool"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "accept",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "accept(RandomAccessibleInterval) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "andThen",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "andThen(Consumer) -> Consumer",
+      "return_type": "Any",
+      "java_return_type": "Consumer",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static apply",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static apply(ImgPlus, double) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "float",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "float"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "compute",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Analysis",
+      "short_description": "No description available",
+      "signature": "compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getArity",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getArity() -> int",
+      "return_type": "int",
+      "java_return_type": "int",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "getIndependentInstance",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Getters",
+      "short_description": "No description available",
+      "signature": "getIndependentInstance() -> UnaryComputerOp",
+      "return_type": "Any",
+      "java_return_type": "UnaryComputerOp",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "in",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "in() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "initialize",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "initialize() -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "ops",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "ops() -> OpEnvironment",
+      "return_type": "Any",
+      "java_return_type": "OpEnvironment",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "out",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "out() -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [],
+      "parameter_types": [],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "run",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Utilities",
+      "short_description": "No description available",
+      "signature": "run(Object) -> Object",
+      "return_type": "Any",
+      "java_return_type": "Object",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setEnvironment",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setEnvironment(OpEnvironment) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setInput",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setInput(Object) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "setOutput",
+      "class_name": "Tubeness",
+      "package": "sc.fiji.snt.filter",
+      "full_class_name": "sc.fiji.snt.filter.Tubeness",
+      "category": "Setters",
+      "short_description": "No description available",
+      "signature": "setOutput(Object) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
       ],
       "deprecated": false,
       "since_version": null,
@@ -29556,6 +30530,72 @@
         "Any",
         "bool",
         "int",
+        "int"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static binarize",
+      "class_name": "ImpUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImpUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static binarize(ImagePlus, double, double) -> void",
+      "return_type": "None",
+      "java_return_type": "void",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "float",
+          ""
+        ],
+        [
+          "arg2",
+          "float",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "float",
+        "float"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static calibrationToAxes",
+      "class_name": "ImpUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImpUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static calibrationToAxes(Calibration, int) -> CalibratedAxis;",
+      "return_type": "Any",
+      "java_return_type": "CalibratedAxis;",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
         "int"
       ],
       "deprecated": false,
@@ -29945,18 +30985,18 @@
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static getMIP(ImagePlus) -> ImagePlus",
+      "signature": "static getMIP(Collection) -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
       "parameters": [
         [
           "arg0",
-          "Any",
+          "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
-        "Any"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -30197,7 +31237,7 @@
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static open(File) -> ImagePlus",
+      "signature": "static open(String, String) -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
       "parameters": [
@@ -30205,9 +31245,15 @@
           "arg0",
           "str",
           ""
+        ],
+        [
+          "arg1",
+          "str",
+          ""
         ]
       ],
       "parameter_types": [
+        "str",
         "str"
       ],
       "deprecated": false,
@@ -30497,6 +31543,66 @@
       "has_examples": false
     },
     {
+      "method_name": "static toImgPlus",
+      "class_name": "ImpUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImpUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static toImgPlus(ImagePlus) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
+      "method_name": "static toImgPlus3D",
+      "class_name": "ImpUtils",
+      "package": "sc.fiji.snt.util",
+      "full_class_name": "sc.fiji.snt.util.ImpUtils",
+      "category": "Static Methods",
+      "short_description": "No description available",
+      "signature": "static toImgPlus3D(ImagePlus, int, int) -> ImgPlus",
+      "return_type": "Any",
+      "java_return_type": "ImgPlus",
+      "parameters": [
+        [
+          "arg0",
+          "Any",
+          ""
+        ],
+        [
+          "arg1",
+          "int",
+          ""
+        ],
+        [
+          "arg2",
+          "int",
+          ""
+        ]
+      ],
+      "parameter_types": [
+        "Any",
+        "int",
+        "int"
+      ],
+      "deprecated": false,
+      "since_version": null,
+      "has_examples": false
+    },
+    {
       "method_name": "static toStack",
       "class_name": "ImpUtils",
       "package": "sc.fiji.snt.util",
@@ -30527,9 +31633,9 @@
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
       "short_description": "No description available",
-      "signature": "static zoomTo(ImagePlus, double, int, int) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
+      "signature": "static zoomTo(ImagePlus, Collection) -> double",
+      "return_type": "float",
+      "java_return_type": "double",
       "parameters": [
         [
           "arg0",
@@ -30538,25 +31644,13 @@
         ],
         [
           "arg1",
-          "float",
-          ""
-        ],
-        [
-          "arg2",
-          "int",
-          ""
-        ],
-        [
-          "arg3",
-          "int",
+          "List[Any]",
           ""
         ]
       ],
       "parameter_types": [
         "Any",
-        "float",
-        "int",
-        "int"
+        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -30637,6 +31731,7 @@
     "FillConverter",
     "FillerThread",
     "FlyCircuitLoader",
+    "Frangi",
     "GroupedTreeStatistics",
     "ImgUtils",
     "ImpUtils",
@@ -30689,6 +31784,7 @@
     "TreeColorMapper",
     "TreeProperties",
     "TreeStatistics",
+    "Tubeness",
     "VFBUtils",
     "Viewer2D",
     "Viewer3D",
@@ -30727,12 +31823,13 @@
     "sc.fiji.snt",
     "sc.fiji.snt.analysis",
     "sc.fiji.snt.annotation",
+    "sc.fiji.snt.filter",
     "sc.fiji.snt.io",
     "sc.fiji.snt.tracing",
     "sc.fiji.snt.util",
     "sc.fiji.snt.viewer"
   ],
-  "generation_timestamp": "2025-12-29T16:01:49.605783",
-  "total_methods": 1379,
+  "generation_timestamp": "2026-01-02T22:43:26.364814",
+  "total_methods": 1426,
   "deprecated_methods": 0
 }

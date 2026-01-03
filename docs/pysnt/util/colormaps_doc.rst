@@ -73,12 +73,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static applyPlasma(ImagePlus)
+.. py:method:: static applyPlasma(ImagePlus, int, boolean)
 
    Applies the "plasma" colormap to the specified (non-RGB) image
 
 
-.. py:method:: static applyViridis(ImagePlus)
+.. py:method:: static applyViridis(ImagePlus, int, boolean)
 
    Applies the "viridis" colormap to the specified (non-RGB) image
 

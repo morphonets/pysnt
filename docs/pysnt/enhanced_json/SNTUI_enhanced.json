@@ -1,9 +1,9 @@
 {
   "class_name": "SNTUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.720673",
+  "extracted_at": "2026-01-02T22:36:44.927194",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.415899",
+  "enhancement_timestamp": "2026-01-02T22:43:26.170671",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -44,59 +44,6 @@
     {
       "name": "add",
       "overloads": [
-        {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "add(String, Component) -> Component",
           "params": [
@@ -156,6 +103,59 @@
           ],
           "return_type": "Any",
           "java_return_type": "Component",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Component, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Component, Object, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
           "return_description": "",
           "throws": {}
         },
@@ -488,17 +488,10 @@
       "name": "addPropertyChangeListener",
       "overloads": [
         {
-          "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
+          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
               "type": "Any",
               "java_type": "PropertyChangeListener",
               "description": "",
@@ -511,10 +504,17 @@
           "throws": {}
         },
         {
-          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
+          "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
           "params": [
             {
               "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
               "type": "Any",
               "java_type": "PropertyChangeListener",
               "description": "",
@@ -651,12 +651,12 @@
       "name": "applyResourceBundle",
       "overloads": [
         {
-          "signature": "applyResourceBundle(ResourceBundle) -> void",
+          "signature": "applyResourceBundle(String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ResourceBundle",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -667,12 +667,12 @@
           "throws": {}
         },
         {
-          "signature": "applyResourceBundle(String) -> void",
+          "signature": "applyResourceBundle(ResourceBundle) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "ResourceBundle",
               "description": "",
               "javadoc_name": null
             }
@@ -914,22 +914,6 @@
       "name": "createBufferStrategy",
       "overloads": [
         {
-          "signature": "createBufferStrategy(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
           "params": [
             {
@@ -943,6 +927,22 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "BufferCapabilities",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "createBufferStrategy(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -1261,19 +1261,12 @@
       "name": "findComponentAt",
       "overloads": [
         {
-          "signature": "findComponentAt(int, int) -> Component",
+          "signature": "findComponentAt(Point) -> Component",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
+              "type": "Any",
+              "java_type": "Point",
               "description": "",
               "javadoc_name": null
             }
@@ -1325,9 +1318,9 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
+    "JDialog",
     "Serialized Form",
-    "JDialog"
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

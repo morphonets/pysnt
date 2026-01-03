@@ -1,7 +1,7 @@
 {
   "class_name": "MouseLightQuerier",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-19T11:06:20.392098",
+  "extracted_at": "2026-01-02T22:36:44.597369",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -20,12 +20,17 @@
       "name": "static getIDs",
       "overloads": [
         {
-          "signature": "static getIDs(AllenCompartment) -> List",
+          "signature": "static getIDs(String, boolean) -> List",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "AllenCompartment"
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "List[Any]",
@@ -44,17 +49,12 @@
           "java_return_type": "List"
         },
         {
-          "signature": "static getIDs(String, boolean) -> List",
+          "signature": "static getIDs(AllenCompartment) -> List",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
+              "type": "Any",
+              "java_type": "AllenCompartment"
             }
           ],
           "return_type": "List[Any]",

@@ -153,7 +153,7 @@ Getters Methods
    
 
 
-.. py:method:: getImagePlus(int)
+.. py:method:: getImagePlus()
 
    Gets the Image associated with a view pane.
 
@@ -201,7 +201,7 @@ Other Methods
    
 
 
-.. py:method:: autoTrace(SNTPoint, SNTPoint, PointInImage, boolean)
+.. py:method:: autoTrace(SNTPoint, SNTPoint, PointInImage)
 
    Automatically traces a path from a point A to a point B. See `autoTrace(List, PointInImage)` for details.
 

@@ -1,0 +1,727 @@
+{
+  "class_name": "MultiTreeColorMapper",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2026-01-02T22:23:57.312183",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "getAvailableLuts",
+      "overloads": [
+        {
+          "signature": "getAvailableLuts() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getAvailableLuts"
+    },
+    {
+      "name": "getColor",
+      "overloads": [
+        {
+          "signature": "getColor(double) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: getColor"
+    },
+    {
+      "name": "getColorRGB",
+      "overloads": [
+        {
+          "signature": "getColorRGB(double) -> ColorRGB",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB"
+        }
+      ],
+      "documentation": "Java method: getColorRGB"
+    },
+    {
+      "name": "getColorTable",
+      "overloads": [
+        {
+          "signature": "getColorTable(String) -> ColorTable",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorTable"
+        },
+        {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorTable"
+        }
+      ],
+      "documentation": "Java method: getColorTable"
+    },
+    {
+      "name": "static getMetrics",
+      "overloads": [
+        {
+          "signature": "static getMetrics(String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getMetrics"
+    },
+    {
+      "name": "getMinMax",
+      "overloads": [
+        {
+          "signature": "getMinMax() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: getMinMax"
+    },
+    {
+      "name": "getMultiViewer",
+      "overloads": [
+        {
+          "signature": "getMultiViewer() -> MultiViewer2D",
+          "params": [],
+          "return_type": "MultiViewer2D",
+          "java_return_type": "MultiViewer2D"
+        }
+      ],
+      "documentation": "Java method: getMultiViewer"
+    },
+    {
+      "name": "getNaNColor",
+      "overloads": [
+        {
+          "signature": "getNaNColor() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: getNaNColor"
+    },
+    {
+      "name": "static getSingleValueMetrics",
+      "overloads": [
+        {
+          "signature": "static getSingleValueMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getSingleValueMetrics"
+    },
+    {
+      "name": "isIntegerScale",
+      "overloads": [
+        {
+          "signature": "isIntegerScale() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isIntegerScale"
+    },
+    {
+      "name": "isNodeMapping",
+      "overloads": [
+        {
+          "signature": "isNodeMapping() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: isNodeMapping"
+    },
+    {
+      "name": "static main",
+      "overloads": [
+        {
+          "signature": "static main(String;) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "String;"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static main"
+    },
+    {
+      "name": "map",
+      "overloads": [
+        {
+          "signature": "map(String, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, Profile, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Profile",
+              "java_type": "Profile"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "LinearProfileStats"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, String, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: map"
+    },
+    {
+      "name": "mapRootDistanceToCentroid",
+      "overloads": [
+        {
+          "signature": "mapRootDistanceToCentroid(AllenCompartment, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AllenCompartment"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: mapRootDistanceToCentroid"
+    },
+    {
+      "name": "mapTrees",
+      "overloads": [
+        {
+          "signature": "mapTrees(List, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: mapTrees"
+    },
+    {
+      "name": "setMinMax",
+      "overloads": [
+        {
+          "signature": "setMinMax(double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setMinMax"
+    },
+    {
+      "name": "setNaNColor",
+      "overloads": [
+        {
+          "signature": "setNaNColor(Color) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setNaNColor"
+    },
+    {
+      "name": "sortedMappedTrees",
+      "overloads": [
+        {
+          "signature": "sortedMappedTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: sortedMappedTrees"
+    },
+    {
+      "name": "static unMap",
+      "overloads": [
+        {
+          "signature": "static unMap(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static unMap(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static unMap"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "MultiTreeColorMapper(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for MultiTreeColorMapper"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "ASSIGNED_VALUE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ASSIGNED_VALUE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "CABLE_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field CABLE_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "HIGHEST_PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field HIGHEST_PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "ID",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field ID of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "INTER_NODE_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field INTER_NODE_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "NODE_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field NODE_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_BRANCHES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_BRANCHES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_BRANCH_POINTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_BRANCH_POINTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_NODES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_NODES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_SPINES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_SPINES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "N_TIPS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field N_TIPS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_AVG_SPINE_DENSITY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_AVG_SPINE_DENSITY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_DISTANCE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_DISTANCE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_REL",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_REL of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_XZ",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_XZ of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_EXT_ANGLE_ZY",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_EXT_ANGLE_ZY of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_FRAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_FRAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_LENGTH of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_MEAN_RADIUS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_MEAN_RADIUS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "PATH_ORDER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field PATH_ORDER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SHOLL_COUNTS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field SHOLL_COUNTS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "STRAHLER_NUMBER",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field STRAHLER_NUMBER of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "STRAHLER_ORDERS",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field STRAHLER_ORDERS of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "TAG_FILENAME",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field TAG_FILENAME of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "VALUES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field VALUES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "X_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field X_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Y_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Y_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "Z_COORDINATES",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field Z_COORDINATES of type String",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
+}

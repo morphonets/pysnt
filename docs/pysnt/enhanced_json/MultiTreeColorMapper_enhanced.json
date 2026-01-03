@@ -1,9 +1,9 @@
 {
   "class_name": "MultiTreeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.399379",
+  "extracted_at": "2026-01-02T22:36:44.604595",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.461314",
+  "enhancement_timestamp": "2026-01-02T22:43:26.216234",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -329,42 +329,12 @@
           "throws": {}
         },
         {
-          "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
+          "signature": "map(Tree, String, String) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "LinearProfileStats",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "map(Collection, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
@@ -419,7 +389,7 @@
           "throws": {}
         },
         {
-          "signature": "map(Tree, String, String) -> void",
+          "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
               "name": "arg0",
@@ -430,15 +400,15 @@
             },
             {
               "name": "arg1",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "LinearProfileStats",
               "description": "",
               "javadoc_name": null
             },
             {
               "name": "arg2",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             }
@@ -469,6 +439,36 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -644,12 +644,12 @@
       "name": "static unMap",
       "overloads": [
         {
-          "signature": "static unMap(Tree) -> void",
+          "signature": "static unMap(Collection) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -660,12 +660,12 @@
           "throws": {}
         },
         {
-          "signature": "static unMap(Collection) -> void",
+          "signature": "static unMap(Tree) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "type": "Tree",
+              "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             }
@@ -717,8 +717,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "TreeColorMapper"
+    "TreeColorMapper",
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

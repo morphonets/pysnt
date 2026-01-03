@@ -137,7 +137,7 @@ Other Methods
    
 
 
-.. py:method:: map(Tree, LinearProfileStats, ColorTable)
+.. py:method:: map(Tree, String, String)
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
 
@@ -147,7 +147,7 @@ Other Methods
    Colorizes a list of trees, with each tree being assigned a LUT index.
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: static unMap(Collection)
 
    
 

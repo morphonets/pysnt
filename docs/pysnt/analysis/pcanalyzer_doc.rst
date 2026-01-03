@@ -66,7 +66,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getPrincipalAxes(Collection)
+.. py:method:: static getPrincipalAxes(Vertices)
 
    Computes the principal axes for a collection of SNTPoints.
 

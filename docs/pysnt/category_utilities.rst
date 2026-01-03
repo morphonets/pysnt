@@ -3,7 +3,7 @@ Utilities Methods
 
 General utility methods and helper functions.
 
-Total methods in this category: **324**
+Total methods in this category: **341**
 
 .. contents:: Classes in this Category
    :local:
@@ -122,9 +122,9 @@ BoundingBox
 
    Creates a copy of this BoundingBox.
 
-   **Signature:** ``clone() -> BoundingBox``
+   **Signature:** ``clone() -> Object``
 
-   **Returns:** (``BoundingBox``) a new BoundingBox that is a copy of this bounding box
+   **Returns:** ``Any``
 
 .. method:: combine(arg0)
 
@@ -140,11 +140,11 @@ BoundingBox
 
 .. method:: contains(arg0)
 
-   **Signature:** ``contains(BoundingBox) -> boolean``
+   **Signature:** ``contains(SNTPoint) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``BoundingBox``)
+   * **arg0** (``SNTPoint``)
 
    **Returns:** ``bool``
 
@@ -209,6 +209,26 @@ BoundingBox
    **Signature:** ``originOpposite() -> PointInImage``
 
    **Returns:** (``PointInImage``) the origin
+
+.. method:: scale(arg0)
+
+   **Signature:** ``scale([D) -> BoundingBox``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``BoundingBox``
+
+.. method:: shift(arg0)
+
+   **Signature:** ``shift([D) -> BoundingBox``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``BoundingBox``
 
 .. method:: toBoundingBox3d()
 
@@ -463,6 +483,60 @@ FillerThread
    **Returns:** ``None``
 
 
+Frangi
+------
+
+.. method:: accept(arg0)
+
+   **Signature:** ``accept(RandomAccessibleInterval) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: andThen(arg0)
+
+   **Signature:** ``andThen(Consumer) -> Consumer``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: in()
+
+   **Signature:** ``in() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: initialize()
+
+   **Signature:** ``initialize() -> void``
+
+   **Returns:** ``None``
+
+.. method:: ops()
+
+   **Signature:** ``ops() -> OpEnvironment``
+
+   **Returns:** ``Any``
+
+.. method:: out()
+
+   **Signature:** ``out() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: run()
+
+   **Signature:** ``run() -> void``
+
+   **Returns:** ``None``
+
+
 GroupedTreeStatistics
 ---------------------
 
@@ -605,13 +679,14 @@ InteractiveTracerCanvas
 
    **Returns:** ``bool``
 
-.. method:: createBufferStrategy(arg0)
+.. method:: createBufferStrategy(arg0, arg1)
 
-   **Signature:** ``createBufferStrategy(int) -> void``
+   **Signature:** ``createBufferStrategy(int, BufferCapabilities) -> void``
 
    **Parameters:**
 
    * **arg0** (``int``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -716,7 +791,7 @@ MouseLightLoader
 
    Convenience method to save JSON data.
 
-   **Signature:** ``save(File) -> boolean``
+   **Signature:** ``save(String) -> boolean``
 
    **Parameters:**
 
@@ -825,12 +900,12 @@ NodeColorMapper
 
    Maps nodes after the specified measurement. Mapping bounds are automatically determined.
 
-   **Signature:** ``map(String, String) -> void``
+   **Signature:** ``map(String, ColorTable) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``): - the measurement (X_COORDINATES, Y_COORDINATES, etc.)
-   * **arg1** (``str``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -932,17 +1007,18 @@ NodeStatistics
 
    **Returns:** (``List[Any]``) the filtered list.
 
-.. method:: get(arg0)
+.. method:: get(arg0, arg1)
 
    Gets the list of nodes associated with the specified compartment (neuropil label).
 
-   **Signature:** ``get(BrainAnnotation) -> List``
+   **Signature:** ``get(BrainAnnotation, boolean) -> List``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the query compartment (null not allowed)
+   * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
-   **Returns:** (``List[Any]``) the list of filtered nodes
+   **Returns:** ``List[Any]``
 
 
 Path
@@ -958,7 +1034,7 @@ Path
 
    **Returns:** ``None``
 
-.. method:: clone(arg0)
+.. method:: clone()
 
    Creates a copy of this Path with optional inclusion of immediate children.
 
@@ -966,36 +1042,31 @@ This method creates a clone of this path and optionally includes clones of its i
 
 Limitations: This method only clones the immediate children and does not recursively clone the entire subtree. For complex tree structures, consider using Tree.clone() instead.
 
-   **Signature:** ``clone(boolean) -> Path``
+   **Signature:** ``clone() -> Object``
 
-   **Parameters:**
-
-   * **arg0** (``bool``): - if true, includes clones of immediate child paths; if false, returns a clone without children
-
-   **Returns:** (``Path``) a new Path that is a copy of this path, optionally including children
+   **Returns:** ``Any``
 
 .. method:: compareTo(arg0)
 
-   **Signature:** ``compareTo(Path) -> int``
+   **Signature:** ``compareTo(Object) -> int``
 
    **Parameters:**
 
-   * **arg0** (``Path``)
+   * **arg0** (``Any``)
 
    **Returns:** ``int``
 
-.. method:: contains(arg0, arg1)
+.. method:: contains(arg0)
 
    Checks if this path contains the specified point within the given tolerance.
 
-   **Signature:** ``contains(PointInImage, double) -> boolean``
+   **Signature:** ``contains(PointInImage) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``PointInImage``)
-   * **arg1** (``float``)
+   * **arg0** (``PointInImage``): - the point to check
 
-   **Returns:** ``bool``
+   **Returns:** (``bool``) true if the path contains the point within tolerance
 
 .. method:: detachFromParent()
 
@@ -1183,6 +1254,14 @@ PathAndFillManager
 PathFitter
 ----------
 
+.. method:: applyFit()
+
+   Sets the fallback strategy for radii at locations in which fitting failed
+
+   **Signature:** ``applyFit() -> void``
+
+   **Returns:** ``None``
+
 .. method:: applySettings(arg0)
 
    **Signature:** ``applySettings(PathFitter) -> void``
@@ -1197,9 +1276,9 @@ PathFitter
 
    Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by setMaxRadius(int). Note that connectivity of path may need to be rebuilt upon fit.
 
-   **Signature:** ``call() -> Path``
+   **Signature:** ``call() -> Object``
 
-   **Returns:** (``Path``) the reference to the computed result. This Path is automatically set as the fitted version of input Path.
+   **Returns:** ``Any``
 
 
 PathManagerUI
@@ -1216,19 +1295,18 @@ PathManagerUI
 
    **Returns:** ``bool``
 
-.. method:: add(arg0, arg1, arg2)
+.. method:: add(arg0, arg1)
 
    Runs a menu command with options.
 
-   **Signature:** ``add(Component, Object, int) -> void``
+   **Signature:** ``add(String, Component) -> Component``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``Any``)
-   * **arg2** (``int``)
 
-   **Returns:** ``None``
+   **Returns:** ``Any``
 
 .. method:: applyComponentOrientation(arg0)
 
@@ -1254,11 +1332,11 @@ PathManagerUI
 
 .. method:: applyResourceBundle(arg0)
 
-   **Signature:** ``applyResourceBundle(ResourceBundle) -> void``
+   **Signature:** ``applyResourceBundle(String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
 
    **Returns:** ``None``
 
@@ -1331,13 +1409,14 @@ PathManagerUI
 
    **Returns:** ``int``
 
-.. method:: createBufferStrategy(arg0)
+.. method:: createBufferStrategy(arg0, arg1)
 
-   **Signature:** ``createBufferStrategy(int) -> void``
+   **Signature:** ``createBufferStrategy(int, BufferCapabilities) -> void``
 
    **Parameters:**
 
    * **arg0** (``int``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -1406,15 +1485,16 @@ PathManagerUI
 PathProfiler
 ------------
 
-.. method:: assignValues(arg0)
+.. method:: assignValues(arg0, arg1)
 
    Retrieves pixel intensities at each node of the Path storing them as Path values
 
-   **Signature:** ``assignValues(Path) -> void``
+   **Signature:** ``assignValues(Path, int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Path``): - the Path to be profiled
+   * **arg0** (``Path``)
+   * **arg1** (``int``)
 
    **Returns:** ``None``
 
@@ -1506,15 +1586,11 @@ PathStatistics
 PathStraightener
 ----------------
 
-.. method:: straighten(arg0)
+.. method:: straighten()
 
-   **Signature:** ``straighten(int) -> ImageProcessor``
+   **Signature:** ``straighten() -> ImagePlus``
 
-   **Parameters:**
-
-   * **arg0** (``int``): - the channel to bes straightened
-
-   **Returns:** (``Any``) the straightened path for the specified channel as an ImageProcessor object
+   **Returns:** ``Any``
 
 
 PointInImage
@@ -1670,18 +1746,17 @@ SNT
 
    **Returns:** ``bool``
 
-.. method:: autoTrace(arg0, arg1, arg2, arg3)
+.. method:: autoTrace(arg0, arg1, arg2)
 
    Automatically traces a path from a point A to a point B. See `autoTrace(List, PointInImage)` for details.
 
-   **Signature:** ``autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path``
+   **Signature:** ``autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path``
 
    **Parameters:**
 
    * **arg0** (``SNTPoint``)
    * **arg1** (``SNTPoint``)
    * **arg2** (``PointInImage``)
-   * **arg3** (``bool``)
 
    **Returns:** ``Path``
 
@@ -1800,23 +1875,34 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: add(arg0, arg1, arg2)
+.. method:: add(arg0, arg1)
 
-   **Signature:** ``add(Component, Object, int) -> void``
+   **Signature:** ``add(String, Component) -> Component``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``Any``)
-   * **arg2** (``int``)
 
-   **Returns:** ``None``
+   **Returns:** ``Any``
 
-.. method:: annotate(arg0, arg1, arg2)
+.. method:: annotate(arg0)
 
    Adds a subtitle to the chart.
 
-   **Signature:** ``annotate(String, String, String) -> void``
+   **Signature:** ``annotate(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - the subtitle text
+
+   **Returns:** ``None``
+
+.. method:: annotateCategory(arg0, arg1, arg2)
+
+   Annotates the specified category (Category plots only).
+
+   **Signature:** ``annotateCategory(String, String, String) -> void``
 
    **Parameters:**
 
@@ -1826,57 +1912,44 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: annotateCategory(arg0, arg1)
-
-   Annotates the specified category (Category plots only).
-
-   **Signature:** ``annotateCategory(String, String) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``str``): - the category to be annotated. Ignored if it does not exist in category axis.
-   * **arg1** (``str``)
-
-   **Returns:** ``None``
-
 .. method:: annotatePoint(arg0, arg1, arg2)
 
    Highlights a point in a histogram/XY plot by drawing a labeled arrow at the specified location.
 
-   **Signature:** ``annotatePoint(double, double, String) -> void``
+   **Signature:** ``annotatePoint([D, String, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``float``): - the array holding the focal point coordinates of the profile
-   * **arg1** (``float``)
+   * **arg0** (``Any``): - the array holding the focal point coordinates of the profile
+   * **arg1** (``str``)
    * **arg2** (``str``)
 
    **Returns:** ``None``
 
-.. method:: annotateXline(arg0, arg1)
+.. method:: annotateXline(arg0, arg1, arg2)
 
    Annotates the specified X-value (XY plots and histograms).
 
-   **Signature:** ``annotateXline(double, String) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``float``): - the X value to be annotated.
-   * **arg1** (``str``)
-
-   **Returns:** ``None``
-
-.. method:: annotateYline(arg0, arg1, arg2)
-
-   Annotates the specified Y-value (XY plots and histograms).
-
-   **Signature:** ``annotateYline(double, String, String) -> void``
+   **Signature:** ``annotateXline(double, String, String) -> void``
 
    **Parameters:**
 
    * **arg0** (``float``)
    * **arg1** (``str``)
    * **arg2** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: annotateYline(arg0, arg1)
+
+   Annotates the specified Y-value (XY plots and histograms).
+
+   **Signature:** ``annotateYline(double, String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the Y value to be annotated.
+   * **arg1** (``str``)
 
    **Returns:** ``None``
 
@@ -2074,33 +2147,30 @@ SNTService
 SNTTable
 --------
 
-.. method:: add(arg0)
+.. method:: add(arg0, arg1)
 
-   **Signature:** ``add(Column) -> boolean``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``bool``
-
-.. method:: appendColumn(arg0)
-
-   **Signature:** ``appendColumn(String) -> Column``
+   **Signature:** ``add(int, Object) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``int``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: appendColumn()
+
+   **Signature:** ``appendColumn() -> Column``
 
    **Returns:** ``Any``
 
 .. method:: appendColumns(arg0)
 
-   **Signature:** ``appendColumns(int) -> List``
+   **Signature:** ``appendColumns(String;) -> List``
 
    **Parameters:**
 
-   * **arg0** (``int``)
+   * **arg0** (``Any``)
 
    **Returns:** ``List[Any]``
 
@@ -2239,11 +2309,11 @@ Iterates through all cells in the table and replaces null values with the provid
 
 .. method:: geRowStats(arg0, arg1, arg2)
 
-   **Signature:** ``geRowStats(int, int, int) -> SummaryStatistics``
+   **Signature:** ``geRowStats(String, int, int) -> SummaryStatistics``
 
    **Parameters:**
 
-   * **arg0** (``int``)
+   * **arg0** (``str``)
    * **arg1** (``int``)
    * **arg2** (``int``)
 
@@ -2274,19 +2344,18 @@ SNTUI
 
    **Returns:** ``bool``
 
-.. method:: add(arg0, arg1, arg2)
+.. method:: add(arg0, arg1)
 
    Updates the status bar.
 
-   **Signature:** ``add(Component, Object, int) -> void``
+   **Signature:** ``add(String, Component) -> Component``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``Any``)
-   * **arg2** (``int``)
 
-   **Returns:** ``None``
+   **Returns:** ``Any``
 
 .. method:: applyComponentOrientation(arg0)
 
@@ -2300,11 +2369,11 @@ SNTUI
 
 .. method:: applyResourceBundle(arg0)
 
-   **Signature:** ``applyResourceBundle(ResourceBundle) -> void``
+   **Signature:** ``applyResourceBundle(String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
 
    **Returns:** ``None``
 
@@ -2366,13 +2435,14 @@ SNTUI
 
    **Returns:** (``int``) the current UI state, e.g., READY, RUNNING_CMD, etc.
 
-.. method:: createBufferStrategy(arg0)
+.. method:: createBufferStrategy(arg0, arg1)
 
-   **Signature:** ``createBufferStrategy(int) -> void``
+   **Signature:** ``createBufferStrategy(int, BufferCapabilities) -> void``
 
    **Parameters:**
 
    * **arg0** (``int``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -2453,14 +2523,13 @@ SNTUI
 
    **Returns:** ``None``
 
-.. method:: findComponentAt(arg0, arg1)
+.. method:: findComponentAt(arg0)
 
-   **Signature:** ``findComponentAt(int, int) -> Component``
+   **Signature:** ``findComponentAt(Point) -> Component``
 
    **Parameters:**
 
-   * **arg0** (``int``)
-   * **arg1** (``int``)
+   * **arg0** (``Any``)
 
    **Returns:** ``Any``
 
@@ -2506,11 +2575,11 @@ SWCPoint
 
 .. method:: compareTo(arg0)
 
-   **Signature:** ``compareTo(Object) -> int``
+   **Signature:** ``compareTo(SWCPoint) -> int``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``SWCPoint``)
 
    **Returns:** ``int``
 
@@ -2731,13 +2800,14 @@ TracerCanvas
 
    **Returns:** ``bool``
 
-.. method:: createBufferStrategy(arg0)
+.. method:: createBufferStrategy(arg0, arg1)
 
-   **Signature:** ``createBufferStrategy(int) -> void``
+   **Signature:** ``createBufferStrategy(int, BufferCapabilities) -> void``
 
    **Parameters:**
 
    * **arg0** (``int``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -2946,9 +3016,9 @@ Tree
 
 This method creates a complete copy of the tree including all paths and their relationships. Each path is cloned individually, and then the parent-child relationships are reconstructed in the cloned tree. This ensures that the cloned tree maintains the same structure as the original while being completely independent.
 
-   **Signature:** ``clone() -> Object``
+   **Signature:** ``clone() -> Tree``
 
-   **Returns:** ``Any``
+   **Returns:** (``Tree``) a new Tree that is a deep copy of this tree
 
 .. method:: downsample(arg0)
 
@@ -3012,13 +3082,13 @@ TreeColorMapper
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
 
-   **Signature:** ``map(Tree, LinearProfileStats, ColorTable) -> void``
+   **Signature:** ``map(Tree, String, String) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
-   * **arg1** (``Any``)
-   * **arg2** (``Any``)
+   * **arg1** (``str``)
+   * **arg2** (``str``)
 
    **Returns:** ``None``
 
@@ -3054,31 +3124,88 @@ TreeStatistics
    **Returns:** ``None``
 
 
-Viewer2D
+Tubeness
 --------
 
-.. method:: add(arg0, arg1)
+.. method:: accept(arg0)
 
-   Appends a tree to the viewer rendered after the specified measurement.
-
-   **Signature:** ``add(Tree, String) -> void``
+   **Signature:** ``accept(RandomAccessibleInterval) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
-   * **arg1** (``str``)
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: andThen(arg0)
+
+   **Signature:** ``andThen(Consumer) -> Consumer``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: in()
+
+   **Signature:** ``in() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: initialize()
+
+   **Signature:** ``initialize() -> void``
+
+   **Returns:** ``None``
+
+.. method:: ops()
+
+   **Signature:** ``ops() -> OpEnvironment``
+
+   **Returns:** ``Any``
+
+.. method:: out()
+
+   **Signature:** ``out() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: run(arg0)
+
+   **Signature:** ``run(Object) -> Object``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+
+Viewer2D
+--------
+
+.. method:: add(arg0)
+
+   Appends a tree to the viewer rendered after the specified measurement.
+
+   **Signature:** ``add(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the tree to be plotted
 
    **Returns:** ``None``
 
 .. method:: map(arg0, arg1, arg2)
 
-   **Signature:** ``map(Tree, LinearProfileStats, ColorTable) -> void``
+   **Signature:** ``map(Tree, String, String) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
-   * **arg1** (``Any``)
-   * **arg2** (``Any``)
+   * **arg1** (``str``)
+   * **arg2** (``str``)
 
    **Returns:** ``None``
 
@@ -3105,15 +3232,16 @@ Viewer2D
 Viewer3D
 --------
 
-.. method:: add(arg0)
+.. method:: add(arg0, arg1)
 
    Script friendly method to add a supported object (Tree, OBJMesh, AbstractDrawable, etc.) to this viewer. Note that collections of supported objects are also supported, which is an effective way of adding multiple items since the scene is only rebuilt once all items have been added.
 
-   **Signature:** ``add(Object) -> void``
+   **Signature:** ``add(File;, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the object to be added. No exception is triggered if null
+   * **arg0** (``Any``)
+   * **arg1** (``str``)
 
    **Returns:** ``None``
 
@@ -3154,20 +3282,18 @@ Viewer3D
 
    **Returns:** ``Any``
 
-.. method:: annotatePoint(arg0, arg1, arg2, arg3)
+.. method:: annotatePoint(arg0, arg1)
 
    Adds a highlighting point annotation to this viewer.
 
-   **Signature:** ``annotatePoint(SNTPoint, String, String, float) -> Annotation3D``
+   **Signature:** ``annotatePoint(SNTPoint, String) -> Annotation3D``
 
    **Parameters:**
 
-   * **arg0** (``SNTPoint``)
+   * **arg0** (``SNTPoint``): - the node to be highlighted
    * **arg1** (``str``)
-   * **arg2** (``str``)
-   * **arg3** (``float``)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the Annotation3D
 
 .. method:: annotatePoints(arg0, arg1)
 
@@ -3182,18 +3308,19 @@ Viewer3D
 
    **Returns:** (``Any``) the Annotation3D
 
-.. method:: annotateSurface(arg0, arg1)
+.. method:: annotateSurface(arg0, arg1, arg2)
 
    Computes a convex hull from a collection of points and adds it to the scene as an annotation.
 
-   **Signature:** ``annotateSurface(Collection, String) -> Annotation3D``
+   **Signature:** ``annotateSurface(Collection, String, boolean) -> Annotation3D``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the collection of points defining the convex set.
+   * **arg0** (``List[Any]``)
    * **arg1** (``str``)
+   * **arg2** (``bool``)
 
-   **Returns:** (``Any``) the Annotation3D
+   **Returns:** ``Any``
 
 .. method:: dispose()
 
@@ -3339,4 +3466,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

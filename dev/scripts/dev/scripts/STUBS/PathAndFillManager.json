@@ -1,0 +1,922 @@
+{
+  "class_name": "PathAndFillManager",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-01-02T22:23:57.395381",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addPath",
+      "overloads": [
+        {
+          "signature": "addPath(Path) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPath(Path, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addPath(Path, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addPath"
+    },
+    {
+      "name": "addPathAndFillListener",
+      "overloads": [
+        {
+          "signature": "addPathAndFillListener(PathAndFillListener) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PathAndFillListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addPathAndFillListener"
+    },
+    {
+      "name": "addTree",
+      "overloads": [
+        {
+          "signature": "addTree(Tree, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addTree"
+    },
+    {
+      "name": "addTrees",
+      "overloads": [
+        {
+          "signature": "addTrees(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: addTrees"
+    },
+    {
+      "name": "allPointsIterator",
+      "overloads": [
+        {
+          "signature": "allPointsIterator() -> Iterator",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Iterator"
+        }
+      ],
+      "documentation": "Java method: allPointsIterator"
+    },
+    {
+      "name": "anySelected",
+      "overloads": [
+        {
+          "signature": "anySelected() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: anySelected"
+    },
+    {
+      "name": "assignSpatialSettings",
+      "overloads": [
+        {
+          "signature": "assignSpatialSettings(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: assignSpatialSettings"
+    },
+    {
+      "name": "canvasResized",
+      "overloads": [
+        {
+          "signature": "canvasResized() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: canvasResized"
+    },
+    {
+      "name": "characters",
+      "overloads": [
+        {
+          "signature": "characters([C, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[C"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: characters"
+    },
+    {
+      "name": "clear",
+      "overloads": [
+        {
+          "signature": "clear() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: clear"
+    },
+    {
+      "name": "contentAdded",
+      "overloads": [
+        {
+          "signature": "contentAdded(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: contentAdded"
+    },
+    {
+      "name": "contentChanged",
+      "overloads": [
+        {
+          "signature": "contentChanged(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: contentChanged"
+    },
+    {
+      "name": "contentRemoved",
+      "overloads": [
+        {
+          "signature": "contentRemoved(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: contentRemoved"
+    },
+    {
+      "name": "contentSelected",
+      "overloads": [
+        {
+          "signature": "contentSelected(Content) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Content"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: contentSelected"
+    },
+    {
+      "name": "static createFromFile",
+      "overloads": [
+        {
+          "signature": "static createFromFile(String, [I) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager"
+        }
+      ],
+      "documentation": "Java method: static createFromFile"
+    },
+    {
+      "name": "static createFromGraph",
+      "overloads": [
+        {
+          "signature": "static createFromGraph(DirectedWeightedGraph, boolean) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "DirectedWeightedGraph",
+              "java_type": "DirectedWeightedGraph"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager"
+        }
+      ],
+      "documentation": "Java method: static createFromGraph"
+    },
+    {
+      "name": "static createFromNodes",
+      "overloads": [
+        {
+          "signature": "static createFromNodes(Collection) -> PathAndFillManager",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathAndFillManager"
+        }
+      ],
+      "documentation": "Java method: static createFromNodes"
+    },
+    {
+      "name": "declaration",
+      "overloads": [
+        {
+          "signature": "declaration(String, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: declaration"
+    },
+    {
+      "name": "deletePath",
+      "overloads": [
+        {
+          "signature": "deletePath(int) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "deletePath(Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: deletePath"
+    },
+    {
+      "name": "deletePaths",
+      "overloads": [
+        {
+          "signature": "deletePaths([I) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[I"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "deletePaths(Collection) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: deletePaths"
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: dispose"
+    },
+    {
+      "name": "downsampleAll",
+      "overloads": [
+        {
+          "signature": "downsampleAll(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: downsampleAll"
+    },
+    {
+      "name": "endDocument",
+      "overloads": [
+        {
+          "signature": "endDocument() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: endDocument"
+    },
+    {
+      "name": "endElement",
+      "overloads": [
+        {
+          "signature": "endElement(String, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: endElement"
+    },
+    {
+      "name": "endPrefixMapping",
+      "overloads": [
+        {
+          "signature": "endPrefixMapping(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: endPrefixMapping"
+    },
+    {
+      "name": "error",
+      "overloads": [
+        {
+          "signature": "error(SAXParseException) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SAXParseException"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: error"
+    },
+    {
+      "name": "exportAllPathsAsSWC",
+      "overloads": [
+        {
+          "signature": "exportAllPathsAsSWC(String) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: exportAllPathsAsSWC"
+    },
+    {
+      "name": "exportFillsAsCSV",
+      "overloads": [
+        {
+          "signature": "exportFillsAsCSV(File) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: exportFillsAsCSV"
+    },
+    {
+      "name": "exportToCSV",
+      "overloads": [
+        {
+          "signature": "exportToCSV(File) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: exportToCSV"
+    },
+    {
+      "name": "exportTree",
+      "overloads": [
+        {
+          "signature": "exportTree(int, File) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: exportTree"
+    },
+    {
+      "name": "fatalError",
+      "overloads": [
+        {
+          "signature": "fatalError(SAXParseException) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SAXParseException"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: fatalError"
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox(boolean) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: getBoundingBox"
+    },
+    {
+      "name": "getCorrespondences",
+      "overloads": [
+        {
+          "signature": "getCorrespondences(PathAndFillManager, double) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "PathAndFillManager"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getCorrespondences"
+    },
+    {
+      "name": "getLoadedFills",
+      "overloads": [
+        {
+          "signature": "getLoadedFills() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getLoadedFills"
+    },
+    {
+      "name": "getPath",
+      "overloads": [
+        {
+          "signature": "getPath(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        }
+      ],
+      "documentation": "Java method: getPath"
+    },
+    {
+      "name": "getPathFromID",
+      "overloads": [
+        {
+          "signature": "getPathFromID(int) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        }
+      ],
+      "documentation": "Java method: getPathFromID"
+    },
+    {
+      "name": "getPathFromName",
+      "overloads": [
+        {
+          "signature": "getPathFromName(String, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        }
+      ],
+      "documentation": "Java method: getPathFromName"
+    },
+    {
+      "name": "getPaths",
+      "overloads": [
+        {
+          "signature": "getPaths() -> ArrayList",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList"
+        }
+      ],
+      "documentation": "Java method: getPaths"
+    },
+    {
+      "name": "getPathsFiltered",
+      "overloads": [
+        {
+          "signature": "getPathsFiltered() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getPathsFiltered"
+    },
+    {
+      "name": "getPathsInROI",
+      "overloads": [
+        {
+          "signature": "getPathsInROI(Roi) -> Collection",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Roi"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection"
+        }
+      ],
+      "documentation": "Java method: getPathsInROI"
+    },
+    {
+      "name": "getPathsStructured",
+      "overloads": [
+        {
+          "signature": "getPathsStructured() -> Path;",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Path;"
+        },
+        {
+          "signature": "getPathsStructured(Collection) -> Path;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Path;"
+        }
+      ],
+      "documentation": "Java method: getPathsStructured"
+    },
+    {
+      "name": "getPlugin",
+      "overloads": [
+        {
+          "signature": "getPlugin() -> SNT",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNT"
+        }
+      ],
+      "documentation": "Java method: getPlugin"
+    },
+    {
+      "name": "getSWCFor",
+      "overloads": [
+        {
+          "signature": "getSWCFor(Collection) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: getSWCFor"
+    },
+    {
+      "name": "getSelectedPaths",
+      "overloads": [
+        {
+          "signature": "getSelectedPaths() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        }
+      ],
+      "documentation": "Java method: getSelectedPaths"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PathAndFillManager()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathAndFillManager(double, double, double, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for PathAndFillManager"
+    }
+  ]
+}

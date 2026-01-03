@@ -104,7 +104,7 @@ Getters Methods
    
 
 
-.. py:method:: getPlot(Path)
+.. py:method:: getPlot()
 
    Gets the plot profile as an ImageJ plot (all channels included).
 
@@ -114,7 +114,7 @@ Getters Methods
    Gets the profile for the specified path as a map of lists, with distances (or indices) stored under X_VALUES ("x-values") and intensities under Y_VALUES ("y-values").
 
 
-.. py:method:: getXYPlot()
+.. py:method:: getXYPlot(int)
 
    Gets the plot profile as an PlotService plot. It is recommended to call `DynamicCommand.setContext(org.scijava.Context)` beforehand.
 
@@ -201,17 +201,17 @@ Other Methods
    
 
 
-.. py:method:: addOutput(String, Class)
+.. py:method:: addOutput(ModuleItem)
 
    
 
 
-.. py:method:: assignValues(Path)
+.. py:method:: assignValues(Path, int)
 
    Retrieves pixel intensities at each node of the Path storing them as Path values
 
 
-.. py:method:: cancel()
+.. py:method:: cancel(String)
 
    
 

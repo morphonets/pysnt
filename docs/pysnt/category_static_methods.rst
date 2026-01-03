@@ -3,7 +3,7 @@ Static Methods Methods
 
 Static utility methods that can be called without object instances.
 
-Total methods in this category: **177**
+Total methods in this category: **195**
 
 .. contents:: Classes in this Category
    :local:
@@ -183,13 +183,15 @@ This method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)
 
    **Returns:** (``Any``) the anatomical descriptions associated with the Cartesian X,Y,Z axes
 
-.. method:: static isLeftHemisphere(arg0)
+.. method:: static isLeftHemisphere(arg0, arg1, arg2)
 
-   **Signature:** ``static isLeftHemisphere(SNTPoint) -> boolean``
+   **Signature:** ``static isLeftHemisphere(double, double, double) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``SNTPoint``)
+   * **arg0** (``float``)
+   * **arg1** (``float``)
+   * **arg2** (``float``)
 
    **Returns:** ``bool``
 
@@ -245,27 +247,31 @@ Annotation3D
 ColorMaps
 ---------
 
-.. method:: static applyPlasma(arg0)
+.. method:: static applyPlasma(arg0, arg1, arg2)
 
    Applies the "plasma" colormap to the specified (non-RGB) image
 
-   **Signature:** ``static applyPlasma(ImagePlus) -> void``
+   **Signature:** ``static applyPlasma(ImagePlus, int, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - A non-RGB image
+   * **arg0** (``Any``)
+   * **arg1** (``int``)
+   * **arg2** (``bool``)
 
    **Returns:** ``None``
 
-.. method:: static applyViridis(arg0)
+.. method:: static applyViridis(arg0, arg1, arg2)
 
    Applies the "viridis" colormap to the specified (non-RGB) image
 
-   **Signature:** ``static applyViridis(ImagePlus) -> void``
+   **Signature:** ``static applyViridis(ImagePlus, int, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - A non-RGB image
+   * **arg0** (``Any``)
+   * **arg1** (``int``)
+   * **arg2** (``bool``)
 
    **Returns:** ``None``
 
@@ -376,6 +382,23 @@ FlyCircuitLoader
    **Returns:** ``None``
 
 
+Frangi
+------
+
+.. method:: static apply(arg0, arg1, arg2, arg3)
+
+   **Signature:** ``static apply(ImgPlus, [D, double, int) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+   * **arg2** (``float``)
+   * **arg3** (``int``)
+
+   **Returns:** ``Any``
+
+
 GroupedTreeStatistics
 ---------------------
 
@@ -406,6 +429,59 @@ ImgUtils
 
    **Returns:** (``List[Any]``) the list of Intervals
 
+.. method:: static crop(arg0, arg1, arg2, arg3)
+
+   **Signature:** ``static crop(ImgPlus, [J, [J, boolean) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+   * **arg2** (``Any``)
+   * **arg3** (``bool``)
+
+   **Returns:** ``Any``
+
+.. method:: static dropSingletonDimensions(arg0)
+
+   **Signature:** ``static dropSingletonDimensions(ImgPlus) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static findSpatialAxisIndices(arg0)
+
+   **Signature:** ``static findSpatialAxisIndices(ImgPlus) -> [I``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static findSpatialAxisIndicesWithFallback(arg0)
+
+   **Signature:** ``static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static getCalibration(arg0)
+
+   **Signature:** ``static getCalibration(ImgPlus) -> Calibration``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
 .. method:: static getCtSlice(arg0, arg1, arg2)
 
    **Signature:** ``static getCtSlice(Dataset, int, int) -> RandomAccessibleInterval``
@@ -431,6 +507,37 @@ ImgUtils
    * **arg2** (``int``)
 
    **Returns:** (``Any``) the view RAI
+
+.. method:: static getOrigin(arg0, arg1)
+
+   **Signature:** ``static getOrigin(ImgPlus, AxisType) -> double``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``float``
+
+.. method:: static getOrigins(arg0)
+
+   **Signature:** ``static getOrigins(ImgPlus) -> [D``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static imgPlusToCalibration(arg0)
+
+   **Signature:** ``static imgPlusToCalibration(ImgPlus) -> Calibration``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
 
 .. method:: static impToRealRai5d(arg0)
 
@@ -530,6 +637,28 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 
    **Returns:** (``Any``) the subvolume
 
+.. method:: static toImagePlus(arg0)
+
+   **Signature:** ``static toImagePlus(ImgPlus) -> ImagePlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static wrapWithAxes(arg0, arg1, arg2)
+
+   **Signature:** ``static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+   * **arg2** (``str``)
+
+   **Returns:** ``Any``
+
 
 ImpUtils
 --------
@@ -548,6 +677,29 @@ ImpUtils
    * **arg3** (``int``)
 
    **Returns:** (``str``) ascii art
+
+.. method:: static binarize(arg0, arg1, arg2)
+
+   **Signature:** ``static binarize(ImagePlus, double, double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``float``)
+   * **arg2** (``float``)
+
+   **Returns:** ``None``
+
+.. method:: static calibrationToAxes(arg0, arg1)
+
+   **Signature:** ``static calibrationToAxes(Calibration, int) -> CalibratedAxis;``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``int``)
+
+   **Returns:** ``Any``
 
 .. method:: static combineSkeletons(arg0, arg1)
 
@@ -697,11 +849,11 @@ ImpUtils
 
 .. method:: static getMIP(arg0)
 
-   **Signature:** ``static getMIP(ImagePlus) -> ImagePlus``
+   **Signature:** ``static getMIP(Collection) -> ImagePlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``Any``
 
@@ -801,13 +953,14 @@ ImpUtils
 
    **Returns:** ``float``
 
-.. method:: static open(arg0)
+.. method:: static open(arg0, arg1)
 
-   **Signature:** ``static open(File) -> ImagePlus``
+   **Signature:** ``static open(String, String) -> ImagePlus``
 
    **Parameters:**
 
    * **arg0** (``str``)
+   * **arg1** (``str``)
 
    **Returns:** ``Any``
 
@@ -922,6 +1075,28 @@ ImpUtils
 
    **Returns:** ``Any``
 
+.. method:: static toImgPlus(arg0)
+
+   **Signature:** ``static toImgPlus(ImagePlus) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: static toImgPlus3D(arg0, arg1, arg2)
+
+   **Signature:** ``static toImgPlus3D(ImagePlus, int, int) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``int``)
+   * **arg2** (``int``)
+
+   **Returns:** ``Any``
+
 .. method:: static toStack(arg0)
 
    **Signature:** ``static toStack(Collection) -> ImagePlus``
@@ -932,18 +1107,16 @@ ImpUtils
 
    **Returns:** ``Any``
 
-.. method:: static zoomTo(arg0, arg1, arg2, arg3)
+.. method:: static zoomTo(arg0, arg1)
 
-   **Signature:** ``static zoomTo(ImagePlus, double, int, int) -> void``
+   **Signature:** ``static zoomTo(ImagePlus, Collection) -> double``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``float``)
-   * **arg2** (``int``)
-   * **arg3** (``int``)
+   * **arg1** (``List[Any]``)
 
-   **Returns:** ``None``
+   **Returns:** ``float``
 
 
 InsectBrainLoader
@@ -1052,11 +1225,11 @@ MouseLightLoader
 
 .. method:: static extractTrees(arg0, arg1)
 
-   **Signature:** ``static extractTrees(File, String) -> Map``
+   **Signature:** ``static extractTrees(InputStream, String) -> Map``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``Any``)
    * **arg1** (``str``)
 
    **Returns:** ``Dict[str, Any]``
@@ -1099,17 +1272,18 @@ MouseLightQuerier
 
    **Returns:** (``List[Any]``) list of all neuron IDs
 
-.. method:: static getIDs(arg0)
+.. method:: static getIDs(arg0, arg1)
 
    Gets neuron IDs matching the specified collection of IDs or DOIs.
 
-   **Signature:** ``static getIDs(AllenCompartment) -> List``
+   **Signature:** ``static getIDs(String, boolean) -> List``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the collection of IDs or DOIs to search for
+   * **arg0** (``str``)
+   * **arg1** (``bool``)
 
-   **Returns:** (``List[Any]``) list of matching neuron IDs
+   **Returns:** ``List[Any]``
 
 .. method:: static isDatabaseAvailable()
 
@@ -1157,11 +1331,11 @@ MultiTreeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Tree) -> void``
+   **Signature:** ``static unMap(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``None``
 
@@ -1250,11 +1424,11 @@ NodeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Tree) -> void``
+   **Signature:** ``static unMap(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``None``
 
@@ -1294,11 +1468,11 @@ PCAnalyzer
 
    Computes the principal axes for a collection of SNTPoints.
 
-   **Signature:** ``static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;``
+   **Signature:** ``static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the collection of points to analyze
+   * **arg0** (``Any``): - the collection of points to analyze
 
    **Returns:** (``Any``) array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails
 
@@ -1502,18 +1676,20 @@ SNTChart
 
    **Returns:** ``None``
 
-.. method:: static combine(arg0, arg1)
+.. method:: static combine(arg0, arg1, arg2, arg3)
 
    Combines a collection of charts into a multipanel montage.
 
-   **Signature:** ``static combine(Collection, boolean) -> SNTChart``
+   **Signature:** ``static combine(Collection, int, int, boolean) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
-   * **arg1** (``bool``)
+   * **arg0** (``List[Any]``): - input charts
+   * **arg1** (``int``)
+   * **arg2** (``int``)
+   * **arg3** (``bool``)
 
-   **Returns:** ``SNTChart``
+   **Returns:** (``SNTChart``) the frame containing the montage
 
 
 SNTColor
@@ -1531,6 +1707,18 @@ SNTColor
 
    **Returns:** (``Any``) the averaged color. Note that an average will never be accurate because the RGB space is not linear. Color.BLACK is returned if all colors in input collection are null;
 
+.. method:: static fromHex(arg0)
+
+   Returns an AWT Color from a (#)RRGGBB(AA) hex string.
+
+   **Signature:** ``static fromHex(String) -> Color``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - the input string
+
+   **Returns:** (``Any``) the converted AWT color
+
 .. method:: static interpolateNullEntries(arg0)
 
    Replaces null colors in an array with the average of flanking non-null colors.
@@ -1542,6 +1730,16 @@ SNTColor
    * **arg0** (``Any``): - the color array
 
    **Returns:** ``None``
+
+.. method:: static valueOf(arg0)
+
+   **Signature:** ``static valueOf(String) -> ColorRGB``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``Any``
 
 
 SNTPoint
@@ -1559,13 +1757,15 @@ SNTPoint
 
    **Returns:** (``PointInImage``) the average point, or null if the collection is null or empty
 
-.. method:: static of(arg0)
+.. method:: static of(arg0, arg1, arg2)
 
-   **Signature:** ``static of(Number;) -> PointInImage``
+   **Signature:** ``static of(Number, Number, Number) -> PointInImage``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Union[int, float]``)
+   * **arg1** (``Union[int, float]``)
+   * **arg2** (``Union[int, float]``)
 
    **Returns:** ``PointInImage``
 
@@ -1592,13 +1792,14 @@ SNTUtils
 
    **Returns:** ``None``
 
-.. method:: static error(arg0)
+.. method:: static error(arg0, arg1)
 
-   **Signature:** ``static error(String) -> void``
+   **Signature:** ``static error(String, Throwable) -> void``
 
    **Parameters:**
 
    * **arg0** (``str``)
+   * **arg1** (``Any``)
 
    **Returns:** ``None``
 
@@ -1848,18 +2049,16 @@ SkeletonConverter
 
    **Returns:** ``None``
 
-.. method:: static skeletonize(arg0, arg1, arg2, arg3)
+.. method:: static skeletonize(arg0, arg1)
 
    Convenience method to skeletonize a thresholded image using Skeletonize3D_.
 
-   **Signature:** ``static skeletonize(ImagePlus, double, double, boolean) -> void``
+   **Signature:** ``static skeletonize(ImagePlus, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``float``)
-   * **arg2** (``float``)
-   * **arg3** (``bool``)
+   * **arg0** (``Any``): - The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.
+   * **arg1** (``bool``)
 
    **Returns:** ``None``
 
@@ -1913,16 +2112,17 @@ Tree
 
    **Returns:** (``Dict[str, Any]``) the map mapping swct type flags (e.g., Path.SWC_AXON, Path.SWC_DENDRITE, etc.) and their respective labels
 
-.. method:: static listFromDir(arg0, arg1)
+.. method:: static listFromDir(arg0, arg1, arg2)
 
    Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.
 
-   **Signature:** ``static listFromDir(String, String) -> List``
+   **Signature:** ``static listFromDir(String, String, String;) -> List``
 
    **Parameters:**
 
    * **arg0** (``str``)
    * **arg1** (``str``)
+   * **arg2** (``Any``)
 
    **Returns:** ``List[Any]``
 
@@ -1942,11 +2142,11 @@ TreeColorMapper
 
 .. method:: static unMap(arg0)
 
-   **Signature:** ``static unMap(Tree) -> void``
+   **Signature:** ``static unMap(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``)
+   * **arg0** (``List[Any]``)
 
    **Returns:** ``None``
 
@@ -1980,6 +2180,21 @@ TreeStatistics
    * **arg1** (``str``)
 
    **Returns:** (``TreeStatistics``) the TreeStatistics instance
+
+
+Tubeness
+--------
+
+.. method:: static apply(arg0, arg1)
+
+   **Signature:** ``static apply(ImgPlus, double) -> ImgPlus``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``float``)
+
+   **Returns:** ``Any``
 
 
 VFBUtils
@@ -2097,4 +2312,4 @@ ZBAtlasUtils
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

@@ -1,7 +1,7 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.599439",
+  "extracted_at": "2026-01-02T22:36:44.802339",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -56,33 +56,6 @@
       "name": "autoTrace",
       "overloads": [
         {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg2",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
           "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
           "params": [
             {
@@ -116,6 +89,33 @@
               "name": "arg1",
               "type": "PointInImage",
               "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path"
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg2",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "Path",
@@ -751,6 +751,12 @@
       "name": "getImagePlus",
       "overloads": [
         {
+          "signature": "getImagePlus() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
@@ -759,12 +765,6 @@
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus"
-        },
-        {
-          "signature": "getImagePlus() -> ImagePlus",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus"
         }
@@ -825,6 +825,52 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "PathAndFillManager"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus, int, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
             }
           ],
           "return_type": "None",

@@ -114,7 +114,7 @@ Getters Methods
    
 
 
-.. py:method:: static isLeftHemisphere(SNTPoint)
+.. py:method:: static isLeftHemisphere(double, double, double)
 
    
 

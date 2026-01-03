@@ -1,9 +1,9 @@
 {
   "class_name": "MouseLightLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-19T11:06:20.389019",
+  "extracted_at": "2026-01-02T22:36:44.594121",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.451252",
+  "enhancement_timestamp": "2026-01-02T22:43:26.205814",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -92,12 +92,12 @@
       "name": "static extractTrees",
       "overloads": [
         {
-          "signature": "static extractTrees(File, String) -> Map",
+          "signature": "static extractTrees(InputStream, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "File",
+              "type": "Any",
+              "java_type": "InputStream",
               "description": "",
               "javadoc_name": "param_0"
             },
@@ -115,12 +115,12 @@
           "throws": {}
         },
         {
-          "signature": "static extractTrees(InputStream, String) -> Map",
+          "signature": "static extractTrees(File, String) -> Map",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream",
+              "type": "str",
+              "java_type": "File",
               "description": "",
               "javadoc_name": null
             },
@@ -368,6 +368,16 @@
       "name": "getTree",
       "overloads": [
         {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the neuron as a Tree, or null if data could not be retrieved",
+          "throws": {
+            "IllegalArgumentException": "- if retrieval of data for this neuron is not possible"
+          }
+        },
+        {
           "signature": "getTree(String) -> Tree",
           "params": [
             {
@@ -382,16 +392,6 @@
           "java_return_type": "Tree",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "getTree() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "the neuron as a Tree, or null if data could not be retrieved",
-          "throws": {
-            "IllegalArgumentException": "- if retrieval of data for this neuron is not possible"
-          }
         },
         {
           "signature": "getTree(String, ColorRGB) -> Tree",
@@ -499,12 +499,12 @@
       "name": "save",
       "overloads": [
         {
-          "signature": "save(File) -> boolean",
+          "signature": "save(String) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "str",
-              "java_type": "File",
+              "java_type": "String",
               "description": "- the output directory or the output file",
               "javadoc_name": "file"
             }
@@ -515,12 +515,12 @@
           "throws": {}
         },
         {
-          "signature": "save(String) -> boolean",
+          "signature": "save(File) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "str",
-              "java_type": "String",
+              "java_type": "File",
               "description": "",
               "javadoc_name": null
             }
@@ -634,8 +634,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
     "extractTrees(File, String)",
+    "Constant Field Values",
     "Object",
     "saveAsJSON(String)"
   ],

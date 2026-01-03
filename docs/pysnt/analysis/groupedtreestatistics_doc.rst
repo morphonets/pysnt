@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getBoxPlot(String, Collection, double, boolean)
+.. py:method:: getBoxPlot(String, Collection)
 
    Assembles a Box and Whisker Plot for the specified feature.
 
@@ -112,7 +112,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: addGroup(Collection, String)
+.. py:method:: addGroup(Collection, String, String;)
 
    Adds a comparison group to the analysis queue.
 

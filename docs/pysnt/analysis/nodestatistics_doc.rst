@@ -64,12 +64,12 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: get(BrainAnnotation)
+.. py:method:: get(BrainAnnotation, boolean)
 
    Gets the list of nodes associated with the specified compartment (neuropil label).
 
 
-.. py:method:: getAnnotatedFrequencies(int, String)
+.. py:method:: getAnnotatedFrequencies()
 
    Retrieves the count frequencies across brain compartment.
 
@@ -89,7 +89,7 @@ Getters Methods
    Retrieves the histogram of count frequencies across brain areas of the specified ontology level.
 
 
-.. py:method:: getAnnotatedNodes()
+.. py:method:: getAnnotatedNodes(int)
 
    Splits the nodes being analyzed into groups sharing the same brain annotation.
 

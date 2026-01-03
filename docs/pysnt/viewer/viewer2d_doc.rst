@@ -208,12 +208,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Tree, String)
+.. py:method:: add(Object)
 
    Appends a tree to the viewer rendered after the specified measurement.
 
 
-.. py:method:: addColorBarLegend()
+.. py:method:: addColorBarLegend(ColorTable, double, double)
 
    Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note that when performing mapping to different measurements, the legend reflects only the last mapped measurement.
 
@@ -243,7 +243,7 @@ Other Methods
    
 
 
-.. py:method:: map(Tree, LinearProfileStats, ColorTable)
+.. py:method:: map(Tree, String, String)
 
    
 

@@ -1,9 +1,9 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.599439",
+  "extracted_at": "2026-01-02T22:36:44.802339",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.455244",
+  "enhancement_timestamp": "2026-01-02T22:43:26.210475",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -86,43 +86,6 @@
       "name": "autoTrace",
       "overloads": [
         {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "PointInImage",
-              "java_type": "PointInImage",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
           "params": [
             {
@@ -173,6 +136,43 @@
           "return_type": "Path",
           "java_return_type": "Path",
           "return_description": "the path a reference to the computed path.",
+          "throws": {}
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
           "throws": {}
         },
         {
@@ -1171,6 +1171,14 @@
       "name": "getImagePlus",
       "overloads": [
         {
+          "signature": "getImagePlus() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
@@ -1184,14 +1192,6 @@
           "return_type": "Any",
           "java_return_type": "ImagePlus",
           "return_description": "the image associate with the specified view, or null if the view is not available",
-          "throws": {}
-        },
-        {
-          "signature": "getImagePlus() -> ImagePlus",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -1287,6 +1287,52 @@
           "java_return_type": "void"
         },
         {
+          "signature": "SNT(ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus, int, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "SNT(Context, ImagePlus)",
           "params": [
             {
@@ -1329,15 +1375,15 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "isSecondaryDataAvailable()",
     "loadSecondaryImage(ImagePlus)",
-    "HessianGenerationCallback",
-    "MultiDThreePanes",
-    "getSecondaryDataAsImp()",
-    "SearchProgressCallback",
     "rebuildDisplayCanvases()",
+    "MultiDThreePanes",
+    "HessianGenerationCallback",
     "autoTrace(List, PointInImage)",
-    "loadSecondaryImage(File)"
+    "loadSecondaryImage(File)",
+    "isSecondaryDataAvailable()",
+    "getSecondaryDataAsImp()",
+    "SearchProgressCallback"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

@@ -1,21 +1,21 @@
 {
   "class_name": "PCAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.454484",
+  "extracted_at": "2026-01-02T22:36:44.661176",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.462745",
+  "enhancement_timestamp": "2026-01-02T22:43:26.217622",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "static getPrincipalAxes",
       "overloads": [
         {
-          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "type": "Any",
+              "java_type": "Vertices",
               "description": "- the collection of points to analyze",
               "javadoc_name": "points"
             }
@@ -71,6 +71,22 @@
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }

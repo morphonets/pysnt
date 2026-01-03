@@ -1,9 +1,21 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.492408",
+  "extracted_at": "2026-01-02T22:36:44.697485",
   "extractor_version": "1.0.0",
   "methods": [
+    {
+      "name": "applyFit",
+      "overloads": [
+        {
+          "signature": "applyFit() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: applyFit"
+    },
     {
       "name": "applySettings",
       "overloads": [
@@ -26,31 +38,19 @@
       "name": "call",
       "overloads": [
         {
-          "signature": "call() -> Path",
-          "params": [],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
           "signature": "call() -> Object",
           "params": [],
           "return_type": "Any",
           "java_return_type": "Object"
+        },
+        {
+          "signature": "call() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path"
         }
       ],
       "documentation": "Java method: call"
-    },
-    {
-      "name": "getMaxRadius",
-      "overloads": [
-        {
-          "signature": "getMaxRadius() -> int",
-          "params": [],
-          "return_type": "int",
-          "java_return_type": "int"
-        }
-      ],
-      "documentation": "Java method: getMaxRadius"
     },
     {
       "name": "getPath",
@@ -89,6 +89,24 @@
       "documentation": "Java method: readPreferences"
     },
     {
+      "name": "setCrossSectionRadius",
+      "overloads": [
+        {
+          "signature": "setCrossSectionRadius(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setCrossSectionRadius"
+    },
+    {
       "name": "setImage",
       "overloads": [
         {
@@ -107,10 +125,10 @@
       "documentation": "Java method: setImage"
     },
     {
-      "name": "setMaxRadius",
+      "name": "setNodeRadiusFallback",
       "overloads": [
         {
-          "signature": "setMaxRadius(int) -> void",
+          "signature": "setNodeRadiusFallback(int) -> void",
           "params": [
             {
               "name": "arg0",
@@ -122,7 +140,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java method: setMaxRadius"
+      "documentation": "Java method: setNodeRadiusFallback"
     },
     {
       "name": "setProgressCallback",
@@ -146,24 +164,6 @@
         }
       ],
       "documentation": "Java method: setProgressCallback"
-    },
-    {
-      "name": "setRadiusFallback",
-      "overloads": [
-        {
-          "signature": "setRadiusFallback(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setRadiusFallback"
     },
     {
       "name": "setReplaceNodes",
@@ -243,12 +243,49 @@
           "java_return_type": "void"
         },
         {
-          "signature": "PathFitter(RandomAccessibleInterval, Path)",
+          "signature": "PathFitter(RandomAccessibleInterval, Path, double, double, double, String)",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg5",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
             },
             {
               "name": "arg1",
@@ -281,14 +318,6 @@
     }
   ],
   "static_fields": [
-    {
-      "name": "DEFAULT_MAX_RADIUS",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field DEFAULT_MAX_RADIUS of type int",
-      "is_static": true,
-      "is_final": false
-    },
     {
       "name": "DEFAULT_MIN_ANGLE",
       "type": "float",

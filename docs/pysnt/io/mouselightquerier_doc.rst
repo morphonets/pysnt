@@ -69,7 +69,7 @@ Getters Methods
    Gets all available neuron IDs from the database.
 
 
-.. py:method:: static getIDs(AllenCompartment)
+.. py:method:: static getIDs(String, boolean)
 
    Gets neuron IDs matching the specified collection of IDs or DOIs.
 

@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Getters'
-Total matching methods: **540**
+Total matching methods: **544**
 
 Matching Methods
 ----------------
@@ -231,6 +231,14 @@ Matching Methods
      - :class:`Tree`
      - ``float``
      - Retrieves an approximate estimate of Tree's volume by approximating the volume of each path, and summing to total. The...
+   * - :meth:`Frangi.getArity`
+     - :class:`Frangi`
+     - ``int``
+     - No description available
+   * - :meth:`Tubeness.getArity`
+     - :class:`Tubeness`
+     - ``int``
+     - No description available
    * - :meth:`Tree.getAssignedValue`
      - :class:`Tree`
      - ``float``
@@ -395,6 +403,10 @@ Matching Methods
      - :class:`GroupedTreeStatistics`
      - ``SNTChart``
      - Assembles a Box and Whisker Plot for the specified feature.
+   * - :meth:`MultiTreeStatistics.getBoxPlot`
+     - :class:`MultiTreeStatistics`
+     - ``SNTChart``
+     - No description available
    * - :meth:`ConvexHullAnalyzer.getBoxivity`
      - :class:`ConvexHullAnalyzer`
      - ``float``
@@ -1115,6 +1127,14 @@ Matching Methods
      - :class:`Tree`
      - ``Any``
      - Gets an empty image capable of holding the skeletonized version of this tree.
+   * - :meth:`Frangi.getIndependentInstance`
+     - :class:`Frangi`
+     - ``Any``
+     - No description available
+   * - :meth:`Tubeness.getIndependentInstance`
+     - :class:`Tubeness`
+     - ``Any``
+     - No description available
    * - :meth:`NodeProfiler.getInfo`
      - :class:`NodeProfiler`
      - ``Any``
@@ -1239,10 +1259,6 @@ Matching Methods
      - :class:`Viewer3D`
      - ``Any``
      - Returns a reference to 'RV Controls' panel.
-   * - :meth:`PathFitter.getMaxRadius`
-     - :class:`PathFitter`
-     - ``int``
-     - Gets the current max radius (in pixels)
    * - :meth:`ShollAnalyzer.getMaximaRadii`
      - :class:`ShollAnalyzer`
      - ``List[Any]``
@@ -2178,4 +2194,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-12-29 16:01:49*
+*Filtered index generated on 2026-01-02 22:43:26*

@@ -78,7 +78,7 @@ Other Methods
    
 
 
-.. py:method:: add(Component, Object, int)
+.. py:method:: add(String, Component)
 
    Updates the status bar.
 
@@ -138,7 +138,7 @@ Other Methods
    
 
 
-.. py:method:: addPropertyChangeListener(String, PropertyChangeListener)
+.. py:method:: addPropertyChangeListener(PropertyChangeListener)
 
    
 
@@ -163,7 +163,7 @@ Other Methods
    
 
 
-.. py:method:: applyResourceBundle(ResourceBundle)
+.. py:method:: applyResourceBundle(String)
 
    
 
@@ -193,7 +193,7 @@ Other Methods
    Gets the current UI state.
 
 
-.. py:method:: createBufferStrategy(int)
+.. py:method:: createBufferStrategy(int, BufferCapabilities)
 
    
 
@@ -243,7 +243,7 @@ Other Methods
    
 
 
-.. py:method:: findComponentAt(int, int)
+.. py:method:: findComponentAt(Point)
 
    
 

@@ -178,7 +178,7 @@ Other Methods
    
 
 
-.. py:method:: static skeletonize(ImagePlus, double, double, boolean)
+.. py:method:: static skeletonize(ImagePlus, boolean)
 
    Convenience method to skeletonize a thresholded image using Skeletonize3D_.
 

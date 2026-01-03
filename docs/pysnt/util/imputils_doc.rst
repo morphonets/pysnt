@@ -89,7 +89,7 @@ Getters Methods
    
 
 
-.. py:method:: static getMIP(ImagePlus)
+.. py:method:: static getMIP(Collection)
 
    
 
@@ -156,6 +156,16 @@ Other Methods
    Converts the specified image into ascii art.
 
 
+.. py:method:: static binarize(ImagePlus, double, double)
+
+   
+
+
+.. py:method:: static calibrationToAxes(Calibration, int)
+
+   
+
+
 .. py:method:: static combineSkeletons(Collection, boolean)
 
    
@@ -211,7 +221,7 @@ Other Methods
    
 
 
-.. py:method:: static open(File)
+.. py:method:: static open(String, String)
 
    
 
@@ -256,12 +266,22 @@ Other Methods
    
 
 
+.. py:method:: static toImgPlus(ImagePlus)
+
+   
+
+
+.. py:method:: static toImgPlus3D(ImagePlus, int, int)
+
+   
+
+
 .. py:method:: static toStack(Collection)
 
    
 
 
-.. py:method:: static zoomTo(ImagePlus, double, int, int)
+.. py:method:: static zoomTo(ImagePlus, Collection)
 
    
 

@@ -123,7 +123,7 @@ Setters Methods
    Script friendly method to assign a transparency to the annotation.
 
 
-.. py:method:: setWireframeColor(ColorRGB)
+.. py:method:: setWireframeColor(String)
 
    Assigns a wireframe color to the annotation.
 

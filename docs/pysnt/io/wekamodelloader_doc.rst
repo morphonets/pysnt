@@ -176,12 +176,12 @@ Other Methods
    
 
 
-.. py:method:: addOutput(String, Class)
+.. py:method:: addOutput(ModuleItem)
 
    
 
 
-.. py:method:: cancel()
+.. py:method:: cancel(String)
 
    
 

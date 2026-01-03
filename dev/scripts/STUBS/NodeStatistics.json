@@ -1,7 +1,7 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.451251",
+  "extracted_at": "2026-01-02T22:36:44.657684",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -72,18 +72,6 @@
       "name": "get",
       "overloads": [
         {
-          "signature": "get(BrainAnnotation) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "get(BrainAnnotation, boolean) -> List",
           "params": [
             {
@@ -99,6 +87,18 @@
           ],
           "return_type": "List[Any]",
           "java_return_type": "List"
+        },
+        {
+          "signature": "get(BrainAnnotation) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
         }
       ],
       "documentation": "Java method: get"
@@ -107,19 +107,8 @@
       "name": "getAnnotatedFrequencies",
       "overloads": [
         {
-          "signature": "getAnnotatedFrequencies(int, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
+          "signature": "getAnnotatedFrequencies() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         },
@@ -136,8 +125,19 @@
           "java_return_type": "Map"
         },
         {
-          "signature": "getAnnotatedFrequencies() -> Map",
-          "params": [],
+          "signature": "getAnnotatedFrequencies(int, String) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         }
@@ -223,12 +223,6 @@
       "name": "getAnnotatedNodes",
       "overloads": [
         {
-          "signature": "getAnnotatedNodes() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
             {
@@ -237,6 +231,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
+          "signature": "getAnnotatedNodes() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
         }
@@ -334,18 +334,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "NodeStatistics(Collection)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "NodeStatistics(Collection, Tree)",
           "params": [
             {
@@ -357,6 +345,18 @@
               "name": "arg1",
               "type": "Tree",
               "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "NodeStatistics(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",

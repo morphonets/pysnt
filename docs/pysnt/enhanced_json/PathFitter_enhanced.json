@@ -1,11 +1,31 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.492408",
+  "extracted_at": "2026-01-02T22:36:44.697485",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.455043",
+  "enhancement_timestamp": "2026-01-02T22:43:26.210200",
   "enhancement_version": "1.0.0",
   "methods": [
+    {
+      "name": "applyFit",
+      "overloads": [
+        {
+          "signature": "applyFit() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyFit",
+      "javadoc_description": "Sets the fallback strategy for radii at locations in which fitting failed",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
     {
       "name": "applySettings",
       "overloads": [
@@ -38,6 +58,14 @@
       "name": "call",
       "overloads": [
         {
+          "signature": "call() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "call() -> Path",
           "params": [],
           "return_type": "Path",
@@ -46,14 +74,6 @@
           "throws": {
             "IllegalArgumentException": "- If path already has been fitted, and its fitted version not nullified"
           }
-        },
-        {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: call",
@@ -64,26 +84,6 @@
       "see_also": [
         "setScope(int)"
       ],
-      "examples": []
-    },
-    {
-      "name": "getMaxRadius",
-      "overloads": [
-        {
-          "signature": "getMaxRadius() -> int",
-          "params": [],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "the maximum radius currently being considered, or DEFAULT_MAX_RADIUS if setMaxRadius(int) has not been called",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getMaxRadius",
-      "javadoc_description": "Gets the current max radius (in pixels)",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
       "examples": []
     },
     {
@@ -147,6 +147,34 @@
       "examples": []
     },
     {
+      "name": "setCrossSectionRadius",
+      "overloads": [
+        {
+          "signature": "setCrossSectionRadius(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the new maximum radius",
+              "javadoc_name": "maxRadius"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCrossSectionRadius",
+      "javadoc_description": "Sets the max radius (side search) for constraining the fit.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "setImage",
       "overloads": [
         {
@@ -175,17 +203,17 @@
       "examples": []
     },
     {
-      "name": "setMaxRadius",
+      "name": "setNodeRadiusFallback",
       "overloads": [
         {
-          "signature": "setMaxRadius(int) -> void",
+          "signature": "setNodeRadiusFallback(int) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "int",
               "java_type": "int",
-              "description": "- the new maximum radius",
-              "javadoc_name": "maxRadius"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -194,8 +222,8 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: setMaxRadius",
-      "javadoc_description": "Sets the max radius (side search) for constraining the fit.",
+      "documentation": "Java method: setNodeRadiusFallback",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -231,34 +259,6 @@
       ],
       "documentation": "Java method: setProgressCallback",
       "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "setRadiusFallback",
-      "overloads": [
-        {
-          "signature": "setRadiusFallback(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setRadiusFallback",
-      "javadoc_description": "Sets the fallback strategy for radii at locations in which fitting failed",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -373,12 +373,49 @@
           "java_return_type": "void"
         },
         {
-          "signature": "PathFitter(RandomAccessibleInterval, Path)",
+          "signature": "PathFitter(RandomAccessibleInterval, Path, double, double, double, String)",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg5",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
             },
             {
               "name": "arg1",
@@ -426,27 +463,27 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Path",
     "Callable",
-    "Object",
     "Constant Field Values",
-    "setScope(int)"
+    "Path",
+    "setScope(int)",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 13,
       "total_json_methods": 13,
-      "total_matches": 13,
-      "exact_matches": 13,
-      "signature_matches": 0,
+      "total_matches": 12,
+      "exact_matches": 10,
+      "signature_matches": 2,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": 0,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 1,
+      "unmatched_json": 1,
+      "match_percentage": 92.3
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 0,
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 1,
     "enhancement_quality_score": 1.0
   }
 }

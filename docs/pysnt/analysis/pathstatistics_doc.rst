@@ -89,12 +89,12 @@ Getters Methods
 Returns paths that have children, representing non-terminal segments. Note: This implementation differs from typical terminal branch definition as it returns paths with children rather than leaf paths.
 
 
-.. py:method:: getAnnotatedLength(int, String, boolean)
+.. py:method:: getAnnotatedLength(int, String)
 
    
 
 
-.. py:method:: getAnnotatedLengthHistogram(int, String)
+.. py:method:: getAnnotatedLengthHistogram(int)
 
    
 
@@ -153,7 +153,7 @@ Calculates the sum of lengths of all terminal branches as defined by `getTermina
 In PathStatistics, all paths are considered as branches since each path represents a distinct structural element.
 
 
-.. py:method:: getCableLength()
+.. py:method:: getCableLength(BrainAnnotation)
 
    
 
@@ -193,7 +193,7 @@ In PathStatistics, all paths are considered as branches since each path represen
    
 
 
-.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
+.. py:method:: getFlowPlot(String, Collection)
 
    
 
@@ -245,7 +245,7 @@ Supported metrics include:
 Geometric: length, volume, surface area, mean radius Structural: number of nodes, branch points, children Angular: extension angles in XY, XZ, ZY planes Morphological: contraction, fractal dimension, spine density Metadata: path ID, channel, frame, order
 
 
-.. py:method:: static getMetrics()
+.. py:method:: static getMetrics(String)
 
    
 

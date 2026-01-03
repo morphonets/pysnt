@@ -1,9 +1,9 @@
 {
   "class_name": "MultiTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.421969",
+  "extracted_at": "2026-01-02T22:36:44.629307",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.400087",
+  "enhancement_timestamp": "2026-01-02T22:43:26.154365",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -218,29 +218,6 @@
       "name": "getAnnotatedLengthHistogram",
       "overloads": [
         {
-          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
           "params": [
             {
@@ -259,6 +236,29 @@
         {
           "signature": "getAnnotatedLengthHistogram() -> SNTChart",
           "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
@@ -307,6 +307,14 @@
       "name": "getAnnotations",
       "overloads": [
         {
+          "signature": "getAnnotations() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getAnnotations(int) -> Set",
           "params": [
             {
@@ -320,14 +328,6 @@
           "return_type": "Set[Any]",
           "java_return_type": "Set",
           "return_description": "the set of brain compartments (BrainAnnotations)",
-          "throws": {}
-        },
-        {
-          "signature": "getAnnotations() -> Set",
-          "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -462,6 +462,34 @@
       "examples": []
     },
     {
+      "name": "getBoxPlot",
+      "overloads": [
+        {
+          "signature": "getBoxPlot(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoxPlot",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getBranchPoints",
       "overloads": [
         {
@@ -548,6 +576,14 @@
       "name": "getCableLength",
       "overloads": [
         {
+          "signature": "getCableLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getCableLength(BrainAnnotation) -> double",
           "params": [
             {
@@ -561,14 +597,6 @@
           "return_type": "float",
           "java_return_type": "double",
           "return_description": "the filtered cable length",
-          "throws": {}
-        },
-        {
-          "signature": "getCableLength() -> double",
-          "params": [],
-          "return_type": "float",
-          "java_return_type": "double",
-          "return_description": "",
           "throws": {}
         },
         {
@@ -794,6 +822,50 @@
       "name": "getFlowPlot",
       "overloads": [
         {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getFlowPlot(String, Collection) -> SNTChart",
           "params": [
             {
@@ -854,29 +926,6 @@
           "throws": {}
         },
         {
-          "signature": "getFlowPlot(String, int) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
           "params": [
             {
@@ -907,7 +956,7 @@
           "throws": {}
         },
         {
-          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, int) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -918,29 +967,8 @@
             },
             {
               "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -1149,22 +1177,6 @@
           "java_return_type": "List",
           "return_description": "the list of supported metric names",
           "throws": {}
-        },
-        {
-          "signature": "static getMetrics(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: static getMetrics",
@@ -1182,18 +1194,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "MultiTreeStatistics(Collection)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "MultiTreeStatistics(Collection, String)",
           "params": [
             {
@@ -1205,6 +1205,18 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiTreeStatistics(Collection)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -1225,33 +1237,33 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "StrahlerAnalyzer.getBranches()",
+    "Constant Field Values",
+    "TreeStatistics",
+    "AllenCompartment",
+    "AllenCompartment.getOntologyDepth()",
     "TreeStatistics.getHistogram(String)",
     "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "AllenCompartment",
-    "TreeStatistics.getPrimaryBranches()",
-    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)",
-    "StrahlerAnalyzer.getBranches()",
-    "TreeStatistics.getPrimaryPaths()",
-    "TreeStatistics",
-    "Constant Field Values",
     "StrahlerAnalyzer.getHighestBranchOrder()",
-    "AllenCompartment.getOntologyDepth()"
+    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)",
+    "TreeStatistics.getPrimaryBranches()",
+    "TreeStatistics.getPrimaryPaths()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 32,
-      "total_json_methods": 35,
+      "total_json_methods": 36,
       "total_matches": 25,
       "exact_matches": 20,
       "signature_matches": 5,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 7,
-      "unmatched_json": 10,
+      "unmatched_json": 11,
       "match_percentage": 78.1
     },
     "unmatched_javadoc_methods": 7,
-    "unmatched_json_methods": 20,
+    "unmatched_json_methods": 21,
     "enhancement_quality_score": 0.806
   }
 }

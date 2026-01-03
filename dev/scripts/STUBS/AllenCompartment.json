@@ -1,7 +1,7 @@
 {
   "class_name": "AllenCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2025-11-19T11:06:20.226302",
+  "extracted_at": "2026-01-02T22:36:44.432189",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -86,12 +86,6 @@
       "name": "getChildren",
       "overloads": [
         {
-          "signature": "getChildren() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "getChildren(int) -> List",
           "params": [
             {
@@ -100,6 +94,12 @@
               "java_type": "int"
             }
           ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "getChildren() -> List",
+          "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List"
         }
@@ -134,16 +134,16 @@
       "name": "getParent",
       "overloads": [
         {
-          "signature": "getParent() -> AllenCompartment",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "AllenCompartment"
-        },
-        {
           "signature": "getParent() -> BrainAnnotation",
           "params": [],
           "return_type": "Any",
           "java_return_type": "BrainAnnotation"
+        },
+        {
+          "signature": "getParent() -> AllenCompartment",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AllenCompartment"
         }
       ],
       "documentation": "Java method: getParent"
@@ -287,24 +287,24 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "AllenCompartment(int)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "AllenCompartment(UUID)",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "UUID"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AllenCompartment(int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
             }
           ],
           "return_type": "None",

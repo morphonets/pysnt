@@ -1,9 +1,9 @@
 {
   "class_name": "ImgUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.330160",
+  "extracted_at": "2026-01-02T22:36:44.534542",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.451815",
+  "enhancement_timestamp": "2026-01-02T22:43:26.206383",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -42,6 +42,299 @@
       "examples": []
     },
     {
+      "name": "static crop",
+      "overloads": [
+        {
+          "signature": "static crop(ImgPlus, [J, [J, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static crop(RandomAccessibleInterval, [J, [J, long) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static crop(ImgPlus, [J, [J, long, boolean, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg5",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static crop(ImgPlus, [J, [J, long, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static crop",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static dropSingletonDimensions",
+      "overloads": [
+        {
+          "signature": "static dropSingletonDimensions(ImgPlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static dropSingletonDimensions",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static findSpatialAxisIndices",
+      "overloads": [
+        {
+          "signature": "static findSpatialAxisIndices(ImgPlus) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static findSpatialAxisIndices",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static findSpatialAxisIndicesWithFallback",
+      "overloads": [
+        {
+          "signature": "static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static findSpatialAxisIndicesWithFallback",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getCalibration",
+      "overloads": [
+        {
+          "signature": "static getCalibration(ImgPlus) -> Calibration",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getCalibration",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static getCtSlice",
       "overloads": [
         {
@@ -71,6 +364,52 @@
           ],
           "return_type": "Any",
           "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getCtSlice(ImgPlus) -> ImgUtils$SliceResult",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgUtils$SliceResult",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getCtSlice(ImgPlus, int, int) -> ImgUtils$SliceResult",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgUtils$SliceResult",
           "return_description": "",
           "throws": {}
         },
@@ -165,6 +504,97 @@
       ],
       "documentation": "Java method: static getCtSlice3d",
       "javadoc_description": "Get a view of the ImagePlus at the specified channel and frame.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getOrigin",
+      "overloads": [
+        {
+          "signature": "static getOrigin(ImgPlus, AxisType) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "AxisType",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getOrigin",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getOrigins",
+      "overloads": [
+        {
+          "signature": "static getOrigins(ImgPlus) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getOrigins",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static imgPlusToCalibration",
+      "overloads": [
+        {
+          "signature": "static imgPlusToCalibration(ImgPlus) -> Calibration",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static imgPlusToCalibration",
+      "javadoc_description": "",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -464,6 +894,173 @@
       "since_version": null,
       "see_also": [],
       "examples": []
+    },
+    {
+      "name": "static toImagePlus",
+      "overloads": [
+        {
+          "signature": "static toImagePlus(ImgPlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, [J, [J) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, [J, [J, long, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static toImagePlus",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static wrapWithAxes",
+      "overloads": [
+        {
+          "signature": "static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static wrapWithAxes",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
     }
   ],
   "fields": [],
@@ -484,18 +1081,18 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 12,
-      "total_json_methods": 10,
+      "total_json_methods": 20,
       "total_matches": 12,
       "exact_matches": 12,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 0,
-      "unmatched_json": -2,
+      "unmatched_json": 8,
       "match_percentage": 100.0
     },
     "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 0,
+    "unmatched_json_methods": 10,
     "enhancement_quality_score": 1.0
   }
 }

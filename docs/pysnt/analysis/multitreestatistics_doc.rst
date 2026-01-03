@@ -74,7 +74,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getAnnotatedLengthHistogram(int, String)
+.. py:method:: getAnnotatedLengthHistogram(int)
 
    
 
@@ -84,7 +84,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getAnnotations(int)
+.. py:method:: getAnnotations()
 
    Description copied from class: TreeStatistics
 
@@ -119,6 +119,11 @@ Getters Methods
    
 
 
+.. py:method:: getBoxPlot(String)
+
+   
+
+
 .. py:method:: getBranchPoints()
 
    Description copied from class: TreeStatistics
@@ -129,7 +134,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getCableLength(BrainAnnotation)
+.. py:method:: getCableLength()
 
    Description copied from class: TreeStatistics
 
@@ -169,7 +174,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getFlowPlot(String, Collection)
+.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
 
    Description copied from class: TreeStatistics
 

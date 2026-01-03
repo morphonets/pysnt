@@ -154,12 +154,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Object)
+.. py:method:: add(File;, String)
 
    Script friendly method to add a supported object (Tree, OBJMesh, AbstractDrawable, etc.) to this viewer. Note that collections of supported objects are also supported, which is an effective way of adding multiple items since the scene is only rebuilt once all items have been added.
 
 
-.. py:method:: addColorBarLegend(ColorTable, double, double, Font, int, int)
+.. py:method:: addColorBarLegend(ColorMapper)
 
    Adds a color bar legend (LUT ramp).
 
@@ -179,7 +179,7 @@ Other Methods
    Adds a tree to this viewer. Note that calling updateView() may be required to ensure that the current View's bounding box includes the added Tree.
 
 
-.. py:method:: addTrees(Collection, boolean)
+.. py:method:: addTrees(Collection, String, String;)
 
    
 
@@ -199,7 +199,7 @@ Other Methods
    
 
 
-.. py:method:: annotatePoint(SNTPoint, String, String, float)
+.. py:method:: annotatePoint(SNTPoint, String)
 
    Adds a highlighting point annotation to this viewer.
 
@@ -209,7 +209,7 @@ Other Methods
    Adds a scatter (point cloud) annotation to this viewer.
 
 
-.. py:method:: annotateSurface(Collection, String)
+.. py:method:: annotateSurface(Collection, String, boolean)
 
    Computes a convex hull from a collection of points and adds it to the scene as an annotation.
 

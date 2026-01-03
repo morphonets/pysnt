@@ -1,7 +1,7 @@
 {
   "class_name": "NodeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.439156",
+  "extracted_at": "2026-01-02T22:36:44.645742",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -56,12 +56,6 @@
       "name": "getColorTable",
       "overloads": [
         {
-          "signature": "getColorTable() -> ColorTable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ColorTable"
-        },
-        {
           "signature": "getColorTable(String) -> ColorTable",
           "params": [
             {
@@ -70,6 +64,12 @@
               "java_type": "String"
             }
           ],
+          "return_type": "Any",
+          "java_return_type": "ColorTable"
+        },
+        {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ColorTable"
         }
@@ -170,23 +170,6 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(String, ColorTable) -> void",
           "params": [
             {
@@ -198,6 +181,23 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -251,24 +251,24 @@
       "name": "static unMap",
       "overloads": [
         {
-          "signature": "static unMap(Tree) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "static unMap(Collection) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "List[Any]",
               "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static unMap(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
             }
           ],
           "return_type": "None",
@@ -284,6 +284,18 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "NodeColorMapper(NodeStatistics)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "NodeStatistics"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "NodeColorMapper(NodeStatistics, Context)",
           "params": [
             {
@@ -295,18 +307,6 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Context"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "NodeColorMapper(NodeStatistics)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "NodeStatistics"
             }
           ],
           "return_type": "None",

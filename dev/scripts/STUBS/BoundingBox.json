@@ -1,7 +1,7 @@
 {
   "class_name": "BoundingBox",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.275835",
+  "extracted_at": "2026-01-02T22:36:44.477749",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -26,16 +26,16 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> BoundingBox",
-          "params": [],
-          "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
-        },
-        {
           "signature": "clone() -> Object",
           "params": [],
           "return_type": "Any",
           "java_return_type": "Object"
+        },
+        {
+          "signature": "clone() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
         }
       ],
       "documentation": "Java method: clone"
@@ -80,24 +80,24 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(BoundingBox) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "BoundingBox",
-              "java_type": "BoundingBox"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "contains(SNTPoint) -> boolean",
           "params": [
             {
               "name": "arg0",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        },
+        {
+          "signature": "contains(BoundingBox) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
             }
           ],
           "return_type": "bool",
@@ -176,6 +176,12 @@
       "name": "getDimensions",
       "overloads": [
         {
+          "signature": "getDimensions() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        },
+        {
           "signature": "getDimensions(boolean) -> [D",
           "params": [
             {
@@ -184,12 +190,6 @@
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D"
-        },
-        {
-          "signature": "getDimensions() -> [D",
-          "params": [],
           "return_type": "Any",
           "java_return_type": "[D"
         }
@@ -303,6 +303,24 @@
         }
       ],
       "documentation": "Java method: originOpposite"
+    },
+    {
+      "name": "scale",
+      "overloads": [
+        {
+          "signature": "scale([D) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: scale"
     },
     {
       "name": "setDimensions",
@@ -420,6 +438,24 @@
       "documentation": "Java method: setUnit"
     },
     {
+      "name": "shift",
+      "overloads": [
+        {
+          "signature": "shift([D) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: shift"
+    },
+    {
       "name": "toBoundingBox3d",
       "overloads": [
         {
@@ -507,12 +543,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "BoundingBox()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "BoundingBox(Collection)",
           "params": [
             {
@@ -521,6 +551,12 @@
               "java_type": "Collection"
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BoundingBox()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

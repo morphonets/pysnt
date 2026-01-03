@@ -1,30 +1,14 @@
 {
   "class_name": "ColorMaps",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.280000",
+  "extracted_at": "2026-01-02T22:36:44.481559",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.479091",
+  "enhancement_timestamp": "2026-01-02T22:43:26.234187",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "static applyPlasma",
       "overloads": [
-        {
-          "signature": "static applyPlasma(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "- A non-RGB image",
-              "javadoc_name": "imp"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "static applyPlasma(ImagePlus, int, boolean) -> void",
           "params": [
@@ -54,21 +38,9 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        }
-      ],
-      "documentation": "Java method: static applyPlasma",
-      "javadoc_description": "Applies the \"plasma\" colormap to the specified (non-RGB) image",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static applyViridis",
-      "overloads": [
+        },
         {
-          "signature": "static applyViridis(ImagePlus) -> void",
+          "signature": "static applyPlasma(ImagePlus) -> void",
           "params": [
             {
               "name": "arg0",
@@ -82,7 +54,19 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        },
+        }
+      ],
+      "documentation": "Java method: static applyPlasma",
+      "javadoc_description": "Applies the \"plasma\" colormap to the specified (non-RGB) image",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static applyViridis",
+      "overloads": [
         {
           "signature": "static applyViridis(ImagePlus, int, boolean) -> void",
           "params": [
@@ -106,6 +90,22 @@
               "java_type": "boolean",
               "description": "",
               "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static applyViridis(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- A non-RGB image",
+              "javadoc_name": "imp"
             }
           ],
           "return_type": "None",

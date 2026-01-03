@@ -1,9 +1,9 @@
 {
   "class_name": "BoundingBox",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.275835",
+  "extracted_at": "2026-01-02T22:36:44.477749",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.475427",
+  "enhancement_timestamp": "2026-01-02T22:43:26.230466",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -38,19 +38,19 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> BoundingBox",
-          "params": [],
-          "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox",
-          "return_description": "a new BoundingBox that is a copy of this bounding box",
-          "throws": {}
-        },
-        {
           "signature": "clone() -> Object",
           "params": [],
           "return_type": "Any",
           "java_return_type": "Object",
           "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "clone() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "a new BoundingBox that is a copy of this bounding box",
           "throws": {}
         }
       ],
@@ -122,12 +122,12 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(BoundingBox) -> boolean",
+          "signature": "contains(SNTPoint) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "BoundingBox",
-              "java_type": "BoundingBox",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -138,12 +138,12 @@
           "throws": {}
         },
         {
-          "signature": "contains(SNTPoint) -> boolean",
+          "signature": "contains(BoundingBox) -> boolean",
           "params": [
             {
               "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
               "description": "",
               "javadoc_name": null
             }
@@ -274,6 +274,14 @@
       "name": "getDimensions",
       "overloads": [
         {
+          "signature": "getDimensions() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getDimensions(boolean) -> [D",
           "params": [
             {
@@ -287,14 +295,6 @@
           "return_type": "Any",
           "java_return_type": "[D",
           "return_description": "the BoundingBox dimensions {width, height, depth}.",
-          "throws": {}
-        },
-        {
-          "signature": "getDimensions() -> [D",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -483,6 +483,34 @@
       "examples": []
     },
     {
+      "name": "scale",
+      "overloads": [
+        {
+          "signature": "scale([D) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: scale",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "setDimensions",
       "overloads": [
         {
@@ -661,6 +689,34 @@
       "examples": []
     },
     {
+      "name": "shift",
+      "overloads": [
+        {
+          "signature": "shift([D) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: shift",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "toBoundingBox3d",
       "overloads": [
         {
@@ -772,12 +828,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "BoundingBox()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "BoundingBox(Collection)",
           "params": [
             {
@@ -786,6 +836,12 @@
               "java_type": "Collection"
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BoundingBox()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }
@@ -807,24 +863,24 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object",
-    "Cloneable"
+    "Cloneable",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 33,
-      "total_json_methods": 28,
+      "total_json_methods": 30,
       "total_matches": 30,
       "exact_matches": 30,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 3,
-      "unmatched_json": -2,
+      "unmatched_json": 0,
       "match_percentage": 90.9
     },
     "unmatched_javadoc_methods": 3,
-    "unmatched_json_methods": 0,
+    "unmatched_json_methods": 2,
     "enhancement_quality_score": 1.0
   }
 }

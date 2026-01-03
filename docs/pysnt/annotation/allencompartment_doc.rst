@@ -74,7 +74,7 @@ Getters Methods
    Gets the ancestor ontologies of this compartment as a flat (non-hierarchical) list.
 
 
-.. py:method:: getChildren()
+.. py:method:: getChildren(int)
 
    Gets the child ontologies of this compartment as a flat (non-hierarchical) list.
 

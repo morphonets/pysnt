@@ -1,9 +1,9 @@
 {
   "class_name": "SNTService",
   "package": "sc.fiji.snt",
-  "extracted_at": "2025-11-19T11:06:20.666408",
+  "extracted_at": "2026-01-02T22:36:44.872669",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.431993",
+  "enhancement_timestamp": "2026-01-02T22:43:26.186807",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -731,6 +731,24 @@
           "throws": {}
         },
         {
+          "signature": "initialize(boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the image to be traced (null not allowed)",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "the SNT instance.",
+          "throws": {
+            "InterruptedException": ""
+          }
+        },
+        {
           "signature": "initialize(String, boolean) -> SNT",
           "params": [
             {
@@ -752,24 +770,6 @@
           "java_return_type": "SNT",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "initialize(boolean) -> SNT",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "- the image to be traced (null not allowed)",
-              "javadoc_name": "imp"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "SNT",
-          "return_description": "the SNT instance.",
-          "throws": {
-            "InterruptedException": ""
-          }
         },
         {
           "signature": "initialize() -> void",
@@ -1125,14 +1125,14 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "demoImage(String)",
-    "Path.setNodeValues(double[])",
     "demoTrees()",
-    "PathProfiler",
+    "Path.setNodeValues(double[])",
     "getTree(boolean)",
-    "demoTreeImage()",
+    "demoTree()",
     "demoTree(String)",
-    "demoTree()"
+    "PathProfiler",
+    "demoImage(String)",
+    "demoTreeImage()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

@@ -1,9 +1,9 @@
 {
   "class_name": "SNTChart",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.653922",
+  "extracted_at": "2026-01-02T22:36:44.859094",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.433721",
+  "enhancement_timestamp": "2026-01-02T22:43:26.188525",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -75,59 +75,6 @@
       "name": "add",
       "overloads": [
         {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "add(String, Component) -> Component",
           "params": [
             {
@@ -186,6 +133,59 @@
           ],
           "return_type": "Any",
           "java_return_type": "Component",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Component, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Component, Object, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Component",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
           "return_description": "",
           "throws": {}
         },
@@ -809,6 +809,22 @@
       "name": "annotate",
       "overloads": [
         {
+          "signature": "annotate(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the subtitle text",
+              "javadoc_name": "label"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "annotate(String, String, String) -> void",
           "params": [
             {
@@ -837,22 +853,6 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "annotate(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the subtitle text",
-              "javadoc_name": "label"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: annotate",
@@ -866,29 +866,6 @@
     {
       "name": "annotateCategory",
       "overloads": [
-        {
-          "signature": "annotateCategory(String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the category to be annotated. Ignored if it does not exist in category axis.",
-              "javadoc_name": "category"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "annotateCategory(String, String, String) -> void",
           "params": [
@@ -918,6 +895,29 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "annotateCategory(String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the category to be annotated. Ignored if it does not exist in category axis.",
+              "javadoc_name": "category"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: annotateCategory",
@@ -932,19 +932,19 @@
       "name": "annotatePoint",
       "overloads": [
         {
-          "signature": "annotatePoint(double, double, String) -> void",
+          "signature": "annotatePoint([D, String, String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "float",
-              "java_type": "double",
+              "type": "Any",
+              "java_type": "[D",
               "description": "- the array holding the focal point coordinates of the profile",
               "javadoc_name": "coordinates"
             },
             {
               "name": "arg1",
-              "type": "float",
-              "java_type": "double",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             },
@@ -954,6 +954,36 @@
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "annotatePoint(double, double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -997,36 +1027,6 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "annotatePoint([D, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "[D",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: annotatePoint",
@@ -1040,29 +1040,6 @@
     {
       "name": "annotateXline",
       "overloads": [
-        {
-          "signature": "annotateXline(double, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "float",
-              "java_type": "double",
-              "description": "- the X value to be annotated.",
-              "javadoc_name": "xValue"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "annotateXline(double, String, String) -> void",
           "params": [
@@ -1092,6 +1069,29 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "annotateXline(double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the X value to be annotated.",
+              "javadoc_name": "xValue"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: annotateXline",
@@ -1105,6 +1105,29 @@
     {
       "name": "annotateYline",
       "overloads": [
+        {
+          "signature": "annotateYline(double, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the Y value to be annotated.",
+              "javadoc_name": "yValue"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
         {
           "signature": "annotateYline(double, String, String) -> void",
           "params": [
@@ -1128,29 +1151,6 @@
               "java_type": "String",
               "description": "",
               "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "annotateYline(double, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "float",
-              "java_type": "double",
-              "description": "- the Y value to be annotated.",
-              "javadoc_name": "yValue"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_1"
             }
           ],
           "return_type": "None",
@@ -1423,7 +1423,44 @@
       "name": "static combine",
       "overloads": [
         {
-          "signature": "static combine(Collection, boolean) -> SNTChart",
+          "signature": "static combine(Collection, int, int, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- input charts",
+              "javadoc_name": "charts"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the frame containing the montage",
+          "throws": {}
+        },
+        {
+          "signature": "static combine(Collection, String, int, int, boolean) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -1434,6 +1471,27 @@
             },
             {
               "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -1443,22 +1501,6 @@
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static combine(Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "- input charts",
-              "javadoc_name": "charts"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "the frame containing the montage",
           "throws": {}
         }
       ],
@@ -1476,6 +1518,23 @@
     {
       "name": "__init__",
       "overloads": [
+        {
+          "signature": "SNTChart(String, JFreeChart)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "JFreeChart"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
         {
           "signature": "SNTChart(String, CategoryChart)",
           "params": [
@@ -1505,23 +1564,6 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "XYPlot"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "SNTChart(String, JFreeChart)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "JFreeChart"
             }
           ],
           "return_type": "None",

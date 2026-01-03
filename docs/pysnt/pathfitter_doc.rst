@@ -64,11 +64,6 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getMaxRadius()
-
-   Gets the current max radius (in pixels)
-
-
 .. py:method:: getPath()
 
    
@@ -83,24 +78,24 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: setCrossSectionRadius(double)
+
+   Sets the max radius (side search) for constraining the fit.
+
+
 .. py:method:: setImage(RandomAccessibleInterval)
 
    Sets the target image
 
 
-.. py:method:: setMaxRadius(int)
+.. py:method:: setNodeRadiusFallback(int)
 
-   Sets the max radius (side search) for constraining the fit.
+   
 
 
 .. py:method:: setProgressCallback(int, MultiTaskProgress)
 
    
-
-
-.. py:method:: setRadiusFallback(int)
-
-   Sets the fallback strategy for radii at locations in which fitting failed
 
 
 .. py:method:: setReplaceNodes(boolean)
@@ -129,6 +124,11 @@ I/O Operations Methods
 
 Other Methods
 ~~~~~~~~~~~~~
+
+
+.. py:method:: applyFit()
+
+   Sets the fallback strategy for radii at locations in which fitting failed
 
 
 .. py:method:: applySettings(PathFitter)

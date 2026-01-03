@@ -1,7 +1,7 @@
 {
   "class_name": "ImgUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.330160",
+  "extracted_at": "2026-01-02T22:36:44.534542",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -28,6 +28,207 @@
       "documentation": "Java method: static createIntervals"
     },
     {
+      "name": "static crop",
+      "overloads": [
+        {
+          "signature": "static crop(ImgPlus, [J, [J, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        },
+        {
+          "signature": "static crop(RandomAccessibleInterval, [J, [J, long) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval"
+        },
+        {
+          "signature": "static crop(ImgPlus, [J, [J, long, boolean, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg5",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        },
+        {
+          "signature": "static crop(ImgPlus, [J, [J, long, boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        }
+      ],
+      "documentation": "Java method: static crop"
+    },
+    {
+      "name": "static dropSingletonDimensions",
+      "overloads": [
+        {
+          "signature": "static dropSingletonDimensions(ImgPlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        }
+      ],
+      "documentation": "Java method: static dropSingletonDimensions"
+    },
+    {
+      "name": "static findSpatialAxisIndices",
+      "overloads": [
+        {
+          "signature": "static findSpatialAxisIndices(ImgPlus) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I"
+        }
+      ],
+      "documentation": "Java method: static findSpatialAxisIndices"
+    },
+    {
+      "name": "static findSpatialAxisIndicesWithFallback",
+      "overloads": [
+        {
+          "signature": "static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I"
+        }
+      ],
+      "documentation": "Java method: static findSpatialAxisIndicesWithFallback"
+    },
+    {
+      "name": "static getCalibration",
+      "overloads": [
+        {
+          "signature": "static getCalibration(ImgPlus) -> Calibration",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Calibration"
+        }
+      ],
+      "documentation": "Java method: static getCalibration"
+    },
+    {
       "name": "static getCtSlice",
       "overloads": [
         {
@@ -51,6 +252,40 @@
           ],
           "return_type": "Any",
           "java_return_type": "RandomAccessibleInterval"
+        },
+        {
+          "signature": "static getCtSlice(ImgPlus) -> ImgUtils$SliceResult",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgUtils$SliceResult"
+        },
+        {
+          "signature": "static getCtSlice(ImgPlus, int, int) -> ImgUtils$SliceResult",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgUtils$SliceResult"
         },
         {
           "signature": "static getCtSlice(ImagePlus) -> RandomAccessibleInterval",
@@ -116,6 +351,65 @@
         }
       ],
       "documentation": "Java method: static getCtSlice3d"
+    },
+    {
+      "name": "static getOrigin",
+      "overloads": [
+        {
+          "signature": "static getOrigin(ImgPlus, AxisType) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "AxisType"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: static getOrigin"
+    },
+    {
+      "name": "static getOrigins",
+      "overloads": [
+        {
+          "signature": "static getOrigins(ImgPlus) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: static getOrigins"
+    },
+    {
+      "name": "static imgPlusToCalibration",
+      "overloads": [
+        {
+          "signature": "static imgPlusToCalibration(ImgPlus) -> Calibration",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Calibration"
+        }
+      ],
+      "documentation": "Java method: static imgPlusToCalibration"
     },
     {
       "name": "static impToRealRai5d",
@@ -312,6 +606,123 @@
         }
       ],
       "documentation": "Java method: static subVolume"
+    },
+    {
+      "name": "static toImagePlus",
+      "overloads": [
+        {
+          "signature": "static toImagePlus(ImgPlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, [J, [J) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, [J, [J, long, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "[J"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static toImagePlus(ImgPlus, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static toImagePlus"
+    },
+    {
+      "name": "static wrapWithAxes",
+      "overloads": [
+        {
+          "signature": "static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        }
+      ],
+      "documentation": "Java method: static wrapWithAxes"
     }
   ],
   "fields": [],

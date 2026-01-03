@@ -192,7 +192,7 @@ Other Methods
    
 
 
-.. py:method:: createBufferStrategy(int)
+.. py:method:: createBufferStrategy(int, BufferCapabilities)
 
    
 

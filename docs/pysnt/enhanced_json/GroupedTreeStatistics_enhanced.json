@@ -1,41 +1,14 @@
 {
   "class_name": "GroupedTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.324888",
+  "extracted_at": "2026-01-02T22:36:44.527020",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.396992",
+  "enhancement_timestamp": "2026-01-02T22:43:26.150931",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "addGroup",
       "overloads": [
-        {
-          "signature": "addGroup(Collection, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "- the collection of Trees to be analyzed",
-              "javadoc_name": "group"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {
-            "NoSuchElementException": "-",
-            "swcTypes": "are not applicable to",
-            "group": ""
-          }
-        },
         {
           "signature": "addGroup(Collection, String, String;) -> void",
           "params": [
@@ -65,6 +38,33 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "addGroup(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of Trees to be analyzed",
+              "javadoc_name": "group"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "NoSuchElementException": "-",
+            "swcTypes": "are not applicable to",
+            "group": ""
+          }
         }
       ],
       "documentation": "Java method: addGroup",
@@ -109,6 +109,29 @@
       "name": "getBoxPlot",
       "overloads": [
         {
+          "signature": "getBoxPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
+              "javadoc_name": "feature"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "TreeStatistics.getAllMetrics()"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the box plot",
+          "throws": {}
+        },
+        {
           "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
           "params": [
             {
@@ -146,6 +169,22 @@
           "throws": {}
         },
         {
+          "signature": "getBoxPlot(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
           "params": [
             {
@@ -173,45 +212,6 @@
               "name": "arg3",
               "type": "bool",
               "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getBoxPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
-              "javadoc_name": "feature"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": "TreeStatistics.getAllMetrics()"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "the box plot",
-          "throws": {}
-        },
-        {
-          "signature": "getBoxPlot(String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -259,6 +259,36 @@
             },
             {
               "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -326,36 +356,6 @@
             },
             {
               "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -642,14 +642,14 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "TreeStatistics.getMetric(String)",
     "MultiTreeStatistics.getMetrics()",
     "getHistogram(String)",
-    "getFlowPlot(String, Collection, String, double, boolean)",
+    "TreeStatistics",
     "MultiTreeStatistics",
-    "setMinNBins(int)",
+    "TreeStatistics.getMetric(String)",
+    "getFlowPlot(String, Collection, String, double, boolean)",
     "Object",
-    "TreeStatistics"
+    "setMinNBins(int)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

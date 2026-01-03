@@ -3,7 +3,7 @@ Analysis Methods
 
 Methods that perform calculations, measurements, or statistical analysis.
 
-Total methods in this category: **18**
+Total methods in this category: **20**
 
 .. contents:: Classes in this Category
    :local:
@@ -54,6 +54,21 @@ ConvexHullAnalyzer
    **Signature:** ``static supportedMetrics() -> List``
 
    **Returns:** (``List[Any]``) the list of supported metric names that can be computed by this analyzer
+
+
+Frangi
+------
+
+.. method:: compute(arg0, arg1)
+
+   **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``None``
 
 
 MultiTreeColorMapper
@@ -151,9 +166,13 @@ Returns paths that have children, representing non-terminal segments. Note: This
 
    **Returns:** (``List[Any]``) the list of paths with children
 
-.. method:: static getMetrics()
+.. method:: static getMetrics(arg0)
 
-   **Signature:** ``static getMetrics() -> List``
+   **Signature:** ``static getMetrics(String) -> List``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
 
    **Returns:** ``List[Any]``
 
@@ -202,6 +221,21 @@ TreeStatistics
    **Returns:** (``List[Any]``) the list of available metrics
 
 
+Tubeness
+--------
+
+.. method:: compute(arg0, arg1)
+
+   **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``None``
+
+
 Viewer2D
 --------
 
@@ -214,4 +248,4 @@ Viewer2D
 
 ----
 
-*Category index generated on 2025-12-29 16:01:49*
+*Category index generated on 2026-01-02 22:43:26*

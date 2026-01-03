@@ -1,9 +1,9 @@
 {
   "class_name": "RootAngleAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.582277",
+  "extracted_at": "2026-01-02T22:36:44.785254",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.405675",
+  "enhancement_timestamp": "2026-01-02T22:43:26.160233",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -175,34 +175,6 @@
       "examples": []
     },
     {
-      "name": "getHistogram",
-      "overloads": [
-        {
-          "signature": "getHistogram(boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getHistogram",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "static getHistogram",
       "overloads": [
         {
@@ -213,14 +185,14 @@
               "type": "List[Any]",
               "java_type": "List",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             },
             {
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             }
           ],
           "return_type": "SNTChart",
@@ -232,6 +204,34 @@
       "documentation": "Java method: static getHistogram",
       "javadoc_description": "",
       "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getHistogram",
+      "javadoc_description": "",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -260,36 +260,6 @@
     {
       "name": "getTaggedTree",
       "overloads": [
-        {
-          "signature": "getTaggedTree(String, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "",
-          "throws": {}
-        },
         {
           "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
           "params": [
@@ -321,6 +291,44 @@
           "throws": {}
         },
         {
+          "signature": "getTaggedTree(String, double, double) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTaggedTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getTaggedTree(ColorTable) -> Tree",
           "params": [
             {
@@ -334,14 +342,6 @@
           "return_type": "Tree",
           "java_return_type": "Tree",
           "return_description": "a copy of the tree with the root angles assigned to its nodes.",
-          "throws": {}
-        },
-        {
-          "signature": "getTaggedTree() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "",
           "throws": {}
         }
       ],

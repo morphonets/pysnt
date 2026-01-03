@@ -68,7 +68,7 @@ Utilities Methods
 ~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: clone(boolean)
+.. py:method:: clone()
 
    Creates a copy of this Path with optional inclusion of immediate children.
 
@@ -230,7 +230,7 @@ Visualization Methods
    
 
 
-.. py:method:: addTo3DViewer(Image3DUniverse, Color, ImagePlus)
+.. py:method:: addTo3DViewer(Image3DUniverse, Color3f, ImagePlus)
 
    Adds this path to the specified 3D viewer universe with the given Color3f.
 
@@ -259,12 +259,12 @@ Other Methods
    
 
 
-.. py:method:: compareTo(Path)
+.. py:method:: compareTo(Object)
 
    
 
 
-.. py:method:: contains(PointInImage, double)
+.. py:method:: contains(PointInImage)
 
    Checks if this path contains the specified point within the given tolerance.
 

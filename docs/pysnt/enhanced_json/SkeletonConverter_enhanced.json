@@ -1,9 +1,9 @@
 {
   "class_name": "SkeletonConverter",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.752524",
+  "extracted_at": "2026-01-02T22:36:44.958809",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.481849",
+  "enhancement_timestamp": "2026-01-02T22:43:26.236912",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -487,6 +487,29 @@
       "name": "static skeletonize",
       "overloads": [
         {
+          "signature": "static skeletonize(ImagePlus, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
+              "javadoc_name": "imp"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "static skeletonize(ImagePlus, double, double, boolean) -> void",
           "params": [
             {
@@ -516,29 +539,6 @@
               "java_type": "boolean",
               "description": "",
               "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static skeletonize(ImagePlus, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
-              "javadoc_name": "imp"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": "param_1"
             }
           ],
           "return_type": "None",
@@ -597,6 +597,18 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "SkeletonConverter(ImagePlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "SkeletonConverter(ImagePlus, int)",
           "params": [
             {
@@ -608,6 +620,18 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SkeletonConverter(ImgPlus)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
             }
           ],
           "return_type": "None",
@@ -629,18 +653,6 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "SkeletonConverter(ImagePlus)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for SkeletonConverter"
@@ -657,13 +669,13 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "setMaxConnectDist(double)",
-    "setPruneByLength(boolean)",
-    "setConnectComponents(boolean)",
-    "Object",
     "setPruneMode(int)",
+    "Constant Field Values",
+    "setPruneByLength(boolean)",
     "setRootRoi(Roi, int)",
-    "Constant Field Values"
+    "setMaxConnectDist(double)",
+    "setConnectComponents(boolean)",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

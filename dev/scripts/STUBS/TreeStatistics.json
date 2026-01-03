@@ -1,7 +1,7 @@
 {
   "class_name": "TreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.842266",
+  "extracted_at": "2026-01-02T22:36:45.050868",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -85,28 +85,6 @@
       "name": "getAnnotatedLength",
       "overloads": [
         {
-          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
           "signature": "getAnnotatedLength(int, String) -> Map",
           "params": [
             {
@@ -134,15 +112,9 @@
           ],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map"
-        }
-      ],
-      "documentation": "Java method: getAnnotatedLength"
-    },
-    {
-      "name": "getAnnotatedLengthHistogram",
-      "overloads": [
+        },
         {
-          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
           "params": [
             {
               "name": "arg0",
@@ -153,11 +125,22 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        }
+      ],
+      "documentation": "Java method: getAnnotatedLength"
+    },
+    {
+      "name": "getAnnotatedLengthHistogram",
+      "overloads": [
         {
           "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
           "params": [
@@ -173,6 +156,23 @@
         {
           "signature": "getAnnotatedLengthHistogram() -> SNTChart",
           "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart"
         }
@@ -350,12 +350,6 @@
       "name": "getCableLength",
       "overloads": [
         {
-          "signature": "getCableLength() -> double",
-          "params": [],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
           "signature": "getCableLength(BrainAnnotation) -> double",
           "params": [
             {
@@ -364,6 +358,12 @@
               "java_type": "BrainAnnotation"
             }
           ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getCableLength() -> double",
+          "params": [],
           "return_type": "float",
           "java_return_type": "double"
         },
@@ -510,6 +510,23 @@
       "name": "getFlowPlot",
       "overloads": [
         {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
           "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
           "params": [
             {
@@ -534,50 +551,6 @@
             },
             {
               "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
               "type": "bool",
               "java_type": "boolean"
             }
@@ -617,6 +590,33 @@
             },
             {
               "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
               "type": "bool",
               "java_type": "boolean"
             }
@@ -727,12 +727,6 @@
       "name": "static getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
           "signature": "static getMetrics(String) -> List",
           "params": [
             {
@@ -741,6 +735,12 @@
               "java_type": "String"
             }
           ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
+          "signature": "static getMetrics() -> List",
+          "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List"
         }

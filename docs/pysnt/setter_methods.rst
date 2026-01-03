@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Setters'
-Total matching methods: **262**
+Total matching methods: **268**
 
 Matching Methods
 ----------------
@@ -325,15 +325,15 @@ Matching Methods
      - No description available
    * - :meth:`NodeProfiler.addOutput`
      - :class:`NodeProfiler`
-     - ``Any``
+     - ``None``
      - No description available
    * - :meth:`PathProfiler.addOutput`
      - :class:`PathProfiler`
-     - ``Any``
+     - ``None``
      - No description available
    * - :meth:`WekaModelLoader.addOutput`
      - :class:`WekaModelLoader`
-     - ``Any``
+     - ``None``
      - No description available
    * - :meth:`SNTChart.addOverlay`
      - :class:`SNTChart`
@@ -587,6 +587,10 @@ Matching Methods
      - :class:`WekaModelLoader`
      - ``None``
      - No description available
+   * - :meth:`PathFitter.setCrossSectionRadius`
+     - :class:`PathFitter`
+     - ``None``
+     - Sets the max radius (side search) for constraining the fit.
    * - :meth:`Viewer2D.setDefaultColor`
      - :class:`Viewer2D`
      - ``None``
@@ -599,6 +603,14 @@ Matching Methods
      - :class:`ShollAnalyzer`
      - ``None``
      - Sets whether curve fitting computations should be performed.
+   * - :meth:`Frangi.setEnvironment`
+     - :class:`Frangi`
+     - ``None``
+     - No description available
+   * - :meth:`Tubeness.setEnvironment`
+     - :class:`Tubeness`
+     - ``None``
+     - No description available
    * - :meth:`Viewer2D.setEqualizeAxes`
      - :class:`Viewer2D`
      - ``None``
@@ -687,12 +699,20 @@ Matching Methods
      - :class:`SNTService`
      - ``None``
      - No description available
+   * - :meth:`Frangi.setInput`
+     - :class:`Frangi`
+     - ``None``
+     - No description available
    * - :meth:`NodeProfiler.setInput`
      - :class:`NodeProfiler`
      - ``None``
      - No description available
    * - :meth:`PathProfiler.setInput`
      - :class:`PathProfiler`
+     - ``None``
+     - No description available
+   * - :meth:`Tubeness.setInput`
+     - :class:`Tubeness`
      - ``None``
      - No description available
    * - :meth:`WekaModelLoader.setInput`
@@ -739,10 +759,6 @@ Matching Methods
      - :class:`SkeletonConverter`
      - ``None``
      - Sets the maximum distance for connecting skeleton components. Specifies the maximum distance within which disconnected...
-   * - :meth:`PathFitter.setMaxRadius`
-     - :class:`PathFitter`
-     - ``None``
-     - Sets the max radius (side search) for constraining the fit.
    * - :meth:`Fill.setMetric`
      - :class:`Fill`
      - ``None``
@@ -791,6 +807,10 @@ Matching Methods
      - :class:`PathProfiler`
      - ``None``
      - Sets whether the profile abscissae should be reported in real-word units (the default) or node indices (zero-based)....
+   * - :meth:`PathFitter.setNodeRadiusFallback`
+     - :class:`PathFitter`
+     - ``None``
+     - No description available
    * - :meth:`NodeProfiler.setNodeStep`
      - :class:`NodeProfiler`
      - ``None``
@@ -815,12 +835,20 @@ Matching Methods
      - :class:`Viewer2D`
      - ``None``
      - No description available
+   * - :meth:`Frangi.setOutput`
+     - :class:`Frangi`
+     - ``None``
+     - No description available
    * - :meth:`NodeProfiler.setOutput`
      - :class:`NodeProfiler`
      - ``None``
      - No description available
    * - :meth:`PathProfiler.setOutput`
      - :class:`PathProfiler`
+     - ``None``
+     - No description available
+   * - :meth:`Tubeness.setOutput`
+     - :class:`Tubeness`
      - ``None``
      - No description available
    * - :meth:`WekaModelLoader.setOutput`
@@ -899,10 +927,6 @@ Matching Methods
      - :class:`PathProfiler`
      - ``None``
      - No description available
-   * - :meth:`PathFitter.setRadiusFallback`
-     - :class:`PathFitter`
-     - ``None``
-     - Sets the fallback strategy for radii at locations in which fitting failed
    * - :meth:`PathFitter.setReplaceNodes`
      - :class:`PathFitter`
      - ``None``
@@ -1066,4 +1090,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2025-12-29 16:01:49*
+*Filtered index generated on 2026-01-02 22:43:26*

@@ -1,7 +1,7 @@
 {
   "class_name": "RootAngleAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2025-11-19T11:06:20.582277",
+  "extracted_at": "2026-01-02T22:36:44.785254",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -107,24 +107,6 @@
       "documentation": "Java method: getDescriptiveStatistics"
     },
     {
-      "name": "getHistogram",
-      "overloads": [
-        {
-          "signature": "getHistogram(boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: getHistogram"
-    },
-    {
       "name": "static getHistogram",
       "overloads": [
         {
@@ -148,6 +130,24 @@
       "documentation": "Java method: static getHistogram"
     },
     {
+      "name": "getHistogram",
+      "overloads": [
+        {
+          "signature": "getHistogram(boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        }
+      ],
+      "documentation": "Java method: getHistogram"
+    },
+    {
       "name": "getTaggedGraph",
       "overloads": [
         {
@@ -162,28 +162,6 @@
     {
       "name": "getTaggedTree",
       "overloads": [
-        {
-          "signature": "getTaggedTree(String, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
         {
           "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
           "params": [
@@ -207,12 +185,22 @@
           "java_return_type": "Tree"
         },
         {
-          "signature": "getTaggedTree(ColorTable) -> Tree",
+          "signature": "getTaggedTree(String, double, double) -> Tree",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorTable"
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
             }
           ],
           "return_type": "Tree",
@@ -221,6 +209,18 @@
         {
           "signature": "getTaggedTree() -> Tree",
           "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree"
+        },
+        {
+          "signature": "getTaggedTree(ColorTable) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
           "return_type": "Tree",
           "java_return_type": "Tree"
         }

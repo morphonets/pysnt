@@ -69,12 +69,12 @@ Getters Methods
    Gets the list of supported metrics.
 
 
-.. py:method:: getAnnotatedLength(int, String, boolean)
+.. py:method:: getAnnotatedLength(int, String)
 
    Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.
 
 
-.. py:method:: getAnnotatedLengthHistogram(int, String)
+.. py:method:: getAnnotatedLengthHistogram(int)
 
    Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.
 
@@ -129,7 +129,7 @@ Getters Methods
    Gets all the branches in the analyzed tree. A branch is defined as the Path composed of all the nodes between two branching points or between one branching point and a termination point.
 
 
-.. py:method:: getCableLength()
+.. py:method:: getCableLength(BrainAnnotation)
 
    Gets the cable length associated with the specified compartment (neuropil label).
 
@@ -169,7 +169,7 @@ Getters Methods
    Computes the `DescriptiveStatistics` for the specified measurement.
 
 
-.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
+.. py:method:: getFlowPlot(String, Collection)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 
@@ -209,7 +209,7 @@ Getters Methods
    Computes the specified metric.
 
 
-.. py:method:: static getMetrics()
+.. py:method:: static getMetrics(String)
 
    Gets the list of most commonly used metrics.
 

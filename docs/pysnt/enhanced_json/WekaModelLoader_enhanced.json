@@ -1,9 +1,9 @@
 {
   "class_name": "WekaModelLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2025-11-19T11:06:20.876270",
+  "extracted_at": "2026-01-02T22:36:45.089206",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.452730",
+  "enhancement_timestamp": "2026-01-02T22:43:26.207890",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -61,6 +61,22 @@
       "name": "addOutput",
       "overloads": [
         {
+          "signature": "addOutput(ModuleItem) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ModuleItem",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "addOutput(String, Class) -> MutableModuleItem",
           "params": [
             {
@@ -82,22 +98,6 @@
           "java_return_type": "MutableModuleItem",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "addOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: addOutput",
@@ -112,14 +112,6 @@
       "name": "cancel",
       "overloads": [
         {
-          "signature": "cancel() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "cancel(String) -> void",
           "params": [
             {
@@ -130,6 +122,14 @@
               "javadoc_name": null
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "cancel() -> void",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
@@ -228,10 +228,10 @@
       "name": "getInfo",
       "overloads": [
         {
-          "signature": "getInfo() -> ModuleInfo",
+          "signature": "getInfo() -> DynamicCommandInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ModuleInfo",
+          "java_return_type": "DynamicCommandInfo",
           "return_description": "",
           "throws": {}
         },
@@ -244,10 +244,10 @@
           "throws": {}
         },
         {
-          "signature": "getInfo() -> DynamicCommandInfo",
+          "signature": "getInfo() -> ModuleInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "DynamicCommandInfo",
+          "java_return_type": "ModuleInfo",
           "return_description": "",
           "throws": {}
         }

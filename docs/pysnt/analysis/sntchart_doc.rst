@@ -83,7 +83,7 @@ Other Methods
    Shows a bivariate histogram (two-dimensional histogram) from two DescriptiveStatistics objects. The number of bins is automatically determined using the Freedman-Diaconis rule.
 
 
-.. py:method:: add(Component, Object, int)
+.. py:method:: add(String, Component)
 
    
 
@@ -178,27 +178,27 @@ Other Methods
    
 
 
-.. py:method:: annotate(String, String, String)
+.. py:method:: annotate(String)
 
    Adds a subtitle to the chart.
 
 
-.. py:method:: annotateCategory(String, String)
+.. py:method:: annotateCategory(String, String, String)
 
    Annotates the specified category (Category plots only).
 
 
-.. py:method:: annotatePoint(double, double, String)
+.. py:method:: annotatePoint([D, String, String)
 
    Highlights a point in a histogram/XY plot by drawing a labeled arrow at the specified location.
 
 
-.. py:method:: annotateXline(double, String)
+.. py:method:: annotateXline(double, String, String)
 
    Annotates the specified X-value (XY plots and histograms).
 
 
-.. py:method:: annotateYline(double, String, String)
+.. py:method:: annotateYline(double, String)
 
    Annotates the specified Y-value (XY plots and histograms).
 
@@ -238,7 +238,7 @@ Other Methods
    Closes all open charts
 
 
-.. py:method:: static combine(Collection, boolean)
+.. py:method:: static combine(Collection, int, int, boolean)
 
    Combines a collection of charts into a multipanel montage.
 

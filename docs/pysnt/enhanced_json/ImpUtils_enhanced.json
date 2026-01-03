@@ -1,9 +1,9 @@
 {
   "class_name": "ImpUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2025-11-19T11:06:20.337026",
+  "extracted_at": "2026-01-02T22:36:44.542582",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2025-12-29T16:01:49.482249",
+  "enhancement_timestamp": "2026-01-02T22:43:26.237568",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -84,6 +84,83 @@
       ],
       "documentation": "Java method: static ascii",
       "javadoc_description": "Converts the specified image into ascii art.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static binarize",
+      "overloads": [
+        {
+          "signature": "static binarize(ImagePlus, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static binarize",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static calibrationToAxes",
+      "overloads": [
+        {
+          "signature": "static calibrationToAxes(Calibration, int) -> CalibratedAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Calibration",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CalibratedAxis;",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static calibrationToAxes",
+      "javadoc_description": "",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -552,12 +629,12 @@
       "name": "static getMIP",
       "overloads": [
         {
-          "signature": "static getMIP(ImagePlus) -> ImagePlus",
+          "signature": "static getMIP(Collection) -> ImagePlus",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -568,12 +645,12 @@
           "throws": {}
         },
         {
-          "signature": "static getMIP(Collection) -> ImagePlus",
+          "signature": "static getMIP(ImagePlus) -> ImagePlus",
           "params": [
             {
               "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "type": "Any",
+              "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": null
             }
@@ -892,14 +969,21 @@
       "name": "static open",
       "overloads": [
         {
-          "signature": "static open(File) -> ImagePlus",
+          "signature": "static open(String, String) -> ImagePlus",
           "params": [
             {
               "name": "arg0",
               "type": "str",
-              "java_type": "File",
+              "java_type": "String",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "Any",
@@ -915,7 +999,7 @@
               "type": "str",
               "java_type": "String",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "Any",
@@ -924,19 +1008,12 @@
           "throws": {}
         },
         {
-          "signature": "static open(String, String) -> ImagePlus",
+          "signature": "static open(File) -> ImagePlus",
           "params": [
             {
               "name": "arg0",
               "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
+              "java_type": "File",
               "description": "",
               "javadoc_name": null
             }
@@ -1308,6 +1385,76 @@
       "examples": []
     },
     {
+      "name": "static toImgPlus",
+      "overloads": [
+        {
+          "signature": "static toImgPlus(ImagePlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static toImgPlus",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static toImgPlus3D",
+      "overloads": [
+        {
+          "signature": "static toImgPlus3D(ImagePlus, int, int) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static toImgPlus3D",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static toStack",
       "overloads": [
         {
@@ -1338,6 +1485,29 @@
     {
       "name": "static zoomTo",
       "overloads": [
+        {
+          "signature": "static zoomTo(ImagePlus, Collection) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
         {
           "signature": "static zoomTo(ImagePlus, double, int, int) -> void",
           "params": [
@@ -1374,29 +1544,6 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "static zoomTo(ImagePlus, Collection) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": "param_0"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": "param_1"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: static zoomTo",
@@ -1426,18 +1573,18 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 45,
-      "total_json_methods": 38,
+      "total_json_methods": 42,
       "total_matches": 45,
       "exact_matches": 45,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 0,
-      "unmatched_json": -7,
+      "unmatched_json": -3,
       "match_percentage": 100.0
     },
     "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 0,
+    "unmatched_json_methods": 4,
     "enhancement_quality_score": 1.0
   }
 }

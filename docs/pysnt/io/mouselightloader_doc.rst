@@ -114,7 +114,7 @@ Getters Methods
    Gets the soma location for this neuron.
 
 
-.. py:method:: getTree(String)
+.. py:method:: getTree()
 
    Script-friendly method to extract the entire neuron as a collection of Paths.
 
@@ -128,7 +128,7 @@ I/O Operations Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: save(File)
+.. py:method:: save(String)
 
    Convenience method to save JSON data.
 
@@ -157,7 +157,7 @@ Other Methods
    Extracts reconstruction(s) from a JSON file.
 
 
-.. py:method:: static extractTrees(File, String)
+.. py:method:: static extractTrees(InputStream, String)
 
    
 

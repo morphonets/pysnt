@@ -80,7 +80,7 @@ Other Methods
 Creates a PathStraightener instance using demo data and displays the straightened path result. This method is primarily used for development and debugging.
 
 
-.. py:method:: straighten(int)
+.. py:method:: straighten()
 
    
 

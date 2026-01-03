@@ -1,0 +1,1034 @@
+{
+  "class_name": "ImpUtils",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2026-01-02T22:23:57.243295",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static applyColorTable",
+      "overloads": [
+        {
+          "signature": "static applyColorTable(ImagePlus, ColorTable) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static applyColorTable"
+    },
+    {
+      "name": "static ascii",
+      "overloads": [
+        {
+          "signature": "static ascii(ImagePlus, boolean, int, int) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static ascii"
+    },
+    {
+      "name": "static binarize",
+      "overloads": [
+        {
+          "signature": "static binarize(ImagePlus, double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static binarize"
+    },
+    {
+      "name": "static calibrationToAxes",
+      "overloads": [
+        {
+          "signature": "static calibrationToAxes(Calibration, int) -> CalibratedAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CalibratedAxis;"
+        }
+      ],
+      "documentation": "Java method: static calibrationToAxes"
+    },
+    {
+      "name": "static combineSkeletons",
+      "overloads": [
+        {
+          "signature": "static combineSkeletons(Collection) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static combineSkeletons(Collection, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static combineSkeletons"
+    },
+    {
+      "name": "static convertRGBtoComposite",
+      "overloads": [
+        {
+          "signature": "static convertRGBtoComposite(ImagePlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static convertRGBtoComposite"
+    },
+    {
+      "name": "static convertTo32bit",
+      "overloads": [
+        {
+          "signature": "static convertTo32bit(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static convertTo32bit"
+    },
+    {
+      "name": "static convertTo8bit",
+      "overloads": [
+        {
+          "signature": "static convertTo8bit(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static convertTo8bit"
+    },
+    {
+      "name": "static convertToSimple2D",
+      "overloads": [
+        {
+          "signature": "static convertToSimple2D(ImagePlus, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static convertToSimple2D"
+    },
+    {
+      "name": "static create",
+      "overloads": [
+        {
+          "signature": "static create(String, int, int, int, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg4",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static create"
+    },
+    {
+      "name": "static crop",
+      "overloads": [
+        {
+          "signature": "static crop(ImagePlus, Number) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static crop"
+    },
+    {
+      "name": "static demo",
+      "overloads": [
+        {
+          "signature": "static demo(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static demo"
+    },
+    {
+      "name": "static getCT",
+      "overloads": [
+        {
+          "signature": "static getCT(ImagePlus, int, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getCT"
+    },
+    {
+      "name": "static getChannel",
+      "overloads": [
+        {
+          "signature": "static getChannel(ImagePlus, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getChannel"
+    },
+    {
+      "name": "static getCurrentImage",
+      "overloads": [
+        {
+          "signature": "static getCurrentImage() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getCurrentImage"
+    },
+    {
+      "name": "static getForegroundRect",
+      "overloads": [
+        {
+          "signature": "static getForegroundRect(ImagePlus, Number) -> Roi",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Roi"
+        }
+      ],
+      "documentation": "Java method: static getForegroundRect"
+    },
+    {
+      "name": "static getFrame",
+      "overloads": [
+        {
+          "signature": "static getFrame(ImagePlus, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getFrame"
+    },
+    {
+      "name": "static getMIP",
+      "overloads": [
+        {
+          "signature": "static getMIP(ImagePlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static getMIP(ImagePlus, int, int) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static getMIP(Collection) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getMIP"
+    },
+    {
+      "name": "static getMinMax",
+      "overloads": [
+        {
+          "signature": "static getMinMax(ImagePlus) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: static getMinMax"
+    },
+    {
+      "name": "static getSliceLabels",
+      "overloads": [
+        {
+          "signature": "static getSliceLabels(ImageStack) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageStack"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static getSliceLabels"
+    },
+    {
+      "name": "static getSystemClipboard",
+      "overloads": [
+        {
+          "signature": "static getSystemClipboard(boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static getSystemClipboard"
+    },
+    {
+      "name": "static imageTypeToString",
+      "overloads": [
+        {
+          "signature": "static imageTypeToString(int) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static imageTypeToString"
+    },
+    {
+      "name": "static invertLut",
+      "overloads": [
+        {
+          "signature": "static invertLut(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static invertLut"
+    },
+    {
+      "name": "static isBinary",
+      "overloads": [
+        {
+          "signature": "static isBinary(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isBinary"
+    },
+    {
+      "name": "static isPointVisible",
+      "overloads": [
+        {
+          "signature": "static isPointVisible(ImagePlus, int, int) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isPointVisible"
+    },
+    {
+      "name": "static isVirtualStack",
+      "overloads": [
+        {
+          "signature": "static isVirtualStack(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isVirtualStack"
+    },
+    {
+      "name": "static nextZoomLevel",
+      "overloads": [
+        {
+          "signature": "static nextZoomLevel(double) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: static nextZoomLevel"
+    },
+    {
+      "name": "static open",
+      "overloads": [
+        {
+          "signature": "static open(String, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static open(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static open(File) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        },
+        {
+          "signature": "static open(File, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static open"
+    },
+    {
+      "name": "static previousZoomLevel",
+      "overloads": [
+        {
+          "signature": "static previousZoomLevel(double) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: static previousZoomLevel"
+    },
+    {
+      "name": "static removeIsolatedPixels",
+      "overloads": [
+        {
+          "signature": "static removeIsolatedPixels(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static removeIsolatedPixels"
+    },
+    {
+      "name": "static removeSlices",
+      "overloads": [
+        {
+          "signature": "static removeSlices(ImageStack, Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageStack"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static removeSlices"
+    },
+    {
+      "name": "static rotate90",
+      "overloads": [
+        {
+          "signature": "static rotate90(ImagePlus, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static rotate90"
+    },
+    {
+      "name": "static sameCTDimensions",
+      "overloads": [
+        {
+          "signature": "static sameCTDimensions(ImagePlus, ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static sameCTDimensions"
+    },
+    {
+      "name": "static sameCalibration",
+      "overloads": [
+        {
+          "signature": "static sameCalibration(ImagePlus, ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static sameCalibration"
+    },
+    {
+      "name": "static sameXYZDimensions",
+      "overloads": [
+        {
+          "signature": "static sameXYZDimensions(ImagePlus, ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static sameXYZDimensions"
+    },
+    {
+      "name": "static save",
+      "overloads": [
+        {
+          "signature": "static save(ImagePlus, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static save"
+    },
+    {
+      "name": "static setLut",
+      "overloads": [
+        {
+          "signature": "static setLut(ImagePlus, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static setLut"
+    },
+    {
+      "name": "static toDataset",
+      "overloads": [
+        {
+          "signature": "static toDataset(ImagePlus) -> Dataset",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Dataset"
+        }
+      ],
+      "documentation": "Java method: static toDataset"
+    },
+    {
+      "name": "static toImgPlus",
+      "overloads": [
+        {
+          "signature": "static toImgPlus(ImagePlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        }
+      ],
+      "documentation": "Java method: static toImgPlus"
+    },
+    {
+      "name": "static toImgPlus3D",
+      "overloads": [
+        {
+          "signature": "static toImgPlus3D(ImagePlus, int, int) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        }
+      ],
+      "documentation": "Java method: static toImgPlus3D"
+    },
+    {
+      "name": "static toStack",
+      "overloads": [
+        {
+          "signature": "static toStack(Collection) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus"
+        }
+      ],
+      "documentation": "Java method: static toStack"
+    },
+    {
+      "name": "static zoomTo",
+      "overloads": [
+        {
+          "signature": "static zoomTo(ImagePlus, Collection) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "static zoomTo(ImagePlus, double, int, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: static zoomTo"
+    }
+  ],
+  "fields": [],
+  "constructors": []
+}

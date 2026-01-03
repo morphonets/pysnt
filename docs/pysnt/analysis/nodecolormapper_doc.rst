@@ -79,7 +79,7 @@ Getters Methods
    
 
 
-.. py:method:: getColorTable()
+.. py:method:: getColorTable(String)
 
    Description copied from class: ColorMapper
 
@@ -137,12 +137,12 @@ Other Methods
    
 
 
-.. py:method:: map(String, String)
+.. py:method:: map(String, ColorTable)
 
    Maps nodes after the specified measurement. Mapping bounds are automatically determined.
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: static unMap(Collection)
 
    
 
