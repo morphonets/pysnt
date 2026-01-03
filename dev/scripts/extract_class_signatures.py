@@ -131,6 +131,7 @@ class JavaSignatureExtractor:
         submodules = [
             ('analysis', 'sc.fiji.snt.analysis'),
             ('annotation', 'sc.fiji.snt.annotation'),
+            ('filter', 'sc.fiji.snt.filter'),
             ('viewer', 'sc.fiji.snt.viewer'),
             ('io', 'sc.fiji.snt.io'),
             ('tracing', 'sc.fiji.snt.tracing'),
