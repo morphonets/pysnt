@@ -85,9 +85,8 @@ PySNT has some limitations that may not be addressed in future releases. However
 
 SNT provides several interactive 3D visualization tools: [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer), [SciView](https://imagej.net/plugins/snt/modeling), and [Big Volume Viewer](https://imagej.net/plugins/snt/manual#big-volume-viewer). While these viewers can be launched from Python, their usage remains experimental with several limitations:
 
-- GPU acceleration may not work reliably
-- Viewers don't seem to run in non-blocking mode on macOS (see [GUI Threading Issues](#gui-threading-issues))
-- The ImageJ GUI must linger in the background, even if it is not needed
+- Viewers may not be able to run in non-blocking mode on macOS (see [GUI Threading Issues](#gui-threading-issues))
+- For some viewers, the ImageJ GUI may need to linger in the background, even if it is not needed nor used
 
 **Workaround**:
 

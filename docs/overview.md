@@ -15,7 +15,7 @@ This overview describes how PySNT works under the hood by covering PySNT's archi
 
 ## Initializing
 
-Once installed, `pysnt` is imported as any other module. 3However, *it is only available once the gateway is initialized*:
+Once installed, `pysnt` is imported as any other module. However, *it is only available once the gateway is initialized*:
 
 ```python
 import pysnt
