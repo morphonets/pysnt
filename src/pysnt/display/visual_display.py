@@ -613,40 +613,6 @@ def _display_array_data(data, source_type="array", show: bool = True, **kwargs):
 
 
 
-def _should_preserve_aspect(image_array):
-    """
-    Determine if an image array should preserve aspect ratio.
-    
-    This function analyzes image content to decide if aspect ratio preservation
-    is important (e.g., for circular/square content vs. rectangular histograms).
-    
-    Parameters
-    ----------
-    image_array : numpy.ndarray
-        The image array to analyze
-        
-    Returns
-    -------
-    bool
-        True if aspect ratio should be preserved, False otherwise
-    """
-    try:
-        height, width = image_array.shape[:2]
-        aspect_ratio = width / height
-        
-        # Preserve aspect for nearly square images (likely polar plots, scatter plots)
-        # Allow some tolerance for rounding
-        if 0.8 <= aspect_ratio <= 1.25:
-            return True
-        
-        # For very rectangular images (histograms, bar charts), allow stretching
-        return False
-        
-    except Exception:
-        # Default to preserving aspect if we can't analyze
-        return True
-
-
 def _should_preserve_aspect(array) -> bool:
     """
     Determine if an image array should preserve aspect ratio.
