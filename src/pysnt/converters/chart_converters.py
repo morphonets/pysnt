@@ -13,7 +13,7 @@ Dependencies: core.py
 
 import logging
 import os
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 from matplotlib.figure import Figure
 
@@ -21,12 +21,17 @@ from .core import (
     _create_converter_result,
     _create_error_result,
     _create_standard_error_message,
-    _temp_file,
     _temp_directory,
     _setup_matplotlib_interactive,
     DEFAULT_SCALE,
     DEFAULT_MAX_PANELS,
     DEFAULT_PANEL_LAYOUT,
+    HAS_CAIROSVG,
+    HAS_FITZ,
+    cairosvg,
+    fitz,
+    ERROR_MISSING_CAIROSVG,
+    ERROR_MISSING_FITZ,
     SNTObject
 )
 
@@ -117,6 +122,173 @@ def _convert_snt_chart(chart: Any, **kwargs) -> SNTObject:
         return _create_error_result(Figure, e, 'SNTChart')
 
 
+def _save_chart_by_format(chart: Any, output_path: str, format_type: str, scale: float) -> None:
+    """Save SNTChart to disk using the requested format.
+
+    Unknown formats intentionally fall back to PNG for backward compatibility.
+    """
+    if format_type == 'svg':
+        chart.saveAsSVG(output_path, scale)
+    elif format_type == 'pdf':
+        chart.saveAsPDF(output_path, scale)
+    else:  # PNG format (default fallback)
+        chart.saveAsPNG(output_path, scale)
+
+
+def _load_figure_by_format(file_path: str, format_type: str, figsize=None) -> Figure:
+    """Load chart file into a matplotlib Figure using the requested format.
+
+    Unknown formats intentionally fall back to PNG for backward compatibility.
+    """
+    if format_type == 'svg':
+        return _svg_to_matplotlib(svg_file=file_path, figsize=figsize, background='None')
+    if format_type == 'pdf':
+        return _pdf_to_matplotlib(pdf_file=file_path, figsize=figsize)
+    return _png_to_matplotlib(png_file=file_path, figsize=figsize)
+
+
+def _log_temp_directory_contents(temp_chart_dir: str) -> None:
+    """Log files created in temp directory for debugging."""
+    try:
+        contents = os.listdir(temp_chart_dir)
+        logger.debug(f"Files created in temp directory: {len(contents)}")
+        for content in contents:
+            full_path = os.path.join(temp_chart_dir, content)
+            logger.debug(
+                f"  - {content} (size: {os.path.getsize(full_path) if os.path.exists(full_path) else 'N/A'})"
+            )
+    except Exception as e:
+        logger.debug(f"Could not list temp directory contents: {e}")
+
+
+def _discover_panel_files(
+    temp_chart_dir: str,
+    base_name: str,
+    format_type: str,
+    temp_path: str,
+    max_panels: int,
+) -> List[str]:
+    """Discover panel files emitted by combined chart save operation."""
+    import glob
+
+    panel_files: List[str] = []
+
+    # First, find all files with matching extension for fallback purposes.
+    all_files = glob.glob(os.path.join(temp_chart_dir, f"*.{format_type}"))
+    logger.debug(f"All {format_type} files found: {all_files}")
+
+    patterns = [
+        f"{base_name}-*.{format_type}",  # combined_chart-1.png, combined_chart-2.png
+    ]
+
+    logger.debug(f"Searching for panel files with base_name='{base_name}', format='{format_type}'")
+    for i, pattern in enumerate(patterns):
+        full_pattern = os.path.join(temp_chart_dir, pattern)
+        found_files = glob.glob(full_pattern)
+        logger.debug(f"Pattern {i + 1}: '{pattern}' -> full: '{full_pattern}' -> found: {found_files}")
+        if found_files:
+            panel_files.extend(found_files)
+            logger.info(f"Successfully found {len(found_files)} files with pattern '{pattern}'")
+            break
+
+    if not panel_files and all_files:
+        logger.warning(f"No patterns matched, using all {format_type} files as fallback: {all_files}")
+        panel_files = all_files
+
+    panel_files = sorted(list(set(panel_files)))
+
+    if len(panel_files) > max_panels:
+        logger.warning(f"Found {len(panel_files)} panel files, limiting to {max_panels}")
+        panel_files = panel_files[:max_panels]
+
+    if not panel_files:
+        if os.path.exists(temp_path):
+            logger.debug(f"Using original file as single panel: {temp_path}")
+            panel_files = [temp_path]
+        else:
+            try:
+                all_files_debug = os.listdir(temp_chart_dir)
+                logger.error(f"No panel files found. Directory contents: {all_files_debug}")
+            except Exception as e:
+                logger.error(f"Could not list directory for debugging: {e}")
+            raise FileNotFoundError(f"No panel files found for combined chart in {temp_chart_dir}")
+
+    logger.info(f"Found {len(panel_files)} panel files for combined chart")
+    return panel_files
+
+
+def _load_panel_figures_for_layout(panel_files: List[str], format_type: str) -> List[Optional[Figure]]:
+    """Load panel figures (best effort) for aspect and grid calculations."""
+    panel_figures: List[Optional[Figure]] = []
+    for panel_file in panel_files:
+        try:
+            panel_figures.append(_load_figure_by_format(panel_file, format_type, figsize=None))
+        except Exception as e:
+            logger.debug(f"Could not load panel figure for aspect analysis: {e}")
+            panel_figures.append(None)
+    return panel_figures
+
+
+def _setup_error_axis(ax: Any, message: str) -> None:
+    """Render error placeholder and apply standardized axis styling."""
+    ax.text(0.5, 0.5, message, ha='center', va='center', transform=ax.transAxes)
+    from ..display.utils import _setup_clean_axis
+    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
+
+
+def _render_panel_figure(ax: Any, panel_fig: Figure, panel_index: int) -> None:
+    """Render one panel figure into target axis with aspect-aware handling."""
+    if not panel_fig or len(panel_fig.axes) == 0:
+        _setup_error_axis(ax, f'Panel {panel_index + 1}\n(Load Error)')
+        return
+
+    panel_ax = panel_fig.axes[0]
+    is_polar = any(hasattr(ax_check, 'name') and ax_check.name == 'polar' for ax_check in panel_fig.axes)
+
+    from ..display.visual_display import _should_preserve_aspect
+    from ..display.utils import _setup_clean_axis
+
+    for child in panel_ax.get_children():
+        if hasattr(child, 'get_array'):  # Image data
+            try:
+                array = child.get_array()
+                aspect = 'equal' if is_polar or _should_preserve_aspect(array) else 'auto'
+                ax.imshow(array, aspect=aspect)
+            except Exception as e:
+                logger.debug(f"Could not copy image data from panel {panel_index}: {e}")
+
+    if is_polar:
+        ax.set_aspect('equal', adjustable='box')
+
+    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
+
+
+def _render_combined_panels(
+    axes: List[Any],
+    panel_files: List[str],
+    panel_figures: List[Optional[Figure]],
+    format_type: str,
+    plt_module: Any,
+) -> None:
+    """Render all discovered panel files into subplot axes."""
+    for i, (panel_file, panel_fig) in enumerate(zip(panel_files, panel_figures)):
+        if i >= len(axes):
+            break
+        ax = axes[i]
+
+        try:
+            if panel_fig is None:
+                panel_fig = _load_figure_by_format(panel_file, format_type, figsize=None)
+
+            _render_panel_figure(ax, panel_fig, i)
+
+            if panel_fig:
+                plt_module.close(panel_fig)
+        except Exception as e:
+            logger.warning(f"Failed to load panel {i + 1} from {panel_file}: {e}")
+            _setup_error_axis(ax, f'Panel {i + 1}\n(Error)')
+
+
 def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[str], scale: float) -> Figure:
     """
     Convert a single SNTChart to matplotlib figure.
@@ -152,12 +324,7 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[s
             logger.debug(f"Could not initialize chart dimensions: {e}")
         
         # Save chart using appropriate method
-        if format_type == 'svg':
-            chart.saveAsSVG(temp_path, scale)
-        elif format_type == 'pdf':
-            chart.saveAsPDF(temp_path, scale)
-        else:  # PNG format
-            chart.saveAsPNG(temp_path, scale)
+        _save_chart_by_format(chart, temp_path, format_type, scale)
 
         # Verify file was created and has content
         if not os.path.exists(temp_path):
@@ -170,14 +337,7 @@ def _convert_single_snt_chart(chart: Any, format_type: str, temp_dir: Optional[s
         logger.debug(f"Chart file created successfully: {temp_path} (size: {file_size} bytes)")
 
         # Convert to matplotlib figure
-        if format_type == 'svg':
-            fig = _svg_to_matplotlib(svg_file=temp_path, figsize=None, background='None')
-        elif format_type == 'pdf':
-            fig = _pdf_to_matplotlib(pdf_file=temp_path, figsize=None)
-        else:  # PNG
-            fig = _png_to_matplotlib(png_file=temp_path, figsize=None)
-
-        return fig
+        return _load_figure_by_format(temp_path, format_type, figsize=None)
 
 
 def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional[str], scale: float, max_panels: int,
@@ -208,9 +368,6 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
     matplotlib.figure.Figure
         The assembled multipanel matplotlib figure
     """
-    import glob
-    import math
-    
     plt = _setup_matplotlib_interactive()
 
     with _temp_directory(temp_dir) as temp_chart_dir:
@@ -219,165 +376,31 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
         logger.debug(f"Using temp directory: {temp_chart_dir}")
         logger.debug(f"Base temp path: {temp_path}")
 
-        panel_files = []
         # Save combined chart - this will create multiple files
-        if format_type == 'svg':
-            chart.saveAsSVG(temp_path, scale)
-        elif format_type == 'pdf':
-            chart.saveAsPDF(temp_path, scale)
-        else:  # PNG format
-            chart.saveAsPNG(temp_path, scale)
-
+        _save_chart_by_format(chart, temp_path, format_type, scale)
         logger.debug(f"Chart saved to: {temp_path}")
-
-        # List all files in the temp directory to see what was created
-        try:
-            contents = os.listdir(temp_chart_dir)
-            logger.debug(f"Files created in temp directory: {len(contents)}")
-            for content in contents:
-                full_path = os.path.join(temp_chart_dir, content)
-                logger.debug(
-                    f"  - {content} (size: {os.path.getsize(full_path) if os.path.exists(full_path) else 'N/A'})")
-        except Exception as e:
-            logger.debug(f"Could not list temp directory contents: {e}")
-
-        # Detect panel files created by the save operation
-        # First, try to find all files with the format extension
-        all_files = glob.glob(os.path.join(temp_chart_dir, f"*.{format_type}"))
-        logger.debug(f"All {format_type} files found: {all_files}")
-
-        # Try specific patterns
-        patterns = [
-            f"{base_name}-*.{format_type}",  # combined_chart-1.png, combined_chart-2.png, used by SNT
-            # f"{base_name}_*.{format_type}",    # combined_chart_1.png, combined_chart_2.png
-            # f"{base_name}*.{format_type}",     # combined_chart1.png, combined_chart2.png
-        ]
-
-        logger.debug(f"Searching for panel files with base_name='{base_name}', format='{format_type}'")
-
-        for i, pattern in enumerate(patterns):
-            full_pattern = os.path.join(temp_chart_dir, pattern)
-            found_files = glob.glob(full_pattern)
-            logger.debug(f"Pattern {i + 1}: '{pattern}' -> full: '{full_pattern}' -> found: {found_files}")
-            if found_files:
-                panel_files.extend(found_files)
-                logger.info(f"Successfully found {len(found_files)} files with pattern '{pattern}'")
-                break
-
-        # If no patterns worked, try to use all files in directory as fallback
-        if not panel_files and all_files:
-            logger.warning(f"No patterns matched, using all {format_type} files as fallback: {all_files}")
-            panel_files = all_files
-
-        # Remove duplicates and sort
-        panel_files = sorted(list(set(panel_files)))
-
-        # Limit to max_panels
-        if len(panel_files) > max_panels:
-            logger.warning(f"Found {len(panel_files)} panel files, limiting to {max_panels}")
-            panel_files = panel_files[:max_panels]
-
-        if not panel_files:
-            # Fallback: check if the original file exists (might be single file after all)
-            if os.path.exists(temp_path):
-                logger.debug(f"Using original file as single panel: {temp_path}")
-                panel_files = [temp_path]
-            else:
-                # List all files in directory for debugging
-                try:
-                    all_files_debug = os.listdir(temp_chart_dir)
-                    logger.error(f"No panel files found. Directory contents: {all_files_debug}")
-                except Exception as e:
-                    logger.error(f"Could not list directory for debugging: {e}")
-                raise FileNotFoundError(f"No panel files found for combined chart in {temp_chart_dir}")
-
-        logger.info(f"Found {len(panel_files)} panel files for combined chart")
+        _log_temp_directory_contents(temp_chart_dir)
+        panel_files = _discover_panel_files(
+            temp_chart_dir=temp_chart_dir,
+            base_name=base_name,
+            format_type=format_type,
+            temp_path=temp_path,
+            max_panels=max_panels,
+        )
 
         # Create subplot grid using new utilities with aspect ratio preservation
         num_panels = len(panel_files)
-        
-        # Load panel figures first to analyze aspect ratios
-        panel_figures = []
-        for panel_file in panel_files:
-            try:
-                if format_type == 'svg':
-                    panel_fig = _svg_to_matplotlib(svg_file=panel_file, figsize=None, background='None')
-                elif format_type == 'pdf':
-                    panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, figsize=None)
-                else:  # PNG
-                    panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
-                panel_figures.append(panel_fig)
-            except Exception as e:
-                logger.debug(f"Could not load panel figure for aspect analysis: {e}")
-                panel_figures.append(None)
-        
+        panel_figures = _load_panel_figures_for_layout(panel_files, format_type)
+
         # Use new grid creation utility with aspect ratio preservation
         from ..display.utils import _create_subplot_grid
-        fig, axes, (rows, cols) = _create_subplot_grid(num_panels, panel_layout, 
-                                                      figsize=None, source_figures=panel_figures)
-
-        # Load and display each panel with improved formatting
-        for i, (panel_file, panel_fig) in enumerate(zip(panel_files, panel_figures)):
-            if i >= len(axes):
-                break
-
-            ax = axes[i]
-
-            try:
-                # Use pre-loaded panel figure or load if needed
-                if panel_fig is None:
-                    if format_type == 'svg':
-                        panel_fig = _svg_to_matplotlib(svg_file=panel_file, figsize=None, background='None')
-                    elif format_type == 'pdf':
-                        panel_fig = _pdf_to_matplotlib(pdf_file=panel_file, figsize=None)
-                    else:  # PNG
-                        panel_fig = _png_to_matplotlib(png_file=panel_file, figsize=None)
-
-                # Extract image data from panel figure
-                if panel_fig and len(panel_fig.axes) > 0:
-                    panel_ax = panel_fig.axes[0]
-                    
-                    # Detect if this is a polar plot or aspect-sensitive content
-                    is_polar = any(hasattr(ax_check, 'name') and ax_check.name == 'polar' 
-                                 for ax_check in panel_fig.axes)
-
-                    # Copy the panel content to our subplot with aspect preservation
-                    for child in panel_ax.get_children():
-                        if hasattr(child, 'get_array'):  # Image data
-                            try:
-                                array = child.get_array()
-                                
-                                # Use new aspect ratio logic
-                                from ..display.visual_display import _should_preserve_aspect
-                                aspect = 'equal' if is_polar or _should_preserve_aspect(array) else 'auto'
-                                ax.imshow(array, aspect=aspect)
-                            except Exception as e:
-                                logger.debug(f"Could not copy image data from panel {i}: {e}")
-
-                    # Set equal aspect ratio for polar plots
-                    if is_polar:
-                        ax.set_aspect('equal', adjustable='box')
-
-                    # Use clean axis formatting (no titles by default for consistency)
-                    from ..display.utils import _setup_clean_axis
-                    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
-
-                    # Close the temporary panel figure
-                    plt.close(panel_fig)
-                else:
-                    ax.text(0.5, 0.5, f'Panel {i + 1}\n(Load Error)',
-                            ha='center', va='center', transform=ax.transAxes)
-                    # Use clean axis formatting for error placeholder
-                    from ..display.utils import _setup_clean_axis
-                    _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
-
-            except Exception as e:
-                logger.warning(f"Failed to load panel {i + 1} from {panel_file}: {e}")
-                ax.text(0.5, 0.5, f'Panel {i + 1}\n(Error)',
-                        ha='center', va='center', transform=ax.transAxes)
-                # Use clean axis formatting for error placeholder
-                from ..display.utils import _setup_clean_axis
-                _setup_clean_axis(ax, title=None, show_title=False, hide_axis_completely=True)
+        fig, axes, _ = _create_subplot_grid(
+            num_panels,
+            panel_layout,
+            figsize=None,
+            source_figures=panel_figures,
+        )
+        _render_combined_panels(axes, panel_files, panel_figures, format_type, plt)
 
         # Hide unused subplots
         for i in range(num_panels, len(axes)):
@@ -391,20 +414,6 @@ def _convert_combined_snt_chart(chart: Any, format_type: str, temp_dir: Optional
 
 
 # Format conversion utilities
-
-try:
-    import cairosvg # noqa
-    HAS_CAIROSVG = True
-except ImportError:
-    HAS_CAIROSVG = False
-    cairosvg = None
-
-try:
-    import fitz # noqa
-    HAS_FITZ = True
-except ImportError:
-    HAS_FITZ = False
-    fitz = None
 
 import matplotlib.image as mpimg
 import numpy as np
@@ -481,7 +490,7 @@ def _svg_to_matplotlib(svg_file, dpi=None, figsize=None, background='white'):
     from ..config import get_option
     
     if not HAS_CAIROSVG:
-        raise ImportError("cairosvg is required for SVG conversion. Install with: pip install cairosvg")
+        raise ImportError(ERROR_MISSING_CAIROSVG)
 
     # Use config default if DPI not specified
     if dpi is None:
@@ -564,7 +573,7 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=None, figsize=None):
     from ..config import get_option
     
     if not HAS_FITZ:
-        raise ImportError("PyMuPDF (fitz) is required for PDF conversion. Install with: pip install PyMuPDF")
+        raise ImportError(ERROR_MISSING_FITZ)
 
     # Use config default if DPI not specified
     if dpi is None:

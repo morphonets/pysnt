@@ -14,14 +14,6 @@ import logging
 from typing import Any
 
 try:
-    import networkx as nx  # noqa
-
-    HAS_NETWORKX = True
-except ImportError:
-    HAS_NETWORKX = False
-    nx = None
-
-try:
     import matplotlib.pyplot as plt
     from matplotlib.figure import Figure
 
@@ -35,6 +27,8 @@ from .core import (
     _create_converter_result,
     _create_error_result,
     JavaTypeDetector,
+    HAS_NETWORKX,
+    nx,
     ERROR_MISSING_NETWORKX,
     SNTObject,
 )

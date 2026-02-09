@@ -44,6 +44,29 @@ class EdgeExtractor:
         """Get default attributes to extract for this edge type."""
         raise NotImplementedError
 
+
+def _extract_edge_attrs(
+    edge: Any,
+    requested_attrs: List[str],
+    method_map: Dict[str, str],
+    edge_type_name: str,
+) -> Dict[str, Any]:
+    """Shared edge attribute extraction with method map + direct attribute fallback."""
+    attrs: Dict[str, Any] = {}
+
+    for attr in requested_attrs:
+        try:
+            method_name = method_map.get(attr)
+            if method_name and hasattr(edge, method_name):
+                attrs[attr] = getattr(edge, method_name)()
+            elif hasattr(edge, attr):
+                attrs[attr] = getattr(edge, attr)
+        except Exception as e:
+            logger.debug(f"Could not extract attribute '{attr}' from {edge_type_name}: {e}")
+
+    return attrs
+
+
 class SWCPointExtractor(VertexExtractor):
     """Extractor for SWCPoint vertices."""
     
@@ -194,20 +217,12 @@ class SWCWeightedEdgeExtractor(EdgeExtractor):
     
     def extract_attributes(self, edge: Any, requested_attrs: List[str]) -> Dict[str, Any]:
         """Extract attributes from SWCWeightedEdge."""
-        attrs = {}
-        
-        for attr in requested_attrs:
-            try:
-                if attr == 'weight' and hasattr(edge, 'getWeight'):
-                    attrs[attr] = edge.getWeight()  # JPype handles double->float conversion
-                elif attr == 'length' and hasattr(edge, 'getLength'):
-                    attrs[attr] = edge.getLength()  # JPype handles double->float conversion
-                elif hasattr(edge, attr):
-                    attrs[attr] = getattr(edge, attr)  # Direct access fallback
-            except Exception as e:
-                logger.debug(f"Could not extract attribute '{attr}' from SWCWeightedEdge: {e}")
-        
-        return attrs
+        return _extract_edge_attrs(
+            edge=edge,
+            requested_attrs=requested_attrs,
+            method_map={'weight': 'getWeight', 'length': 'getLength'},
+            edge_type_name='SWCWeightedEdge',
+        )
     
     def get_default_attributes(self) -> List[str]:
         """Default SWCWeightedEdge attributes."""
@@ -219,19 +234,13 @@ class AnnotationWeightedEdgeExtractor(EdgeExtractor):
     
     def extract_attributes(self, edge: Any, requested_attrs: List[str]) -> Dict[str, Any]:
         """Extract attributes from AnnotationWeightedEdge."""
-        attrs = {}
-        
-        for attr in requested_attrs:
-            try:
-                # Both weight and length return the same value (getWeight()) for AnnotationWeightedEdge
-                if attr in ['weight', 'length'] and hasattr(edge, 'getWeight'):
-                    attrs[attr] = edge.getWeight()  # JPype handles double->float conversion
-                elif hasattr(edge, attr):
-                    attrs[attr] = getattr(edge, attr)  # Direct access fallback
-            except Exception as e:
-                logger.debug(f"Could not extract attribute '{attr}' from AnnotationWeightedEdge: {e}")
-        
-        return attrs
+        # AnnotationWeightedEdge exposes both "weight" and "length" via getWeight().
+        return _extract_edge_attrs(
+            edge=edge,
+            requested_attrs=requested_attrs,
+            method_map={'weight': 'getWeight', 'length': 'getWeight'},
+            edge_type_name='AnnotationWeightedEdge',
+        )
     
     def get_default_attributes(self) -> List[str]:
         """Default AnnotationWeightedEdge attributes."""

@@ -14,6 +14,7 @@ from typing import Any
 
 from .chart_converters import _is_snt_chart
 from .core import logger
+from .tree_converters import _is_snt_tree
 
 
 def _should_enhance_object(obj) -> bool:
@@ -252,14 +253,6 @@ def auto_enhance_java_objects(enabled: bool = True):
         logger.info("Auto-enhancement not yet implemented. Use enhance_java_object() manually.")
     except Exception as e:
         logger.error(f"Failed to enable auto-enhancement: {e}")
-
-
-def _is_snt_tree(obj) -> bool:
-    """Check if object is an SNT Tree."""
-    try:
-        return hasattr(obj, 'getRoot') and hasattr(obj, 'getNodes') and hasattr(obj, 'setRadii')
-    except (AttributeError, TypeError, RuntimeError):
-        return False
 
 
 def _is_snt_path(obj) -> bool:

@@ -125,7 +125,7 @@ def tree_to_points(tree):
         
     Examples
     --------
-    >>> from pysnt.converters import tree_to_points
+    >>> from pysnt.converters.tree_converters import tree_to_points
     >>> points = tree_to_points(tree)
     >>> print(points.shape)  # (N, 3)
     
