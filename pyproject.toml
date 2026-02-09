@@ -25,21 +25,19 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "imglyb>=2.1.0",
     "scyjava>=1.12.1",
     "pyimagej>=1.7.0",
+    "JPype1>=1.5.0",
     "numpy>=2.3.3",
     "matplotlib>=3.10.7",
-    "install-jdk>=1.1.0",
     "xarray>=2025.10.1",
-    "pyobjc-core; sys_platform == 'darwin'",
-    "pyobjc-framework-cocoa; sys_platform == 'darwin'",
 ]
 
 [project.optional-dependencies]
 # Enhanced display and conversion features
 display = [
     "pandas>=2.3.3",
+    "networkx>=3.0",
     "cairosvg>=2.8.2",
     "PyMuPDF>=1.26.3",
 ]
@@ -47,8 +45,14 @@ display = [
 gui = [
     "pandasgui>=0.2.15",
     "ipykernel>=7.1.0",
+    "pyobjc-core>=11.1; sys_platform == 'darwin'",
+    "pyobjc-framework-cocoa>=11.1; sys_platform == 'darwin'",
 ]
-# OME-ZARR support for remote data access
+# Optional Java auto-install support
+java = [
+    "install-jdk>=1.1.0",
+]
+# Optional OME-Zarr support
 zarr = [
     "zarr>=2.10.0",
     "fsspec>=2023.1.0",
@@ -56,12 +60,15 @@ zarr = [
 # All optional features
 all = [
     "pandas>=2.3.3",
+    "networkx>=3.0",
     "cairosvg>=2.8.2",
     "PyMuPDF>=1.26.3",
     "pandasgui>=0.2.15",
     "ipykernel>=7.1.0",
+    "pyobjc-core>=11.1; sys_platform == 'darwin'",
+    "pyobjc-framework-cocoa>=11.1; sys_platform == 'darwin'",
+    "install-jdk>=1.1.0",
     "zarr>=2.10.0",
-    "imglyb>=2.1.0",
     "fsspec>=2023.1.0",
 ]
 # Development dependencies
@@ -71,9 +78,7 @@ dev = [
     "black",
     "flake8",
     "mypy",
-    # Include zarr dependencies for development
-    "zarr>=2.10.0",
-    "fsspec>=2023.1.0",
+    "isort",
 ]
 # Documentation dependencies
 docs = [

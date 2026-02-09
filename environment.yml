@@ -8,26 +8,32 @@ dependencies:
   - openjdk=21
   - scyjava>=1.12.1
   - pyimagej>=1.7.0
-  - install-jdk>=1.1.0
+  - jpype1>=1.5.0
   - numpy>=2.3.3
   - matplotlib>=3.10.7
   - xarray>=2025.10.1
 
-  # Enhanced display dependencies
+  # Optional display and conversion features
   - pandas>=2.3.3
+  - networkx>=3.0
   - cairo>=1.18.4
   - cairosvg>=2.8.2
-  - mupdf>=1.25.6
+  - pymupdf>=1.26.3
+
+  # Optional OME-Zarr support
+  - zarr>=2.10.0
+  - fsspec>=2023.1.0
 
   # IPython notebooks
   - ipykernel>=7.1.0
-
-  # macOS-specific dependencies
-  - pyobjc-core  # [osx]
-  - pyobjc-framework-cocoa  # [osx]
 
   # Pip dependencies
   - pip
   - pip:
     # Interactive GUI features
     - pandasgui>=0.2.15
+    - pyobjc-core>=11.1; sys_platform == "darwin"
+    - pyobjc-framework-cocoa>=11.1; sys_platform == "darwin"
+
+    # Optional Java auto-install support
+    - install-jdk>=1.1.0

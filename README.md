@@ -53,14 +53,14 @@
 
 - **Native Python Converters**: Automatic conversion between SNT objects and Python-native types:
     
-    | SNT Java Object | PySNT Python Object              |
-    |-----------------|----------------------------------|
-    | SNTChart        | matplotlib Figure                |
-    | SNTGraph        | NetworkX graph                   |
-    | SNTTable        | xarray Dataset; pandas DataFrame |
-    | ImgPlus/RAI     | xarray; numpy                    |
-    | ImagePlus       | xarray; numpy (via ScyJava)      |
-    | Collections     | lists/dicts, etc. (via ScyJava)  |
+    | SNT/ImgLib2 Java Object | PySNT Python Object              |
+    |-------------------------|----------------------------------|
+    | SNTChart                | matplotlib Figure                |
+    | SNTGraph                | NetworkX graph                   |
+    | SNTTable                | xarray Dataset; pandas DataFrame |
+    | ImgPlus/RAI             | xarray; numpy                    |
+    | ImagePlus               | xarray; numpy (via ScyJava)      |
+    | Collections             | lists/dicts, etc. (via ScyJava)  |
 
 
 
@@ -103,7 +103,7 @@ python -c "import pysnt; print('PySNT imported successfully!')"
 #### PyCharm
 1. Open this folder as a project in PyCharm
 2. Go to File → Settings → Project → Python Interpreter
-3. Select the 'pysnt' conda environment
+3. Select the 'pysnt' environment
 
 #### VS Code
 1. Open this folder in VS Code
@@ -124,38 +124,64 @@ python -c "import pysnt; print('PySNT imported successfully!')"
 
 ```
 pysnt/
-├── src/pysnt/          # Main package source
-├── tests/              # Test suite
-├── dev/scripts/        # Development scripts
-├── docs/               # Documentation source
-├── dev/                # Development utilities and templates
-├── environment.yml     # Environment specification (runtime)
-└── environment-dev.yml # Environment specification (development)
+├── src/pysnt/           # main package source
+├── tests/               # test suite
+├── dev/scripts/         # development scripts
+├── docs/                # documentation source
+├── dev/                 # development utilities and templates
+├── pyproject.toml       # packaging metadata and dependency groups
+├── requirements.txt     # pip core runtime dependencies
+├── requirements-gui.txt # pip optional runtime extras (display/gui/java/zarr)
+├── requirements-dev.txt # pip development stack (extends requirements-gui.txt)
+├── environment-min.yml  # minimal conda-compatible runtime environment
+├── environment.yml      # full-featured conda-compatible runtime environment
+└── environment-dev.yml  # full-featured conda-compatible development environment
 ```
+
+### Dependency Files and Scope
+- `pyproject.toml`: canonical dependency definitions for packaging and extras
+- `requirements.txt`: core pip runtime set only
+- `requirements-gui.txt`: optional runtime features layered on top of core (`display`, `gui`, `java`, `zarr`)
+- `requirements-dev.txt`: development/test/docs tools layered on top of `requirements-gui.txt`
+- `environment-min.yml`: smallest conda-compatible runtime setup
+- `environment.yml`: full runtime conda-compatible setup with optional user-facing features
+- `environment-dev.yml`: full runtime plus development/test/docs tools
 
 ### Dependencies
 #### Core Dependencies (Required)
-- install-jdk - Java management
-- imglyb - ImgLib2 to NumPy conversions
+- JPype1 - Python/JVM bridge used by runtime utilities
 - matplotlib - Used extensively for plotting and figure creation
 - numpy - Used throughout for array operations
 - pyimagej - ImageJ integration
-- scyjava  - Core Java integration
+- scyjava - Core Java integration
 - xarray - Dataset operations
-- pyobjc-core; sys_platform == 'darwin' - macOS support
 
 #### Optional Dependencies (Display/Conversion Features)
 - cairosvg - SNTChart SVG to matplotlib conversion
-- PyMuPDF  - SNTChart PDF to matplotlib conversion
+- install-jdk - Automatic OpenJDK installation helper
+- ipykernel - Notebook kernel support
 - pandas - DataFrame operations and SNTTable conversion
-- networkx - SNTGraph to NetworkX graph conversion
 - pandasgui - Interactive DataFrame display
+- networkx - SNTGraph to NetworkX graph conversion
+- pyobjc-core (macOS only) - Required by PyImageJ GUI mode on macOS
+- pyobjc-framework-cocoa (macOS only) - Required by PyImageJ GUI mode on macOS
+- PyMuPDF - SNTChart PDF to matplotlib conversion
 
-#### Optional Dependencies (OME-ZARR Support)
-- zarr - OME-ZARR format support for local and remote data
+
+#### Optional Dependencies (OME-ZARR)
 - fsspec - Remote filesystem access (HTTP/HTTPS/S3)
+- zarr - OME-ZARR format support for local and remote data
 
-Install with: `pip install pysnt[zarr]` or `pip install pysnt[all]`
+Install examples:
+- `pip install -e .` (core)
+- `pip install -e .[display]`
+- `pip install -e .[gui]`
+- `pip install -e .[all]`
+- `pip install -e .[dev]`
+
+> macOS users: PyImageJ GUI mode requires `pyobjc-core` and
+`pyobjc-framework-cocoa` (or `pyobjc`). These are included in the GUI-focused
+dependency files.
 
 ### Need Help?
 

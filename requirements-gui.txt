@@ -4,18 +4,23 @@
 # Include core dependencies
 -r requirements.txt
 
-# Enhanced display features
+# Enhanced display and conversion features
 pandas>=2.3.3
-
-# Graph analysis and conversion
 networkx>=3.0
-
-# File format conversion support
 cairosvg>=2.8.2
 PyMuPDF>=1.26.3
 
 # Interactive GUI features
 pandasgui>=0.2.15
+pyobjc-core>=11.1; sys_platform == "darwin"
+pyobjc-framework-cocoa>=11.1; sys_platform == "darwin"
 
 # IPython notebooks
 ipykernel>=7.1.0
+
+# Optional Java auto-install support
+install-jdk>=1.1.0
+
+# Optional OME-Zarr support
+zarr>=2.10.0
+fsspec>=2023.1.0
