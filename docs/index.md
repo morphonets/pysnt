@@ -74,46 +74,70 @@ title: "PySNT: Quantification of neuronal anatomy in Python"
 :link-type: doc
 :img-top: _static/front_page/tutorial01a.png
 
-Set up your environment and launch your first script with step-by-step guidance.
+Set up your environment and run your first script with step-by-step guidance.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Analysis Tools
+::::{grid-item-card} <i class="fa-solid fa-calculator"></i> Morphometric Analysis
 :link: notebooks/01_single_cell_analysis
 :link-type: doc
 :img-top: _static/front_page/tutorial01b.png
 
-Comprehensive morphological analysis: quantify, transform, and compare neuronal morphology at single-cell and population levels.
+Quantify, transform, and compare neuronal morphology at single-cell and population levels.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas Analysis
+::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas & Circuit Analysis
 :link: notebooks/02_hemisphere_analysis
 :link-type: doc
 :img-top: _static/front_page/tutorial03a.png
 
-Specialized tools for reference brains, atlases, public datasets, and projectomes.
+Integrate reference brains, atlases, public databases, and whole-brain projectomes into your analysis.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-chart-bar"></i> Visualizations
+::::{grid-item-card} <i class="fa-solid fa-cube"></i> 3D Visualization
 :link: notebooks/03_convex_hull
 :link-type: doc
 :img-top: _static/intersection-overview.png
 
-Generate publication-ready figures and interactive 3D visualizations of neuronal morphology.
+Generate publication-ready figures and interactive 3D renderings of neuronal morphology.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-crosshairs"></i> Ground Truth Generation
+::::{grid-item-card} <i class="fa-solid fa-ruler-combined"></i> Geometric Analysis
+:link: notebooks/04_tree_intersection
+:link-type: doc
+:img-top: _static/martinotti_intersection.png
+
+Measure spatial extent, arbor overlap, and three-dimensional arrangements of dendritic and axonal trees.
+::::
+
+::::{grid-item-card} <i class="fa-solid fa-plug"></i> Python Ecosystem
+:link: notebooks/05_napari_viewer
+:link-type: doc
+:img-top: _static/op1_napari.png
+
+Interoperability with napari, pandas, NumPy, and the broader scientific Python stack.
+::::
+
+::::{grid-item-card} <i class="fa-solid fa-sitemap"></i> Classification of Cell Types
+:link: notebooks/06_persistence_landscape
+:link-type: doc
+:img-top: _static/landscapes_clustering.png
+
+Cluster and classify neurons using morphometric and topological features.
+::::
+
+::::{grid-item-card} <i class="fa-solid fa-crosshairs"></i> ML Ground Truth Curation
 :link: notebooks/07_curvature_optimization
 :link-type: doc
 :img-top: _static/front_page/op1_tubeness_fit.png
 
-Curate ML training data with quality control tools: refine traces, detect crossovers, and validate reconstructions.
+Build quality-controlled training datasets: refine traces, detect crossovers, and validate reconstructions.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-boxes-stacked"></i> Much More
+::::{grid-item-card} <i class="fa-solid fa-ellipsis"></i> And More
 :link: https://imagej.net/plugins/snt/#overview
 :img-top: _static/front_page/sankey-flow-plot-with-tooltip.png
 
-Specialized analyses: Sholl, Strahler, persistence diagrams, graph theory, and growth dynamics
+Sholl, Strahler, persistence diagrams, graph theory, growth dynamics, and full access to the SNT/Fiji ecosystem.
 ::::
 
 :::::
