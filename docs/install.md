@@ -33,8 +33,8 @@ you want to debug or improve PySNT have a look at
 1. Assuming you have `mamba` installed, activate conda-forge:
 
    ```bash
-   mamba config --add channels conda-forge
-   mamba config --set channel_priority strict
+   mamba config prepend channels conda-forge
+   conda config --set channel_priority strict
    ```
 
 2. [Clone](https://github.com/morphonets/pysnt.git) or [download](https://github.com/morphonets/pysnt/archive/refs/heads/main.zip) pysnt
@@ -99,12 +99,21 @@ PySNT requires a connection to a local SNT installation. There are two options:
 
 
 ```{important}
-Currently the automatic option does not retrieve the latest version of SNT. Until SNTv5 is officially released, it is best to point pyimagej to a SNT pre-release bundle:
+Currently the automatic option does not retrieve the latest version of SNT. Until PySNT is officially released, it is best to point pyimagej to a Fiji installation with SNT pre-installed:
 
-1. Download a pre-release bundle from the [SNT Release Page](https://github.com/morphonets/SNT/releases).
-   Unzip it to a local directory, e.g., `~/Downloads/`
+1. Download **Fiji LATEST** from imagej.net/software/fiji/downloads
 
-2. Provide the installer with the path to the unzipped directory
+2. Extract the ZIP. _Optional_: Rename Fiji.app to Fiji-SNT.app if you want to keep multiple Fiji installations side by side
+
+3. Run the Fiji Updater (Help › Update…, the penultimate entry in the Help menu)
+
+4. Click Manage update sites
+
+5. Search for `Neuroanatomy` (or `SNT`) and activate the _Neuroanatomy_ checkbox
+
+6. Click _Apply Changes_ and close Fiji
+
+7. Provide the installer with the path to the unzipped directory (see below)
 ```
 
 ### Interactive Setup

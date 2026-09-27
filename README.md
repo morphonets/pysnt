@@ -53,14 +53,13 @@
 
 - **Native Python Converters**: Automatic conversion between SNT objects and Python-native types:
     
-    | SNT/ImgLib2 Java Object | PySNT Python Object              |
-    |-------------------------|----------------------------------|
-    | SNTChart                | matplotlib Figure                |
-    | SNTGraph                | NetworkX graph                   |
-    | SNTTable                | xarray Dataset; pandas DataFrame |
-    | ImgPlus/RAI             | xarray; numpy                    |
-    | ImagePlus               | xarray; numpy (via ScyJava)      |
-    | Collections             | lists/dicts, etc. (via ScyJava)  |
+    | SNT Java Object | PySNT Python Object              |
+    |-----------------|----------------------------------|
+    | SNTChart        | matplotlib Figure                |
+    | SNTGraph        | NetworkX graph                   |
+    | SNTTable        | xarray Dataset; pandas DataFrame |
+    | ImagePlus       | xarray; numpy (via ScyJava)      |
+    | Collections     | lists/dicts, etc. (via ScyJava)  |
 
 
 
@@ -149,39 +148,20 @@ pysnt/
 
 ### Dependencies
 #### Core Dependencies (Required)
-- JPype1 - Python/JVM bridge used by runtime utilities
-- matplotlib - Used extensively for plotting and figure creation
-- numpy - Used throughout for array operations
+- install-jdk - Java management
+- matplotlib - Plotting and figure creation
+- numpy - Array operations
 - pyimagej - ImageJ integration
 - scyjava - Core Java integration
 - xarray - Dataset operations
+- pyobjc-core; sys_platform == 'darwin' - macOS support
 
 #### Optional Dependencies (Display/Conversion Features)
 - cairosvg - SNTChart SVG to matplotlib conversion
-- install-jdk - Automatic OpenJDK installation helper
-- ipykernel - Notebook kernel support
+- PyMuPDF  - SNTChart PDF to matplotlib conversion
 - pandas - DataFrame operations and SNTTable conversion
-- pandasgui - Interactive DataFrame display
 - networkx - SNTGraph to NetworkX graph conversion
-- pyobjc-core (macOS only) - Required by PyImageJ GUI mode on macOS
-- pyobjc-framework-cocoa (macOS only) - Required by PyImageJ GUI mode on macOS
-- PyMuPDF - SNTChart PDF to matplotlib conversion
-
-
-#### Optional Dependencies (OME-ZARR)
-- fsspec - Remote filesystem access (HTTP/HTTPS/S3)
-- zarr - OME-ZARR format support for local and remote data
-
-Install examples:
-- `pip install -e .` (core)
-- `pip install -e .[display]`
-- `pip install -e .[gui]`
-- `pip install -e .[all]`
-- `pip install -e .[dev]`
-
-> macOS users: PyImageJ GUI mode requires `pyobjc-core` and
-`pyobjc-framework-cocoa` (or `pyobjc`). These are included in the GUI-focused
-dependency files.
+- pandasgui - Interactive DataFrame display
 
 ### Need Help?
 
