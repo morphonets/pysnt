@@ -18,6 +18,7 @@ CURATED_CLASSES = [
     "InsectBrainLoader",
     "MouseLightLoader",
     "MouseLightQuerier",
+    "NeurolucidaImporter",
     "NeuroMorphoLoader",
     "RemoteSWCLoader",
     "WekaModelLoader",
@@ -29,6 +30,7 @@ EXTENDED_CLASSES = [
     "NDFImporter",
     "SWCExportException",
     "TracesFileFormatException",
+    "SpimDataUtils"
 ]
 
 # =============================================================================

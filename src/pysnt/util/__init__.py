@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "BoundingBox",
+    "BoundingBox", "BundleDetector",
     "ColorMaps",
     "CrossoverFinder",
     "ImgUtils",
@@ -21,17 +21,18 @@ CURATED_CLASSES = [
     "PointInImage",
     "SNTColor",
     "SNTPoint",
-    "SWCPoint",
+    "SWCPoint", "TreeToRaster", "TreeUtils"
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
     "CircleCursor3D",
     "DiskCursor3D",
+    "GLUtils",
     "LinAlgUtils",
     "Logger",
     "LSystemsTree",
-    "PathCursor",
+    "PathCursor", "PointDeduplicator",
     "PointInCanvas" "ShollPoint",
     "SigmaUtils",
 ]

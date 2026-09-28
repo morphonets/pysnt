@@ -57,8 +57,14 @@ from .gui_utils import (
 
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
+    "AStarRefiner",
+    "BookmarkManager", "BookmarkManager.Bookmark",
+    "CurationManager",
+    "DelineationsManager",
     "Fill",
     "FillConverter",
+    "FillManagerUI",
+    "FillManagerUI.FillManagerUI",
     "InteractiveTracerCanvas",
     "Path",
     "PathAndFillManager",
@@ -66,8 +72,10 @@ CURATED_ROOT_CLASSES = [
     "PathDownsampler",
     "PathFitter",
     "PathManagerUI",
+    "SeedManager", "SeedOverlayRenderer",
     "SciViewSNT",
     "SNT",
+    "SNTPrefs",
     "SNTService",
     "SNTUI",
     "SNTUtils",
@@ -78,9 +86,7 @@ CURATED_ROOT_CLASSES = [
 
 # Extended classes - available via get_class() (root package discovers dynamically)
 EXTENDED_ROOT_CLASSES = [
-    "BookmarkManager",
     "ClarifyingKeyListener",
-    "DelineationsManager",
     "FillerProgressCallback",
     "FillManagerUI",
     "FittingProgress",
@@ -95,8 +101,7 @@ EXTENDED_ROOT_CLASSES = [
     "PathNodeCanvas",
     "PathTransformer",
     "QueueJumpingKeyListener",
-    "SearchProgressCallback",
-    "SNTPrefs",
+    "SearchProgressCallback"
 ]
 
 

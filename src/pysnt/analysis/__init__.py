@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     "ConvexHull2D", "ConvexHull3D", "ConvexHullAnalyzer",
     "GroupedTreeStatistics",
-    "MultiTreeColorMapper",
-    "NodeColorMapper", "NodeProfiler", "NodeStatistics",
+    "MultiSpectralRefiner", "MultiTreeColorMapper",
     "MultiTreeStatistics",
+    "NodeColorMapper", "NodeProfiler", "NodeStatistics",
     "PathProfiler", "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer",
     "RootAngleAnalyzer",
     "TreeColorMapper", "TreeStatistics",
@@ -28,8 +28,10 @@ CURATED_CLASSES = [
 EXTENDED_CLASSES = [
     "AbstractConvexHull", "AnalysisUtils", "AnnotationMapper",
     "CircularModels", "ColorMapper",
+    "NodeCollector",
     "ProfileProcessor",
     "RoiConverter"
+    "UnknownMetricException"
 ]
 
 

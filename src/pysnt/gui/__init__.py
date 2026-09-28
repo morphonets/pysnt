@@ -26,10 +26,7 @@ CURATED_CLASSES = [
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used GUI classes that are loaded on-demand
-EXTENDED_CLASSES = [
-    # Add additional GUI classes here as they are discovered
-    # Examples: "PathManagerDialog", "SettingsPanel", etc.
-]
+EXTENDED_CLASSES = [  "FileChooser", "SNTREPL"]
 
 # =============================================================================
 # MODULE SETUP

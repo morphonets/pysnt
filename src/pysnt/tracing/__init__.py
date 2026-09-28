@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     "BiSearch",
     "BiSearchNode",
+    "CrossSectionUtils",
     "DefaultSearchNode",
     "FillerThread",
     "PathResult",

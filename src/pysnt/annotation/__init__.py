@@ -31,9 +31,7 @@ CURATED_CLASSES = [
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used classes that are loaded on-demand
-EXTENDED_CLASSES = [
-    # Add your extended classes here as they become available
-]
+EXTENDED_CLASSES = [ "BrainAnnotation"]
 
 # =============================================================================
 # MODULE SETUP

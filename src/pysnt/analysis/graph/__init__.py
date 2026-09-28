@@ -19,8 +19,10 @@ CURATED_CLASSES = [
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
     "AnnotationWeightedEdge", "AnnotationGraphUtils",
+    "CsrDirectedSpecifics", "CsrGraphSpecificsStrategy",
     "GraphColorMapper", "GraphUtils"
-    "SNTPseudograph", "SWCWeightedEdge"
+    "SNTPseudograph", "SparseDirectedWeightedGraph",
+    "SWCWeightedEdge"
 ]
 
 # Global registries
