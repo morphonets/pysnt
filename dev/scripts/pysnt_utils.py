@@ -140,7 +140,7 @@ class PySNTUtils:
         duplicates = curated_set.intersection(extended_set)
         
         if duplicates:
-            relative_path = init_file.relative_to(Path.cwd()) if init_file.is_absolute() else init_file
+            relative_path = init_file.relative_to(self.project_root) if init_file.is_absolute() else init_file
             raise QualityControlError(
                 f"QC FAILURE in {relative_path}: "
                 f"Classes appear in both CURATED_CLASSES and EXTENDED_CLASSES: {sorted(duplicates)}\\n"
@@ -155,7 +155,7 @@ class PySNTUtils:
         dollar_classes = [cls for cls in all_classes if '$' in cls]
         
         if dollar_classes:
-            relative_path = init_file.relative_to(Path.cwd()) if init_file.is_absolute() else init_file
+            relative_path = init_file.relative_to(self.project_root) if init_file.is_absolute() else init_file
             raise QualityControlError(
                 f"QC FAILURE in {relative_path}: "
                 f"Inner class names should use underscore notation, not dollar signs: {dollar_classes}\\n"

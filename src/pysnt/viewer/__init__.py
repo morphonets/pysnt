@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     "AbstractBigViewer", "Annotation3D",
     "Bdv", "Bvv", "BvvMultiSource", "BvvUtils",
-    "GraphViewer",
     "MultiViewer2D", "MultiViewer3D", "OBJMesh",
     "Viewer2D", "Viewer3D"
 ]
