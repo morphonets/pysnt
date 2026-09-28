@@ -199,7 +199,17 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             from .java_utils import ensure_java_available
             if not ensure_java_available(auto_install=interactive):
                 logger.warning("Java requirements not met, but continuing initialization")
-        
+
+        # Tell scyjava to prefer an existing system JDK meeting SNT's actual
+        # requirement, instead of silently downloading/using its own cached
+        # JDK. scyjava's own defaults (fetch="always", version="11") ignore
+        # JAVA_HOME entirely and always fetch a Java 11 via cjdk, regardless
+        # of what Java is already installed and correctly configured.
+        from .java_utils import REQUIRED_JAVA_VERSION
+        scyjava.config.set_java_constraints(
+            fetch="auto", version=f"{REQUIRED_JAVA_VERSION}+"
+        )
+
         # Auto-detect Fiji if not provided
         if fiji_path is None:
             fiji_path = _find_fiji(interactive=interactive)

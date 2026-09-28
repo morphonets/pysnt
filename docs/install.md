@@ -14,7 +14,7 @@ api
 ## Installation Requirements
 
 
-The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5 pre-release](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
+The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
 since Conda can be painfully slow with complex environments. If you do not have Mamba installed you can do
 so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
 

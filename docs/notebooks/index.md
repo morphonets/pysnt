@@ -30,4 +30,5 @@ pip install ipykernel # or mamba install -n pysnt ipykernel
 05_napari_viewer.ipynb
 06_persistence_landscape
 07_curvature_optimization
+08_crossover_detection
 ```
