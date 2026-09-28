@@ -121,7 +121,7 @@ Getters Methods
 
 .. py:method:: getBoxPlot(String)
 
-   
+   Assembles a Box and Whisker Plot for the specified measurement (cell morphometry).
 
 
 .. py:method:: getBranchPoints()

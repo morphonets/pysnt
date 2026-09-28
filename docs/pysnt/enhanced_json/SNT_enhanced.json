@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.802339",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.715176",
+  "enhancement_timestamp": "2026-09-27T22:17:09.136902",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -14,12 +14,12 @@
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "",
+          "return_description": "true if a tracing image exists, or (for headless/API usage) cached pixel data remains in memory.",
           "throws": {}
         }
       ],
       "documentation": "Java method: accessToValidImageData",
-      "javadoc_description": "",
+      "javadoc_description": "Checks whether valid image data exists.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -488,8 +488,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- the current progress value",
-              "javadoc_name": "progress"
+              "description": "- 1-based channel, or null to clear the lock",
+              "javadoc_name": "channel"
             }
           ],
           "return_type": "None",
@@ -499,7 +499,7 @@
         }
       ],
       "documentation": "Java method: disableEventsAllPanes",
-      "javadoc_description": "Description copied from interface: PaneOwner",
+      "javadoc_description": "Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -542,12 +542,12 @@
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "true, if possible, false otherwise",
+          "return_description": "true if edit mode is allowed, false otherwise",
           "throws": {}
         }
       ],
       "documentation": "Java method: editModeAllowed",
-      "javadoc_description": "Assesses if activation of 'Edit Mode' is possible.",
+      "javadoc_description": "Checks if edit mode can be enabled, optionally using a specific path.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -593,7 +593,7 @@
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -621,7 +621,7 @@
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -960,7 +960,7 @@
         }
       ],
       "documentation": "Java method: getDataset",
-      "javadoc_description": "",
+      "javadoc_description": "Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per getLoadedDataAsImp(). If no resident ImagePlus exists at all (e.g., data streamed from disk/network, backed only by ctSlice3d), a Dataset is instead built directly from `getLoadedDataAsImg(boolean)`, so Dataset-only commands. Null is returned if no image data exists at all.\n\nNB: in the streamed-data fallback, the returned Dataset only ever contains a single channel/ frame (whichever is currently active): ctSlice3d is a single C/T slice by construction. Commands that need every channel or frame simultaneously will still require a resident ImagePlus.\n\nNB2: a materialized crop (see isMaterializedCrop()) always has a resident ImagePlus (the crop itself), so it never takes the streamed-data fallback above, returning the crop's own Dataset as-is, matching whatever `buildMaterializedCrop(BoundingBox)` captured (see `getMaterializedCropChannel()`/`getMaterializedCropFrame()`).",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1191,7 +1191,7 @@
           ],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "the image associate with the specified view, or null if the view is not available",
+          "return_description": "the image associate with the specified view, or null if the view is not available. If the view is XY_PLANE, and the image has been closed, cached pixel data is returned as per getLoadedDataAsImp()",
           "throws": {}
         }
       ],
@@ -1369,37 +1369,49 @@
     "SNT.CostType",
     "SNT.FilterType",
     "SNT.HeuristicType",
+    "SNT.MaterializedCrop",
     "SNT.SearchImageType",
-    "SNT.SearchType"
+    "SNT.SearchSettingsSnapshot",
+    "SNT.SearchType",
+    "SNT.VoxelBounds"
   ],
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "loadSecondaryImage(ImagePlus)",
     "SearchProgressCallback",
-    "rebuildDisplayCanvases()",
-    "isSecondaryDataAvailable()",
-    "autoTrace(List, PointInImage)",
-    "MultiDThreePanes",
     "getSecondaryDataAsImp()",
+    "isSecondaryDataAvailable()",
+    "rebuildDisplayCanvases()",
+    "getMaterializedCropFrame()",
+    "showCanvasWarning(String, int)",
+    "HessianGenerationCallback",
+    "showCanvasInfo(String, int)",
+    "getMaterializedCropChannel()",
+    "Constant Field Values",
+    "autoTrace(List, PointInImage)",
+    "loadSecondaryImage(ImagePlus)",
     "loadSecondaryImage(File)",
-    "HessianGenerationCallback"
+    "getWorldOriginOffset()",
+    "MultiDThreePanes",
+    "PathManagerUI",
+    "showCanvasError(String, int)",
+    "isStreamMode()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 115,
+      "total_javadoc_methods": 241,
       "total_json_methods": 44,
-      "total_matches": 54,
-      "exact_matches": 45,
-      "signature_matches": 9,
+      "total_matches": 61,
+      "exact_matches": 46,
+      "signature_matches": 15,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 61,
-      "unmatched_json": -10,
-      "match_percentage": 47.0
+      "unmatched_javadoc": 180,
+      "unmatched_json": -17,
+      "match_percentage": 25.3
     },
-    "unmatched_javadoc_methods": 61,
-    "unmatched_json_methods": 3,
-    "enhancement_quality_score": 0.248
+    "unmatched_javadoc_methods": 180,
+    "unmatched_json_methods": 5,
+    "enhancement_quality_score": -0.009
   }
 }

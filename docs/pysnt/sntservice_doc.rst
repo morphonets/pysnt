@@ -272,7 +272,7 @@ Other Methods
 
 .. py:method:: initialize(ImagePlus, boolean)
 
-   Initializes SNT.
+   Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.
 
 
 .. py:method:: log()

@@ -81,7 +81,7 @@ Getters Methods
 
 .. py:method:: static getForegroundRect(ImagePlus, Number)
 
-   Returns the cropping rectangle around non-background values.
+   Returns the cropping rectangle around non-background values, considering all slices of the stack.
 
 
 .. py:method:: static getFrame(ImagePlus, int)
@@ -158,12 +158,12 @@ Other Methods
 
 .. py:method:: static binarize(ImagePlus, double, double)
 
-   
+   Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become 0 (black).
 
 
 .. py:method:: static calibrationToAxes(Calibration, int)
 
-   
+   Creates ImgPlus axes from IJ1 Calibration
 
 
 .. py:method:: static combineSkeletons(Collection, boolean)
@@ -188,7 +188,7 @@ Other Methods
 
 .. py:method:: static convertToSimple2D(ImagePlus, int)
 
-   Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel a RGB version is obtained. The image is flattened if its Overlay has ROIs.
+   Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel, an RGB version is obtained. The image is flattened if its Overlay has ROIs.
 
 
 .. py:method:: static create(String, int, int, int, int)
@@ -268,12 +268,16 @@ Other Methods
 
 .. py:method:: static toImgPlus(ImagePlus)
 
-   
+   Convert an ImagePlus to an ImgPlus with calibration and origin metadata.
+
+Creates an ImgPlus with proper axis types (X, Y, Z, Channel, Time) and transfers calibration including pixel sizes, units, and origin offsets.
 
 
 .. py:method:: static toImgPlus3D(ImagePlus, int, int)
 
-   
+   Convert an ImagePlus to a 3D (XYZ) ImgPlus, extracting a single channel/frame if needed.
+
+Useful for analysis that expects simple 3D images without channel/time dimensions.
 
 
 .. py:method:: static toStack(Collection)
@@ -283,7 +287,7 @@ Other Methods
 
 .. py:method:: static zoomTo(ImagePlus, Collection)
 
-   
+   Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.
 
 
 See Also

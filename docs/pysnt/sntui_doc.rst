@@ -80,7 +80,7 @@ Other Methods
 
 .. py:method:: add(String, Component)
 
-   Updates the status bar.
+   Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of SNT.getLoadedData(), so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.
 
 
 .. py:method:: addComponentListener(ComponentListener)
@@ -240,7 +240,7 @@ Other Methods
 
 .. py:method:: error(String)
 
-   
+   Displays an error message.
 
 
 .. py:method:: findComponentAt(Point)

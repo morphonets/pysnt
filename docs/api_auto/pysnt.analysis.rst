@@ -12,6 +12,8 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   pysnt.analysis.curation
+   pysnt.analysis.detection
    pysnt.analysis.graph
    pysnt.analysis.growth
    pysnt.analysis.sholl

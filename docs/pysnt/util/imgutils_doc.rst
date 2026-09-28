@@ -66,12 +66,14 @@ Getters Methods
 
 .. py:method:: static getCalibration(ImgPlus)
 
-   
+   Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.
 
 
 .. py:method:: static getCtSlice(Dataset, int, int)
 
-   
+   Extracts a channel/time slice by squeezing singleton dimensions.
+
+Convenience overload that removes any singleton (size=1) channel or time dimensions from the image. Non-singleton C/T dimensions are preserved.
 
 
 .. py:method:: static getCtSlice3d(ImagePlus, int, int)
@@ -81,12 +83,12 @@ Getters Methods
 
 .. py:method:: static getOrigin(ImgPlus, AxisType)
 
-   
+   Get the origin offset for a specific axis from an ImgPlus.
 
 
 .. py:method:: static getOrigins(ImgPlus)
 
-   
+   Get the origin offsets as {xOrigin, yOrigin, zOrigin} from an ImgPlus.
 
 
 Other Methods
@@ -100,22 +102,26 @@ Other Methods
 
 .. py:method:: static crop(ImgPlus, [J, [J, boolean)
 
-   
+   Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates.
+
+For RAIs without axis metadata, assumes ZYX dimension order. Returns a view (no data copy) with the specified bounds, clamped to image bounds.
+
+Important: This method assumes ZYX dimension order (dim0=Z, dim1=Y, dim2=X), which is common for OME-ZARR and N5 datasets. For images with different axis orders, wrap as ImgPlus with proper axis metadata and use `crop(ImgPlus, long[], long[], boolean)`.
 
 
 .. py:method:: static dropSingletonDimensions(ImgPlus)
 
-   
+   Remove singleton dimensions from an ImgPlus, preserving axis metadata.
 
 
 .. py:method:: static findSpatialAxisIndices(ImgPlus)
 
-   
+   Find dimension indices for X, Y, Z axes in an ImgPlus.
 
 
 .. py:method:: static findSpatialAxisIndicesWithFallback(ImgPlus)
 
-   
+   Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.
 
 
 .. py:method:: static imgPlusToCalibration(ImgPlus)
@@ -152,22 +158,28 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 
 .. py:method:: static subInterval(RandomAccessibleInterval, Localizable, Localizable, long)
 
-   Get an N-D sub-interval of an N-D image, given two corner points and specified padding. If necessary, the computed sub-interval is clamped at the min and max of each dimension of the input interval.
+   Get an N-D sub-interval of an N-D image, given two corner points and specified padding.
+
+Works in native dimension order (no XYZ remapping). The sub-interval is clamped to image bounds.
 
 
 .. py:method:: static subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long)
 
-   Get a 3D sub-volume of an image, given two corner points and specified padding. If the input is 2D, a singleton dimension is added. If necessary, the computed sub-volume is clamped at the min and max of each dimension of the input interval.
+   Get a 3D sub-volume of an image, given two corner points and specified padding.
+
+Coordinates are in XYZ order. If the input is 2D, a singleton dimension is added. The sub-volume is clamped to image bounds.
 
 
 .. py:method:: static toImagePlus(ImgPlus)
 
-   
+   Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.
 
 
 .. py:method:: static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String)
 
-   
+   Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus.
+
+Useful for wrapping op results with proper calibration.
 
 
 See Also

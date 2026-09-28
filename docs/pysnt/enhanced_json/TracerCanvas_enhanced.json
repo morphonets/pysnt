@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:45.001145",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.687711",
+  "enhancement_timestamp": "2026-09-27T22:17:09.079391",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -51,8 +51,8 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "PopupMenu",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the diameter to be used when rendering path nodes. Set it to -1 for adopting the default value. Set it to zero to suppress node rendering",
+              "javadoc_name": "diameter"
             }
           ],
           "return_type": "None",
@@ -62,7 +62,7 @@
         }
       ],
       "documentation": "Java method: add",
-      "javadoc_description": "",
+      "javadoc_description": "Sets the baseline for rendering diameter of path nodes",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -766,7 +766,7 @@
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "",
+          "return_description": "whether per-slice depth-band rendering is currently enabled (i.e. paths only render near the active slice).",
           "throws": {}
         }
       ],
@@ -1332,19 +1332,19 @@
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 1,
+      "total_javadoc_methods": 14,
       "total_json_methods": 37,
-      "total_matches": 1,
+      "total_matches": 9,
       "exact_matches": 0,
-      "signature_matches": 1,
+      "signature_matches": 9,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": 36,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 5,
+      "unmatched_json": 28,
+      "match_percentage": 64.3
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 36,
-    "enhancement_quality_score": 1.0
+    "unmatched_javadoc_methods": 5,
+    "unmatched_json_methods": 34,
+    "enhancement_quality_score": 0.593
   }
 }

@@ -118,7 +118,7 @@ Other Methods
 
 .. py:method:: static apply(ImgPlus, [D, double, int)
 
-   
+   Apply multiscale Frangi vesselness filter to an ImgPlus.
 
 
 .. py:method:: in()

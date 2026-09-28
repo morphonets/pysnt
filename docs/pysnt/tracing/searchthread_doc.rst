@@ -111,7 +111,7 @@ Other Methods
 
 .. py:method:: addProgressListener(SearchProgressCallback)
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: createNewNode(int, int, int, double, double, DefaultSearchNode, byte)
@@ -121,12 +121,12 @@ Other Methods
 
 .. py:method:: pointsConsideredInSearch()
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: printStatus()
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: reportFinished(boolean)

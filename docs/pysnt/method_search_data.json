@@ -2258,7 +2258,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.SNTColor",
       "category": "Visualization",
-      "short_description": "Returns a suitable 'contrast' color.",
+      "short_description": "Returns a BW 'contrast' color",
       "signature": "static contrastColor(Color) -> Color",
       "return_type": "Any",
       "java_return_type": "Color",
@@ -2354,7 +2354,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.SNTColor",
       "category": "Visualization",
-      "short_description": "No description available",
+      "short_description": "Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex...",
       "signature": "static getDistinctColorsHex(int, String) -> String;",
       "return_type": "Any",
       "java_return_type": "String;",
@@ -2488,7 +2488,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.SNTColor",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Parses a color from the given string. The following formats are supported: Hex format [HTML color codes starting with...",
       "signature": "static valueOf(String) -> ColorRGB",
       "return_type": "Any",
       "java_return_type": "ColorRGB",
@@ -2496,7 +2496,7 @@
         [
           "arg0",
           "str",
-          ""
+          "- string defining the color value"
         ]
       ],
       "parameter_types": [
@@ -4010,7 +4010,7 @@
         [
           "arg0",
           "str",
-          "- the ID of the cell to be retrieved (case-sensitive). It may be the neuron name or its qualified filename. E.g., \"cnic_002\" or \"cnic_002.swc\" or \"cnic_002.CNG.swc\". By default, the standardized (CNG) version is assumed. Examples: \"cnic_002\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.CNG.swc\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.swc\" -> Source version of neuron cnic_002 is retrieved"
+          "- the ID of the cell to be retrieved (case-sensitive). It may be the neuron name or its qualified filename. E.g., \"cnic_002\" or \"cnic_002.swc\" or \"cnic_002.CNG.swc\". By default, the standardized (CNG) version is assumed. Examples:\n\n\"cnic_002\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.CNG.swc\" -> CNG version of neuron cnic_002 is retrieved \"cnic_002.swc\" -> Source version of neuron cnic_002 is retrieved"
         ]
       ],
       "parameter_types": [
@@ -4776,7 +4776,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.MultiTreeStatistics",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Assembles a Box and Whisker Plot for the specified measurement (cell morphometry).",
       "signature": "getBoxPlot(String) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
@@ -4784,7 +4784,7 @@
         [
           "arg0",
           "str",
-          ""
+          "- the measurement (N_NODES, NODE_RADIUS, etc.)"
         ]
       ],
       "parameter_types": [
@@ -7708,7 +7708,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.BiSearch",
       "category": "Setters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "addProgressListener(SearchProgressCallback) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -7716,7 +7716,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the callback to register"
         ]
       ],
       "parameter_types": [
@@ -7764,7 +7764,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.BiSearch",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "pointsConsideredInSearch() -> long",
       "return_type": "int",
       "java_return_type": "long",
@@ -7780,7 +7780,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.BiSearch",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "printStatus() -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -7978,7 +7978,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
-      "short_description": "Updates the status bar.",
+      "short_description": "Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from...",
       "signature": "add(String, Component) -> Component",
       "return_type": "Any",
       "java_return_type": "Component",
@@ -8756,7 +8756,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUI",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Displays an error message.",
       "signature": "error(String) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -8764,7 +8764,7 @@
         [
           "arg0",
           "str",
-          ""
+          "- the error message"
         ]
       ],
       "parameter_types": [
@@ -9970,7 +9970,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.TracerCanvas",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Sets the baseline for rendering diameter of path nodes",
       "signature": "add(PopupMenu) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -9978,7 +9978,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the diameter to be used when rendering path nodes. Set it to -1 for adopting the default value. Set it to zero to suppress node rendering"
         ]
       ],
       "parameter_types": [
@@ -11186,7 +11186,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "Utilities",
-      "short_description": "Downsamples alls path using Ramer–Douglas–Peucker simplification. Downsampling occurs only between branch points and...",
+      "short_description": "Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and...",
       "signature": "downsampleAll(double) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -11310,7 +11310,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "I/O Operations",
-      "short_description": "Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.",
+      "short_description": "No description available",
       "signature": "exportAllPathsAsSWC(String) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -11318,7 +11318,7 @@
         [
           "arg0",
           "str",
-          "- the file path (including common basename) for exported files. The"
+          ""
         ]
       ],
       "parameter_types": [
@@ -11584,7 +11584,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "Getters",
-      "short_description": "Returns all the paths.",
+      "short_description": "Returns the \"main\" paths managed by this PathAndFillManager. This is a convenience method that excludes: Null entries...",
       "signature": "getPaths() -> ArrayList",
       "return_type": "List[Any]",
       "java_return_type": "ArrayList",
@@ -11600,7 +11600,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathAndFillManager",
       "category": "Getters",
-      "short_description": "Returns the 'de facto' Paths.",
+      "short_description": "Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration...",
       "signature": "getPathsFiltered() -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
@@ -11792,7 +11792,7 @@
         [
           "arg0",
           "str",
-          "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth"
+          "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth"
         ]
       ],
       "parameter_types": [
@@ -12168,7 +12168,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTService",
       "category": "Utilities",
-      "short_description": "Initializes SNT.",
+      "short_description": "Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.",
       "signature": "initialize(ImagePlus, boolean) -> SNT",
       "return_type": "Any",
       "java_return_type": "SNT",
@@ -12588,7 +12588,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "acronym() -> String",
       "return_type": "str",
       "java_return_type": "String",
@@ -12604,7 +12604,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "aliases() -> String;",
       "return_type": "Any",
       "java_return_type": "String;",
@@ -12620,7 +12620,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Visualization",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "color() -> ColorRGB",
       "return_type": "Any",
       "java_return_type": "ColorRGB",
@@ -12636,7 +12636,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "getAncestor(int) -> BrainAnnotation",
       "return_type": "Any",
       "java_return_type": "BrainAnnotation",
@@ -12660,7 +12660,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "getMesh() -> OBJMesh",
       "return_type": "Any",
       "java_return_type": "OBJMesh",
@@ -12676,7 +12676,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "getOntologyDepth() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -12692,7 +12692,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "getParent() -> BrainAnnotation",
       "return_type": "Any",
       "java_return_type": "BrainAnnotation",
@@ -12708,7 +12708,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "id() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -12724,7 +12724,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "isChildOf(BrainAnnotation) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -12748,7 +12748,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "isMeshAvailable() -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -12764,7 +12764,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "isParentOf(BrainAnnotation) -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -12788,7 +12788,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "name() -> String",
       "return_type": "str",
       "java_return_type": "String",
@@ -13442,7 +13442,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SNTChart",
       "category": "Utilities",
-      "short_description": "Shows a bivariate histogram (two-dimensional histogram) from two DescriptiveStatistics objects. The number of bins is...",
+      "short_description": "Tiles specified charts displaying them on a grid. Charts's windows are made visible if not displayed.",
       "signature": "actionPerformed(ActionEvent) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -13450,7 +13450,7 @@
         [
           "arg0",
           "Any",
-          "- DescriptiveStatistics for the first distribution"
+          "- the charts to be tiled"
         ]
       ],
       "parameter_types": [
@@ -15102,7 +15102,7 @@
       "package": "sc.fiji.snt.viewer",
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Getters",
-      "short_description": "Returns a reference to 'RV Controls' panel.",
+      "short_description": "Returns a reference to control panel.",
       "signature": "getManagerPanel() -> Viewer3D$ManagerPanel",
       "return_type": "Any",
       "java_return_type": "Viewer3D$ManagerPanel",
@@ -15416,7 +15416,7 @@
       "package": "sc.fiji.snt.viewer",
       "full_class_name": "sc.fiji.snt.viewer.Viewer3D",
       "category": "Utilities",
-      "short_description": "Records an animated rotation of the scene as a sequence of images.",
+      "short_description": "Records an animated rotation of the scene around the specified axis as a sequence of images.",
       "signature": "recordRotation(float, int, File) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -15468,7 +15468,7 @@
       "package": "sc.fiji.snt.io",
       "full_class_name": "sc.fiji.snt.io.MouseLightLoader",
       "category": "Static Methods",
-      "short_description": "Extracts reconstruction(s) from a JSON file.",
+      "short_description": "No description available",
       "signature": "static extractNodes(File, String) -> Map",
       "return_type": "Dict[str, Any]",
       "java_return_type": "Map",
@@ -15476,7 +15476,7 @@
         [
           "arg0",
           "str",
-          "- the JSON file to be parsed"
+          ""
         ],
         [
           "arg1",
@@ -15862,7 +15862,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates. For RAIs without axis metadata,...",
       "signature": "static crop(ImgPlus, [J, [J, boolean) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -15904,7 +15904,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Remove singleton dimensions from an ImgPlus, preserving axis metadata.",
       "signature": "static dropSingletonDimensions(ImgPlus) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -15912,7 +15912,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the source ImgPlus (e.g., 5D XYZCT with C=1, T=1)"
         ]
       ],
       "parameter_types": [
@@ -15928,7 +15928,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Find dimension indices for X, Y, Z axes in an ImgPlus.",
       "signature": "static findSpatialAxisIndices(ImgPlus) -> [I",
       "return_type": "Any",
       "java_return_type": "[I",
@@ -15936,7 +15936,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the ImgPlus"
         ]
       ],
       "parameter_types": [
@@ -15952,7 +15952,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.",
       "signature": "static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I",
       "return_type": "Any",
       "java_return_type": "[I",
@@ -15960,7 +15960,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the ImgPlus"
         ]
       ],
       "parameter_types": [
@@ -15976,7 +15976,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.",
       "signature": "static getCalibration(ImgPlus) -> Calibration",
       "return_type": "Any",
       "java_return_type": "Calibration",
@@ -15984,7 +15984,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the source ImgPlus"
         ]
       ],
       "parameter_types": [
@@ -16000,7 +16000,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Extracts a channel/time slice by squeezing singleton dimensions. Convenience overload that removes any singleton...",
       "signature": "static getCtSlice(Dataset, int, int) -> RandomAccessibleInterval",
       "return_type": "Any",
       "java_return_type": "RandomAccessibleInterval",
@@ -16072,7 +16072,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Get the origin offset for a specific axis from an ImgPlus.",
       "signature": "static getOrigin(ImgPlus, AxisType) -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -16080,7 +16080,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the ImgPlus"
         ],
         [
           "arg1",
@@ -16102,7 +16102,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Get the origin offsets as {xOrigin, yOrigin, zOrigin} from an ImgPlus.",
       "signature": "static getOrigins(ImgPlus) -> [D",
       "return_type": "Any",
       "java_return_type": "[D",
@@ -16110,31 +16110,7 @@
         [
           "arg0",
           "Any",
-          ""
-        ]
-      ],
-      "parameter_types": [
-        "Any"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "static imgPlusToCalibration",
-      "class_name": "ImgUtils",
-      "package": "sc.fiji.snt.util",
-      "full_class_name": "sc.fiji.snt.util.ImgUtils",
-      "category": "Static Methods",
-      "short_description": "No description available",
-      "signature": "static imgPlusToCalibration(ImgPlus) -> Calibration",
-      "return_type": "Any",
-      "java_return_type": "Calibration",
-      "parameters": [
-        [
-          "arg0",
-          "Any",
-          ""
+          "- the ImgPlus"
         ]
       ],
       "parameter_types": [
@@ -16294,7 +16270,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "Get an N-D sub-interval of an N-D image, given two corner points and specified padding. If necessary, the computed...",
+      "short_description": "Get an N-D sub-interval of an N-D image, given two corner points and specified padding. Works in native dimension order...",
       "signature": "static subInterval(RandomAccessibleInterval, Localizable, Localizable, long) -> RandomAccessibleInterval",
       "return_type": "Any",
       "java_return_type": "RandomAccessibleInterval",
@@ -16336,7 +16312,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "Get a 3D sub-volume of an image, given two corner points and specified padding. If the input is 2D, a singleton...",
+      "short_description": "Get a 3D sub-volume of an image, given two corner points and specified padding. Coordinates are in XYZ order. If the...",
       "signature": "static subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long) -> RandomAccessibleInterval",
       "return_type": "Any",
       "java_return_type": "RandomAccessibleInterval",
@@ -16402,7 +16378,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.",
       "signature": "static toImagePlus(ImgPlus) -> ImagePlus",
       "return_type": "Any",
       "java_return_type": "ImagePlus",
@@ -16426,7 +16402,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImgUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus. Useful for wrapping op results with proper...",
       "signature": "static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -16434,7 +16410,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the RAI to wrap"
         ],
         [
           "arg1",
@@ -16462,7 +16438,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "acronym() -> String",
       "return_type": "str",
       "java_return_type": "String",
@@ -16478,7 +16454,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "aliases() -> String;",
       "return_type": "Any",
       "java_return_type": "String;",
@@ -16494,7 +16470,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Visualization",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "color() -> ColorRGB",
       "return_type": "Any",
       "java_return_type": "ColorRGB",
@@ -16574,7 +16550,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "getMesh() -> OBJMesh",
       "return_type": "Any",
       "java_return_type": "OBJMesh",
@@ -16654,7 +16630,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "id() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -16782,7 +16758,7 @@
       "package": "sc.fiji.snt.annotation",
       "full_class_name": "sc.fiji.snt.annotation.AllenCompartment",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from interface: BrainAnnotation",
       "signature": "name() -> String",
       "return_type": "str",
       "java_return_type": "String",
@@ -17518,7 +17494,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "Static Methods",
-      "short_description": "Retrieves Sholl Analysis implementation date",
+      "short_description": "No description available",
       "signature": "static buildDate() -> String",
       "return_type": "str",
       "java_return_type": "String",
@@ -17588,7 +17564,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "As `error(String, Throwable)`, but allows suppressing the notification-center mirroring, e.g., when the caller has...",
       "signature": "static error(String, Throwable) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -17726,7 +17702,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "Static Methods",
-      "short_description": "Retrieves a list of time-stamped backup files associated with a TRACES file",
+      "short_description": "Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with...",
       "signature": "static getBackupCopies(File) -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
@@ -17734,7 +17710,7 @@
         [
           "arg0",
           "str",
-          "- the TRACES file"
+          "- the directory to search for backup files"
         ]
       ],
       "parameter_types": [
@@ -18144,7 +18120,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNTUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Shows or hides the loading splash screen. Calls nest safely: several independent call chains can be \"loading\" at once,...",
       "signature": "static setIsLoading(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -18152,7 +18128,7 @@
         [
           "arg0",
           "bool",
-          ""
+          "- true to show the splash screen (or register one more caller that wants it showing, if already showing); false to release one such registration, closing the splash once no callers still hold it"
         ]
       ],
       "parameter_types": [
@@ -18684,7 +18660,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathFitter",
       "category": "Utilities",
-      "short_description": "Sets the fallback strategy for radii at locations in which fitting failed",
+      "short_description": "Applies the fitted result to the path. For multithreaded processing: Must be called sequentially after all parallel...",
       "signature": "applyFit() -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -18788,7 +18764,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathFitter",
       "category": "Setters",
-      "short_description": "Sets the max radius (side search) for constraining the fit.",
+      "short_description": "Sets the radius of cross-sectional planes sampled around each node. At each node, PathFitter samples a square...",
       "signature": "setCrossSectionRadius(double) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -18796,7 +18772,7 @@
         [
           "arg0",
           "float",
-          "- the new maximum radius"
+          "- the physical search radius (in physical units)"
         ]
       ],
       "parameter_types": [
@@ -18836,7 +18812,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.PathFitter",
       "category": "Setters",
-      "short_description": "No description available",
+      "short_description": "Sets the fallback strategy for node radii at locations where fitting failed. When cross-section fitting fails at a node...",
       "signature": "setNodeRadiusFallback(int) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -18844,7 +18820,7 @@
         [
           "arg0",
           "int",
-          ""
+          "- the fallback strategy: FALLBACK_MODE, FALLBACK_MIN_SEP, or FALLBACK_NAN"
         ]
       ],
       "parameter_types": [
@@ -18962,7 +18938,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Checks whether valid image data exists.",
       "signature": "accessToValidImageData() -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -19242,7 +19218,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Setters",
-      "short_description": "Description copied from interface: PaneOwner",
+      "short_description": "Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.",
       "signature": "disableEventsAllPanes(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -19250,7 +19226,7 @@
         [
           "arg0",
           "bool",
-          "- the current progress value"
+          "- 1-based channel, or null to clear the lock"
         ]
       ],
       "parameter_types": [
@@ -19290,7 +19266,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Utilities",
-      "short_description": "Assesses if activation of 'Edit Mode' is possible.",
+      "short_description": "Checks if edit mode can be enabled, optionally using a specific path.",
       "signature": "editModeAllowed() -> boolean",
       "return_type": "bool",
       "java_return_type": "boolean",
@@ -19636,7 +19612,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.SNT",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per...",
       "signature": "getDataset() -> Dataset",
       "return_type": "Any",
       "java_return_type": "Dataset",
@@ -21322,7 +21298,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.SearchThread",
       "category": "Setters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "addProgressListener(SearchProgressCallback) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -21330,7 +21306,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the callback to register"
         ]
       ],
       "parameter_types": [
@@ -21470,7 +21446,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.SearchThread",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "pointsConsideredInSearch() -> long",
       "return_type": "int",
       "java_return_type": "long",
@@ -21486,7 +21462,7 @@
       "package": "sc.fiji.snt.tracing",
       "full_class_name": "sc.fiji.snt.tracing.SearchThread",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractSearch",
       "signature": "printStatus() -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -22948,7 +22924,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SNTTable",
       "category": "Setters",
-      "short_description": "Sets a SciJava context to this table.",
+      "short_description": "Sets the title of the table.",
       "signature": "addFirst(Object) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -22956,7 +22932,7 @@
         [
           "arg0",
           "Any",
-          "- the SciJava application context"
+          "- the table's title"
         ]
       ],
       "parameter_types": [
@@ -25008,7 +24984,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull2D",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "boundarySize() -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -25024,7 +25000,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull2D",
       "category": "Analysis",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "compute() -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -25056,7 +25032,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull2D",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "intersection(AbstractConvexHull;) -> AbstractConvexHull",
       "return_type": "Any",
       "java_return_type": "AbstractConvexHull",
@@ -25128,7 +25104,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull2D",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "size() -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -25192,7 +25168,7 @@
       "package": "sc.fiji.snt.filter",
       "full_class_name": "sc.fiji.snt.filter.Frangi",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Apply multiscale Frangi vesselness filter to an ImgPlus.",
       "signature": "static apply(ImgPlus, [D, double, int) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -25580,7 +25556,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
       "category": "Getters",
-      "short_description": "Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the...",
+      "short_description": "No description available",
       "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
@@ -25588,7 +25564,7 @@
         [
           "arg0",
           "int",
-          "- the ontological depth of the compartments to be considered"
+          ""
         ]
       ],
       "parameter_types": [
@@ -26032,7 +26008,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.TreeStatistics",
       "category": "Getters",
-      "short_description": "Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is...",
+      "short_description": "No description available",
       "signature": "getHistogram(String) -> SNTChart",
       "return_type": "SNTChart",
       "java_return_type": "SNTChart",
@@ -26040,7 +26016,7 @@
         [
           "arg0",
           "str",
-          "- the measurement (N_NODES, NODE_RADIUS, etc.)"
+          ""
         ]
       ],
       "parameter_types": [
@@ -27730,7 +27706,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.PathStatistics",
       "category": "Getters",
-      "short_description": "Gets the number of branches (paths) being analyzed. Returns the total count of paths in this PathStatistics instance.",
+      "short_description": "No description available",
       "signature": "getHighestPathOrder() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -27856,7 +27832,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull3D",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "boundarySize() -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -27872,7 +27848,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull3D",
       "category": "Analysis",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "compute() -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -27904,7 +27880,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull3D",
       "category": "Utilities",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "intersection(AbstractConvexHull;) -> ConvexHull3D",
       "return_type": "ConvexHull3D",
       "java_return_type": "ConvexHull3D",
@@ -27976,7 +27952,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.ConvexHull3D",
       "category": "Getters",
-      "short_description": "No description available",
+      "short_description": "Description copied from class: AbstractConvexHull",
       "signature": "size() -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -29038,7 +29014,7 @@
       "package": "sc.fiji.snt",
       "full_class_name": "sc.fiji.snt.Tree",
       "category": "Utilities",
-      "short_description": "Assigns spatial calibration from a Dataset to this Tree.",
+      "short_description": "Assigns spatial calibration from an ImgPlus to this Tree.",
       "signature": "assignImage(Dataset) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29046,35 +29022,11 @@
         [
           "arg0",
           "Any",
-          "- the Dataset providing the spatial calibration. Null allowed."
+          "- the ImgPlus providing the spatial calibration. Null allowed."
         ]
       ],
       "parameter_types": [
         "Any"
-      ],
-      "deprecated": false,
-      "since_version": null,
-      "has_examples": false
-    },
-    {
-      "method_name": "static assignUniqueColors",
-      "class_name": "Tree",
-      "package": "sc.fiji.snt",
-      "full_class_name": "sc.fiji.snt.Tree",
-      "category": "Visualization",
-      "short_description": "Assigns distinct colors to a collection of Trees.",
-      "signature": "static assignUniqueColors(Collection) -> void",
-      "return_type": "None",
-      "java_return_type": "void",
-      "parameters": [
-        [
-          "arg0",
-          "List[Any]",
-          "- an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'."
-        ]
-      ],
-      "parameter_types": [
-        "List[Any]"
       ],
       "deprecated": false,
       "since_version": null,
@@ -29720,7 +29672,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Generates a list of `DirectedWeightedGraph`s from the skeleton image. Each graph corresponds to one connected component...",
+      "short_description": "No description available",
       "signature": "getGraphs() -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
@@ -29736,7 +29688,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Gets the loop pruning strategy.",
+      "short_description": "No description available",
       "signature": "getPruneMode() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -29752,7 +29704,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Gets the current root ROI strategy. Returns the strategy used for handling root ROIs during skeleton conversion. If no...",
+      "short_description": "No description available",
       "signature": "getRootRoiStrategy() -> int",
       "return_type": "int",
       "java_return_type": "int",
@@ -29768,7 +29720,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Generates a single `DirectedWeightedGraph`s by combining getGraphs()'s list into a single, combined graph. Typically,...",
+      "short_description": "No description available",
       "signature": "getSingleGraph() -> DirectedWeightedGraph",
       "return_type": "DirectedWeightedGraph",
       "java_return_type": "DirectedWeightedGraph",
@@ -29784,7 +29736,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Generates a single Tree from getSingleGraph(). If a ROI-based centroid has been set, Root is converted to a single...",
+      "short_description": "No description available",
       "signature": "getSingleTree() -> Tree",
       "return_type": "Tree",
       "java_return_type": "Tree",
@@ -29800,7 +29752,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph...",
+      "short_description": "No description available",
       "signature": "getTrees() -> List",
       "return_type": "List[Any]",
       "java_return_type": "List",
@@ -29840,7 +29792,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets whether to connect nearby skeleton components. Controls whether disconnected skeleton components should be...",
+      "short_description": "No description available",
       "signature": "setConnectComponents(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29848,7 +29800,7 @@
         [
           "arg0",
           "bool",
-          "- true to connect components, false otherwise"
+          ""
         ]
       ],
       "parameter_types": [
@@ -29864,7 +29816,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets the minimum component length necessary to avoid pruning. This value is only used if pruneByLength is true....",
+      "short_description": "No description available",
       "signature": "setLengthThreshold(double) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29872,7 +29824,7 @@
         [
           "arg0",
           "float",
-          "- the minimum length threshold"
+          ""
         ]
       ],
       "parameter_types": [
@@ -29888,7 +29840,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets the maximum distance for connecting skeleton components. Specifies the maximum distance within which disconnected...",
+      "short_description": "No description available",
       "signature": "setMaxConnectDist(double) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29896,7 +29848,7 @@
         [
           "arg0",
           "float",
-          "- the maximum connection distance"
+          ""
         ]
       ],
       "parameter_types": [
@@ -29912,7 +29864,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets the original ImagePlus to be used during voxel-based loop pruning. See AnalyzeSkeleton documentation Specifies the...",
+      "short_description": "No description available",
       "signature": "setOrigIP(ImagePlus) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29920,7 +29872,7 @@
         [
           "arg0",
           "Any",
-          "- the original ImagePlus"
+          ""
         ]
       ],
       "parameter_types": [
@@ -29936,7 +29888,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Getters",
-      "short_description": "Sets whether to prune components below a threshold length from the result.",
+      "short_description": "No description available",
       "signature": "setPruneByLength(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29960,7 +29912,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets whether to prune end branches during skeleton analysis. Controls whether terminal branches should be pruned during...",
+      "short_description": "No description available",
       "signature": "setPruneEnds(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29968,7 +29920,7 @@
         [
           "arg0",
           "bool",
-          "- true to prune end branches, false otherwise"
+          ""
         ]
       ],
       "parameter_types": [
@@ -29984,7 +29936,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets the loop pruning strategy. See AnalyzeSkeleton documentation",
+      "short_description": "No description available",
       "signature": "setPruneMode(int) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -29992,7 +29944,7 @@
         [
           "arg0",
           "int",
-          "- the loop prune strategy, e.g., SHORTEST_BRANCH, LOWEST_INTENSITY_BRANCH or LOWEST_INTENSITY_VOXEL"
+          ""
         ]
       ],
       "parameter_types": [
@@ -30008,7 +29960,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets the Roi enclosing the nodes to be set as root(s) in the final graphs. Must be called before retrieval of any...",
+      "short_description": "No description available",
       "signature": "setRootRoi(Roi, int) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30016,12 +29968,12 @@
         [
           "arg0",
           "Any",
-          "- The area enclosing the components defining the root(s) of the skeletonized structures. Typically this will correspond to an area ROI delineating the soma. Note that by default ImageJ ROIs do not carry depth information, so if you would like to restrain the delineation to a single plane, be sure to call"
+          ""
         ],
         [
           "arg1",
           "int",
-          "beforehand."
+          ""
         ]
       ],
       "parameter_types": [
@@ -30038,7 +29990,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets whether to calculate the longest shortest-path in the skeleton result.",
+      "short_description": "No description available",
       "signature": "setShortestPath(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30046,7 +29998,7 @@
         [
           "arg0",
           "bool",
-          "- true to calculate shortest paths, false otherwise"
+          ""
         ]
       ],
       "parameter_types": [
@@ -30062,7 +30014,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets whether to run skeleton analysis in silent mode. Setting this to false will display both the tagged skeleton image...",
+      "short_description": "No description available",
       "signature": "setSilent(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30070,7 +30022,7 @@
         [
           "arg0",
           "bool",
-          "- true for silent operation, false for debug output"
+          ""
         ]
       ],
       "parameter_types": [
@@ -30086,7 +30038,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Setters",
-      "short_description": "Sets whether to run skeleton analysis in verbose mode. Controls whether the skeleton analysis should provide detailed...",
+      "short_description": "No description available",
       "signature": "setVerbose(boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30094,7 +30046,7 @@
         [
           "arg0",
           "bool",
-          "- true for verbose output, false for normal output"
+          ""
         ]
       ],
       "parameter_types": [
@@ -30110,7 +30062,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Static Methods",
-      "short_description": "Convenience method to skeletonize a thresholded image using Skeletonize3D_.",
+      "short_description": "No description available",
       "signature": "static skeletonize(ImagePlus, boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30118,7 +30070,7 @@
         [
           "arg0",
           "Any",
-          "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground."
+          ""
         ],
         [
           "arg1",
@@ -30140,7 +30092,7 @@
       "package": "sc.fiji.snt.analysis",
       "full_class_name": "sc.fiji.snt.analysis.SkeletonConverter",
       "category": "Static Methods",
-      "short_description": "Convenience method to skeletonize a thresholded time-lapse using Skeletonize3D_.",
+      "short_description": "No description available",
       "signature": "static skeletonizeTimeLapse(ImagePlus, boolean) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30148,7 +30100,7 @@
         [
           "arg0",
           "Any",
-          "- The timelapse to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground."
+          ""
         ],
         [
           "arg1",
@@ -30218,7 +30170,7 @@
       "package": "sc.fiji.snt.filter",
       "full_class_name": "sc.fiji.snt.filter.Tubeness",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Apply single-scale tubeness filter to an ImgPlus.",
       "signature": "static apply(ImgPlus, double) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -30226,7 +30178,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- input image (2D or 3D) with calibrated axes"
         ],
         [
           "arg1",
@@ -30542,7 +30494,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become...",
       "signature": "static binarize(ImagePlus, double, double) -> void",
       "return_type": "None",
       "java_return_type": "void",
@@ -30550,7 +30502,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the image to be binarized"
         ],
         [
           "arg1",
@@ -30578,7 +30530,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Creates ImgPlus axes from IJ1 Calibration",
       "signature": "static calibrationToAxes(Calibration, int) -> CalibratedAxis;",
       "return_type": "Any",
       "java_return_type": "CalibratedAxis;",
@@ -30826,7 +30778,7 @@
         [
           "arg0",
           "str",
-          "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth"
+          "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, 'microglia' for a MIP of tiled microglia cells in the mouse retina, and 'binary timelapse' for a small 4-frame sequence of neurite growth"
         ]
       ],
       "parameter_types": [
@@ -30924,7 +30876,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "Returns the cropping rectangle around non-background values.",
+      "short_description": "Returns the cropping rectangle around non-background values, considering all slices of the stack.",
       "signature": "static getForegroundRect(ImagePlus, Number) -> Roi",
       "return_type": "Any",
       "java_return_type": "Roi",
@@ -31548,7 +31500,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Convert an ImagePlus to an ImgPlus with calibration and origin metadata. Creates an ImgPlus with proper axis types (X,...",
       "signature": "static toImgPlus(ImagePlus) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -31556,7 +31508,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the source ImagePlus"
         ]
       ],
       "parameter_types": [
@@ -31572,7 +31524,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Convert an ImagePlus to a 3D (XYZ) ImgPlus, extracting a single channel/frame if needed. Useful for analysis that...",
       "signature": "static toImgPlus3D(ImagePlus, int, int) -> ImgPlus",
       "return_type": "Any",
       "java_return_type": "ImgPlus",
@@ -31580,7 +31532,7 @@
         [
           "arg0",
           "Any",
-          ""
+          "- the source ImagePlus"
         ],
         [
           "arg1",
@@ -31632,7 +31584,7 @@
       "package": "sc.fiji.snt.util",
       "full_class_name": "sc.fiji.snt.util.ImpUtils",
       "category": "Static Methods",
-      "short_description": "No description available",
+      "short_description": "Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.",
       "signature": "static zoomTo(ImagePlus, Collection) -> double",
       "return_type": "float",
       "java_return_type": "double",
@@ -31829,7 +31781,7 @@
     "sc.fiji.snt.util",
     "sc.fiji.snt.viewer"
   ],
-  "generation_timestamp": "2026-01-02T23:09:09.871009",
-  "total_methods": 1426,
+  "generation_timestamp": "2026-09-27T22:17:09.369442",
+  "total_methods": 1424,
   "deprecated_methods": 0
 }

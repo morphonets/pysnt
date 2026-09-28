@@ -7,7 +7,7 @@ class FlyCircuitLoader:
     sc.fiji.snt.io.FlyCircuitLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.224710
+    Extracted: 2026-01-02T22:36:44.517421
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -29,7 +29,7 @@ class InsectBrainLoader:
     sc.fiji.snt.io.InsectBrainLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.249878
+    Extracted: 2026-01-02T22:36:44.549121
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -55,7 +55,7 @@ class MouseLightLoader:
     sc.fiji.snt.io.MouseLightLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.301662
+    Extracted: 2026-01-02T22:36:44.594121
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -66,8 +66,8 @@ class MouseLightLoader:
     # def extractNodes(self, arg0: Any, arg1: str) -> Dict[str, Any]: ...
     
     # Multiple overloads for extractTrees
-    def extractTrees(self, arg0: str, arg1: str) -> Dict[str, Any]: ...
-    # def extractTrees(self, arg0: Any, arg1: str) -> Dict[str, Any]: ...
+    def extractTrees(self, arg0: Any, arg1: str) -> Dict[str, Any]: ...
+    # def extractTrees(self, arg0: str, arg1: str) -> Dict[str, Any]: ...
     
     def getAllLoaders(self) -> List[Any]: ...
     
@@ -118,17 +118,17 @@ class MouseLightQuerier:
     sc.fiji.snt.io.MouseLightQuerier
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.304334
+    Extracted: 2026-01-02T22:36:44.597369
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
     def getAllIDs(self) -> List[Any]: ...
     
     # Multiple overloads for getIDs
-    def getIDs(self, arg0: Any) -> List[Any]: ...
+    def getIDs(self, arg0: str, arg1: bool) -> List[Any]: ...
     # def getIDs(self, arg0: List[Any]) -> List[Any]: ...
+    # def getIDs(self, arg0: Any) -> List[Any]: ...
     # def getIDs(self, arg0: List[Any], arg1: bool) -> List[Any]: ...
-    # def getIDs(self, arg0: str, arg1: bool) -> List[Any]: ...
     
     def getNeuronCount(self) -> int: ...
     
@@ -141,12 +141,23 @@ class MouseLightQuerier:
     def __getattr__(self, name: str) -> Any: ...
 
 
+class NeurolucidaImporter:
+    """
+    NeurolucidaImporter - No cached signatures available.
+    
+    Run: python dev/scripts/extract_class_signatures.py --all-classes
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 class NeuroMorphoLoader:
     """
     sc.fiji.snt.io.NeuroMorphoLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.346631
+    Extracted: 2026-01-02T22:36:44.641270
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -172,7 +183,7 @@ class RemoteSWCLoader:
     sc.fiji.snt.io.RemoteSWCLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.484923
+    Extracted: 2026-01-02T22:36:44.780892
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -194,7 +205,7 @@ class WekaModelLoader:
     sc.fiji.snt.io.WekaModelLoader
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.793288
+    Extracted: 2026-01-02T22:36:45.089206
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     

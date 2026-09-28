@@ -88,7 +88,7 @@ Returns the AWT Frame that contains this viewer's 3D canvas and UI components. I
 
 .. py:method:: getManagerPanel()
 
-   Returns a reference to 'RV Controls' panel.
+   Returns a reference to control panel.
 
 
 .. py:method:: getMesh(String)
@@ -258,7 +258,7 @@ This method creates a new Viewer3D instance and copies all currently visible obj
 
 .. py:method:: recordRotation(float, int, File)
 
-   Records an animated rotation of the scene as a sequence of images.
+   Records an animated rotation of the scene around the specified axis as a sequence of images.
 
 
 See Also

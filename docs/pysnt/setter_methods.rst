@@ -86,7 +86,7 @@ Matching Methods
    * - :meth:`SNTTable.addFirst`
      - :class:`SNTTable`
      - ``None``
-     - Sets a SciJava context to this table.
+     - Sets the title of the table.
    * - :meth:`InteractiveTracerCanvas.addFocusListener`
      - :class:`InteractiveTracerCanvas`
      - ``None``
@@ -362,7 +362,7 @@ Matching Methods
    * - :meth:`BiSearch.addProgressListener`
      - :class:`BiSearch`
      - ``None``
-     - No description available
+     - Description copied from class: AbstractSearch
    * - :meth:`FillerThread.addProgressListener`
      - :class:`FillerThread`
      - ``None``
@@ -370,7 +370,7 @@ Matching Methods
    * - :meth:`SearchThread.addProgressListener`
      - :class:`SearchThread`
      - ``None``
-     - No description available
+     - Description copied from class: AbstractSearch
    * - :meth:`TracerThread.addProgressListener`
      - :class:`TracerThread`
      - ``None``
@@ -454,7 +454,7 @@ Matching Methods
    * - :meth:`SNT.disableEventsAllPanes`
      - :class:`SNT`
      - ``None``
-     - Description copied from interface: PaneOwner
+     - Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.
    * - :meth:`InteractiveTracerCanvas.disablePopupMenu`
      - :class:`InteractiveTracerCanvas`
      - ``None``
@@ -566,7 +566,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setConnectComponents`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to connect nearby skeleton components. Controls whether disconnected skeleton components should be...
+     - No description available
    * - :meth:`ConvexHullAnalyzer.setContext`
      - :class:`ConvexHullAnalyzer`
      - ``None``
@@ -590,7 +590,7 @@ Matching Methods
    * - :meth:`PathFitter.setCrossSectionRadius`
      - :class:`PathFitter`
      - ``None``
-     - Sets the max radius (side search) for constraining the fit.
+     - Sets the radius of cross-sectional planes sampled around each node. At each node, PathFitter samples a square...
    * - :meth:`Viewer2D.setDefaultColor`
      - :class:`Viewer2D`
      - ``None``
@@ -754,11 +754,11 @@ Matching Methods
    * - :meth:`SkeletonConverter.setLengthThreshold`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets the minimum component length necessary to avoid pruning. This value is only used if pruneByLength is true....
+     - No description available
    * - :meth:`SkeletonConverter.setMaxConnectDist`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets the maximum distance for connecting skeleton components. Specifies the maximum distance within which disconnected...
+     - No description available
    * - :meth:`Fill.setMetric`
      - :class:`Fill`
      - ``None``
@@ -810,7 +810,7 @@ Matching Methods
    * - :meth:`PathFitter.setNodeRadiusFallback`
      - :class:`PathFitter`
      - ``None``
-     - No description available
+     - Sets the fallback strategy for node radii at locations where fitting failed. When cross-section fitting fails at a node...
    * - :meth:`NodeProfiler.setNodeStep`
      - :class:`NodeProfiler`
      - ``None``
@@ -818,7 +818,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setOrigIP`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets the original ImagePlus to be used during voxel-based loop pruning. See AnalyzeSkeleton documentation Specifies the...
+     - No description available
    * - :meth:`BoundingBox.setOrigin`
      - :class:`BoundingBox`
      - ``None``
@@ -914,11 +914,11 @@ Matching Methods
    * - :meth:`SkeletonConverter.setPruneEnds`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to prune end branches during skeleton analysis. Controls whether terminal branches should be pruned during...
+     - No description available
    * - :meth:`SkeletonConverter.setPruneMode`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets the loop pruning strategy. See AnalyzeSkeleton documentation
+     - No description available
    * - :meth:`NodeProfiler.setRadius`
      - :class:`NodeProfiler`
      - ``None``
@@ -942,7 +942,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setRootRoi`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets the Roi enclosing the nodes to be set as root(s) in the final graphs. Must be called before retrieval of any...
+     - No description available
    * - :meth:`SNTColor.setSWCType`
      - :class:`SNTColor`
      - ``None``
@@ -962,7 +962,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setShortestPath`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to calculate the longest shortest-path in the skeleton result.
+     - No description available
    * - :meth:`PathFitter.setShowAnnotatedView`
      - :class:`PathFitter`
      - ``None``
@@ -970,7 +970,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setSilent`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to run skeleton analysis in silent mode. Setting this to false will display both the tagged skeleton image...
+     - No description available
    * - :meth:`Fill.setSourcePaths`
      - :class:`Fill`
      - ``None``
@@ -1046,7 +1046,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setVerbose`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to run skeleton analysis in verbose mode. Controls whether the skeleton analysis should provide detailed...
+     - No description available
    * - :meth:`MultiViewer3D.setViewMode`
      - :class:`MultiViewer3D`
      - ``None``
@@ -1090,4 +1090,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

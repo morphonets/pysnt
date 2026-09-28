@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.util",
   "extracted_at": "2026-01-02T22:36:44.534542",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.710970",
+  "enhancement_timestamp": "2026-09-27T22:17:09.128431",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -88,34 +88,34 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the source RandomAccessibleInterval",
+              "javadoc_name": "rai"
             },
             {
               "name": "arg1",
               "type": "Any",
               "java_type": "[J",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "Any",
               "java_type": "[J",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_2"
             },
             {
               "name": "arg3",
               "type": "int",
               "java_type": "long",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_3"
             }
           ],
           "return_type": "Any",
           "java_return_type": "RandomAccessibleInterval",
-          "return_description": "",
+          "return_description": "cropped view as RandomAccessibleInterval",
           "throws": {}
         },
         {
@@ -215,7 +215,7 @@
         }
       ],
       "documentation": "Java method: static crop",
-      "javadoc_description": "",
+      "javadoc_description": "Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates.\n\nFor RAIs without axis metadata, assumes ZYX dimension order. Returns a view (no data copy) with the specified bounds, clamped to image bounds.\n\nImportant: This method assumes ZYX dimension order (dim0=Z, dim1=Y, dim2=X), which is common for OME-ZARR and N5 datasets. For images with different axis orders, wrap as ImgPlus with proper axis metadata and use `crop(ImgPlus, long[], long[], boolean)`.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -232,18 +232,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the source ImgPlus (e.g., 5D XYZCT with C=1, T=1)",
+              "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImgPlus",
-          "return_description": "",
+          "return_description": "ImgPlus with singleton dimensions removed",
           "throws": {}
         }
       ],
       "documentation": "Java method: static dropSingletonDimensions",
-      "javadoc_description": "",
+      "javadoc_description": "Remove singleton dimensions from an ImgPlus, preserving axis metadata.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -260,18 +260,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the ImgPlus",
+              "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "[I",
-          "return_description": "",
+          "return_description": "int array {xIdx, yIdx, zIdx}, with -1 for missing axes",
           "throws": {}
         }
       ],
       "documentation": "Java method: static findSpatialAxisIndices",
-      "javadoc_description": "",
+      "javadoc_description": "Find dimension indices for X, Y, Z axes in an ImgPlus.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -288,18 +288,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the ImgPlus",
+              "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "[I",
-          "return_description": "",
+          "return_description": "int array {xIdx, yIdx, zIdx}",
           "throws": {}
         }
       ],
       "documentation": "Java method: static findSpatialAxisIndicesWithFallback",
-      "javadoc_description": "",
+      "javadoc_description": "Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -316,18 +316,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the source ImgPlus",
+              "javadoc_name": "imgPlus"
             }
           ],
           "return_type": "Any",
           "java_return_type": "Calibration",
-          "return_description": "",
+          "return_description": "Calibration with pixel sizes, unit, and origins",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getCalibration",
-      "javadoc_description": "",
+      "javadoc_description": "Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -374,13 +374,13 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- source image",
+              "javadoc_name": "imgPlus"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImgUtils$SliceResult",
-          "return_description": "",
+          "return_description": "result containing the squeezed image and indices of any removed singleton dimensions (0 if squeezed, -1 if axis didn't exist or wasn't squeezed)",
           "throws": {}
         },
         {
@@ -421,7 +421,7 @@
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             }
           ],
           "return_type": "Any",
@@ -431,11 +431,13 @@
         }
       ],
       "documentation": "Java method: static getCtSlice",
-      "javadoc_description": "",
+      "javadoc_description": "Extracts a channel/time slice by squeezing singleton dimensions.\n\nConvenience overload that removes any singleton (size=1) channel or time dimensions from the image. Non-singleton C/T dimensions are preserved.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "for extracting specific C/T indices"
+      ],
       "examples": []
     },
     {
@@ -520,25 +522,25 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the ImgPlus",
+              "javadoc_name": "img"
             },
             {
               "name": "arg1",
               "type": "Any",
               "java_type": "AxisType",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             }
           ],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "",
+          "return_description": "the origin offset in calibrated units, or 0 if not found",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getOrigin",
-      "javadoc_description": "",
+      "javadoc_description": "Get the origin offset for a specific axis from an ImgPlus.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -555,18 +557,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the ImgPlus",
+              "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "[D",
-          "return_description": "",
+          "return_description": "array of {xOrigin, yOrigin, zOrigin} in calibrated units",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getOrigins",
-      "javadoc_description": "",
+      "javadoc_description": "Get the origin offsets as {xOrigin, yOrigin, zOrigin} from an ImgPlus.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -584,7 +586,7 @@
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "Any",
@@ -596,7 +598,7 @@
       "documentation": "Java method: static imgPlusToCalibration",
       "javadoc_description": "",
       "category": "Static Methods",
-      "deprecated": false,
+      "deprecated": true,
       "since_version": null,
       "see_also": [],
       "examples": []
@@ -811,7 +813,7 @@
         }
       ],
       "documentation": "Java method: static subInterval",
-      "javadoc_description": "Get an N-D sub-interval of an N-D image, given two corner points and specified padding. If necessary, the computed sub-interval is clamped at the min and max of each dimension of the input interval.",
+      "javadoc_description": "Get an N-D sub-interval of an N-D image, given two corner points and specified padding.\n\nWorks in native dimension order (no XYZ remapping). The sub-interval is clamped to image bounds.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -883,16 +885,18 @@
           ],
           "return_type": "Any",
           "java_return_type": "RandomAccessibleInterval",
-          "return_description": "the subvolume",
+          "return_description": "the sub-volume",
           "throws": {}
         }
       ],
       "documentation": "Java method: static subVolume",
-      "javadoc_description": "Get a 3D sub-volume of an image, given two corner points and specified padding. If the input is 2D, a singleton dimension is added. If necessary, the computed sub-volume is clamped at the min and max of each dimension of the input interval.",
+      "javadoc_description": "Get a 3D sub-volume of an image, given two corner points and specified padding.\n\nCoordinates are in XYZ order. If the input is 2D, a singleton dimension is added. The sub-volume is clamped to image bounds.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "crop(RandomAccessibleInterval, long[], long[], long)"
+      ],
       "examples": []
     },
     {
@@ -906,7 +910,7 @@
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "Any",
@@ -1013,7 +1017,7 @@
         }
       ],
       "documentation": "Java method: static toImagePlus",
-      "javadoc_description": "",
+      "javadoc_description": "Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1030,32 +1034,34 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the RAI to wrap",
+              "javadoc_name": "rai"
             },
             {
               "name": "arg1",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "str",
               "java_type": "String",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_2"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImgPlus",
-          "return_description": "",
-          "throws": {}
+          "return_description": "ImgPlus with copied axis metadata",
+          "throws": {
+            "IllegalArgumentException": "- if dimensions don't match"
+          }
         }
       ],
       "documentation": "Java method: static wrapWithAxes",
-      "javadoc_description": "",
+      "javadoc_description": "Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus.\n\nUseful for wrapping op results with proper calibration.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1072,27 +1078,33 @@
     ],
     "implements": []
   },
-  "nested_classes": [],
-  "deprecated": false,
+  "nested_classes": [
+    "ImgUtils.SliceResult"
+  ],
+  "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Object"
+    "isLabelImage(RandomAccessibleInterval, int)",
+    "Object",
+    "for extracting specific C/T indices",
+    "crop(RandomAccessibleInterval, long[], long[], long)",
+    "wrapWithSpacing(RandomAccessibleInterval, double[], String)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 12,
+      "total_javadoc_methods": 61,
       "total_json_methods": 20,
-      "total_matches": 12,
-      "exact_matches": 12,
+      "total_matches": 30,
+      "exact_matches": 30,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": 8,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 31,
+      "unmatched_json": -10,
+      "match_percentage": 49.2
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 10,
-    "enhancement_quality_score": 1.0
+    "unmatched_javadoc_methods": 31,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.59
   }
 }

@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Visualization'
-Total matching methods: **26**
+Total matching methods: **25**
 
 Matching Methods
 ----------------
@@ -26,11 +26,11 @@ Matching Methods
    * - :meth:`AllenCompartment.color`
      - :class:`AllenCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`InsectBrainCompartment.color`
      - :class:`InsectBrainCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`SNTColor.color`
      - :class:`SNTColor`
      - ``Any``
@@ -71,10 +71,6 @@ Matching Methods
      - :class:`ImpUtils`
      - ``None``
      - No description available
-   * - :meth:`Tree.static assignUniqueColors`
-     - :class:`Tree`
-     - ``None``
-     - Assigns distinct colors to a collection of Trees.
    * - :meth:`SNTColor.static colorToString`
      - :class:`SNTColor`
      - ``str``
@@ -82,7 +78,7 @@ Matching Methods
    * - :meth:`SNTColor.static contrastColor`
      - :class:`SNTColor`
      - ``Any``
-     - Returns a suitable 'contrast' color.
+     - Returns a BW 'contrast' color
    * - :meth:`ColorMaps.static discreteColors`
      - :class:`ColorMaps`
      - ``Any``
@@ -102,7 +98,7 @@ Matching Methods
    * - :meth:`SNTColor.static getDistinctColorsHex`
      - :class:`SNTColor`
      - ``Any``
-     - No description available
+     - Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex...
    * - :meth:`ColorMaps.static glasbeyColorsAWT`
      - :class:`ColorMaps`
      - ``Any``
@@ -122,4 +118,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

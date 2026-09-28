@@ -54,7 +54,7 @@ I
 
 * `ImgUtils <../pysnt/util/imgutils.html>`_ (``sc.fiji.snt.util``) - Static utilities for handling and manipulation of `RandomAccessibleInterval`s
 * `ImpUtils <../pysnt/util/imputils.html>`_ (``sc.fiji.snt.util``) - Static utilities for handling and manipulation of ImagePluss
-* `InsectBrainCompartment <../pysnt/annotation/insectbraincompartment.html>`_ (``sc.fiji.snt.annotation``) - Enhanced documentation for InsectBrainCompartment class.
+* `InsectBrainCompartment <../pysnt/annotation/insectbraincompartment.html>`_ (``sc.fiji.snt.annotation``) - Returns the compartment's acronym.
 * `InsectBrainLoader <../pysnt/io/insectbrainloader.html>`_ (``sc.fiji.snt.io``) - Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.
 * `InsectBrainUtils <../pysnt/annotation/insectbrainutils.html>`_ (``sc.fiji.snt.annotation``) - Utility methods for retrieving species, brain, and neuron data from the Insect Brain Database
 * `InteractiveTracerCanvas <../pysnt/interactivetracercanvas.html>`_ (``sc.fiji.snt``) - Enhanced documentation for InteractiveTracerCanvas class.
@@ -104,10 +104,10 @@ S
 -
 
 * `SciViewSNT <../pysnt/sciviewsnt.html>`_ (``sc.fiji.snt``) - Bridges SNT to SciView, allowing Trees to be rendered as scenery objects
-* `SearchNode <../pysnt/tracing/searchnode.html>`_ (``sc.fiji.snt.tracing``) - Enhanced documentation for SearchNode class.
+* `SearchNode <../pysnt/tracing/searchnode.html>`_ (``sc.fiji.snt.tracing``) - Interface representing a node in 3D space that can be used in pathfinding and search algorithms.
 * `SearchThread <../pysnt/tracing/searchthread.html>`_ (``sc.fiji.snt.tracing``) - Implements a common thread that explores the image using a variety of strategies, e.
 * `ShollAnalyzer <../pysnt/analysis/shollanalyzer.html>`_ (``sc.fiji.snt.analysis``) - Class to retrieve Sholl metrics from a Tree.
-* `SkeletonConverter <../pysnt/analysis/skeletonconverter.html>`_ (``sc.fiji.snt.analysis``) - Class for generation of Trees from a skeletonized ImagePlus.
+* `SkeletonConverter <../pysnt/analysis/skeletonconverter.html>`_ (``sc.fiji.snt.analysis``) - Enhanced documentation for SkeletonConverter class.
 * `SNT <../pysnt/snt.html>`_ (``sc.fiji.snt``) - Implements the SNT plugin.
 * `SNTChart <../pysnt/analysis/sntchart.html>`_ (``sc.fiji.snt.analysis``) - Extension of ChartPanel modified for scientific publications and convenience methods for plot annotations.
 * `SNTColor <../pysnt/util/sntcolor.html>`_ (``sc.fiji.snt.util``) - A simple class for handling Colors including the ability to map an AWT Color to a SWC type integer tag.
@@ -128,7 +128,7 @@ T
 * `TreeColorMapper <../pysnt/analysis/treecolormapper.html>`_ (``sc.fiji.snt.analysis``) - Class for color coding Trees.
 * `TreeProperties <../pysnt/treeproperties.html>`_ (``sc.fiji.snt``) - Allows standardized metadata to be associated to a Tree.
 * `TreeStatistics <../pysnt/analysis/treestatistics.html>`_ (``sc.fiji.snt.analysis``) - Computes summary and descriptive statistics from properties of Paths and Nodes in a Tree, including convenience methods to plot distributions of such data.
-* `Tubeness <../pysnt/filter/tubeness.html>`_ (``sc.fiji.snt.filter``) - Y.
+* `Tubeness <../pysnt/filter/tubeness.html>`_ (``sc.fiji.snt.filter``) - Computes a tubeness (vesselness) filter on a multi-dimensional image using multi-scale eigenvalue analysis of the Hessian matrix.
 
 V
 -

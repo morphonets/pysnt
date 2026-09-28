@@ -45,9 +45,11 @@ AllenCompartment
 
 .. method:: getMesh()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``getMesh() -> OBJMesh``
 
-   **Returns:** (``Any``) the mesh associated with this compartment
+   **Returns:** ``Any``
 
 .. method:: getOntologyDepth()
 
@@ -377,6 +379,8 @@ ConvexHull2D
 
 .. method:: boundarySize()
 
+   Description copied from class: AbstractConvexHull
+
    **Signature:** ``boundarySize() -> double``
 
    **Returns:** ``float``
@@ -389,6 +393,8 @@ ConvexHull2D
 
 .. method:: size()
 
+   Description copied from class: AbstractConvexHull
+
    **Signature:** ``size() -> double``
 
    **Returns:** ``float``
@@ -398,6 +404,8 @@ ConvexHull3D
 ------------
 
 .. method:: boundarySize()
+
+   Description copied from class: AbstractConvexHull
 
    **Signature:** ``boundarySize() -> double``
 
@@ -410,6 +418,8 @@ ConvexHull3D
    **Returns:** ``Any``
 
 .. method:: size()
+
+   Description copied from class: AbstractConvexHull
 
    **Signature:** ``size() -> double``
 
@@ -865,21 +875,27 @@ InsectBrainCompartment
 
 .. method:: getAncestor(arg0)
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``getAncestor(int) -> BrainAnnotation``
 
    **Parameters:**
 
    * **arg0** (``int``): - the ancestor level as negative 1-based index. E.g.,
 
-   **Returns:** (``Any``) the ancestor of this compartment at the nth level
+   **Returns:** (``Any``) the ancestor at the given level
 
 .. method:: getMesh()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``getMesh() -> OBJMesh``
 
-   **Returns:** (``Any``) the mesh associated with this compartment
+   **Returns:** ``Any``
 
 .. method:: getOntologyDepth()
+
+   Description copied from interface: BrainAnnotation
 
    **Signature:** ``getOntologyDepth() -> int``
 
@@ -887,11 +903,15 @@ InsectBrainCompartment
 
 .. method:: getParent()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``getParent() -> BrainAnnotation``
 
-   **Returns:** (``Any``) the parent of this compartment
+   **Returns:** ``Any``
 
 .. method:: isChildOf(arg0)
+
+   Description copied from interface: BrainAnnotation
 
    **Signature:** ``isChildOf(BrainAnnotation) -> boolean``
 
@@ -899,15 +919,19 @@ InsectBrainCompartment
 
    * **arg0** (``Any``)
 
-   **Returns:** (``bool``) whether this compartment is a sub-compartment of annotation
+   **Returns:** ``bool``
 
 .. method:: isMeshAvailable()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``isMeshAvailable() -> boolean``
 
-   **Returns:** (``bool``) whether a mesh is available for this compartment
+   **Returns:** ``bool``
 
 .. method:: isParentOf(arg0)
+
+   Description copied from interface: BrainAnnotation
 
    **Signature:** ``isParentOf(BrainAnnotation) -> boolean``
 
@@ -915,7 +939,7 @@ InsectBrainCompartment
 
    * **arg0** (``Any``)
 
-   **Returns:** (``bool``) whether this compartment is a parentCompartment of annotation
+   **Returns:** ``bool``
 
 
 InsectBrainLoader
@@ -1262,13 +1286,15 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
 .. method:: getBoxPlot(arg0)
 
+   Assembles a Box and Whisker Plot for the specified measurement (cell morphometry).
+
    **Signature:** ``getBoxPlot(String) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - the measurement (N_NODES, NODE_RADIUS, etc.)
 
-   **Returns:** ``SNTChart``
+   **Returns:** (``SNTChart``) the SNTChart holding the box plot
 
 .. method:: getBranchPoints()
 
@@ -2083,19 +2109,25 @@ PathAndFillManager
 
 .. method:: getPaths()
 
-   Returns all the paths.
+   Returns the "main" paths managed by this PathAndFillManager. This is a convenience method that excludes:
+
+Null entries (defensive filtering) Fitted paths (i.e., paths that are refined versions of other paths, created by path-fitting algorithms). These are typically displayed alongside their parent path rather than as standalone entries.
+
+The returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
 
    **Signature:** ``getPaths() -> ArrayList``
 
-   **Returns:** (``List[Any]``) the paths associated with this PathAndFillManager instance.
+   **Returns:** (``List[Any]``) a filtered list of paths, excluding nulls and fitted versions
 
 .. method:: getPathsFiltered()
 
-   Returns the 'de facto' Paths.
+   Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
+
+A fitted-version path is only excluded when its un-fitted counterpart is also registered with this manager, i.e., when that counterpart is available to represent it instead. See isDeFactoPath(Path) for why that check -- rather than an unconditional exclusion -- is necessary.
 
    **Signature:** ``getPathsFiltered() -> List``
 
-   **Returns:** (``List[Any]``) the paths associated with this PathAndFillManager instance excluding those that are null or fitted version of o paths.
+   **Returns:** (``List[Any]``) a filtered list of paths, excluding nulls and redundant fitted versions
 
 .. method:: getPathsInROI(arg0)
 
@@ -2550,13 +2582,9 @@ In PathStatistics, all paths are considered as branches since each path represen
 
 .. method:: getHighestPathOrder()
 
-   Gets the number of branches (paths) being analyzed.
-
-Returns the total count of paths in this PathStatistics instance.
-
    **Signature:** ``getHighestPathOrder() -> int``
 
-   **Returns:** (``int``) the number of paths
+   **Returns:** ``int``
 
 .. method:: getHistogram(arg0)
 
@@ -2628,13 +2656,13 @@ All values are non-negative (|death - birth|) For geodesic descriptor: sum of al
 Example Usage: 
 ```
 List<Double> barcode = analyzer.getBarcode("geodesic");
-
-// Find most significant branches
-barcode.sort(Collections.reverseOrder());
-System.out.println("Top 5 most persistent branches:");
-for (int i = 0; i < Math.min(5, barcode.size()); i++) {
-    System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
-}
+ 
+ // Find most significant branches
+ barcode.sort(Collections.reverseOrder());
+ System.out.println("Top 5 most persistent branches:");
+ for (int i = 0; i < Math.min(5, barcode.size()); i++) {
+     System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
+ }
 ```
 
 
@@ -2651,13 +2679,13 @@ for (int i = 0; i < Math.min(5, barcode.size()); i++) {
    .. code-block:: java
 
       List<Double> barcode = analyzer.getBarcode("geodesic");
-      
-      // Find most significant branches
-      barcode.sort(Collections.reverseOrder());
-      System.out.println("Top 5 most persistent branches:");
-      for (int i = 0; i < Math.min(5, barcode.size()); i++) {
-          System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
-      }
+       
+       // Find most significant branches
+       barcode.sort(Collections.reverseOrder());
+       System.out.println("Top 5 most persistent branches:");
+       for (int i = 0; i < Math.min(5, barcode.size()); i++) {
+           System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
+       }
 
 .. method:: getDiagram(arg0)
 
@@ -2676,12 +2704,12 @@ Number of points = Number of tips in the tree All values are non-negative For ge
 Example usage: 
 ```
 List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-for (List<Double> point : diagram) {
-    double birth = point.get(0);
-    double death = point.get(1);
-    double persistence = death - birth;
-    System.out.println("Branch: persistence = " + persistence);
-}
+ for (List<Double> point : diagram) {
+     double birth = point.get(0);
+     double death = point.get(1);
+     double persistence = death - birth;
+     System.out.println("Branch: persistence = " + persistence);
+ }
 ```
 
 
@@ -2698,12 +2726,12 @@ for (List<Double> point : diagram) {
    .. code-block:: java
 
       List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-      for (List<Double> point : diagram) {
-          double birth = point.get(0);
-          double death = point.get(1);
-          double persistence = death - birth;
-          System.out.println("Branch: persistence = " + persistence);
-      }
+       for (List<Double> point : diagram) {
+           double birth = point.get(0);
+           double death = point.get(1);
+           double persistence = death - birth;
+           System.out.println("Branch: persistence = " + persistence);
+       }
 
 .. method:: getDiagramNodes(arg0)
 
@@ -2720,21 +2748,21 @@ Correspondence: The order of node pairs matches the order of birth-death pairs r
 Example Usage: 
 ```
 List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
-
-for (int i = 0; i < diagram.size(); i++) {
-    List<Double> birthDeath = diagram.get(i);
-    List<SWCPoint> nodesPair = nodes.get(i);
-    
-    double persistence = birthDeath.get(1) - birthDeath.get(0);
-    SWCPoint branchPoint = nodesPair.get(0);
-    SWCPoint tipPoint = nodesPair.get(1);
-    
-    System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
-                      persistence, 
-                      branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
-                      tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
-}
+ List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
+ 
+ for (int i = 0; i < diagram.size(); i++) {
+     List<Double> birthDeath = diagram.get(i);
+     List<SWCPoint> nodesPair = nodes.get(i);
+     
+     double persistence = birthDeath.get(1) - birthDeath.get(0);
+     SWCPoint branchPoint = nodesPair.get(0);
+     SWCPoint tipPoint = nodesPair.get(1);
+     
+     System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
+                       persistence, 
+                       branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
+                       tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
+ }
 ```
 
 
@@ -2751,21 +2779,21 @@ for (int i = 0; i < diagram.size(); i++) {
    .. code-block:: java
 
       List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-      List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
-      
-      for (int i = 0; i < diagram.size(); i++) {
-          List<Double> birthDeath = diagram.get(i);
-          List<SWCPoint> nodesPair = nodes.get(i);
-          
-          double persistence = birthDeath.get(1) - birthDeath.get(0);
-          SWCPoint branchPoint = nodesPair.get(0);
-          SWCPoint tipPoint = nodesPair.get(1);
-          
-          System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
-                            persistence, 
-                            branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
-                            tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
-      }
+       List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
+       
+       for (int i = 0; i < diagram.size(); i++) {
+           List<Double> birthDeath = diagram.get(i);
+           List<SWCPoint> nodesPair = nodes.get(i);
+           
+           double persistence = birthDeath.get(1) - birthDeath.get(0);
+           SWCPoint branchPoint = nodesPair.get(0);
+           SWCPoint tipPoint = nodesPair.get(1);
+           
+           System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
+                             persistence, 
+                             branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
+                             tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
+       }
 
 .. method:: getLandscape(arg0, arg1, arg2)
 
@@ -3034,6 +3062,12 @@ SNT
    **Returns:** ``Path``
 
 .. method:: getDataset()
+
+   Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per getLoadedDataAsImp(). If no resident ImagePlus exists at all (e.g., data streamed from disk/network, backed only by ctSlice3d), a Dataset is instead built directly from `getLoadedDataAsImg(boolean)`, so Dataset-only commands. Null is returned if no image data exists at all.
+
+NB: in the streamed-data fallback, the returned Dataset only ever contains a single channel/ frame (whichever is currently active): ctSlice3d is a single C/T slice by construction. Commands that need every channel or frame simultaneously will still require a resident ImagePlus.
+
+NB2: a materialized crop (see isMaterializedCrop()) always has a resident ImagePlus (the crop itself), so it never takes the streamed-data fallback above, returning the crop's own Dataset as-is, matching whatever `buildMaterializedCrop(BoundingBox)` captured (see `getMaterializedCropChannel()`/`getMaterializedCropFrame()`).
 
    **Signature:** ``getDataset() -> Dataset``
 
@@ -3623,15 +3657,11 @@ SkeletonConverter
 
 .. method:: getGraphs()
 
-   Generates a list of `DirectedWeightedGraph`s from the skeleton image. Each graph corresponds to one connected component of the graph returned by `SkeletonResult.getGraph()`.
-
    **Signature:** ``getGraphs() -> List``
 
-   **Returns:** (``List[Any]``) the list of skeletonized graphs
+   **Returns:** ``List[Any]``
 
 .. method:: getPruneMode()
-
-   Gets the loop pruning strategy.
 
    **Signature:** ``getPruneMode() -> int``
 
@@ -3639,41 +3669,29 @@ SkeletonConverter
 
 .. method:: getRootRoiStrategy()
 
-   Gets the current root ROI strategy.
-
-Returns the strategy used for handling root ROIs during skeleton conversion. If no root ROI is set, returns ROI_UNSET.
-
    **Signature:** ``getRootRoiStrategy() -> int``
 
-   **Returns:** (``int``) the root ROI strategy constant
+   **Returns:** ``int``
 
 .. method:: getSingleGraph()
 
-   Generates a single `DirectedWeightedGraph`s by combining getGraphs()'s list into a single, combined graph. Typically, this method assumes that the skeletonization handles a known single component (e.g., an image of a single cell). If multiple graphs() do exist, this method requires that setRootRoi(Roi, int) has been called using ROI_CENTROID or `ROI_CENTROID_WEIGHTED`.
-
    **Signature:** ``getSingleGraph() -> DirectedWeightedGraph``
 
-   **Returns:** (``DirectedWeightedGraph``) the single graph
+   **Returns:** ``DirectedWeightedGraph``
 
 .. method:: getSingleTree()
 
-   Generates a single Tree from getSingleGraph(). If a ROI-based centroid has been set, Root is converted to a single node, root path with radius set to that of a circle with the same area of root-defining soma.
-
    **Signature:** ``getSingleTree() -> Tree``
 
-   **Returns:** (``Tree``) the single tree
+   **Returns:** ``Tree``
 
 .. method:: getTrees()
 
-   Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph returned by `SkeletonResult.getGraph()`.
-
    **Signature:** ``getTrees() -> List``
 
-   **Returns:** (``List[Any]``) the skeleton tree list
+   **Returns:** ``List[Any]``
 
 .. method:: setPruneByLength(arg0)
-
-   Sets whether to prune components below a threshold length from the result.
 
    **Signature:** ``setPruneByLength(boolean) -> void``
 
@@ -4003,8 +4021,8 @@ Tree
 
 ```
 getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, "um");
-String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
-getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
+ String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
+ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
 ```
 
 
@@ -4017,8 +4035,8 @@ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
    .. code-block:: java
 
       getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, "um");
-      String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
-      getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
+       String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
+       getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
 
 .. method:: getRoot()
 
@@ -4209,15 +4227,13 @@ TreeStatistics
 
 .. method:: getAnnotatedLengthHistogram(arg0)
 
-   Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.
-
    **Signature:** ``getAnnotatedLengthHistogram(int) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``int``): - the ontological depth of the compartments to be considered
+   * **arg0** (``int``)
 
-   **Returns:** (``SNTChart``) the annotated length histogram
+   **Returns:** ``SNTChart``
 
 .. method:: getAnnotatedLengthsByHemisphere(arg0)
 
@@ -4427,15 +4443,13 @@ TreeStatistics
 
 .. method:: getHistogram(arg0)
 
-   Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.
-
    **Signature:** ``getHistogram(String) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the measurement (N_NODES, NODE_RADIUS, etc.)
+   * **arg0** (``str``)
 
-   **Returns:** (``SNTChart``) the frame holding the histogram
+   **Returns:** ``SNTChart``
 
 .. method:: getInnerBranches()
 
@@ -4652,7 +4666,7 @@ Returns the AWT Frame that contains this viewer's 3D canvas and UI components. I
 
 .. method:: getManagerPanel()
 
-   Returns a reference to 'RV Controls' panel.
+   Returns a reference to control panel.
 
    **Signature:** ``getManagerPanel() -> Viewer3D$ManagerPanel``
 
@@ -4851,4 +4865,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

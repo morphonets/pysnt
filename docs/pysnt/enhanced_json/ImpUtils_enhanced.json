@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.util",
   "extracted_at": "2026-01-02T22:36:44.542582",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.742812",
+  "enhancement_timestamp": "2026-09-27T22:17:09.187213",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -100,32 +100,34 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the image to be binarized",
+              "javadoc_name": "imp"
             },
             {
               "name": "arg1",
               "type": "float",
               "java_type": "double",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "float",
               "java_type": "double",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_2"
             }
           ],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
-          "throws": {}
+          "throws": {
+            "IllegalArgumentException": "- if image is not grayscale"
+          }
         }
       ],
       "documentation": "Java method: static binarize",
-      "javadoc_description": "",
+      "javadoc_description": "Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become 0 (black).",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -143,14 +145,14 @@
               "type": "Any",
               "java_type": "Calibration",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             },
             {
               "name": "arg1",
               "type": "int",
               "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             }
           ],
           "return_type": "Any",
@@ -160,7 +162,7 @@
         }
       ],
       "documentation": "Java method: static calibrationToAxes",
-      "javadoc_description": "",
+      "javadoc_description": "Creates ImgPlus axes from IJ1 Calibration",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -332,7 +334,7 @@
         }
       ],
       "documentation": "Java method: static convertToSimple2D",
-      "javadoc_description": "Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel a RGB version is obtained. The image is flattened if its Overlay has ROIs.",
+      "javadoc_description": "Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel, an RGB version is obtained. The image is flattened if its Overlay has ROIs.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -440,13 +442,13 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth",
+              "description": "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, 'microglia' for a MIP of tiled microglia cells in the mouse retina, and 'binary timelapse' for a small 4-frame sequence of neurite growth",
               "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "the demo image, or null if data could no be retrieved",
+          "return_description": "the demo image, or null if data could not be retrieved",
           "throws": {}
         }
       ],
@@ -578,12 +580,12 @@
           ],
           "return_type": "Any",
           "java_return_type": "Roi",
-          "return_description": "the rectangular ROI defining non-background bounds",
+          "return_description": "the rectangular ROI defining non-background bounds, or null if all pixels are background",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getForegroundRect",
-      "javadoc_description": "Returns the cropping rectangle around non-background values.",
+      "javadoc_description": "Returns the cropping rectangle around non-background values, considering all slices of the stack.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1394,18 +1396,18 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the source ImagePlus",
+              "javadoc_name": "imp"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImgPlus",
-          "return_description": "",
+          "return_description": "ImgPlus with calibrated axes",
           "throws": {}
         }
       ],
       "documentation": "Java method: static toImgPlus",
-      "javadoc_description": "",
+      "javadoc_description": "Convert an ImagePlus to an ImgPlus with calibration and origin metadata.\n\nCreates an ImgPlus with proper axis types (X, Y, Z, Channel, Time) and transfers calibration including pixel sizes, units, and origin offsets.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1422,32 +1424,32 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the source ImagePlus",
+              "javadoc_name": "imp"
             },
             {
               "name": "arg1",
               "type": "int",
               "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "int",
               "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_2"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImgPlus",
-          "return_description": "",
+          "return_description": "3D ImgPlus with X, Y, Z axes",
           "throws": {}
         }
       ],
       "documentation": "Java method: static toImgPlus3D",
-      "javadoc_description": "",
+      "javadoc_description": "Convert an ImagePlus to a 3D (XYZ) ImgPlus, extracting a single channel/frame if needed.\n\nUseful for analysis that expects simple 3D images without channel/time dimensions.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1493,14 +1495,14 @@
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             },
             {
               "name": "arg1",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
-              "javadoc_name": "param_1"
+              "javadoc_name": null
             }
           ],
           "return_type": "float",
@@ -1515,29 +1517,29 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the ImagePlus whose canvas should be adjusted",
+              "javadoc_name": "imp"
             },
             {
               "name": "arg1",
               "type": "float",
               "java_type": "double",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
             },
             {
               "name": "arg2",
               "type": "int",
               "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_2"
             },
             {
               "name": "arg3",
               "type": "int",
               "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_3"
             }
           ],
           "return_type": "None",
@@ -1547,7 +1549,7 @@
         }
       ],
       "documentation": "Java method: static zoomTo",
-      "javadoc_description": "",
+      "javadoc_description": "Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -1568,23 +1570,25 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object"
+    "zoomTo(ImagePlus, Collection, int)",
+    "Object",
+    "for an independent copy"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 45,
+      "total_javadoc_methods": 67,
       "total_json_methods": 42,
-      "total_matches": 45,
-      "exact_matches": 45,
+      "total_matches": 52,
+      "exact_matches": 52,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": -3,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 15,
+      "unmatched_json": -10,
+      "match_percentage": 77.6
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 4,
-    "enhancement_quality_score": 1.0
+    "unmatched_javadoc_methods": 15,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.931
   }
 }

@@ -76,7 +76,7 @@ Getters Methods
 
 .. py:method:: getAnnotatedLengthHistogram(int)
 
-   Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.
+   
 
 
 .. py:method:: getAnnotatedLengthsByHemisphere(int)
@@ -191,7 +191,7 @@ Getters Methods
 
 .. py:method:: getHistogram(String)
 
-   Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.
+   
 
 
 .. py:method:: getInnerBranches()

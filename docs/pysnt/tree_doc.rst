@@ -152,8 +152,8 @@ Getters Methods
 
 ```
 getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, "um");
-String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
-getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
+ String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);
+ getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);
 ```
 
 
@@ -248,12 +248,12 @@ Other Methods
 
 .. py:method:: assignImage(Dataset)
 
-   Assigns spatial calibration from a Dataset to this Tree.
+   Assigns spatial calibration from an ImgPlus to this Tree.
 
 
 .. py:method:: static assignUniqueColors(Collection)
 
-   Assigns distinct colors to a collection of Trees.
+   
 
 
 .. py:method:: assignValue(double)
@@ -270,7 +270,7 @@ Other Methods
 
    Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing.
 
-Note that 1) upsampling is not supported (cf. {upsample(double)}, and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.
+Note that 1) upsampling is not supported (cf. `Path.upsample(double)`), and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.
 
 
 .. py:method:: indexOf(Path)

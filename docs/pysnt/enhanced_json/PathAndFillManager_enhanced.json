@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.691788",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.688506",
+  "enhancement_timestamp": "2026-09-27T22:17:09.092671",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -732,7 +732,7 @@
         }
       ],
       "documentation": "Java method: downsampleAll",
-      "javadoc_description": "Downsamples alls path using Ramer–Douglas–Peucker simplification. Downsampling occurs only between branch points and terminal points.",
+      "javadoc_description": "Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and terminal points.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -869,18 +869,18 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "- the file path (including common basename) for exported files. The",
-              "javadoc_name": "baseFilename"
+              "description": "",
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "true, if successful",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: exportAllPathsAsSWC",
-      "javadoc_description": "Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.",
+      "javadoc_description": "",
       "category": "I/O Operations",
       "deprecated": false,
       "since_version": null,
@@ -1192,16 +1192,19 @@
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "ArrayList",
-          "return_description": "the paths associated with this PathAndFillManager instance.",
+          "return_description": "a filtered list of paths, excluding nulls and fitted versions",
           "throws": {}
         }
       ],
       "documentation": "Java method: getPaths",
-      "javadoc_description": "Returns all the paths.",
+      "javadoc_description": "Returns the \"main\" paths managed by this PathAndFillManager. This is a convenience method that excludes:\n\nNull entries (defensive filtering) Fitted paths (i.e., paths that are refined versions of other paths, created by path-fitting algorithms). These are typically displayed alongside their parent path rather than as standalone entries.\n\nThe returned list is a snapshot safe for iteration even if paths are concurrently added or removed.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "Path.isFittedVersionOfAnotherPath()",
+        "getPaths()"
+      ],
       "examples": []
     },
     {
@@ -1212,16 +1215,18 @@
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the paths associated with this PathAndFillManager instance excluding those that are null or fitted version of o paths.",
+          "return_description": "a filtered list of paths, excluding nulls and redundant fitted versions",
           "throws": {}
         }
       ],
       "documentation": "Java method: getPathsFiltered",
-      "javadoc_description": "Returns the 'de facto' Paths.",
+      "javadoc_description": "Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration even if paths are concurrently added or removed.\n\nA fitted-version path is only excluded when its un-fitted counterpart is also registered with this manager, i.e., when that counterpart is available to represent it instead. See isDeFactoPath(Path) for why that check -- rather than an unconditional exclusion -- is necessary.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "isDeFactoPath(Path)"
+      ],
       "examples": []
     },
     {
@@ -1419,32 +1424,39 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "for converting entire Tree objects",
-    "getTrees()",
-    "for details on the SWC point data structure",
-    "for branch point coordinates",
-    "for parent-child relationships",
-    "DefaultHandler",
-    "Tree.isEmpty()",
-    "NeuroMorphoLoader",
     "Tree.getLabel()",
-    "SNTColor.getDistinctColors(int)"
+    "isDeFactoPath(Path)",
+    "repairPhantomFittedPaths()",
+    "SNTColor.getDistinctColors(int)",
+    "DefaultHandler",
+    "Path.isDeFactoPath(Collection)",
+    "for converting entire Tree objects",
+    "NeuroMorphoLoader",
+    "Constant Field Values",
+    "for parent-child relationships",
+    "for branch point coordinates",
+    "getPaths()",
+    "for details on the SWC point data structure",
+    "Tree.isEmpty()",
+    "importSWC(String, boolean)",
+    "Path.isFittedVersionOfAnotherPath()",
+    "getTrees()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 67,
+      "total_javadoc_methods": 108,
       "total_json_methods": 44,
-      "total_matches": 52,
-      "exact_matches": 44,
-      "signature_matches": 8,
+      "total_matches": 73,
+      "exact_matches": 49,
+      "signature_matches": 24,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 15,
-      "unmatched_json": -8,
-      "match_percentage": 77.6
+      "unmatched_javadoc": 35,
+      "unmatched_json": -29,
+      "match_percentage": 67.6
     },
-    "unmatched_javadoc_methods": 15,
+    "unmatched_javadoc_methods": 35,
     "unmatched_json_methods": 4,
-    "enhancement_quality_score": 0.857
+    "enhancement_quality_score": 0.717
   }
 }

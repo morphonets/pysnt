@@ -154,7 +154,7 @@ Other Methods
 
 .. py:method:: static extractNodes(File, String)
 
-   Extracts reconstruction(s) from a JSON file.
+   
 
 
 .. py:method:: static extractTrees(InputStream, String)

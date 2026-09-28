@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.viewer",
   "extracted_at": "2026-01-02T22:36:45.083274",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.708108",
+  "enhancement_timestamp": "2026-09-27T22:17:09.125456",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -989,7 +989,7 @@
         }
       ],
       "documentation": "Java method: getManagerPanel",
-      "javadoc_description": "Returns a reference to 'RV Controls' panel.",
+      "javadoc_description": "Returns a reference to control panel.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1426,12 +1426,12 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {
-            "IllegalArgumentException": "- if no view exists, or current view is constrained and does not allow 360 degrees rotation"
+            "IllegalArgumentException": "- if no view exists, or current view is constrained and does not allow rotation"
           }
         }
       ],
       "documentation": "Java method: recordRotation",
-      "javadoc_description": "Records an animated rotation of the scene as a sequence of images.",
+      "javadoc_description": "Records an animated rotation of the scene around the specified axis as a sequence of images.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -1503,47 +1503,57 @@
     "implements": []
   },
   "nested_classes": [
+    "Viewer3D.AnimationMode",
     "Viewer3D.ManagerPanel",
+    "Viewer3D.RotationAxis",
+    "Viewer3D.Utils",
     "Viewer3D.ViewMode"
   ],
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "setTreeThickness(float, String)",
-    "show(int, int)",
-    "setFont(Font, float, ColorRGB)",
-    "Tree.getLabel()",
+    "VFBUtils",
+    "freeze()",
+    "ZBAtlasUtils",
+    "loadRefBrain(String)",
     "setSomaRadius(float)",
-    "Object",
-    "setTreeThickness(float)",
-    "setSplitDendritesFromAxons(boolean)",
-    "updateView()",
-    "loadMesh(String, ColorRGB, double)",
+    "Constant Field Values",
     "unfreeze()",
     "addTree(Tree)",
-    "freeze()",
+    "show(int, int)",
+    "setFont(Font, float, ColorRGB)",
+    "setAnimationAxis(RotationAxis)",
+    "setTreeThickness(float)",
+    "updateView()",
+    "Tree.getLabel()",
+    "removeTree(String)",
+    "loadMesh(String, ColorRGB, double)",
+    "setTreeThickness(float, String)",
+    "add(Object)",
+    "Object",
+    "setAnatomicalMapping(String[], String)",
+    "setAnatomicalMapping(String)",
+    "setAutoDetectAnimationAxis(boolean)",
     "setLabelLocation(float, float)",
-    "ZBAtlasUtils",
+    "setSplitDendritesFromAxons(boolean)",
     "AllenUtils",
-    "show()",
-    "VFBUtils",
-    "removeTree(String)"
+    "show()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 107,
+      "total_javadoc_methods": 137,
       "total_json_methods": 37,
-      "total_matches": 50,
-      "exact_matches": 50,
+      "total_matches": 51,
+      "exact_matches": 51,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 57,
-      "unmatched_json": -13,
-      "match_percentage": 46.7
+      "unmatched_javadoc": 86,
+      "unmatched_json": -14,
+      "match_percentage": 37.2
     },
-    "unmatched_javadoc_methods": 57,
+    "unmatched_javadoc_methods": 86,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.56
+    "enhancement_quality_score": 0.446
   }
 }

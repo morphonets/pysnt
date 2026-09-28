@@ -114,7 +114,7 @@ Other Methods
 
 .. py:method:: add(PopupMenu)
 
-   
+   Sets the baseline for rendering diameter of path nodes
 
 
 .. py:method:: addComponentListener(ComponentListener)

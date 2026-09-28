@@ -81,7 +81,7 @@ Getters Methods
 
 .. py:method:: getMesh()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 .. py:method:: getOntologyDepth()
@@ -125,22 +125,22 @@ Other Methods
 
 .. py:method:: acronym()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 .. py:method:: aliases()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 .. py:method:: color()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 .. py:method:: id()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 .. py:method:: includes(BrainAnnotation)
@@ -155,7 +155,7 @@ Other Methods
 
 .. py:method:: name()
 
-   
+   Description copied from interface: BrainAnnotation
 
 
 See Also

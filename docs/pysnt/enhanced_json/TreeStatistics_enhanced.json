@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.analysis",
   "extracted_at": "2026-01-02T22:36:45.050868",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.730460",
+  "enhancement_timestamp": "2026-09-27T22:17:09.173430",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -224,13 +224,13 @@
               "name": "arg0",
               "type": "int",
               "java_type": "int",
-              "description": "- the ontological depth of the compartments to be considered",
-              "javadoc_name": "depth"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
-          "return_description": "the annotated length histogram",
+          "return_description": "",
           "throws": {}
         },
         {
@@ -266,13 +266,11 @@
         }
       ],
       "documentation": "Java method: getAnnotatedLengthHistogram",
-      "javadoc_description": "Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the specified hemisphere.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "AllenCompartment.getOntologyDepth()"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -1053,18 +1051,18 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "- the measurement (N_NODES, NODE_RADIUS, etc.)",
-              "javadoc_name": "metric"
+              "description": "",
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
-          "return_description": "the frame holding the histogram",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getHistogram",
-      "javadoc_description": "Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1264,51 +1262,51 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Path.getFractalDimension()",
-    "PathProfiler.assignValues()",
-    "AllenCompartment.getOntologyDepth()",
-    "summarize(String, boolean)",
+    "setTable(GenericTable)",
     "getRootAngleAnalyzer()",
+    "PathProfiler.assignValues()",
     "getFlowPlot(String, Collection, String, double, boolean)",
-    "getInnerBranches()",
-    "getParsedTree()",
-    "Path.hasNodeValues()",
-    "getHistogram(String)",
-    "setExactMetricMatch(boolean)",
-    "getMetrics()",
-    "AllenCompartment",
     "getPrimaryPaths()",
     "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "getTerminalBranches()",
+    "summarize(boolean)",
+    "getConvexAnalyzer()",
+    "resetRestrictions()",
     "getStrahlerNumber()",
     "StrahlerAnalyzer.getBranches()",
-    "ConvexHullAnalyzer.get(String)",
-    "getMetrics(String)",
-    "getPrimaryBranches()",
-    "resetRestrictions()",
-    "summarize(boolean)",
+    "Path.getFractalDimension()",
     "StrahlerAnalyzer.getHighestBranchOrder()",
     "Constant Field Values",
-    "getConvexAnalyzer()",
+    "getMetrics(String)",
+    "getHistogram(String)",
+    "AllenCompartment.getOntologyDepth()",
+    "getParsedTree()",
+    "setExactMetricMatch(boolean)",
+    "AllenCompartment",
+    "ConvexHullAnalyzer.get(String)",
     "DirectedWeightedGraph.getNodeStatistics(String)",
-    "setTable(DefaultGenericTable)",
-    "run()"
+    "getInnerBranches()",
+    "getTerminalBranches()",
+    "summarize(String, boolean)",
+    "run()",
+    "getMetrics()",
+    "getPrimaryBranches()",
+    "Path.hasNodeValues()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 98,
+      "total_javadoc_methods": 114,
       "total_json_methods": 35,
-      "total_matches": 53,
-      "exact_matches": 47,
-      "signature_matches": 6,
+      "total_matches": 61,
+      "exact_matches": 51,
+      "signature_matches": 10,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 45,
-      "unmatched_json": -18,
-      "match_percentage": 54.1
+      "unmatched_javadoc": 53,
+      "unmatched_json": -26,
+      "match_percentage": 53.5
     },
-    "unmatched_javadoc_methods": 45,
-    "unmatched_json_methods": 3,
-    "enhancement_quality_score": 0.337
+    "unmatched_javadoc_methods": 53,
+    "unmatched_json_methods": 2,
+    "enhancement_quality_score": 0.324
   }
 }

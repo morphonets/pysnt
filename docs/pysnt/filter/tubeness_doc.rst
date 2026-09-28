@@ -53,7 +53,9 @@
 
 **Package:** ``sc.fiji.snt.filter``
 
-Y. Sato, S. Nakajima, N. Shiraga, H. Atsumi, S. Yoshida, T. Koller, G. Gerig, and R. Kikinis, “Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images,” Med Image Anal., vol. 2, no. 2, pp. 143-168, June 1998.
+Computes a tubeness (vesselness) filter on a multi-dimensional image using multi-scale eigenvalue analysis of the Hessian matrix. This is useful for enhancing and segmenting curvilinear structures such as neurites and blood vessels.
+
+Based on: Y. Sato, S. Nakajima, N. Shiraga, H. Atsumi, S. Yoshida, T. Koller, G. Gerig, and R. Kikinis, "Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images," Med. Image Anal., vol. 2, no. 2, pp. 143–168, June 1998.
 
 
 Methods
@@ -118,7 +120,7 @@ Other Methods
 
 .. py:method:: static apply(ImgPlus, double)
 
-   
+   Apply single-scale tubeness filter to an ImgPlus.
 
 
 .. py:method:: in()

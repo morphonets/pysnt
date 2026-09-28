@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.697485",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.714892",
+  "enhancement_timestamp": "2026-09-27T22:17:09.136692",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -19,7 +19,7 @@
         }
       ],
       "documentation": "Java method: applyFit",
-      "javadoc_description": "Sets the fallback strategy for radii at locations in which fitting failed",
+      "javadoc_description": "Applies the fitted result to the path. For multithreaded processing: Must be called sequentially after all parallel fitting is complete.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -70,19 +70,20 @@
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path",
-          "return_description": "the reference to the computed result. This Path is automatically set as the fitted version of input Path.",
+          "return_description": "the reference to the computed result. Note that this Path is *not* automatically set as the fitted version of input Path. That only happens when applyFit() is called.",
           "throws": {
-            "IllegalArgumentException": "- If path already has been fitted, and its fitted version not nullified"
+            "IllegalArgumentException": ""
           }
         }
       ],
       "documentation": "Java method: call",
-      "javadoc_description": "Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by setMaxRadius(int). Note that connectivity of path may need to be rebuilt upon fit.",
+      "javadoc_description": "Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by `setCrossSectionRadius(double)`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [
-        "setScope(int)"
+        "setScope(int)",
+        "applyFit()"
       ],
       "examples": []
     },
@@ -156,8 +157,8 @@
               "name": "arg0",
               "type": "float",
               "java_type": "double",
-              "description": "- the new maximum radius",
-              "javadoc_name": "maxRadius"
+              "description": "- the physical search radius (in physical units)",
+              "javadoc_name": "crossSectionRadius"
             }
           ],
           "return_type": "None",
@@ -167,7 +168,7 @@
         }
       ],
       "documentation": "Java method: setCrossSectionRadius",
-      "javadoc_description": "Sets the max radius (side search) for constraining the fit.",
+      "javadoc_description": "Sets the radius of cross-sectional planes sampled around each node.\n\nAt each node, PathFitter samples a square cross-section perpendicular to the path tangent. This radius controls the physical extent of that sampling.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -212,8 +213,8 @@
               "name": "arg0",
               "type": "int",
               "java_type": "int",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the fallback strategy: FALLBACK_MODE, FALLBACK_MIN_SEP, or FALLBACK_NAN",
+              "javadoc_name": "fallback"
             }
           ],
           "return_type": "None",
@@ -223,7 +224,7 @@
         }
       ],
       "documentation": "Java method: setNodeRadiusFallback",
-      "javadoc_description": "",
+      "javadoc_description": "Sets the fallback strategy for node radii at locations where fitting failed.\n\nWhen cross-section fitting fails at a node (e.g., low SNR, ambiguous geometry), this strategy determines what radius value to assign to that node.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -447,7 +448,7 @@
       "documentation": "Java constructors for PathFitter"
     }
   ],
-  "javadoc_description": "Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates.",
+  "javadoc_description": "Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates. Thread Safety: When fitting multiple paths in parallel: 1. Call call() in parallel (thread-safe) 2. Call applyFit() sequentially (modifies path hierarchy)\n\nExample: \n```\nList<PathFitter> fitters = paths.stream()\n     .map(p -> new PathFitter(img, p))\n     .collect(Collectors.toList());\n <p>\n // Parallel fitting\n fitters.parallelStream().forEach(PathFitter::call);\n <p>\n // Sequential application\n fitters.forEach(PathFitter::applyFit);\n```\n",
   "inheritance": {
     "extends": [
       "Object",
@@ -463,27 +464,28 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object",
+    "applyFit()",
+    "Constant Field Values",
     "setScope(int)",
-    "Path",
     "Callable",
-    "Constant Field Values"
+    "Object",
+    "Path"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 13,
       "total_json_methods": 13,
-      "total_matches": 12,
-      "exact_matches": 10,
-      "signature_matches": 2,
+      "total_matches": 13,
+      "exact_matches": 13,
+      "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 1,
-      "unmatched_json": 1,
-      "match_percentage": 92.3
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 1,
-    "unmatched_json_methods": 1,
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }
 }

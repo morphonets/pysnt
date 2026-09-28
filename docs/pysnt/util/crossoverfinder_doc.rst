@@ -60,12 +60,12 @@ Here, a crossover is defined as a spatial location where two distinct paths appr
 Usage: 
 ```
 CrossoverFinder.Config cfg = new CrossoverFinder.Config()
-      .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)
-      .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)
-      .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate
-      .sameCTOnly(true)        // ignore pairs from different channel/time
-      .includeSelfCrossovers(false) // whether crossover events within the same path should be detected
-  List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);
+       .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)
+       .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)
+       .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate
+       .sameCTOnly(true)        // ignore pairs from different channel/time
+       .includeSelfCrossovers(false) // whether crossover events within the same path should be detected
+   List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);
 ```
 
 

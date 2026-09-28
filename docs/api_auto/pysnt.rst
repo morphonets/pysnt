@@ -19,6 +19,7 @@ Subpackages
    pysnt.filter
    pysnt.gui
    pysnt.io
+   pysnt.seed
    pysnt.tracing
    pysnt.util
    pysnt.viewer

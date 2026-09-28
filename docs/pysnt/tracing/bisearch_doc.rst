@@ -98,17 +98,17 @@ Other Methods
 
 .. py:method:: addProgressListener(SearchProgressCallback)
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: pointsConsideredInSearch()
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: printStatus()
 
-   
+   Description copied from class: AbstractSearch
 
 
 .. py:method:: reportFinished(boolean)

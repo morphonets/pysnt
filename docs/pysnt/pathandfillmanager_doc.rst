@@ -105,12 +105,18 @@ Getters Methods
 
 .. py:method:: getPaths()
 
-   Returns all the paths.
+   Returns the "main" paths managed by this PathAndFillManager. This is a convenience method that excludes:
+
+Null entries (defensive filtering) Fitted paths (i.e., paths that are refined versions of other paths, created by path-fitting algorithms). These are typically displayed alongside their parent path rather than as standalone entries.
+
+The returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
 
 
 .. py:method:: getPathsFiltered()
 
-   Returns the 'de facto' Paths.
+   Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
+
+A fitted-version path is only excluded when its un-fitted counterpart is also registered with this manager, i.e., when that counterpart is available to represent it instead. See isDeFactoPath(Path) for why that check -- rather than an unconditional exclusion -- is necessary.
 
 
 .. py:method:: getPathsInROI(Roi)
@@ -157,7 +163,7 @@ I/O Operations Methods
 
 .. py:method:: exportAllPathsAsSWC(String)
 
-   Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.
+   
 
 
 .. py:method:: exportFillsAsCSV(File)
@@ -276,7 +282,7 @@ Other Methods
 
 .. py:method:: downsampleAll(double)
 
-   Downsamples alls path using Ramer–Douglas–Peucker simplification. Downsampling occurs only between branch points and terminal points.
+   Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and terminal points.
 
 
 .. py:method:: endDocument()

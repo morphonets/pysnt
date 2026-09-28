@@ -53,7 +53,20 @@
 
 **Package:** ``sc.fiji.snt``
 
-Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates.
+Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates. Thread Safety: When fitting multiple paths in parallel: 1. Call call() in parallel (thread-safe) 2. Call applyFit() sequentially (modifies path hierarchy)
+
+Example: 
+```
+List<PathFitter> fitters = paths.stream()
+     .map(p -> new PathFitter(img, p))
+     .collect(Collectors.toList());
+ <p>
+ // Parallel fitting
+ fitters.parallelStream().forEach(PathFitter::call);
+ <p>
+ // Sequential application
+ fitters.forEach(PathFitter::applyFit);
+```
 
 
 Methods
@@ -80,7 +93,9 @@ Setters Methods
 
 .. py:method:: setCrossSectionRadius(double)
 
-   Sets the max radius (side search) for constraining the fit.
+   Sets the radius of cross-sectional planes sampled around each node.
+
+At each node, PathFitter samples a square cross-section perpendicular to the path tangent. This radius controls the physical extent of that sampling.
 
 
 .. py:method:: setImage(RandomAccessibleInterval)
@@ -90,7 +105,9 @@ Setters Methods
 
 .. py:method:: setNodeRadiusFallback(int)
 
-   
+   Sets the fallback strategy for node radii at locations where fitting failed.
+
+When cross-section fitting fails at a node (e.g., low SNR, ambiguous geometry), this strategy determines what radius value to assign to that node.
 
 
 .. py:method:: setProgressCallback(int, MultiTaskProgress)
@@ -128,7 +145,7 @@ Other Methods
 
 .. py:method:: applyFit()
 
-   Sets the fallback strategy for radii at locations in which fitting failed
+   Applies the fitted result to the path. For multithreaded processing: Must be called sequentially after all parallel fitting is complete.
 
 
 .. py:method:: applySettings(PathFitter)
@@ -138,7 +155,7 @@ Other Methods
 
 .. py:method:: call()
 
-   Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by setMaxRadius(int). Note that connectivity of path may need to be rebuilt upon fit.
+   Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by `setCrossSectionRadius(double)`.
 
 
 See Also

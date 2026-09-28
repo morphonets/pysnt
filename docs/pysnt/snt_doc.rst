@@ -100,7 +100,11 @@ Getters Methods
 
 .. py:method:: getDataset()
 
-   
+   Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per getLoadedDataAsImp(). If no resident ImagePlus exists at all (e.g., data streamed from disk/network, backed only by ctSlice3d), a Dataset is instead built directly from `getLoadedDataAsImg(boolean)`, so Dataset-only commands. Null is returned if no image data exists at all.
+
+NB: in the streamed-data fallback, the returned Dataset only ever contains a single channel/ frame (whichever is currently active): ctSlice3d is a single C/T slice by construction. Commands that need every channel or frame simultaneously will still require a resident ImagePlus.
+
+NB2: a materialized crop (see isMaterializedCrop()) always has a resident ImagePlus (the crop itself), so it never takes the streamed-data fallback above, returning the crop's own Dataset as-is, matching whatever `buildMaterializedCrop(BoundingBox)` captured (see `getMaterializedCropChannel()`/`getMaterializedCropFrame()`).
 
 
 .. py:method:: getDepth()
@@ -188,7 +192,7 @@ Other Methods
 
 .. py:method:: accessToValidImageData()
 
-   
+   Checks whether valid image data exists.
 
 
 .. py:method:: addFillerThread(FillerThread)
@@ -238,7 +242,7 @@ Other Methods
 
 .. py:method:: disableEventsAllPanes(boolean)
 
-   Description copied from interface: PaneOwner
+   Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.
 
 
 .. py:method:: disableZoomAllPanes(boolean)
@@ -248,7 +252,7 @@ Other Methods
 
 .. py:method:: editModeAllowed()
 
-   Assesses if activation of 'Edit Mode' is possible.
+   Checks if edit mode can be enabled, optionally using a specific path.
 
 
 .. py:method:: enableAstar(boolean)

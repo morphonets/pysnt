@@ -76,7 +76,7 @@ Getters Methods
 
 .. py:method:: static getDistinctColorsHex(int, String)
 
-   
+   Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion
 
 
 .. py:method:: isTypeDefined()
@@ -124,7 +124,7 @@ Other Methods
 
 .. py:method:: static contrastColor(Color)
 
-   Returns a suitable 'contrast' color.
+   Returns a BW 'contrast' color
 
 
 .. py:method:: static fromHex(String)
@@ -144,7 +144,9 @@ Other Methods
 
 .. py:method:: static valueOf(String)
 
-   
+   Parses a color from the given string.
+
+The following formats are supported: Hex format [HTML color codes starting with hash (#)], Color presets (e.g., 'blue', 'pink', 'silver', etc.), and integer triples of the form r,g,b, with each element in the range [0, 255].
 
 
 See Also

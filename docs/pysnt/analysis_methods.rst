@@ -22,11 +22,11 @@ Matching Methods
    * - :meth:`ConvexHull2D.compute`
      - :class:`ConvexHull2D`
      - ``None``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`ConvexHull3D.compute`
      - :class:`ConvexHull3D`
      - ``None``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`Frangi.compute`
      - :class:`Frangi`
      - ``None``
@@ -98,4 +98,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

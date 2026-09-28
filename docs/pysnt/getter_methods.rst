@@ -18,11 +18,11 @@ Matching Methods
    * - :meth:`ConvexHull2D.boundarySize`
      - :class:`ConvexHull2D`
      - ``float``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`ConvexHull3D.boundarySize`
      - :class:`ConvexHull3D`
      - ``float``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`ConvexHullAnalyzer.cancel`
      - :class:`ConvexHullAnalyzer`
      - ``None``
@@ -102,7 +102,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.getAncestor`
      - :class:`InsectBrainCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`AllenCompartment.getAncestors`
      - :class:`AllenCompartment`
      - ``List[Any]``
@@ -154,7 +154,7 @@ Matching Methods
    * - :meth:`TreeStatistics.getAnnotatedLengthHistogram`
      - :class:`TreeStatistics`
      - ``SNTChart``
-     - Retrieves the histogram of cable length frequencies across brain areas of the specified ontology level across the...
+     - No description available
    * - :meth:`MultiTreeStatistics.getAnnotatedLengthsByHemisphere`
      - :class:`MultiTreeStatistics`
      - ``Dict[str, Any]``
@@ -406,7 +406,7 @@ Matching Methods
    * - :meth:`MultiTreeStatistics.getBoxPlot`
      - :class:`MultiTreeStatistics`
      - ``SNTChart``
-     - No description available
+     - Assembles a Box and Whisker Plot for the specified measurement (cell morphometry).
    * - :meth:`ConvexHullAnalyzer.getBoxivity`
      - :class:`ConvexHullAnalyzer`
      - ``float``
@@ -738,7 +738,7 @@ Matching Methods
    * - :meth:`SNT.getDataset`
      - :class:`SNT`
      - ``Any``
-     - No description available
+     - Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per...
    * - :meth:`NodeProfiler.getDelegateObject`
      - :class:`NodeProfiler`
      - ``Any``
@@ -1002,7 +1002,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getGraphs`
      - :class:`SkeletonConverter`
      - ``List[Any]``
-     - Generates a list of `DirectedWeightedGraph`s from the skeleton image. Each graph corresponds to one connected component...
+     - No description available
    * - :meth:`MultiTreeStatistics.getGroup`
      - :class:`MultiTreeStatistics`
      - ``List[Any]``
@@ -1074,7 +1074,7 @@ Matching Methods
    * - :meth:`PathStatistics.getHighestPathOrder`
      - :class:`PathStatistics`
      - ``int``
-     - Gets the number of branches (paths) being analyzed. Returns the total count of paths in this PathStatistics instance.
+     - No description available
    * - :meth:`TreeStatistics.getHighestPathOrder`
      - :class:`TreeStatistics`
      - ``int``
@@ -1102,7 +1102,7 @@ Matching Methods
    * - :meth:`TreeStatistics.getHistogram`
      - :class:`TreeStatistics`
      - ``SNTChart``
-     - Retrieves the histogram of relative frequencies histogram for a univariate measurement. The number of bins is...
+     - No description available
    * - :meth:`ConvexHullAnalyzer.getHull`
      - :class:`ConvexHullAnalyzer`
      - ``Any``
@@ -1258,7 +1258,7 @@ Matching Methods
    * - :meth:`Viewer3D.getManagerPanel`
      - :class:`Viewer3D`
      - ``Any``
-     - Returns a reference to 'RV Controls' panel.
+     - Returns a reference to control panel.
    * - :meth:`ShollAnalyzer.getMaximaRadii`
      - :class:`ShollAnalyzer`
      - ``List[Any]``
@@ -1266,7 +1266,7 @@ Matching Methods
    * - :meth:`AllenCompartment.getMesh`
      - :class:`AllenCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`ConvexHull3D.getMesh`
      - :class:`ConvexHull3D`
      - ``Any``
@@ -1274,7 +1274,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.getMesh`
      - :class:`InsectBrainCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`Viewer3D.getMesh`
      - :class:`Viewer3D`
      - ``Any``
@@ -1438,7 +1438,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.getOntologyDepth`
      - :class:`InsectBrainCompartment`
      - ``int``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`SNTService.getOrCreateSciViewSNT`
      - :class:`SNTService`
      - ``Any``
@@ -1474,7 +1474,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.getParent`
      - :class:`InsectBrainCompartment`
      - ``Any``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`PathAndFillManager.getPath`
      - :class:`PathAndFillManager`
      - ``Path``
@@ -1510,7 +1510,7 @@ Matching Methods
    * - :meth:`PathAndFillManager.getPaths`
      - :class:`PathAndFillManager`
      - ``List[Any]``
-     - Returns all the paths.
+     - Returns the "main" paths managed by this PathAndFillManager. This is a convenience method that excludes: Null entries...
    * - :meth:`SNTService.getPaths`
      - :class:`SNTService`
      - ``List[Any]``
@@ -1518,7 +1518,7 @@ Matching Methods
    * - :meth:`PathAndFillManager.getPathsFiltered`
      - :class:`PathAndFillManager`
      - ``List[Any]``
-     - Returns the 'de facto' Paths.
+     - Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration...
    * - :meth:`PathAndFillManager.getPathsInROI`
      - :class:`PathAndFillManager`
      - ``List[Any]``
@@ -1574,7 +1574,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getPruneMode`
      - :class:`SkeletonConverter`
      - ``int``
-     - Gets the loop pruning strategy.
+     - No description available
    * - :meth:`FlyCircuitLoader.getReader`
      - :class:`FlyCircuitLoader`
      - ``Any``
@@ -1642,7 +1642,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getRootRoiStrategy`
      - :class:`SkeletonConverter`
      - ``int``
-     - Gets the current root ROI strategy. Returns the strategy used for handling root ROIs during skeleton conversion. If no...
+     - No description available
    * - :meth:`ConvexHullAnalyzer.getRoundness`
      - :class:`ConvexHullAnalyzer`
      - ``float``
@@ -1702,11 +1702,11 @@ Matching Methods
    * - :meth:`SkeletonConverter.getSingleGraph`
      - :class:`SkeletonConverter`
      - ``DirectedWeightedGraph``
-     - Generates a single `DirectedWeightedGraph`s by combining getGraphs()'s list into a single, combined graph. Typically,...
+     - No description available
    * - :meth:`SkeletonConverter.getSingleTree`
      - :class:`SkeletonConverter`
      - ``Tree``
-     - Generates a single Tree from getSingleGraph(). If a ROI-based centroid has been set, Root is converted to a single...
+     - No description available
    * - :meth:`ShollAnalyzer.getSingleValueMetrics`
      - :class:`ShollAnalyzer`
      - ``Dict[str, Any]``
@@ -1858,7 +1858,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getTrees`
      - :class:`SkeletonConverter`
      - ``List[Any]``
-     - Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph...
+     - No description available
    * - :meth:`Viewer3D.getTrees`
      - :class:`Viewer3D`
      - ``List[Any]``
@@ -2026,7 +2026,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.isChildOf`
      - :class:`InsectBrainCompartment`
      - ``bool``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`Annotation3D.isColorCodeAllowed`
      - :class:`Annotation3D`
      - ``bool``
@@ -2086,7 +2086,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.isMeshAvailable`
      - :class:`InsectBrainCompartment`
      - ``bool``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`MultiTreeColorMapper.isNodeMapping`
      - :class:`MultiTreeColorMapper`
      - ``bool``
@@ -2118,7 +2118,7 @@ Matching Methods
    * - :meth:`InsectBrainCompartment.isParentOf`
      - :class:`InsectBrainCompartment`
      - ``bool``
-     - No description available
+     - Description copied from interface: BrainAnnotation
    * - :meth:`PointInImage.isReal`
      - :class:`PointInImage`
      - ``bool``
@@ -2170,7 +2170,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.setPruneByLength`
      - :class:`SkeletonConverter`
      - ``None``
-     - Sets whether to prune components below a threshold length from the result.
+     - No description available
    * - :meth:`Annotation3D.setSize`
      - :class:`Annotation3D`
      - ``None``
@@ -2178,11 +2178,11 @@ Matching Methods
    * - :meth:`ConvexHull2D.size`
      - :class:`ConvexHull2D`
      - ``float``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`ConvexHull3D.size`
      - :class:`ConvexHull3D`
      - ``float``
-     - No description available
+     - Description copied from class: AbstractConvexHull
    * - :meth:`MouseLightLoader.static getNeuronCount`
      - :class:`MouseLightLoader`
      - ``int``
@@ -2194,4 +2194,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

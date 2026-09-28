@@ -3,7 +3,7 @@ Static Methods Methods
 
 Static utility methods that can be called without object instances.
 
-Total methods in this category: **195**
+Total methods in this category: **194**
 
 .. contents:: Classes in this Category
    :local:
@@ -387,6 +387,8 @@ Frangi
 
 .. method:: static apply(arg0, arg1, arg2, arg3)
 
+   Apply multiscale Frangi vesselness filter to an ImgPlus.
+
    **Signature:** ``static apply(ImgPlus, [D, double, int) -> ImgPlus``
 
    **Parameters:**
@@ -431,6 +433,12 @@ ImgUtils
 
 .. method:: static crop(arg0, arg1, arg2, arg3)
 
+   Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates.
+
+For RAIs without axis metadata, assumes ZYX dimension order. Returns a view (no data copy) with the specified bounds, clamped to image bounds.
+
+Important: This method assumes ZYX dimension order (dim0=Z, dim1=Y, dim2=X), which is common for OME-ZARR and N5 datasets. For images with different axis orders, wrap as ImgPlus with proper axis metadata and use `crop(ImgPlus, long[], long[], boolean)`.
+
    **Signature:** ``static crop(ImgPlus, [J, [J, boolean) -> ImgPlus``
 
    **Parameters:**
@@ -444,45 +452,57 @@ ImgUtils
 
 .. method:: static dropSingletonDimensions(arg0)
 
+   Remove singleton dimensions from an ImgPlus, preserving axis metadata.
+
    **Signature:** ``static dropSingletonDimensions(ImgPlus) -> ImgPlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the source ImgPlus (e.g., 5D XYZCT with C=1, T=1)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) ImgPlus with singleton dimensions removed
 
 .. method:: static findSpatialAxisIndices(arg0)
+
+   Find dimension indices for X, Y, Z axes in an ImgPlus.
 
    **Signature:** ``static findSpatialAxisIndices(ImgPlus) -> [I``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the ImgPlus
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) int array {xIdx, yIdx, zIdx}, with -1 for missing axes
 
 .. method:: static findSpatialAxisIndicesWithFallback(arg0)
+
+   Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.
 
    **Signature:** ``static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the ImgPlus
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) int array {xIdx, yIdx, zIdx}
 
 .. method:: static getCalibration(arg0)
+
+   Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.
 
    **Signature:** ``static getCalibration(ImgPlus) -> Calibration``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the source ImgPlus
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) Calibration with pixel sizes, unit, and origins
 
 .. method:: static getCtSlice(arg0, arg1, arg2)
+
+   Extracts a channel/time slice by squeezing singleton dimensions.
+
+Convenience overload that removes any singleton (size=1) channel or time dimensions from the image. Non-singleton C/T dimensions are preserved.
 
    **Signature:** ``static getCtSlice(Dataset, int, int) -> RandomAccessibleInterval``
 
@@ -510,34 +530,28 @@ ImgUtils
 
 .. method:: static getOrigin(arg0, arg1)
 
+   Get the origin offset for a specific axis from an ImgPlus.
+
    **Signature:** ``static getOrigin(ImgPlus, AxisType) -> double``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the ImgPlus
    * **arg1** (``Any``)
 
-   **Returns:** ``float``
+   **Returns:** (``float``) the origin offset in calibrated units, or 0 if not found
 
 .. method:: static getOrigins(arg0)
+
+   Get the origin offsets as {xOrigin, yOrigin, zOrigin} from an ImgPlus.
 
    **Signature:** ``static getOrigins(ImgPlus) -> [D``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the ImgPlus
 
-   **Returns:** ``Any``
-
-.. method:: static imgPlusToCalibration(arg0)
-
-   **Signature:** ``static imgPlusToCalibration(ImgPlus) -> Calibration``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-
-   **Returns:** ``Any``
+   **Returns:** (``Any``) array of {xOrigin, yOrigin, zOrigin} in calibrated units
 
 .. method:: static impToRealRai5d(arg0)
 
@@ -605,7 +619,9 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 
 .. method:: static subInterval(arg0, arg1, arg2, arg3)
 
-   Get an N-D sub-interval of an N-D image, given two corner points and specified padding. If necessary, the computed sub-interval is clamped at the min and max of each dimension of the input interval.
+   Get an N-D sub-interval of an N-D image, given two corner points and specified padding.
+
+Works in native dimension order (no XYZ remapping). The sub-interval is clamped to image bounds.
 
    **Signature:** ``static subInterval(RandomAccessibleInterval, Localizable, Localizable, long) -> RandomAccessibleInterval``
 
@@ -620,7 +636,9 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 
 .. method:: static subVolume(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 
-   Get a 3D sub-volume of an image, given two corner points and specified padding. If the input is 2D, a singleton dimension is added. If necessary, the computed sub-volume is clamped at the min and max of each dimension of the input interval.
+   Get a 3D sub-volume of an image, given two corner points and specified padding.
+
+Coordinates are in XYZ order. If the input is 2D, a singleton dimension is added. The sub-volume is clamped to image bounds.
 
    **Signature:** ``static subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long) -> RandomAccessibleInterval``
 
@@ -635,9 +653,11 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
    * **arg6** (``int``)
    * **arg7** (``int``)
 
-   **Returns:** (``Any``) the subvolume
+   **Returns:** (``Any``) the sub-volume
 
 .. method:: static toImagePlus(arg0)
+
+   Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.
 
    **Signature:** ``static toImagePlus(ImgPlus) -> ImagePlus``
 
@@ -649,15 +669,19 @@ For example, given a 2D, multichannel imp, the dimensions of the result rai are 
 
 .. method:: static wrapWithAxes(arg0, arg1, arg2)
 
+   Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus.
+
+Useful for wrapping op results with proper calibration.
+
    **Signature:** ``static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the RAI to wrap
    * **arg1** (``Any``)
    * **arg2** (``str``)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) ImgPlus with copied axis metadata
 
 
 ImpUtils
@@ -680,17 +704,21 @@ ImpUtils
 
 .. method:: static binarize(arg0, arg1, arg2)
 
+   Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become 0 (black).
+
    **Signature:** ``static binarize(ImagePlus, double, double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the image to be binarized
    * **arg1** (``float``)
    * **arg2** (``float``)
 
    **Returns:** ``None``
 
 .. method:: static calibrationToAxes(arg0, arg1)
+
+   Creates ImgPlus axes from IJ1 Calibration
 
    **Signature:** ``static calibrationToAxes(Calibration, int) -> CalibratedAxis;``
 
@@ -744,7 +772,7 @@ ImpUtils
 
 .. method:: static convertToSimple2D(arg0, arg1)
 
-   Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel a RGB version is obtained. The image is flattened if its Overlay has ROIs.
+   Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel, an RGB version is obtained. The image is flattened if its Overlay has ROIs.
 
    **Signature:** ``static convertToSimple2D(ImagePlus, int) -> ImagePlus``
 
@@ -790,9 +818,9 @@ ImpUtils
 
    **Parameters:**
 
-   * **arg0** (``str``): - a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth
+   * **arg0** (``str``): - a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, 'microglia' for a MIP of tiled microglia cells in the mouse retina, and 'binary timelapse' for a small 4-frame sequence of neurite growth
 
-   **Returns:** (``Any``) the demo image, or null if data could no be retrieved
+   **Returns:** (``Any``) the demo image, or null if data could not be retrieved
 
 .. method:: static getCT(arg0, arg1, arg2)
 
@@ -825,7 +853,7 @@ ImpUtils
 
 .. method:: static getForegroundRect(arg0, arg1)
 
-   Returns the cropping rectangle around non-background values.
+   Returns the cropping rectangle around non-background values, considering all slices of the stack.
 
    **Signature:** ``static getForegroundRect(ImagePlus, Number) -> Roi``
 
@@ -834,7 +862,7 @@ ImpUtils
    * **arg0** (``Any``): - The image to be parsed
    * **arg1** (``Union[int, float]``)
 
-   **Returns:** (``Any``) the rectangular ROI defining non-background bounds
+   **Returns:** (``Any``) the rectangular ROI defining non-background bounds, or null if all pixels are background
 
 .. method:: static getFrame(arg0, arg1)
 
@@ -1077,25 +1105,33 @@ ImpUtils
 
 .. method:: static toImgPlus(arg0)
 
+   Convert an ImagePlus to an ImgPlus with calibration and origin metadata.
+
+Creates an ImgPlus with proper axis types (X, Y, Z, Channel, Time) and transfers calibration including pixel sizes, units, and origin offsets.
+
    **Signature:** ``static toImgPlus(ImagePlus) -> ImgPlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the source ImagePlus
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) ImgPlus with calibrated axes
 
 .. method:: static toImgPlus3D(arg0, arg1, arg2)
+
+   Convert an ImagePlus to a 3D (XYZ) ImgPlus, extracting a single channel/frame if needed.
+
+Useful for analysis that expects simple 3D images without channel/time dimensions.
 
    **Signature:** ``static toImgPlus3D(ImagePlus, int, int) -> ImgPlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the source ImagePlus
    * **arg1** (``int``)
    * **arg2** (``int``)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) 3D ImgPlus with X, Y, Z axes
 
 .. method:: static toStack(arg0)
 
@@ -1108,6 +1144,8 @@ ImpUtils
    **Returns:** ``Any``
 
 .. method:: static zoomTo(arg0, arg1)
+
+   Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.
 
    **Signature:** ``static zoomTo(ImagePlus, Collection) -> double``
 
@@ -1212,16 +1250,14 @@ MouseLightLoader
 
 .. method:: static extractNodes(arg0, arg1)
 
-   Extracts reconstruction(s) from a JSON file.
-
    **Signature:** ``static extractNodes(File, String) -> Map``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the JSON file to be parsed
+   * **arg0** (``str``)
    * **arg1** (``str``)
 
-   **Returns:** (``Dict[str, Any]``) the map containing the reconstruction nodes as SWCPoints
+   **Returns:** ``Dict[str, Any]``
 
 .. method:: static extractTrees(arg0, arg1)
 
@@ -1394,7 +1430,9 @@ NeuroMorphoLoader
 
    **Parameters:**
 
-   * **arg0** (``str``): - the ID of the cell to be retrieved (case-sensitive). It may be the neuron name or its qualified filename. E.g., "cnic_002" or "cnic_002.swc" or "cnic_002.CNG.swc". By default, the standardized (CNG) version is assumed. Examples: "cnic_002" -> CNG version of neuron cnic_002 is retrieved "cnic_002.CNG.swc" -> CNG version of neuron cnic_002 is retrieved "cnic_002.swc" -> Source version of neuron cnic_002 is retrieved
+   * **arg0** (``str``): - the ID of the cell to be retrieved (case-sensitive). It may be the neuron name or its qualified filename. E.g., "cnic_002" or "cnic_002.swc" or "cnic_002.CNG.swc". By default, the standardized (CNG) version is assumed. Examples:
+
+"cnic_002" -> CNG version of neuron cnic_002 is retrieved "cnic_002.CNG.swc" -> CNG version of neuron cnic_002 is retrieved "cnic_002.swc" -> Source version of neuron cnic_002 is retrieved
 
    **Returns:** (``Tree``) the specified neuron as a Tree object, or null if data could not be retrieved
 
@@ -1733,13 +1771,17 @@ SNTColor
 
 .. method:: static valueOf(arg0)
 
+   Parses a color from the given string.
+
+The following formats are supported: Hex format [HTML color codes starting with hash (#)], Color presets (e.g., 'blue', 'pink', 'silver', etc.), and integer triples of the form r,g,b, with each element in the range [0, 255].
+
    **Signature:** ``static valueOf(String) -> ColorRGB``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - string defining the color value
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the color
 
 
 SNTPoint
@@ -1775,11 +1817,9 @@ SNTUtils
 
 .. method:: static buildDate()
 
-   Retrieves Sholl Analysis implementation date
-
    **Signature:** ``static buildDate() -> String``
 
-   **Returns:** (``str``) the implementation date or an empty strong if date could not be retrieved.
+   **Returns:** ``str``
 
 .. method:: static csvQuoteAndPrint(arg0, arg1)
 
@@ -1793,6 +1833,8 @@ SNTUtils
    **Returns:** ``None``
 
 .. method:: static error(arg0, arg1)
+
+   As `error(String, Throwable)`, but allows suppressing the notification-center mirroring, e.g., when the caller has already surfaced the message to the user synchronously (a modal dialog)
 
    **Signature:** ``static error(String, Throwable) -> void``
 
@@ -1837,15 +1879,15 @@ SNTUtils
 
 .. method:: static getBackupCopies(arg0)
 
-   Retrieves a list of time-stamped backup files associated with a TRACES file
+   Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with timestamps.
 
    **Signature:** ``static getBackupCopies(File) -> List``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the TRACES file
+   * **arg0** (``str``): - the directory to search for backup files
 
-   **Returns:** (``List[Any]``) the list of backup files. An empty list is retrieved if none could be found.
+   **Returns:** (``List[Any]``) list of backup files (never null, may be empty), sorted most recent first
 
 .. method:: static getContext()
 
@@ -1952,11 +1994,13 @@ SNTUtils
 
 .. method:: static setIsLoading(arg0)
 
+   Shows or hides the loading splash screen. Calls nest safely: several independent call chains can be "loading" at once, so the splash only actually closes once every true has been balanced by a matching false, hence calls should be made in a try/finally block.
+
    **Signature:** ``static setIsLoading(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``)
+   * **arg0** (``bool``): - true to show the splash screen (or register one more caller that wants it showing, if already showing); false to release one such registration, closing the splash once no callers still hold it
 
    **Returns:** ``None``
 
@@ -2051,26 +2095,22 @@ SkeletonConverter
 
 .. method:: static skeletonize(arg0, arg1)
 
-   Convenience method to skeletonize a thresholded image using Skeletonize3D_.
-
    **Signature:** ``static skeletonize(ImagePlus, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.
+   * **arg0** (``Any``)
    * **arg1** (``bool``)
 
    **Returns:** ``None``
 
 .. method:: static skeletonizeTimeLapse(arg0, arg1)
 
-   Convenience method to skeletonize a thresholded time-lapse using Skeletonize3D_.
-
    **Signature:** ``static skeletonizeTimeLapse(ImagePlus, boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - The timelapse to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.
+   * **arg0** (``Any``)
    * **arg1** (``bool``)
 
    **Returns:** ``None``
@@ -2187,14 +2227,16 @@ Tubeness
 
 .. method:: static apply(arg0, arg1)
 
+   Apply single-scale tubeness filter to an ImgPlus.
+
    **Signature:** ``static apply(ImgPlus, double) -> ImgPlus``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - input image (2D or 3D) with calibrated axes
    * **arg1** (``float``)
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) filtered ImgPlus with same axes as input
 
 
 VFBUtils
@@ -2312,4 +2354,4 @@ ZBAtlasUtils
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

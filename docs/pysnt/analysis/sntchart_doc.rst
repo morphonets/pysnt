@@ -80,7 +80,7 @@ Other Methods
 
 .. py:method:: actionPerformed(ActionEvent)
 
-   Shows a bivariate histogram (two-dimensional histogram) from two DescriptiveStatistics objects. The number of bins is automatically determined using the Freedman-Diaconis rule.
+   Tiles specified charts displaying them on a grid. Charts's windows are made visible if not displayed.
 
 
 .. py:method:: add(String, Component)

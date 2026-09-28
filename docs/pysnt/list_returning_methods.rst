@@ -110,7 +110,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getGraphs`
      - :class:`SkeletonConverter`
      - ``List[Any]``
-     - Generates a list of `DirectedWeightedGraph`s from the skeleton image. Each graph corresponds to one connected component...
+     - No description available
    * - :meth:`MultiTreeStatistics.getGroup`
      - :class:`MultiTreeStatistics`
      - ``List[Any]``
@@ -166,7 +166,7 @@ Matching Methods
    * - :meth:`PathAndFillManager.getPaths`
      - :class:`PathAndFillManager`
      - ``List[Any]``
-     - Returns all the paths.
+     - Returns the "main" paths managed by this PathAndFillManager. This is a convenience method that excludes: Null entries...
    * - :meth:`SNTService.getPaths`
      - :class:`SNTService`
      - ``List[Any]``
@@ -174,7 +174,7 @@ Matching Methods
    * - :meth:`PathAndFillManager.getPathsFiltered`
      - :class:`PathAndFillManager`
      - ``List[Any]``
-     - Returns the 'de facto' Paths.
+     - Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration...
    * - :meth:`PathAndFillManager.getPathsInROI`
      - :class:`PathAndFillManager`
      - ``List[Any]``
@@ -214,7 +214,7 @@ Matching Methods
    * - :meth:`SkeletonConverter.getTrees`
      - :class:`SkeletonConverter`
      - ``List[Any]``
-     - Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph...
+     - No description available
    * - :meth:`Viewer3D.getTrees`
      - :class:`Viewer3D`
      - ``List[Any]``
@@ -270,7 +270,7 @@ Matching Methods
    * - :meth:`SNTUtils.static getBackupCopies`
      - :class:`SNTUtils`
      - ``List[Any]``
-     - Retrieves a list of time-stamped backup files associated with a TRACES file
+     - Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with...
    * - :meth:`InsectBrainUtils.static getBrainCompartments`
      - :class:`InsectBrainUtils`
      - ``List[Any]``
@@ -366,4 +366,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

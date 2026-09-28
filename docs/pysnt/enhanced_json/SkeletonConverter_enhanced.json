@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.analysis",
   "extracted_at": "2026-01-02T22:36:44.958809",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.742172",
+  "enhancement_timestamp": "2026-09-27T22:17:09.186750",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -14,12 +14,12 @@
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the list of skeletonized graphs",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getGraphs",
-      "javadoc_description": "Generates a list of `DirectedWeightedGraph`s from the skeleton image. Each graph corresponds to one connected component of the graph returned by `SkeletonResult.getGraph()`.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -39,13 +39,11 @@
         }
       ],
       "documentation": "Java method: getPruneMode",
-      "javadoc_description": "Gets the loop pruning strategy.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setPruneMode(int)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -56,18 +54,16 @@
           "params": [],
           "return_type": "int",
           "java_return_type": "int",
-          "return_description": "the root ROI strategy constant",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getRootRoiStrategy",
-      "javadoc_description": "Gets the current root ROI strategy.\n\nReturns the strategy used for handling root ROIs during skeleton conversion. If no root ROI is set, returns ROI_UNSET.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setRootRoi(Roi, int)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -78,14 +74,12 @@
           "params": [],
           "return_type": "DirectedWeightedGraph",
           "java_return_type": "DirectedWeightedGraph",
-          "return_description": "the single graph",
-          "throws": {
-            "IllegalArgumentException": ""
-          }
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: getSingleGraph",
-      "javadoc_description": "Generates a single `DirectedWeightedGraph`s by combining getGraphs()'s list into a single, combined graph. Typically, this method assumes that the skeletonization handles a known single component (e.g., an image of a single cell). If multiple graphs() do exist, this method requires that setRootRoi(Roi, int) has been called using ROI_CENTROID or `ROI_CENTROID_WEIGHTED`.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -100,18 +94,16 @@
           "params": [],
           "return_type": "Tree",
           "java_return_type": "Tree",
-          "return_description": "the single tree",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getSingleTree",
-      "javadoc_description": "Generates a single Tree from getSingleGraph(). If a ROI-based centroid has been set, Root is converted to a single node, root path with radius set to that of a circle with the same area of root-defining soma.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setRootRoi(Roi, int)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -122,12 +114,12 @@
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the skeleton tree list",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getTrees",
-      "javadoc_description": "Generates a list of Trees from the skeleton image. Each Tree corresponds to one connected component of the graph returned by `SkeletonResult.getGraph()`.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -145,7 +137,7 @@
               "type": "Any",
               "java_type": "String;",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -172,8 +164,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- true to connect components, false otherwise",
-              "javadoc_name": "connectComponents"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -183,13 +175,11 @@
         }
       ],
       "documentation": "Java method: setConnectComponents",
-      "javadoc_description": "Sets whether to connect nearby skeleton components.\n\nControls whether disconnected skeleton components should be connected if they are within the maximum connection distance.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setMaxConnectDist(double)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -202,8 +192,8 @@
               "name": "arg0",
               "type": "float",
               "java_type": "double",
-              "description": "- the minimum length threshold",
-              "javadoc_name": "lengthThreshold"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -213,13 +203,11 @@
         }
       ],
       "documentation": "Java method: setLengthThreshold",
-      "javadoc_description": "Sets the minimum component length necessary to avoid pruning. This value is only used if pruneByLength is true.\n\nSpecifies the minimum length below which skeleton components will be pruned from the result. Negative values are set to 0.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setPruneByLength(boolean)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -232,8 +220,8 @@
               "name": "arg0",
               "type": "float",
               "java_type": "double",
-              "description": "- the maximum connection distance",
-              "javadoc_name": "maxConnectDist"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -243,13 +231,11 @@
         }
       ],
       "documentation": "Java method: setMaxConnectDist",
-      "javadoc_description": "Sets the maximum distance for connecting skeleton components.\n\nSpecifies the maximum distance within which disconnected skeleton components will be connected. Values ≤ 0 are set to Double.MIN_VALUE.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "setConnectComponents(boolean)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -262,8 +248,8 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "- the original ImagePlus",
-              "javadoc_name": "origIP"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -273,7 +259,7 @@
         }
       ],
       "documentation": "Java method: setOrigIP",
-      "javadoc_description": "Sets the original ImagePlus to be used during voxel-based loop pruning. See AnalyzeSkeleton documentation\n\nSpecifies the original (non-skeletonized) image to be used during skeleton analysis for additional processing options.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -291,7 +277,7 @@
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": "param_0"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -301,7 +287,7 @@
         }
       ],
       "documentation": "Java method: setPruneByLength",
-      "javadoc_description": "Sets whether to prune components below a threshold length from the result.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -318,8 +304,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- true to prune end branches, false otherwise",
-              "javadoc_name": "pruneEnds"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -329,7 +315,7 @@
         }
       ],
       "documentation": "Java method: setPruneEnds",
-      "javadoc_description": "Sets whether to prune end branches during skeleton analysis.\n\nControls whether terminal branches should be pruned during the skeleton analysis process.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -346,8 +332,8 @@
               "name": "arg0",
               "type": "int",
               "java_type": "int",
-              "description": "- the loop prune strategy, e.g., SHORTEST_BRANCH, LOWEST_INTENSITY_BRANCH or LOWEST_INTENSITY_VOXEL",
-              "javadoc_name": "pruneMode"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -357,7 +343,7 @@
         }
       ],
       "documentation": "Java method: setPruneMode",
-      "javadoc_description": "Sets the loop pruning strategy. See AnalyzeSkeleton documentation",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -374,15 +360,15 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "Roi",
-              "description": "- The area enclosing the components defining the root(s) of the skeletonized structures. Typically this will correspond to an area ROI delineating the soma. Note that by default ImageJ ROIs do not carry depth information, so if you would like to restrain the delineation to a single plane, be sure to call",
-              "javadoc_name": "roi"
+              "description": "",
+              "javadoc_name": null
             },
             {
               "name": "arg1",
               "type": "int",
               "java_type": "int",
-              "description": "beforehand.",
-              "javadoc_name": "Roi.setPosition(int, int, int)"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -392,7 +378,7 @@
         }
       ],
       "documentation": "Java method: setRootRoi",
-      "javadoc_description": "Sets the Roi enclosing the nodes to be set as root(s) in the final graphs. Must be called before retrieval of any converted data.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -409,8 +395,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- true to calculate shortest paths, false otherwise",
-              "javadoc_name": "shortestPath"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -420,7 +406,7 @@
         }
       ],
       "documentation": "Java method: setShortestPath",
-      "javadoc_description": "Sets whether to calculate the longest shortest-path in the skeleton result.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -437,8 +423,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- true for silent operation, false for debug output",
-              "javadoc_name": "silent"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -448,7 +434,7 @@
         }
       ],
       "documentation": "Java method: setSilent",
-      "javadoc_description": "Sets whether to run skeleton analysis in silent mode.\n\nSetting this to false will display both the tagged skeleton image and the shortest path image (if the shortest path calculation is enabled).",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -465,8 +451,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- true for verbose output, false for normal output",
-              "javadoc_name": "verbose"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -476,7 +462,7 @@
         }
       ],
       "documentation": "Java method: setVerbose",
-      "javadoc_description": "Sets whether to run skeleton analysis in verbose mode.\n\nControls whether the skeleton analysis should provide detailed output messages during processing.",
+      "javadoc_description": "",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -493,15 +479,15 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "- The thresholded image to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
-              "javadoc_name": "imp"
+              "description": "",
+              "javadoc_name": null
             },
             {
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": "param_1"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -548,7 +534,7 @@
         }
       ],
       "documentation": "Java method: static skeletonize",
-      "javadoc_description": "Convenience method to skeletonize a thresholded image using Skeletonize3D_.",
+      "javadoc_description": "",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -565,15 +551,15 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "ImagePlus",
-              "description": "- The timelapse to be skeletonized. If the image is not thresholded all non-zero values are considered to be foreground.",
-              "javadoc_name": "imp"
+              "description": "",
+              "javadoc_name": null
             },
             {
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
-              "javadoc_name": "param_1"
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -583,7 +569,7 @@
         }
       ],
       "documentation": "Java method: static skeletonizeTimeLapse",
-      "javadoc_description": "Convenience method to skeletonize a thresholded time-lapse using Skeletonize3D_.",
+      "javadoc_description": "",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -658,40 +644,17 @@
       "documentation": "Java constructors for SkeletonConverter"
     }
   ],
-  "javadoc_description": "Class for generation of Trees from a skeletonized ImagePlus.",
+  "javadoc_description": "",
   "inheritance": {
-    "extends": [
-      "Object"
-    ],
+    "extends": [],
     "implements": []
   },
   "nested_classes": [],
   "deprecated": false,
   "since_version": null,
-  "see_also": [
-    "setPruneByLength(boolean)",
-    "setConnectComponents(boolean)",
-    "setMaxConnectDist(double)",
-    "setRootRoi(Roi, int)",
-    "setPruneMode(int)",
-    "Object",
-    "Constant Field Values"
-  ],
+  "see_also": [],
   "enhancement_metadata": {
-    "matching_statistics": {
-      "total_javadoc_methods": 21,
-      "total_json_methods": 20,
-      "total_matches": 21,
-      "exact_matches": 21,
-      "signature_matches": 0,
-      "fuzzy_matches": 0,
-      "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": -1,
-      "match_percentage": 100.0
-    },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 0,
-    "enhancement_quality_score": 1.0
+    "javadoc_available": false,
+    "categorization_only": true
   }
 }

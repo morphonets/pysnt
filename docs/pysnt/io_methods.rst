@@ -42,7 +42,7 @@ Matching Methods
    * - :meth:`PathAndFillManager.exportAllPathsAsSWC`
      - :class:`PathAndFillManager`
      - ``bool``
-     - Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.
+     - No description available
    * - :meth:`PathAndFillManager.exportFillsAsCSV`
      - :class:`PathAndFillManager`
      - ``None``
@@ -146,4 +146,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-01-02 23:09:09*
+*Filtered index generated on 2026-09-27 22:17:09*

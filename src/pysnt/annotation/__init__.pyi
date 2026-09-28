@@ -7,15 +7,15 @@ class AllenUtils:
     sc.fiji.snt.annotation.AllenUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.139790
+    Extracted: 2026-01-02T22:36:44.437604
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
     def assignAnnotationsFromNodeValues(self, arg0: Tree) -> None: ...
     
     # Multiple overloads for assignHemisphereTags
-    def assignHemisphereTags(self, arg0: Tree) -> None: ...
-    # def assignHemisphereTags(self, arg0: DirectedWeightedGraph) -> None: ...
+    def assignHemisphereTags(self, arg0: DirectedWeightedGraph) -> None: ...
+    # def assignHemisphereTags(self, arg0: Tree) -> None: ...
     
     def assignToLeftHemisphere(self, arg0: Tree) -> None: ...
     
@@ -66,7 +66,7 @@ class AllenCompartment:
     sc.fiji.snt.annotation.AllenCompartment
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.134408
+    Extracted: 2026-01-02T22:36:44.432189
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -120,7 +120,7 @@ class InsectBrainCompartment:
     sc.fiji.snt.annotation.InsectBrainCompartment
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.246902
+    Extracted: 2026-01-02T22:36:44.546496
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -156,7 +156,7 @@ class InsectBrainUtils:
     sc.fiji.snt.annotation.InsectBrainUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.252184
+    Extracted: 2026-01-02T22:36:44.551343
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -180,7 +180,7 @@ class VFBUtils:
     sc.fiji.snt.annotation.VFBUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.762150
+    Extracted: 2026-01-02T22:36:45.059194
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -206,7 +206,7 @@ class ZBAtlasUtils:
     sc.fiji.snt.annotation.ZBAtlasUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.796060
+    Extracted: 2026-01-02T22:36:45.092046
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     

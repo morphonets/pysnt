@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.tracing``
 
-Enhanced documentation for SearchNode class.
+Interface representing a node in 3D space that can be used in pathfinding and search algorithms.
 
 
 Methods

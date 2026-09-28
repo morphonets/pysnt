@@ -7,7 +7,7 @@ class Frangi:
     sc.fiji.snt.filter.Frangi
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:34:38.069710
+    Extracted: 2026-01-02T22:36:44.522340
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -64,7 +64,7 @@ class Tubeness:
     sc.fiji.snt.filter.Tubeness
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:34:38.075557
+    Extracted: 2026-01-02T22:36:45.056385
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -116,6 +116,17 @@ class Tubeness:
     
     def __getattr__(self, name: str) -> Any: ...
 
+
+class SpectralSimilarity:
+    """
+    SpectralSimilarity - No cached signatures available.
+    
+    Run: python dev/scripts/extract_class_signatures.py --all-classes
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
 
 
 # Imported functions

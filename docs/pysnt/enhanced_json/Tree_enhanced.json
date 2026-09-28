@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:45.019687",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.740225",
+  "enhancement_timestamp": "2026-09-27T22:17:09.184457",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -114,8 +114,8 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "Dataset",
-              "description": "- the Dataset providing the spatial calibration. Null allowed.",
-              "javadoc_name": "dataset"
+              "description": "- the ImgPlus providing the spatial calibration. Null allowed.",
+              "javadoc_name": "imgPlus"
             }
           ],
           "return_type": "None",
@@ -141,7 +141,7 @@
         }
       ],
       "documentation": "Java method: assignImage",
-      "javadoc_description": "Assigns spatial calibration from a Dataset to this Tree.",
+      "javadoc_description": "Assigns spatial calibration from an ImgPlus to this Tree.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -158,8 +158,8 @@
               "name": "arg0",
               "type": "List[Any]",
               "java_type": "Collection",
-              "description": "- an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'.",
-              "javadoc_name": "excludedHue"
+              "description": "",
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "None",
@@ -192,13 +192,11 @@
         }
       ],
       "documentation": "Java method: static assignUniqueColors",
-      "javadoc_description": "Assigns distinct colors to a collection of Trees.",
+      "javadoc_description": "",
       "category": "Visualization",
-      "deprecated": false,
+      "deprecated": true,
       "since_version": null,
-      "see_also": [
-        "SNTColor.getDistinctColors(int, String)"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -308,7 +306,7 @@
         }
       ],
       "documentation": "Java method: downsample",
-      "javadoc_description": "Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing.\n\nNote that 1) upsampling is not supported (cf. {upsample(double)}, and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.",
+      "javadoc_description": "Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing.\n\nNote that 1) upsampling is not supported (cf. `Path.upsample(double)`), and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -722,14 +720,14 @@
         }
       ],
       "documentation": "Java method: getProperties",
-      "javadoc_description": "Returns the Properties instance holding the persistent set of properties. Useful to associate metadata to this tree. E.g.\n\n\n```\ngetProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);\n```\n",
+      "javadoc_description": "Returns the Properties instance holding the persistent set of properties. Useful to associate metadata to this tree. E.g.\n\n\n```\ngetProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\n String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\n getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);\n```\n",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": [
-        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);",
-        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\nString unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\ngetProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);"
+        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\n String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\n getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);",
+        "getProperties().setProperty(Tree.KEY_SPATIAL_UNIT, \"um\");\n String unit = getProperties().getProperty(Tree.KEY_SPATIAL_UNIT);\n getProperties().setProperty(Tree.KEY_COMPARTMENT, Tree.DENDRITIC);"
       ]
     },
     {
@@ -1298,49 +1296,52 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "TreeToRaster",
     "transform(Collection, String, boolean)",
-    "SNTColor.getDistinctColors(int, String)",
-    "downsample(double)",
-    "getRoot()",
-    "Path.getApproximatedSurface()",
-    "Object",
-    "assignValue(double)",
-    "Cloneable",
-    "Path.getApproximatedVolume()",
-    "SNTColor.getDistinctColors(int)",
-    "for the graph representation",
-    "skeletonize(ImagePlus, int)",
-    "getSkeleton()",
-    "getSkeleton(int)",
-    "for the conversion implementation",
-    "setLabel(String)",
-    "Path.hasNodeColors()",
-    "TreeProperties",
-    "for controlling path structure preservation",
-    "upsample(double)",
-    "Constant Field Values",
-    "for the version that includes soma by default",
     "PathDownsampler",
+    "upsample(double)",
+    "getRoot()",
     "getAssignedValue()",
+    "Path.getApproximatedSurface()",
+    "skeletonize(ImagePlus, int)",
+    "PathFitter",
+    "Constant Field Values",
+    "for controlling path structure preservation",
+    "Path.hasNodeColors()",
     "Path.upsample(double)",
+    "assignValue(double)",
     "for individual path SWC types",
+    "Cloneable",
+    "SparseDirectedWeightedGraph",
+    "setLabel(String)",
+    "getSkeleton(int)",
+    "Path.fitRadii(ImagePlus)",
+    "for the conversion implementation",
+    "Object",
+    "downsample(double)",
+    "Path.getApproximatedVolume()",
+    "TreeProperties",
+    "applyCanvasOffset(double, double, double)",
+    "getSkeleton()",
+    "for the version that includes soma by default",
+    "for the graph representation",
     "for integer SWC type flags"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 83,
+      "total_javadoc_methods": 88,
       "total_json_methods": 39,
-      "total_matches": 49,
-      "exact_matches": 49,
+      "total_matches": 50,
+      "exact_matches": 50,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 34,
-      "unmatched_json": -10,
-      "match_percentage": 59.0
+      "unmatched_javadoc": 38,
+      "unmatched_json": -11,
+      "match_percentage": 56.8
     },
-    "unmatched_javadoc_methods": 34,
+    "unmatched_javadoc_methods": 38,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.708
+    "enhancement_quality_score": 0.682
   }
 }

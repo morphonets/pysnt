@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.927194",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.675236",
+  "enhancement_timestamp": "2026-09-27T22:17:09.050999",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -113,15 +113,15 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
+              "description": "- pixel X position (0-based), in SNT.getFullSourceData()'s own grid",
+              "javadoc_name": "x"
             },
             {
               "name": "arg1",
               "type": "Any",
               "java_type": "Object",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "SNT.getFullSourceData()"
             }
           ],
           "return_type": "None",
@@ -166,8 +166,8 @@
               "name": "arg0",
               "type": "Any",
               "java_type": "PopupMenu",
-              "description": "- the text to displayed. Set it to null (or empty String) to reset the status bar.",
-              "javadoc_name": "msg"
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -177,7 +177,7 @@
         }
       ],
       "documentation": "Java method: add",
-      "javadoc_description": "Updates the status bar.",
+      "javadoc_description": "Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of SNT.getLoadedData(), so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -1239,8 +1239,8 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_0"
+              "description": "- the error message",
+              "javadoc_name": "msg"
             }
           ],
           "return_type": "None",
@@ -1250,7 +1250,7 @@
         }
       ],
       "documentation": "Java method: error",
-      "javadoc_description": "",
+      "javadoc_description": "Displays an error message.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -1318,25 +1318,27 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "JDialog",
+    "BinaryTracerCmd",
+    "GWDTTracerCmd",
+    "Constant Field Values",
     "Serialized Form",
-    "Constant Field Values"
+    "JDialog"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 31,
+      "total_javadoc_methods": 79,
       "total_json_methods": 36,
-      "total_matches": 21,
+      "total_matches": 51,
       "exact_matches": 2,
-      "signature_matches": 19,
+      "signature_matches": 49,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 10,
-      "unmatched_json": 15,
-      "match_percentage": 67.7
+      "unmatched_javadoc": 28,
+      "unmatched_json": -15,
+      "match_percentage": 64.6
     },
-    "unmatched_javadoc_methods": 10,
+    "unmatched_javadoc_methods": 28,
     "unmatched_json_methods": 31,
-    "enhancement_quality_score": 0.39
+    "enhancement_quality_score": 0.351
   }
 }

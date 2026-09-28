@@ -29,6 +29,8 @@ ConvexHull2D
 
 .. method:: compute()
 
+   Description copied from class: AbstractConvexHull
+
    **Signature:** ``compute() -> void``
 
    **Returns:** ``None``
@@ -38,6 +40,8 @@ ConvexHull3D
 ------------
 
 .. method:: compute()
+
+   Description copied from class: AbstractConvexHull
 
    **Signature:** ``compute() -> void``
 
@@ -248,4 +252,4 @@ Viewer2D
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

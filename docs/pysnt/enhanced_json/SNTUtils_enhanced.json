@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.932862",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.712761",
+  "enhancement_timestamp": "2026-09-27T22:17:09.134204",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -42,12 +42,12 @@
           "params": [],
           "return_type": "str",
           "java_return_type": "String",
-          "return_description": "the implementation date or an empty strong if date could not be retrieved.",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: static buildDate",
-      "javadoc_description": "Retrieves Sholl Analysis implementation date",
+      "javadoc_description": "",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -152,8 +152,8 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "",
-              "javadoc_name": "param_0"
+              "description": "- the message",
+              "javadoc_name": "string"
             }
           ],
           "return_type": "None",
@@ -163,7 +163,7 @@
         }
       ],
       "documentation": "Java method: static error",
-      "javadoc_description": "",
+      "javadoc_description": "As `error(String, Throwable)`, but allows suppressing the notification-center mirroring, e.g., when the caller has already surfaced the message to the user synchronously (a modal dialog)",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -329,18 +329,18 @@
               "name": "arg0",
               "type": "str",
               "java_type": "File",
-              "description": "- the TRACES file",
-              "javadoc_name": "tracesFile"
+              "description": "- the directory to search for backup files",
+              "javadoc_name": "location"
             }
           ],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the list of backup files. An empty list is retrieved if none could be found.",
+          "return_description": "list of backup files (never null, may be empty), sorted most recent first",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getBackupCopies",
-      "javadoc_description": "Retrieves a list of time-stamped backup files associated with a TRACES file",
+      "javadoc_description": "Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with timestamps.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -862,8 +862,8 @@
               "name": "arg0",
               "type": "bool",
               "java_type": "boolean",
-              "description": "",
-              "javadoc_name": "param_0"
+              "description": "- true to show the splash screen (or register one more caller that wants it showing, if already showing); false to release one such registration, closing the splash once no callers still hold it",
+              "javadoc_name": "isLoading"
             }
           ],
           "return_type": "None",
@@ -873,7 +873,7 @@
         }
       ],
       "documentation": "Java method: static setIsLoading",
-      "javadoc_description": "",
+      "javadoc_description": "Shows or hides the loading splash screen. Calls nest safely: several independent call chains can be \"loading\" at once, so the splash only actually closes once every true has been balanced by a matching false, hence calls should be made in a try/finally block.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -938,27 +938,31 @@
     ],
     "implements": []
   },
-  "nested_classes": [],
+  "nested_classes": [
+    "SNTUtils.BackgroundTask",
+    "SNTUtils.HeapInfo"
+  ],
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
     "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 35,
+      "total_javadoc_methods": 55,
       "total_json_methods": 32,
-      "total_matches": 35,
-      "exact_matches": 35,
+      "total_matches": 38,
+      "exact_matches": 38,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": -3,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 17,
+      "unmatched_json": -6,
+      "match_percentage": 69.1
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 0,
-    "enhancement_quality_score": 1.0
+    "unmatched_javadoc_methods": 17,
+    "unmatched_json_methods": 1,
+    "enhancement_quality_score": 0.829
   }
 }

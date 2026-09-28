@@ -19,7 +19,7 @@ class Config:
         # Default configuration
         self.config = {
             'javadoc': {
-                'source_zip': self.script_dir / 'SNT-v5.0.0-pre-release3_javadocs.zip',
+                'source_zip': self.script_dir / 'SNT-5.0.18-javadoc.jar',
                 'extract_dir': self.script_dir / 'javadoc_extracted',
                 'base_url': 'https://javadoc.scijava.org/SNT/'
             },

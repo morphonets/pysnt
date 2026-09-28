@@ -3,7 +3,7 @@ Visualization Methods
 
 Methods that create visual representations, plots, or graphical displays.
 
-Total methods in this category: **26**
+Total methods in this category: **25**
 
 .. contents:: Classes in this Category
    :local:
@@ -13,9 +13,11 @@ AllenCompartment
 
 .. method:: color()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``color() -> ColorRGB``
 
-   **Returns:** (``Any``) the display color of this compartment (if known)
+   **Returns:** ``Any``
 
 
 Annotation3D
@@ -89,9 +91,11 @@ InsectBrainCompartment
 
 .. method:: color()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``color() -> ColorRGB``
 
-   **Returns:** (``Any``) the display color of this compartment (if known)
+   **Returns:** ``Any``
 
 
 MultiViewer3D
@@ -179,7 +183,7 @@ SNTColor
 
 .. method:: static contrastColor(arg0)
 
-   Returns a suitable 'contrast' color.
+   Returns a BW 'contrast' color
 
    **Signature:** ``static contrastColor(Color) -> Color``
 
@@ -212,6 +216,8 @@ SNTColor
    **Returns:** ``Any``
 
 .. method:: static getDistinctColorsHex(arg0, arg1)
+
+   Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion
 
    **Signature:** ``static getDistinctColorsHex(int, String) -> String;``
 
@@ -271,22 +277,6 @@ SNTUtils
    **Returns:** ``None``
 
 
-Tree
-----
-
-.. method:: static assignUniqueColors(arg0)
-
-   Assigns distinct colors to a collection of Trees.
-
-   **Signature:** ``static assignUniqueColors(Collection) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``List[Any]``): - an optional string defining a hue to be excluded. Either 'red', 'green', or 'blue'.
-
-   **Returns:** ``None``
-
-
 Viewer3D
 --------
 
@@ -327,4 +317,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

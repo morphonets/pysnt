@@ -7,7 +7,7 @@ class BiSearch:
     sc.fiji.snt.tracing.BiSearch
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.171901
+    Extracted: 2026-01-02T22:36:44.464551
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -38,7 +38,7 @@ class BiSearchNode:
     sc.fiji.snt.tracing.BiSearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.178979
+    Extracted: 2026-01-02T22:36:44.471119
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -121,12 +121,23 @@ class BiSearchNode:
     def __getattr__(self, name: str) -> Any: ...
 
 
+class CrossSectionUtils:
+    """
+    CrossSectionUtils - No cached signatures available.
+    
+    Run: python dev/scripts/extract_class_signatures.py --all-classes
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 class DefaultSearchNode:
     """
     sc.fiji.snt.tracing.DefaultSearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.205658
+    Extracted: 2026-01-02T22:36:44.499057
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -173,7 +184,7 @@ class FillerThread:
     sc.fiji.snt.tracing.FillerThread
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.221400
+    Extracted: 2026-01-02T22:36:44.513801
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -184,8 +195,8 @@ class FillerThread:
     def createNewNode(self, arg0: int, arg1: int, arg2: int, arg3: float, arg4: float, arg5: Any, arg6: int) -> Any: ...
     
     # Multiple overloads for fromFill
-    def fromFill(self, arg0: Any, arg1: Any, arg2: Any) -> FillerThread: ...
-    # def fromFill(self, arg0: Any, arg1: Any, arg2: Any, arg3: Any) -> FillerThread: ...
+    def fromFill(self, arg0: Any, arg1: Any, arg2: Any, arg3: Any) -> FillerThread: ...
+    # def fromFill(self, arg0: Any, arg1: Any, arg2: Any) -> FillerThread: ...
     
     def getDistanceAtPoint(self, arg0: float, arg1: float, arg2: float) -> float: ...
     
@@ -232,7 +243,7 @@ class PathResult:
     sc.fiji.snt.tracing.PathResult
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.450464
+    Extracted: 2026-01-02T22:36:44.745944
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -258,7 +269,7 @@ class SearchNode:
     sc.fiji.snt.tracing.SearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.649470
+    Extracted: 2026-01-02T22:36:44.944458
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -276,7 +287,7 @@ class SearchThread:
     sc.fiji.snt.tracing.SearchThread
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.654075
+    Extracted: 2026-01-02T22:36:44.948207
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -315,7 +326,7 @@ class TracerThread:
     sc.fiji.snt.tracing.TracerThread
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:23:57.712602
+    Extracted: 2026-01-02T22:36:45.007490
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     

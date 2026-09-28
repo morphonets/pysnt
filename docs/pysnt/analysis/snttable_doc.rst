@@ -169,7 +169,7 @@ Other Methods
 
 .. py:method:: addFirst(Object)
 
-   Sets a SciJava context to this table.
+   Sets the title of the table.
 
 
 .. py:method:: addGenericColumn(String, Collection)

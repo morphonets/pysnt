@@ -64,13 +64,13 @@ No graph conversion - paths are analyzed independently Branch-related metrics ar
 Example usage: 
 ```
 // Analyze a single path
-PathStatistics stats = new PathStatistics(path);
-double length = stats.getMetric("Path length").doubleValue();
-
-// Analyze multiple paths independently
-Collection<Path> paths = getPaths();
-PathStatistics multiStats = new PathStatistics(paths, "My Analysis");
-multiStats.measureIndividualPaths(Arrays.asList("Path length", "N. nodes"), true);
+ PathStatistics stats = new PathStatistics(path);
+ double length = stats.getMetric("Path length").doubleValue();
+ 
+ // Analyze multiple paths independently
+ Collection<Path> paths = getPaths();
+ PathStatistics multiStats = new PathStatistics(paths, "My Analysis");
+ multiStats.measureIndividualPaths(Arrays.asList("Path length", "N. nodes"), true);
 ```
 
 
@@ -210,9 +210,7 @@ In PathStatistics, all paths are considered as branches since each path represen
 
 .. py:method:: getHighestPathOrder()
 
-   Gets the number of branches (paths) being analyzed.
-
-Returns the total count of paths in this PathStatistics instance.
+   
 
 
 .. py:method:: getHistogram(String)

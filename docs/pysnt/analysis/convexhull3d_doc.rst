@@ -75,7 +75,7 @@ Analysis Methods
 
 .. py:method:: compute()
 
-   
+   Description copied from class: AbstractConvexHull
 
 
 Other Methods
@@ -84,12 +84,12 @@ Other Methods
 
 .. py:method:: boundarySize()
 
-   
+   Description copied from class: AbstractConvexHull
 
 
 .. py:method:: intersection(AbstractConvexHull;)
 
-   
+   Description copied from class: AbstractConvexHull
 
 
 .. py:method:: intersectionBox(AbstractConvexHull;)
@@ -104,7 +104,7 @@ Other Methods
 
 .. py:method:: size()
 
-   
+   Description copied from class: AbstractConvexHull
 
 
 See Also

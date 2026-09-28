@@ -66,11 +66,13 @@ BiSearch
 
 .. method:: addProgressListener(arg0)
 
+   Description copied from class: AbstractSearch
+
    **Signature:** ``addProgressListener(SearchProgressCallback) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the callback to register
 
    **Returns:** ``None``
 
@@ -1203,13 +1205,15 @@ PathFitter
 
 .. method:: setCrossSectionRadius(arg0)
 
-   Sets the max radius (side search) for constraining the fit.
+   Sets the radius of cross-sectional planes sampled around each node.
+
+At each node, PathFitter samples a square cross-section perpendicular to the path tangent. This radius controls the physical extent of that sampling.
 
    **Signature:** ``setCrossSectionRadius(double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``float``): - the new maximum radius
+   * **arg0** (``float``): - the physical search radius (in physical units)
 
    **Returns:** ``None``
 
@@ -1227,11 +1231,15 @@ PathFitter
 
 .. method:: setNodeRadiusFallback(arg0)
 
+   Sets the fallback strategy for node radii at locations where fitting failed.
+
+When cross-section fitting fails at a node (e.g., low SNR, ambiguous geometry), this strategy determines what radius value to assign to that node.
+
    **Signature:** ``setNodeRadiusFallback(int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``int``)
+   * **arg0** (``int``): - the fallback strategy: FALLBACK_MODE, FALLBACK_MIN_SEP, or FALLBACK_NAN
 
    **Returns:** ``None``
 
@@ -1683,13 +1691,13 @@ SNT
 
 .. method:: disableEventsAllPanes(arg0)
 
-   Description copied from interface: PaneOwner
+   Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.
 
    **Signature:** ``disableEventsAllPanes(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - the current progress value
+   * **arg0** (``bool``): - 1-based channel, or null to clear the lock
 
    **Returns:** ``None``
 
@@ -2061,13 +2069,13 @@ SNTTable
 
 .. method:: addFirst(arg0)
 
-   Sets a SciJava context to this table.
+   Sets the title of the table.
 
    **Signature:** ``addFirst(Object) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the SciJava application context
+   * **arg0** (``Any``): - the table's title
 
    **Returns:** ``None``
 
@@ -2371,11 +2379,13 @@ SearchThread
 
 .. method:: addProgressListener(arg0)
 
+   Description copied from class: AbstractSearch
+
    **Signature:** ``addProgressListener(SearchProgressCallback) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the callback to register
 
    **Returns:** ``None``
 
@@ -2414,136 +2424,102 @@ SkeletonConverter
 
 .. method:: setConnectComponents(arg0)
 
-   Sets whether to connect nearby skeleton components.
-
-Controls whether disconnected skeleton components should be connected if they are within the maximum connection distance.
-
    **Signature:** ``setConnectComponents(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - true to connect components, false otherwise
+   * **arg0** (``bool``)
 
    **Returns:** ``None``
 
 .. method:: setLengthThreshold(arg0)
 
-   Sets the minimum component length necessary to avoid pruning. This value is only used if pruneByLength is true.
-
-Specifies the minimum length below which skeleton components will be pruned from the result. Negative values are set to 0.
-
    **Signature:** ``setLengthThreshold(double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``float``): - the minimum length threshold
+   * **arg0** (``float``)
 
    **Returns:** ``None``
 
 .. method:: setMaxConnectDist(arg0)
 
-   Sets the maximum distance for connecting skeleton components.
-
-Specifies the maximum distance within which disconnected skeleton components will be connected. Values ≤ 0 are set to Double.MIN_VALUE.
-
    **Signature:** ``setMaxConnectDist(double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``float``): - the maximum connection distance
+   * **arg0** (``float``)
 
    **Returns:** ``None``
 
 .. method:: setOrigIP(arg0)
 
-   Sets the original ImagePlus to be used during voxel-based loop pruning. See AnalyzeSkeleton documentation
-
-Specifies the original (non-skeletonized) image to be used during skeleton analysis for additional processing options.
-
    **Signature:** ``setOrigIP(ImagePlus) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the original ImagePlus
+   * **arg0** (``Any``)
 
    **Returns:** ``None``
 
 .. method:: setPruneEnds(arg0)
 
-   Sets whether to prune end branches during skeleton analysis.
-
-Controls whether terminal branches should be pruned during the skeleton analysis process.
-
    **Signature:** ``setPruneEnds(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - true to prune end branches, false otherwise
+   * **arg0** (``bool``)
 
    **Returns:** ``None``
 
 .. method:: setPruneMode(arg0)
 
-   Sets the loop pruning strategy. See AnalyzeSkeleton documentation
-
    **Signature:** ``setPruneMode(int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``int``): - the loop prune strategy, e.g., SHORTEST_BRANCH, LOWEST_INTENSITY_BRANCH or LOWEST_INTENSITY_VOXEL
+   * **arg0** (``int``)
 
    **Returns:** ``None``
 
 .. method:: setRootRoi(arg0, arg1)
 
-   Sets the Roi enclosing the nodes to be set as root(s) in the final graphs. Must be called before retrieval of any converted data.
-
    **Signature:** ``setRootRoi(Roi, int) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - The area enclosing the components defining the root(s) of the skeletonized structures. Typically this will correspond to an area ROI delineating the soma. Note that by default ImageJ ROIs do not carry depth information, so if you would like to restrain the delineation to a single plane, be sure to call
-   * **arg1** (``int``): beforehand.
+   * **arg0** (``Any``)
+   * **arg1** (``int``)
 
    **Returns:** ``None``
 
 .. method:: setShortestPath(arg0)
 
-   Sets whether to calculate the longest shortest-path in the skeleton result.
-
    **Signature:** ``setShortestPath(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - true to calculate shortest paths, false otherwise
+   * **arg0** (``bool``)
 
    **Returns:** ``None``
 
 .. method:: setSilent(arg0)
 
-   Sets whether to run skeleton analysis in silent mode.
-
-Setting this to false will display both the tagged skeleton image and the shortest path image (if the shortest path calculation is enabled).
-
    **Signature:** ``setSilent(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - true for silent operation, false for debug output
+   * **arg0** (``bool``)
 
    **Returns:** ``None``
 
 .. method:: setVerbose(arg0)
 
-   Sets whether to run skeleton analysis in verbose mode.
-
-Controls whether the skeleton analysis should provide detailed output messages during processing.
-
    **Signature:** ``setVerbose(boolean) -> void``
 
    **Parameters:**
 
-   * **arg0** (``bool``): - true for verbose output, false for normal output
+   * **arg0** (``bool``)
 
    **Returns:** ``None``
 
@@ -3078,4 +3054,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

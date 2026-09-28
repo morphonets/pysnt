@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.analysis",
   "extracted_at": "2026-01-02T22:36:44.767202",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.736542",
+  "enhancement_timestamp": "2026-09-27T22:17:09.178527",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -1001,12 +1001,12 @@
           "params": [],
           "return_type": "int",
           "java_return_type": "int",
-          "return_description": "the number of paths",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getHighestPathOrder",
-      "javadoc_description": "Gets the number of branches (paths) being analyzed.\n\nReturns the total count of paths in this PathStatistics instance.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1215,7 +1215,7 @@
       "documentation": "Java constructors for PathStatistics"
     }
   ],
-  "javadoc_description": "A specialized version of TreeStatistics for analyzing individual paths without considering their connectivity relationships.\n\nPathStatistics provides morphometric analysis of neuronal paths while treating each path as an independent entity, rather than as part of a connected tree structure.\n\nKey differences from TreeStatistics:\n\nNo graph conversion - paths are analyzed independently Branch-related metrics are redefined to work with individual paths Supports path-specific measurements like Path ID and number of children Provides individual path measurement capabilities\n\nExample usage: \n```\n// Analyze a single path\nPathStatistics stats = new PathStatistics(path);\ndouble length = stats.getMetric(\"Path length\").doubleValue();\n\n// Analyze multiple paths independently\nCollection<Path> paths = getPaths();\nPathStatistics multiStats = new PathStatistics(paths, \"My Analysis\");\nmultiStats.measureIndividualPaths(Arrays.asList(\"Path length\", \"N. nodes\"), true);\n```\n",
+  "javadoc_description": "A specialized version of TreeStatistics for analyzing individual paths without considering their connectivity relationships.\n\nPathStatistics provides morphometric analysis of neuronal paths while treating each path as an independent entity, rather than as part of a connected tree structure.\n\nKey differences from TreeStatistics:\n\nNo graph conversion - paths are analyzed independently Branch-related metrics are redefined to work with individual paths Supports path-specific measurements like Path ID and number of children Provides individual path measurement capabilities\n\nExample usage: \n```\n// Analyze a single path\n PathStatistics stats = new PathStatistics(path);\n double length = stats.getMetric(\"Path length\").doubleValue();\n \n // Analyze multiple paths independently\n Collection<Path> paths = getPaths();\n PathStatistics multiStats = new PathStatistics(paths, \"My Analysis\");\n multiStats.measureIndividualPaths(Arrays.asList(\"Path length\", \"N. nodes\"), true);\n```\n",
   "inheritance": {
     "extends": [
       "TreeStatistics"
@@ -1226,35 +1226,35 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "StrahlerAnalyzer.getBranches()",
-    "TreeStatistics.getInnerBranches()",
-    "TreeStatistics.getMetrics()",
-    "TreeStatistics.setExactMetricMatch(boolean)",
-    "TreeStatistics.getPrimaryBranches()",
-    "Tree",
-    "TreeStatistics.getTerminalBranches()",
     "TreeStatistics",
+    "StrahlerAnalyzer.getBranches()",
+    "TreeStatistics.getMetrics()",
+    "TreeStatistics.getInnerBranches()",
     "TreeStatistics.getPrimaryPaths()",
     "StrahlerAnalyzer.getHighestBranchOrder()",
-    "Path",
+    "Tree",
+    "Constant Field Values",
+    "TreeStatistics.getPrimaryBranches()",
     "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "Constant Field Values"
+    "TreeStatistics.setExactMetricMatch(boolean)",
+    "TreeStatistics.getTerminalBranches()",
+    "Path"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 12,
+      "total_javadoc_methods": 14,
       "total_json_methods": 34,
-      "total_matches": 11,
+      "total_matches": 13,
       "exact_matches": 5,
-      "signature_matches": 6,
+      "signature_matches": 8,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 1,
-      "unmatched_json": 23,
-      "match_percentage": 91.7
+      "unmatched_json": 21,
+      "match_percentage": 92.9
     },
     "unmatched_javadoc_methods": 1,
-    "unmatched_json_methods": 26,
+    "unmatched_json_methods": 25,
     "enhancement_quality_score": 0.95
   }
 }

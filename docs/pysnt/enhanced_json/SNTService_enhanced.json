@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt",
   "extracted_at": "2026-01-02T22:36:44.872669",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.691611",
+  "enhancement_timestamp": "2026-09-27T22:17:09.106506",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -113,13 +113,13 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth",
+              "description": "- a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth",
               "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "the demo image, or null if data could no be retrieved",
+          "return_description": "the demo image, or null if data could not be retrieved",
           "throws": {}
         }
       ],
@@ -738,7 +738,7 @@
               "type": "bool",
               "java_type": "boolean",
               "description": "- the image to be traced (null not allowed)",
-              "javadoc_name": "imp"
+              "javadoc_name": "img"
             }
           ],
           "return_type": "Any",
@@ -781,11 +781,13 @@
         }
       ],
       "documentation": "Java method: initialize",
-      "javadoc_description": "Initializes SNT.",
+      "javadoc_description": "Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "initialize(ImagePlus, boolean)"
+      ],
       "examples": []
     },
     {
@@ -1125,29 +1127,31 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "demoTreeImage()",
-    "Path.setNodeValues(double[])",
-    "demoImage(String)",
-    "demoTrees()",
     "getTree(boolean)",
     "demoTree()",
-    "demoTree(String)",
-    "PathProfiler"
+    "Path.setNodeValues(double[])",
+    "demoImage(String)",
+    "PathProfiler",
+    "demoTrees()",
+    "loadTree(Tree)",
+    "initialize(ImagePlus, boolean)",
+    "demoTreeImage()",
+    "demoTree(String)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 34,
+      "total_javadoc_methods": 40,
       "total_json_methods": 41,
-      "total_matches": 34,
-      "exact_matches": 34,
+      "total_matches": 35,
+      "exact_matches": 35,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": 7,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 5,
+      "unmatched_json": 6,
+      "match_percentage": 87.5
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 5,
     "unmatched_json_methods": 12,
     "enhancement_quality_score": 1.0
   }

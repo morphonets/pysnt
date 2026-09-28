@@ -13,21 +13,27 @@ AllenCompartment
 
 .. method:: acronym()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``acronym() -> String``
 
-   **Returns:** (``str``) the compartment's acronym
+   **Returns:** ``str``
 
 .. method:: aliases()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``aliases() -> String;``
 
-   **Returns:** (``Any``) the compartment's alias(es)
+   **Returns:** ``Any``
 
 .. method:: id()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``id() -> int``
 
-   **Returns:** (``int``) the compartment's unique id
+   **Returns:** ``int``
 
 .. method:: includes(arg0)
 
@@ -41,9 +47,11 @@ AllenCompartment
 
 .. method:: name()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``name() -> String``
 
-   **Returns:** (``str``) the compartment's name
+   **Returns:** ``str``
 
 
 BiSearch
@@ -51,11 +59,15 @@ BiSearch
 
 .. method:: pointsConsideredInSearch()
 
+   Description copied from class: AbstractSearch
+
    **Signature:** ``pointsConsideredInSearch() -> long``
 
    **Returns:** ``int``
 
 .. method:: printStatus()
+
+   Description copied from class: AbstractSearch
 
    **Signature:** ``printStatus() -> void``
 
@@ -264,6 +276,8 @@ ConvexHull2D
 
 .. method:: intersection(arg0)
 
+   Description copied from class: AbstractConvexHull
+
    **Signature:** ``intersection(AbstractConvexHull;) -> AbstractConvexHull``
 
    **Parameters:**
@@ -287,6 +301,8 @@ ConvexHull3D
 ------------
 
 .. method:: intersection(arg0)
+
+   Description copied from class: AbstractConvexHull
 
    **Signature:** ``intersection(AbstractConvexHull;) -> ConvexHull3D``
 
@@ -572,27 +588,35 @@ InsectBrainCompartment
 
 .. method:: acronym()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``acronym() -> String``
 
-   **Returns:** (``str``) the compartment's acronym
+   **Returns:** ``str``
 
 .. method:: aliases()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``aliases() -> String;``
 
-   **Returns:** (``Any``) the compartment's alias(es)
+   **Returns:** ``Any``
 
 .. method:: id()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``id() -> int``
 
-   **Returns:** (``int``) the compartment's unique id
+   **Returns:** ``int``
 
 .. method:: name()
 
+   Description copied from interface: BrainAnnotation
+
    **Signature:** ``name() -> String``
 
-   **Returns:** (``str``) the compartment's name
+   **Returns:** ``str``
 
 
 InsectBrainLoader
@@ -1190,7 +1214,7 @@ PathAndFillManager
 
 .. method:: downsampleAll(arg0)
 
-   Downsamples alls path using Ramer–Douglas–Peucker simplification. Downsampling occurs only between branch points and terminal points.
+   Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and terminal points.
 
    **Signature:** ``downsampleAll(double) -> void``
 
@@ -1256,7 +1280,7 @@ PathFitter
 
 .. method:: applyFit()
 
-   Sets the fallback strategy for radii at locations in which fitting failed
+   Applies the fitted result to the path. For multithreaded processing: Must be called sequentially after all parallel fitting is complete.
 
    **Signature:** ``applyFit() -> void``
 
@@ -1274,7 +1298,7 @@ PathFitter
 
 .. method:: call()
 
-   Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by setMaxRadius(int). Note that connectivity of path may need to be rebuilt upon fit.
+   Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input path. Computation of fit is confined to the neighborhood specified by `setCrossSectionRadius(double)`.
 
    **Signature:** ``call() -> Object``
 
@@ -1742,9 +1766,11 @@ SNT
 
 .. method:: accessToValidImageData()
 
+   Checks whether valid image data exists.
+
    **Signature:** ``accessToValidImageData() -> boolean``
 
-   **Returns:** ``bool``
+   **Returns:** (``bool``) true if a tracing image exists, or (for headless/API usage) cached pixel data remains in memory.
 
 .. method:: autoTrace(arg0, arg1, arg2)
 
@@ -1799,11 +1825,11 @@ SNT
 
 .. method:: editModeAllowed()
 
-   Assesses if activation of 'Edit Mode' is possible.
+   Checks if edit mode can be enabled, optionally using a specific path.
 
    **Signature:** ``editModeAllowed() -> boolean``
 
-   **Returns:** (``bool``) true, if possible, false otherwise
+   **Returns:** (``bool``) true if edit mode is allowed, false otherwise
 
 .. method:: findPointInStack(arg0, arg1, arg2, arg3)
 
@@ -1865,13 +1891,13 @@ SNTChart
 
 .. method:: actionPerformed(arg0)
 
-   Shows a bivariate histogram (two-dimensional histogram) from two DescriptiveStatistics objects. The number of bins is automatically determined using the Freedman-Diaconis rule.
+   Tiles specified charts displaying them on a grid. Charts's windows are made visible if not displayed.
 
    **Signature:** ``actionPerformed(ActionEvent) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - DescriptiveStatistics for the first distribution
+   * **arg0** (``Any``): - the charts to be tiled
 
    **Returns:** ``None``
 
@@ -2074,9 +2100,9 @@ SNTService
 
    **Parameters:**
 
-   * **arg0** (``str``): - a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701' and 'cil810' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth
+   * **arg0** (``str``): - a string describing the type of demo image. Options include: 'fractal' for the L-system toy neuron; 'ddaC' for the C4 ddaC drosophila neuron (demo image initially distributed with the Sholl plugin); 'OP1'/'OP_1' for the DIADEM OP_1 dataset; 'cil701', 'cil810', or 'ci41458' for the respective Cell Image Library entries, and 'binary timelapse' for a small 4-frame sequence of neurite growth
 
-   **Returns:** (``Any``) the demo image, or null if data could no be retrieved
+   **Returns:** (``Any``) the demo image, or null if data could not be retrieved
 
 .. method:: demoTree(arg0)
 
@@ -2108,7 +2134,7 @@ SNTService
 
 .. method:: initialize(arg0, arg1)
 
-   Initializes SNT.
+   Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.
 
    **Signature:** ``initialize(ImagePlus, boolean) -> SNT``
 
@@ -2346,7 +2372,7 @@ SNTUI
 
 .. method:: add(arg0, arg1)
 
-   Updates the status bar.
+   Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of SNT.getLoadedData(), so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.
 
    **Signature:** ``add(String, Component) -> Component``
 
@@ -2515,11 +2541,13 @@ SNTUI
 
 .. method:: error(arg0)
 
+   Displays an error message.
+
    **Signature:** ``error(String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
+   * **arg0** (``str``): - the error message
 
    **Returns:** ``None``
 
@@ -2689,11 +2717,15 @@ SearchThread
 
 .. method:: pointsConsideredInSearch()
 
+   Description copied from class: AbstractSearch
+
    **Signature:** ``pointsConsideredInSearch() -> long``
 
    **Returns:** ``int``
 
 .. method:: printStatus()
+
+   Description copied from class: AbstractSearch
 
    **Signature:** ``printStatus() -> void``
 
@@ -2744,11 +2776,13 @@ TracerCanvas
 
 .. method:: add(arg0)
 
+   Sets the baseline for rendering diameter of path nodes
+
    **Signature:** ``add(PopupMenu) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``Any``): - the diameter to be used when rendering path nodes. Set it to -1 for adopting the default value. Set it to zero to suppress node rendering
 
    **Returns:** ``None``
 
@@ -2838,7 +2872,7 @@ TracerCanvas
 
    **Signature:** ``cursorOverImage() -> boolean``
 
-   **Returns:** ``bool``
+   **Returns:** (``bool``) whether per-slice depth-band rendering is currently enabled (i.e. paths only render near the active slice).
 
 .. method:: deliverEvent(arg0)
 
@@ -2988,13 +3022,13 @@ Tree
 
 .. method:: assignImage(arg0)
 
-   Assigns spatial calibration from a Dataset to this Tree.
+   Assigns spatial calibration from an ImgPlus to this Tree.
 
    **Signature:** ``assignImage(Dataset) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the Dataset providing the spatial calibration. Null allowed.
+   * **arg0** (``Any``): - the ImgPlus providing the spatial calibration. Null allowed.
 
    **Returns:** ``None``
 
@@ -3024,7 +3058,7 @@ This method creates a complete copy of the tree including all paths and their re
 
    Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing.
 
-Note that 1) upsampling is not supported (cf. {upsample(double)}, and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.
+Note that 1) upsampling is not supported (cf. `Path.upsample(double)`), and 2) the position of nodes at branch points and tips remains unaltered during downsampling, as per `Path.downsample(double)`.
 
    **Signature:** ``downsample(double) -> void``
 
@@ -3383,7 +3417,7 @@ This method creates a new Viewer3D instance and copies all currently visible obj
 
 .. method:: recordRotation(arg0, arg1, arg2)
 
-   Records an animated rotation of the scene as a sequence of images.
+   Records an animated rotation of the scene around the specified axis as a sequence of images.
 
    **Signature:** ``recordRotation(float, int, File) -> void``
 
@@ -3466,4 +3500,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

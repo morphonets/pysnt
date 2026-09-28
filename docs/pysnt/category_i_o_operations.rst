@@ -148,15 +148,13 @@ PathAndFillManager
 
 .. method:: exportAllPathsAsSWC(arg0)
 
-   Exports all as Paths as SWC file(s). Multiple files are created if multiple Trees exist.
-
    **Signature:** ``exportAllPathsAsSWC(String) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the file path (including common basename) for exported files. The
+   * **arg0** (``str``)
 
-   **Returns:** (``bool``) true, if successful
+   **Returns:** ``bool``
 
 .. method:: exportFillsAsCSV(arg0)
 
@@ -424,4 +422,4 @@ Viewer3D
 
 ----
 
-*Category index generated on 2026-01-02 23:09:09*
+*Category index generated on 2026-09-27 22:17:09*

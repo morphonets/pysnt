@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.util",
   "extracted_at": "2026-01-02T22:36:44.863751",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.656032",
+  "enhancement_timestamp": "2026-09-27T22:17:09.029236",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -138,7 +138,7 @@
         }
       ],
       "documentation": "Java method: static contrastColor",
-      "javadoc_description": "Returns a suitable 'contrast' color.",
+      "javadoc_description": "Returns a BW 'contrast' color",
       "category": "Visualization",
       "deprecated": false,
       "since_version": null,
@@ -285,18 +285,18 @@
               "name": "arg0",
               "type": "int",
               "java_type": "int",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
             }
           ],
           "return_type": "Any",
           "java_return_type": "String;",
-          "return_description": "",
+          "return_description": "the maximum contrast colors as hex color strings",
           "throws": {}
         }
       ],
       "documentation": "Java method: static getDistinctColorsHex",
-      "javadoc_description": "",
+      "javadoc_description": "Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion",
       "category": "Visualization",
       "deprecated": false,
       "since_version": null,
@@ -437,18 +437,18 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "",
-              "javadoc_name": null
+              "description": "- string defining the color value",
+              "javadoc_name": "colorSpec"
             }
           ],
           "return_type": "Any",
           "java_return_type": "ColorRGB",
-          "return_description": "",
+          "return_description": "the color",
           "throws": {}
         }
       ],
       "documentation": "Java method: static valueOf",
-      "javadoc_description": "",
+      "javadoc_description": "Parses a color from the given string.\n\nThe following formats are supported: Hex format [HTML color codes starting with hash (#)], Color presets (e.g., 'blue', 'pink', 'silver', etc.), and integer triples of the form r,g,b, with each element in the range [0, 255].",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -505,23 +505,24 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
     "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 17,
+      "total_javadoc_methods": 31,
       "total_json_methods": 15,
-      "total_matches": 14,
-      "exact_matches": 13,
-      "signature_matches": 1,
+      "total_matches": 17,
+      "exact_matches": 17,
+      "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 3,
-      "unmatched_json": 1,
-      "match_percentage": 82.4
+      "unmatched_javadoc": 14,
+      "unmatched_json": -2,
+      "match_percentage": 54.8
     },
-    "unmatched_javadoc_methods": 3,
-    "unmatched_json_methods": 2,
-    "enhancement_quality_score": 0.927
+    "unmatched_javadoc_methods": 14,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.658
   }
 }

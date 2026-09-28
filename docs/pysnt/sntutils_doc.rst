@@ -66,7 +66,7 @@ Getters Methods
 
 .. py:method:: static getBackupCopies(File)
 
-   Retrieves a list of time-stamped backup files associated with a TRACES file
+   Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with timestamps.
 
 
 .. py:method:: static getContext()
@@ -155,7 +155,7 @@ Setters Methods
 
 .. py:method:: static setIsLoading(boolean)
 
-   
+   Shows or hides the loading splash screen. Calls nest safely: several independent call chains can be "loading" at once, so the splash only actually closes once every true has been balanced by a matching false, hence calls should be made in a try/finally block.
 
 
 Visualization Methods
@@ -187,7 +187,7 @@ Other Methods
 
 .. py:method:: static buildDate()
 
-   Retrieves Sholl Analysis implementation date
+   
 
 
 .. py:method:: static csvQuoteAndPrint(PrintWriter, Object)
@@ -197,7 +197,7 @@ Other Methods
 
 .. py:method:: static error(String, Throwable)
 
-   
+   As `error(String, Throwable)`, but allows suppressing the notification-center mirroring, e.g., when the caller has already surfaced the message to the user synchronously (a modal dialog)
 
 
 .. py:method:: static extractReadableTimeStamp(File)

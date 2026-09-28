@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.analysis",
   "extracted_at": "2026-01-02T22:36:44.629307",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-01-02T23:09:09.658593",
+  "enhancement_timestamp": "2026-09-27T22:17:09.032184",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -471,22 +471,25 @@
               "name": "arg0",
               "type": "str",
               "java_type": "String",
-              "description": "",
-              "javadoc_name": null
+              "description": "- the measurement (N_NODES, NODE_RADIUS, etc.)",
+              "javadoc_name": "measurement"
             }
           ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
-          "return_description": "",
+          "return_description": "the SNTChart holding the box plot",
           "throws": {}
         }
       ],
       "documentation": "Java method: getBoxPlot",
-      "javadoc_description": "",
+      "javadoc_description": "Assembles a Box and Whisker Plot for the specified measurement (cell morphometry).",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [],
+      "see_also": [
+        "getMetrics()",
+        "TreeStatistics.getMetric(String)"
+      ],
       "examples": []
     },
     {
@@ -1237,33 +1240,35 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "StrahlerAnalyzer.getBranches()",
-    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)",
-    "TreeStatistics.getPrimaryBranches()",
-    "AllenCompartment.getOntologyDepth()",
-    "TreeStatistics.getPrimaryPaths()",
-    "StrahlerAnalyzer.getHighestBranchOrder()",
-    "TreeStatistics.getHistogram(String)",
-    "AllenCompartment",
+    "getMetrics()",
     "TreeStatistics",
+    "StrahlerAnalyzer.getBranches()",
+    "TreeStatistics.getPrimaryPaths()",
+    "TreeStatistics.getHistogram(String)",
+    "StrahlerAnalyzer.getHighestBranchOrder()",
+    "AllenCompartment",
+    "Constant Field Values",
+    "TreeStatistics.getPrimaryBranches()",
     "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "Constant Field Values"
+    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)",
+    "AllenCompartment.getOntologyDepth()",
+    "TreeStatistics.getMetric(String)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 32,
+      "total_javadoc_methods": 35,
       "total_json_methods": 36,
-      "total_matches": 25,
-      "exact_matches": 20,
-      "signature_matches": 5,
+      "total_matches": 28,
+      "exact_matches": 21,
+      "signature_matches": 7,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 7,
-      "unmatched_json": 11,
-      "match_percentage": 78.1
+      "unmatched_json": 8,
+      "match_percentage": 80.0
     },
     "unmatched_javadoc_methods": 7,
-    "unmatched_json_methods": 21,
-    "enhancement_quality_score": 0.806
+    "unmatched_json_methods": 19,
+    "enhancement_quality_score": 0.82
   }
 }

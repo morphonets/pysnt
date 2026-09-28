@@ -72,21 +72,21 @@ Geodesic: Path distance from node to root along the tree structure Radial: Eucli
 Usage Example 
 ```
 // Create analyzer for a neuronal tree
-PersistenceAnalyzer analyzer = new PersistenceAnalyzer(tree);
-
-// Get persistence diagram using geodesic distance
-List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-
-// Each inner list contains [birth, death] values
-for (List<Double> pair : diagram) {
-    double birth = pair.get(0);
-    double death = pair.get(1);
-    double persistence = death - birth;
-    System.out.println("Branch: birth=" + birth + ", death=" + death + ", persistence=" + persistence);
-}
-
-// Get persistence landscape
-double[] landscape = analyzer.getLandscape("geodesic", 5, 100);
+ PersistenceAnalyzer analyzer = new PersistenceAnalyzer(tree);
+ 
+ // Get persistence diagram using geodesic distance
+ List<List<Double>> diagram = analyzer.getDiagram("geodesic");
+ 
+ // Each inner list contains [birth, death] values
+ for (List<Double> pair : diagram) {
+     double birth = pair.get(0);
+     double death = pair.get(1);
+     double persistence = death - birth;
+     System.out.println("Branch: birth=" + birth + ", death=" + death + ", persistence=" + persistence);
+ }
+ 
+ // Get persistence landscape
+ double[] landscape = analyzer.getLandscape("geodesic", 5, 100);
 ```
 
 
@@ -115,13 +115,13 @@ All values are non-negative (|death - birth|) For geodesic descriptor: sum of al
 Example Usage: 
 ```
 List<Double> barcode = analyzer.getBarcode("geodesic");
-
-// Find most significant branches
-barcode.sort(Collections.reverseOrder());
-System.out.println("Top 5 most persistent branches:");
-for (int i = 0; i < Math.min(5, barcode.size()); i++) {
-    System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
-}
+ 
+ // Find most significant branches
+ barcode.sort(Collections.reverseOrder());
+ System.out.println("Top 5 most persistent branches:");
+ for (int i = 0; i < Math.min(5, barcode.size()); i++) {
+     System.out.println("Branch " + (i+1) + ": " + barcode.get(i));
+ }
 ```
 
 
@@ -150,12 +150,12 @@ Number of points = Number of tips in the tree All values are non-negative For ge
 Example usage: 
 ```
 List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-for (List<Double> point : diagram) {
-    double birth = point.get(0);
-    double death = point.get(1);
-    double persistence = death - birth;
-    System.out.println("Branch: persistence = " + persistence);
-}
+ for (List<Double> point : diagram) {
+     double birth = point.get(0);
+     double death = point.get(1);
+     double persistence = death - birth;
+     System.out.println("Branch: persistence = " + persistence);
+ }
 ```
 
 
@@ -175,21 +175,21 @@ Correspondence: The order of node pairs matches the order of birth-death pairs r
 Example Usage: 
 ```
 List<List<Double>> diagram = analyzer.getDiagram("geodesic");
-List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
-
-for (int i = 0; i < diagram.size(); i++) {
-    List<Double> birthDeath = diagram.get(i);
-    List<SWCPoint> nodesPair = nodes.get(i);
-    
-    double persistence = birthDeath.get(1) - birthDeath.get(0);
-    SWCPoint branchPoint = nodesPair.get(0);
-    SWCPoint tipPoint = nodesPair.get(1);
-    
-    System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
-                      persistence, 
-                      branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
-                      tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
-}
+ List<List<SWCPoint>> nodes = analyzer.getDiagramNodes("geodesic");
+ 
+ for (int i = 0; i < diagram.size(); i++) {
+     List<Double> birthDeath = diagram.get(i);
+     List<SWCPoint> nodesPair = nodes.get(i);
+     
+     double persistence = birthDeath.get(1) - birthDeath.get(0);
+     SWCPoint branchPoint = nodesPair.get(0);
+     SWCPoint tipPoint = nodesPair.get(1);
+     
+     System.out.printf("Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n",
+                       persistence, 
+                       branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),
+                       tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());
+ }
 ```
 
 
