@@ -1,0 +1,236 @@
+{
+  "class_name": "NeurolucidaImporter",
+  "package": "sc.fiji.snt.io",
+  "extracted_at": "2026-09-27T23:01:02.140082",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.316613",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "a double array {xScale, yScale, zSpacing} in the file's units",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCalibration",
+      "javadoc_description": "Returns the spatial calibration parsed from the file header.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMarkerColors",
+      "overloads": [
+        {
+          "signature": "getMarkerColors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of marker colors (may contain nulls)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMarkerColors",
+      "javadoc_description": "Returns the colors for each parsed marker, in the same order as getMarkerPoints().",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMarkerLabels",
+      "overloads": [
+        {
+          "signature": "getMarkerLabels() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of marker labels",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMarkerLabels",
+      "javadoc_description": "Returns the labels for each parsed marker, in the same order as getMarkerPoints().",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMarkerPoints",
+      "overloads": [
+        {
+          "signature": "getMarkerPoints() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of marker centroid positions",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMarkerPoints",
+      "javadoc_description": "Returns the marker centroids parsed from <marker> elements. Each entry is a double[3] array of {x, y, z} coordinates in the file's coordinate system (typically micrometers).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSpacingUnits",
+      "overloads": [
+        {
+          "signature": "getSpacingUnits() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the spacing units",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpacingUnits",
+      "javadoc_description": "Returns the spacing units string (default \"um\").",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTrees",
+      "overloads": [
+        {
+          "signature": "getTrees() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "collection of Tree objects; may be empty if no trees were found",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTrees",
+      "javadoc_description": "Returns the parsed trees (one per <tree> element in the file).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isNeurolucidaXML",
+      "overloads": [
+        {
+          "signature": "static isNeurolucidaXML(InputStream) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "InputStream",
+              "description": "- a mark-supported input stream positioned at the start of the file",
+              "javadoc_name": "is"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the content appears to be a Neurolucida XML file",
+          "throws": {
+            "IOException": "- if the stream cannot be read"
+          }
+        }
+      ],
+      "documentation": "Java method: static isNeurolucidaXML",
+      "javadoc_description": "Checks whether the given input stream starts with Neurolucida XML content. The stream must support `InputStream.mark(int)`.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "NeurolucidaImporter(InputStream)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "InputStream"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "NeurolucidaImporter(File)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "NeurolucidaImporter(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for NeurolucidaImporter"
+    }
+  ],
+  "javadoc_description": "Importer for Neurolucida XML files (Neuromorphological File Specification / NMF format). Parses <tree> elements into SNT Path/Tree objects and <marker> elements into bookmark data (centroid coordinates). Contours and vessels are skipped in this implementation.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "NMF Specification",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

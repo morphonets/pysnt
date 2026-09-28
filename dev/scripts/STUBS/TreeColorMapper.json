@@ -1,7 +1,7 @@
 {
   "class_name": "TreeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:45.027007",
+  "extracted_at": "2026-09-27T23:01:11.594650",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -170,28 +170,6 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(Tree, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "map(Tree, Profile, ColorTable) -> void",
           "params": [
             {
@@ -230,6 +208,28 @@
               "name": "arg2",
               "type": "Any",
               "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "map(Tree, String, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
             }
           ],
           "return_type": "None",
@@ -367,24 +367,24 @@
       "name": "static unMap",
       "overloads": [
         {
-          "signature": "static unMap(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "static unMap(Tree) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static unMap(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",
@@ -400,12 +400,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "TreeColorMapper()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "TreeColorMapper(Context)",
           "params": [
             {
@@ -414,6 +408,12 @@
               "java_type": "Context"
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "TreeColorMapper()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

@@ -1,0 +1,796 @@
+{
+  "class_name": "OBJMesh",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2026-09-27T23:01:02.734106",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.306229",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "computePrincipalAxes",
+      "overloads": [
+        {
+          "signature": "computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh",
+              "javadoc_name": "hemiHalf"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computePrincipalAxes",
+      "javadoc_description": "Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated `getPrincipalAxes(String)` method.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "duplicate",
+      "overloads": [
+        {
+          "signature": "duplicate() -> OBJMesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: duplicate",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAngleWithLocalDirection",
+      "overloads": [
+        {
+          "signature": "getAngleWithLocalDirection(SNTPoint, [D, String, int) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "- the point at which to compute the local mesh direction",
+              "javadoc_name": "point"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the acute angle in degrees (0-90°) between the direction vector and local mesh direction, or NaN if computation fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAngleWithLocalDirection",
+      "javadoc_description": "Computes the angle between a direction vector and the local mesh direction at a point. This is useful for e.g., analyzing how neuronal processes align with the local curvature of surfaces (neuropil meshes).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox(String) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"left\", \"l\", \"right\", \"r\" otherwise bounding box is retrieved for both hemi-halves, i.e., the full mesh. It is ignored if a hemisphere was already specified in the constructor.",
+              "javadoc_name": "hemiHalf"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "the minimum bounding box",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoundingBox",
+      "javadoc_description": "Gets the minimum bounding box of this mesh.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid(String) -> SNTPoint",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise centroid is retrieved for both hemi-halves, i.e., the full mesh",
+              "javadoc_name": "hemihalf"
+            }
+          ],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "the SNT point defining the (X,Y,Z) center of the (hemi)mesh.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCentroid",
+      "javadoc_description": "Returns the spatial centroid of the specified (hemi)mesh.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDisplayedHemisphere",
+      "overloads": [
+        {
+          "signature": "getDisplayedHemisphere() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the displayed hemisphere",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDisplayedHemisphere",
+      "javadoc_description": "Returns the currently displayed hemisphere: \"left\", \"right\", or \"both\".",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDrawable",
+      "overloads": [
+        {
+          "signature": "getDrawable() -> DrawableVBO",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DrawableVBO",
+          "return_description": "the DrawableVBO",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDrawable",
+      "javadoc_description": "Returns the DrawableVBO associated with this mesh",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLabel",
+      "overloads": [
+        {
+          "signature": "getLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLabel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLocalDirection",
+      "overloads": [
+        {
+          "signature": "getLocalDirection(SNTPoint, String, int) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "- the point at which to compute the local mesh direction",
+              "javadoc_name": "point"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "the local mesh direction as a normalized vector, or null if computation fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLocalDirection",
+      "javadoc_description": "Computes the local direction of the mesh at a specific point using nearest neighbor analysis. This method finds the dominant direction of mesh curvature in the local neighborhood of the specified point, which is useful for analyzing how structures align with curved anatomical surfaces.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getObj",
+      "overloads": [
+        {
+          "signature": "getObj() -> OBJFile",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJFile",
+          "return_description": "the OBJFile",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getObj",
+      "javadoc_description": "Returns the OBJFile associated with this mesh",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPrincipalAxes",
+      "overloads": [
+        {
+          "signature": "getPrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh",
+              "javadoc_name": "hemiHalf"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrincipalAxes",
+      "javadoc_description": "Computes the principal axes of the mesh using Principal Component Analysis (PCA). The principal axes represent the directions of maximum, medium, and minimum variance in the mesh geometry, providing insight into the overall shape orientation of this mesh.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSourceAnnotation",
+      "overloads": [
+        {
+          "signature": "getSourceAnnotation() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "the source annotation, or null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSourceAnnotation",
+      "javadoc_description": "Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSymmetryAxis",
+      "overloads": [
+        {
+          "signature": "getSymmetryAxis() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSymmetryAxis",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getVertices",
+      "overloads": [
+        {
+          "signature": "getVertices() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getVertices(String) -> Collection",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"left\", \"l\", \"right\", \"r\" otherwise centroid is retrieved for both hemi-halves, i.e., the full mesh",
+              "javadoc_name": "hemihalf"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "the mesh vertices as SNTPoints",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getVertices",
+      "javadoc_description": "Returns the mesh vertices.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getVolume",
+      "overloads": [
+        {
+          "signature": "getVolume() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the mesh volume",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getVolume",
+      "javadoc_description": "Gets the volume of this mesh.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "label",
+      "overloads": [
+        {
+          "signature": "label() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: label",
+      "javadoc_description": "Gets this mesh label.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBoundingBoxColor",
+      "overloads": [
+        {
+          "signature": "setBoundingBoxColor(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the color of the mesh bounding box, either a 1) HTML color codes starting with hash (",
+              "javadoc_name": "boundingBoxColor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setBoundingBoxColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBoundingBoxColor",
+      "javadoc_description": "Determines whether the mesh bounding box should be displayed.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(ColorRGB, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "- the color to render the imported file",
+              "javadoc_name": "color"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setColor(String, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setColor",
+      "javadoc_description": "Assigns a color to the mesh.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDisplayedHemisphere",
+      "overloads": [
+        {
+          "signature": "setDisplayedHemisphere(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- \"left\" (or \"l\", \"1\"), \"right\" (or \"r\", \"2\"), or anything else for both hemispheres",
+              "javadoc_name": "hemiHalf"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDisplayedHemisphere",
+      "javadoc_description": "Sets which hemisphere of this mesh is displayed.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLabel",
+      "overloads": [
+        {
+          "signature": "setLabel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the label to set",
+              "javadoc_name": "label"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLabel",
+      "javadoc_description": "Sets the label for this mesh.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSourceAnnotation",
+      "overloads": [
+        {
+          "signature": "setSourceAnnotation(BrainAnnotation) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the source annotation",
+              "javadoc_name": "annotation"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSourceAnnotation",
+      "javadoc_description": "Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSymmetryAxis",
+      "overloads": [
+        {
+          "signature": "setSymmetryAxis(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSymmetryAxis",
+      "javadoc_description": "Sets the axis defining the symmetry plane of this mesh (e.g., the sagittal plane for most bilateria models), where X=0; Y=1; Z=2;",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTransparency",
+      "overloads": [
+        {
+          "signature": "setTransparency(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the mesh transparency (in percentage).",
+              "javadoc_name": "transparencyPercent"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTransparency",
+      "javadoc_description": "Changes the transparency of this mesh.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setVolume",
+      "overloads": [
+        {
+          "signature": "setVolume(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the volume to set",
+              "javadoc_name": "volume"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setVolume",
+      "javadoc_description": "Sets the volume of this mesh.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "translate",
+      "overloads": [
+        {
+          "signature": "translate(SNTPoint) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "- the translation offset",
+              "javadoc_name": "offset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: translate",
+      "javadoc_description": "Translates the vertices of this mesh by the specified offset. If mesh is displayed, changes may only occur once scene is rebuilt.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "OBJMesh(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "OBJMesh(URL, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "URL"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for OBJMesh"
+    }
+  ],
+  "javadoc_description": "An OBJMesh stores information about a Wavefront .obj mesh loaded into Viewer3D, with access points to its OBJFile and DrawableVBO",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "Object",
+    "Constant Field Values"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 28,
+      "total_json_methods": 25,
+      "total_matches": 28,
+      "exact_matches": 28,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -3,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

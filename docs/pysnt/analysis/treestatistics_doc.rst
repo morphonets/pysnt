@@ -69,7 +69,7 @@ Getters Methods
    Gets the list of supported metrics.
 
 
-.. py:method:: getAnnotatedLength(int, String)
+.. py:method:: getAnnotatedLength(int, String, boolean)
 
    Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.
 
@@ -119,7 +119,7 @@ Getters Methods
    Gets the average remote bifurcation angle of the analyzed tree. Note that branch points with more than 2 children are ignored during the computation.
 
 
-.. py:method:: getBranchPoints(BrainAnnotation, boolean)
+.. py:method:: getBranchPoints(BrainAnnotation)
 
    Gets the position of all the branch points in the analyzed tree associated with the specified annotation.
 
@@ -129,12 +129,12 @@ Getters Methods
    Gets all the branches in the analyzed tree. A branch is defined as the Path composed of all the nodes between two branching points or between one branching point and a termination point.
 
 
-.. py:method:: getCableLength(BrainAnnotation)
+.. py:method:: getCableLength(BrainAnnotation, boolean)
 
    Gets the cable length associated with the specified compartment (neuropil label).
 
 
-.. py:method:: getCableLengthNorm(BrainAnnotation)
+.. py:method:: getCableLengthNorm(BrainAnnotation, boolean)
 
    Gets the cable length associated with the specified compartment (neuropil label) as a ratio of total length.
 
@@ -169,7 +169,7 @@ Getters Methods
    Computes the `DescriptiveStatistics` for the specified measurement.
 
 
-.. py:method:: getFlowPlot(String, Collection)
+.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 
@@ -209,12 +209,12 @@ Getters Methods
    Computes the specified metric.
 
 
-.. py:method:: static getMetrics(String)
+.. py:method:: static getMetrics()
 
    Gets the list of most commonly used metrics.
 
 
-.. py:method:: getNBranchPoints(BrainAnnotation)
+.. py:method:: getNBranchPoints(BrainAnnotation, boolean)
 
    Gets the number of branch points in the analyzed tree associated with the specified annotation.
 

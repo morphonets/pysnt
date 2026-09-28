@@ -1,0 +1,1143 @@
+{
+  "class_name": "TreeUtils",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2026-09-27T23:01:12.178369",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.421469",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static analyzeEndpointClusters",
+      "overloads": [
+        {
+          "signature": "static analyzeEndpointClusters(Collection) -> TreeUtils$EndpointClusterAnalysis",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to analyze (must have at least 2)",
+              "javadoc_name": "paths"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "TreeUtils$EndpointClusterAnalysis",
+          "return_description": "analysis result, or null if paths is null or has fewer than 2 paths",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static analyzeEndpointClusters",
+      "javadoc_description": "Analyzes a collection of paths to determine which endpoint cluster (starts or ends) is more tightly grouped, suggesting the root location.\n\nThis is useful for auto-orienting paths toward a common root when the user hasn't specified an explicit root location.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static assignUniqueColors",
+      "overloads": [
+        {
+          "signature": "static assignUniqueColors(Tree) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- an optional string defining a hue to be excluded. Either 'red', 'green', 'blue', or 'dim'.",
+              "javadoc_name": "excludedHue"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignUniqueColors(Tree, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignUniqueColors(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignUniqueColors(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignUniqueColors",
+      "javadoc_description": "Assigns distinct colors to a collection of Trees.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTColor.getDistinctColors(int, String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static assignUniqueColorsIfUncolored",
+      "overloads": [
+        {
+          "signature": "static assignUniqueColorsIfUncolored(Collection, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static assignUniqueColorsIfUncolored(Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the trees to (conditionally) color",
+              "javadoc_name": "trees"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static assignUniqueColorsIfUncolored",
+      "javadoc_description": "Assigns distinct colors to trees that have no pre-existing color information, leaving trees with custom path/node colors untouched. Useful when importing files that may already carry authored colors (e.g., a traces file with per-path color attributes), where forcing a single flat color per tree would discard that information.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTColor.getDistinctColors(int, String)",
+        "assignUniqueColors(Collection)",
+        "Path.hasCustomColor()",
+        "Path.hasNodeColors()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static canFormContinuousChain",
+      "overloads": [
+        {
+          "signature": "static canFormContinuousChain(Collection, double) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to check",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if paths can be ordered into a continuous chain within tolerance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static canFormContinuousChain",
+      "javadoc_description": "Checks if a collection of paths can form a spatially continuous chain within a given tolerance.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static collectChildren",
+      "overloads": [
+        {
+          "signature": "static collectChildren(Path, Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static collectChildren",
+      "javadoc_description": "Collects direct children of a path into the provided collection.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static collectDescendants",
+      "overloads": [
+        {
+          "signature": "static collectDescendants(Path, Collection) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static collectDescendants",
+      "javadoc_description": "Collects all descendants (children, grandchildren, etc.) of a path into the provided collection.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static computeUprightAngle",
+      "overloads": [
+        {
+          "signature": "static computeUprightAngle(Tree, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the tree to analyze",
+              "javadoc_name": "tree"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the rotation angle in degrees, or Double.NaN if it cannot be computed (e.g., single-node tree)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static computeUprightAngle",
+      "javadoc_description": "Computes the angle (in degrees) needed to make a tree appear upright in the XY viewing plane. The angle is derived from the extension angle of a reference path (the longest geodesic by default) using compass conventions where North is 0 degrees.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static countDescendants",
+      "overloads": [
+        {
+          "signature": "static countDescendants(Path) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static countDescendants",
+      "javadoc_description": "Counts all descendants (children, grandchildren, etc.) of a path.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static filterByCableLength",
+      "overloads": [
+        {
+          "signature": "static filterByCableLength(Collection, double, double) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the input collection",
+              "javadoc_name": "trees"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a new list containing only the trees that satisfy the bounds",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static filterByCableLength",
+      "javadoc_description": "Returns the subset of trees whose cable length falls within the specified range.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static filterBySize",
+      "overloads": [
+        {
+          "signature": "static filterBySize(Collection, int, int) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the input collection",
+              "javadoc_name": "trees"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a new list containing only the trees that satisfy the bounds",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static filterBySize",
+      "javadoc_description": "Returns the subset of trees whose path count falls within the specified range.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static findClosestEndpoints",
+      "overloads": [
+        {
+          "signature": "static findClosestEndpoints(Path, Path) -> TreeUtils$EndpointMatch",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- first path",
+              "javadoc_name": "p1"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "TreeUtils$EndpointMatch",
+          "return_description": "EndpointMatch describing the closest pairing, or null if either path is empty",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static findClosestEndpoints",
+      "javadoc_description": "Finds the closest endpoint pairing between two paths. Checks all four combinations: start-start, start-end, end-start, end-end.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static findPathsNeedingReversal",
+      "overloads": [
+        {
+          "signature": "static findPathsNeedingReversal(Collection, PointInImage) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to analyze",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of paths that should be reversed (subset of input)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static findPathsNeedingReversal",
+      "javadoc_description": "Determines which paths need to be reversed so that their start nodes point toward a given root location.\n\nA path should be reversed if its end node is closer to the root than its start node.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getConnectedTree",
+      "overloads": [
+        {
+          "signature": "static getConnectedTree(Path) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- a path in the tree",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "a Tree containing only the connected component",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getConnectedTree",
+      "javadoc_description": "Gets the connected tree (component) containing the given path. This traverses up to the root and then collects all descendants, ensuring we only get paths that are actually connected via parent-child relationships.\n\nThis is useful when paths may share a tree ID but are not actually connected (e.g., orphaned paths or paths awaiting relationship rebuild).",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getMaxOrder",
+      "overloads": [
+        {
+          "signature": "static getMaxOrder(Path) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- a path in the tree",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the maximum order value found in the connected tree, or 0 if retrieval fails",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getMaxOrder",
+      "javadoc_description": "Returns the maximum path order in the connected tree containing the given path. Higher values indicate deeper/more developed trees.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getRootPath",
+      "overloads": [
+        {
+          "signature": "static getRootPath(Path) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getRootPath",
+      "javadoc_description": "Gets the root path of the tree containing the given path.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isAncestorOf",
+      "overloads": [
+        {
+          "signature": "static isAncestorOf(Path, Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to check if it's an ancestor",
+              "javadoc_name": "potentialAncestor"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if potentialAncestor is an ancestor of potentialDescendant",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isAncestorOf",
+      "javadoc_description": "Checks if 'potentialAncestor' is an ancestor of 'potentialDescendant'. This traverses up the parent chain from potentialDescendant.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isDescendantOf",
+      "overloads": [
+        {
+          "signature": "static isDescendantOf(Path, Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to check if it's a descendant",
+              "javadoc_name": "potentialDescendant"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if potentialDescendant is a descendant of potentialAncestor",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isDescendantOf",
+      "javadoc_description": "Checks if 'potentialDescendant' is a descendant of 'potentialAncestor'. This is equivalent to checking if potentialDescendant is in the subtree rooted at potentialAncestor (excluding potentialAncestor itself).",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static isInSubtree",
+      "overloads": [
+        {
+          "signature": "static isInSubtree(Path, Path) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to search for",
+              "javadoc_name": "target"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if target is root or any descendant of root",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isInSubtree",
+      "javadoc_description": "Checks if 'target' is in the subtree rooted at 'root'. This traverses down through all descendants of root.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static merge",
+      "overloads": [
+        {
+          "signature": "static merge(Collection) -> Tree",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "-",
+              "javadoc_name": "trees"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "the merged tree",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static merge",
+      "javadoc_description": "Combines all trees into a single Tree container.\n\nNote that no effort is made to make the merge structure topographylically valid. This is simply a convenience method to collect paths in a single contained for operations that do not require an accurate graph structure, e.g., Sholl Analysis.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static mergeContinuousPaths",
+      "overloads": [
+        {
+          "signature": "static mergeContinuousPaths(Tree, double) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- maximum angle (in degrees) between parent end tangent and child start tangent for paths to be considered continuous. Suggested values:\n\n15-20°: strict, only nearly straight continuations 30°: moderate (default), allows gentle curves 45°: permissive, may merge actual branches\n\nUse 0 or negative to disable merging.",
+              "javadoc_name": "angleThreshold"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of paths that were merged (and removed from the tree)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static mergeContinuousPaths",
+      "javadoc_description": "Merges paths that continue along the same trajectory at branch points, reducing fragmentation in auto-traced reconstructions.\n\nProblem: Auto-tracers like GWDTTracer often create separate paths at every branch point, even when the neurite continues straight through. This may fragment continuous paths into smaller segments.\n\nSolution: At each junction where a parent path ends and children begin, this method checks if any child's trajectory aligns with the parent's. If the angle between their direction vectors is below the threshold, the most aligned child is merged into the parent, creating a longer continuous path.\n\nAlgorithm:\n\nFor each path with children, compute the parent's end tangent vector (direction at its terminal segment) For each child, compute its start tangent vector Find the child with the smallest angle to the parent direction If this angle ≤ threshold: append child's nodes to parent, reparent grandchildren to the extended parent, remove child from tree Repeat until no more merges are possible\n\nCriteria for merging: Two paths are merged when:\n\nThe child starts at the parent's endpoint (branch point) The angle between their direction vectors ≤ angleThreshold The child is the most aligned among all siblings\n\nExample: A traced axon might be split into 5 paths at 4 branch points: \n```\nBefore: P1 → P2 → P3 → P4 → P5  (with side branches B1, B2, B3, B4)\n After:  P1 (merged trunk) with children B1, B2, B3, B4\n```\n",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "Before: P1 → P2 → P3 → P4 → P5  (with side branches B1, B2, B3, B4)\n After:  P1 (merged trunk) with children B1, B2, B3, B4"
+      ]
+    },
+    {
+      "name": "static mergePaths",
+      "overloads": [
+        {
+          "signature": "static mergePaths(List, boolean) -> Path",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- paths to merge, in order (should be oriented for merging)",
+              "javadoc_name": "orderedPaths"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the merged path, or null if input is empty",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static mergePaths",
+      "javadoc_description": "Merges a list of paths into a single path by appending nodes sequentially.\n\nThe paths should be pre-ordered and oriented using `orderByEndpointProximity(java.util.Collection<sc.fiji.snt.Path>)` and `orientPathsForMerging(java.util.List<sc.fiji.snt.Path>)`.\n\nThis method handles:\n\nAppending nodes from each path to the result Optionally reparenting children of merged paths to the result Preserving the first path's parent connection (if any)\n\nNote: This method does NOT delete the original paths from any manager. The caller is responsible for cleanup.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static orderByEndpointProximity",
+      "overloads": [
+        {
+          "signature": "static orderByEndpointProximity(Collection) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to order (at least 2)",
+              "javadoc_name": "paths"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "ordered list forming a chain, or empty list if paths cannot form a continuous chain",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static orderByEndpointProximity",
+      "javadoc_description": "Orders a collection of paths to form a spatially continuous chain based on endpoint proximity. The algorithm greedily connects paths by finding the closest endpoint pairs.\n\nThis method does NOT modify the paths (no reversal). Use `orientPathsForMerging(List)` on the result to fix orientations.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static orientPathsForMerging",
+      "overloads": [
+        {
+          "signature": "static orientPathsForMerging(List) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- list of paths previously ordered by orderByEndpointProximity(java.util.Collection<sc.fiji.snt.Path>)",
+              "javadoc_name": "orderedPaths"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static orientPathsForMerging",
+      "javadoc_description": "Orients paths in a chain so they can be merged end-to-start. After this operation, each path's end node will be near the next path's start node.\n\nPaths are reversed in-place as needed.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static orientPathsTowardRoot",
+      "overloads": [
+        {
+          "signature": "static orientPathsTowardRoot(Collection, PointInImage) -> int",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to orient",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of paths that were reversed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static orientPathsTowardRoot",
+      "javadoc_description": "Orients paths so their start nodes point toward a given root location. Paths are reversed in-place if their end node is closer to the root.\n\nNote: This method does NOT update child branch points. Callers must handle child branch point updates separately if paths have children.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static rasterize",
+      "overloads": [
+        {
+          "signature": "static rasterize(Tree, double, double) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static rasterize(Tree) -> ImagePlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the Tree to rasterize",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the rasterized 32-bit image (voxel values in [0, 1])",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static rasterize",
+      "javadoc_description": "Rasterizes a tree into a 3D image with the specified voxel sizes.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "TreeToRaster"
+      ],
+      "examples": []
+    },
+    {
+      "name": "static restoreNodeValues",
+      "overloads": [
+        {
+          "signature": "static restoreNodeValues(Map) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Dict[str, Any]",
+              "java_type": "Map",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static restoreNodeValues",
+      "javadoc_description": "Restores per-path node values captured by `snapshotNodeValues(Tree)`.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static snapshotNodeValues",
+      "overloads": [
+        {
+          "signature": "static snapshotNodeValues(Tree) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "map keyed by path; entries are null when the path had no assigned values",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static snapshotNodeValues",
+      "javadoc_description": "Snapshots the per-node values (node.v) for each path in a Tree so they can be restored later.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static splitByPrimaryPaths",
+      "overloads": [
+        {
+          "signature": "static splitByPrimaryPaths(Tree) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static splitByPrimaryPaths",
+      "javadoc_description": "Splits a tree with multiple primary paths into separate trees, one rooted at each primary path.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static suggestRootLocation",
+      "overloads": [
+        {
+          "signature": "static suggestRootLocation(Collection, PointInImage) -> PointInImage",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the paths to analyze",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the suggested root location, or null if it cannot be determined",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static suggestRootLocation",
+      "javadoc_description": "Analyzes paths and suggests auto-orientation based on:\n\nIf a reference point (e.g., ROI centroid) is provided, orient toward it For 3+ paths: find the tighter endpoint cluster as the root For 2 paths: find the closest endpoint pair as the root",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static syncCanvasOffset",
+      "overloads": [
+        {
+          "signature": "static syncCanvasOffset(Path, Path) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static syncCanvasOffset",
+      "javadoc_description": "Applies the parent's canvas offset to the child path and all its descendants. This ensures paths are in the same coordinate space after connection. Node coordinates are transformed to maintain the same visual position.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Static utilities for Trees.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "TreeUtils.EndpointClusterAnalysis",
+    "TreeUtils.EndpointMatch"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "TreeToRaster",
+    "Object",
+    "Path.hasCustomColor()",
+    "SNTColor.getDistinctColors(int)",
+    "SNTColor.getDistinctColors(int, String)",
+    "Path.hasNodeColors()",
+    "assignUniqueColors(Collection)"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 35,
+      "total_json_methods": 30,
+      "total_matches": 35,
+      "exact_matches": 35,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -5,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

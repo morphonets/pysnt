@@ -1,9 +1,9 @@
 {
   "class_name": "GroupedTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.527020",
+  "extracted_at": "2026-09-27T23:00:58.760532",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.028482",
+  "enhancement_timestamp": "2026-09-27T23:02:20.307022",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -109,6 +109,22 @@
       "name": "getBoxPlot",
       "overloads": [
         {
+          "signature": "getBoxPlot(String) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getBoxPlot(String, Collection) -> SNTChart",
           "params": [
             {
@@ -129,59 +145,6 @@
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "the box plot",
-          "throws": {}
-        },
-        {
-          "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getBoxPlot(String) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
           "throws": {}
         },
         {
@@ -220,6 +183,43 @@
           "java_return_type": "SNTChart",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: getBoxPlot",
@@ -233,6 +233,50 @@
     {
       "name": "getFlowPlot",
       "overloads": [
+        {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
         {
           "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
           "params": [
@@ -321,50 +365,6 @@
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "the SNTChart holding the flow plot",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -642,14 +642,14 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
+    "getFlowPlot(String, Collection, String, double, boolean)",
+    "getHistogram(String)",
     "TreeStatistics",
+    "Object",
     "setMinNBins(int)",
     "MultiTreeStatistics",
-    "getFlowPlot(String, Collection, String, double, boolean)",
-    "MultiTreeStatistics.getMetrics()",
-    "Object",
-    "getHistogram(String)",
-    "TreeStatistics.getMetric(String)"
+    "TreeStatistics.getMetric(String)",
+    "MultiTreeStatistics.getMetrics()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

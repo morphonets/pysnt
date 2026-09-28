@@ -3,7 +3,7 @@ Constants Index
 
 This page provides an index of all public static fields (constants) available in the SNT API.
 
-Total constants: **500** across **35** classes.
+Total constants: **522** across **37** classes.
 
 
 A
@@ -12,11 +12,13 @@ A
 * `PathManagerUI.ABORT <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field ABORT of type int
 * `SNTUI.ABORT <../pysnt/sntui_doc.html>`_ (``int``) - Field ABORT of type int
 * `TracerCanvas.ABORT <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field ABORT of type int
+* `SeedManager.ABORT <../pysnt/seedmanager_doc.html>`_ (``int``) - Field ABORT of type int
 * `SNTChart.ABORT <../pysnt/sntchart_doc.html>`_ (``int``) - Field ABORT of type int
 * `InteractiveTracerCanvas.ABORT <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field ABORT of type int
 * `PathManagerUI.ALLBITS <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field ALLBITS of type int
 * `SNTUI.ALLBITS <../pysnt/sntui_doc.html>`_ (``int``) - Field ALLBITS of type int
 * `TracerCanvas.ALLBITS <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field ALLBITS of type int
+* `SeedManager.ALLBITS <../pysnt/seedmanager_doc.html>`_ (``int``) - Field ALLBITS of type int
 * `SNTChart.ALLBITS <../pysnt/sntchart_doc.html>`_ (``int``) - Field ALLBITS of type int
 * `InteractiveTracerCanvas.ALLBITS <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field ALLBITS of type int
 * `InsectBrainCompartment.ANY_HEMISPHERE <../pysnt/insectbraincompartment_doc.html>`_ (``char``) - Field ANY_HEMISPHERE of type char
@@ -43,6 +45,7 @@ B
 * `PathManagerUI.BOTTOM_ALIGNMENT <../pysnt/pathmanagerui_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
 * `SNTUI.BOTTOM_ALIGNMENT <../pysnt/sntui_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
 * `TracerCanvas.BOTTOM_ALIGNMENT <../pysnt/tracercanvas_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
+* `SeedManager.BOTTOM_ALIGNMENT <../pysnt/seedmanager_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
 * `SNTChart.BOTTOM_ALIGNMENT <../pysnt/sntchart_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
 * `InteractiveTracerCanvas.BOTTOM_ALIGNMENT <../pysnt/interactivetracercanvas_doc.html>`_ (``float``) - Field BOTTOM_ALIGNMENT of type float
 * `ConvexHullAnalyzer.BOUNDARY_SIZE <../pysnt/convexhullanalyzer_doc.html>`_ (``String``) - Field BOUNDARY_SIZE of type String
@@ -96,6 +99,7 @@ C
 * `PathManagerUI.CENTER_ALIGNMENT <../pysnt/pathmanagerui_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
 * `SNTUI.CENTER_ALIGNMENT <../pysnt/sntui_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
 * `TracerCanvas.CENTER_ALIGNMENT <../pysnt/tracercanvas_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
+* `SeedManager.CENTER_ALIGNMENT <../pysnt/seedmanager_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
 * `SNTChart.CENTER_ALIGNMENT <../pysnt/sntchart_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
 * `InteractiveTracerCanvas.CENTER_ALIGNMENT <../pysnt/interactivetracercanvas_doc.html>`_ (``float``) - Field CENTER_ALIGNMENT of type float
 * `RootAngleAnalyzer.CENTRIPETAL_BIAS <../pysnt/rootangleanalyzer_doc.html>`_ (``String``) - Field CENTRIPETAL_BIAS of type String
@@ -177,6 +181,7 @@ E
 * `PathManagerUI.ERROR <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field ERROR of type int
 * `SNTUI.ERROR <../pysnt/sntui_doc.html>`_ (``int``) - Field ERROR of type int
 * `TracerCanvas.ERROR <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field ERROR of type int
+* `SeedManager.ERROR <../pysnt/seedmanager_doc.html>`_ (``int``) - Field ERROR of type int
 * `SNTChart.ERROR <../pysnt/sntchart_doc.html>`_ (``int``) - Field ERROR of type int
 * `InteractiveTracerCanvas.ERROR <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field ERROR of type int
 * `PathManagerUI.EXIT_ON_CLOSE <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field EXIT_ON_CLOSE of type int
@@ -198,6 +203,7 @@ F
 * `PathManagerUI.FRAMEBITS <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field FRAMEBITS of type int
 * `SNTUI.FRAMEBITS <../pysnt/sntui_doc.html>`_ (``int``) - Field FRAMEBITS of type int
 * `TracerCanvas.FRAMEBITS <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field FRAMEBITS of type int
+* `SeedManager.FRAMEBITS <../pysnt/seedmanager_doc.html>`_ (``int``) - Field FRAMEBITS of type int
 * `SNTChart.FRAMEBITS <../pysnt/sntchart_doc.html>`_ (``int``) - Field FRAMEBITS of type int
 * `InteractiveTracerCanvas.FRAMEBITS <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field FRAMEBITS of type int
 * `FillerThread.FREE <../pysnt/fillerthread_doc.html>`_ (``byte``) - Field FREE of type byte
@@ -230,6 +236,7 @@ H
 * `PathManagerUI.HEIGHT <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field HEIGHT of type int
 * `SNTUI.HEIGHT <../pysnt/sntui_doc.html>`_ (``int``) - Field HEIGHT of type int
 * `TracerCanvas.HEIGHT <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field HEIGHT of type int
+* `SeedManager.HEIGHT <../pysnt/seedmanager_doc.html>`_ (``int``) - Field HEIGHT of type int
 * `SNTChart.HEIGHT <../pysnt/sntchart_doc.html>`_ (``int``) - Field HEIGHT of type int
 * `InteractiveTracerCanvas.HEIGHT <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field HEIGHT of type int
 * `TreeStatistics.HEIGHT <../pysnt/treestatistics_doc.html>`_ (``String``) - Field HEIGHT of type String
@@ -282,6 +289,7 @@ I
 K
 -
 
+* `TreeProperties.KEY_CANVAS_OFFSET <../pysnt/treeproperties_doc.html>`_ (``String``) - Field KEY_CANVAS_OFFSET of type String
 * `TreeProperties.KEY_COLOR <../pysnt/treeproperties_doc.html>`_ (``String``) - Field KEY_COLOR of type String
 * `Tree.KEY_COLOR <../pysnt/tree_doc.html>`_ (``String``) - Field KEY_COLOR of type String
 * `TreeProperties.KEY_COMPARTMENT <../pysnt/treeproperties_doc.html>`_ (``String``) - Field KEY_COMPARTMENT of type String
@@ -309,6 +317,7 @@ L
 * `PathManagerUI.LEFT_ALIGNMENT <../pysnt/pathmanagerui_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
 * `SNTUI.LEFT_ALIGNMENT <../pysnt/sntui_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
 * `TracerCanvas.LEFT_ALIGNMENT <../pysnt/tracercanvas_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
+* `SeedManager.LEFT_ALIGNMENT <../pysnt/seedmanager_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
 * `SNTChart.LEFT_ALIGNMENT <../pysnt/sntchart_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
 * `InteractiveTracerCanvas.LEFT_ALIGNMENT <../pysnt/interactivetracercanvas_doc.html>`_ (``float``) - Field LEFT_ALIGNMENT of type float
 * `InsectBrainCompartment.LEFT_HEMISPHERE <../pysnt/insectbraincompartment_doc.html>`_ (``char``) - Field LEFT_HEMISPHERE of type char
@@ -432,6 +441,7 @@ P
 * `PathManagerUI.PROPERTIES <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field PROPERTIES of type int
 * `SNTUI.PROPERTIES <../pysnt/sntui_doc.html>`_ (``int``) - Field PROPERTIES of type int
 * `TracerCanvas.PROPERTIES <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field PROPERTIES of type int
+* `SeedManager.PROPERTIES <../pysnt/seedmanager_doc.html>`_ (``int``) - Field PROPERTIES of type int
 * `SNTChart.PROPERTIES <../pysnt/sntchart_doc.html>`_ (``int``) - Field PROPERTIES of type int
 * `InteractiveTracerCanvas.PROPERTIES <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field PROPERTIES of type int
 * `SNTChart.PROPERTIES_COMMAND <../pysnt/sntchart_doc.html>`_ (``String``) - Field PROPERTIES_COMMAND of type String
@@ -448,6 +458,7 @@ R
 * `PathManagerUI.RIGHT_ALIGNMENT <../pysnt/pathmanagerui_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
 * `SNTUI.RIGHT_ALIGNMENT <../pysnt/sntui_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
 * `TracerCanvas.RIGHT_ALIGNMENT <../pysnt/tracercanvas_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
+* `SeedManager.RIGHT_ALIGNMENT <../pysnt/seedmanager_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
 * `SNTChart.RIGHT_ALIGNMENT <../pysnt/sntchart_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
 * `InteractiveTracerCanvas.RIGHT_ALIGNMENT <../pysnt/interactivetracercanvas_doc.html>`_ (``float``) - Field RIGHT_ALIGNMENT of type float
 * `InsectBrainCompartment.RIGHT_HEMISPHERE <../pysnt/insectbraincompartment_doc.html>`_ (``char``) - Field RIGHT_HEMISPHERE of type char
@@ -464,6 +475,8 @@ S
 -
 
 * `SNTChart.SAVE_COMMAND <../pysnt/sntchart_doc.html>`_ (``String``) - Field SAVE_COMMAND of type String
+* `OBJMesh.SHADING_DEFAULT <../pysnt/objmesh_doc.html>`_ (``int``) - Field SHADING_DEFAULT of type int
+* `OBJMesh.SHADING_SMOOTH <../pysnt/objmesh_doc.html>`_ (``int``) - Field SHADING_SMOOTH of type int
 * `Viewer2D.SHOLL_COUNTS <../pysnt/viewer2d_doc.html>`_ (``String``) - Field SHOLL_COUNTS of type String
 * `TreeColorMapper.SHOLL_COUNTS <../pysnt/treecolormapper_doc.html>`_ (``String``) - Field SHOLL_COUNTS of type String
 * `MultiTreeColorMapper.SHOLL_COUNTS <../pysnt/multitreecolormapper_doc.html>`_ (``String``) - Field SHOLL_COUNTS of type String
@@ -476,6 +489,7 @@ S
 * `PathManagerUI.SOMEBITS <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field SOMEBITS of type int
 * `SNTUI.SOMEBITS <../pysnt/sntui_doc.html>`_ (``int``) - Field SOMEBITS of type int
 * `TracerCanvas.SOMEBITS <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field SOMEBITS of type int
+* `SeedManager.SOMEBITS <../pysnt/seedmanager_doc.html>`_ (``int``) - Field SOMEBITS of type int
 * `SNTChart.SOMEBITS <../pysnt/sntchart_doc.html>`_ (``int``) - Field SOMEBITS of type int
 * `InteractiveTracerCanvas.SOMEBITS <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field SOMEBITS of type int
 * `MultiTreeColorMapper.STRAHLER_NUMBER <../pysnt/multitreecolormapper_doc.html>`_ (``String``) - Field STRAHLER_NUMBER of type String
@@ -516,10 +530,13 @@ T
 * `FillerThread.TIMED_OUT <../pysnt/fillerthread_doc.html>`_ (``int``) - Field TIMED_OUT of type int
 * `TracerThread.TIMED_OUT <../pysnt/tracerthread_doc.html>`_ (``int``) - Field TIMED_OUT of type int
 * `SearchThread.TIMED_OUT <../pysnt/searchthread_doc.html>`_ (``int``) - Field TIMED_OUT of type int
+* `SNTUtils.TIMESTAMP_REGEX <../pysnt/sntutils_doc.html>`_ (``String``) - Field TIMESTAMP_REGEX of type String
+* `SeedManager.TOOL_TIP_TEXT_KEY <../pysnt/seedmanager_doc.html>`_ (``String``) - Field TOOL_TIP_TEXT_KEY of type String
 * `SNTChart.TOOL_TIP_TEXT_KEY <../pysnt/sntchart_doc.html>`_ (``String``) - Field TOOL_TIP_TEXT_KEY of type String
 * `PathManagerUI.TOP_ALIGNMENT <../pysnt/pathmanagerui_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
 * `SNTUI.TOP_ALIGNMENT <../pysnt/sntui_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
 * `TracerCanvas.TOP_ALIGNMENT <../pysnt/tracercanvas_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
+* `SeedManager.TOP_ALIGNMENT <../pysnt/seedmanager_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
 * `SNTChart.TOP_ALIGNMENT <../pysnt/sntchart_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
 * `InteractiveTracerCanvas.TOP_ALIGNMENT <../pysnt/interactivetracercanvas_doc.html>`_ (``float``) - Field TOP_ALIGNMENT of type float
 * `SNTUI.TRACING_PAUSED <../pysnt/sntui_doc.html>`_ (``int``) - Field TRACING_PAUSED of type int
@@ -527,6 +544,7 @@ T
 U
 -
 
+* `SeedManager.UNDEFINED_CONDITION <../pysnt/seedmanager_doc.html>`_ (``int``) - Field UNDEFINED_CONDITION of type int
 * `SNTChart.UNDEFINED_CONDITION <../pysnt/sntchart_doc.html>`_ (``int``) - Field UNDEFINED_CONDITION of type int
 * `TreeProperties.UNSET <../pysnt/treeproperties_doc.html>`_ (``String``) - Field UNSET of type String
 * `Tree.UNSET <../pysnt/tree_doc.html>`_ (``String``) - Field UNSET of type String
@@ -549,12 +567,16 @@ W
 -
 
 * `SNTUI.WAITING_FOR_SIGMA_POINT_I <../pysnt/sntui_doc.html>`_ (``int``) - Field WAITING_FOR_SIGMA_POINT_I of type int
+* `SeedManager.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT <../pysnt/seedmanager_doc.html>`_ (``int``) - Field WHEN_ANCESTOR_OF_FOCUSED_COMPONENT of type int
 * `SNTChart.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT <../pysnt/sntchart_doc.html>`_ (``int``) - Field WHEN_ANCESTOR_OF_FOCUSED_COMPONENT of type int
+* `SeedManager.WHEN_FOCUSED <../pysnt/seedmanager_doc.html>`_ (``int``) - Field WHEN_FOCUSED of type int
 * `SNTChart.WHEN_FOCUSED <../pysnt/sntchart_doc.html>`_ (``int``) - Field WHEN_FOCUSED of type int
+* `SeedManager.WHEN_IN_FOCUSED_WINDOW <../pysnt/seedmanager_doc.html>`_ (``int``) - Field WHEN_IN_FOCUSED_WINDOW of type int
 * `SNTChart.WHEN_IN_FOCUSED_WINDOW <../pysnt/sntchart_doc.html>`_ (``int``) - Field WHEN_IN_FOCUSED_WINDOW of type int
 * `PathManagerUI.WIDTH <../pysnt/pathmanagerui_doc.html>`_ (``int``) - Field WIDTH of type int
 * `SNTUI.WIDTH <../pysnt/sntui_doc.html>`_ (``int``) - Field WIDTH of type int
 * `TracerCanvas.WIDTH <../pysnt/tracercanvas_doc.html>`_ (``int``) - Field WIDTH of type int
+* `SeedManager.WIDTH <../pysnt/seedmanager_doc.html>`_ (``int``) - Field WIDTH of type int
 * `SNTChart.WIDTH <../pysnt/sntchart_doc.html>`_ (``int``) - Field WIDTH of type int
 * `InteractiveTracerCanvas.WIDTH <../pysnt/interactivetracercanvas_doc.html>`_ (``int``) - Field WIDTH of type int
 

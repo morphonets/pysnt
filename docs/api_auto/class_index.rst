@@ -4,7 +4,7 @@ Class Index
 
 This page provides an index of all classes available in the SNT API.
 
-Total classes: **76**
+Total classes: **87**
 
 
 A
@@ -13,6 +13,7 @@ A
 * `AllenCompartment <../pysnt/annotation/allencompartment.html>`_ (``sc.fiji.snt.annotation``) - Defines an Allen Reference Atlas (ARA) [Allen Mouse Common Coordinate Framework] annotation.
 * `AllenUtils <../pysnt/annotation/allenutils.html>`_ (``sc.fiji.snt.annotation``) - Utility methods for accessing/handling AllenCompartments
 * `Annotation3D <../pysnt/viewer/annotation3d.html>`_ (``sc.fiji.snt.viewer``) - An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in Viewer3D that can be used to highlight nodes in a Tree or locations in a mesh.
+* `AStarRefiner <../pysnt/astarrefiner.html>`_ (``sc.fiji.snt``) - Post-hoc A* re-tracing of a single, already-existing Path: treats the path's current nodes as waypoints and re-derives the geometry between them via  ``` SNT.
 
 B
 -
@@ -20,6 +21,9 @@ B
 * `BiSearch <../pysnt/tracing/bisearch.html>`_ (``sc.fiji.snt.tracing``) - A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.
 * `BiSearchNode <../pysnt/tracing/bisearchnode.html>`_ (``sc.fiji.snt.tracing``) - A SearchNode which can maintain both a from-start and from-goal search state.
 * `BoundingBox <../pysnt/util/boundingbox.html>`_ (``sc.fiji.snt.util``) - A BoundingBox contains information (including spatial calibration) of a tracing canvas bounding box, i.
+* `BundleDetector <../pysnt/util/bundledetector.html>`_ (``sc.fiji.snt.util``) - Detects regions where two paths run parallel to each other for a sustained distance, complementary to CrossoverFinder (which catches brief perpendicular near-crossings).
+* `BvvMultiSource <../pysnt/viewer/bvvmultisource.html>`_ (``sc.fiji.snt.viewer``) - A group of BvvSource objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the leader source are propagated to all follower sources.
+* `BvvUtils <../pysnt/viewer/bvvutils.html>`_ (``sc.fiji.snt.viewer``) - Package-private utility methods shared across BVV-related classes (Bvv, ChannelUnmixingCard, etc.
 
 C
 -
@@ -72,10 +76,16 @@ M
 N
 -
 
+* `NeurolucidaImporter <../pysnt/io/neurolucidaimporter.html>`_ (``sc.fiji.snt.io``) - Importer for Neurolucida XML files (Neuromorphological File Specification / NMF format).
 * `NeuroMorphoLoader <../pysnt/io/neuromorpholoader.html>`_ (``sc.fiji.snt.io``) - Importer for retrieving SWC data from neuromorpho.
 * `NodeColorMapper <../pysnt/analysis/nodecolormapper.html>`_ (``sc.fiji.snt.analysis``) - Class for color coding of NodeStatistics results.
 * `NodeProfiler <../pysnt/analysis/nodeprofiler.html>`_ (``sc.fiji.snt.analysis``) - Command to retrieve node profiles (plots of voxel intensities sampled across Path nodes).
 * `NodeStatistics <../pysnt/analysis/nodestatistics.html>`_ (``sc.fiji.snt.analysis``) - Computes summary and descriptive statistics from a Collection of nodes, including convenience methods to plot distributions of such data.
+
+O
+-
+
+* `OBJMesh <../pysnt/viewer/objmesh.html>`_ (``sc.fiji.snt.viewer``) - An OBJMesh stores information about a Wavefront .
 
 P
 -
@@ -106,6 +116,8 @@ S
 * `SciViewSNT <../pysnt/sciviewsnt.html>`_ (``sc.fiji.snt``) - Bridges SNT to SciView, allowing Trees to be rendered as scenery objects
 * `SearchNode <../pysnt/tracing/searchnode.html>`_ (``sc.fiji.snt.tracing``) - Interface representing a node in 3D space that can be used in pathfinding and search algorithms.
 * `SearchThread <../pysnt/tracing/searchthread.html>`_ (``sc.fiji.snt.tracing``) - Implements a common thread that explores the image using a variety of strategies, e.
+* `SeedManager <../pysnt/seedmanager.html>`_ (``sc.fiji.snt``) - Reusable JPanel that controls a SeedOverlay: visibility, LUT, confidence range, transparency, counters, CSV import/export/clear, plus an inline JTable for browsing and editing individual seeds.
+* `SeedOverlayRenderer <../pysnt/seedoverlayrenderer.html>`_ (``sc.fiji.snt``) - Stateless renderer that draws a SeedOverlay's seeds onto a TracerCanvas's Graphics2D.
 * `ShollAnalyzer <../pysnt/analysis/shollanalyzer.html>`_ (``sc.fiji.snt.analysis``) - Class to retrieve Sholl metrics from a Tree.
 * `SkeletonConverter <../pysnt/analysis/skeletonconverter.html>`_ (``sc.fiji.snt.analysis``) - Enhanced documentation for SkeletonConverter class.
 * `SNT <../pysnt/snt.html>`_ (``sc.fiji.snt``) - Implements the SNT plugin.
@@ -116,6 +128,7 @@ S
 * `SNTTable <../pysnt/analysis/snttable.html>`_ (``sc.fiji.snt.analysis``) - Extension of DefaultGenericTable with (minor) scripting conveniences.
 * `SNTUI <../pysnt/sntui.html>`_ (``sc.fiji.snt``) - Implements SNT's main dialog.
 * `SNTUtils <../pysnt/sntutils.html>`_ (``sc.fiji.snt``) - Static utilities for SNT
+* `SpectralSimilarity <../pysnt/filter/spectralsimilarity.html>`_ (``sc.fiji.snt.filter``) - Computes a spectral similarity map from a multichannel (e.
 * `StrahlerAnalyzer <../pysnt/analysis/strahleranalyzer.html>`_ (``sc.fiji.snt.analysis``) - Class to perform Horton-Strahler analysis on a Tree.
 * `SWCPoint <../pysnt/util/swcpoint.html>`_ (``sc.fiji.snt.util``) - Defines a node in an SWC reconstruction.
 
@@ -128,6 +141,8 @@ T
 * `TreeColorMapper <../pysnt/analysis/treecolormapper.html>`_ (``sc.fiji.snt.analysis``) - Class for color coding Trees.
 * `TreeProperties <../pysnt/treeproperties.html>`_ (``sc.fiji.snt``) - Allows standardized metadata to be associated to a Tree.
 * `TreeStatistics <../pysnt/analysis/treestatistics.html>`_ (``sc.fiji.snt.analysis``) - Computes summary and descriptive statistics from properties of Paths and Nodes in a Tree, including convenience methods to plot distributions of such data.
+* `TreeToRaster <../pysnt/util/treetoraster.html>`_ (``sc.fiji.snt.util``) - Rasterizes a Tree into a 3D image using frustum (truncated-cone) geometry with partial-volume supersampling.
+* `TreeUtils <../pysnt/util/treeutils.html>`_ (``sc.fiji.snt.util``) - Static utilities for Trees.
 * `Tubeness <../pysnt/filter/tubeness.html>`_ (``sc.fiji.snt.filter``) - Computes a tubeness (vesselness) filter on a multi-dimensional image using multi-scale eigenvalue analysis of the Hessian matrix.
 
 V

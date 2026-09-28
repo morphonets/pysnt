@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: return type containing 'List'
-Total matching methods: **87**
+Total matching methods: **103**
 
 Matching Methods
 ----------------
@@ -31,10 +31,6 @@ Matching Methods
      - :class:`Path`
      - ``List[Any]``
      - Returns the nodes which are indicated to be a join (junction/branch point), either in this Path object, or any other...
-   * - :meth:`SNTTable.geColumnHeaders`
-     - :class:`SNTTable`
-     - ``List[Any]``
-     - No description available
    * - :meth:`NodeStatistics.get`
      - :class:`NodeStatistics`
      - ``List[Any]``
@@ -71,6 +67,10 @@ Matching Methods
      - :class:`PathStatistics`
      - ``List[Any]``
      - Gets all the paths being analyzed as branches. In PathStatistics, all paths are considered as branches since each path...
+   * - :meth:`StrahlerAnalyzer.getBranches`
+     - :class:`StrahlerAnalyzer`
+     - ``List[Any]``
+     - No description available
    * - :meth:`TreeStatistics.getBranches`
      - :class:`TreeStatistics`
      - ``List[Any]``
@@ -83,6 +83,10 @@ Matching Methods
      - :class:`Path`
      - ``List[Any]``
      - Gets the list of child paths that branch from this path. Returns the collection of paths that have this path as their...
+   * - :meth:`SNTTable.getColumnHeaders`
+     - :class:`SNTTable`
+     - ``List[Any]``
+     - No description available
    * - :meth:`PathAndFillManager.getCorrespondences`
      - :class:`PathAndFillManager`
      - ``List[Any]``
@@ -95,6 +99,10 @@ Matching Methods
      - :class:`PersistenceAnalyzer`
      - ``List[Any]``
      - Gets the tree nodes associated with each point in the persistence diagram. This method returns the actual SWCPoint...
+   * - :meth:`BvvMultiSource.getFollowers`
+     - :class:`BvvMultiSource`
+     - ``List[Any]``
+     - No description available
    * - :meth:`MultiTreeStatistics.getFractalDimension`
      - :class:`MultiTreeStatistics`
      - ``List[Any]``
@@ -131,6 +139,18 @@ Matching Methods
      - :class:`TreeStatistics`
      - ``List[Any]``
      - Retrieves the branches of highest Strahler order in the Tree. This typically correspond to the most 'internal' branches...
+   * - :meth:`NeurolucidaImporter.getMarkerColors`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the colors for each parsed marker, in the same order as getMarkerPoints().
+   * - :meth:`NeurolucidaImporter.getMarkerLabels`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the labels for each parsed marker, in the same order as getMarkerPoints().
+   * - :meth:`NeurolucidaImporter.getMarkerPoints`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the marker centroids parsed from elements. Each entry is a double[3] array of {x, y, z} coordinates in the...
    * - :meth:`ShollAnalyzer.getMaximaRadii`
      - :class:`ShollAnalyzer`
      - ``List[Any]``
@@ -199,6 +219,10 @@ Matching Methods
      - :class:`Tree`
      - ``List[Any]``
      - Gets the list of all nodes tagged as Path.SWC_SOMA.
+   * - :meth:`BvvMultiSource.getSources`
+     - :class:`BvvMultiSource`
+     - ``List[Any]``
+     - No description available
    * - :meth:`Tree.getTips`
      - :class:`Tree`
      - ``List[Any]``
@@ -207,6 +231,10 @@ Matching Methods
      - :class:`AllenCompartment`
      - ``List[Any]``
      - Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this...
+   * - :meth:`NeurolucidaImporter.getTrees`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the parsed trees (one per element in the file).
    * - :meth:`SNTService.getTrees`
      - :class:`SNTService`
      - ``List[Any]``
@@ -219,6 +247,10 @@ Matching Methods
      - :class:`Viewer3D`
      - ``List[Any]``
      - Returns all trees added to this viewer.
+   * - :meth:`OBJMesh.getVertices`
+     - :class:`OBJMesh`
+     - ``List[Any]``
+     - Returns the mesh vertices.
    * - :meth:`Tree.list`
      - :class:`Tree`
      - ``List[Any]``
@@ -235,10 +267,26 @@ Matching Methods
      - :class:`MouseLightLoader`
      - ``List[Any]``
      - Returns a collection of four demo reconstructions NB: Data is cached locally. No internet connection required.
+   * - :meth:`TreeUtils.static filterByCableLength`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Returns the subset of trees whose cable length falls within the specified range.
+   * - :meth:`TreeUtils.static filterBySize`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Returns the subset of trees whose path count falls within the specified range.
+   * - :meth:`BundleDetector.static find`
+     - :class:`BundleDetector`
+     - ``List[Any]``
+     - Entry point: detect bundle events for a collection of paths using the given config. Internally constructs a...
    * - :meth:`CrossoverFinder.static find`
      - :class:`CrossoverFinder`
      - ``List[Any]``
      - Entry point: detect crossover events for a collection of paths using the given config.
+   * - :meth:`TreeUtils.static findPathsNeedingReversal`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Determines which paths need to be reversed so that their start nodes point toward a given root location. A path should...
    * - :meth:`MouseLightQuerier.static getAllIDs`
      - :class:`MouseLightQuerier`
      - ``List[Any]``
@@ -339,6 +387,18 @@ Matching Methods
      - :class:`Tree`
      - ``List[Any]``
      - Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.
+   * - :meth:`SNTColor.static okabeIto4Colors`
+     - :class:`SNTColor`
+     - ``List[Any]``
+     - Returns a 4-color subset of the Okabe-Ito colorblind-safe palette
+   * - :meth:`SNTColor.static okabeIto6Colors`
+     - :class:`SNTColor`
+     - ``List[Any]``
+     - Returns the 6-color Okabe-Ito colorblind-safe palette
+   * - :meth:`TreeUtils.static orderByEndpointProximity`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Orders a collection of paths to form a spatially continuous chain based on endpoint proximity. The algorithm greedily...
    * - :meth:`SNTUtils.static randomPaths`
      - :class:`SNTUtils`
      - ``List[Any]``
@@ -347,6 +407,10 @@ Matching Methods
      - :class:`AllenUtils`
      - ``List[Any]``
      - No description available
+   * - :meth:`TreeUtils.static splitByPrimaryPaths`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Splits a tree with multiple primary paths into separate trees, one rooted at each primary path.
    * - :meth:`ImgUtils.static splitIntoBlocks`
      - :class:`ImgUtils`
      - ``List[Any]``
@@ -366,4 +430,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-09-27 22:17:09*
+*Filtered index generated on 2026-09-27 23:02:20*

@@ -3,13 +3,14 @@ Method Index
 
 This page provides an index of all methods available in the SNT API.
 
-Total methods: **1424** across **75** classes.
+Total methods: **1601** across **86** classes.
 
 
 A
 ^
 
 * `Frangi.accept <../pysnt/filter/frangi_doc.html#accept>`_ - No description available
+* `SpectralSimilarity.accept <../pysnt/filter/spectralsimilarity_doc.html#accept>`_ - No description available
 * `Tubeness.accept <../pysnt/filter/tubeness_doc.html#accept>`_ - No description available
 * `SNT.accessToValidImageData <../pysnt/snt_doc.html#accessToValidImageData>`_ - Checks whether valid image data exists.
 * `AllenCompartment.acronym <../pysnt/annotation/allencompartment_doc.html#acronym>`_ - Description copied from interface: BrainAnnotation
@@ -18,6 +19,7 @@ A
 * `PathManagerUI.action <../pysnt/pathmanagerui_doc.html#action>`_ - No description available
 * `SNTChart.action <../pysnt/analysis/sntchart_doc.html#action>`_ - No description available
 * `SNTUI.action <../pysnt/sntui_doc.html#action>`_ - No description available
+* `SeedManager.action <../pysnt/seedmanager_doc.html#action>`_ - No description available
 * `TracerCanvas.action <../pysnt/tracercanvas_doc.html#action>`_ - No description available
 * `SNTChart.actionPerformed <../pysnt/analysis/sntchart_doc.html#actionPerformed>`_ - Tiles specified charts displaying them on a grid. Charts's windows are made visible if not displayed.
 * `Fill.add <../pysnt/fill_doc.html#add>`_ - Adds a node to the filled structure.
@@ -27,12 +29,14 @@ A
 * `SNTChart.add <../pysnt/analysis/sntchart_doc.html#add>`_ - No description available
 * `SNTTable.add <../pysnt/analysis/snttable_doc.html#add>`_ - No description available
 * `SNTUI.add <../pysnt/sntui_doc.html#add>`_ - Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from...
+* `SeedManager.add <../pysnt/seedmanager_doc.html#add>`_ - No description available
 * `TracerCanvas.add <../pysnt/tracercanvas_doc.html#add>`_ - Sets the baseline for rendering diameter of path nodes
 * `Tree.add <../pysnt/tree_doc.html#add>`_ - Adds a new Path to this Tree.
 * `Viewer2D.add <../pysnt/viewer/viewer2d_doc.html#add>`_ - Appends a tree to the viewer rendered after the specified measurement.
 * `Viewer3D.add <../pysnt/viewer/viewer3d_doc.html#add>`_ - Script friendly method to add a supported object (Tree, OBJMesh, AbstractDrawable, etc.) to this viewer. Note that...
 * `SNTTable.addAll <../pysnt/analysis/snttable_doc.html#addAll>`_ - No description available
 * `SNTChart.addAncestorListener <../pysnt/analysis/sntchart_doc.html#addAncestorListener>`_ - No description available
+* `SeedManager.addAncestorListener <../pysnt/seedmanager_doc.html#addAncestorListener>`_ - No description available
 * `SNTChart.addChartMouseListener <../pysnt/analysis/sntchart_doc.html#addChartMouseListener>`_ - No description available
 * `MultiViewer3D.addColorBarLegend <../pysnt/viewer/multiviewer3d_doc.html#addColorBarLegend>`_ - No description available
 * `SNTChart.addColorBarLegend <../pysnt/analysis/sntchart_doc.html#addColorBarLegend>`_ - Adds a color bar legend (LUT ramp).
@@ -43,16 +47,19 @@ A
 * `PathManagerUI.addComponentListener <../pysnt/pathmanagerui_doc.html#addComponentListener>`_ - No description available
 * `SNTChart.addComponentListener <../pysnt/analysis/sntchart_doc.html#addComponentListener>`_ - No description available
 * `SNTUI.addComponentListener <../pysnt/sntui_doc.html#addComponentListener>`_ - No description available
+* `SeedManager.addComponentListener <../pysnt/seedmanager_doc.html#addComponentListener>`_ - No description available
 * `TracerCanvas.addComponentListener <../pysnt/tracercanvas_doc.html#addComponentListener>`_ - No description available
 * `PathManagerUI.addContainerListener <../pysnt/pathmanagerui_doc.html#addContainerListener>`_ - No description available
 * `SNTChart.addContainerListener <../pysnt/analysis/sntchart_doc.html#addContainerListener>`_ - No description available
 * `SNTUI.addContainerListener <../pysnt/sntui_doc.html#addContainerListener>`_ - No description available
+* `SeedManager.addContainerListener <../pysnt/seedmanager_doc.html#addContainerListener>`_ - No description available
 * `SNT.addFillerThread <../pysnt/snt_doc.html#addFillerThread>`_ - No description available
 * `SNTTable.addFirst <../pysnt/analysis/snttable_doc.html#addFirst>`_ - Sets the title of the table.
 * `InteractiveTracerCanvas.addFocusListener <../pysnt/interactivetracercanvas_doc.html#addFocusListener>`_ - No description available
 * `PathManagerUI.addFocusListener <../pysnt/pathmanagerui_doc.html#addFocusListener>`_ - No description available
 * `SNTChart.addFocusListener <../pysnt/analysis/sntchart_doc.html#addFocusListener>`_ - No description available
 * `SNTUI.addFocusListener <../pysnt/sntui_doc.html#addFocusListener>`_ - No description available
+* `SeedManager.addFocusListener <../pysnt/seedmanager_doc.html#addFocusListener>`_ - No description available
 * `TracerCanvas.addFocusListener <../pysnt/tracercanvas_doc.html#addFocusListener>`_ - No description available
 * `SNTTable.addGenericColumn <../pysnt/analysis/snttable_doc.html#addGenericColumn>`_ - No description available
 * `GroupedTreeStatistics.addGroup <../pysnt/analysis/groupedtreestatistics_doc.html#addGroup>`_ - Adds a comparison group to the analysis queue.
@@ -60,11 +67,13 @@ A
 * `PathManagerUI.addHierarchyBoundsListener <../pysnt/pathmanagerui_doc.html#addHierarchyBoundsListener>`_ - No description available
 * `SNTChart.addHierarchyBoundsListener <../pysnt/analysis/sntchart_doc.html#addHierarchyBoundsListener>`_ - No description available
 * `SNTUI.addHierarchyBoundsListener <../pysnt/sntui_doc.html#addHierarchyBoundsListener>`_ - No description available
+* `SeedManager.addHierarchyBoundsListener <../pysnt/seedmanager_doc.html#addHierarchyBoundsListener>`_ - No description available
 * `TracerCanvas.addHierarchyBoundsListener <../pysnt/tracercanvas_doc.html#addHierarchyBoundsListener>`_ - No description available
 * `InteractiveTracerCanvas.addHierarchyListener <../pysnt/interactivetracercanvas_doc.html#addHierarchyListener>`_ - No description available
 * `PathManagerUI.addHierarchyListener <../pysnt/pathmanagerui_doc.html#addHierarchyListener>`_ - No description available
 * `SNTChart.addHierarchyListener <../pysnt/analysis/sntchart_doc.html#addHierarchyListener>`_ - No description available
 * `SNTUI.addHierarchyListener <../pysnt/sntui_doc.html#addHierarchyListener>`_ - No description available
+* `SeedManager.addHierarchyListener <../pysnt/seedmanager_doc.html#addHierarchyListener>`_ - No description available
 * `TracerCanvas.addHierarchyListener <../pysnt/tracercanvas_doc.html#addHierarchyListener>`_ - No description available
 * `NodeProfiler.addInput <../pysnt/analysis/nodeprofiler_doc.html#addInput>`_ - No description available
 * `PathProfiler.addInput <../pysnt/analysis/pathprofiler_doc.html#addInput>`_ - No description available
@@ -73,11 +82,13 @@ A
 * `PathManagerUI.addInputMethodListener <../pysnt/pathmanagerui_doc.html#addInputMethodListener>`_ - No description available
 * `SNTChart.addInputMethodListener <../pysnt/analysis/sntchart_doc.html#addInputMethodListener>`_ - No description available
 * `SNTUI.addInputMethodListener <../pysnt/sntui_doc.html#addInputMethodListener>`_ - No description available
+* `SeedManager.addInputMethodListener <../pysnt/seedmanager_doc.html#addInputMethodListener>`_ - No description available
 * `TracerCanvas.addInputMethodListener <../pysnt/tracercanvas_doc.html#addInputMethodListener>`_ - No description available
 * `InteractiveTracerCanvas.addKeyListener <../pysnt/interactivetracercanvas_doc.html#addKeyListener>`_ - No description available
 * `PathManagerUI.addKeyListener <../pysnt/pathmanagerui_doc.html#addKeyListener>`_ - No description available
 * `SNTChart.addKeyListener <../pysnt/analysis/sntchart_doc.html#addKeyListener>`_ - No description available
 * `SNTUI.addKeyListener <../pysnt/sntui_doc.html#addKeyListener>`_ - No description available
+* `SeedManager.addKeyListener <../pysnt/seedmanager_doc.html#addKeyListener>`_ - No description available
 * `TracerCanvas.addKeyListener <../pysnt/tracercanvas_doc.html#addKeyListener>`_ - No description available
 * `Viewer3D.addLabel <../pysnt/viewer/viewer3d_doc.html#addLabel>`_ - Adds an annotation label to the scene.
 * `SNTTable.addLast <../pysnt/analysis/snttable_doc.html#addLast>`_ - No description available
@@ -87,16 +98,19 @@ A
 * `PathManagerUI.addMouseListener <../pysnt/pathmanagerui_doc.html#addMouseListener>`_ - No description available
 * `SNTChart.addMouseListener <../pysnt/analysis/sntchart_doc.html#addMouseListener>`_ - No description available
 * `SNTUI.addMouseListener <../pysnt/sntui_doc.html#addMouseListener>`_ - No description available
+* `SeedManager.addMouseListener <../pysnt/seedmanager_doc.html#addMouseListener>`_ - No description available
 * `TracerCanvas.addMouseListener <../pysnt/tracercanvas_doc.html#addMouseListener>`_ - No description available
 * `InteractiveTracerCanvas.addMouseMotionListener <../pysnt/interactivetracercanvas_doc.html#addMouseMotionListener>`_ - No description available
 * `PathManagerUI.addMouseMotionListener <../pysnt/pathmanagerui_doc.html#addMouseMotionListener>`_ - No description available
 * `SNTChart.addMouseMotionListener <../pysnt/analysis/sntchart_doc.html#addMouseMotionListener>`_ - No description available
 * `SNTUI.addMouseMotionListener <../pysnt/sntui_doc.html#addMouseMotionListener>`_ - No description available
+* `SeedManager.addMouseMotionListener <../pysnt/seedmanager_doc.html#addMouseMotionListener>`_ - No description available
 * `TracerCanvas.addMouseMotionListener <../pysnt/tracercanvas_doc.html#addMouseMotionListener>`_ - No description available
 * `InteractiveTracerCanvas.addMouseWheelListener <../pysnt/interactivetracercanvas_doc.html#addMouseWheelListener>`_ - No description available
 * `PathManagerUI.addMouseWheelListener <../pysnt/pathmanagerui_doc.html#addMouseWheelListener>`_ - No description available
 * `SNTChart.addMouseWheelListener <../pysnt/analysis/sntchart_doc.html#addMouseWheelListener>`_ - No description available
 * `SNTUI.addMouseWheelListener <../pysnt/sntui_doc.html#addMouseWheelListener>`_ - No description available
+* `SeedManager.addMouseWheelListener <../pysnt/seedmanager_doc.html#addMouseWheelListener>`_ - No description available
 * `TracerCanvas.addMouseWheelListener <../pysnt/tracercanvas_doc.html#addMouseWheelListener>`_ - No description available
 * `FillerThread.addNode <../pysnt/tracing/fillerthread_doc.html#addNode>`_ - No description available
 * `Path.addNode <../pysnt/path_doc.html#addNode>`_ - Appends a node to this Path.
@@ -107,6 +121,7 @@ A
 * `PathManagerUI.addNotify <../pysnt/pathmanagerui_doc.html#addNotify>`_ - No description available
 * `SNTChart.addNotify <../pysnt/analysis/sntchart_doc.html#addNotify>`_ - No description available
 * `SNTUI.addNotify <../pysnt/sntui_doc.html#addNotify>`_ - No description available
+* `SeedManager.addNotify <../pysnt/seedmanager_doc.html#addNotify>`_ - No description available
 * `TracerCanvas.addNotify <../pysnt/tracercanvas_doc.html#addNotify>`_ - No description available
 * `NodeProfiler.addOutput <../pysnt/analysis/nodeprofiler_doc.html#addOutput>`_ - No description available
 * `PathProfiler.addOutput <../pysnt/analysis/pathprofiler_doc.html#addOutput>`_ - No description available
@@ -125,12 +140,14 @@ A
 * `PathManagerUI.addPropertyChangeListener <../pysnt/pathmanagerui_doc.html#addPropertyChangeListener>`_ - No description available
 * `SNTChart.addPropertyChangeListener <../pysnt/analysis/sntchart_doc.html#addPropertyChangeListener>`_ - No description available
 * `SNTUI.addPropertyChangeListener <../pysnt/sntui_doc.html#addPropertyChangeListener>`_ - No description available
+* `SeedManager.addPropertyChangeListener <../pysnt/seedmanager_doc.html#addPropertyChangeListener>`_ - No description available
 * `TracerCanvas.addPropertyChangeListener <../pysnt/tracercanvas_doc.html#addPropertyChangeListener>`_ - No description available
 * `PathAndFillManager.addTree <../pysnt/pathandfillmanager_doc.html#addTree>`_ - Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.
 * `SciViewSNT.addTree <../pysnt/sciviewsnt_doc.html#addTree>`_ - Adds a tree to the associated SciView instance. A new SciView instance is automatically instantiated if...
 * `Viewer3D.addTree <../pysnt/viewer/viewer3d_doc.html#addTree>`_ - Adds a tree to this viewer. Note that calling updateView() may be required to ensure that the current View's bounding...
 * `PathAndFillManager.addTrees <../pysnt/pathandfillmanager_doc.html#addTrees>`_ - Adds a collection of Trees.
 * `SNTChart.addVetoableChangeListener <../pysnt/analysis/sntchart_doc.html#addVetoableChangeListener>`_ - No description available
+* `SeedManager.addVetoableChangeListener <../pysnt/seedmanager_doc.html#addVetoableChangeListener>`_ - No description available
 * `PathManagerUI.addWindowFocusListener <../pysnt/pathmanagerui_doc.html#addWindowFocusListener>`_ - No description available
 * `SNTUI.addWindowFocusListener <../pysnt/sntui_doc.html#addWindowFocusListener>`_ - No description available
 * `PathManagerUI.addWindowListener <../pysnt/pathmanagerui_doc.html#addWindowListener>`_ - No description available
@@ -141,6 +158,7 @@ A
 * `InsectBrainCompartment.aliases <../pysnt/annotation/insectbraincompartment_doc.html#aliases>`_ - Description copied from interface: BrainAnnotation
 * `PathAndFillManager.allPointsIterator <../pysnt/pathandfillmanager_doc.html#allPointsIterator>`_ - No description available
 * `Frangi.andThen <../pysnt/filter/frangi_doc.html#andThen>`_ - No description available
+* `SpectralSimilarity.andThen <../pysnt/filter/spectralsimilarity_doc.html#andThen>`_ - No description available
 * `Tubeness.andThen <../pysnt/filter/tubeness_doc.html#andThen>`_ - No description available
 * `SNTChart.annotate <../pysnt/analysis/sntchart_doc.html#annotate>`_ - Adds a subtitle to the chart.
 * `SNTChart.annotateCategory <../pysnt/analysis/sntchart_doc.html#annotateCategory>`_ - Annotates the specified category (Category plots only).
@@ -161,11 +179,13 @@ A
 * `SNTTable.appendRow <../pysnt/analysis/snttable_doc.html#appendRow>`_ - No description available
 * `SNTTable.appendRows <../pysnt/analysis/snttable_doc.html#appendRows>`_ - No description available
 * `SNTTable.appendToLastRow <../pysnt/analysis/snttable_doc.html#appendToLastRow>`_ - Appends a value to the last row in the specified column. If the table is empty, a new row is created first. The value...
+* `AStarRefiner.apply <../pysnt/astarrefiner_doc.html#apply>`_ - Applies the re-traced geometry to the original path via `Path.replaceNodes(Path)`. Must be called sequentially (not...
 * `Tree.applyCanvasOffset <../pysnt/tree_doc.html#applyCanvasOffset>`_ - Specifies the offset to be used when rendering this Tree in a TracerCanvas. Path coordinates remain unaltered.
 * `InteractiveTracerCanvas.applyComponentOrientation <../pysnt/interactivetracercanvas_doc.html#applyComponentOrientation>`_ - No description available
 * `PathManagerUI.applyComponentOrientation <../pysnt/pathmanagerui_doc.html#applyComponentOrientation>`_ - No description available
 * `SNTChart.applyComponentOrientation <../pysnt/analysis/sntchart_doc.html#applyComponentOrientation>`_ - No description available
 * `SNTUI.applyComponentOrientation <../pysnt/sntui_doc.html#applyComponentOrientation>`_ - No description available
+* `SeedManager.applyComponentOrientation <../pysnt/seedmanager_doc.html#applyComponentOrientation>`_ - No description available
 * `TracerCanvas.applyComponentOrientation <../pysnt/tracercanvas_doc.html#applyComponentOrientation>`_ - No description available
 * `PathManagerUI.applyDefaultTags <../pysnt/pathmanagerui_doc.html#applyDefaultTags>`_ - Applies a default (built-in) tag to selected Path(s).
 * `PathFitter.applyFit <../pysnt/pathfitter_doc.html#applyFit>`_ - Applies the fitted result to the path. For multithreaded processing: Must be called sequentially after all parallel...
@@ -173,13 +193,16 @@ A
 * `PathManagerUI.applyResourceBundle <../pysnt/pathmanagerui_doc.html#applyResourceBundle>`_ - No description available
 * `SNTUI.applyResourceBundle <../pysnt/sntui_doc.html#applyResourceBundle>`_ - No description available
 * `PathManagerUI.applySelectionFilter <../pysnt/pathmanagerui_doc.html#applySelectionFilter>`_ - Selects paths matching a morphometric criteria.
+* `AStarRefiner.applySettings <../pysnt/astarrefiner_doc.html#applySettings>`_ - No-op: kept for consistency with the other AbstractRefineHelper workers; there are no per-worker settings to propagate...
 * `PathFitter.applySettings <../pysnt/pathfitter_doc.html#applySettings>`_ - No description available
 * `SNTChart.applyStyle <../pysnt/analysis/sntchart_doc.html#applyStyle>`_ - No description available
 * `PathManagerUI.applyTag <../pysnt/pathmanagerui_doc.html#applyTag>`_ - Applies a custom tag/ color to selected Path(s).
+* `BvvMultiSource.applyTransform <../pysnt/viewer/bvvmultisource_doc.html#applyTransform>`_ - Applies the given transform as the fixed transform to the leader and all followers. This is the primary entry point for...
 * `InteractiveTracerCanvas.areFocusTraversalKeysSet <../pysnt/interactivetracercanvas_doc.html#areFocusTraversalKeysSet>`_ - No description available
 * `PathManagerUI.areFocusTraversalKeysSet <../pysnt/pathmanagerui_doc.html#areFocusTraversalKeysSet>`_ - No description available
 * `SNTChart.areFocusTraversalKeysSet <../pysnt/analysis/sntchart_doc.html#areFocusTraversalKeysSet>`_ - Saves this chart.
 * `SNTUI.areFocusTraversalKeysSet <../pysnt/sntui_doc.html#areFocusTraversalKeysSet>`_ - No description available
+* `SeedManager.areFocusTraversalKeysSet <../pysnt/seedmanager_doc.html#areFocusTraversalKeysSet>`_ - No description available
 * `TracerCanvas.areFocusTraversalKeysSet <../pysnt/tracercanvas_doc.html#areFocusTraversalKeysSet>`_ - No description available
 * `DefaultSearchNode.asPath <../pysnt/tracing/defaultsearchnode_doc.html#asPath>`_ - No description available
 * `DefaultSearchNode.asPathReversed <../pysnt/tracing/defaultsearchnode_doc.html#asPathReversed>`_ - No description available
@@ -202,11 +225,13 @@ B
 * `PathManagerUI.bounds <../pysnt/pathmanagerui_doc.html#bounds>`_ - No description available
 * `SNTChart.bounds <../pysnt/analysis/sntchart_doc.html#bounds>`_ - No description available
 * `SNTUI.bounds <../pysnt/sntui_doc.html#bounds>`_ - No description available
+* `SeedManager.bounds <../pysnt/seedmanager_doc.html#bounds>`_ - No description available
 * `TracerCanvas.bounds <../pysnt/tracercanvas_doc.html#bounds>`_ - No description available
 
 C
 ^
 
+* `AStarRefiner.call <../pysnt/astarrefiner_doc.html#call>`_ - Runs the A* re-trace on this path's current waypoints. Thread-safe: does not modify the original path. Call apply()...
 * `PathFitter.call <../pysnt/pathfitter_doc.html#call>`_ - Takes the signal from the image specified in the constructor to fit cross-section circles around the nodes of input...
 * `ConvexHullAnalyzer.cancel <../pysnt/analysis/convexhullanalyzer_doc.html#cancel>`_ - No description available
 * `MultiTreeStatistics.cancel <../pysnt/analysis/multitreestatistics_doc.html#cancel>`_ - Main method for testing and demonstration purposes. Creates a MultiTreeStatistics instance using demo data and displays...
@@ -235,6 +260,7 @@ C
 * `PathManagerUI.checkImage <../pysnt/pathmanagerui_doc.html#checkImage>`_ - No description available
 * `SNTChart.checkImage <../pysnt/analysis/sntchart_doc.html#checkImage>`_ - No description available
 * `SNTUI.checkImage <../pysnt/sntui_doc.html#checkImage>`_ - No description available
+* `SeedManager.checkImage <../pysnt/seedmanager_doc.html#checkImage>`_ - No description available
 * `TracerCanvas.checkImage <../pysnt/tracercanvas_doc.html#checkImage>`_ - No description available
 * `PathAndFillManager.clear <../pysnt/pathandfillmanager_doc.html#clear>`_ - Deletes all paths and fills.
 * `SNTTable.clear <../pysnt/analysis/snttable_doc.html#clear>`_ - No description available
@@ -260,7 +286,10 @@ C
 * `ConvexHull2D.compute <../pysnt/analysis/convexhull2d_doc.html#compute>`_ - Description copied from class: AbstractConvexHull
 * `ConvexHull3D.compute <../pysnt/analysis/convexhull3d_doc.html#compute>`_ - Description copied from class: AbstractConvexHull
 * `Frangi.compute <../pysnt/filter/frangi_doc.html#compute>`_ - No description available
+* `SpectralSimilarity.compute <../pysnt/filter/spectralsimilarity_doc.html#compute>`_ - Computes the spectral similarity map.
 * `Tubeness.compute <../pysnt/filter/tubeness_doc.html#compute>`_ - No description available
+* `OBJMesh.computePrincipalAxes <../pysnt/viewer/objmesh_doc.html#computePrincipalAxes>`_ - Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated...
+* `SeedManager.computeVisibleRect <../pysnt/seedmanager_doc.html#computeVisibleRect>`_ - No description available
 * `SNT.confirmTemporary <../pysnt/snt_doc.html#confirmTemporary>`_ - No description available
 * `BoundingBox.contains <../pysnt/util/boundingbox_doc.html#contains>`_ - No description available
 * `InteractiveTracerCanvas.contains <../pysnt/interactivetracercanvas_doc.html#contains>`_ - No description available
@@ -268,6 +297,7 @@ C
 * `PathManagerUI.contains <../pysnt/pathmanagerui_doc.html#contains>`_ - No description available
 * `SNTTable.contains <../pysnt/analysis/snttable_doc.html#contains>`_ - No description available
 * `SNTUI.contains <../pysnt/sntui_doc.html#contains>`_ - No description available
+* `SeedManager.contains <../pysnt/seedmanager_doc.html#contains>`_ - No description available
 * `TracerCanvas.contains <../pysnt/tracercanvas_doc.html#contains>`_ - No description available
 * `BoundingBox.contains2D <../pysnt/util/boundingbox_doc.html#contains2D>`_ - No description available
 * `SNTTable.containsAll <../pysnt/analysis/snttable_doc.html#containsAll>`_ - No description available
@@ -285,6 +315,7 @@ C
 * `FillConverter.convertLabels <../pysnt/fillconverter_doc.html#convertLabels>`_ - Map the fill component label to fill voxel positions. The concrete IntegerType should be chosen based on the...
 * `PathManagerUI.countComponents <../pysnt/pathmanagerui_doc.html#countComponents>`_ - No description available
 * `SNTUI.countComponents <../pysnt/sntui_doc.html#countComponents>`_ - Gets the current UI state.
+* `SeedManager.countComponents <../pysnt/seedmanager_doc.html#countComponents>`_ - No description available
 * `InteractiveTracerCanvas.createBufferStrategy <../pysnt/interactivetracercanvas_doc.html#createBufferStrategy>`_ - No description available
 * `PathManagerUI.createBufferStrategy <../pysnt/pathmanagerui_doc.html#createBufferStrategy>`_ - No description available
 * `SNTUI.createBufferStrategy <../pysnt/sntui_doc.html#createBufferStrategy>`_ - No description available
@@ -293,15 +324,18 @@ C
 * `InteractiveTracerCanvas.createImage <../pysnt/interactivetracercanvas_doc.html#createImage>`_ - No description available
 * `PathManagerUI.createImage <../pysnt/pathmanagerui_doc.html#createImage>`_ - No description available
 * `SNTUI.createImage <../pysnt/sntui_doc.html#createImage>`_ - No description available
+* `SeedManager.createImage <../pysnt/seedmanager_doc.html#createImage>`_ - No description available
 * `TracerCanvas.createImage <../pysnt/tracercanvas_doc.html#createImage>`_ - No description available
 * `FillerThread.createNewNode <../pysnt/tracing/fillerthread_doc.html#createNewNode>`_ - No description available
 * `SearchThread.createNewNode <../pysnt/tracing/searchthread_doc.html#createNewNode>`_ - No description available
 * `TracerThread.createNewNode <../pysnt/tracing/tracerthread_doc.html#createNewNode>`_ - No description available
 * `SNTTable.createOrUpdateDisplay <../pysnt/analysis/snttable_doc.html#createOrUpdateDisplay>`_ - Creates a new display or updates an existing one. If no display exists, creates a new table display window. If a...
 * `Path.createPath <../pysnt/path_doc.html#createPath>`_ - Returns a new Path with this Path's attributes (e.g. spatial scale), but no nodes.
+* `SeedManager.createToolTip <../pysnt/seedmanager_doc.html#createToolTip>`_ - No description available
 * `InteractiveTracerCanvas.createVolatileImage <../pysnt/interactivetracercanvas_doc.html#createVolatileImage>`_ - No description available
 * `PathManagerUI.createVolatileImage <../pysnt/pathmanagerui_doc.html#createVolatileImage>`_ - No description available
 * `SNTUI.createVolatileImage <../pysnt/sntui_doc.html#createVolatileImage>`_ - No description available
+* `SeedManager.createVolatileImage <../pysnt/seedmanager_doc.html#createVolatileImage>`_ - No description available
 * `TracerCanvas.createVolatileImage <../pysnt/tracercanvas_doc.html#createVolatileImage>`_ - No description available
 * `InteractiveTracerCanvas.cursorOverImage <../pysnt/interactivetracercanvas_doc.html#cursorOverImage>`_ - No description available
 * `TracerCanvas.cursorOverImage <../pysnt/tracercanvas_doc.html#cursorOverImage>`_ - No description available
@@ -315,6 +349,7 @@ D
 * `InteractiveTracerCanvas.deliverEvent <../pysnt/interactivetracercanvas_doc.html#deliverEvent>`_ - No description available
 * `PathManagerUI.deliverEvent <../pysnt/pathmanagerui_doc.html#deliverEvent>`_ - No description available
 * `SNTUI.deliverEvent <../pysnt/sntui_doc.html#deliverEvent>`_ - No description available
+* `SeedManager.deliverEvent <../pysnt/seedmanager_doc.html#deliverEvent>`_ - No description available
 * `TracerCanvas.deliverEvent <../pysnt/tracercanvas_doc.html#deliverEvent>`_ - No description available
 * `SNTService.demoImage <../pysnt/sntservice_doc.html#demoImage>`_ - Returns one of the demo images bundled with SNT image associated with the demo (fractal) tree.
 * `SNTService.demoTree <../pysnt/sntservice_doc.html#demoTree>`_ - Returns a demo tree.
@@ -324,6 +359,7 @@ D
 * `InteractiveTracerCanvas.disable <../pysnt/interactivetracercanvas_doc.html#disable>`_ - No description available
 * `PathManagerUI.disable <../pysnt/pathmanagerui_doc.html#disable>`_ - No description available
 * `SNTUI.disable <../pysnt/sntui_doc.html#disable>`_ - No description available
+* `SeedManager.disable <../pysnt/seedmanager_doc.html#disable>`_ - No description available
 * `TracerCanvas.disable <../pysnt/tracercanvas_doc.html#disable>`_ - No description available
 * `InteractiveTracerCanvas.disableEvents <../pysnt/interactivetracercanvas_doc.html#disableEvents>`_ - No description available
 * `TracerCanvas.disableEvents <../pysnt/tracercanvas_doc.html#disableEvents>`_ - No description available
@@ -334,6 +370,7 @@ D
 * `InteractiveTracerCanvas.dispatchEvent <../pysnt/interactivetracercanvas_doc.html#dispatchEvent>`_ - No description available
 * `PathManagerUI.dispatchEvent <../pysnt/pathmanagerui_doc.html#dispatchEvent>`_ - No description available
 * `SNTUI.dispatchEvent <../pysnt/sntui_doc.html#dispatchEvent>`_ - No description available
+* `SeedManager.dispatchEvent <../pysnt/seedmanager_doc.html#dispatchEvent>`_ - No description available
 * `TracerCanvas.dispatchEvent <../pysnt/tracercanvas_doc.html#dispatchEvent>`_ - No description available
 * `MultiTreeStatistics.dispose <../pysnt/analysis/multitreestatistics_doc.html#dispose>`_ - Description copied from class: TreeStatistics
 * `PathAndFillManager.dispose <../pysnt/pathandfillmanager_doc.html#dispose>`_ - No description available
@@ -341,6 +378,7 @@ D
 * `PathStatistics.dispose <../pysnt/analysis/pathstatistics_doc.html#dispose>`_ - No description available
 * `SNTService.dispose <../pysnt/sntservice_doc.html#dispose>`_ - Quits SNT. Does nothing if SNT is currently not running.
 * `SNTUI.dispose <../pysnt/sntui_doc.html#dispose>`_ - No description available
+* `SeedManager.dispose <../pysnt/seedmanager_doc.html#dispose>`_ - Unregisters the overlay listener and the table-model listener, and closes the detached-table dialog if it's open....
 * `StrahlerAnalyzer.dispose <../pysnt/analysis/strahleranalyzer_doc.html#dispose>`_ - Clears internal caches and mappings to free memory.
 * `TreeStatistics.dispose <../pysnt/analysis/treestatistics_doc.html#dispose>`_ - Clears internal caches and mappings to free memory.
 * `Viewer3D.dispose <../pysnt/viewer/viewer3d_doc.html#dispose>`_ - Closes and releases all the resources used by this viewer.
@@ -351,12 +389,14 @@ D
 * `InteractiveTracerCanvas.doLayout <../pysnt/interactivetracercanvas_doc.html#doLayout>`_ - No description available
 * `PathManagerUI.doLayout <../pysnt/pathmanagerui_doc.html#doLayout>`_ - No description available
 * `SNTUI.doLayout <../pysnt/sntui_doc.html#doLayout>`_ - No description available
+* `SeedManager.doLayout <../pysnt/seedmanager_doc.html#doLayout>`_ - No description available
 * `TracerCanvas.doLayout <../pysnt/tracercanvas_doc.html#doLayout>`_ - No description available
 * `Path.downsample <../pysnt/path_doc.html#downsample>`_ - Downsamples this path (in-place) by reducing the number of nodes while preserving its overall shape. This method...
 * `Tree.downsample <../pysnt/tree_doc.html#downsample>`_ - Downsamples the tree, i.e., reduces the density of its nodes by increasing internode spacing. Note that 1) upsampling...
 * `PathAndFillManager.downsampleAll <../pysnt/pathandfillmanager_doc.html#downsampleAll>`_ - Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and...
 * `Path.drawPathAsPoints <../pysnt/path_doc.html#drawPathAsPoints>`_ - No description available
 * `ConvexHullAnalyzer.dump <../pysnt/analysis/convexhullanalyzer_doc.html#dump>`_ - No description available
+* `OBJMesh.duplicate <../pysnt/viewer/objmesh_doc.html#duplicate>`_ - No description available
 * `Viewer3D.duplicate <../pysnt/viewer/viewer3d_doc.html#duplicate>`_ - Creates a duplicate of this viewer containing only visible objects. This method creates a new Viewer3D instance and...
 
 E
@@ -365,6 +405,7 @@ E
 * `SNT.editModeAllowed <../pysnt/snt_doc.html#editModeAllowed>`_ - Checks if edit mode can be enabled, optionally using a specific path.
 * `InteractiveTracerCanvas.enable <../pysnt/interactivetracercanvas_doc.html#enable>`_ - No description available
 * `SNTUI.enable <../pysnt/sntui_doc.html#enable>`_ - No description available
+* `SeedManager.enable <../pysnt/seedmanager_doc.html#enable>`_ - No description available
 * `TracerCanvas.enable <../pysnt/tracercanvas_doc.html#enable>`_ - No description available
 * `SNT.enableAstar <../pysnt/snt_doc.html#enableAstar>`_ - Toggles the A* search algorithm (enabled by default)
 * `SNT.enableAutoActivation <../pysnt/snt_doc.html#enableAutoActivation>`_ - No description available
@@ -391,7 +432,9 @@ F
 * `PathAndFillManager.fatalError <../pysnt/pathandfillmanager_doc.html#fatalError>`_ - No description available
 * `SNTTable.fillEmptyCells <../pysnt/analysis/snttable_doc.html#fillEmptyCells>`_ - Fills all empty cells in the table with the specified value. Iterates through all cells in the table and replaces null...
 * `NodeStatistics.filter <../pysnt/analysis/nodestatistics_doc.html#filter>`_ - Filters the current pool of nodes matching a measurement-based criterion.
+* `SNTTable.findColumnIndex <../pysnt/analysis/snttable_doc.html#findColumnIndex>`_ - Case-/whitespace-insensitive column lookup.
 * `SNTUI.findComponentAt <../pysnt/sntui_doc.html#findComponentAt>`_ - No description available
+* `SeedManager.findComponentAt <../pysnt/seedmanager_doc.html#findComponentAt>`_ - No description available
 * `Path.findJunctionIndices <../pysnt/path_doc.html#findJunctionIndices>`_ - Returns the indices of nodes which are indicated to be a join, either in this Path object, or any other that starts or...
 * `Path.findJunctions <../pysnt/path_doc.html#findJunctions>`_ - Returns the nodes which are indicated to be a join (junction/branch point), either in this Path object, or any other...
 * `PathProfiler.findMaxima <../pysnt/analysis/pathprofiler_doc.html#findMaxima>`_ - Finds the maxima in the profile of the specified path. A maxima (peak) will only be considered if protruding more than...
@@ -400,6 +443,7 @@ F
 * `SNT.findPointInStackPrecise <../pysnt/snt_doc.html#findPointInStackPrecise>`_ - No description available
 * `SNT.finished <../pysnt/snt_doc.html#finished>`_ - No description available
 * `InteractiveTracerCanvas.firePropertyChange <../pysnt/interactivetracercanvas_doc.html#firePropertyChange>`_ - No description available
+* `SeedManager.firePropertyChange <../pysnt/seedmanager_doc.html#firePropertyChange>`_ - No description available
 * `TracerCanvas.firePropertyChange <../pysnt/tracercanvas_doc.html#firePropertyChange>`_ - No description available
 * `Path.firstNode <../pysnt/path_doc.html#firstNode>`_ - Returns the first node of this path.
 * `InteractiveTracerCanvas.fitToWindow <../pysnt/interactivetracercanvas_doc.html#fitToWindow>`_ - No description available
@@ -411,7 +455,6 @@ F
 G
 ^
 
-* `SNTTable.geColumnHeaders <../pysnt/analysis/snttable_doc.html#geColumnHeaders>`_ - No description available
 * `SNTTable.geColumnStats <../pysnt/analysis/snttable_doc.html#geColumnStats>`_ - No description available
 * `SNTTable.geRowStats <../pysnt/analysis/snttable_doc.html#geRowStats>`_ - No description available
 * `ConvexHullAnalyzer.get <../pysnt/analysis/convexhullanalyzer_doc.html#get>`_ - Gets the value of a specific convex hull metric. Retrieves the computed value for the specified metric name. The metric...
@@ -430,6 +473,7 @@ G
 * `InsectBrainCompartment.getAncestor <../pysnt/annotation/insectbraincompartment_doc.html#getAncestor>`_ - Description copied from interface: BrainAnnotation
 * `AllenCompartment.getAncestors <../pysnt/annotation/allencompartment_doc.html#getAncestors>`_ - Gets the ancestor ontologies of this compartment as a flat (non-hierarchical) list.
 * `Path.getAngle <../pysnt/path_doc.html#getAngle>`_ - Computes the angle between the specified node and its two flanking neighbors. With B being the specified node, A its...
+* `OBJMesh.getAngleWithLocalDirection <../pysnt/viewer/objmesh_doc.html#getAngleWithLocalDirection>`_ - Computes the angle between a direction vector and the local mesh direction at a point. This is useful for e.g.,...
 * `RootAngleAnalyzer.getAngles <../pysnt/analysis/rootangleanalyzer_doc.html#getAngles>`_ - No description available
 * `NodeStatistics.getAnnotatedFrequencies <../pysnt/analysis/nodestatistics_doc.html#getAnnotatedFrequencies>`_ - Retrieves the count frequencies across brain compartment.
 * `NodeStatistics.getAnnotatedFrequenciesByHemisphere <../pysnt/analysis/nodestatistics_doc.html#getAnnotatedFrequenciesByHemisphere>`_ - No description available
@@ -461,6 +505,7 @@ G
 * `Path.getApproximatedVolume <../pysnt/path_doc.html#getApproximatedVolume>`_ - Returns an estimated volume of this path. The most accurate volume of each path segment would be the volume of a convex...
 * `Tree.getApproximatedVolume <../pysnt/tree_doc.html#getApproximatedVolume>`_ - Retrieves an approximate estimate of Tree's volume by approximating the volume of each path, and summing to total. The...
 * `Frangi.getArity <../pysnt/filter/frangi_doc.html#getArity>`_ - No description available
+* `SpectralSimilarity.getArity <../pysnt/filter/spectralsimilarity_doc.html#getArity>`_ - No description available
 * `Tubeness.getArity <../pysnt/filter/tubeness_doc.html#getArity>`_ - No description available
 * `Tree.getAssignedValue <../pysnt/tree_doc.html#getAssignedValue>`_ - Retrieves the numeric property assigned to this Tree.
 * `MultiTreeColorMapper.getAvailableLuts <../pysnt/analysis/multitreecolormapper_doc.html#getAvailableLuts>`_ - No description available
@@ -491,6 +536,7 @@ G
 * `MultiTreeStatistics.getAvgRemoteBifAngle <../pysnt/analysis/multitreestatistics_doc.html#getAvgRemoteBifAngle>`_ - No description available
 * `PathStatistics.getAvgRemoteBifAngle <../pysnt/analysis/pathstatistics_doc.html#getAvgRemoteBifAngle>`_ - No description available
 * `TreeStatistics.getAvgRemoteBifAngle <../pysnt/analysis/treestatistics_doc.html#getAvgRemoteBifAngle>`_ - Gets the average remote bifurcation angle of the analyzed tree. Note that branch points with more than 2 children are...
+* `TreeToRaster.getAxialRes <../pysnt/util/treetoraster_doc.html#getAxialRes>`_ - Gets the axial (z) voxel size.
 * `Tree.getBPs <../pysnt/tree_doc.html#getBPs>`_ - Gets the branch points (junctions) of the graph. This is simply an alias for `DirectedWeightedGraph.getBPs()`.
 * `InteractiveTracerCanvas.getBackground <../pysnt/interactivetracercanvas_doc.html#getBackground>`_ - No description available
 * `TracerCanvas.getBackground <../pysnt/tracercanvas_doc.html#getBackground>`_ - No description available
@@ -500,6 +546,7 @@ G
 * `TracerCanvas.getBaseline <../pysnt/tracercanvas_doc.html#getBaseline>`_ - No description available
 * `StrahlerAnalyzer.getBifurcationRatios <../pysnt/analysis/strahleranalyzer_doc.html#getBifurcationRatios>`_ - No description available
 * `ConvexHullAnalyzer.getBoundarySize <../pysnt/analysis/convexhullanalyzer_doc.html#getBoundarySize>`_ - Gets the boundary size (perimeter for 2D hulls or surface area for 3D hulls) of the convex hull.
+* `OBJMesh.getBoundingBox <../pysnt/viewer/objmesh_doc.html#getBoundingBox>`_ - Gets the minimum bounding box of this mesh.
 * `PathAndFillManager.getBoundingBox <../pysnt/pathandfillmanager_doc.html#getBoundingBox>`_ - Returns the BoundingBox enclosing all nodes of all existing Paths.
 * `Tree.getBoundingBox <../pysnt/tree_doc.html#getBoundingBox>`_ - Gets the bounding box associated with this tree.
 * `GroupedTreeStatistics.getBoxPlot <../pysnt/analysis/groupedtreestatistics_doc.html#getBoxPlot>`_ - Assembles a Box and Whisker Plot for the specified feature.
@@ -524,6 +571,7 @@ G
 * `PathStatistics.getCableLengthNorm <../pysnt/analysis/pathstatistics_doc.html#getCableLengthNorm>`_ - No description available
 * `TreeStatistics.getCableLengthNorm <../pysnt/analysis/treestatistics_doc.html#getCableLengthNorm>`_ - Gets the cable length associated with the specified compartment (neuropil label) as a ratio of total length.
 * `BoundingBox.getCalibration <../pysnt/util/boundingbox_doc.html#getCalibration>`_ - Creates a Calibration object using information from this BoundingBox
+* `NeurolucidaImporter.getCalibration <../pysnt/io/neurolucidaimporter_doc.html#getCalibration>`_ - Returns the spatial calibration parsed from the file header.
 * `Path.getCalibration <../pysnt/path_doc.html#getCalibration>`_ - Gets the spatial calibration of this Path.
 * `ConvexHullAnalyzer.getCancelReason <../pysnt/analysis/convexhullanalyzer_doc.html#getCancelReason>`_ - No description available
 * `MultiTreeStatistics.getCancelReason <../pysnt/analysis/multitreestatistics_doc.html#getCancelReason>`_ - No description available
@@ -535,6 +583,7 @@ G
 * `Path.getCanvasOffset <../pysnt/path_doc.html#getCanvasOffset>`_ - Returns the translation offset used to render this Path in a TracerCanvas.
 * `BoundingBox.getCentroid <../pysnt/util/boundingbox_doc.html#getCentroid>`_ - No description available
 * `ConvexHullAnalyzer.getCentroid <../pysnt/analysis/convexhullanalyzer_doc.html#getCentroid>`_ - No description available
+* `OBJMesh.getCentroid <../pysnt/viewer/objmesh_doc.html#getCentroid>`_ - Returns the spatial centroid of the specified (hemi)mesh.
 * `Path.getChannel <../pysnt/path_doc.html#getChannel>`_ - Gets the hyperstack channel associated with this Path.
 * `SNT.getChannel <../pysnt/snt_doc.html#getChannel>`_ - No description available
 * `Viewer2D.getChart <../pysnt/viewer/viewer2d_doc.html#getChart>`_ - Gets the current viewer as a SNTChart object
@@ -559,6 +608,7 @@ G
 * `Viewer2D.getColorTable <../pysnt/viewer/viewer2d_doc.html#getColorTable>`_ - No description available
 * `SNTTable.getColumnCount <../pysnt/analysis/snttable_doc.html#getColumnCount>`_ - No description available
 * `SNTTable.getColumnHeader <../pysnt/analysis/snttable_doc.html#getColumnHeader>`_ - No description available
+* `SNTTable.getColumnHeaders <../pysnt/analysis/snttable_doc.html#getColumnHeaders>`_ - No description available
 * `SNTTable.getColumnIndex <../pysnt/analysis/snttable_doc.html#getColumnIndex>`_ - No description available
 * `ConvexHullAnalyzer.getCompactness <../pysnt/analysis/convexhullanalyzer_doc.html#getCompactness>`_ - No description available
 * `ConvexHullAnalyzer.getContext <../pysnt/analysis/convexhullanalyzer_doc.html#getContext>`_ - No description available
@@ -604,9 +654,11 @@ G
 * `PersistenceAnalyzer.getDiagram <../pysnt/analysis/persistenceanalyzer_doc.html#getDiagram>`_ *has examples* - Gets the persistence diagram for the specified filter function. The persistence diagram is the core output of the...
 * `PersistenceAnalyzer.getDiagramNodes <../pysnt/analysis/persistenceanalyzer_doc.html#getDiagramNodes>`_ *has examples* - Gets the tree nodes associated with each point in the persistence diagram. This method returns the actual SWCPoint...
 * `BoundingBox.getDimensions <../pysnt/util/boundingbox_doc.html#getDimensions>`_ - Gets this BoundingBox dimensions.
+* `OBJMesh.getDisplayedHemisphere <../pysnt/viewer/objmesh_doc.html#getDisplayedHemisphere>`_ - Returns the currently displayed hemisphere: "left", "right", or "both".
 * `FillerThread.getDistanceAtPoint <../pysnt/tracing/fillerthread_doc.html#getDistanceAtPoint>`_ - No description available
 * `SNT.getDrawDiameters <../pysnt/snt_doc.html#getDrawDiameters>`_ - No description available
 * `Annotation3D.getDrawable <../pysnt/viewer/annotation3d_doc.html#getDrawable>`_ - Returns the AbstractDrawable associated with this annotation.
+* `OBJMesh.getDrawable <../pysnt/viewer/objmesh_doc.html#getDrawable>`_ - Returns the DrawableVBO associated with this mesh
 * `ConvexHullAnalyzer.getEccentricity <../pysnt/analysis/convexhullanalyzer_doc.html#getEccentricity>`_ - No description available
 * `Path.getEditableNodeIndex <../pysnt/path_doc.html#getEditableNodeIndex>`_ - Gets the position of the node tagged as 'editable', if any.
 * `ConvexHullAnalyzer.getElongation <../pysnt/analysis/convexhullanalyzer_doc.html#getElongation>`_ - Gets the elongation of the convex hull, which measures how elongated the convex hull is. Higher values indicate more...
@@ -627,6 +679,7 @@ G
 * `BiSearchNode.getF <../pysnt/tracing/bisearchnode_doc.html#getF>`_ - No description available
 * `BiSearchNode.getFFromGoal <../pysnt/tracing/bisearchnode_doc.html#getFFromGoal>`_ - No description available
 * `BiSearchNode.getFFromStart <../pysnt/tracing/bisearchnode_doc.html#getFFromStart>`_ - No description available
+* `AStarRefiner.getFailureReason <../pysnt/astarrefiner_doc.html#getFailureReason>`_ - Human-readable reason call() failed, or null if it succeeded (or hasn't run yet).
 * `FillerThread.getFill <../pysnt/tracing/fillerthread_doc.html#getFill>`_ - No description available
 * `SNT.getFilledBinaryImp <../pysnt/snt_doc.html#getFilledBinaryImp>`_ - No description available
 * `SNT.getFilledDistanceImp <../pysnt/snt_doc.html#getFilledDistanceImp>`_ - No description available
@@ -640,6 +693,7 @@ G
 * `MultiTreeStatistics.getFlowPlot <../pysnt/analysis/multitreestatistics_doc.html#getFlowPlot>`_ - Description copied from class: TreeStatistics
 * `PathStatistics.getFlowPlot <../pysnt/analysis/pathstatistics_doc.html#getFlowPlot>`_ - No description available
 * `TreeStatistics.getFlowPlot <../pysnt/analysis/treestatistics_doc.html#getFlowPlot>`_ - Assembles a Flow plot (aka Sankey diagram) for the specified feature.
+* `BvvMultiSource.getFollowers <../pysnt/viewer/bvvmultisource_doc.html#getFollowers>`_ - No description available
 * `MultiTreeStatistics.getFractalDimension <../pysnt/analysis/multitreestatistics_doc.html#getFractalDimension>`_ - No description available
 * `Path.getFractalDimension <../pysnt/path_doc.html#getFractalDimension>`_ - Gets the fractal dimension of this path.
 * `PathStatistics.getFractalDimension <../pysnt/analysis/pathstatistics_doc.html#getFractalDimension>`_ - No description available
@@ -685,6 +739,7 @@ G
 * `SNT.getImagePlus <../pysnt/snt_doc.html#getImagePlus>`_ - Gets the Image associated with a view pane.
 * `Tree.getImpContainer <../pysnt/tree_doc.html#getImpContainer>`_ - Gets an empty image capable of holding the skeletonized version of this tree.
 * `Frangi.getIndependentInstance <../pysnt/filter/frangi_doc.html#getIndependentInstance>`_ - No description available
+* `SpectralSimilarity.getIndependentInstance <../pysnt/filter/spectralsimilarity_doc.html#getIndependentInstance>`_ - No description available
 * `Tubeness.getIndependentInstance <../pysnt/filter/tubeness_doc.html#getIndependentInstance>`_ - No description available
 * `NodeProfiler.getInfo <../pysnt/analysis/nodeprofiler_doc.html#getInfo>`_ - No description available
 * `PathProfiler.getInfo <../pysnt/analysis/pathprofiler_doc.html#getInfo>`_ - No description available
@@ -708,15 +763,21 @@ G
 * `Annotation3D.getLabel <../pysnt/viewer/annotation3d_doc.html#getLabel>`_ - Gets the annotation label
 * `Tree.getLabel <../pysnt/tree_doc.html#getLabel>`_ - Returns the identifying label of this tree. When importing files, the label typically defaults to the imported filename,
 * `PersistenceAnalyzer.getLandscape <../pysnt/analysis/persistenceanalyzer_doc.html#getLandscape>`_ - Gets the persistence landscape as a vectorized representation. Persistence landscapes transform persistence diagrams...
-* `SNTTable.getLast <../pysnt/analysis/snttable_doc.html#getLast>`_ - No description available
+* `TreeToRaster.getLateralRes <../pysnt/util/treetoraster_doc.html#getLateralRes>`_ - Gets the lateral (x, y) voxel size.
+* `BvvMultiSource.getLeader <../pysnt/viewer/bvvmultisource_doc.html#getLeader>`_ - No description available
+* `BvvMultiSource.getLeaderTransform <../pysnt/viewer/bvvmultisource_doc.html#getLeaderTransform>`_ - Returns a copy of the most recently cached leader fixed transform.
 * `StrahlerAnalyzer.getLengths <../pysnt/analysis/strahleranalyzer_doc.html#getLengths>`_ - No description available
 * `ShollAnalyzer.getLinearStats <../pysnt/analysis/shollanalyzer_doc.html#getLinearStats>`_ - Gets the LinearProfileStats associated with this analyzer. By default, it is set to determine the polynomial of...
 * `SNT.getLoadedData <../pysnt/snt_doc.html#getLoadedData>`_ - No description available
 * `SNT.getLoadedDataAsImp <../pysnt/snt_doc.html#getLoadedDataAsImp>`_ - Retrieves the pixel data of the main image currently loaded in memory as an ImagePlus object. Returned image is always...
 * `PathAndFillManager.getLoadedFills <../pysnt/pathandfillmanager_doc.html#getLoadedFills>`_ - No description available
 * `SNT.getLoadedIterable <../pysnt/snt_doc.html#getLoadedIterable>`_ - No description available
+* `OBJMesh.getLocalDirection <../pysnt/viewer/objmesh_doc.html#getLocalDirection>`_ - Computes the local direction of the mesh at a specific point using nearest neighbor analysis. This method finds the...
 * `SNTService.getLocation <../pysnt/sntservice_doc.html#getLocation>`_ - No description available
 * `Viewer3D.getManagerPanel <../pysnt/viewer/viewer3d_doc.html#getManagerPanel>`_ - Returns a reference to control panel.
+* `NeurolucidaImporter.getMarkerColors <../pysnt/io/neurolucidaimporter_doc.html#getMarkerColors>`_ - Returns the colors for each parsed marker, in the same order as getMarkerPoints().
+* `NeurolucidaImporter.getMarkerLabels <../pysnt/io/neurolucidaimporter_doc.html#getMarkerLabels>`_ - Returns the labels for each parsed marker, in the same order as getMarkerPoints().
+* `NeurolucidaImporter.getMarkerPoints <../pysnt/io/neurolucidaimporter_doc.html#getMarkerPoints>`_ - Returns the marker centroids parsed from elements. Each entry is a double[3] array of {x, y, z} coordinates in the...
 * `ShollAnalyzer.getMaximaRadii <../pysnt/analysis/shollanalyzer_doc.html#getMaximaRadii>`_ - No description available
 * `AllenCompartment.getMesh <../pysnt/annotation/allencompartment_doc.html#getMesh>`_ - Description copied from interface: BrainAnnotation
 * `ConvexHull3D.getMesh <../pysnt/analysis/convexhull3d_doc.html#getMesh>`_ - No description available
@@ -760,6 +821,7 @@ G
 * `Tree.getNodesCount <../pysnt/tree_doc.html#getNodesCount>`_ - Gets the total number of nodes across all paths in this Tree.
 * `ShollAnalyzer.getNormStats <../pysnt/analysis/shollanalyzer_doc.html#getNormStats>`_ - Gets the `NormalizedProfileStats` associated with this analyzer. By default it is set to determine the regression...
 * `PathResult.getNumberOfPoints <../pysnt/tracing/pathresult_doc.html#getNumberOfPoints>`_ - No description available
+* `OBJMesh.getObj <../pysnt/viewer/objmesh_doc.html#getObj>`_ - Returns the OBJFile associated with this mesh
 * `AllenCompartment.getOntologyDepth <../pysnt/annotation/allencompartment_doc.html#getOntologyDepth>`_ - Gets the ontology depth of this compartment.
 * `InsectBrainCompartment.getOntologyDepth <../pysnt/annotation/insectbraincompartment_doc.html#getOntologyDepth>`_ - Description copied from interface: BrainAnnotation
 * `SNTService.getOrCreateSciViewSNT <../pysnt/sntservice_doc.html#getOrCreateSciViewSNT>`_ - No description available
@@ -771,6 +833,7 @@ G
 * `WekaModelLoader.getOutputs <../pysnt/io/wekamodelloader_doc.html#getOutputs>`_ - No description available
 * `AllenCompartment.getParent <../pysnt/annotation/allencompartment_doc.html#getParent>`_ - Gets the parent of this compartment.
 * `InsectBrainCompartment.getParent <../pysnt/annotation/insectbraincompartment_doc.html#getParent>`_ - Description copied from interface: BrainAnnotation
+* `AStarRefiner.getPath <../pysnt/astarrefiner_doc.html#getPath>`_ - Returns the original path being re-traced.
 * `PathAndFillManager.getPath <../pysnt/pathandfillmanager_doc.html#getPath>`_ - Returns the Path at the specified position in the PathAndFillManager list.
 * `PathFitter.getPath <../pysnt/pathfitter_doc.html#getPath>`_ - No description available
 * `PathResult.getPath <../pysnt/tracing/pathresult_doc.html#getPath>`_ - No description available
@@ -793,9 +856,11 @@ G
 * `DefaultSearchNode.getPredecessor <../pysnt/tracing/defaultsearchnode_doc.html#getPredecessor>`_ - No description available
 * `BiSearchNode.getPredecessorFromGoal <../pysnt/tracing/bisearchnode_doc.html#getPredecessorFromGoal>`_ - No description available
 * `BiSearchNode.getPredecessorFromStart <../pysnt/tracing/bisearchnode_doc.html#getPredecessorFromStart>`_ - No description available
+* `OBJMesh.getPrincipalAxes <../pysnt/viewer/objmesh_doc.html#getPrincipalAxes>`_ - Computes the principal axes of the mesh using Principal Component Analysis (PCA). The principal axes represent the...
 * `SNTService.getPriority <../pysnt/sntservice_doc.html#getPriority>`_ - No description available
 * `Tree.getProperties <../pysnt/tree_doc.html#getProperties>`_ *has examples* - Returns the Properties instance holding the persistent set of properties. Useful to associate metadata to this tree....
 * `SkeletonConverter.getPruneMode <../pysnt/analysis/skeletonconverter_doc.html#getPruneMode>`_ - No description available
+* `TreeToRaster.getRadiusScale <../pysnt/util/treetoraster_doc.html#getRadiusScale>`_ - Gets the uniform radius multiplier applied to node radii.
 * `FlyCircuitLoader.getReader <../pysnt/io/flycircuitloader_doc.html#getReader>`_ - Gets the SWC data associated with the specified cell ID as a reader
 * `NeuroMorphoLoader.getReader <../pysnt/io/neuromorpholoader_doc.html#getReader>`_ - Gets the SWC data ('CNG version') associated with the specified cell ID as a reader
 * `RemoteSWCLoader.getReader <../pysnt/io/remoteswcloader_doc.html#getReader>`_ - No description available
@@ -804,6 +869,7 @@ G
 * `NeuroMorphoLoader.getReconstructionURL <../pysnt/io/neuromorpholoader_doc.html#getReconstructionURL>`_ - Gets the URL of the SWC file ('CNG version') associated with the specified cell ID.
 * `RemoteSWCLoader.getReconstructionURL <../pysnt/io/remoteswcloader_doc.html#getReconstructionURL>`_ - No description available
 * `Viewer3D.getRecorder <../pysnt/viewer/viewer3d_doc.html#getRecorder>`_ - Gets the script recorder for this viewer, optionally creating one if needed.
+* `SpectralSimilarity.getReferenceColor <../pysnt/filter/spectralsimilarity_doc.html#getReferenceColor>`_ - Returns the reference color vector used by this filter.
 * `StrahlerAnalyzer.getRelativeExtensionAngle <../pysnt/analysis/strahleranalyzer_doc.html#getRelativeExtensionAngle>`_ - Computes the relative extension angle for a StrahlerAnalyzer branch by finding the parent direction from the graph...
 * `BiSearch.getResult <../pysnt/tracing/bisearch_doc.html#getResult>`_ - No description available
 * `FillerThread.getResult <../pysnt/tracing/fillerthread_doc.html#getResult>`_ - No description available
@@ -814,9 +880,6 @@ G
 * `StrahlerAnalyzer.getRootNumber <../pysnt/analysis/strahleranalyzer_doc.html#getRootNumber>`_ - No description available
 * `SkeletonConverter.getRootRoiStrategy <../pysnt/analysis/skeletonconverter_doc.html#getRootRoiStrategy>`_ - No description available
 * `ConvexHullAnalyzer.getRoundness <../pysnt/analysis/convexhullanalyzer_doc.html#getRoundness>`_ - Gets the roundness of the convex hull, which measures how round or circular the convex hull is. Values closer to 1...
-* `SNTTable.getRowCount <../pysnt/analysis/snttable_doc.html#getRowCount>`_ - No description available
-* `SNTTable.getRowHeader <../pysnt/analysis/snttable_doc.html#getRowHeader>`_ - No description available
-* `SNTTable.getRowIndex <../pysnt/analysis/snttable_doc.html#getRowIndex>`_ - No description available
 * `MouseLightLoader.getSWC <../pysnt/io/mouselightloader_doc.html#getSWC>`_ - Gets all the data associated with this reconstruction in the SWC format.
 * `PathAndFillManager.getSWCFor <../pysnt/pathandfillmanager_doc.html#getSWCFor>`_ - Converts a collection of connected Path objects into SWC points for export. SWC is the standardized format used for...
 * `Tree.getSWCTypeNames <../pysnt/tree_doc.html#getSWCTypeNames>`_ - Gets the set of SWC type labels present in this tree with optional soma inclusion in a readable form.
@@ -836,16 +899,19 @@ G
 * `MouseLightLoader.getSomaCompartment <../pysnt/io/mouselightloader_doc.html#getSomaCompartment>`_ - Gets the brain compartment containing the soma.
 * `MouseLightLoader.getSomaLocation <../pysnt/io/mouselightloader_doc.html#getSomaLocation>`_ - Gets the soma location for this neuron.
 * `Tree.getSomaNodes <../pysnt/tree_doc.html#getSomaNodes>`_ - Gets the list of all nodes tagged as Path.SWC_SOMA.
+* `OBJMesh.getSourceAnnotation <../pysnt/viewer/objmesh_doc.html#getSourceAnnotation>`_ - Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded...
 * `Fill.getSourcePaths <../pysnt/fill_doc.html#getSourcePaths>`_ - Returns the set of source paths for the filled structure.
 * `Fill.getSourcePathsStringHuman <../pysnt/fill_doc.html#getSourcePathsStringHuman>`_ - No description available
 * `Fill.getSourcePathsStringMachine <../pysnt/fill_doc.html#getSourcePathsStringMachine>`_ - No description available
+* `BvvMultiSource.getSources <../pysnt/viewer/bvvmultisource_doc.html#getSources>`_ - No description available
+* `NeurolucidaImporter.getSpacingUnits <../pysnt/io/neurolucidaimporter_doc.html#getSpacingUnits>`_ - Returns the spacing units string (default "um").
 * `BiSearchNode.getState <../pysnt/tracing/bisearchnode_doc.html#getState>`_ - No description available
 * `BiSearchNode.getStateFromGoal <../pysnt/tracing/bisearchnode_doc.html#getStateFromGoal>`_ - No description available
 * `BiSearchNode.getStateFromStart <../pysnt/tracing/bisearchnode_doc.html#getStateFromStart>`_ - No description available
 * `SNTService.getStatistics <../pysnt/sntservice_doc.html#getStatistics>`_ - Returns a TreeStatistics instance constructed from current Paths.
 * `PathFitter.getSucceeded <../pysnt/pathfitter_doc.html#getSucceeded>`_ - Checks whether the fit succeeded.
 * `PathResult.getSuccess <../pysnt/tracing/pathresult_doc.html#getSuccess>`_ - No description available
-* `SNTTable.getSummaryRow <../pysnt/analysis/snttable_doc.html#getSummaryRow>`_ - No description available
+* `OBJMesh.getSymmetryAxis <../pysnt/viewer/objmesh_doc.html#getSymmetryAxis>`_ - No description available
 * `NodeProfiler.getTable <../pysnt/analysis/nodeprofiler_doc.html#getTable>`_ - No description available
 * `SNTService.getTable <../pysnt/sntservice_doc.html#getTable>`_ - Returns a reference to SNT's main table of measurements.
 * `RootAngleAnalyzer.getTaggedGraph <../pysnt/analysis/rootangleanalyzer_doc.html#getTaggedGraph>`_ - No description available
@@ -865,6 +931,7 @@ G
 * `Viewer3D.getTree <../pysnt/viewer/viewer3d_doc.html#getTree>`_ - Gets the tree associated with the specified label.
 * `SciViewSNT.getTreeAsSceneryNode <../pysnt/sciviewsnt_doc.html#getTreeAsSceneryNode>`_ - Gets the specified Tree as a Scenery Node.
 * `AllenCompartment.getTreePath <../pysnt/annotation/allencompartment_doc.html#getTreePath>`_ - Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this...
+* `NeurolucidaImporter.getTrees <../pysnt/io/neurolucidaimporter_doc.html#getTrees>`_ - Returns the parsed trees (one per element in the file).
 * `SNTService.getTrees <../pysnt/sntservice_doc.html#getTrees>`_ - Gets the collection of paths listed in the Path Manager as a Tree object.
 * `SkeletonConverter.getTrees <../pysnt/analysis/skeletonconverter_doc.html#getTrees>`_ - No description available
 * `Viewer3D.getTrees <../pysnt/viewer/viewer3d_doc.html#getTrees>`_ - Returns all trees added to this viewer.
@@ -878,8 +945,10 @@ G
 * `NodeProfiler.getValues <../pysnt/analysis/nodeprofiler_doc.html#getValues>`_ - Gets the profile for the specified path as a map of lists of pixel intensities (profile indices as keys)
 * `PathProfiler.getValues <../pysnt/analysis/pathprofiler_doc.html#getValues>`_ - Gets the profile for the specified path as a map of lists, with distances (or indices) stored under X_VALUES...
 * `SNTService.getVersion <../pysnt/sntservice_doc.html#getVersion>`_ - No description available
+* `OBJMesh.getVertices <../pysnt/viewer/objmesh_doc.html#getVertices>`_ - Returns the mesh vertices.
 * `Annotation3D.getVolume <../pysnt/viewer/annotation3d_doc.html#getVolume>`_ - No description available
 * `Fill.getVolume <../pysnt/fill_doc.html#getVolume>`_ - Returns the Fill volume. It assumes that the volume is just the number of sub-threshold nodes multiplied by x_spacing *...
+* `OBJMesh.getVolume <../pysnt/viewer/objmesh_doc.html#getVolume>`_ - Gets the volume of this mesh.
 * `BiSearchNode.getX <../pysnt/tracing/bisearchnode_doc.html#getX>`_ - No description available
 * `DefaultSearchNode.getX <../pysnt/tracing/defaultsearchnode_doc.html#getX>`_ - No description available
 * `PointInImage.getX <../pysnt/util/pointinimage_doc.html#getX>`_ - No description available
@@ -916,6 +985,7 @@ I
 * `InsectBrainLoader.idExists <../pysnt/io/insectbrainloader_doc.html#idExists>`_ - Checks whether the neuron to be loaded was found in the database.
 * `MouseLightLoader.idExists <../pysnt/io/mouselightloader_doc.html#idExists>`_ - Checks if the neuron ID exists in the database.
 * `Frangi.in <../pysnt/filter/frangi_doc.html#in>`_ - No description available
+* `SpectralSimilarity.in <../pysnt/filter/spectralsimilarity_doc.html#in>`_ - No description available
 * `Tubeness.in <../pysnt/filter/tubeness_doc.html#in>`_ - No description available
 * `AllenCompartment.includes <../pysnt/annotation/allencompartment_doc.html#includes>`_ - No description available
 * `Tree.indexOf <../pysnt/tree_doc.html#indexOf>`_ - Returns the index of the specified Path in this Tree.
@@ -924,6 +994,7 @@ I
 * `NodeProfiler.initialize <../pysnt/analysis/nodeprofiler_doc.html#initialize>`_ - No description available
 * `PathProfiler.initialize <../pysnt/analysis/pathprofiler_doc.html#initialize>`_ - No description available
 * `SNTService.initialize <../pysnt/sntservice_doc.html#initialize>`_ - Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.
+* `SpectralSimilarity.initialize <../pysnt/filter/spectralsimilarity_doc.html#initialize>`_ - No description available
 * `Tubeness.initialize <../pysnt/filter/tubeness_doc.html#initialize>`_ - No description available
 * `WekaModelLoader.initialize <../pysnt/io/wekamodelloader_doc.html#initialize>`_ - No description available
 * `BoundingBox.intersection <../pysnt/util/boundingbox_doc.html#intersection>`_ - Retrieves the intersection cuboid between this bounding with another bounding box. It is assumed both boxes share the...
@@ -954,6 +1025,7 @@ I
 * `NodeColorMapper.isIntegerScale <../pysnt/analysis/nodecolormapper_doc.html#isIntegerScale>`_ - No description available
 * `TreeColorMapper.isIntegerScale <../pysnt/analysis/treecolormapper_doc.html#isIntegerScale>`_ - No description available
 * `Viewer2D.isIntegerScale <../pysnt/viewer/viewer2d_doc.html#isIntegerScale>`_ - No description available
+* `BvvMultiSource.isLiveSync <../pysnt/viewer/bvvmultisource_doc.html#isLiveSync>`_ - No description available
 * `AllenCompartment.isMeshAvailable <../pysnt/annotation/allencompartment_doc.html#isMeshAvailable>`_ - Checks whether a mesh is known to be available for this compartment.
 * `InsectBrainCompartment.isMeshAvailable <../pysnt/annotation/insectbraincompartment_doc.html#isMeshAvailable>`_ - Description copied from interface: BrainAnnotation
 * `MultiTreeColorMapper.isNodeMapping <../pysnt/analysis/multitreecolormapper_doc.html#isNodeMapping>`_ - No description available
@@ -979,6 +1051,7 @@ I
 L
 ^
 
+* `OBJMesh.label <../pysnt/viewer/objmesh_doc.html#label>`_ - Gets this mesh label.
 * `Tree.list <../pysnt/tree_doc.html#list>`_ - Gets all the paths from this tree.
 * `SNTService.loadGraph <../pysnt/sntservice_doc.html#loadGraph>`_ - No description available
 * `Viewer3D.loadMesh <../pysnt/viewer/viewer3d_doc.html#loadMesh>`_ - Loads a Wavefront .OBJ file. Files should be loaded _before_ displaying the scene, otherwise, if the scene is already...
@@ -1016,10 +1089,12 @@ O
 ^
 
 * `Frangi.ops <../pysnt/filter/frangi_doc.html#ops>`_ - No description available
+* `SpectralSimilarity.ops <../pysnt/filter/spectralsimilarity_doc.html#ops>`_ - No description available
 * `Tubeness.ops <../pysnt/filter/tubeness_doc.html#ops>`_ - No description available
 * `BoundingBox.origin <../pysnt/util/boundingbox_doc.html#origin>`_ - Retrieves the origin of this box.
 * `BoundingBox.originOpposite <../pysnt/util/boundingbox_doc.html#originOpposite>`_ - Retrieves the origin opposite of this box.
 * `Frangi.out <../pysnt/filter/frangi_doc.html#out>`_ - No description available
+* `SpectralSimilarity.out <../pysnt/filter/spectralsimilarity_doc.html#out>`_ - No description available
 * `Tubeness.out <../pysnt/filter/tubeness_doc.html#out>`_ - No description available
 
 P
@@ -1042,10 +1117,15 @@ P
 R
 ^
 
+* `TreeToRaster.rasterize <../pysnt/util/treetoraster_doc.html#rasterize>`_ - Rasterizes the tree into a 32-bit (float) image using partial-volume supersampling. Voxel values represent the fraction...
+* `TreeToRaster.rasterizeNodeValueLabels <../pysnt/util/treetoraster_doc.html#rasterizeNodeValueLabels>`_ - Rasterizes the tree into a 16-bit label image where each voxel is assigned the node value of the nearest path node (as...
+* `TreeToRaster.rasterizePathLabels <../pysnt/util/treetoraster_doc.html#rasterizePathLabels>`_ - Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it...
+* `AStarRefiner.readPreferences <../pysnt/astarrefiner_doc.html#readPreferences>`_ - No-op: kept for consistency with PathFitter/MultiSpectralRefiner, which read persisted preferences here. A* re-tracing...
 * `PathFitter.readPreferences <../pysnt/pathfitter_doc.html#readPreferences>`_ - No description available
 * `Viewer3D.rebuild <../pysnt/viewer/viewer3d_doc.html#rebuild>`_ - Rebuilds (repaints) a scene object (e.g., a Tree after being modified elsewhere)
 * `Viewer3D.recordRotation <../pysnt/viewer/viewer3d_doc.html#recordRotation>`_ - Records an animated rotation of the scene around the specified axis as a sequence of images.
 * `SNTService.registerEventHandlers <../pysnt/sntservice_doc.html#registerEventHandlers>`_ - No description available
+* `BvvMultiSource.removeFromBvv <../pysnt/viewer/bvvmultisource_doc.html#removeFromBvv>`_ - Removes all sources in the group from the viewer.
 * `NodeProfiler.removeInput <../pysnt/analysis/nodeprofiler_doc.html#removeInput>`_ - No description available
 * `PathProfiler.removeInput <../pysnt/analysis/pathprofiler_doc.html#removeInput>`_ - No description available
 * `WekaModelLoader.removeInput <../pysnt/io/wekamodelloader_doc.html#removeInput>`_ - No description available
@@ -1070,6 +1150,7 @@ R
 * `NodeProfiler.run <../pysnt/analysis/nodeprofiler_doc.html#run>`_ - No description available
 * `PathProfiler.run <../pysnt/analysis/pathprofiler_doc.html#run>`_ - No description available
 * `SearchThread.run <../pysnt/tracing/searchthread_doc.html#run>`_ - No description available
+* `SpectralSimilarity.run <../pysnt/filter/spectralsimilarity_doc.html#run>`_ - No description available
 * `TracerThread.run <../pysnt/tracing/tracerthread_doc.html#run>`_ - No description available
 * `Tubeness.run <../pysnt/filter/tubeness_doc.html#run>`_ - No description available
 * `WekaModelLoader.run <../pysnt/io/wekamodelloader_doc.html#run>`_ - No description available
@@ -1086,14 +1167,19 @@ S
 * `PointInImage.scale <../pysnt/util/pointinimage_doc.html#scale>`_ - Scales this point coordinates.
 * `SWCPoint.scale <../pysnt/util/swcpoint_doc.html#scale>`_ - No description available
 * `SNTColor.setAWTColor <../pysnt/util/sntcolor_doc.html#setAWTColor>`_ - Re-assigns an AWT color.
+* `BvvMultiSource.setActive <../pysnt/viewer/bvvmultisource_doc.html#setActive>`_ - Sets the active/visible state for all sources in the group.
 * `MultiViewer3D.setAnimationEnabled <../pysnt/viewer/multiviewer3d_doc.html#setAnimationEnabled>`_ - No description available
 * `PointInImage.setAnnotation <../pysnt/util/pointinimage_doc.html#setAnnotation>`_ - Description copied from interface: SNTPoint
 * `SNTPoint.setAnnotation <../pysnt/util/sntpoint_doc.html#setAnnotation>`_ - Assigns a neuropil annotation (e.g., atlas compartment) to this point.
 * `SWCPoint.setAnnotation <../pysnt/util/swcpoint_doc.html#setAnnotation>`_ - Description copied from interface: SNTPoint
 * `MultiViewer2D.setAxesVisible <../pysnt/viewer/multiviewer2d_doc.html#setAxesVisible>`_ - No description available
 * `Viewer2D.setAxesVisible <../pysnt/viewer/viewer2d_doc.html#setAxesVisible>`_ - No description available
+* `TreeToRaster.setAxialRes <../pysnt/util/treetoraster_doc.html#setAxialRes>`_ - Sets the axial (z) voxel size. A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree are...
 * `Annotation3D.setBoundingBoxColor <../pysnt/viewer/annotation3d_doc.html#setBoundingBoxColor>`_ - Determines whether the mesh bounding box should be displayed.
+* `OBJMesh.setBoundingBoxColor <../pysnt/viewer/objmesh_doc.html#setBoundingBoxColor>`_ - Determines whether the mesh bounding box should be displayed.
 * `Annotation3D.setColor <../pysnt/viewer/annotation3d_doc.html#setColor>`_ - Script friendly method to assign a color to the annotation.
+* `BvvMultiSource.setColor <../pysnt/viewer/bvvmultisource_doc.html#setColor>`_ - Sets the color for all sources in the group.
+* `OBJMesh.setColor <../pysnt/viewer/objmesh_doc.html#setColor>`_ - Assigns a color to the mesh.
 * `SWCPoint.setColor <../pysnt/util/swcpoint_doc.html#setColor>`_ - Sets the color of this point.
 * `MultiViewer2D.setColorBarLegend <../pysnt/viewer/multiviewer2d_doc.html#setColorBarLegend>`_ - No description available
 * `SkeletonConverter.setConnectComponents <../pysnt/analysis/skeletonconverter_doc.html#setConnectComponents>`_ - No description available
@@ -1104,9 +1190,13 @@ S
 * `WekaModelLoader.setContext <../pysnt/io/wekamodelloader_doc.html#setContext>`_ - No description available
 * `PathFitter.setCrossSectionRadius <../pysnt/pathfitter_doc.html#setCrossSectionRadius>`_ - Sets the radius of cross-sectional planes sampled around each node. At each node, PathFitter samples a square...
 * `Viewer2D.setDefaultColor <../pysnt/viewer/viewer2d_doc.html#setDefaultColor>`_ - Sets the default (fallback) color for plotting paths.
+* `TreeToRaster.setDefaultRadius <../pysnt/util/treetoraster_doc.html#setDefaultRadius>`_ - Sets the default radius used for nodes/trees that have no radii defined. If not set, defaults to half the lateral voxel...
 * `BoundingBox.setDimensions <../pysnt/util/boundingbox_doc.html#setDimensions>`_ - Sets the dimensions of this bounding box using uncalibrated (pixel) lengths.
+* `BvvMultiSource.setDisplayRange <../pysnt/viewer/bvvmultisource_doc.html#setDisplayRange>`_ - Sets the display range for all sources in the group.
+* `OBJMesh.setDisplayedHemisphere <../pysnt/viewer/objmesh_doc.html#setDisplayedHemisphere>`_ - Sets which hemisphere of this mesh is displayed.
 * `ShollAnalyzer.setEnableCurveFitting <../pysnt/analysis/shollanalyzer_doc.html#setEnableCurveFitting>`_ - Sets whether curve fitting computations should be performed.
 * `Frangi.setEnvironment <../pysnt/filter/frangi_doc.html#setEnvironment>`_ - No description available
+* `SpectralSimilarity.setEnvironment <../pysnt/filter/spectralsimilarity_doc.html#setEnvironment>`_ - No description available
 * `Tubeness.setEnvironment <../pysnt/filter/tubeness_doc.html#setEnvironment>`_ - No description available
 * `Viewer2D.setEqualizeAxes <../pysnt/viewer/viewer2d_doc.html#setEqualizeAxes>`_ - /** Sets whether the axes should be equalized (same scale). When enabled, both X and Y axes will use the same scale to...
 * `PathResult.setErrorMessage <../pysnt/tracing/pathresult_doc.html#setErrorMessage>`_ - No description available
@@ -1119,6 +1209,7 @@ S
 * `BiSearchNode.setGFromGoal <../pysnt/tracing/bisearchnode_doc.html#setGFromGoal>`_ - No description available
 * `BiSearchNode.setGFromStart <../pysnt/tracing/bisearchnode_doc.html#setGFromStart>`_ - No description available
 * `MultiViewer3D.setGap <../pysnt/viewer/multiviewer3d_doc.html#setGap>`_ - No description available
+* `TreeToRaster.setGaussianBlur <../pysnt/util/treetoraster_doc.html#setGaussianBlur>`_ - Enables Gaussian blurring of the (optionally noisy) image, simulating spatially correlated noise and optical blur. Note...
 * `MultiViewer2D.setGridlinesVisible <../pysnt/viewer/multiviewer2d_doc.html#setGridlinesVisible>`_ - No description available
 * `Viewer2D.setGridlinesVisible <../pysnt/viewer/viewer2d_doc.html#setGridlinesVisible>`_ - No description available
 * `DefaultSearchNode.setHandle <../pysnt/tracing/defaultsearchnode_doc.html#setHandle>`_ - No description available
@@ -1133,6 +1224,7 @@ S
 * `Frangi.setInput <../pysnt/filter/frangi_doc.html#setInput>`_ - No description available
 * `NodeProfiler.setInput <../pysnt/analysis/nodeprofiler_doc.html#setInput>`_ - No description available
 * `PathProfiler.setInput <../pysnt/analysis/pathprofiler_doc.html#setInput>`_ - No description available
+* `SpectralSimilarity.setInput <../pysnt/filter/spectralsimilarity_doc.html#setInput>`_ - No description available
 * `Tubeness.setInput <../pysnt/filter/tubeness_doc.html#setInput>`_ - No description available
 * `WekaModelLoader.setInput <../pysnt/io/wekamodelloader_doc.html#setInput>`_ - No description available
 * `NodeProfiler.setInputs <../pysnt/analysis/nodeprofiler_doc.html#setInputs>`_ - No description available
@@ -1140,10 +1232,13 @@ S
 * `WekaModelLoader.setInputs <../pysnt/io/wekamodelloader_doc.html#setInputs>`_ - No description available
 * `ConvexHullAnalyzer.setLabel <../pysnt/analysis/convexhullanalyzer_doc.html#setLabel>`_ - Sets the optional description for the analysis
 * `NodeStatistics.setLabel <../pysnt/analysis/nodestatistics_doc.html#setLabel>`_ - Sets a descriptive label to this statistic analysis to be used in histograms, etc.
+* `OBJMesh.setLabel <../pysnt/viewer/objmesh_doc.html#setLabel>`_ - Sets the label for this mesh.
 * `MultiViewer3D.setLabels <../pysnt/viewer/multiviewer3d_doc.html#setLabels>`_ - No description available
+* `TreeToRaster.setLateralRes <../pysnt/util/treetoraster_doc.html#setLateralRes>`_ - Sets the lateral (x, y) voxel size.
 * `MultiViewer2D.setLayoutColumns <../pysnt/viewer/multiviewer2d_doc.html#setLayoutColumns>`_ - No description available
 * `MultiViewer3D.setLayoutColumns <../pysnt/viewer/multiviewer3d_doc.html#setLayoutColumns>`_ - No description available
 * `SkeletonConverter.setLengthThreshold <../pysnt/analysis/skeletonconverter_doc.html#setLengthThreshold>`_ - No description available
+* `BvvMultiSource.setLiveSync <../pysnt/viewer/bvvmultisource_doc.html#setLiveSync>`_ - Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms()...
 * `SkeletonConverter.setMaxConnectDist <../pysnt/analysis/skeletonconverter_doc.html#setMaxConnectDist>`_ - No description available
 * `Fill.setMetric <../pysnt/fill_doc.html#setMetric>`_ - Sets the cost metric for the filled structure.
 * `PathProfiler.setMetric <../pysnt/analysis/pathprofiler_doc.html#setMetric>`_ - No description available
@@ -1167,6 +1262,7 @@ S
 * `Frangi.setOutput <../pysnt/filter/frangi_doc.html#setOutput>`_ - No description available
 * `NodeProfiler.setOutput <../pysnt/analysis/nodeprofiler_doc.html#setOutput>`_ - No description available
 * `PathProfiler.setOutput <../pysnt/analysis/pathprofiler_doc.html#setOutput>`_ - No description available
+* `SpectralSimilarity.setOutput <../pysnt/filter/spectralsimilarity_doc.html#setOutput>`_ - No description available
 * `Tubeness.setOutput <../pysnt/filter/tubeness_doc.html#setOutput>`_ - No description available
 * `WekaModelLoader.setOutput <../pysnt/io/wekamodelloader_doc.html#setOutput>`_ - No description available
 * `NodeProfiler.setOutputs <../pysnt/analysis/nodeprofiler_doc.html#setOutputs>`_ - No description available
@@ -1175,6 +1271,7 @@ S
 * `PathResult.setPath <../pysnt/tracing/pathresult_doc.html#setPath>`_ - No description available
 * `PointInImage.setPath <../pysnt/util/pointinimage_doc.html#setPath>`_ - Associates a Path with this node
 * `SWCPoint.setPath <../pysnt/util/swcpoint_doc.html#setPath>`_ - No description available
+* `TreeToRaster.setPoissonNoise <../pysnt/util/treetoraster_doc.html#setPoissonNoise>`_ - Enables Poisson shot noise on the rasterized image, simulating photon counting noise typical of fluorescence...
 * `ShollAnalyzer.setPolynomialFitRange <../pysnt/analysis/shollanalyzer_doc.html#setPolynomialFitRange>`_ - Sets the polynomial fit range for linear Sholl statistics.
 * `BiSearchNode.setPosition <../pysnt/tracing/bisearchnode_doc.html#setPosition>`_ - No description available
 * `DefaultSearchNode.setPredecessor <../pysnt/tracing/defaultsearchnode_doc.html#setPredecessor>`_ - No description available
@@ -1189,6 +1286,8 @@ S
 * `SkeletonConverter.setPruneMode <../pysnt/analysis/skeletonconverter_doc.html#setPruneMode>`_ - No description available
 * `NodeProfiler.setRadius <../pysnt/analysis/nodeprofiler_doc.html#setRadius>`_ - No description available
 * `PathProfiler.setRadius <../pysnt/analysis/pathprofiler_doc.html#setRadius>`_ - No description available
+* `TreeToRaster.setRadiusScale <../pysnt/util/treetoraster_doc.html#setRadiusScale>`_ - Sets a uniform multiplier applied to every node radius (and to the default radius for nodes without radii) when...
+* `TreeToRaster.setReferenceBounds <../pysnt/util/treetoraster_doc.html#setReferenceBounds>`_ - Sets reference bounds explicitly, so the output image matches the specified dimensions. When set, the rasterized image...
 * `PathFitter.setReplaceNodes <../pysnt/pathfitter_doc.html#setReplaceNodes>`_ - Sets whether fitting should occur "in place".
 * `NodeProfiler.setResolved <../pysnt/analysis/nodeprofiler_doc.html#setResolved>`_ - No description available
 * `WekaModelLoader.setResolved <../pysnt/io/wekamodelloader_doc.html#setResolved>`_ - No description available
@@ -1201,6 +1300,7 @@ S
 * `PathFitter.setShowAnnotatedView <../pysnt/pathfitter_doc.html#setShowAnnotatedView>`_ - Sets whether an interactive image of the result should be displayed.
 * `SkeletonConverter.setSilent <../pysnt/analysis/skeletonconverter_doc.html#setSilent>`_ - No description available
 * `Annotation3D.setSize <../pysnt/viewer/annotation3d_doc.html#setSize>`_ - Sets the annotation width.
+* `OBJMesh.setSourceAnnotation <../pysnt/viewer/objmesh_doc.html#setSourceAnnotation>`_ - Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.
 * `Fill.setSourcePaths <../pysnt/fill_doc.html#setSourcePaths>`_ - Sets the source paths for the filled structure using a set of paths.
 * `FillerThread.setSourcePaths <../pysnt/tracing/fillerthread_doc.html#setSourcePaths>`_ - No description available
 * `BoundingBox.setSpacing <../pysnt/util/boundingbox_doc.html#setSpacing>`_ - Sets the voxel spacing.
@@ -1211,16 +1311,20 @@ S
 * `FillerThread.setStopAtThreshold <../pysnt/tracing/fillerthread_doc.html#setStopAtThreshold>`_ - Whether to terminate the fill operation once all nodes less than or equal to the distance threshold have been explored....
 * `FillerThread.setStoreExtraNodes <../pysnt/tracing/fillerthread_doc.html#setStoreExtraNodes>`_ - Whether to store above-threshold nodes in the Fill object. The default is true.
 * `PathResult.setSuccess <../pysnt/tracing/pathresult_doc.html#setSuccess>`_ - No description available
+* `OBJMesh.setSymmetryAxis <../pysnt/viewer/objmesh_doc.html#setSymmetryAxis>`_ - Sets the axis defining the symmetry plane of this mesh (e.g., the sagittal plane for most bilateria models), where X=0;...
 * `SWCPoint.setTags <../pysnt/util/swcpoint_doc.html#setTags>`_ - Sets the tags associated with this point.
+* `TreeToRaster.setThicknessModulation <../pysnt/util/treetoraster_doc.html#setThicknessModulation>`_ - Enables intensity modulation based on local neurite thickness. When enabled, thicker neurites are rendered brighter and...
 * `Fill.setThreshold <../pysnt/fill_doc.html#setThreshold>`_ - Sets the distance threshold for the filled structure.
 * `FillerThread.setThreshold <../pysnt/tracing/fillerthread_doc.html#setThreshold>`_ - No description available
 * `MultiViewer2D.setTitle <../pysnt/viewer/multiviewer2d_doc.html#setTitle>`_ - Sets the title of this Viewer's frame.
 * `MultiViewer3D.setTitle <../pysnt/viewer/multiviewer3d_doc.html#setTitle>`_ - Sets the title of the Viewer's frame.
 * `Viewer2D.setTitle <../pysnt/viewer/viewer2d_doc.html#setTitle>`_ - Sets the plot display title.
 * `Annotation3D.setTransparency <../pysnt/viewer/annotation3d_doc.html#setTransparency>`_ - Script friendly method to assign a transparency to the annotation.
+* `OBJMesh.setTransparency <../pysnt/viewer/objmesh_doc.html#setTransparency>`_ - Changes the transparency of this mesh.
 * `BoundingBox.setUnit <../pysnt/util/boundingbox_doc.html#setUnit>`_ - Sets the default length unit for voxel spacing (typically um, for SWC reconstructions)
 * `SkeletonConverter.setVerbose <../pysnt/analysis/skeletonconverter_doc.html#setVerbose>`_ - No description available
 * `MultiViewer3D.setViewMode <../pysnt/viewer/multiviewer3d_doc.html#setViewMode>`_ - No description available
+* `OBJMesh.setVolume <../pysnt/viewer/objmesh_doc.html#setVolume>`_ - Sets the volume of this mesh.
 * `PathStraightener.setWidth <../pysnt/analysis/pathstraightener_doc.html#setWidth>`_ - Sets the width of the straightened path image.
 * `Annotation3D.setWireframeColor <../pysnt/viewer/annotation3d_doc.html#setWireframeColor>`_ - Assigns a wireframe color to the annotation.
 * `BiSearchNode.setX <../pysnt/tracing/bisearchnode_doc.html#setX>`_ - No description available
@@ -1234,41 +1338,59 @@ S
 * `MultiViewer2D.show <../pysnt/viewer/multiviewer2d_doc.html#show>`_ - No description available
 * `MultiViewer3D.show <../pysnt/viewer/multiviewer3d_doc.html#show>`_ - No description available
 * `Viewer2D.show <../pysnt/viewer/viewer2d_doc.html#show>`_ - Displays the current plot on a dedicated frame *
+* `BvvMultiSource.size <../pysnt/viewer/bvvmultisource_doc.html#size>`_ - No description available
 * `ConvexHull2D.size <../pysnt/analysis/convexhull2d_doc.html#size>`_ - Description copied from class: AbstractConvexHull
 * `ConvexHull3D.size <../pysnt/analysis/convexhull3d_doc.html#size>`_ - Description copied from class: AbstractConvexHull
 * `MultiTreeColorMapper.sortedMappedTrees <../pysnt/analysis/multitreecolormapper_doc.html#sortedMappedTrees>`_ - No description available
 * `SNTUtils.static addViewer <../pysnt/sntutils_doc.html#static addViewer>`_ - No description available
 * `SNTColor.static alphaColor <../pysnt/util/sntcolor_doc.html#static alphaColor>`_ - Adds an alpha component to an AWT color.
+* `TreeUtils.static analyzeEndpointClusters <../pysnt/util/treeutils_doc.html#static analyzeEndpointClusters>`_ - Analyzes a collection of paths to determine which endpoint cluster (starts or ends) is more tightly grouped, suggesting...
 * `Frangi.static apply <../pysnt/filter/frangi_doc.html#static apply>`_ - Apply multiscale Frangi vesselness filter to an ImgPlus.
 * `Tubeness.static apply <../pysnt/filter/tubeness_doc.html#static apply>`_ - Apply single-scale tubeness filter to an ImgPlus.
 * `ImpUtils.static applyColorTable <../pysnt/util/imputils_doc.html#static applyColorTable>`_ - No description available
 * `ColorMaps.static applyPlasma <../pysnt/util/colormaps_doc.html#static applyPlasma>`_ - Applies the "plasma" colormap to the specified (non-RGB) image
 * `ColorMaps.static applyViridis <../pysnt/util/colormaps_doc.html#static applyViridis>`_ - Applies the "viridis" colormap to the specified (non-RGB) image
+* `SNTTable.static asDouble <../pysnt/analysis/snttable_doc.html#static asDouble>`_ - Coerces a table cell to a double. Cells may be typed Double, Long, or String depending on how the table was parsed...
+* `SNTTable.static asInt <../pysnt/analysis/snttable_doc.html#static asInt>`_ - Coerces a table cell to an int. Tolerates a Double-shaped integer string (e.g. "1.0" -> 1)
+* `SNTTable.static asString <../pysnt/analysis/snttable_doc.html#static asString>`_ - Coerces a table cell to a trimmed String
 * `ImpUtils.static ascii <../pysnt/util/imputils_doc.html#static ascii>`_ - Converts the specified image into ascii art.
 * `AllenUtils.static assignAnnotationsFromNodeValues <../pysnt/annotation/allenutils_doc.html#static assignAnnotationsFromNodeValues>`_ - Assigns brain annotations (interpreted as CCF IDs) to node values for all paths in a Tree. This method is the inverse...
 * `AllenUtils.static assignHemisphereTags <../pysnt/annotation/allenutils_doc.html#static assignHemisphereTags>`_ - No description available
 * `AllenUtils.static assignToLeftHemisphere <../pysnt/annotation/allenutils_doc.html#static assignToLeftHemisphere>`_ - Assigns a tree to the left hemisphere by mirroring it if necessary.
 * `AllenUtils.static assignToRightHemisphere <../pysnt/annotation/allenutils_doc.html#static assignToRightHemisphere>`_ - Assigns a tree to the right hemisphere by mirroring it if necessary.
+* `TreeUtils.static assignUniqueColors <../pysnt/util/treeutils_doc.html#static assignUniqueColors>`_ - Assigns distinct colors to a collection of Trees.
+* `TreeUtils.static assignUniqueColorsIfUncolored <../pysnt/util/treeutils_doc.html#static assignUniqueColorsIfUncolored>`_ - Assigns distinct colors to trees that have no pre-existing color information, leaving trees with custom path/node...
 * `SNTColor.static average <../pysnt/util/sntcolor_doc.html#static average>`_ - Averages a collection of colors
 * `SNTPoint.static average <../pysnt/util/sntpoint_doc.html#static average>`_ - Computes the average position of a collection of SNTPoints.
+* `SpectralSimilarity.static averageColorAtPositions <../pysnt/filter/spectralsimilarity_doc.html#static averageColorAtPositions>`_ - Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel...
+* `SpectralSimilarity.static averageColorFromPaths <../pysnt/filter/spectralsimilarity_doc.html#static averageColorFromPaths>`_ - As ``` averageColorFromPaths(RandomAccessibleInterval, java.util.List, double, double, double) ``` , but also adding a...
 * `ImpUtils.static binarize <../pysnt/util/imputils_doc.html#static binarize>`_ - Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become...
 * `VFBUtils.static brainBarycentre <../pysnt/annotation/vfbutils_doc.html#static brainBarycentre>`_ - Returns the spatial centroid of an adult Drosophila template brain.
 * `ZBAtlasUtils.static brainBarycentre <../pysnt/annotation/zbatlasutils_doc.html#static brainBarycentre>`_ - Returns the spatial centroid of the template brain.
 * `AllenUtils.static brainCenter <../pysnt/annotation/allenutils_doc.html#static brainCenter>`_ - Returns the spatial centroid of the Allen CCF.
-* `SNTUtils.static buildDate <../pysnt/sntutils_doc.html#static buildDate>`_ - No description available
 * `ImpUtils.static calibrationToAxes <../pysnt/util/imputils_doc.html#static calibrationToAxes>`_ - Creates ImgPlus axes from IJ1 Calibration
+* `TreeUtils.static canFormContinuousChain <../pysnt/util/treeutils_doc.html#static canFormContinuousChain>`_ - Checks if a collection of paths can form a spatially continuous chain within a given tolerance.
+* `SpectralSimilarity.static channelSum <../pysnt/filter/spectralsimilarity_doc.html#static channelSum>`_ - Sums all elements of a vector. Typically used to compute the total intensity across channels of a color vector.
 * `StrahlerAnalyzer.static classify <../pysnt/analysis/strahleranalyzer_doc.html#static classify>`_ - No description available
 * `SNTChart.static closeAll <../pysnt/analysis/sntchart_doc.html#static closeAll>`_ - Closes all open charts
+* `TreeUtils.static collectChildren <../pysnt/util/treeutils_doc.html#static collectChildren>`_ - Collects direct children of a path into the provided collection.
+* `TreeUtils.static collectDescendants <../pysnt/util/treeutils_doc.html#static collectDescendants>`_ - Collects all descendants (children, grandchildren, etc.) of a path into the provided collection.
 * `SWCPoint.static collectionAsReader <../pysnt/util/swcpoint_doc.html#static collectionAsReader>`_ - Converts a collection of SWC points into a Reader.
+* `SNTColor.static colorBlindSafeBlue <../pysnt/util/sntcolor_doc.html#static colorBlindSafeBlue>`_ - Returns the blue of the Okabe-Ito palette, safe against the most common forms of color blindness
+* `SNTColor.static colorBlindSafeYellow <../pysnt/util/sntcolor_doc.html#static colorBlindSafeYellow>`_ - Returns the yellow of the Okabe-Ito palette, safe against the most common forms of color blindness
+* `SeedOverlayRenderer.static colorForSeed <../pysnt/seedoverlayrenderer_doc.html#static colorForSeed>`_ - Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on...
 * `SNTColor.static colorToString <../pysnt/util/sntcolor_doc.html#static colorToString>`_ - Returns the color encoded as hex string with the format #rrggbbaa.
 * `SNTChart.static combine <../pysnt/analysis/sntchart_doc.html#static combine>`_ - Combines a collection of charts into a multipanel montage.
 * `ImpUtils.static combineSkeletons <../pysnt/util/imputils_doc.html#static combineSkeletons>`_ - No description available
 * `NodeStatistics.static computeNearestNeighborDistances <../pysnt/analysis/nodestatistics_doc.html#static computeNearestNeighborDistances>`_ - Computes nearest neighbor distances. Assigns the computed value to the v value of each point
+* `TreeUtils.static computeUprightAngle <../pysnt/util/treeutils_doc.html#static computeUprightAngle>`_ - Computes the angle (in degrees) needed to make a tree appear upright in the XY viewing plane. The angle is derived from...
 * `SNTColor.static contrastColor <../pysnt/util/sntcolor_doc.html#static contrastColor>`_ - Returns a BW 'contrast' color
+* `SNTColor.static contrastHueColor <../pysnt/util/sntcolor_doc.html#static contrastHueColor>`_ - Returns a 'contrasting' color using warm/cool contrast adjustments relatively to a second color reference.
 * `ImpUtils.static convertRGBtoComposite <../pysnt/util/imputils_doc.html#static convertRGBtoComposite>`_ - No description available
 * `ImpUtils.static convertTo32bit <../pysnt/util/imputils_doc.html#static convertTo32bit>`_ - No description available
 * `ImpUtils.static convertTo8bit <../pysnt/util/imputils_doc.html#static convertTo8bit>`_ - No description available
 * `ImpUtils.static convertToSimple2D <../pysnt/util/imputils_doc.html#static convertToSimple2D>`_ - Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse,...
+* `TreeUtils.static countDescendants <../pysnt/util/treeutils_doc.html#static countDescendants>`_ - Counts all descendants (children, grandchildren, etc.) of a path.
 * `ImpUtils.static create <../pysnt/util/imputils_doc.html#static create>`_ - No description available
 * `PathAndFillManager.static createFromFile <../pysnt/pathandfillmanager_doc.html#static createFromFile>`_ - Creates a PathAndFillManager instance from imported data
 * `PathAndFillManager.static createFromGraph <../pysnt/pathandfillmanager_doc.html#static createFromGraph>`_ - Create a new PathAndFillManager instance from the graph.
@@ -1282,6 +1404,7 @@ S
 * `ColorMaps.static discreteColors <../pysnt/util/colormaps_doc.html#static discreteColors>`_ - No description available
 * `ColorMaps.static discreteColorsAWT <../pysnt/util/colormaps_doc.html#static discreteColorsAWT>`_ - No description available
 * `RemoteSWCLoader.static download <../pysnt/io/remoteswcloader_doc.html#static download>`_ - No description available
+* `SNTUtils.static downloadAndExtractZip <../pysnt/sntutils_doc.html#static downloadAndExtractZip>`_ - Downloads a zip archive from the specified URL and extracts it to a fresh temporary directory. Both the downloaded...
 * `SNTUtils.static downloadToTempFile <../pysnt/sntutils_doc.html#static downloadToTempFile>`_ - Downloads a file from the specified URL to a temporary file
 * `ImgUtils.static dropSingletonDimensions <../pysnt/util/imgutils_doc.html#static dropSingletonDimensions>`_ - Remove singleton dimensions from an ImgPlus, preserving axis metadata.
 * `SNTUtils.static error <../pysnt/sntutils_doc.html#static error>`_ - As `error(String, Throwable)`, but allows suppressing the notification-center mirroring, e.g., when the caller has...
@@ -1289,11 +1412,17 @@ S
 * `SNTUtils.static extractReadableTimeStamp <../pysnt/sntutils_doc.html#static extractReadableTimeStamp>`_ - No description available
 * `MouseLightLoader.static extractTrees <../pysnt/io/mouselightloader_doc.html#static extractTrees>`_ - No description available
 * `SNTUtils.static fileAvailable <../pysnt/sntutils_doc.html#static fileAvailable>`_ - No description available
+* `TreeUtils.static filterByCableLength <../pysnt/util/treeutils_doc.html#static filterByCableLength>`_ - Returns the subset of trees whose cable length falls within the specified range.
+* `TreeUtils.static filterBySize <../pysnt/util/treeutils_doc.html#static filterBySize>`_ - Returns the subset of trees whose path count falls within the specified range.
+* `BundleDetector.static find <../pysnt/util/bundledetector_doc.html#static find>`_ - Entry point: detect bundle events for a collection of paths using the given config. Internally constructs a...
 * `CrossoverFinder.static find <../pysnt/util/crossoverfinder_doc.html#static find>`_ - Entry point: detect crossover events for a collection of paths using the given config.
+* `TreeUtils.static findClosestEndpoints <../pysnt/util/treeutils_doc.html#static findClosestEndpoints>`_ - Finds the closest endpoint pairing between two paths. Checks all four combinations: start-start, start-end, end-start,...
 * `SNTUtils.static findClosestPair <../pysnt/sntutils_doc.html#static findClosestPair>`_ - No description available
+* `TreeUtils.static findPathsNeedingReversal <../pysnt/util/treeutils_doc.html#static findPathsNeedingReversal>`_ - Determines which paths need to be reversed so that their start nodes point toward a given root location. A path should...
 * `ImgUtils.static findSpatialAxisIndices <../pysnt/util/imgutils_doc.html#static findSpatialAxisIndices>`_ - Find dimension indices for X, Y, Z axes in an ImgPlus.
 * `ImgUtils.static findSpatialAxisIndicesWithFallback <../pysnt/util/imgutils_doc.html#static findSpatialAxisIndicesWithFallback>`_ - Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.
 * `SWCPoint.static flush <../pysnt/util/swcpoint_doc.html#static flush>`_ - Prints a list of points as space-separated values.
+* `SNTUtils.static formatBytes <../pysnt/sntutils_doc.html#static formatBytes>`_ - No description available
 * `SNTUtils.static formatDouble <../pysnt/sntutils_doc.html#static formatDouble>`_ - No description available
 * `MultiTreeStatistics.static fromCollection <../pysnt/analysis/multitreestatistics_doc.html#static fromCollection>`_ - No description available
 * `PathStatistics.static fromCollection <../pysnt/analysis/pathstatistics_doc.html#static fromCollection>`_ - No description available
@@ -1301,7 +1430,10 @@ S
 * `SNTTable.static fromFile <../pysnt/analysis/snttable_doc.html#static fromFile>`_ - Script-friendly method for loading tabular data from a file/URL.
 * `Tree.static fromFile <../pysnt/tree_doc.html#static fromFile>`_ - Script-friendly method for loading a Tree from a reconstruction file.
 * `FillerThread.static fromFill <../pysnt/tracing/fillerthread_doc.html#static fromFill>`_ - No description available
+* `SNTTable.static fromGenericTable <../pysnt/analysis/snttable_doc.html#static fromGenericTable>`_ - No description available
 * `SNTColor.static fromHex <../pysnt/util/sntcolor_doc.html#static fromHex>`_ - Returns an AWT Color from a (#)RRGGBB(AA) hex string.
+* `SNTColor.static fromString <../pysnt/util/sntcolor_doc.html#static fromString>`_ - Returns an AWT Color from any css-valid co
+* `SNTPoint.static fromString <../pysnt/util/sntpoint_doc.html#static fromString>`_ - No description available
 * `ColorMaps.static get <../pysnt/util/colormaps_doc.html#static get>`_ - Returns a 'core' color table from its title
 * `NeuroMorphoLoader.static get <../pysnt/io/neuromorpholoader_doc.html#static get>`_ - Convenience method for retrieving SWC data,
 * `MouseLightQuerier.static getAllIDs <../pysnt/io/mouselightquerier_doc.html#static getAllIDs>`_ - Gets all available neuron IDs from the database.
@@ -1318,10 +1450,13 @@ S
 * `InsectBrainUtils.static getBrainJSON <../pysnt/annotation/insectbrainutils_doc.html#static getBrainJSON>`_ - No description available
 * `InsectBrainUtils.static getBrainMeshes <../pysnt/annotation/insectbrainutils_doc.html#static getBrainMeshes>`_ - No description available
 * `ImpUtils.static getCT <../pysnt/util/imputils_doc.html#static getCT>`_ - No description available
+* `SNTUtils.static getCacheDir <../pysnt/sntutils_doc.html#static getCacheDir>`_ - Returns SNT's own scratch/cache directory, used by disk-backed operations (e.g. `DiskBackedStorageBackend`, Lazy)....
+* `SNTUtils.static getCacheDirSize <../pysnt/sntutils_doc.html#static getCacheDirSize>`_ - Computes the on-disk size of getCacheDir(). This walks the whole cache tree, so it can be slow once many files have...
 * `ImgUtils.static getCalibration <../pysnt/util/imgutils_doc.html#static getCalibration>`_ - Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.
 * `AllenUtils.static getCartesianPlane <../pysnt/annotation/allenutils_doc.html#static getCartesianPlane>`_ - Retrieves the Cartesian plane matching the specified anatomical plane.
 * `ImpUtils.static getChannel <../pysnt/util/imputils_doc.html#static getChannel>`_ - No description available
 * `AllenUtils.static getCompartment <../pysnt/annotation/allenutils_doc.html#static getCompartment>`_ - Constructs a compartment from its CCF name or acronym
+* `TreeUtils.static getConnectedTree <../pysnt/util/treeutils_doc.html#static getConnectedTree>`_ - Gets the connected tree (component) containing the given path. This traverses up to the root and then collects all...
 * `SNTUtils.static getContext <../pysnt/sntutils_doc.html#static getContext>`_ - Convenience method to access the context of the running Fiji instance
 * `ImgUtils.static getCtSlice <../pysnt/util/imgutils_doc.html#static getCtSlice>`_ - Extracts a channel/time slice by squeezing singleton dimensions. Convenience overload that removes any singleton...
 * `ImgUtils.static getCtSlice3d <../pysnt/util/imgutils_doc.html#static getCtSlice3d>`_ - Get a view of the ImagePlus at the specified channel and frame.
@@ -1331,16 +1466,21 @@ S
 * `PersistenceAnalyzer.static getDescriptors <../pysnt/analysis/persistenceanalyzer_doc.html#static getDescriptors>`_ - Gets a list of supported descriptor functions for persistence analysis. Returns the string identifiers for all...
 * `SNTColor.static getDistinctColors <../pysnt/util/sntcolor_doc.html#static getDistinctColors>`_ - Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details...
 * `SNTColor.static getDistinctColorsAWT <../pysnt/util/sntcolor_doc.html#static getDistinctColorsAWT>`_ - No description available
+* `SNTColor.static getDistinctColorsColorblindSafe <../pysnt/util/sntcolor_doc.html#static getDistinctColorsColorblindSafe>`_ - Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once nColors exceeds...
+* `SNTColor.static getDistinctColorsColorblindSafeAWT <../pysnt/util/sntcolor_doc.html#static getDistinctColorsColorblindSafeAWT>`_ - AWT variant of `getDistinctColorsColorblindSafe(int)`
 * `SNTColor.static getDistinctColorsHex <../pysnt/util/sntcolor_doc.html#static getDistinctColorsHex>`_ - Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex...
 * `SNTUtils.static getElapsedTime <../pysnt/sntutils_doc.html#static getElapsedTime>`_ - No description available
 * `ImpUtils.static getForegroundRect <../pysnt/util/imputils_doc.html#static getForegroundRect>`_ - Returns the cropping rectangle around non-background values, considering all slices of the stack.
 * `ImpUtils.static getFrame <../pysnt/util/imputils_doc.html#static getFrame>`_ - No description available
+* `SNTUtils.static getHeapInfo <../pysnt/sntutils_doc.html#static getHeapInfo>`_ - No description available
 * `AllenUtils.static getHemisphere <../pysnt/annotation/allenutils_doc.html#static getHemisphere>`_ - Checks the hemisphere a neuron belongs to.
 * `AllenUtils.static getHighestOntologyDepth <../pysnt/annotation/allenutils_doc.html#static getHighestOntologyDepth>`_ - Gets the maximum number of ontology levels in the Allen CCF.
 * `RootAngleAnalyzer.static getHistogram <../pysnt/analysis/rootangleanalyzer_doc.html#static getHistogram>`_ - No description available
 * `MouseLightQuerier.static getIDs <../pysnt/io/mouselightquerier_doc.html#static getIDs>`_ - Gets neuron IDs matching the specified collection of IDs or DOIs.
 * `SNTUtils.static getInstance <../pysnt/sntutils_doc.html#static getInstance>`_ - No description available
+* `SNTUtils.static getLastElement <../pysnt/sntutils_doc.html#static getLastElement>`_ - Extracts the last path/URL element (typically a filename) from a file path, URL, or cloud-storage link, e.g.,...
 * `ImpUtils.static getMIP <../pysnt/util/imputils_doc.html#static getMIP>`_ - No description available
+* `TreeUtils.static getMaxOrder <../pysnt/util/treeutils_doc.html#static getMaxOrder>`_ - Returns the maximum path order in the connected tree containing the given path. Higher values indicate deeper/more...
 * `VFBUtils.static getMesh <../pysnt/annotation/vfbutils_doc.html#static getMesh>`_ - Retrieves the mesh associated with the specified VFB id.
 * `MultiTreeColorMapper.static getMetrics <../pysnt/analysis/multitreecolormapper_doc.html#static getMetrics>`_ - Gets the list of supported mapping metrics.
 * `MultiTreeStatistics.static getMetrics <../pysnt/analysis/multitreestatistics_doc.html#static getMetrics>`_ - Gets the list of metrics supported by MultiTreeStatistics. Returns all the metrics that can be computed for groups of...
@@ -1362,6 +1502,7 @@ S
 * `VFBUtils.static getRefBrain <../pysnt/annotation/vfbutils_doc.html#static getRefBrain>`_ - Retrieves the surface mesh of an adult Drosophila template brain. No Internet connection is required, as these meshes...
 * `ZBAtlasUtils.static getRefBrain <../pysnt/annotation/zbatlasutils_doc.html#static getRefBrain>`_ - Retrieves the surface mesh (outline) of the zebrafish template brain.
 * `AllenUtils.static getRootMesh <../pysnt/annotation/allenutils_doc.html#static getRootMesh>`_ - Retrieves the surface contours for the Allen Mouse Brain Atlas (CCF), bundled with SNT.
+* `TreeUtils.static getRootPath <../pysnt/util/treeutils_doc.html#static getRootPath>`_ - Gets the root path of the tree containing the given path.
 * `Tree.static getSWCTypeMap <../pysnt/tree_doc.html#static getSWCTypeMap>`_ - Returns the SWC Type flags used by SNT.
 * `SNTUtils.static getSanitizedUnit <../pysnt/sntutils_doc.html#static getSanitizedUnit>`_ - No description available
 * `MultiTreeColorMapper.static getSingleValueMetrics <../pysnt/analysis/multitreecolormapper_doc.html#static getSingleValueMetrics>`_ - Gets the list of single-value mapping metrics.
@@ -1382,6 +1523,7 @@ S
 * `ImgUtils.static impToRealRai5d <../pysnt/util/imgutils_doc.html#static impToRealRai5d>`_ - Wrap an ImagePlus to a `RandomAccessibleInterval` such that the number of dimensions in the resulting rai is 5 and the...
 * `SNTColor.static interpolateNullEntries <../pysnt/util/sntcolor_doc.html#static interpolateNullEntries>`_ - Replaces null colors in an array with the average of flanking non-null colors.
 * `ImpUtils.static invertLut <../pysnt/util/imputils_doc.html#static invertLut>`_ - No description available
+* `TreeUtils.static isAncestorOf <../pysnt/util/treeutils_doc.html#static isAncestorOf>`_ - Checks if 'potentialAncestor' is an ancestor of 'potentialDescendant'. This traverses up the parent chain from...
 * `ImpUtils.static isBinary <../pysnt/util/imputils_doc.html#static isBinary>`_ - No description available
 * `SNTUtils.static isContextSet <../pysnt/sntutils_doc.html#static isContextSet>`_ - No description available
 * `InsectBrainLoader.static isDatabaseAvailable <../pysnt/io/insectbrainloader_doc.html#static isDatabaseAvailable>`_ - Checks whether a connection to the Insect Brain Database can be established.
@@ -1390,9 +1532,14 @@ S
 * `VFBUtils.static isDatabaseAvailable <../pysnt/annotation/vfbutils_doc.html#static isDatabaseAvailable>`_ - Checks whether a connection to the Virtual Fly Brain database can be established.
 * `ZBAtlasUtils.static isDatabaseAvailable <../pysnt/annotation/zbatlasutils_doc.html#static isDatabaseAvailable>`_ - Checks whether a connection to the FishAtlas database can be established.
 * `SNTUtils.static isDebugMode <../pysnt/sntutils_doc.html#static isDebugMode>`_ - Assesses if SNT is running in debug mode
+* `TreeUtils.static isDescendantOf <../pysnt/util/treeutils_doc.html#static isDescendantOf>`_ - Checks if 'potentialDescendant' is a descendant of 'potentialAncestor'. This is equivalent to checking if...
+* `TreeUtils.static isInSubtree <../pysnt/util/treeutils_doc.html#static isInSubtree>`_ - Checks if 'target' is in the subtree rooted at 'root'. This traverses down through all descendants of root.
 * `AllenUtils.static isLeftHemisphere <../pysnt/annotation/allenutils_doc.html#static isLeftHemisphere>`_ - No description available
+* `NeurolucidaImporter.static isNeurolucidaXML <../pysnt/io/neurolucidaimporter_doc.html#static isNeurolucidaXML>`_ - Checks whether the given input stream starts with Neurolucida XML content. The stream must support...
 * `ImpUtils.static isPointVisible <../pysnt/util/imputils_doc.html#static isPointVisible>`_ - Checks if a given point (in image coordinates) is currently visible in an image
+* `SNTUtils.static isReachable <../pysnt/sntutils_doc.html#static isReachable>`_ - Checks for whether url's host can be reached, meant to be called before a real download/stream attempt (e.g.,...
 * `SNTUtils.static isReconstructionFile <../pysnt/sntutils_doc.html#static isReconstructionFile>`_ - No description available
+* `SNTUtils.static isStandaloneContext <../pysnt/sntutils_doc.html#static isStandaloneContext>`_ - Returns whether the current context was self-initialized by SNT (i.e., no host application like ImageJ/Fiji provided...
 * `ImpUtils.static isVirtualStack <../pysnt/util/imputils_doc.html#static isVirtualStack>`_ - No description available
 * `Tree.static listFromDir <../pysnt/tree_doc.html#static listFromDir>`_ - Retrieves a list of Trees from reconstruction files stored in a common directory matching the specified criteria.
 * `SNTUtils.static log <../pysnt/sntutils_doc.html#static log>`_ - No description available
@@ -1425,23 +1572,43 @@ S
 * `VFBUtils.static main <../pysnt/annotation/vfbutils_doc.html#static main>`_ - No description available
 * `Viewer2D.static main <../pysnt/viewer/viewer2d_doc.html#static main>`_ - No description available
 * `ImgUtils.static maxDimension <../pysnt/util/imgutils_doc.html#static maxDimension>`_ - No description available
+* `TreeUtils.static merge <../pysnt/util/treeutils_doc.html#static merge>`_ - Combines all trees into a single Tree container. Note that no effort is made to make the merge structure...
+* `TreeUtils.static mergeContinuousPaths <../pysnt/util/treeutils_doc.html#static mergeContinuousPaths>`_ *has examples* - Merges paths that continue along the same trajectory at branch points, reducing fragmentation in auto-traced...
+* `TreeUtils.static mergePaths <../pysnt/util/treeutils_doc.html#static mergePaths>`_ - Merges a list of paths into a single path by appending nodes sequentially. The paths should be pre-ordered and oriented...
 * `Annotation3D.static meshToDrawable <../pysnt/viewer/annotation3d_doc.html#static meshToDrawable>`_ - No description available
+* `SNTColor.static mix <../pysnt/util/sntcolor_doc.html#static mix>`_ - Linearly mixes two colors together based on a specified weight, using a gamma-corrected linear blend by squaring the...
 * `ImpUtils.static nextZoomLevel <../pysnt/util/imputils_doc.html#static nextZoomLevel>`_ - No description available
+* `SpectralSimilarity.static nodeToPixelCoords <../pysnt/filter/spectralsimilarity_doc.html#static nodeToPixelCoords>`_ - As `nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double)`, but also adding a pixel-space offset...
+* `SpectralSimilarity.static normalizeVector <../pysnt/filter/spectralsimilarity_doc.html#static normalizeVector>`_ - Normalizes a vector to unit length in place. If the vector has zero magnitude, it is left unchanged.
+* `SNTUtils.static nowTruncatedToSeconds <../pysnt/sntutils_doc.html#static nowTruncatedToSeconds>`_ - Returns the current date-time truncated to whole seconds, e.g., for stamping exported content with a generation time.
 * `SNTPoint.static of <../pysnt/util/sntpoint_doc.html#static of>`_ - No description available
+* `SNTColor.static okabeIto4Colors <../pysnt/util/sntcolor_doc.html#static okabeIto4Colors>`_ - Returns a 4-color subset of the Okabe-Ito colorblind-safe palette
+* `SNTColor.static okabeIto6Colors <../pysnt/util/sntcolor_doc.html#static okabeIto6Colors>`_ - Returns the 6-color Okabe-Ito colorblind-safe palette
 * `ImpUtils.static open <../pysnt/util/imputils_doc.html#static open>`_ - No description available
+* `SNTUtils.static openRemoteStream <../pysnt/sntutils_doc.html#static openRemoteStream>`_ - Opens an InputStream to url with explicit connect/read timeouts, so a stalled or unreachable remote host fails with a...
+* `SNTColor.static oppositeColor <../pysnt/util/sntcolor_doc.html#static oppositeColor>`_ - Returns a suitable 'opposite' color.
+* `TreeUtils.static orderByEndpointProximity <../pysnt/util/treeutils_doc.html#static orderByEndpointProximity>`_ - Orders a collection of paths to form a spatially continuous chain based on endpoint proximity. The algorithm greedily...
+* `TreeUtils.static orientPathsForMerging <../pysnt/util/treeutils_doc.html#static orientPathsForMerging>`_ - Orients paths in a chain so they can be merged end-to-start. After this operation, each path's end node will be near...
+* `TreeUtils.static orientPathsTowardRoot <../pysnt/util/treeutils_doc.html#static orientPathsTowardRoot>`_ - Orients paths so their start nodes point toward a given root location. Paths are reversed in-place if their end node is...
 * `PCAnalyzer.static orientTowardDirection <../pysnt/analysis/pcanalyzer_doc.html#static orientTowardDirection>`_ - Orients principal axes so the primary axis points toward a reference direction, i.e., the primary axis is oriented to...
 * `PCAnalyzer.static orientTowardTips <../pysnt/analysis/pcanalyzer_doc.html#static orientTowardTips>`_ - Convenience method to orient existing principal axes toward a tree's tips centroid. For several topologies, this...
 * `ImgUtils.static outOfBounds <../pysnt/util/imgutils_doc.html#static outOfBounds>`_ - Checks if pos is outside the bounds given by min and max
+* `BvvUtils.static preferMultiResolutionIfSafe <../pysnt/viewer/bvvutils_doc.html#static preferMultiResolutionIfSafe>`_ - Forces BVV to render source with its pyramid-aware, block-streaming path (`bvv.core.multires.MultiResolutionStack3D`)...
+* `BvvUtils.static prefetchForShow <../pysnt/viewer/bvvutils_doc.html#static prefetchForShow>`_ - Fetches and locally caches whichever mipmap level BVV will actually render first for source, by touching every pixel on...
 * `ImpUtils.static previousZoomLevel <../pysnt/util/imputils_doc.html#static previousZoomLevel>`_ - No description available
 * `ImgUtils.static raiToImp <../pysnt/util/imgutils_doc.html#static raiToImp>`_ - Convert a `RandomAccessibleInterval` to an ImagePlus. If the input has 3 dimensions, the 3rd dimension is treated as...
 * `SNTUtils.static randomPaths <../pysnt/sntutils_doc.html#static randomPaths>`_ - Generates a list of random paths. Only useful for debugging purposes
+* `TreeUtils.static rasterize <../pysnt/util/treeutils_doc.html#static rasterize>`_ - Rasterizes a tree into a 3D image with the specified voxel sizes.
 * `ImpUtils.static removeIsolatedPixels <../pysnt/util/imputils_doc.html#static removeIsolatedPixels>`_ - No description available
 * `ImpUtils.static removeSlices <../pysnt/util/imputils_doc.html#static removeSlices>`_ - No description available
 * `SNTUtils.static removeViewer <../pysnt/sntutils_doc.html#static removeViewer>`_ - No description available
+* `TreeUtils.static restoreNodeValues <../pysnt/util/treeutils_doc.html#static restoreNodeValues>`_ - Restores per-path node values captured by `snapshotNodeValues(Tree)`.
 * `ImpUtils.static rotate90 <../pysnt/util/imputils_doc.html#static rotate90>`_ - Rotates an image 90 degrees.
+* `SNTUtils.static runWithTimeout <../pysnt/sntutils_doc.html#static runWithTimeout>`_ - Runs task on a bounded background (daemon) thread, guarding against blocking I/O - typically remote N5/Zarr discovery,...
 * `ImpUtils.static sameCTDimensions <../pysnt/util/imputils_doc.html#static sameCTDimensions>`_ - No description available
 * `ImpUtils.static sameCalibration <../pysnt/util/imputils_doc.html#static sameCalibration>`_ - No description available
 * `ImpUtils.static sameXYZDimensions <../pysnt/util/imputils_doc.html#static sameXYZDimensions>`_ - No description available
+* `SNTUtils.static sanitizeFilename <../pysnt/sntutils_doc.html#static sanitizeFilename>`_ - Replaces characters that are unsafe/reserved in filenames with an underscore, leaving alphanumerics, dots, and hyphens...
 * `ImpUtils.static save <../pysnt/util/imputils_doc.html#static save>`_ - Saves the specified image.
 * `MouseLightQuerier.static setCCFVersion <../pysnt/io/mouselightquerier_doc.html#static setCCFVersion>`_ - Sets the version of the Common Coordinate Framework to be used by the Querier.
 * `SNTUtils.static setContext <../pysnt/sntutils_doc.html#static setContext>`_ - No description available
@@ -1450,14 +1617,19 @@ S
 * `ImpUtils.static setLut <../pysnt/util/imputils_doc.html#static setLut>`_ - No description available
 * `SkeletonConverter.static skeletonize <../pysnt/analysis/skeletonconverter_doc.html#static skeletonize>`_ - No description available
 * `SkeletonConverter.static skeletonizeTimeLapse <../pysnt/analysis/skeletonconverter_doc.html#static skeletonizeTimeLapse>`_ - No description available
+* `TreeUtils.static snapshotNodeValues <../pysnt/util/treeutils_doc.html#static snapshotNodeValues>`_ - Snapshots the per-node values (node.v) for each path in a Tree so they can be restored later.
 * `AllenUtils.static splitByHemisphere <../pysnt/annotation/allenutils_doc.html#static splitByHemisphere>`_ - No description available
+* `TreeUtils.static splitByPrimaryPaths <../pysnt/util/treeutils_doc.html#static splitByPrimaryPaths>`_ - Splits a tree with multiple primary paths into separate trees, one rooted at each primary path.
 * `ImgUtils.static splitIntoBlocks <../pysnt/util/imgutils_doc.html#static splitIntoBlocks>`_ - Partition the source rai into a list of IntervalView with given dimensions. If the block dimensions are not multiples...
 * `SNTUtils.static startApp <../pysnt/sntutils_doc.html#static startApp>`_ - Convenience method to start up SNT's GUI.
 * `SNTUtils.static stripExtension <../pysnt/sntutils_doc.html#static stripExtension>`_ - No description available
 * `ImgUtils.static subInterval <../pysnt/util/imgutils_doc.html#static subInterval>`_ - Get an N-D sub-interval of an N-D image, given two corner points and specified padding. Works in native dimension order...
 * `ImgUtils.static subVolume <../pysnt/util/imgutils_doc.html#static subVolume>`_ - Get a 3D sub-volume of an image, given two corner points and specified padding. Coordinates are in XYZ order. If the...
+* `TreeUtils.static suggestRootLocation <../pysnt/util/treeutils_doc.html#static suggestRootLocation>`_ - Analyzes paths and suggests auto-orientation based on: If a reference point (e.g., ROI centroid) is provided, orient...
 * `ConvexHullAnalyzer.static supportedMetrics <../pysnt/analysis/convexhullanalyzer_doc.html#static supportedMetrics>`_ - Gets the list of metrics supported by ConvexHullAnalyzer.
 * `RootAngleAnalyzer.static supportedMetrics <../pysnt/analysis/rootangleanalyzer_doc.html#static supportedMetrics>`_ - No description available
+* `TreeUtils.static syncCanvasOffset <../pysnt/util/treeutils_doc.html#static syncCanvasOffset>`_ - Applies the parent's canvas offset to the child path and all its descendants. This ensures paths are in the same...
+* `BvvUtils.static synthesizeMipmapPyramid <../pysnt/viewer/bvvutils_doc.html#static synthesizeMipmapPyramid>`_ - Wraps a single-resolution Source in a synthetic mipmap pyramid, built by materializing it locally (see...
 * `ImpUtils.static toDataset <../pysnt/util/imputils_doc.html#static toDataset>`_ - No description available
 * `ImgUtils.static toImagePlus <../pysnt/util/imgutils_doc.html#static toImagePlus>`_ - Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.
 * `ImpUtils.static toImgPlus <../pysnt/util/imputils_doc.html#static toImgPlus>`_ - Convert an ImagePlus to an ImgPlus with calibration and origin metadata. Creates an ImgPlus with proper axis types (X,...
@@ -1468,10 +1640,14 @@ S
 * `NodeColorMapper.static unMap <../pysnt/analysis/nodecolormapper_doc.html#static unMap>`_ - No description available
 * `TreeColorMapper.static unMap <../pysnt/analysis/treecolormapper_doc.html#static unMap>`_ - No description available
 * `SNTColor.static valueOf <../pysnt/util/sntcolor_doc.html#static valueOf>`_ - Parses a color from the given string. The following formats are supported: Hex format [HTML color codes starting with...
+* `BvvUtils.static warnIfLikelyRemoteImgPlus <../pysnt/viewer/bvvutils_doc.html#static warnIfLikelyRemoteImgPlus>`_ - Diagnostic-only warning for the plain ImgPlus fallback path (see `SpimDataUtils.resolvePathToSource(String)`). Unlike...
+* `BvvUtils.static warnIfLikelySimpleStack <../pysnt/viewer/bvvutils_doc.html#static warnIfLikelySimpleStack>`_ - Read-only counterpart to `preferMultiResolutionIfSafe(bdv.viewer.Source, int)` for AbstractSpimData sources...
 * `ImgUtils.static wrapWithAxes <../pysnt/util/imgutils_doc.html#static wrapWithAxes>`_ - Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus. Useful for wrapping op results with proper...
 * `ImpUtils.static zoomTo <../pysnt/util/imputils_doc.html#static zoomTo>`_ - Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.
 * `PathStraightener.straighten <../pysnt/analysis/pathstraightener_doc.html#straighten>`_ - No description available
+* `AStarRefiner.succeeded <../pysnt/astarrefiner_doc.html#succeeded>`_ - Whether the re-trace succeeded. Only meaningful after call().
 * `SciViewSNT.syncPathManagerList <../pysnt/sciviewsnt_doc.html#syncPathManagerList>`_ - (Re)loads the current list of Paths in the Path Manager list.
+* `BvvMultiSource.syncTransforms <../pysnt/viewer/bvvmultisource_doc.html#syncTransforms>`_ - Forces a repaint. With field-sharing active, followers already hold the same transform objects as the leader: this call...
 
 T
 ^
@@ -1480,6 +1656,7 @@ T
 * `BoundingBox.toBoundingBox3d <../pysnt/util/boundingbox_doc.html#toBoundingBox3d>`_ - No description available
 * `PointInImage.transform <../pysnt/util/pointinimage_doc.html#transform>`_ - No description available
 * `SWCPoint.transform <../pysnt/util/swcpoint_doc.html#transform>`_ - No description available
+* `OBJMesh.translate <../pysnt/viewer/objmesh_doc.html#translate>`_ - Translates the vertices of this mesh by the specified offset. If mesh is displayed, changes may only occur once scene...
 * `SNTColor.type <../pysnt/util/sntcolor_doc.html#type>`_ - Retrieves the SWC type
 
 U

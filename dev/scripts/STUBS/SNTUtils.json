@@ -1,7 +1,7 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.932862",
+  "extracted_at": "2026-09-27T23:01:07.893176",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -21,18 +21,6 @@
         }
       ],
       "documentation": "Java method: static addViewer"
-    },
-    {
-      "name": "static buildDate",
-      "overloads": [
-        {
-          "signature": "static buildDate() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String"
-        }
-      ],
-      "documentation": "Java method: static buildDate"
     },
     {
       "name": "static csvQuoteAndPrint",
@@ -56,6 +44,24 @@
         }
       ],
       "documentation": "Java method: static csvQuoteAndPrint"
+    },
+    {
+      "name": "static downloadAndExtractZip",
+      "overloads": [
+        {
+          "signature": "static downloadAndExtractZip(String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File"
+        }
+      ],
+      "documentation": "Java method: static downloadAndExtractZip"
     },
     {
       "name": "static downloadToTempFile",
@@ -96,12 +102,51 @@
           "java_return_type": "void"
         },
         {
+          "signature": "static error(String, Throwable, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Throwable"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "static error(String) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "str",
               "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "static error(String, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",
@@ -187,6 +232,24 @@
       "documentation": "Java method: static findClosestPair"
     },
     {
+      "name": "static formatBytes",
+      "overloads": [
+        {
+          "signature": "static formatBytes(long) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static formatBytes"
+    },
+    {
       "name": "static formatDouble",
       "overloads": [
         {
@@ -213,6 +276,23 @@
       "name": "static getBackupCopies",
       "overloads": [
         {
+          "signature": "static getBackupCopies(File, String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "static getBackupCopies(File) -> List",
           "params": [
             {
@@ -226,6 +306,30 @@
         }
       ],
       "documentation": "Java method: static getBackupCopies"
+    },
+    {
+      "name": "static getCacheDir",
+      "overloads": [
+        {
+          "signature": "static getCacheDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File"
+        }
+      ],
+      "documentation": "Java method: static getCacheDir"
+    },
+    {
+      "name": "static getCacheDirSize",
+      "overloads": [
+        {
+          "signature": "static getCacheDirSize() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long"
+        }
+      ],
+      "documentation": "Java method: static getCacheDirSize"
     },
     {
       "name": "static getContext",
@@ -281,6 +385,18 @@
       "documentation": "Java method: static getElapsedTime"
     },
     {
+      "name": "static getHeapInfo",
+      "overloads": [
+        {
+          "signature": "static getHeapInfo() -> SNTUtils$HeapInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTUtils$HeapInfo"
+        }
+      ],
+      "documentation": "Java method: static getHeapInfo"
+    },
+    {
       "name": "static getInstance",
       "overloads": [
         {
@@ -291,6 +407,24 @@
         }
       ],
       "documentation": "Java method: static getInstance"
+    },
+    {
+      "name": "static getLastElement",
+      "overloads": [
+        {
+          "signature": "static getLastElement(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static getLastElement"
     },
     {
       "name": "static getPluginInstance",
@@ -447,6 +581,29 @@
       "documentation": "Java method: static isDebugMode"
     },
     {
+      "name": "static isReachable",
+      "overloads": [
+        {
+          "signature": "static isReachable(String, int) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isReachable"
+    },
+    {
       "name": "static isReconstructionFile",
       "overloads": [
         {
@@ -465,6 +622,18 @@
       "documentation": "Java method: static isReconstructionFile"
     },
     {
+      "name": "static isStandaloneContext",
+      "overloads": [
+        {
+          "signature": "static isStandaloneContext() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean"
+        }
+      ],
+      "documentation": "Java method: static isStandaloneContext"
+    },
+    {
       "name": "static log",
       "overloads": [
         {
@@ -481,6 +650,36 @@
         }
       ],
       "documentation": "Java method: static log"
+    },
+    {
+      "name": "static nowTruncatedToSeconds",
+      "overloads": [
+        {
+          "signature": "static nowTruncatedToSeconds() -> LocalDateTime",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "LocalDateTime"
+        }
+      ],
+      "documentation": "Java method: static nowTruncatedToSeconds"
+    },
+    {
+      "name": "static openRemoteStream",
+      "overloads": [
+        {
+          "signature": "static openRemoteStream(String) -> InputStream",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "InputStream"
+        }
+      ],
+      "documentation": "Java method: static openRemoteStream"
     },
     {
       "name": "static randomPaths",
@@ -511,6 +710,52 @@
         }
       ],
       "documentation": "Java method: static removeViewer"
+    },
+    {
+      "name": "static runWithTimeout",
+      "overloads": [
+        {
+          "signature": "static runWithTimeout(Callable, long, String) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Callable"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object"
+        }
+      ],
+      "documentation": "Java method: static runWithTimeout"
+    },
+    {
+      "name": "static sanitizeFilename",
+      "overloads": [
+        {
+          "signature": "static sanitizeFilename(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: static sanitizeFilename"
     },
     {
       "name": "static setContext",
@@ -552,10 +797,15 @@
       "name": "static setIsLoading",
       "overloads": [
         {
-          "signature": "static setIsLoading(boolean) -> void",
+          "signature": "static setIsLoading(boolean, boolean) -> void",
           "params": [
             {
               "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "arg1",
               "type": "bool",
               "java_type": "boolean"
             }
@@ -569,6 +819,18 @@
     {
       "name": "static startApp",
       "overloads": [
+        {
+          "signature": "static startApp(boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT"
+        },
         {
           "signature": "static startApp() -> SNT",
           "params": [],
@@ -600,6 +862,14 @@
   "fields": [],
   "constructors": [],
   "static_fields": [
+    {
+      "name": "TIMESTAMP_REGEX",
+      "type": "str",
+      "java_type": "String",
+      "documentation": "Field TIMESTAMP_REGEX of type String",
+      "is_static": true,
+      "is_final": true
+    },
     {
       "name": "VERSION",
       "type": "str",

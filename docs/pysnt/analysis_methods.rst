@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Analysis'
-Total matching methods: **20**
+Total matching methods: **25**
 
 Matching Methods
 ----------------
@@ -31,14 +31,34 @@ Matching Methods
      - :class:`Frangi`
      - ``None``
      - No description available
+   * - :meth:`SpectralSimilarity.compute`
+     - :class:`SpectralSimilarity`
+     - ``None``
+     - Computes the spectral similarity map.
    * - :meth:`Tubeness.compute`
      - :class:`Tubeness`
      - ``None``
      - No description available
+   * - :meth:`OBJMesh.computePrincipalAxes`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated...
+   * - :meth:`SeedManager.computeVisibleRect`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
+   * - :meth:`TreeUtils.static analyzeEndpointClusters`
+     - :class:`TreeUtils`
+     - ``Any``
+     - Analyzes a collection of paths to determine which endpoint cluster (starts or ends) is more tightly grouped, suggesting...
    * - :meth:`NodeStatistics.static computeNearestNeighborDistances`
      - :class:`NodeStatistics`
      - ``None``
      - Computes nearest neighbor distances. Assigns the computed value to the v value of each point
+   * - :meth:`TreeUtils.static computeUprightAngle`
+     - :class:`TreeUtils`
+     - ``float``
+     - Computes the angle (in degrees) needed to make a tree appear upright in the XY viewing plane. The angle is derived from...
    * - :meth:`MultiTreeStatistics.static getAllMetrics`
      - :class:`MultiTreeStatistics`
      - ``List[Any]``
@@ -98,4 +118,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-09-27 22:17:09*
+*Filtered index generated on 2026-09-27 23:02:20*

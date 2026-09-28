@@ -1,9 +1,9 @@
 {
   "class_name": "Annotation3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-01-02T22:36:44.443600",
+  "extracted_at": "2026-09-27T23:00:52.545372",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.183062",
+  "enhancement_timestamp": "2026-09-27T23:02:20.432844",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -241,12 +241,12 @@
       "name": "setColor",
       "overloads": [
         {
-          "signature": "setColor(String, double) -> void",
+          "signature": "setColor(ColorRGB, double) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "ColorRGB",
               "description": "- the color to render the imported file, either a 1) HTML color codes starting with hash (",
               "javadoc_name": "color"
             },
@@ -280,12 +280,12 @@
           "throws": {}
         },
         {
-          "signature": "setColor(ColorRGB, double) -> void",
+          "signature": "setColor(String, double) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorRGB",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
@@ -371,12 +371,12 @@
       "name": "setWireframeColor",
       "overloads": [
         {
-          "signature": "setWireframeColor(String) -> void",
+          "signature": "setWireframeColor(ColorRGB) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "Any",
+              "java_type": "ColorRGB",
               "description": "- the wireframe color. Ignored if the annotation has no wireframe.",
               "javadoc_name": "color"
             }
@@ -387,12 +387,12 @@
           "throws": {}
         },
         {
-          "signature": "setWireframeColor(ColorRGB) -> void",
+          "signature": "setWireframeColor(String) -> void",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorRGB",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -417,28 +417,6 @@
     {
       "name": "__init__",
       "overloads": [
-        {
-          "signature": "Annotation3D(AbstractConvexHull, ColorRGB, String)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
         {
           "signature": "Annotation3D(Polygon2D, ColorRGB, String)",
           "params": [
@@ -499,6 +477,28 @@
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(AbstractConvexHull, ColorRGB, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AbstractConvexHull"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
       "documentation": "Java constructors for Annotation3D"
@@ -515,8 +515,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "Object"
+    "Object",
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

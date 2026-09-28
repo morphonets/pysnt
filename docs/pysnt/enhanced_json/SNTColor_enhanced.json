@@ -1,9 +1,9 @@
 {
   "class_name": "SNTColor",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.863751",
+  "extracted_at": "2026-09-27T23:01:06.817032",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.029236",
+  "enhancement_timestamp": "2026-09-27T23:02:20.307776",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -90,6 +90,46 @@
       "examples": []
     },
     {
+      "name": "static colorBlindSafeBlue",
+      "overloads": [
+        {
+          "signature": "static colorBlindSafeBlue() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the colorblind-safe blue",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static colorBlindSafeBlue",
+      "javadoc_description": "Returns the blue of the Okabe-Ito palette, safe against the most common forms of color blindness",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static colorBlindSafeYellow",
+      "overloads": [
+        {
+          "signature": "static colorBlindSafeYellow() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the colorblind-safe yellow",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static colorBlindSafeYellow",
+      "javadoc_description": "Returns the yellow of the Okabe-Ito palette, safe against the most common forms of color blindness",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static colorToString",
       "overloads": [
         {
@@ -146,6 +186,57 @@
       "examples": []
     },
     {
+      "name": "static contrastHueColor",
+      "overloads": [
+        {
+          "signature": "static contrastHueColor(Color, Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static contrastHueColor(Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the input color",
+              "javadoc_name": "c"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "The contrasting color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static contrastHueColor",
+      "javadoc_description": "Returns a 'contrasting' color using warm/cool contrast adjustments relatively to a second color reference.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static fromHex",
       "overloads": [
         {
@@ -167,6 +258,34 @@
       ],
       "documentation": "Java method: static fromHex",
       "javadoc_description": "Returns an AWT Color from a (#)RRGGBB(AA) hex string.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static fromString",
+      "overloads": [
+        {
+          "signature": "static fromString(String) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the input string",
+              "javadoc_name": "colorName"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the converted AWT color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static fromString",
+      "javadoc_description": "Returns an AWT Color from any css-valid co",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -253,8 +372,80 @@
       "examples": []
     },
     {
+      "name": "static getDistinctColorsColorblindSafe",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsColorblindSafe(int) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;",
+          "return_description": "the colorblind-safe colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsColorblindSafe",
+      "javadoc_description": "Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once nColors exceeds that count",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getDistinctColorsColorblindSafeAWT",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsColorblindSafeAWT(int) -> Color;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color;",
+          "return_description": "the colorblind-safe colors, as AWT colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsColorblindSafeAWT",
+      "javadoc_description": "AWT variant of `getDistinctColorsColorblindSafe(int)`",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static getDistinctColorsHex",
       "overloads": [
+        {
+          "signature": "static getDistinctColorsHex(int) -> String;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of colors to be retrieved",
+              "javadoc_name": "nColors"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "String;",
+          "return_description": "the maximum contrast colors as hex color strings",
+          "throws": {}
+        },
         {
           "signature": "static getDistinctColorsHex(int, String) -> String;",
           "params": [
@@ -276,22 +467,6 @@
           "return_type": "Any",
           "java_return_type": "String;",
           "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getDistinctColorsHex(int) -> String;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "- the number of colors to be retrieved",
-              "javadoc_name": "nColors"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "String;",
-          "return_description": "the maximum contrast colors as hex color strings",
           "throws": {}
         }
       ],
@@ -346,6 +521,120 @@
       "documentation": "Java method: isTypeDefined",
       "javadoc_description": "Checks if an SWC type has been defined.",
       "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static mix",
+      "overloads": [
+        {
+          "signature": "static mix(Color, Color, double) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the starting color (used completely when",
+              "javadoc_name": "c1"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "is 0.0)",
+              "javadoc_name": "weight"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "a new Color object representing the combined result",
+          "throws": {
+            "NullPointerException": "- if",
+            "c1": "or",
+            "c2": "is null"
+          }
+        }
+      ],
+      "documentation": "Java method: static mix",
+      "javadoc_description": "Linearly mixes two colors together based on a specified weight, using a gamma-corrected linear blend by squaring the individual color channels before mixing",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static okabeIto4Colors",
+      "overloads": [
+        {
+          "signature": "static okabeIto4Colors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the 4 Okabe-Ito colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static okabeIto4Colors",
+      "javadoc_description": "Returns a 4-color subset of the Okabe-Ito colorblind-safe palette",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static okabeIto6Colors",
+      "overloads": [
+        {
+          "signature": "static okabeIto6Colors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the 6 Okabe-Ito colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static okabeIto6Colors",
+      "javadoc_description": "Returns the 6-color Okabe-Ito colorblind-safe palette",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static oppositeColor",
+      "overloads": [
+        {
+          "signature": "static oppositeColor(Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the input color",
+              "javadoc_name": "c"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "The opposite color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static oppositeColor",
+      "javadoc_description": "Returns a suitable 'opposite' color.",
+      "category": "Visualization",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -505,24 +794,24 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "Object"
+    "Object",
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 31,
-      "total_json_methods": 15,
-      "total_matches": 17,
-      "exact_matches": 17,
+      "total_json_methods": 25,
+      "total_matches": 28,
+      "exact_matches": 28,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 14,
-      "unmatched_json": -2,
-      "match_percentage": 54.8
+      "unmatched_javadoc": 3,
+      "unmatched_json": -3,
+      "match_percentage": 90.3
     },
-    "unmatched_javadoc_methods": 14,
+    "unmatched_javadoc_methods": 3,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.658
+    "enhancement_quality_score": 1.0
   }
 }

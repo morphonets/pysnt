@@ -142,7 +142,7 @@ Other Methods
    Maps nodes after the specified measurement. Mapping bounds are automatically determined.
 
 
-.. py:method:: static unMap(Collection)
+.. py:method:: static unMap(Tree)
 
    
 

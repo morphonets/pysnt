@@ -1,0 +1,127 @@
+{
+  "class_name": "SeedOverlayRenderer",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-09-27T23:01:09.074036",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.330329",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static colorForSeed",
+      "overloads": [
+        {
+          "signature": "static colorForSeed(ColorTable, Color, SeedOverlay$ColorMode, SeedPoint, double, double, double, Map, Map) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "SeedOverlay$ColorMode",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "Any",
+              "java_type": "SeedPoint",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "arg5",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "arg6",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_6"
+            },
+            {
+              "name": "arg7",
+              "type": "Dict[str, Any]",
+              "java_type": "Map",
+              "description": "",
+              "javadoc_name": "param_7"
+            },
+            {
+              "name": "arg8",
+              "type": "Dict[str, Any]",
+              "java_type": "Map",
+              "description": "",
+              "javadoc_name": "param_8"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static colorForSeed",
+      "javadoc_description": "Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on confidence); INDEX / TYPE / SOURCE use a categorical key and full opacity so every seed contributes equal visual weight.\n\nPublic so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass depthFalloff = 1.0 when there's no slice-distance concept (table rows have no Z).",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Stateless renderer that draws a SeedOverlay's seeds onto a TracerCanvas's Graphics2D. Invoked from `TracerCanvas.drawOverlay(Graphics2D)` after paths are drawn so seeds appear on top.\n\nVisual conventions:\n\nColor is looked up from the overlay's active ColorTable using the seed's confidence normalized to [low, high]. Seeds outside that range are not drawn. Radius on screen is the seed's physical radius converted to voxels (using the active image's in-plane spacing) and then to canvas pixels via the current magnification. A small floor is applied so high-zoom-out seeds remain clickable. Alpha falls off with distance from the current depth slice (per-plane); seeds outside the canvas's eitherSide band (when just_near_slices is on) are skipped. Seeds whose 2D projection falls outside the visible canvas rectangle are skipped (the dominant performance optimization when the user is zoomed in). When the visible post-cull set exceeds SUBSAMPLE_RENDER_CAP, only the top-K seeds by confidence are drawn (full set remains available for queries).",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "SeedOverlay",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 1,
+      "total_json_methods": 1,
+      "total_matches": 1,
+      "exact_matches": 1,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

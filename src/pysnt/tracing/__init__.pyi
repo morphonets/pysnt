@@ -38,7 +38,7 @@ class BiSearchNode:
     sc.fiji.snt.tracing.BiSearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.471119
+    Extracted: 2026-09-27T23:00:53.643639
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -137,7 +137,7 @@ class DefaultSearchNode:
     sc.fiji.snt.tracing.DefaultSearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.499057
+    Extracted: 2026-09-27T23:00:55.801207
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -243,7 +243,7 @@ class PathResult:
     sc.fiji.snt.tracing.PathResult
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.745944
+    Extracted: 2026-09-27T23:01:04.254490
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -269,7 +269,7 @@ class SearchNode:
     sc.fiji.snt.tracing.SearchNode
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.944458
+    Extracted: 2026-09-27T23:01:08.477480
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     

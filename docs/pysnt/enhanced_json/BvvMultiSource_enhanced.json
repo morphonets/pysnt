@@ -1,0 +1,393 @@
+{
+  "class_name": "BvvMultiSource",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2026-09-27T23:00:54.555498",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.329973",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "applyTransform",
+      "overloads": [
+        {
+          "signature": "applyTransform(AffineTransform3D) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AffineTransform3D",
+              "description": "- the transform to apply",
+              "javadoc_name": "transform"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyTransform",
+      "javadoc_description": "Applies the given transform as the fixed transform to the leader and all followers. This is the primary entry point for loading a saved transform.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFollowers",
+      "overloads": [
+        {
+          "signature": "getFollowers() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "unmodifiable view of the follower sources",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFollowers",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLeader",
+      "overloads": [
+        {
+          "signature": "getLeader() -> BvvStackSource",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BvvStackSource",
+          "return_description": "the leader source",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLeader",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLeaderTransform",
+      "overloads": [
+        {
+          "signature": "getLeaderTransform(AffineTransform3D) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AffineTransform3D",
+              "description": "- set to the cached transform",
+              "javadoc_name": "result"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLeaderTransform",
+      "javadoc_description": "Returns a copy of the most recently cached leader fixed transform.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSources",
+      "overloads": [
+        {
+          "signature": "getSources() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "all sources (leader + followers) as an unmodifiable list",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSources",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isLiveSync",
+      "overloads": [
+        {
+          "signature": "isLiveSync() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if live transform sync is enabled",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isLiveSync",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeFromBvv",
+      "overloads": [
+        {
+          "signature": "removeFromBvv() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeFromBvv",
+      "javadoc_description": "Removes all sources in the group from the viewer.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setActive",
+      "overloads": [
+        {
+          "signature": "setActive(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "-",
+              "javadoc_name": "active"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setActive",
+      "javadoc_description": "Sets the active/visible state for all sources in the group.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(ARGBType) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ARGBType",
+              "description": "- the ARGB color",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setColor",
+      "javadoc_description": "Sets the color for all sources in the group.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDisplayRange",
+      "overloads": [
+        {
+          "signature": "setDisplayRange(double, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double",
+              "description": "- minimum display value",
+              "javadoc_name": "min"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDisplayRange",
+      "javadoc_description": "Sets the display range for all sources in the group.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLiveSync",
+      "overloads": [
+        {
+          "signature": "setLiveSync(boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "-",
+              "javadoc_name": "live"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLiveSync",
+      "javadoc_description": "Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms() calls (false).",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "size",
+      "overloads": [
+        {
+          "signature": "size() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "number of sources in the group (leader + followers)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: size",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncTransforms",
+      "overloads": [
+        {
+          "signature": "syncTransforms() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: syncTransforms",
+      "javadoc_description": "Forces a repaint. With field-sharing active, followers already hold the same transform objects as the leader: this call just flushes the display. Called internally after transform commits in the fallback path.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BvvMultiSource(BvvStackSource, List)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BvvStackSource"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BvvMultiSource(BvvStackSource)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BvvStackSource"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for BvvMultiSource"
+    }
+  ],
+  "javadoc_description": "A group of BvvSource objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the leader source are propagated to all follower sources.\n\nThis is particularly useful for:\n\nMultichannel images where each channel is a separate BVV source but should move together during manual registration (press T in BVV to enter manual transform mode). Multi-image workflows where multiple volumes must be grouped and manipulated as one.\n\nTransform synchronization is achieved by making all follower TransformedSources share the leader's fixedTransform and incrementalTransform field objects via reflection. This means any transform applied to the leader, including live T-mode (press T) dragging: It is immediately visible on all followers with no listener overhead. If reflection fails, a `renderTransformListeners` fallback is used.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 13,
+      "total_json_methods": 13,
+      "total_matches": 13,
+      "exact_matches": 13,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

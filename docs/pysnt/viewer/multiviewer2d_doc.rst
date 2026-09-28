@@ -69,7 +69,7 @@ Setters Methods
    
 
 
-.. py:method:: setColorBarLegend(String, double, double)
+.. py:method:: setColorBarLegend(ColorMapper)
 
    
 

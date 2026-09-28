@@ -1,0 +1,916 @@
+{
+  "class_name": "SpectralSimilarity",
+  "package": "sc.fiji.snt.filter",
+  "extracted_at": "2026-09-27T23:01:10.806394",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.432330",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "accept",
+      "overloads": [
+        {
+          "signature": "accept(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "accept(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: accept",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "andThen",
+      "overloads": [
+        {
+          "signature": "andThen(Consumer) -> Consumer",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Consumer",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Consumer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: andThen",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static averageColorAtPositions",
+      "overloads": [
+        {
+          "signature": "static averageColorAtPositions(RandomAccessibleInterval, [[I) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- one ImageStack per channel",
+              "javadoc_name": "channelStacks"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[[I",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "the average color vector (one value per channel)",
+          "throws": {}
+        },
+        {
+          "signature": "static averageColorAtPositions(ImageStack;, [[I) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImageStack;",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[[I",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static averageColorAtPositions",
+      "javadoc_description": "Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel ImageStacks.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static averageColorFromPaths",
+      "overloads": [
+        {
+          "signature": "static averageColorFromPaths(RandomAccessibleInterval, List, double, double, double) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- pixel-space offset added after scaling, x axis",
+              "javadoc_name": "xOffset"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static averageColorFromPaths(RandomAccessibleInterval, List, double, double, double, double, double, double) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg5",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg6",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg7",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static averageColorFromPaths",
+      "javadoc_description": "As \n```\naverageColorFromPaths(RandomAccessibleInterval, java.util.List, double, double, double)\n```\n, but also adding a pixel-space offset after scaling (see \n```\nnodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double, double, double, double)\n```\n) - needed whenever input is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero `SNT#getWorldOriginOffset()`.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static channelSum",
+      "overloads": [
+        {
+          "signature": "static channelSum([D) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "- the vector",
+              "javadoc_name": "vec"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the sum of all elements",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static channelSum",
+      "javadoc_description": "Sums all elements of a vector. Typically used to compute the total intensity across channels of a color vector.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "compute",
+      "overloads": [
+        {
+          "signature": "compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "compute(Object, Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "compute(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "- 4D input image (X, Y, Z, C) where the last dimension is channels",
+              "javadoc_name": "input"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: compute",
+      "javadoc_description": "Computes the spectral similarity map.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getArity",
+      "overloads": [
+        {
+          "signature": "getArity() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getArity",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getIndependentInstance",
+      "overloads": [
+        {
+          "signature": "getIndependentInstance() -> SpecialOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SpecialOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> Threadable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Threadable",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> NullaryComputerOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "NullaryComputerOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> NullaryOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "NullaryOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> UnaryOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "UnaryOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> UnaryComputerOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "UnaryComputerOp",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getIndependentInstance",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getReferenceColor",
+      "overloads": [
+        {
+          "signature": "getReferenceColor() -> [D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "[D",
+          "return_description": "a copy of the reference color array",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getReferenceColor",
+      "javadoc_description": "Returns the reference color vector used by this filter.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "in",
+      "overloads": [
+        {
+          "signature": "in() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: in",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "initialize",
+      "overloads": [
+        {
+          "signature": "initialize() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: initialize",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static nodeToPixelCoords",
+      "overloads": [
+        {
+          "signature": "static nodeToPixelCoords(PointInImage, double, double, double, double, double, double) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- the node in calibrated coordinates",
+              "javadoc_name": "node"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "arg4",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "arg5",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "arg6",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_6"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I",
+          "return_description": "pixel coordinates as [x, y, z]",
+          "throws": {}
+        },
+        {
+          "signature": "static nodeToPixelCoords(PointInImage, double, double, double) -> [I",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg3",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[I",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static nodeToPixelCoords",
+      "javadoc_description": "As `nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double)`, but also adding a pixel-space offset after scaling - typically `SNT#getActiveCanvasPixelOffset()`, needed whenever the target image is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero `SNT#getWorldOriginOffset()` (see `SNT#createSearch(double, double, double, double, double, double)` for the same conversion, applied to A* search endpoints instead of Path nodes).",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static normalizeVector",
+      "overloads": [
+        {
+          "signature": "static normalizeVector([D) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D",
+              "description": "- the vector to normalize",
+              "javadoc_name": "vec"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static normalizeVector",
+      "javadoc_description": "Normalizes a vector to unit length in place. If the vector has zero magnitude, it is left unchanged.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "ops",
+      "overloads": [
+        {
+          "signature": "ops() -> OpEnvironment",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OpEnvironment",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: ops",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "out",
+      "overloads": [
+        {
+          "signature": "out() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: out",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "run(RandomAccessibleInterval) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "run(Object) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "run(Object, Object) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: run",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnvironment",
+      "overloads": [
+        {
+          "signature": "setEnvironment(OpEnvironment) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "OpEnvironment",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnvironment",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setInput",
+      "overloads": [
+        {
+          "signature": "setInput(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setInput",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOutput",
+      "overloads": [
+        {
+          "signature": "setOutput(Object) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOutput",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SpectralSimilarity([D, int)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SpectralSimilarity([D, int, double)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "[D"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for SpectralSimilarity"
+    }
+  ],
+  "javadoc_description": "Computes a spectral similarity map from a multichannel (e.g., Brainbow) image. For each voxel, the output encodes how well the voxel's channel-intensity vector matches a reference color vector. The output is a scalar image suitable for use as a secondary tracing layer.\n\nThe per-voxel score combines two terms:\n\nCosine similarity: dot product of unit-normalized voxel and reference color vectors (1 = identical direction, 0 = orthogonal) Intensity factor: sigmoid falloff based on how much the voxel's total intensity deviates from the reference intensity. This prevents bright background or dim noise from producing high scores\n\nThe final output is `cosineSimilarity × intensityFactor`, scaled to [0, 1]. High values indicate voxels that match the target neuron's color and brightness.\n\nThe input image is a 4D (X, Y, Z, C) `RandomAccessibleInterval` where the last dimension is channels. The output is a 3D (X, Y, Z) scalar image.\n\nThis filter is designed for integration with SNT's secondary layer tracing infrastructure, where any standard cost function (e.g., Reciprocal) applied to the output produces spectrally-aware path searches.\n\nThe color-vector approach to neurite identification in multichannel images is also validated in:\n\nLeiwe et al., \"Automated neuronal reconstruction with super-multicolour Tetbow labelling and threshold-based clustering of colour hues\", Nat Commun 15, 5279 (2024). doi:10.1038/s41467-024-49455-y",
+  "inheritance": {
+    "extends": [],
+    "implements": [
+      "Consumer"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Consumer",
+    "MultiSpectralRefiner"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 13,
+      "total_json_methods": 19,
+      "total_matches": 13,
+      "exact_matches": 13,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 6,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 10,
+    "enhancement_quality_score": 1.0
+  }
+}

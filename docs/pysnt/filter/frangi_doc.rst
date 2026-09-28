@@ -97,7 +97,7 @@ Analysis Methods
 ~~~~~~~~~~~~~~~~
 
 
-.. py:method:: compute(RandomAccessibleInterval, RandomAccessibleInterval)
+.. py:method:: compute(Object, Object)
 
    
 
@@ -106,7 +106,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: accept(RandomAccessibleInterval)
+.. py:method:: accept(Object)
 
    
 
@@ -141,7 +141,7 @@ Other Methods
    
 
 
-.. py:method:: run()
+.. py:method:: run(RandomAccessibleInterval)
 
    
 

@@ -1,9 +1,9 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.932862",
+  "extracted_at": "2026-09-27T23:01:07.893176",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.134204",
+  "enhancement_timestamp": "2026-09-27T23:02:20.389789",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -29,26 +29,6 @@
       "documentation": "Java method: static addViewer",
       "javadoc_description": "",
       "category": "Visualization",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static buildDate",
-      "overloads": [
-        {
-          "signature": "static buildDate() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static buildDate",
-      "javadoc_description": "",
-      "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -83,6 +63,36 @@
       ],
       "documentation": "Java method: static csvQuoteAndPrint",
       "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static downloadAndExtractZip",
+      "overloads": [
+        {
+          "signature": "static downloadAndExtractZip(String) -> File",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the URL of the zip archive to download and extract",
+              "javadoc_name": "zipUrl"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "the temporary directory holding the extracted contents",
+          "throws": {
+            "IOException": "- if the archive could not be downloaded/read, or if it contains an entry that would extract outside the target directory (\"zip-slip\")"
+          }
+        }
+      ],
+      "documentation": "Java method: static downloadAndExtractZip",
+      "javadoc_description": "Downloads a zip archive from the specified URL and extracts it to a fresh temporary directory. Both the downloaded archive and the extracted contents are marked for deletion on JVM exit; the archive itself is also deleted immediately once extraction succeeds, since it is not needed afterward.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -146,6 +156,36 @@
           "throws": {}
         },
         {
+          "signature": "static error(String, Throwable, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Throwable",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "static error(String) -> void",
           "params": [
             {
@@ -154,6 +194,29 @@
               "java_type": "String",
               "description": "- the message",
               "javadoc_name": "string"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static error(String, boolean) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -285,6 +348,34 @@
       "examples": []
     },
     {
+      "name": "static formatBytes",
+      "overloads": [
+        {
+          "signature": "static formatBytes(long) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "long",
+              "description": "- a byte count",
+              "javadoc_name": "bytes"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "a human-readable representation (e.g., \"12.3 MB\")",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static formatBytes",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static formatDouble",
       "overloads": [
         {
@@ -323,6 +414,29 @@
       "name": "static getBackupCopies",
       "overloads": [
         {
+          "signature": "static getBackupCopies(File, String) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "static getBackupCopies(File) -> List",
           "params": [
             {
@@ -342,6 +456,46 @@
       "documentation": "Java method: static getBackupCopies",
       "javadoc_description": "Returns all timestamped backup copies in the specified location. Convenience method that matches all traces files with timestamps.",
       "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getCacheDir",
+      "overloads": [
+        {
+          "signature": "static getCacheDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "SNT's cache directory (created if it did not already exist), or, if that path could not be created/written to (e.g. permissions, a network-mounted or read-only temp location, a stray file already occupying that path), a fallback directory under the user's home folder. Callers relying on this directory for disk-backed caching should still be prepared for IOExceptions down the line (e.g. if the disk is full).",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getCacheDir",
+      "javadoc_description": "Returns SNT's own scratch/cache directory, used by disk-backed operations (e.g. `DiskBackedStorageBackend`, Lazy). Unlike the workspace directory (see `SNTPrefs#getWorkspaceDir()`), this directory holds only disposable, regenerable scratch data -- never anything a user created -- so it lives under the OS temp root.\n\nIndividual operations create their own uniquely-named subdirectory here and clean up after themselves once done. This parent directory itself is created lazily and left in place across sessions, so that (1) it is always at the same, discoverable path and (2) leftovers from a crashed session (which skipped its own cleanup) remain visible and removable.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getCacheDirSize",
+      "overloads": [
+        {
+          "signature": "static getCacheDirSize() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the cache directory's size in bytes, or 0 if it could not be read",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getCacheDirSize",
+      "javadoc_description": "Computes the on-disk size of getCacheDir(). This walks the whole cache tree, so it can be slow once many files have accumulated; avoid calling this on the EDT",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -431,6 +585,26 @@
       "examples": []
     },
     {
+      "name": "static getHeapInfo",
+      "overloads": [
+        {
+          "signature": "static getHeapInfo() -> SNTUtils$HeapInfo",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTUtils$HeapInfo",
+          "return_description": "a snapshot of current JVM heap usage",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getHeapInfo",
+      "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static getInstance",
       "overloads": [
         {
@@ -444,6 +618,34 @@
       ],
       "documentation": "Java method: static getInstance",
       "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static getLastElement",
+      "overloads": [
+        {
+          "signature": "static getLastElement(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the path/URL/link to parse",
+              "javadoc_name": "filePathOrUrlOrCloudLink"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the last element, or an empty string if `filePathOrUrlOrCloudLink` is null or blank",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static getLastElement",
+      "javadoc_description": "Extracts the last path/URL element (typically a filename) from a file path, URL, or cloud-storage link, e.g., \"/data/sample.n5\" or `\"https://host/a/b.zarr?x=1\"` both yield \"b.zarr\"/\"sample.n5\". Handles Windows-style backslashes, trailing slashes, and URL query parameters/anchors.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -693,6 +895,41 @@
       "examples": []
     },
     {
+      "name": "static isReachable",
+      "overloads": [
+        {
+          "signature": "static isReachable(String, int) -> boolean",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the URL to check",
+              "javadoc_name": "url"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the host could be reached (or url is not a plain http(s) URL); false if a connection could not be established within timeoutMs",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isReachable",
+      "javadoc_description": "Checks for whether url's host can be reached, meant to be called before a real download/stream attempt (e.g., `downloadToTempFile(java.lang.String)`) so that a missing network connection surfaces as one clear message. est-effort: only http(s) URLs are actually probed; any other scheme (e.g. a bare host-less URI) is assumed reachable, deferring to the real caller",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static isReconstructionFile",
       "overloads": [
         {
@@ -721,6 +958,26 @@
       "examples": []
     },
     {
+      "name": "static isStandaloneContext",
+      "overloads": [
+        {
+          "signature": "static isStandaloneContext() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the context was created by SNT itself, false if provided externally",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static isStandaloneContext",
+      "javadoc_description": "Returns whether the current context was self-initialized by SNT (i.e., no host application like ImageJ/Fiji provided one). This is useful for determining if it is safe to modify global UI state such as the Look and Feel.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "static log",
       "overloads": [
         {
@@ -742,6 +999,56 @@
       ],
       "documentation": "Java method: static log",
       "javadoc_description": "",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static nowTruncatedToSeconds",
+      "overloads": [
+        {
+          "signature": "static nowTruncatedToSeconds() -> LocalDateTime",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "LocalDateTime",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static nowTruncatedToSeconds",
+      "javadoc_description": "Returns the current date-time truncated to whole seconds, e.g., for stamping exported content with a generation time.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static openRemoteStream",
+      "overloads": [
+        {
+          "signature": "static openRemoteStream(String) -> InputStream",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the URL to open (e.g. a remote .traces/.csv file, or a .zip archive)",
+              "javadoc_name": "url"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "InputStream",
+          "return_description": "an InputStream ready to be read",
+          "throws": {
+            "IOException": "- if the URL is malformed or the connection could not be opened"
+          }
+        }
+      ],
+      "documentation": "Java method: static openRemoteStream",
+      "javadoc_description": "Opens an InputStream to url with explicit connect/read timeouts, so a stalled or unreachable remote host fails with a clear IOException instead of hanging indefinitely - the default behavior of URL.openStream(), whose underlying URLConnection has no timeout at all unless one is set explicitly. Used for remote reconstruction/marker/demo files (e.g. `https://.../autotracings.traces`), which are typically small enough that a single bounded connection (rather than `runWithTimeout(java.util.concurrent.Callable<T>, long, java.lang.String)`'s background-thread wrapper) is enough.",
       "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
@@ -791,6 +1098,79 @@
       "documentation": "Java method: static removeViewer",
       "javadoc_description": "",
       "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static runWithTimeout",
+      "overloads": [
+        {
+          "signature": "static runWithTimeout(Callable, long, String) -> Object",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Callable",
+              "description": "- the (typically network-bound) operation to run",
+              "javadoc_name": "task"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "the result of task",
+          "throws": {
+            "RuntimeException": "- if",
+            "task": "itself throws one (rethrown as-is, preserving normal control-flow for callers that distinguish specific unchecked exceptions)"
+          }
+        }
+      ],
+      "documentation": "Java method: static runWithTimeout",
+      "javadoc_description": "Runs task on a bounded background (daemon) thread, guarding against blocking I/O - typically remote N5/Zarr discovery, that can otherwise hang indefinitely on a stalled connection with no feedback to the user.\n\nUnlike `openRemoteStream(String)` (a single bounded connection), this bounds the *entire* operation, however many network round-trips it internally makes.\n\nOn timeout, the background thread is best-effort interrupted via `ExecutorService.shutdownNow()`; if the underlying I/O call ignores interruption (common for plain socket reads), that thread may still leak until the stalled connection itself eventually times out or errors, but the calling thread is freed immediately to report the failure, rather than hanging alongside it.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static sanitizeFilename",
+      "overloads": [
+        {
+          "signature": "static sanitizeFilename(String) -> String",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the candidate filename (or a full path -- only used for e.g. a whole path rather than a bare filename component; separators are not treated specially and will themselves be replaced)",
+              "javadoc_name": "filename"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the sanitized filename, or null if filename is null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static sanitizeFilename",
+      "javadoc_description": "Replaces characters that are unsafe/reserved in filenames with an underscore, leaving alphanumerics, dots, and hyphens untouched.",
+      "category": "I/O Operations",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -856,7 +1236,7 @@
       "name": "static setIsLoading",
       "overloads": [
         {
-          "signature": "static setIsLoading(boolean) -> void",
+          "signature": "static setIsLoading(boolean, boolean) -> void",
           "params": [
             {
               "name": "arg0",
@@ -864,6 +1244,13 @@
               "java_type": "boolean",
               "description": "- true to show the splash screen (or register one more caller that wants it showing, if already showing); false to release one such registration, closing the splash once no callers still hold it",
               "javadoc_name": "isLoading"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
             }
           ],
           "return_type": "None",
@@ -884,11 +1271,27 @@
       "name": "static startApp",
       "overloads": [
         {
+          "signature": "static startApp(boolean) -> SNT",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- If",
+              "javadoc_name": "streamMode"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SNT",
+          "return_description": "a reference to the SNT instance just started.s",
+          "throws": {}
+        },
+        {
           "signature": "static startApp() -> SNT",
           "params": [],
           "return_type": "Any",
           "java_return_type": "SNT",
-          "return_description": "a reference to the SNT instance just started.s",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -945,24 +1348,24 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "Object"
+    "Object",
+    "Constant Field Values"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 55,
-      "total_json_methods": 32,
-      "total_matches": 38,
-      "exact_matches": 38,
+      "total_json_methods": 43,
+      "total_matches": 50,
+      "exact_matches": 50,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 17,
-      "unmatched_json": -6,
-      "match_percentage": 69.1
+      "unmatched_javadoc": 5,
+      "unmatched_json": -7,
+      "match_percentage": 90.9
     },
-    "unmatched_javadoc_methods": 17,
-    "unmatched_json_methods": 1,
-    "enhancement_quality_score": 0.829
+    "unmatched_javadoc_methods": 5,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
   }
 }

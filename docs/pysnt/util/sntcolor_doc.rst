@@ -74,7 +74,17 @@ Getters Methods
    
 
 
-.. py:method:: static getDistinctColorsHex(int, String)
+.. py:method:: static getDistinctColorsColorblindSafe(int)
+
+   Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once nColors exceeds that count
+
+
+.. py:method:: static getDistinctColorsColorblindSafeAWT(int)
+
+   AWT variant of `getDistinctColorsColorblindSafe(int)`
+
+
+.. py:method:: static getDistinctColorsHex(int)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion
 
@@ -117,6 +127,16 @@ Other Methods
    Retrieves the AWT color
 
 
+.. py:method:: static colorBlindSafeBlue()
+
+   Returns the blue of the Okabe-Ito palette, safe against the most common forms of color blindness
+
+
+.. py:method:: static colorBlindSafeYellow()
+
+   Returns the yellow of the Okabe-Ito palette, safe against the most common forms of color blindness
+
+
 .. py:method:: static colorToString(Object)
 
    Returns the color encoded as hex string with the format #rrggbbaa.
@@ -127,14 +147,44 @@ Other Methods
    Returns a BW 'contrast' color
 
 
+.. py:method:: static contrastHueColor(Color, Color)
+
+   Returns a 'contrasting' color using warm/cool contrast adjustments relatively to a second color reference.
+
+
 .. py:method:: static fromHex(String)
 
    Returns an AWT Color from a (#)RRGGBB(AA) hex string.
 
 
+.. py:method:: static fromString(String)
+
+   Returns an AWT Color from any css-valid co
+
+
 .. py:method:: static interpolateNullEntries(Color;)
 
    Replaces null colors in an array with the average of flanking non-null colors.
+
+
+.. py:method:: static mix(Color, Color, double)
+
+   Linearly mixes two colors together based on a specified weight, using a gamma-corrected linear blend by squaring the individual color channels before mixing
+
+
+.. py:method:: static okabeIto4Colors()
+
+   Returns a 4-color subset of the Okabe-Ito colorblind-safe palette
+
+
+.. py:method:: static okabeIto6Colors()
+
+   Returns the 6-color Okabe-Ito colorblind-safe palette
+
+
+.. py:method:: static oppositeColor(Color)
+
+   Returns a suitable 'opposite' color.
 
 
 .. py:method:: type()

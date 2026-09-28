@@ -1,7 +1,7 @@
 {
   "class_name": "SNTColor",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.863751",
+  "extracted_at": "2026-09-27T23:01:06.817032",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -58,6 +58,30 @@
       "documentation": "Java method: color"
     },
     {
+      "name": "static colorBlindSafeBlue",
+      "overloads": [
+        {
+          "signature": "static colorBlindSafeBlue() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static colorBlindSafeBlue"
+    },
+    {
+      "name": "static colorBlindSafeYellow",
+      "overloads": [
+        {
+          "signature": "static colorBlindSafeYellow() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static colorBlindSafeYellow"
+    },
+    {
       "name": "static colorToString",
       "overloads": [
         {
@@ -94,6 +118,41 @@
       "documentation": "Java method: static contrastColor"
     },
     {
+      "name": "static contrastHueColor",
+      "overloads": [
+        {
+          "signature": "static contrastHueColor(Color, Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        },
+        {
+          "signature": "static contrastHueColor(Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static contrastHueColor"
+    },
+    {
       "name": "static fromHex",
       "overloads": [
         {
@@ -110,6 +169,24 @@
         }
       ],
       "documentation": "Java method: static fromHex"
+    },
+    {
+      "name": "static fromString",
+      "overloads": [
+        {
+          "signature": "static fromString(String) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static fromString"
     },
     {
       "name": "static getDistinctColors",
@@ -165,8 +242,56 @@
       "documentation": "Java method: static getDistinctColorsAWT"
     },
     {
+      "name": "static getDistinctColorsColorblindSafe",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsColorblindSafe(int) -> ColorRGB;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB;"
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsColorblindSafe"
+    },
+    {
+      "name": "static getDistinctColorsColorblindSafeAWT",
+      "overloads": [
+        {
+          "signature": "static getDistinctColorsColorblindSafeAWT(int) -> Color;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color;"
+        }
+      ],
+      "documentation": "Java method: static getDistinctColorsColorblindSafeAWT"
+    },
+    {
       "name": "static getDistinctColorsHex",
       "overloads": [
+        {
+          "signature": "static getDistinctColorsHex(int) -> String;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "String;"
+        },
         {
           "signature": "static getDistinctColorsHex(int, String) -> String;",
           "params": [
@@ -179,18 +304,6 @@
               "name": "arg1",
               "type": "str",
               "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "String;"
-        },
-        {
-          "signature": "static getDistinctColorsHex(int) -> String;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
             }
           ],
           "return_type": "Any",
@@ -228,6 +341,76 @@
         }
       ],
       "documentation": "Java method: isTypeDefined"
+    },
+    {
+      "name": "static mix",
+      "overloads": [
+        {
+          "signature": "static mix(Color, Color, double) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static mix"
+    },
+    {
+      "name": "static okabeIto4Colors",
+      "overloads": [
+        {
+          "signature": "static okabeIto4Colors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static okabeIto4Colors"
+    },
+    {
+      "name": "static okabeIto6Colors",
+      "overloads": [
+        {
+          "signature": "static okabeIto6Colors() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        }
+      ],
+      "documentation": "Java method: static okabeIto6Colors"
+    },
+    {
+      "name": "static oppositeColor",
+      "overloads": [
+        {
+          "signature": "static oppositeColor(Color) -> Color",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color"
+        }
+      ],
+      "documentation": "Java method: static oppositeColor"
     },
     {
       "name": "setAWTColor",

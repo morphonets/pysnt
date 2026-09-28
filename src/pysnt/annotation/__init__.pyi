@@ -7,7 +7,7 @@ class AllenUtils:
     sc.fiji.snt.annotation.AllenUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.437604
+    Extracted: 2026-09-27T23:00:52.208597
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -30,8 +30,8 @@ class AllenUtils:
     def getCartesianPlane(self, arg0: str) -> str: ...
     
     # Multiple overloads for getCompartment
-    def getCompartment(self, arg0: str) -> Any: ...
-    # def getCompartment(self, arg0: int) -> Any: ...
+    def getCompartment(self, arg0: int) -> Any: ...
+    # def getCompartment(self, arg0: str) -> Any: ...
     
     def getHemisphere(self, arg0: Tree) -> str: ...
     
@@ -66,7 +66,7 @@ class AllenCompartment:
     sc.fiji.snt.annotation.AllenCompartment
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.432189
+    Extracted: 2026-09-27T23:00:52.086252
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -83,8 +83,8 @@ class AllenCompartment:
     def getAncestors(self) -> List[Any]: ...
     
     # Multiple overloads for getChildren
-    def getChildren(self, arg0: int) -> List[Any]: ...
-    # def getChildren(self) -> List[Any]: ...
+    def getChildren(self) -> List[Any]: ...
+    # def getChildren(self, arg0: int) -> List[Any]: ...
     
     def getMesh(self) -> Any: ...
     
@@ -120,7 +120,7 @@ class InsectBrainCompartment:
     sc.fiji.snt.annotation.InsectBrainCompartment
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.546496
+    Extracted: 2026-09-27T23:00:59.876365
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     
@@ -156,7 +156,7 @@ class InsectBrainUtils:
     sc.fiji.snt.annotation.InsectBrainUtils
     
     Generated from cached signatures.
-    Extracted: 2026-01-02T22:36:44.551343
+    Extracted: 2026-09-27T23:01:00.116820
     """
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
     

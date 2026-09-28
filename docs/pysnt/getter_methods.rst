@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Getters'
-Total matching methods: **544**
+Total matching methods: **575**
 
 Matching Methods
 ----------------
@@ -111,6 +111,10 @@ Matching Methods
      - :class:`Path`
      - ``float``
      - Computes the angle between the specified node and its two flanking neighbors. With B being the specified node, A its...
+   * - :meth:`OBJMesh.getAngleWithLocalDirection`
+     - :class:`OBJMesh`
+     - ``float``
+     - Computes the angle between a direction vector and the local mesh direction at a point. This is useful for e.g.,...
    * - :meth:`RootAngleAnalyzer.getAngles`
      - :class:`RootAngleAnalyzer`
      - ``List[Any]``
@@ -235,6 +239,10 @@ Matching Methods
      - :class:`Frangi`
      - ``int``
      - No description available
+   * - :meth:`SpectralSimilarity.getArity`
+     - :class:`SpectralSimilarity`
+     - ``int``
+     - No description available
    * - :meth:`Tubeness.getArity`
      - :class:`Tubeness`
      - ``int``
@@ -355,6 +363,10 @@ Matching Methods
      - :class:`TreeStatistics`
      - ``float``
      - Gets the average remote bifurcation angle of the analyzed tree. Note that branch points with more than 2 children are...
+   * - :meth:`TreeToRaster.getAxialRes`
+     - :class:`TreeToRaster`
+     - ``float``
+     - Gets the axial (z) voxel size.
    * - :meth:`Tree.getBPs`
      - :class:`Tree`
      - ``List[Any]``
@@ -391,6 +403,10 @@ Matching Methods
      - :class:`ConvexHullAnalyzer`
      - ``float``
      - Gets the boundary size (perimeter for 2D hulls or surface area for 3D hulls) of the convex hull.
+   * - :meth:`OBJMesh.getBoundingBox`
+     - :class:`OBJMesh`
+     - ``BoundingBox``
+     - Gets the minimum bounding box of this mesh.
    * - :meth:`PathAndFillManager.getBoundingBox`
      - :class:`PathAndFillManager`
      - ``BoundingBox``
@@ -453,7 +469,7 @@ Matching Methods
      - Gets all the paths being analyzed as branches. In PathStatistics, all paths are considered as branches since each path...
    * - :meth:`StrahlerAnalyzer.getBranches`
      - :class:`StrahlerAnalyzer`
-     - ``Dict[str, Any]``
+     - ``List[Any]``
      - No description available
    * - :meth:`TreeStatistics.getBranches`
      - :class:`TreeStatistics`
@@ -487,6 +503,10 @@ Matching Methods
      - :class:`BoundingBox`
      - ``Any``
      - Creates a Calibration object using information from this BoundingBox
+   * - :meth:`NeurolucidaImporter.getCalibration`
+     - :class:`NeurolucidaImporter`
+     - ``Any``
+     - Returns the spatial calibration parsed from the file header.
    * - :meth:`Path.getCalibration`
      - :class:`Path`
      - ``Any``
@@ -531,6 +551,10 @@ Matching Methods
      - :class:`ConvexHullAnalyzer`
      - ``PointInImage``
      - No description available
+   * - :meth:`OBJMesh.getCentroid`
+     - :class:`OBJMesh`
+     - ``SNTPoint``
+     - Returns the spatial centroid of the specified (hemi)mesh.
    * - :meth:`Path.getChannel`
      - :class:`Path`
      - ``int``
@@ -626,6 +650,10 @@ Matching Methods
    * - :meth:`SNTTable.getColumnHeader`
      - :class:`SNTTable`
      - ``str``
+     - No description available
+   * - :meth:`SNTTable.getColumnHeaders`
+     - :class:`SNTTable`
+     - ``List[Any]``
      - No description available
    * - :meth:`SNTTable.getColumnIndex`
      - :class:`SNTTable`
@@ -807,6 +835,10 @@ Matching Methods
      - :class:`BoundingBox`
      - ``Any``
      - Gets this BoundingBox dimensions.
+   * - :meth:`OBJMesh.getDisplayedHemisphere`
+     - :class:`OBJMesh`
+     - ``str``
+     - Returns the currently displayed hemisphere: "left", "right", or "both".
    * - :meth:`FillerThread.getDistanceAtPoint`
      - :class:`FillerThread`
      - ``float``
@@ -819,6 +851,10 @@ Matching Methods
      - :class:`Annotation3D`
      - ``Any``
      - Returns the AbstractDrawable associated with this annotation.
+   * - :meth:`OBJMesh.getDrawable`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Returns the DrawableVBO associated with this mesh
    * - :meth:`ConvexHullAnalyzer.getEccentricity`
      - :class:`ConvexHullAnalyzer`
      - ``float``
@@ -899,6 +935,10 @@ Matching Methods
      - :class:`BiSearchNode`
      - ``float``
      - No description available
+   * - :meth:`AStarRefiner.getFailureReason`
+     - :class:`AStarRefiner`
+     - ``str``
+     - Human-readable reason call() failed, or null if it succeeded (or hasn't run yet).
    * - :meth:`FillerThread.getFill`
      - :class:`FillerThread`
      - ``Any``
@@ -951,6 +991,10 @@ Matching Methods
      - :class:`TreeStatistics`
      - ``SNTChart``
      - Assembles a Flow plot (aka Sankey diagram) for the specified feature.
+   * - :meth:`BvvMultiSource.getFollowers`
+     - :class:`BvvMultiSource`
+     - ``List[Any]``
+     - No description available
    * - :meth:`MultiTreeStatistics.getFractalDimension`
      - :class:`MultiTreeStatistics`
      - ``List[Any]``
@@ -1131,6 +1175,10 @@ Matching Methods
      - :class:`Frangi`
      - ``Any``
      - No description available
+   * - :meth:`SpectralSimilarity.getIndependentInstance`
+     - :class:`SpectralSimilarity`
+     - ``Any``
+     - No description available
    * - :meth:`Tubeness.getIndependentInstance`
      - :class:`Tubeness`
      - ``Any``
@@ -1223,10 +1271,18 @@ Matching Methods
      - :class:`PersistenceAnalyzer`
      - ``Any``
      - Gets the persistence landscape as a vectorized representation. Persistence landscapes transform persistence diagrams...
-   * - :meth:`SNTTable.getLast`
-     - :class:`SNTTable`
+   * - :meth:`TreeToRaster.getLateralRes`
+     - :class:`TreeToRaster`
+     - ``float``
+     - Gets the lateral (x, y) voxel size.
+   * - :meth:`BvvMultiSource.getLeader`
+     - :class:`BvvMultiSource`
      - ``Any``
      - No description available
+   * - :meth:`BvvMultiSource.getLeaderTransform`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Returns a copy of the most recently cached leader fixed transform.
    * - :meth:`StrahlerAnalyzer.getLengths`
      - :class:`StrahlerAnalyzer`
      - ``Dict[str, Any]``
@@ -1251,6 +1307,10 @@ Matching Methods
      - :class:`SNT`
      - ``Any``
      - No description available
+   * - :meth:`OBJMesh.getLocalDirection`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Computes the local direction of the mesh at a specific point using nearest neighbor analysis. This method finds the...
    * - :meth:`SNTService.getLocation`
      - :class:`SNTService`
      - ``str``
@@ -1259,6 +1319,18 @@ Matching Methods
      - :class:`Viewer3D`
      - ``Any``
      - Returns a reference to control panel.
+   * - :meth:`NeurolucidaImporter.getMarkerColors`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the colors for each parsed marker, in the same order as getMarkerPoints().
+   * - :meth:`NeurolucidaImporter.getMarkerLabels`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the labels for each parsed marker, in the same order as getMarkerPoints().
+   * - :meth:`NeurolucidaImporter.getMarkerPoints`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the marker centroids parsed from elements. Each entry is a double[3] array of {x, y, z} coordinates in the...
    * - :meth:`ShollAnalyzer.getMaximaRadii`
      - :class:`ShollAnalyzer`
      - ``List[Any]``
@@ -1431,6 +1503,10 @@ Matching Methods
      - :class:`PathResult`
      - ``int``
      - No description available
+   * - :meth:`OBJMesh.getObj`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Returns the OBJFile associated with this mesh
    * - :meth:`AllenCompartment.getOntologyDepth`
      - :class:`AllenCompartment`
      - ``int``
@@ -1475,6 +1551,10 @@ Matching Methods
      - :class:`InsectBrainCompartment`
      - ``Any``
      - Description copied from interface: BrainAnnotation
+   * - :meth:`AStarRefiner.getPath`
+     - :class:`AStarRefiner`
+     - ``Path``
+     - Returns the original path being re-traced.
    * - :meth:`PathAndFillManager.getPath`
      - :class:`PathAndFillManager`
      - ``Path``
@@ -1563,6 +1643,10 @@ Matching Methods
      - :class:`BiSearchNode`
      - ``BiSearchNode``
      - No description available
+   * - :meth:`OBJMesh.getPrincipalAxes`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Computes the principal axes of the mesh using Principal Component Analysis (PCA). The principal axes represent the...
    * - :meth:`SNTService.getPriority`
      - :class:`SNTService`
      - ``float``
@@ -1575,6 +1659,10 @@ Matching Methods
      - :class:`SkeletonConverter`
      - ``int``
      - No description available
+   * - :meth:`TreeToRaster.getRadiusScale`
+     - :class:`TreeToRaster`
+     - ``float``
+     - Gets the uniform radius multiplier applied to node radii.
    * - :meth:`FlyCircuitLoader.getReader`
      - :class:`FlyCircuitLoader`
      - ``Any``
@@ -1607,6 +1695,10 @@ Matching Methods
      - :class:`Viewer3D`
      - ``Any``
      - Gets the script recorder for this viewer, optionally creating one if needed.
+   * - :meth:`SpectralSimilarity.getReferenceColor`
+     - :class:`SpectralSimilarity`
+     - ``Any``
+     - Returns the reference color vector used by this filter.
    * - :meth:`StrahlerAnalyzer.getRelativeExtensionAngle`
      - :class:`StrahlerAnalyzer`
      - ``float``
@@ -1647,18 +1739,6 @@ Matching Methods
      - :class:`ConvexHullAnalyzer`
      - ``float``
      - Gets the roundness of the convex hull, which measures how round or circular the convex hull is. Values closer to 1...
-   * - :meth:`SNTTable.getRowCount`
-     - :class:`SNTTable`
-     - ``int``
-     - No description available
-   * - :meth:`SNTTable.getRowHeader`
-     - :class:`SNTTable`
-     - ``str``
-     - No description available
-   * - :meth:`SNTTable.getRowIndex`
-     - :class:`SNTTable`
-     - ``int``
-     - No description available
    * - :meth:`MouseLightLoader.getSWC`
      - :class:`MouseLightLoader`
      - ``str``
@@ -1735,6 +1815,10 @@ Matching Methods
      - :class:`Tree`
      - ``List[Any]``
      - Gets the list of all nodes tagged as Path.SWC_SOMA.
+   * - :meth:`OBJMesh.getSourceAnnotation`
+     - :class:`OBJMesh`
+     - ``Any``
+     - Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded...
    * - :meth:`Fill.getSourcePaths`
      - :class:`Fill`
      - ``Set[Any]``
@@ -1747,6 +1831,14 @@ Matching Methods
      - :class:`Fill`
      - ``str``
      - No description available
+   * - :meth:`BvvMultiSource.getSources`
+     - :class:`BvvMultiSource`
+     - ``List[Any]``
+     - No description available
+   * - :meth:`NeurolucidaImporter.getSpacingUnits`
+     - :class:`NeurolucidaImporter`
+     - ``str``
+     - Returns the spacing units string (default "um").
    * - :meth:`BiSearchNode.getState`
      - :class:`BiSearchNode`
      - ``Any``
@@ -1771,8 +1863,8 @@ Matching Methods
      - :class:`PathResult`
      - ``bool``
      - No description available
-   * - :meth:`SNTTable.getSummaryRow`
-     - :class:`SNTTable`
+   * - :meth:`OBJMesh.getSymmetryAxis`
+     - :class:`OBJMesh`
      - ``int``
      - No description available
    * - :meth:`NodeProfiler.getTable`
@@ -1851,6 +1943,10 @@ Matching Methods
      - :class:`AllenCompartment`
      - ``List[Any]``
      - Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this...
+   * - :meth:`NeurolucidaImporter.getTrees`
+     - :class:`NeurolucidaImporter`
+     - ``List[Any]``
+     - Returns the parsed trees (one per element in the file).
    * - :meth:`SNTService.getTrees`
      - :class:`SNTService`
      - ``List[Any]``
@@ -1903,6 +1999,10 @@ Matching Methods
      - :class:`SNTService`
      - ``str``
      - No description available
+   * - :meth:`OBJMesh.getVertices`
+     - :class:`OBJMesh`
+     - ``List[Any]``
+     - Returns the mesh vertices.
    * - :meth:`Annotation3D.getVolume`
      - :class:`Annotation3D`
      - ``float``
@@ -1911,6 +2011,10 @@ Matching Methods
      - :class:`Fill`
      - ``float``
      - Returns the Fill volume. It assumes that the volume is just the number of sub-threshold nodes multiplied by x_spacing *...
+   * - :meth:`OBJMesh.getVolume`
+     - :class:`OBJMesh`
+     - ``float``
+     - Gets the volume of this mesh.
    * - :meth:`BiSearchNode.getX`
      - :class:`BiSearchNode`
      - ``int``
@@ -2079,6 +2183,10 @@ Matching Methods
      - :class:`Viewer2D`
      - ``bool``
      - No description available
+   * - :meth:`BvvMultiSource.isLiveSync`
+     - :class:`BvvMultiSource`
+     - ``bool``
+     - No description available
    * - :meth:`AllenCompartment.isMeshAvailable`
      - :class:`AllenCompartment`
      - ``bool``
@@ -2175,6 +2283,10 @@ Matching Methods
      - :class:`Annotation3D`
      - ``None``
      - Sets the annotation width.
+   * - :meth:`BvvMultiSource.size`
+     - :class:`BvvMultiSource`
+     - ``int``
+     - No description available
    * - :meth:`ConvexHull2D.size`
      - :class:`ConvexHull2D`
      - ``float``
@@ -2183,6 +2295,18 @@ Matching Methods
      - :class:`ConvexHull3D`
      - ``float``
      - Description copied from class: AbstractConvexHull
+   * - :meth:`TreeUtils.static filterByCableLength`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Returns the subset of trees whose cable length falls within the specified range.
+   * - :meth:`TreeUtils.static filterBySize`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Returns the subset of trees whose path count falls within the specified range.
+   * - :meth:`SNTUtils.static getCacheDirSize`
+     - :class:`SNTUtils`
+     - ``int``
+     - Computes the on-disk size of getCacheDir(). This walks the whole cache tree, so it can be slow once many files have...
    * - :meth:`MouseLightLoader.static getNeuronCount`
      - :class:`MouseLightLoader`
      - ``int``
@@ -2194,4 +2318,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-09-27 22:17:09*
+*Filtered index generated on 2026-09-27 23:02:20*

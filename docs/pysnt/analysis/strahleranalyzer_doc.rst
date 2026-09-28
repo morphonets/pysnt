@@ -104,7 +104,7 @@ Getters Methods
    
 
 
-.. py:method:: getBranches()
+.. py:method:: getBranches(int)
 
    
 

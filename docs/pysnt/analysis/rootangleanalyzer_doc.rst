@@ -79,12 +79,12 @@ Getters Methods
    Computes the Cramér-von Mises statistic between computed root angles and fitted von Mises distribution. A value of 0 indicates a perfect fit between the empirical distribution and the theoretical distribution, and larger values indicate a greater discrepancy between the two distributions.
 
 
-.. py:method:: getDensityPlot()
+.. py:method:: static getDensityPlot(List)
 
    
 
 
-.. py:method:: static getDensityPlot(List)
+.. py:method:: getDensityPlot()
 
    
 
@@ -94,12 +94,12 @@ Getters Methods
    
 
 
-.. py:method:: static getHistogram(List, boolean)
+.. py:method:: getHistogram(boolean)
 
    
 
 
-.. py:method:: getHistogram(boolean)
+.. py:method:: static getHistogram(List, boolean)
 
    
 
@@ -109,7 +109,7 @@ Getters Methods
    
 
 
-.. py:method:: getTaggedTree(ColorTable, double, double)
+.. py:method:: getTaggedTree(String, double, double)
 
    Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.
 

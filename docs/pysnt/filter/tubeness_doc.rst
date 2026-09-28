@@ -118,7 +118,7 @@ Other Methods
    
 
 
-.. py:method:: static apply(ImgPlus, double)
+.. py:method:: static apply(ImgPlus, [D)
 
    Apply single-scale tubeness filter to an ImgPlus.
 

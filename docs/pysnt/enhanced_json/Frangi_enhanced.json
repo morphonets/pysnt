@@ -1,21 +1,21 @@
 {
   "class_name": "Frangi",
   "package": "sc.fiji.snt.filter",
-  "extracted_at": "2026-01-02T22:36:44.522340",
+  "extracted_at": "2026-09-27T23:00:58.414392",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.173190",
+  "enhancement_timestamp": "2026-09-27T23:02:20.423095",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "accept",
       "overloads": [
         {
-          "signature": "accept(RandomAccessibleInterval) -> void",
+          "signature": "accept(Object) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "RandomAccessibleInterval",
+              "java_type": "Object",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -26,12 +26,12 @@
           "throws": {}
         },
         {
-          "signature": "accept(Object) -> void",
+          "signature": "accept(RandomAccessibleInterval) -> void",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
-              "java_type": "Object",
+              "java_type": "RandomAccessibleInterval",
               "description": "",
               "javadoc_name": null
             }
@@ -154,29 +154,6 @@
       "name": "compute",
       "overloads": [
         {
-          "signature": "compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "RandomAccessibleInterval",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "RandomAccessibleInterval",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "compute(Object, Object) -> void",
           "params": [
             {
@@ -190,6 +167,29 @@
               "name": "arg1",
               "type": "Any",
               "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
               "description": "",
               "javadoc_name": null
             }
@@ -248,10 +248,18 @@
       "name": "getIndependentInstance",
       "overloads": [
         {
-          "signature": "getIndependentInstance() -> UnaryComputerOp",
+          "signature": "getIndependentInstance() -> SpecialOp",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "UnaryComputerOp",
+          "java_return_type": "SpecialOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> Threadable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Threadable",
           "return_description": "",
           "throws": {}
         },
@@ -272,26 +280,18 @@
           "throws": {}
         },
         {
-          "signature": "getIndependentInstance() -> SpecialOp",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "SpecialOp",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getIndependentInstance() -> Threadable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Threadable",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getIndependentInstance() -> UnaryOp",
           "params": [],
           "return_type": "Any",
           "java_return_type": "UnaryOp",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getIndependentInstance() -> UnaryComputerOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "UnaryComputerOp",
           "return_description": "",
           "throws": {}
         }
@@ -388,10 +388,18 @@
       "name": "run",
       "overloads": [
         {
-          "signature": "run() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
+          "signature": "run(RandomAccessibleInterval) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
           "return_description": "",
           "throws": {}
         },
@@ -412,18 +420,10 @@
           "throws": {}
         },
         {
-          "signature": "run(RandomAccessibleInterval) -> RandomAccessibleInterval",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "RandomAccessibleInterval",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "RandomAccessibleInterval",
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
           "return_description": "",
           "throws": {}
         },

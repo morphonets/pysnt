@@ -1,21 +1,21 @@
 {
   "class_name": "PCAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.661176",
+  "extracted_at": "2026-09-27T23:01:03.165539",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.160271",
+  "enhancement_timestamp": "2026-09-27T23:02:20.414227",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "static getPrincipalAxes",
       "overloads": [
         {
-          "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
           "params": [
             {
               "name": "arg0",
-              "type": "Any",
-              "java_type": "Vertices",
+              "type": "Path",
+              "java_type": "Path",
               "description": "- the collection of points to analyze",
               "javadoc_name": "points"
             }
@@ -26,12 +26,28 @@
           "throws": {}
         },
         {
-          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
           "params": [
             {
               "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
+              "type": "Any",
+              "java_type": "Vertices",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -71,22 +87,6 @@
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }

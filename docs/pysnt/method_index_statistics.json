@@ -1,43 +1,43 @@
 {
-  "total_methods": 1424,
-  "documented_methods": 582,
-  "methods_with_examples": 4,
+  "total_methods": 1601,
+  "documented_methods": 709,
+  "methods_with_examples": 5,
   "deprecated_methods": 0,
-  "documentation_coverage": 40.9,
+  "documentation_coverage": 44.3,
   "categories": {
-    "Static Methods": 194,
-    "Utilities": 341,
-    "Setters": 268,
-    "I/O Operations": 32,
-    "Getters": 544,
-    "Analysis": 20,
-    "Visualization": 25
+    "Static Methods": 237,
+    "Utilities": 378,
+    "Setters": 306,
+    "I/O Operations": 43,
+    "Getters": 575,
+    "Analysis": 25,
+    "Visualization": 37
   },
   "return_types": {
-    "List[Any]": 87,
-    "None": 526,
-    "Any": 300,
-    "int": 67,
-    "bool": 105,
-    "Path": 17,
+    "List[Any]": 103,
+    "None": 587,
+    "Any": 351,
+    "int": 76,
+    "bool": 118,
+    "Path": 21,
     "Set[Any]": 17,
-    "PointInImage": 14,
-    "float": 127,
+    "PointInImage": 16,
+    "float": 135,
+    "BoundingBox": 8,
+    "SNTPoint": 6,
+    "str": 63,
     "Dict[str, Any]": 33,
     "SNTChart": 23,
     "MultiTreeStatistics": 1,
-    "SNTPoint": 5,
-    "str": 55,
     "MultiViewer2D": 3,
-    "Tree": 14,
+    "Tree": 16,
     "TreeStatistics": 4,
     "Union[int, float]": 3,
     "DirectedWeightedGraph": 4,
     "BiSearchNode": 2,
     "SWCPoint": 2,
-    "BoundingBox": 7,
     "Viewer3D": 3,
-    "SNTTable": 3,
+    "SNTTable": 4,
     "FillerThread": 1,
     "ConvexHull3D": 1
   },
@@ -45,12 +45,13 @@
     "CrossoverFinder": 1,
     "Path": 38,
     "MultiViewer2D": 11,
+    "OBJMesh": 24,
     "NodeColorMapper": 15,
     "PathStraightener": 3,
     "GroupedTreeStatistics": 12,
     "NodeStatistics": 14,
     "ZBAtlasUtils": 4,
-    "SNTColor": 15,
+    "SNTColor": 25,
     "Viewer2D": 33,
     "ConvexHullAnalyzer": 24,
     "SciViewSNT": 7,
@@ -58,11 +59,15 @@
     "NeuroMorphoLoader": 7,
     "TreeColorMapper": 16,
     "MultiTreeStatistics": 36,
+    "BvvUtils": 5,
     "AllenUtils": 19,
+    "NeurolucidaImporter": 7,
     "RootAngleAnalyzer": 18,
     "BiSearchNode": 38,
     "PathManagerUI": 36,
+    "BvvMultiSource": 13,
     "BiSearch": 7,
+    "SeedOverlayRenderer": 1,
     "FlyCircuitLoader": 5,
     "SNTUI": 36,
     "MultiViewer3D": 10,
@@ -72,6 +77,7 @@
     "PathAndFillManager": 39,
     "SNTService": 38,
     "VFBUtils": 6,
+    "SeedManager": 34,
     "InsectBrainCompartment": 12,
     "PathResult": 7,
     "FillerThread": 20,
@@ -82,7 +88,7 @@
     "ImgUtils": 19,
     "AllenCompartment": 18,
     "WekaModelLoader": 32,
-    "SNTUtils": 31,
+    "SNTUtils": 42,
     "PointInImage": 22,
     "PathFitter": 13,
     "SNT": 44,
@@ -92,7 +98,7 @@
     "SearchThread": 11,
     "PCAnalyzer": 4,
     "InteractiveTracerCanvas": 37,
-    "SNTPoint": 10,
+    "SNTPoint": 11,
     "MouseLightQuerier": 6,
     "PathChangeListener": 1,
     "SNTTable": 33,
@@ -100,16 +106,21 @@
     "RemoteSWCLoader": 5,
     "NodeProfiler": 39,
     "ConvexHull2D": 7,
+    "TreeUtils": 30,
+    "TreeToRaster": 14,
     "Frangi": 14,
     "TreeStatistics": 34,
+    "BundleDetector": 1,
     "InsectBrainLoader": 7,
     "TreeProperties": 1,
     "DefaultSearchNode": 11,
+    "AStarRefiner": 7,
     "BoundingBox": 30,
     "PathStatistics": 34,
     "ConvexHull3D": 7,
     "Fill": 15,
     "ColorMaps": 6,
+    "SpectralSimilarity": 19,
     "Annotation3D": 14,
     "InsectBrainUtils": 6,
     "Tree": 37,
@@ -121,53 +132,53 @@
   "top_categories": [
     [
       "Getters",
-      544
+      575
     ],
     [
       "Utilities",
-      341
+      378
     ],
     [
       "Setters",
-      268
+      306
     ],
     [
       "Static Methods",
-      194
+      237
     ],
     [
       "I/O Operations",
-      32
+      43
     ]
   ],
   "top_return_types": [
     [
       "None",
-      526
+      587
     ],
     [
       "Any",
-      300
+      351
     ],
     [
       "float",
-      127
+      135
     ],
     [
       "bool",
-      105
+      118
     ],
     [
       "List[Any]",
-      87
+      103
     ],
     [
       "int",
-      67
+      76
     ],
     [
       "str",
-      55
+      63
     ],
     [
       "Dict[str, Any]",
@@ -179,13 +190,17 @@
     ],
     [
       "Path",
-      17
+      21
     ]
   ],
   "most_methods_per_class": [
     [
       "SNT",
       44
+    ],
+    [
+      "SNTUtils",
+      42
     ],
     [
       "ImpUtils",
@@ -217,10 +232,6 @@
     ],
     [
       "TracerCanvas",
-      37
-    ],
-    [
-      "InteractiveTracerCanvas",
       37
     ]
   ]

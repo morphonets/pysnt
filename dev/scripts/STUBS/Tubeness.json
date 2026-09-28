@@ -1,7 +1,7 @@
 {
   "class_name": "Tubeness",
   "package": "sc.fiji.snt.filter",
-  "extracted_at": "2026-01-02T22:36:45.056385",
+  "extracted_at": "2026-09-27T23:01:12.293786",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -56,23 +56,6 @@
       "name": "static apply",
       "overloads": [
         {
-          "signature": "static apply(ImgPlus, double) -> ImgPlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImgPlus"
-        },
-        {
           "signature": "static apply(ImgPlus, [D) -> ImgPlus",
           "params": [
             {
@@ -106,6 +89,23 @@
               "name": "arg2",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus"
+        },
+        {
+          "signature": "static apply(ImgPlus, double) -> ImgPlus",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
             }
           ],
           "return_type": "Any",
@@ -182,10 +182,16 @@
       "name": "getIndependentInstance",
       "overloads": [
         {
-          "signature": "getIndependentInstance() -> UnaryComputerOp",
+          "signature": "getIndependentInstance() -> SpecialOp",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "UnaryComputerOp"
+          "java_return_type": "SpecialOp"
+        },
+        {
+          "signature": "getIndependentInstance() -> Threadable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Threadable"
         },
         {
           "signature": "getIndependentInstance() -> NullaryComputerOp",
@@ -200,22 +206,16 @@
           "java_return_type": "NullaryOp"
         },
         {
-          "signature": "getIndependentInstance() -> SpecialOp",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "SpecialOp"
-        },
-        {
-          "signature": "getIndependentInstance() -> Threadable",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Threadable"
-        },
-        {
           "signature": "getIndependentInstance() -> UnaryOp",
           "params": [],
           "return_type": "Any",
           "java_return_type": "UnaryOp"
+        },
+        {
+          "signature": "getIndependentInstance() -> UnaryComputerOp",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "UnaryComputerOp"
         }
       ],
       "documentation": "Java method: getIndependentInstance"
@@ -382,12 +382,6 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Tubeness()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "Tubeness([D, [D, int)",
           "params": [
             {
@@ -423,6 +417,12 @@
               "java_type": "[D"
             }
           ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Tubeness()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         }

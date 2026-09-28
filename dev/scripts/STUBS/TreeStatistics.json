@@ -1,7 +1,7 @@
 {
   "class_name": "TreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:45.050868",
+  "extracted_at": "2026-09-27T23:01:11.942056",
   "extractor_version": "1.0.0",
   "methods": [
     {
@@ -85,6 +85,28 @@
       "name": "getAnnotatedLength",
       "overloads": [
         {
+          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map"
+        },
+        {
           "signature": "getAnnotatedLength(int, String) -> Map",
           "params": [
             {
@@ -108,28 +130,6 @@
               "name": "arg0",
               "type": "int",
               "java_type": "int"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
-          "signature": "getAnnotatedLength(int, String, boolean) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "Dict[str, Any]",
@@ -297,6 +297,18 @@
       "name": "getBranchPoints",
       "overloads": [
         {
+          "signature": "getBranchPoints(BrainAnnotation) -> Set",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set"
+        },
+        {
           "signature": "getBranchPoints(BrainAnnotation, boolean) -> Set",
           "params": [
             {
@@ -316,18 +328,6 @@
         {
           "signature": "getBranchPoints() -> Set",
           "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set"
-        },
-        {
-          "signature": "getBranchPoints(BrainAnnotation) -> Set",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation"
-            }
-          ],
           "return_type": "Set[Any]",
           "java_return_type": "Set"
         }
@@ -350,6 +350,23 @@
       "name": "getCableLength",
       "overloads": [
         {
+          "signature": "getCableLength(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
           "signature": "getCableLength(BrainAnnotation) -> double",
           "params": [
             {
@@ -366,23 +383,6 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double"
-        },
-        {
-          "signature": "getCableLength(BrainAnnotation, boolean) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
         }
       ],
       "documentation": "Java method: getCableLength"
@@ -390,18 +390,6 @@
     {
       "name": "getCableLengthNorm",
       "overloads": [
-        {
-          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "BrainAnnotation"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
         {
           "signature": "getCableLengthNorm(BrainAnnotation, boolean) -> double",
           "params": [
@@ -414,6 +402,18 @@
               "name": "arg1",
               "type": "bool",
               "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        },
+        {
+          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "float",
@@ -510,23 +510,6 @@
       "name": "getFlowPlot",
       "overloads": [
         {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
           "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
           "params": [
             {
@@ -559,7 +542,7 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -570,6 +553,33 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
+            },
+            {
+              "name": "arg2",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "arg3",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart"
+        },
+        {
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "SNTChart",
@@ -598,7 +608,7 @@
           "java_return_type": "SNTChart"
         },
         {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, int) -> SNTChart",
           "params": [
             {
               "name": "arg0",
@@ -609,16 +619,6 @@
               "name": "arg1",
               "type": "int",
               "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
@@ -727,6 +727,12 @@
       "name": "static getMetrics",
       "overloads": [
         {
+          "signature": "static getMetrics() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List"
+        },
+        {
           "signature": "static getMetrics(String) -> List",
           "params": [
             {
@@ -737,12 +743,6 @@
           ],
           "return_type": "List[Any]",
           "java_return_type": "List"
-        },
-        {
-          "signature": "static getMetrics() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
         }
       ],
       "documentation": "Java method: static getMetrics"
@@ -751,12 +751,17 @@
       "name": "getNBranchPoints",
       "overloads": [
         {
-          "signature": "getNBranchPoints(BrainAnnotation) -> int",
+          "signature": "getNBranchPoints(BrainAnnotation, boolean) -> int",
           "params": [
             {
               "name": "arg0",
               "type": "Any",
               "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "arg1",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "int",

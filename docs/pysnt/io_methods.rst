@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'I/O Operations'
-Total matching methods: **32**
+Total matching methods: **43**
 
 Matching Methods
 ----------------
@@ -79,6 +79,14 @@ Matching Methods
      - :class:`PathChangeListener`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.rasterizePathLabels`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it...
+   * - :meth:`AStarRefiner.readPreferences`
+     - :class:`AStarRefiner`
+     - ``None``
+     - No-op: kept for consistency with PathFitter/MultiSpectralRefiner, which read persisted preferences here. A* re-tracing...
    * - :meth:`PathFitter.readPreferences`
      - :class:`PathFitter`
      - ``None``
@@ -91,6 +99,10 @@ Matching Methods
      - :class:`MouseLightLoader`
      - ``bool``
      - Convenience method to save SWC data to a local directory.
+   * - :meth:`SpectralSimilarity.static averageColorFromPaths`
+     - :class:`SpectralSimilarity`
+     - ``Any``
+     - As ``` averageColorFromPaths(RandomAccessibleInterval, java.util.List, double, double, double) ``` , but also adding a...
    * - :meth:`PathAndFillManager.static createFromFile`
      - :class:`PathAndFillManager`
      - ``Any``
@@ -103,6 +115,10 @@ Matching Methods
      - :class:`SNTUtils`
      - ``bool``
      - No description available
+   * - :meth:`TreeUtils.static findPathsNeedingReversal`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Determines which paths need to be reversed so that their start nodes point toward a given root location. A path should...
    * - :meth:`SNTTable.static fromFile`
      - :class:`SNTTable`
      - ``SNTTable``
@@ -115,6 +131,10 @@ Matching Methods
      - :class:`SNTUtils`
      - ``Any``
      - Retrieves a list of reconstruction files stored in a common directory matching the specified criteria.
+   * - :meth:`TreeUtils.static getRootPath`
+     - :class:`TreeUtils`
+     - ``Path``
+     - Gets the root path of the tree containing the given path.
    * - :meth:`SNTUtils.static getUniquelySuffixedFile`
      - :class:`SNTUtils`
      - ``str``
@@ -127,10 +147,34 @@ Matching Methods
      - :class:`SNTUtils`
      - ``bool``
      - No description available
+   * - :meth:`TreeUtils.static mergeContinuousPaths`
+     - :class:`TreeUtils`
+     - ``int``
+     - Merges paths that continue along the same trajectory at branch points, reducing fragmentation in auto-traced...
+   * - :meth:`TreeUtils.static mergePaths`
+     - :class:`TreeUtils`
+     - ``Path``
+     - Merges a list of paths into a single path by appending nodes sequentially. The paths should be pre-ordered and oriented...
+   * - :meth:`TreeUtils.static orientPathsForMerging`
+     - :class:`TreeUtils`
+     - ``None``
+     - Orients paths in a chain so they can be merged end-to-start. After this operation, each path's end node will be near...
+   * - :meth:`TreeUtils.static orientPathsTowardRoot`
+     - :class:`TreeUtils`
+     - ``int``
+     - Orients paths so their start nodes point toward a given root location. Paths are reversed in-place if their end node is...
    * - :meth:`SNTUtils.static randomPaths`
      - :class:`SNTUtils`
      - ``List[Any]``
      - Generates a list of random paths. Only useful for debugging purposes
+   * - :meth:`SNTUtils.static sanitizeFilename`
+     - :class:`SNTUtils`
+     - ``str``
+     - Replaces characters that are unsafe/reserved in filenames with an underscore, leaving alphanumerics, dots, and hyphens...
+   * - :meth:`TreeUtils.static splitByPrimaryPaths`
+     - :class:`TreeUtils`
+     - ``List[Any]``
+     - Splits a tree with multiple primary paths into separate trees, one rooted at each primary path.
    * - :meth:`SciViewSNT.syncPathManagerList`
      - :class:`SciViewSNT`
      - ``bool``
@@ -146,4 +190,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-09-27 22:17:09*
+*Filtered index generated on 2026-09-27 23:02:20*

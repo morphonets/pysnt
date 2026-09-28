@@ -1,0 +1,80 @@
+{
+  "class_name": "BundleDetector",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2026-09-27T23:00:54.339738",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.427629",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static find",
+      "overloads": [
+        {
+          "signature": "static find(Collection, BundleDetector$Config) -> List",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of paths",
+              "javadoc_name": "paths"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "BundleDetector$Config",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of detected bundle events (typed as `CrossoverFinder.CrossoverEvent`)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static find",
+      "javadoc_description": "Entry point: detect bundle events for a collection of paths using the given config. Internally constructs a `CrossoverFinder.Config` ith the inverted angle filter (`CrossoverFinder.Config.thetaMaxDeg` set, `CrossoverFinder.Config.thetaMinDeg` disabled) and delegates to \n```\nCrossoverFinder.find(java.util.Collection<sc.fiji.snt.Path>, sc.fiji.snt.util.CrossoverFinder.Config)\n```\n.",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Detects regions where two paths run parallel to each other for a sustained distance, complementary to CrossoverFinder (which catches brief perpendicular near-crossings). Common use case: identifying axons bundled along the same nerve, or a path that was inadvertently hijacked by signal from a neighboring neurite running side-by-side.\n\nThis is a thin wrapper over CrossoverFinder: it reuses the entire grid/proximity/run-extraction pipeline and only inverts the angle filter. Where CrossoverFinder (with thetaMinDeg > 0) keeps only high-angle approaches (X-shaped crossings), BundleDetector uses thetaMaxDeg > 0 to keep only low-angle approaches (||-shaped sustained proximity). Defaults are also tuned for sustained runs: higher minRunNodes, similar proximity.\n\nThe output type is `CrossoverFinder.CrossoverEvent`: Callers should interpret the events as \"bundled run\" regions rather than crossings; the medianAngleDeg field will be small (parallel), and the index-window span will be wide (sustained).",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "BundleDetector.Config"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "CrossoverFinder",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 1,
+      "total_json_methods": 1,
+      "total_matches": 1,
+      "exact_matches": 1,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

@@ -1,9 +1,9 @@
 {
   "class_name": "AllenUtils",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-01-02T22:36:44.437604",
+  "extracted_at": "2026-09-27T23:00:52.208597",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.035995",
+  "enhancement_timestamp": "2026-09-27T23:02:20.315435",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -238,12 +238,12 @@
       "name": "static getCompartment",
       "overloads": [
         {
-          "signature": "static getCompartment(String) -> AllenCompartment",
+          "signature": "static getCompartment(int) -> AllenCompartment",
           "params": [
             {
               "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "type": "int",
+              "java_type": "int",
               "description": "- the name or acronym (case-insensitive) identifying the compartment",
               "javadoc_name": "nameOrAcronym"
             }
@@ -254,12 +254,12 @@
           "throws": {}
         },
         {
-          "signature": "static getCompartment(int) -> AllenCompartment",
+          "signature": "static getCompartment(String) -> AllenCompartment",
           "params": [
             {
               "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -623,14 +623,14 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "transferAnnotationIdsToNodeValues(Tree)",
-    "Path.hasNodeAnnotations()",
-    "Path.getNodeAnnotation(int)",
-    "Path.hasNodeValues()",
-    "Constant Field Values",
     "Path.getNodeValue(int)",
+    "Object",
+    "Constant Field Values",
+    "Path.hasNodeValues()",
+    "Path.getNodeAnnotation(int)",
+    "Path.hasNodeAnnotations()",
     "assignAnnotationsFromNodeValues(Tree)",
-    "Object"
+    "transferAnnotationIdsToNodeValues(Tree)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

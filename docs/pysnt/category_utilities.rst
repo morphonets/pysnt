@@ -3,10 +3,50 @@ Utilities Methods
 
 General utility methods and helper functions.
 
-Total methods in this category: **341**
+Total methods in this category: **378**
 
 .. contents:: Classes in this Category
    :local:
+
+AStarRefiner
+------------
+
+.. method:: apply()
+
+   Applies the re-traced geometry to the original path via `Path.replaceNodes(Path)`. Must be called sequentially (not thread-safe), typically on the EDT after all parallel call() invocations have completed.
+
+   **Signature:** ``apply() -> void``
+
+   **Returns:** ``None``
+
+.. method:: applySettings(arg0)
+
+   No-op: kept for consistency with the other AbstractRefineHelper workers; there are no per-worker settings to propagate here (see readPreferences()).
+
+   **Signature:** ``applySettings(AStarRefiner) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the reference refiner (unused)
+
+   **Returns:** ``None``
+
+.. method:: call()
+
+   Runs the A* re-trace on this path's current waypoints. Thread-safe: does not modify the original path. Call apply() afterward (sequentially) to commit results.
+
+   **Signature:** ``call() -> Path``
+
+   **Returns:** (``Path``) the re-traced path, or null if re-tracing failed
+
+.. method:: succeeded()
+
+   Whether the re-trace succeeded. Only meaningful after call().
+
+   **Signature:** ``succeeded() -> boolean``
+
+   **Returns:** (``bool``) true if a valid re-traced path was produced
+
 
 AllenCompartment
 ----------------
@@ -271,6 +311,30 @@ BoundingBox
    **Returns:** ``float``
 
 
+BvvMultiSource
+--------------
+
+.. method:: applyTransform(arg0)
+
+   Applies the given transform as the fixed transform to the leader and all followers. This is the primary entry point for loading a saved transform.
+
+   **Signature:** ``applyTransform(AffineTransform3D) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the transform to apply
+
+   **Returns:** ``None``
+
+.. method:: syncTransforms()
+
+   Forces a repaint. With field-sharing active, followers already hold the same transform objects as the leader: this call just flushes the display. Called internally after transform commits in the fallback path.
+
+   **Signature:** ``syncTransforms() -> void``
+
+   **Returns:** ``None``
+
+
 ConvexHull2D
 ------------
 
@@ -504,7 +568,7 @@ Frangi
 
 .. method:: accept(arg0)
 
-   **Signature:** ``accept(RandomAccessibleInterval) -> void``
+   **Signature:** ``accept(Object) -> void``
 
    **Parameters:**
 
@@ -546,11 +610,15 @@ Frangi
 
    **Returns:** ``Any``
 
-.. method:: run()
+.. method:: run(arg0)
 
-   **Signature:** ``run() -> void``
+   **Signature:** ``run(RandomAccessibleInterval) -> RandomAccessibleInterval``
 
-   **Returns:** ``None``
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
 
 
 GroupedTreeStatistics
@@ -1031,18 +1099,47 @@ NodeStatistics
 
    **Returns:** (``List[Any]``) the filtered list.
 
-.. method:: get(arg0, arg1)
+.. method:: get(arg0)
 
    Gets the list of nodes associated with the specified compartment (neuropil label).
 
-   **Signature:** ``get(BrainAnnotation, boolean) -> List``
+   **Signature:** ``get(BrainAnnotation) -> List``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``bool``)
+   * **arg0** (``Any``): - the query compartment (null not allowed)
 
-   **Returns:** ``List[Any]``
+   **Returns:** (``List[Any]``) the list of filtered nodes
+
+
+OBJMesh
+-------
+
+.. method:: duplicate()
+
+   **Signature:** ``duplicate() -> OBJMesh``
+
+   **Returns:** ``Any``
+
+.. method:: label()
+
+   Gets this mesh label.
+
+   **Signature:** ``label() -> String``
+
+   **Returns:** ``str``
+
+.. method:: translate(arg0)
+
+   Translates the vertices of this mesh by the specified offset. If mesh is displayed, changes may only occur once scene is rebuilt.
+
+   **Signature:** ``translate(SNTPoint) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``SNTPoint``): - the translation offset
+
+   **Returns:** ``None``
 
 
 Path
@@ -2173,16 +2270,15 @@ SNTService
 SNTTable
 --------
 
-.. method:: add(arg0, arg1)
+.. method:: add(arg0)
 
-   **Signature:** ``add(int, Object) -> void``
+   **Signature:** ``add(Column) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``int``)
-   * **arg1** (``Any``)
+   * **arg0** (``Any``)
 
-   **Returns:** ``None``
+   **Returns:** ``bool``
 
 .. method:: appendColumn()
 
@@ -2301,6 +2397,18 @@ Iterates through all cells in the table and replaces null values with the provid
 
    **Returns:** ``None``
 
+.. method:: findColumnIndex(arg0)
+
+   Case-/whitespace-insensitive column lookup.
+
+   **Signature:** ``findColumnIndex(String) -> int``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``int``
+
 .. method:: forEach(arg0)
 
    **Signature:** ``forEach(Consumer) -> void``
@@ -2310,16 +2418,6 @@ Iterates through all cells in the table and replaces null values with the provid
    * **arg0** (``Any``)
 
    **Returns:** ``None``
-
-.. method:: geColumnHeaders(arg0)
-
-   **Signature:** ``geColumnHeaders(String) -> List``
-
-   **Parameters:**
-
-   * **arg0** (``str``)
-
-   **Returns:** ``List[Any]``
 
 .. method:: geColumnStats(arg0, arg1, arg2)
 
@@ -2748,6 +2846,241 @@ SearchThread
    **Returns:** ``None``
 
 
+SeedManager
+-----------
+
+.. method:: action(arg0, arg1)
+
+   **Signature:** ``action(Event, Object) -> boolean``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``bool``
+
+.. method:: add(arg0, arg1, arg2)
+
+   **Signature:** ``add(Component, Object, int) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+   * **arg2** (``int``)
+
+   **Returns:** ``None``
+
+.. method:: applyComponentOrientation(arg0)
+
+   **Signature:** ``applyComponentOrientation(ComponentOrientation) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: areFocusTraversalKeysSet(arg0)
+
+   **Signature:** ``areFocusTraversalKeysSet(int) -> boolean``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+
+   **Returns:** ``bool``
+
+.. method:: bounds()
+
+   **Signature:** ``bounds() -> Rectangle``
+
+   **Returns:** ``Any``
+
+.. method:: checkImage(arg0, arg1)
+
+   **Signature:** ``checkImage(Image, ImageObserver) -> int``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``int``
+
+.. method:: contains(arg0, arg1)
+
+   **Signature:** ``contains(int, int) -> boolean``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+
+   **Returns:** ``bool``
+
+.. method:: countComponents()
+
+   **Signature:** ``countComponents() -> int``
+
+   **Returns:** ``int``
+
+.. method:: createImage(arg0, arg1)
+
+   **Signature:** ``createImage(int, int) -> Image``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: createToolTip()
+
+   **Signature:** ``createToolTip() -> JToolTip``
+
+   **Returns:** ``Any``
+
+.. method:: createVolatileImage(arg0, arg1, arg2)
+
+   **Signature:** ``createVolatileImage(int, int, ImageCapabilities) -> VolatileImage``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: deliverEvent(arg0)
+
+   **Signature:** ``deliverEvent(Event) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: disable()
+
+   **Signature:** ``disable() -> void``
+
+   **Returns:** ``None``
+
+.. method:: dispatchEvent(arg0)
+
+   **Signature:** ``dispatchEvent(AWTEvent) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: dispose()
+
+   Unregisters the overlay listener and the table-model listener, and closes the detached-table dialog if it's open. Idempotent.
+
+Must be called when this panel is removed from its parent: `overlay.addListener(overlayListener)` pins this panel to the overlay's lifetime, so skipping dispose() leaks the panel and its table model until SNT shuts down.
+
+   **Signature:** ``dispose() -> void``
+
+   **Returns:** ``None``
+
+.. method:: doLayout()
+
+   **Signature:** ``doLayout() -> void``
+
+   **Returns:** ``None``
+
+.. method:: enable()
+
+   **Signature:** ``enable() -> void``
+
+   **Returns:** ``None``
+
+.. method:: findComponentAt(arg0, arg1)
+
+   **Signature:** ``findComponentAt(int, int) -> Component``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: firePropertyChange(arg0, arg1, arg2)
+
+   **Signature:** ``firePropertyChange(String, char, char) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+   * **arg1** (``str``)
+   * **arg2** (``str``)
+
+   **Returns:** ``None``
+
+
+SpectralSimilarity
+------------------
+
+.. method:: accept(arg0)
+
+   **Signature:** ``accept(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: andThen(arg0)
+
+   **Signature:** ``andThen(Consumer) -> Consumer``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``Any``
+
+.. method:: in()
+
+   **Signature:** ``in() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: initialize()
+
+   **Signature:** ``initialize() -> void``
+
+   **Returns:** ``None``
+
+.. method:: ops()
+
+   **Signature:** ``ops() -> OpEnvironment``
+
+   **Returns:** ``Any``
+
+.. method:: out()
+
+   **Signature:** ``out() -> Object``
+
+   **Returns:** ``Any``
+
+.. method:: run()
+
+   **Signature:** ``run() -> void``
+
+   **Returns:** ``None``
+
+
 StrahlerAnalyzer
 ----------------
 
@@ -3116,13 +3449,13 @@ TreeColorMapper
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
 
-   **Signature:** ``map(Tree, String, String) -> void``
+   **Signature:** ``map(Tree, Profile, ColorTable) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
-   * **arg1** (``str``)
-   * **arg2** (``str``)
+   * **arg1** (``Profile``)
+   * **arg2** (``Any``)
 
    **Returns:** ``None``
 
@@ -3156,6 +3489,32 @@ TreeStatistics
    **Signature:** ``dispose() -> void``
 
    **Returns:** ``None``
+
+
+TreeToRaster
+------------
+
+.. method:: rasterize()
+
+   Rasterizes the tree into a 32-bit (float) image using partial-volume supersampling. Voxel values represent the fraction of the supersampled sub-voxels that fall inside the neuron structure (0.0 = background, 1.0 = fully inside), unless noise has been enabled via `setPoissonNoise(double, double)`, in which case values represent simulated photon counts.
+
+   **Signature:** ``rasterize() -> ImagePlus``
+
+   **Returns:** (``Any``) the rasterized ImagePlus
+
+.. method:: rasterizeNodeValueLabels()
+
+   Rasterizes the tree into a 16-bit label image where each voxel is assigned the node value of the nearest path node (as stored via `Path.setNodeValue(double, int)`). This enables per-node labeling, e.g., from delineation assignments, atlas annotations, or other node-level classifications.
+
+Node values are expected to be negative integers (as used by DelineationsManager); they are negated to produce positive labels in the output image. Nodes with NaN or non-negative values are treated as background (0).
+
+Each frustum (segment between consecutive nodes) inherits the label of its start node. At intersection sites, the frustum with the largest local radius wins (thickest-wins), consistent with `rasterizePathLabels()`.
+
+Note: The output is 16-bit unsigned (short), so label values above 65535 will overflow. In practice this is not a concern when the source is a label/segmentation image with a bounded class count, but callers should be aware of this limit.
+
+   **Signature:** ``rasterizeNodeValueLabels() -> ImagePlus``
+
+   **Returns:** (``Any``) a 16-bit ImagePlus of node-value labels
 
 
 Tubeness
@@ -3219,27 +3578,28 @@ Tubeness
 Viewer2D
 --------
 
-.. method:: add(arg0)
+.. method:: add(arg0, arg1)
 
    Appends a tree to the viewer rendered after the specified measurement.
 
-   **Signature:** ``add(Object) -> void``
-
-   **Parameters:**
-
-   * **arg0** (``Any``): - the tree to be plotted
-
-   **Returns:** ``None``
-
-.. method:: map(arg0, arg1, arg2)
-
-   **Signature:** ``map(Tree, String, String) -> void``
+   **Signature:** ``add(Tree, String) -> void``
 
    **Parameters:**
 
    * **arg0** (``Tree``)
    * **arg1** (``str``)
-   * **arg2** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: map(arg0, arg1, arg2)
+
+   **Signature:** ``map(Tree, Profile, ColorTable) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Tree``)
+   * **arg1** (``Profile``)
+   * **arg2** (``Any``)
 
    **Returns:** ``None``
 
@@ -3254,11 +3614,16 @@ Viewer2D
 
    **Returns:** ``None``
 
-.. method:: show()
+.. method:: show(arg0, arg1)
 
    Displays the current plot on a dedicated frame *
 
-   **Signature:** ``show() -> void``
+   **Signature:** ``show(int, int) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``int``): - the preferred frame width
+   * **arg1** (``int``)
 
    **Returns:** ``None``
 
@@ -3500,4 +3865,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-09-27 22:17:09*
+*Category index generated on 2026-09-27 23:02:20*

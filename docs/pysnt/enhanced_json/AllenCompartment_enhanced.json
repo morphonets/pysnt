@@ -1,9 +1,9 @@
 {
   "class_name": "AllenCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-01-02T22:36:44.432189",
+  "extracted_at": "2026-09-27T23:00:52.086252",
   "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T22:17:09.133462",
+  "enhancement_timestamp": "2026-09-27T23:02:20.389056",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -136,6 +136,14 @@
       "name": "getChildren",
       "overloads": [
         {
+          "signature": "getChildren() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getChildren(int) -> List",
           "params": [
             {
@@ -149,14 +157,6 @@
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "the \"flattened\" ontologies list",
-          "throws": {}
-        },
-        {
-          "signature": "getChildren() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -212,19 +212,19 @@
       "name": "getParent",
       "overloads": [
         {
-          "signature": "getParent() -> BrainAnnotation",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "BrainAnnotation",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getParent() -> AllenCompartment",
           "params": [],
           "return_type": "Any",
           "java_return_type": "AllenCompartment",
           "return_description": "the parent of this compartment, of null if this compartment is root.",
+          "throws": {}
+        },
+        {
+          "signature": "getParent() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -455,24 +455,24 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "AllenCompartment(UUID)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "UUID"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "AllenCompartment(int)",
           "params": [
             {
               "name": "arg0",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AllenCompartment(UUID)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "UUID"
             }
           ],
           "return_type": "None",
@@ -497,8 +497,8 @@
   "since_version": null,
   "see_also": [
     "getTreePath()",
-    "BrainAnnotation",
-    "Object"
+    "Object",
+    "BrainAnnotation"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

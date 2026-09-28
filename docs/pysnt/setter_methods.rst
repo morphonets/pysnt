@@ -2,7 +2,7 @@ Filtered Method Index
 ====================
 
 Methods filtered by: category 'Setters'
-Total matching methods: **268**
+Total matching methods: **306**
 
 Matching Methods
 ----------------
@@ -21,6 +21,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTChart.addAncestorListener`
      - :class:`SNTChart`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addAncestorListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`SNTChart.addChartMouseListener`
@@ -63,6 +67,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addComponentListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addComponentListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -77,6 +85,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addContainerListener`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addContainerListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`SNT.addFillerThread`
@@ -101,6 +113,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addFocusListener`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addFocusListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`TracerCanvas.addFocusListener`
@@ -131,6 +147,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addHierarchyBoundsListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addHierarchyBoundsListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -149,6 +169,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addHierarchyListener`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addHierarchyListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`TracerCanvas.addHierarchyListener`
@@ -183,6 +207,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addInputMethodListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addInputMethodListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -201,6 +229,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addKeyListener`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addKeyListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`TracerCanvas.addKeyListener`
@@ -239,6 +271,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addMouseListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addMouseListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -259,6 +295,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addMouseMotionListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addMouseMotionListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -277,6 +317,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addMouseWheelListener`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addMouseWheelListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`TracerCanvas.addMouseWheelListener`
@@ -317,6 +361,10 @@ Matching Methods
      - No description available
    * - :meth:`SNTUI.addNotify`
      - :class:`SNTUI`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addNotify`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`TracerCanvas.addNotify`
@@ -391,6 +439,10 @@ Matching Methods
      - :class:`SNTUI`
      - ``None``
      - No description available
+   * - :meth:`SeedManager.addPropertyChangeListener`
+     - :class:`SeedManager`
+     - ``None``
+     - No description available
    * - :meth:`TracerCanvas.addPropertyChangeListener`
      - :class:`TracerCanvas`
      - ``None``
@@ -413,6 +465,10 @@ Matching Methods
      - Adds a collection of Trees.
    * - :meth:`SNTChart.addVetoableChangeListener`
      - :class:`SNTChart`
+     - ``None``
+     - No description available
+   * - :meth:`SeedManager.addVetoableChangeListener`
+     - :class:`SeedManager`
      - ``None``
      - No description available
    * - :meth:`PathManagerUI.addWindowFocusListener`
@@ -491,6 +547,10 @@ Matching Methods
      - :class:`NeuroMorphoLoader`
      - ``None``
      - Enables or disables the use of source version URLs.
+   * - :meth:`BvvMultiSource.removeFromBvv`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Removes all sources in the group from the viewer.
    * - :meth:`NodeProfiler.removeInput`
      - :class:`NodeProfiler`
      - ``None``
@@ -523,6 +583,10 @@ Matching Methods
      - :class:`SNTColor`
      - ``None``
      - Re-assigns an AWT color.
+   * - :meth:`BvvMultiSource.setActive`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Sets the active/visible state for all sources in the group.
    * - :meth:`MultiViewer3D.setAnimationEnabled`
      - :class:`MultiViewer3D`
      - ``None``
@@ -547,14 +611,30 @@ Matching Methods
      - :class:`Viewer2D`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.setAxialRes`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Sets the axial (z) voxel size. A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree are...
    * - :meth:`Annotation3D.setBoundingBoxColor`
      - :class:`Annotation3D`
+     - ``None``
+     - Determines whether the mesh bounding box should be displayed.
+   * - :meth:`OBJMesh.setBoundingBoxColor`
+     - :class:`OBJMesh`
      - ``None``
      - Determines whether the mesh bounding box should be displayed.
    * - :meth:`Annotation3D.setColor`
      - :class:`Annotation3D`
      - ``None``
      - Script friendly method to assign a color to the annotation.
+   * - :meth:`BvvMultiSource.setColor`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Sets the color for all sources in the group.
+   * - :meth:`OBJMesh.setColor`
+     - :class:`OBJMesh`
+     - ``None``
+     - Assigns a color to the mesh.
    * - :meth:`SWCPoint.setColor`
      - :class:`SWCPoint`
      - ``None``
@@ -595,16 +675,32 @@ Matching Methods
      - :class:`Viewer2D`
      - ``None``
      - Sets the default (fallback) color for plotting paths.
+   * - :meth:`TreeToRaster.setDefaultRadius`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Sets the default radius used for nodes/trees that have no radii defined. If not set, defaults to half the lateral voxel...
    * - :meth:`BoundingBox.setDimensions`
      - :class:`BoundingBox`
      - ``None``
      - Sets the dimensions of this bounding box using uncalibrated (pixel) lengths.
+   * - :meth:`BvvMultiSource.setDisplayRange`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Sets the display range for all sources in the group.
+   * - :meth:`OBJMesh.setDisplayedHemisphere`
+     - :class:`OBJMesh`
+     - ``None``
+     - Sets which hemisphere of this mesh is displayed.
    * - :meth:`ShollAnalyzer.setEnableCurveFitting`
      - :class:`ShollAnalyzer`
      - ``None``
      - Sets whether curve fitting computations should be performed.
    * - :meth:`Frangi.setEnvironment`
      - :class:`Frangi`
+     - ``None``
+     - No description available
+   * - :meth:`SpectralSimilarity.setEnvironment`
+     - :class:`SpectralSimilarity`
      - ``None``
      - No description available
    * - :meth:`Tubeness.setEnvironment`
@@ -655,6 +751,10 @@ Matching Methods
      - :class:`MultiViewer3D`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.setGaussianBlur`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Enables Gaussian blurring of the (optionally noisy) image, simulating spatially correlated noise and optical blur. Note...
    * - :meth:`MultiViewer2D.setGridlinesVisible`
      - :class:`MultiViewer2D`
      - ``None``
@@ -711,6 +811,10 @@ Matching Methods
      - :class:`PathProfiler`
      - ``None``
      - No description available
+   * - :meth:`SpectralSimilarity.setInput`
+     - :class:`SpectralSimilarity`
+     - ``None``
+     - No description available
    * - :meth:`Tubeness.setInput`
      - :class:`Tubeness`
      - ``None``
@@ -739,10 +843,18 @@ Matching Methods
      - :class:`NodeStatistics`
      - ``None``
      - Sets a descriptive label to this statistic analysis to be used in histograms, etc.
+   * - :meth:`OBJMesh.setLabel`
+     - :class:`OBJMesh`
+     - ``None``
+     - Sets the label for this mesh.
    * - :meth:`MultiViewer3D.setLabels`
      - :class:`MultiViewer3D`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.setLateralRes`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Sets the lateral (x, y) voxel size.
    * - :meth:`MultiViewer2D.setLayoutColumns`
      - :class:`MultiViewer2D`
      - ``None``
@@ -755,6 +867,10 @@ Matching Methods
      - :class:`SkeletonConverter`
      - ``None``
      - No description available
+   * - :meth:`BvvMultiSource.setLiveSync`
+     - :class:`BvvMultiSource`
+     - ``None``
+     - Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms()...
    * - :meth:`SkeletonConverter.setMaxConnectDist`
      - :class:`SkeletonConverter`
      - ``None``
@@ -847,6 +963,10 @@ Matching Methods
      - :class:`PathProfiler`
      - ``None``
      - No description available
+   * - :meth:`SpectralSimilarity.setOutput`
+     - :class:`SpectralSimilarity`
+     - ``None``
+     - No description available
    * - :meth:`Tubeness.setOutput`
      - :class:`Tubeness`
      - ``None``
@@ -879,6 +999,10 @@ Matching Methods
      - :class:`SWCPoint`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.setPoissonNoise`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Enables Poisson shot noise on the rasterized image, simulating photon counting noise typical of fluorescence...
    * - :meth:`ShollAnalyzer.setPolynomialFitRange`
      - :class:`ShollAnalyzer`
      - ``None``
@@ -927,6 +1051,14 @@ Matching Methods
      - :class:`PathProfiler`
      - ``None``
      - No description available
+   * - :meth:`TreeToRaster.setRadiusScale`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Sets a uniform multiplier applied to every node radius (and to the default radius for nodes without radii) when...
+   * - :meth:`TreeToRaster.setReferenceBounds`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Sets reference bounds explicitly, so the output image matches the specified dimensions. When set, the rasterized image...
    * - :meth:`PathFitter.setReplaceNodes`
      - :class:`PathFitter`
      - ``None``
@@ -971,6 +1103,10 @@ Matching Methods
      - :class:`SkeletonConverter`
      - ``None``
      - No description available
+   * - :meth:`OBJMesh.setSourceAnnotation`
+     - :class:`OBJMesh`
+     - ``None``
+     - Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.
    * - :meth:`Fill.setSourcePaths`
      - :class:`Fill`
      - ``None``
@@ -1011,10 +1147,18 @@ Matching Methods
      - :class:`PathResult`
      - ``None``
      - No description available
+   * - :meth:`OBJMesh.setSymmetryAxis`
+     - :class:`OBJMesh`
+     - ``None``
+     - Sets the axis defining the symmetry plane of this mesh (e.g., the sagittal plane for most bilateria models), where X=0;...
    * - :meth:`SWCPoint.setTags`
      - :class:`SWCPoint`
      - ``None``
      - Sets the tags associated with this point.
+   * - :meth:`TreeToRaster.setThicknessModulation`
+     - :class:`TreeToRaster`
+     - ``Any``
+     - Enables intensity modulation based on local neurite thickness. When enabled, thicker neurites are rendered brighter and...
    * - :meth:`Fill.setThreshold`
      - :class:`Fill`
      - ``None``
@@ -1039,6 +1183,10 @@ Matching Methods
      - :class:`Annotation3D`
      - ``None``
      - Script friendly method to assign a transparency to the annotation.
+   * - :meth:`OBJMesh.setTransparency`
+     - :class:`OBJMesh`
+     - ``None``
+     - Changes the transparency of this mesh.
    * - :meth:`BoundingBox.setUnit`
      - :class:`BoundingBox`
      - ``None``
@@ -1051,6 +1199,10 @@ Matching Methods
      - :class:`MultiViewer3D`
      - ``None``
      - No description available
+   * - :meth:`OBJMesh.setVolume`
+     - :class:`OBJMesh`
+     - ``None``
+     - Sets the volume of this mesh.
    * - :meth:`PathStraightener.setWidth`
      - :class:`PathStraightener`
      - ``None``
@@ -1090,4 +1242,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-09-27 22:17:09*
+*Filtered index generated on 2026-09-27 23:02:20*

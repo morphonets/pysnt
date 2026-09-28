@@ -64,12 +64,12 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getBoxPlot(String, Collection)
+.. py:method:: getBoxPlot(String)
 
    Assembles a Box and Whisker Plot for the specified feature.
 
 
-.. py:method:: getFlowPlot(String, int, double, boolean)
+.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 

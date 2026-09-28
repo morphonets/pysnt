@@ -1,0 +1,525 @@
+{
+  "class_name": "OBJMesh",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2026-09-27T23:01:02.734106",
+  "extractor_version": "1.0.0",
+  "methods": [
+    {
+      "name": "computePrincipalAxes",
+      "overloads": [
+        {
+          "signature": "computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+        }
+      ],
+      "documentation": "Java method: computePrincipalAxes"
+    },
+    {
+      "name": "duplicate",
+      "overloads": [
+        {
+          "signature": "duplicate() -> OBJMesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJMesh"
+        }
+      ],
+      "documentation": "Java method: duplicate"
+    },
+    {
+      "name": "getAngleWithLocalDirection",
+      "overloads": [
+        {
+          "signature": "getAngleWithLocalDirection(SNTPoint, [D, String, int) -> double",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "Any",
+              "java_type": "[D"
+            },
+            {
+              "name": "arg2",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg3",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getAngleWithLocalDirection"
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox(String) -> BoundingBox",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox"
+        }
+      ],
+      "documentation": "Java method: getBoundingBox"
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid(String) -> SNTPoint",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint"
+        }
+      ],
+      "documentation": "Java method: getCentroid"
+    },
+    {
+      "name": "getDisplayedHemisphere",
+      "overloads": [
+        {
+          "signature": "getDisplayedHemisphere() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getDisplayedHemisphere"
+    },
+    {
+      "name": "getDrawable",
+      "overloads": [
+        {
+          "signature": "getDrawable() -> DrawableVBO",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DrawableVBO"
+        }
+      ],
+      "documentation": "Java method: getDrawable"
+    },
+    {
+      "name": "getLabel",
+      "overloads": [
+        {
+          "signature": "getLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: getLabel"
+    },
+    {
+      "name": "getLocalDirection",
+      "overloads": [
+        {
+          "signature": "getLocalDirection(SNTPoint, String, int) -> [D",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg2",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "[D"
+        }
+      ],
+      "documentation": "Java method: getLocalDirection"
+    },
+    {
+      "name": "getObj",
+      "overloads": [
+        {
+          "signature": "getObj() -> OBJFile",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "OBJFile"
+        }
+      ],
+      "documentation": "Java method: getObj"
+    },
+    {
+      "name": "getPrincipalAxes",
+      "overloads": [
+        {
+          "signature": "getPrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+        }
+      ],
+      "documentation": "Java method: getPrincipalAxes"
+    },
+    {
+      "name": "getSourceAnnotation",
+      "overloads": [
+        {
+          "signature": "getSourceAnnotation() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation"
+        }
+      ],
+      "documentation": "Java method: getSourceAnnotation"
+    },
+    {
+      "name": "getSymmetryAxis",
+      "overloads": [
+        {
+          "signature": "getSymmetryAxis() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int"
+        }
+      ],
+      "documentation": "Java method: getSymmetryAxis"
+    },
+    {
+      "name": "getVertices",
+      "overloads": [
+        {
+          "signature": "getVertices() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection"
+        },
+        {
+          "signature": "getVertices(String) -> Collection",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection"
+        }
+      ],
+      "documentation": "Java method: getVertices"
+    },
+    {
+      "name": "getVolume",
+      "overloads": [
+        {
+          "signature": "getVolume() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double"
+        }
+      ],
+      "documentation": "Java method: getVolume"
+    },
+    {
+      "name": "label",
+      "overloads": [
+        {
+          "signature": "label() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String"
+        }
+      ],
+      "documentation": "Java method: label"
+    },
+    {
+      "name": "setBoundingBoxColor",
+      "overloads": [
+        {
+          "signature": "setBoundingBoxColor(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "setBoundingBoxColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setBoundingBoxColor"
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(ColorRGB, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "setColor(String, double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "arg1",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setColor"
+    },
+    {
+      "name": "setDisplayedHemisphere",
+      "overloads": [
+        {
+          "signature": "setDisplayedHemisphere(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setDisplayedHemisphere"
+    },
+    {
+      "name": "setLabel",
+      "overloads": [
+        {
+          "signature": "setLabel(String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setLabel"
+    },
+    {
+      "name": "setSourceAnnotation",
+      "overloads": [
+        {
+          "signature": "setSourceAnnotation(BrainAnnotation) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setSourceAnnotation"
+    },
+    {
+      "name": "setSymmetryAxis",
+      "overloads": [
+        {
+          "signature": "setSymmetryAxis(int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setSymmetryAxis"
+    },
+    {
+      "name": "setTransparency",
+      "overloads": [
+        {
+          "signature": "setTransparency(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setTransparency"
+    },
+    {
+      "name": "setVolume",
+      "overloads": [
+        {
+          "signature": "setVolume(double) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: setVolume"
+    },
+    {
+      "name": "translate",
+      "overloads": [
+        {
+          "signature": "translate(SNTPoint) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java method: translate"
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "OBJMesh(String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "OBJMesh(URL, String)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "str",
+              "java_type": "URL"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for OBJMesh"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "SHADING_DEFAULT",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SHADING_DEFAULT of type int",
+      "is_static": true,
+      "is_final": true
+    },
+    {
+      "name": "SHADING_SMOOTH",
+      "type": "int",
+      "java_type": "int",
+      "documentation": "Field SHADING_SMOOTH of type int",
+      "is_static": true,
+      "is_final": true
+    }
+  ]
+}

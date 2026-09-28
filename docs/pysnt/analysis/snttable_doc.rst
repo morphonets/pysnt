@@ -93,37 +93,17 @@ Getters Methods
    
 
 
+.. py:method:: getColumnHeaders(String)
+
+   
+
+
 .. py:method:: getColumnIndex(String)
 
    
 
 
 .. py:method:: getFirst()
-
-   
-
-
-.. py:method:: getLast()
-
-   
-
-
-.. py:method:: getRowCount()
-
-   
-
-
-.. py:method:: getRowHeader(int)
-
-   
-
-
-.. py:method:: getRowIndex(String)
-
-   
-
-
-.. py:method:: getSummaryRow()
 
    
 
@@ -152,12 +132,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(int, Object)
+.. py:method:: add(Column)
 
    
 
 
-.. py:method:: addAll(Collection)
+.. py:method:: addAll(int, Collection)
 
    
 
@@ -209,6 +189,21 @@ Other Methods
 If the table is empty, a new row is created first. The value is then set in the specified column of the last row.
 
 
+.. py:method:: static asDouble(Object)
+
+   Coerces a table cell to a double. Cells may be typed Double, Long, or String depending on how the table was parsed (e.g. CSV column-type inference); this accepts any of those, with a String parse fallback for a numeric-looking value stored in a non-numeric column
+
+
+.. py:method:: static asInt(Object, int)
+
+   Coerces a table cell to an int. Tolerates a Double-shaped integer string (e.g. "1.0" -> 1)
+
+
+.. py:method:: static asString(Object, String)
+
+   Coerces a table cell to a trimmed String
+
+
 .. py:method:: contains(Object)
 
    
@@ -231,12 +226,17 @@ If the table is empty, a new row is created first. The value is then set in the 
 Iterates through all cells in the table and replaces null values with the provided replacement value.
 
 
+.. py:method:: findColumnIndex(String)
+
+   Case-/whitespace-insensitive column lookup.
+
+
 .. py:method:: forEach(Consumer)
 
    
 
 
-.. py:method:: geColumnHeaders(String)
+.. py:method:: static fromGenericTable(GenericTable)
 
    
 

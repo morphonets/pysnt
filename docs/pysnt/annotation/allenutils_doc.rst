@@ -79,7 +79,7 @@ Getters Methods
    Retrieves the Cartesian plane matching the specified anatomical plane.
 
 
-.. py:method:: static getCompartment(String)
+.. py:method:: static getCompartment(int)
 
    Constructs a compartment from its CCF name or acronym
 

@@ -1,0 +1,217 @@
+{
+  "class_name": "BvvUtils",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2026-09-27T23:00:54.679057",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.315092",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "static preferMultiResolutionIfSafe",
+      "overloads": [
+        {
+          "signature": "static preferMultiResolutionIfSafe(Source, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "- the source about to be shown in BVV",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static preferMultiResolutionIfSafe",
+      "javadoc_description": "Forces BVV to render source with its pyramid-aware, block-streaming path (`bvv.core.multires.MultiResolutionStack3D`) instead of the naive single-texture path (`bvv.core.multires.SimpleStack3D`), when it is safe to do so.\n\nBVV auto-detects which path to use (`bvv.core.multires.SourceStacks#inferSourceStackType`): it only picks the multi-resolution path when source's pixel type is TileAccess-supported AND `source.getSource(timepoint, 0)` is (or wraps, via VolatileView) an AbstractCellImg. Many BDV/N5 source builders wrap their levels in a plain Views-based interval (not an AbstractCellImg), which makes BVV fall back to SimpleStack3D even for a genuinely multi-resolution, remote source. SimpleStack3D uploads the entire full-resolution volume as one texture on first paint, fetching all of it synchronously\n\nThis mirrors BVV's own inferSourceStackType check before overriding it, so it never forces multi-resolution rendering on a source that would actually fail it (which would throw `UnsupportedOperationException` from TileAccess.create on the render thread). If the check fails, this method does nothing and BVV falls back to its own (slower) default",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static prefetchForShow",
+      "overloads": [
+        {
+          "signature": "static prefetchForShow(Source, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "- the source to warm up",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static prefetchForShow",
+      "javadoc_description": "Fetches and locally caches whichever mipmap level BVV will actually render first for source, by touching every pixel on the calling thread. Call `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` first so the stack type is already decided when this runs\n\nSimpleStack3D always uploads level 0 (full resolution) as a single texture on first paint (see `bvv.core.render.DefaultSimpleStackManager`) so that upload is what must be warmed for it. `MultiResolutionStack3D` streams blocks progressively and never blocks the EDT regardless of what is cached, so warming its coarsest level here is only a courtesy (a faster first frame).\n\nCall this on a background thread before bvv.show(...) so the EDT only ever sees already-cached data",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static synthesizeMipmapPyramid",
+      "overloads": [
+        {
+          "signature": "static synthesizeMipmapPyramid(Source, int) -> Source",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "- the single-level source to wrap",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Source",
+          "return_description": "a multi-resolution Source wrapping source, or source unchanged if it already has more than one level",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static synthesizeMipmapPyramid",
+      "javadoc_description": "Wraps a single-resolution Source in a synthetic mipmap pyramid, built by materializing it locally (see `ImgUtils.materialize(net.imglib2.RandomAccessibleInterval<T>)`) and lazily subsampling that local copy. BVV's VolumeRenderer requires multiple resolution levels to pick a LOD; without one it throws on every repaint. Use this for non-pyramidal N5/Zarr sources that cannot be re-exported with a real pyramid.\n\nLevel 0 is the full-resolution, now-local copy; each extra level doubles the previous step size along X/Y/Z, matching how a real N5/Zarr multiscale pyramid is laid out",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static warnIfLikelyRemoteImgPlus",
+      "overloads": [
+        {
+          "signature": "static warnIfLikelyRemoteImgPlus(ImgPlus, String) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the resolved",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "arg1",
+              "type": "str",
+              "java_type": "String",
+              "description": "about to be shown in BVV",
+              "javadoc_name": "ImgPlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static warnIfLikelyRemoteImgPlus",
+      "javadoc_description": "Diagnostic-only warning for the plain ImgPlus fallback path (see `SpimDataUtils.resolvePathToSource(String)`). Unlike `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/ `warnIfLikelySimpleStack(bdv.viewer.Source<?>, int)`, an ImgPlus always has a single mipmap level, so BVV always renders it via the non-pyramid-aware SimpleStack3D path regardless of pixel type or backing storage - there is no \"is it structurally eligible for MULTIRESOLUTION\" question to ask here the way there is for AbstractSpimData/N5Sources.\n\nresolvePathToSource already knows this at resolution time - a remote ImgPlus is only ever produced by its own URL fallback branch (ImgUtils.open(url)) - so this simply carries that signal forward rather than trying to re-derive it by introspecting the RAI (which, for a lazily-opened remote image, may not even be a recognizable cache type)",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "static warnIfLikelySimpleStack",
+      "overloads": [
+        {
+          "signature": "static warnIfLikelySimpleStack(Source, int) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "- the (already-shown) source to inspect",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "arg1",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: static warnIfLikelySimpleStack",
+      "javadoc_description": "Read-only counterpart to `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` for AbstractSpimData sources (BDV-XML/HDF5, IMS): logs a warning if source looks likely to fall back to BVV's non-pyramid-aware SimpleStack3D renderer, without attempting to prevent it.\n\nUnlike the `SpimDataUtils.N5Sources` path, \n```\nBvvFunctions.show(AbstractSpimData,\n BvvOptions)\n```\n builds its own Source instances internally (via `BigDataViewer#initSetups`), so there is no hook to call `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` on the actual instance before it first renders. inferSourceStackType's check is a pure function of the source's structural properties (pixel type, whether level 0 is an AbstractCellImg), not of instance identity or any per-instance cached state, so running the same check here - on the Source SNT already has a handle to after `show()` returns - still gives an accurate answer; it just can't change the outcome\n\nThis is diagnostic only: it neither prefetches nor forces a stack type, so it carries none of `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/`prefetchForShow(bdv.viewer.Source<T>, int)`'s risk of misbehaving on a source shape this hasn't been exercised against - it only makes a slow first paint traceable in the log after the fact, for whichever AbstractSpimData backend produced it",
+      "category": "Static Methods",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Package-private utility methods shared across BVV-related classes (Bvv, ChannelUnmixingCard, etc.).",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 5,
+      "total_json_methods": 5,
+      "total_matches": 5,
+      "exact_matches": 5,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

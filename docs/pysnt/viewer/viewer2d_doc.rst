@@ -199,7 +199,7 @@ Visualization Methods
 ~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: show()
+.. py:method:: show(int, int)
 
    Displays the current plot on a dedicated frame *
 
@@ -208,12 +208,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Object)
+.. py:method:: add(Tree, String)
 
    Appends a tree to the viewer rendered after the specified measurement.
 
 
-.. py:method:: addColorBarLegend(ColorTable, double, double)
+.. py:method:: addColorBarLegend(ColorMapper)
 
    Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note that when performing mapping to different measurements, the legend reflects only the last mapped measurement.
 
@@ -243,7 +243,7 @@ Other Methods
    
 
 
-.. py:method:: map(Tree, String, String)
+.. py:method:: map(Tree, Profile, ColorTable)
 
    
 

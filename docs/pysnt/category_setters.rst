@@ -3,7 +3,7 @@ Setters Methods
 
 Methods that modify values or properties of objects.
 
-Total methods in this category: **268**
+Total methods in this category: **306**
 
 .. contents:: Classes in this Category
    :local:
@@ -27,11 +27,11 @@ Annotation3D
 
    Script friendly method to assign a color to the annotation.
 
-   **Signature:** ``setColor(String, double) -> void``
+   **Signature:** ``setColor(ColorRGB, double) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the color to render the imported file, either a 1) HTML color codes starting with hash (
+   * **arg0** (``Any``): - the color to render the imported file, either a 1) HTML color codes starting with hash (
    * **arg1** (``float``): ), a color preset ("red", "blue", etc.), or integer triples of the form
 
    **Returns:** ``None``
@@ -52,11 +52,11 @@ Annotation3D
 
    Assigns a wireframe color to the annotation.
 
-   **Signature:** ``setWireframeColor(String) -> void``
+   **Signature:** ``setWireframeColor(ColorRGB) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the wireframe color. Ignored if the annotation has no wireframe.
+   * **arg0** (``Any``): - the wireframe color. Ignored if the annotation has no wireframe.
 
    **Returns:** ``None``
 
@@ -347,6 +347,67 @@ BoundingBox
    **Parameters:**
 
    * **arg0** (``str``): - the new unit
+
+   **Returns:** ``None``
+
+
+BvvMultiSource
+--------------
+
+.. method:: removeFromBvv()
+
+   Removes all sources in the group from the viewer.
+
+   **Signature:** ``removeFromBvv() -> void``
+
+   **Returns:** ``None``
+
+.. method:: setActive(arg0)
+
+   Sets the active/visible state for all sources in the group.
+
+   **Signature:** ``setActive(boolean) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``bool``): -
+
+   **Returns:** ``None``
+
+.. method:: setColor(arg0)
+
+   Sets the color for all sources in the group.
+
+   **Signature:** ``setColor(ARGBType) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the ARGB color
+
+   **Returns:** ``None``
+
+.. method:: setDisplayRange(arg0, arg1)
+
+   Sets the display range for all sources in the group.
+
+   **Signature:** ``setDisplayRange(double, double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - minimum display value
+   * **arg1** (``float``)
+
+   **Returns:** ``None``
+
+.. method:: setLiveSync(arg0)
+
+   Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms() calls (false).
+
+   **Signature:** ``setLiveSync(boolean) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``bool``): -
 
    **Returns:** ``None``
 
@@ -765,15 +826,13 @@ MultiViewer2D
 
    **Returns:** ``None``
 
-.. method:: setColorBarLegend(arg0, arg1, arg2)
+.. method:: setColorBarLegend(arg0)
 
-   **Signature:** ``setColorBarLegend(String, double, double) -> void``
+   **Signature:** ``setColorBarLegend(ColorMapper) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``float``)
-   * **arg2** (``float``)
+   * **arg0** (``Any``)
 
    **Returns:** ``None``
 
@@ -1117,6 +1176,107 @@ NodeStatistics
    **Parameters:**
 
    * **arg0** (``str``): - the descriptive label
+
+   **Returns:** ``None``
+
+
+OBJMesh
+-------
+
+.. method:: setBoundingBoxColor(arg0)
+
+   Determines whether the mesh bounding box should be displayed.
+
+   **Signature:** ``setBoundingBoxColor(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - the color of the mesh bounding box, either a 1) HTML color codes starting with hash (
+
+   **Returns:** ``None``
+
+.. method:: setColor(arg0, arg1)
+
+   Assigns a color to the mesh.
+
+   **Signature:** ``setColor(ColorRGB, double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the color to render the imported file
+   * **arg1** (``float``)
+
+   **Returns:** ``None``
+
+.. method:: setDisplayedHemisphere(arg0)
+
+   Sets which hemisphere of this mesh is displayed.
+
+   **Signature:** ``setDisplayedHemisphere(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - "left" (or "l", "1"), "right" (or "r", "2"), or anything else for both hemispheres
+
+   **Returns:** ``None``
+
+.. method:: setLabel(arg0)
+
+   Sets the label for this mesh.
+
+   **Signature:** ``setLabel(String) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - the label to set
+
+   **Returns:** ``None``
+
+.. method:: setSourceAnnotation(arg0)
+
+   Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.
+
+   **Signature:** ``setSourceAnnotation(BrainAnnotation) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - the source annotation
+
+   **Returns:** ``None``
+
+.. method:: setSymmetryAxis(arg0)
+
+   Sets the axis defining the symmetry plane of this mesh (e.g., the sagittal plane for most bilateria models), where X=0; Y=1; Z=2;
+
+   **Signature:** ``setSymmetryAxis(int) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+
+   **Returns:** ``None``
+
+.. method:: setTransparency(arg0)
+
+   Changes the transparency of this mesh.
+
+   **Signature:** ``setTransparency(double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the mesh transparency (in percentage).
+
+   **Returns:** ``None``
+
+.. method:: setVolume(arg0)
+
+   Sets the volume of this mesh.
+
+   **Signature:** ``setVolume(double) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the volume to set
 
    **Returns:** ``None``
 
@@ -2046,13 +2206,14 @@ SNTService
 SNTTable
 --------
 
-.. method:: addAll(arg0)
+.. method:: addAll(arg0, arg1)
 
-   **Signature:** ``addAll(Collection) -> boolean``
+   **Signature:** ``addAll(int, Collection) -> boolean``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **arg0** (``int``)
+   * **arg1** (``List[Any]``)
 
    **Returns:** ``bool``
 
@@ -2390,6 +2551,147 @@ SearchThread
    **Returns:** ``None``
 
 
+SeedManager
+-----------
+
+.. method:: addAncestorListener(arg0)
+
+   **Signature:** ``addAncestorListener(AncestorListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addComponentListener(arg0)
+
+   **Signature:** ``addComponentListener(ComponentListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addContainerListener(arg0)
+
+   **Signature:** ``addContainerListener(ContainerListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addFocusListener(arg0)
+
+   **Signature:** ``addFocusListener(FocusListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addHierarchyBoundsListener(arg0)
+
+   **Signature:** ``addHierarchyBoundsListener(HierarchyBoundsListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addHierarchyListener(arg0)
+
+   **Signature:** ``addHierarchyListener(HierarchyListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addInputMethodListener(arg0)
+
+   **Signature:** ``addInputMethodListener(InputMethodListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addKeyListener(arg0)
+
+   **Signature:** ``addKeyListener(KeyListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addMouseListener(arg0)
+
+   **Signature:** ``addMouseListener(MouseListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addMouseMotionListener(arg0)
+
+   **Signature:** ``addMouseMotionListener(MouseMotionListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addMouseWheelListener(arg0)
+
+   **Signature:** ``addMouseWheelListener(MouseWheelListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addNotify()
+
+   **Signature:** ``addNotify() -> void``
+
+   **Returns:** ``None``
+
+.. method:: addPropertyChangeListener(arg0, arg1)
+
+   **Signature:** ``addPropertyChangeListener(String, PropertyChangeListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: addVetoableChangeListener(arg0)
+
+   **Signature:** ``addVetoableChangeListener(VetoableChangeListener) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+
 ShollAnalyzer
 -------------
 
@@ -2520,6 +2822,40 @@ SkeletonConverter
    **Parameters:**
 
    * **arg0** (``bool``)
+
+   **Returns:** ``None``
+
+
+SpectralSimilarity
+------------------
+
+.. method:: setEnvironment(arg0)
+
+   **Signature:** ``setEnvironment(OpEnvironment) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setInput(arg0)
+
+   **Signature:** ``setInput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: setOutput(arg0)
+
+   **Signature:** ``setOutput(Object) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
 
    **Returns:** ``None``
 
@@ -2704,6 +3040,119 @@ TreeColorMapper
    **Returns:** ``None``
 
 
+TreeToRaster
+------------
+
+.. method:: setAxialRes(arg0)
+
+   Sets the axial (z) voxel size.
+
+A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree are ignored (every node is projected onto the z = 0 plane) and the output image is a single slice. In-plane (x, y) thickness from node radii is preserved.
+
+   **Signature:** ``setAxialRes(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - voxel size in the tree's spatial units (typically µm), or
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setDefaultRadius(arg0)
+
+   Sets the default radius used for nodes/trees that have no radii defined. If not set, defaults to half the lateral voxel size (i.e., a 1-voxel diameter).
+
+   **Signature:** ``setDefaultRadius(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the default radius in the tree's spatial units
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setGaussianBlur(arg0)
+
+   Enables Gaussian blurring of the (optionally noisy) image, simulating spatially correlated noise and optical blur. Note that Gaussian blurring is ignored when using `rasterizePathLabels()`.
+
+   **Signature:** ``setGaussianBlur(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the Gaussian sigma in the tree's spatial units (typically µm). Must be positive.
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setLateralRes(arg0)
+
+   Sets the lateral (x, y) voxel size.
+
+   **Signature:** ``setLateralRes(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - voxel size in the tree's spatial units (typically µm)
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setPoissonNoise(arg0, arg1)
+
+   Enables Poisson shot noise on the rasterized image, simulating photon counting noise typical of fluorescence microscopy.
+
+The peak intensity is derived from the SNR and background using the photon-counting model: `SNR = (peak - bg) / sqrt(peak)`. Note that Poisson shot noise is ignored when using `rasterizePathLabels()`
+
+   **Signature:** ``setPoissonNoise(double, double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the signal-to-noise ratio (peak-to-noise). Must be positive.
+   * **arg1** (``float``)
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setRadiusScale(arg0)
+
+   Sets a uniform multiplier applied to every node radius (and to the default radius for nodes without radii) when rasterizing. Values above 1 dilate the rendered neurites, e.g. to make thin or sparse structures cover more voxels; values below 1 erode them. Because scaling is uniform, the relative thickness order (and thus thickest-wins label priority) is unchanged.
+
+Note that larger radii increase the rasterized extent and the per-voxel supersampling cost.
+
+   **Signature:** ``setRadiusScale(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the radius multiplier (default 1.0). Must be positive.
+
+   **Returns:** (``Any``) this instance for chaining
+
+.. method:: setReferenceBounds(arg0, arg1, arg2)
+
+   Sets reference bounds explicitly, so the output image matches the specified dimensions. When set, the rasterized image will have exactly the given width, height, and depth, with the origin at (0, 0, 0) in pixel coordinates.
+
+   **Signature:** ``setReferenceBounds(int, int, int) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``int``)
+   * **arg2** (``int``)
+
+   **Returns:** ``Any``
+
+.. method:: setThicknessModulation(arg0)
+
+   Enables intensity modulation based on local neurite thickness. When enabled, thicker neurites are rendered brighter and thinner neurites dimmer, proportional to the local radius.
+
+The modulation factor defines what fraction of the intensity range is used for thickness variation. For example, a factor of 0.2 means the thickest frustum receives full intensity (1.0) while the thinnest receives 80% of the maximum (0.8).
+
+Note: This option incurs additional computation since the local radius must be resolved for every sub-voxel hit during supersampling. Also, a factor of 1.0 maps the thinnest structure to zero intensity, effectively wiping it.
+
+   **Signature:** ``setThicknessModulation(double) -> TreeToRaster``
+
+   **Parameters:**
+
+   * **arg0** (``float``): - the modulation depth in [0, 1]. 0 disables modulation (default). Must be non-negative and at most 1.
+
+   **Returns:** (``Any``) this instance for chaining
+
+
 Tubeness
 --------
 
@@ -2741,17 +3190,15 @@ Tubeness
 Viewer2D
 --------
 
-.. method:: addColorBarLegend(arg0, arg1, arg2)
+.. method:: addColorBarLegend(arg0)
 
    Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note that when performing mapping to different measurements, the legend reflects only the last mapped measurement.
 
-   **Signature:** ``addColorBarLegend(ColorTable, double, double) -> void``
+   **Signature:** ``addColorBarLegend(ColorMapper) -> void``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``float``)
-   * **arg2** (``float``)
 
    **Returns:** ``None``
 
@@ -3054,4 +3501,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-09-27 22:17:09*
+*Category index generated on 2026-09-27 23:02:20*

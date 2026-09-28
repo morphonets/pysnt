@@ -1,12 +1,24 @@
 {
   "class_name": "PCAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.661176",
+  "extracted_at": "2026-09-27T23:01:03.165539",
   "extractor_version": "1.0.0",
   "methods": [
     {
       "name": "static getPrincipalAxes",
       "overloads": [
+        {
+          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+        },
         {
           "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
           "params": [
@@ -20,12 +32,12 @@
           "java_return_type": "PCAnalyzer$PrincipalAxis;"
         },
         {
-          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
           "params": [
             {
               "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "Any",
@@ -55,18 +67,6 @@
               "name": "arg0",
               "type": "Tree",
               "java_type": "Tree"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        },
-        {
-          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
             }
           ],
           "return_type": "Any",

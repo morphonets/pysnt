@@ -1,0 +1,256 @@
+{
+  "class_name": "AStarRefiner",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-09-27T23:00:51.720022",
+  "extractor_version": "1.0.0",
+  "enhancement_timestamp": "2026-09-27T23:02:20.428067",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "apply",
+      "overloads": [
+        {
+          "signature": "apply() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalStateException": "- if call() has not been run or did not succeed",
+            "call()": ""
+          }
+        }
+      ],
+      "documentation": "Java method: apply",
+      "javadoc_description": "Applies the re-traced geometry to the original path via `Path.replaceNodes(Path)`. Must be called sequentially (not thread-safe), typically on the EDT after all parallel call() invocations have completed.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "applySettings",
+      "overloads": [
+        {
+          "signature": "applySettings(AStarRefiner) -> void",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "AStarRefiner",
+              "description": "- the reference refiner (unused)",
+              "javadoc_name": "ref"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applySettings",
+      "javadoc_description": "No-op: kept for consistency with the other AbstractRefineHelper workers; there are no per-worker settings to propagate here (see readPreferences()).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "call",
+      "overloads": [
+        {
+          "signature": "call() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the re-traced path, or null if re-tracing failed",
+          "throws": {}
+        },
+        {
+          "signature": "call() -> Object",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Object",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: call",
+      "javadoc_description": "Runs the A* re-trace on this path's current waypoints. Thread-safe: does not modify the original path. Call apply() afterward (sequentially) to commit results.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFailureReason",
+      "overloads": [
+        {
+          "signature": "getFailureReason() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the failure reason, or null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFailureReason",
+      "javadoc_description": "Human-readable reason call() failed, or null if it succeeded (or hasn't run yet).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPath",
+      "overloads": [
+        {
+          "signature": "getPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPath",
+      "javadoc_description": "Returns the original path being re-traced.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "readPreferences",
+      "overloads": [
+        {
+          "signature": "readPreferences() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: readPreferences",
+      "javadoc_description": "No-op: kept for consistency with PathFitter/MultiSpectralRefiner, which read persisted preferences here. A* re-tracing simply reuses whichever search parameters are already configured on the live SNT instance.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "succeeded",
+      "overloads": [
+        {
+          "signature": "succeeded() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if a valid re-traced path was produced",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: succeeded",
+      "javadoc_description": "Whether the re-trace succeeded. Only meaningful after call().",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "AStarRefiner(SNT, Path)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AStarRefiner(SNT, Path, SNT$SearchSettingsSnapshot)",
+          "params": [
+            {
+              "name": "arg0",
+              "type": "Any",
+              "java_type": "SNT"
+            },
+            {
+              "name": "arg1",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "arg2",
+              "type": "Any",
+              "java_type": "SNT$SearchSettingsSnapshot"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Java constructors for AStarRefiner"
+    }
+  ],
+  "javadoc_description": "Post-hoc A* re-tracing of a single, already-existing Path: treats the path's current nodes as waypoints and re-derives the geometry between them via \n```\nSNT.autoTraceSync(List, sc.fiji.snt.util.PointInImage, SNT.SearchSettingsSnapshot)\n```\n, using either the cost function/search parameters currently configured on the active SNT instance, or a frozen `SNT.SearchSettingsSnapshot` shared across a whole batch (see `AStarRefiner(SNT, Path, SNT.SearchSettingsSnapshot)`).\n\nIntended for manually-traced paths against data streamed from disk/network, where running A* interactively may be too slow to be practical. See PathManagerUI's \"Refine\" menu (\"Re-trace with A*...\").\n\ncall() is thread-safe for parallel execution across paths (it does not modify the original path, and calls \n```\nSNT.autoTraceSync(java.util.List<sc.fiji.snt.util.SNTPoint>, sc.fiji.snt.util.PointInImage)\n```\n rather than the interactive tracing entry points, so concurrent workers do not serialize behind the single-threaded pool used by interactive tracing). apply() must be called sequentially afterward to commit the result via `Path.replaceNodes(Path)`, which also reconciles this path's own branch point (if it has a parent) and any of its children's branch points against the new geometry.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "Callable",
+      "Path"
+    ],
+    "implements": [
+      "Callable",
+      "Path"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Path",
+    "MultiSpectralRefiner",
+    "Object",
+    "Callable",
+    "PathFitter"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 7,
+      "total_json_methods": 7,
+      "total_matches": 7,
+      "exact_matches": 7,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

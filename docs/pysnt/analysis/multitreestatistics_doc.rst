@@ -84,7 +84,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getAnnotations()
+.. py:method:: getAnnotations(int)
 
    Description copied from class: TreeStatistics
 
@@ -139,7 +139,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getCableLengthNorm(BrainAnnotation)
+.. py:method:: getCableLengthNorm(BrainAnnotation, boolean)
 
    
 
@@ -174,7 +174,7 @@ Getters Methods
    Description copied from class: TreeStatistics
 
 
-.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
+.. py:method:: getFlowPlot(String, int, double, boolean)
 
    Description copied from class: TreeStatistics
 

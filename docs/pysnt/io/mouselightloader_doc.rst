@@ -89,7 +89,7 @@ Getters Methods
    Gets the number of cells publicly available in the MouseLight database.
 
 
-.. py:method:: getNodes()
+.. py:method:: getNodes(String)
 
    Script-friendly method to extract the nodes of a cellular compartment.
 
@@ -114,7 +114,7 @@ Getters Methods
    Gets the soma location for this neuron.
 
 
-.. py:method:: getTree()
+.. py:method:: getTree(String)
 
    Script-friendly method to extract the entire neuron as a collection of Paths.
 
@@ -152,12 +152,12 @@ Other Methods
    Returns a collection of four demo reconstructions NB: Data is cached locally. No internet connection required.
 
 
-.. py:method:: static extractNodes(File, String)
+.. py:method:: static extractNodes(InputStream, String)
 
    
 
 
-.. py:method:: static extractTrees(InputStream, String)
+.. py:method:: static extractTrees(File, String)
 
    
 

@@ -3,10 +3,30 @@ Getters Methods
 
 Methods that retrieve values or properties from objects.
 
-Total methods in this category: **544**
+Total methods in this category: **575**
 
 .. contents:: Classes in this Category
    :local:
+
+AStarRefiner
+------------
+
+.. method:: getFailureReason()
+
+   Human-readable reason call() failed, or null if it succeeded (or hasn't run yet).
+
+   **Signature:** ``getFailureReason() -> String``
+
+   **Returns:** (``str``) the failure reason, or null
+
+.. method:: getPath()
+
+   Returns the original path being re-traced.
+
+   **Signature:** ``getPath() -> Path``
+
+   **Returns:** (``Path``) the path
+
 
 AllenCompartment
 ----------------
@@ -31,17 +51,13 @@ AllenCompartment
 
    **Returns:** (``List[Any]``) the "flattened" list of ancestors
 
-.. method:: getChildren(arg0)
+.. method:: getChildren()
 
    Gets the child ontologies of this compartment as a flat (non-hierarchical) list.
 
-   **Signature:** ``getChildren(int) -> List``
+   **Signature:** ``getChildren() -> List``
 
-   **Parameters:**
-
-   * **arg0** (``int``): - maximum depth that should be considered.
-
-   **Returns:** (``List[Any]``) the "flattened" ontologies list
+   **Returns:** ``List[Any]``
 
 .. method:: getMesh()
 
@@ -63,9 +79,9 @@ AllenCompartment
 
    Gets the parent of this compartment.
 
-   **Signature:** ``getParent() -> BrainAnnotation``
+   **Signature:** ``getParent() -> AllenCompartment``
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) the parent of this compartment, of null if this compartment is root.
 
 .. method:: getTreePath()
 
@@ -372,6 +388,52 @@ BoundingBox
    **Signature:** ``isScaled() -> boolean``
 
    **Returns:** (``bool``) true, if voxel spacing has been specified
+
+
+BvvMultiSource
+--------------
+
+.. method:: getFollowers()
+
+   **Signature:** ``getFollowers() -> List``
+
+   **Returns:** (``List[Any]``) unmodifiable view of the follower sources
+
+.. method:: getLeader()
+
+   **Signature:** ``getLeader() -> BvvStackSource``
+
+   **Returns:** (``Any``) the leader source
+
+.. method:: getLeaderTransform(arg0)
+
+   Returns a copy of the most recently cached leader fixed transform.
+
+   **Signature:** ``getLeaderTransform(AffineTransform3D) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``): - set to the cached transform
+
+   **Returns:** ``None``
+
+.. method:: getSources()
+
+   **Signature:** ``getSources() -> List``
+
+   **Returns:** (``List[Any]``) all sources (leader + followers) as an unmodifiable list
+
+.. method:: isLiveSync()
+
+   **Signature:** ``isLiveSync() -> boolean``
+
+   **Returns:** (``bool``) true if live transform sync is enabled
+
+.. method:: size()
+
+   **Signature:** ``size() -> int``
+
+   **Returns:** (``int``) number of sources in the group (leader + followers)
 
 
 ConvexHull2D
@@ -777,7 +839,7 @@ Frangi
 
 .. method:: getIndependentInstance()
 
-   **Signature:** ``getIndependentInstance() -> UnaryComputerOp``
+   **Signature:** ``getIndependentInstance() -> SpecialOp``
 
    **Returns:** ``Any``
 
@@ -785,31 +847,31 @@ Frangi
 GroupedTreeStatistics
 ---------------------
 
-.. method:: getBoxPlot(arg0, arg1)
+.. method:: getBoxPlot(arg0)
 
    Assembles a Box and Whisker Plot for the specified feature.
 
-   **Signature:** ``getBoxPlot(String, Collection) -> SNTChart``
-
-   **Parameters:**
-
-   * **arg0** (``str``): - the feature ("Cable length", "No. of branch points", "No. of tips", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.
-   * **arg1** (``List[Any]``)
-
-   **Returns:** (``SNTChart``) the box plot
-
-.. method:: getFlowPlot(arg0, arg1, arg2, arg3)
-
-   Assembles a Flow plot (aka Sankey diagram) for the specified feature.
-
-   **Signature:** ``getFlowPlot(String, int, double, boolean) -> SNTChart``
+   **Signature:** ``getBoxPlot(String) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``int``)
-   * **arg2** (``float``)
-   * **arg3** (``bool``)
+
+   **Returns:** ``SNTChart``
+
+.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
+
+   Assembles a Flow plot (aka Sankey diagram) for the specified feature.
+
+   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+   * **arg1** (``List[Any]``)
+   * **arg2** (``str``)
+   * **arg3** (``float``)
+   * **arg4** (``bool``)
 
    **Returns:** ``SNTChart``
 
@@ -1048,13 +1110,17 @@ MouseLightLoader
 
    **Returns:** (``Any``) the JSON data (null if data could not be retrieved).
 
-.. method:: getNodes()
+.. method:: getNodes(arg0)
 
    Script-friendly method to extract the nodes of a cellular compartment.
 
-   **Signature:** ``getNodes() -> TreeSet``
+   **Signature:** ``getNodes(String) -> TreeSet``
 
-   **Returns:** ``Set[Any]``
+   **Parameters:**
+
+   * **arg0** (``str``): - 'soma', 'axon', 'dendrite', 'all' (case insensitive). All nodes are retrieved if
+
+   **Returns:** (``Set[Any]``) the set of nodes of the neuron as SWCPoints.
 
 .. method:: getSWC()
 
@@ -1088,13 +1154,17 @@ MouseLightLoader
 
    **Returns:** (``SWCPoint``) the SWCPoint representing the soma location
 
-.. method:: getTree()
+.. method:: getTree(arg0)
 
    Script-friendly method to extract the entire neuron as a collection of Paths.
 
-   **Signature:** ``getTree() -> Tree``
+   **Signature:** ``getTree(String) -> Tree``
 
-   **Returns:** (``Tree``) the neuron as a Tree, or null if data could not be retrieved
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``Tree``
 
 .. method:: static getNeuronCount()
 
@@ -1240,13 +1310,17 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``Dict[str, Any]``) the map containing the brain compartments as keys, and cable lengths per hemisphere as values.
 
-.. method:: getAnnotations()
+.. method:: getAnnotations(arg0)
 
    Description copied from class: TreeStatistics
 
-   **Signature:** ``getAnnotations() -> Set``
+   **Signature:** ``getAnnotations(int) -> Set``
 
-   **Returns:** ``Set[Any]``
+   **Parameters:**
+
+   * **arg0** (``int``): - the max. ontological depth of the compartments to be retrieved
+
+   **Returns:** (``Set[Any]``) the set of brain compartments (BrainAnnotations)
 
 .. method:: getAvgBranchLength()
 
@@ -1320,13 +1394,14 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** ``float``
 
-.. method:: getCableLengthNorm(arg0)
+.. method:: getCableLengthNorm(arg0, arg1)
 
-   **Signature:** ``getCableLengthNorm(BrainAnnotation) -> double``
+   **Signature:** ``getCableLengthNorm(BrainAnnotation, boolean) -> double``
 
    **Parameters:**
 
    * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
    **Returns:** ``float``
 
@@ -1376,19 +1451,18 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 
    **Returns:** (``Any``) the DescriptiveStatistics object.
 
-.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
+.. method:: getFlowPlot(arg0, arg1, arg2, arg3)
 
    Description copied from class: TreeStatistics
 
-   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, int, double, boolean) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``str``)
-   * **arg1** (``List[Any]``)
-   * **arg2** (``str``)
-   * **arg3** (``float``)
-   * **arg4** (``bool``)
+   * **arg1** (``int``)
+   * **arg2** (``float``)
+   * **arg3** (``bool``)
 
    **Returns:** ``SNTChart``
 
@@ -1501,6 +1575,58 @@ NeuroMorphoLoader
    **Signature:** ``isDatabaseAvailable() -> boolean``
 
    **Returns:** (``bool``) true, if an HHTP connection could be established, false otherwise
+
+
+NeurolucidaImporter
+-------------------
+
+.. method:: getCalibration()
+
+   Returns the spatial calibration parsed from the file header.
+
+   **Signature:** ``getCalibration() -> [D``
+
+   **Returns:** (``Any``) a double array {xScale, yScale, zSpacing} in the file's units
+
+.. method:: getMarkerColors()
+
+   Returns the colors for each parsed marker, in the same order as getMarkerPoints().
+
+   **Signature:** ``getMarkerColors() -> List``
+
+   **Returns:** (``List[Any]``) list of marker colors (may contain nulls)
+
+.. method:: getMarkerLabels()
+
+   Returns the labels for each parsed marker, in the same order as getMarkerPoints().
+
+   **Signature:** ``getMarkerLabels() -> List``
+
+   **Returns:** (``List[Any]``) list of marker labels
+
+.. method:: getMarkerPoints()
+
+   Returns the marker centroids parsed from <marker> elements. Each entry is a double[3] array of {x, y, z} coordinates in the file's coordinate system (typically micrometers).
+
+   **Signature:** ``getMarkerPoints() -> List``
+
+   **Returns:** (``List[Any]``) list of marker centroid positions
+
+.. method:: getSpacingUnits()
+
+   Returns the spacing units string (default "um").
+
+   **Signature:** ``getSpacingUnits() -> String``
+
+   **Returns:** (``str``) the spacing units
+
+.. method:: getTrees()
+
+   Returns the parsed trees (one per <tree> element in the file).
+
+   **Signature:** ``getTrees() -> Collection``
+
+   **Returns:** (``List[Any]``) collection of Tree objects; may be empty if no trees were found
 
 
 NodeColorMapper
@@ -1726,11 +1852,16 @@ NodeProfiler
 NodeStatistics
 --------------
 
-.. method:: getAnnotatedFrequencies()
+.. method:: getAnnotatedFrequencies(arg0, arg1)
 
    Retrieves the count frequencies across brain compartment.
 
-   **Signature:** ``getAnnotatedFrequencies() -> Map``
+   **Signature:** ``getAnnotatedFrequencies(int, String) -> Map``
+
+   **Parameters:**
+
+   * **arg0** (``int``)
+   * **arg1** (``str``)
 
    **Returns:** ``Dict[str, Any]``
 
@@ -1767,17 +1898,13 @@ NodeStatistics
 
    **Returns:** ``SNTChart``
 
-.. method:: getAnnotatedNodes(arg0)
+.. method:: getAnnotatedNodes()
 
    Splits the nodes being analyzed into groups sharing the same brain annotation.
 
-   **Signature:** ``getAnnotatedNodes(int) -> Map``
+   **Signature:** ``getAnnotatedNodes() -> Map``
 
-   **Parameters:**
-
-   * **arg0** (``int``): - the ontological depth of the compartments to be considered
-
-   **Returns:** (``Dict[str, Any]``) the map containing the brain annotations as keys, and list of nodes as values.
+   **Returns:** ``Dict[str, Any]``
 
 .. method:: getDescriptiveStatistics(arg0)
 
@@ -1802,6 +1929,129 @@ NodeStatistics
    * **arg0** (``str``): - the measurement (X_COORDINATES, RADIUS, etc.)
 
    **Returns:** (``SNTChart``) the frame holding the histogram
+
+
+OBJMesh
+-------
+
+.. method:: getAngleWithLocalDirection(arg0, arg1, arg2, arg3)
+
+   Computes the angle between a direction vector and the local mesh direction at a point. This is useful for e.g., analyzing how neuronal processes align with the local curvature of surfaces (neuropil meshes).
+
+   **Signature:** ``getAngleWithLocalDirection(SNTPoint, [D, String, int) -> double``
+
+   **Parameters:**
+
+   * **arg0** (``SNTPoint``): - the point at which to compute the local mesh direction
+   * **arg1** (``Any``)
+   * **arg2** (``str``)
+   * **arg3** (``int``)
+
+   **Returns:** (``float``) the acute angle in degrees (0-90°) between the direction vector and local mesh direction, or NaN if computation fails
+
+.. method:: getBoundingBox(arg0)
+
+   Gets the minimum bounding box of this mesh.
+
+   **Signature:** ``getBoundingBox(String) -> BoundingBox``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - either "left", "l", "right", "r" otherwise bounding box is retrieved for both hemi-halves, i.e., the full mesh. It is ignored if a hemisphere was already specified in the constructor.
+
+   **Returns:** (``BoundingBox``) the minimum bounding box
+
+.. method:: getCentroid(arg0)
+
+   Returns the spatial centroid of the specified (hemi)mesh.
+
+   **Signature:** ``getCentroid(String) -> SNTPoint``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - either "left", "l", "right", "r", otherwise centroid is retrieved for both hemi-halves, i.e., the full mesh
+
+   **Returns:** (``SNTPoint``) the SNT point defining the (X,Y,Z) center of the (hemi)mesh.
+
+.. method:: getDisplayedHemisphere()
+
+   Returns the currently displayed hemisphere: "left", "right", or "both".
+
+   **Signature:** ``getDisplayedHemisphere() -> String``
+
+   **Returns:** (``str``) the displayed hemisphere
+
+.. method:: getDrawable()
+
+   Returns the DrawableVBO associated with this mesh
+
+   **Signature:** ``getDrawable() -> DrawableVBO``
+
+   **Returns:** (``Any``) the DrawableVBO
+
+.. method:: getLocalDirection(arg0, arg1, arg2)
+
+   Computes the local direction of the mesh at a specific point using nearest neighbor analysis. This method finds the dominant direction of mesh curvature in the local neighborhood of the specified point, which is useful for analyzing how structures align with curved anatomical surfaces.
+
+   **Signature:** ``getLocalDirection(SNTPoint, String, int) -> [D``
+
+   **Parameters:**
+
+   * **arg0** (``SNTPoint``): - the point at which to compute the local mesh direction
+   * **arg1** (``str``)
+   * **arg2** (``int``)
+
+   **Returns:** (``Any``) the local mesh direction as a normalized vector, or null if computation fails
+
+.. method:: getObj()
+
+   Returns the OBJFile associated with this mesh
+
+   **Signature:** ``getObj() -> OBJFile``
+
+   **Returns:** (``Any``) the OBJFile
+
+.. method:: getPrincipalAxes(arg0)
+
+   Computes the principal axes of the mesh using Principal Component Analysis (PCA). The principal axes represent the directions of maximum, medium, and minimum variance in the mesh geometry, providing insight into the overall shape orientation of this mesh.
+
+   **Signature:** ``getPrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - either "left", "l", "right", "r", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh
+
+   **Returns:** (``Any``) array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails
+
+.. method:: getSourceAnnotation()
+
+   Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.
+
+   **Signature:** ``getSourceAnnotation() -> BrainAnnotation``
+
+   **Returns:** (``Any``) the source annotation, or null
+
+.. method:: getSymmetryAxis()
+
+   **Signature:** ``getSymmetryAxis() -> int``
+
+   **Returns:** ``int``
+
+.. method:: getVertices()
+
+   Returns the mesh vertices.
+
+   **Signature:** ``getVertices() -> Collection``
+
+   **Returns:** ``List[Any]``
+
+.. method:: getVolume()
+
+   Gets the volume of this mesh.
+
+   **Signature:** ``getVolume() -> double``
+
+   **Returns:** (``float``) the mesh volume
 
 
 Path
@@ -2391,14 +2641,15 @@ Path identification information (name, SWC type) All requested morphometric meas
 
    **Returns:** ``None``
 
-.. method:: getAnnotatedLength(arg0, arg1)
+.. method:: getAnnotatedLength(arg0, arg1, arg2)
 
-   **Signature:** ``getAnnotatedLength(int, String) -> Map``
+   **Signature:** ``getAnnotatedLength(int, String, boolean) -> Map``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``str``)
+   * **arg2** (``bool``)
 
    **Returns:** ``Dict[str, Any]``
 
@@ -2472,14 +2723,13 @@ Calculates the sum of lengths of all terminal branches as defined by `getTermina
 
    **Returns:** ``float``
 
-.. method:: getBranchPoints(arg0, arg1)
+.. method:: getBranchPoints(arg0)
 
-   **Signature:** ``getBranchPoints(BrainAnnotation, boolean) -> Set``
+   **Signature:** ``getBranchPoints(BrainAnnotation) -> Set``
 
    **Parameters:**
 
    * **arg0** (``Any``)
-   * **arg1** (``bool``)
 
    **Returns:** ``Set[Any]``
 
@@ -2493,23 +2743,25 @@ In PathStatistics, all paths are considered as branches since each path represen
 
    **Returns:** (``List[Any]``) the list of all paths
 
-.. method:: getCableLength(arg0)
+.. method:: getCableLength(arg0, arg1)
 
-   **Signature:** ``getCableLength(BrainAnnotation) -> double``
+   **Signature:** ``getCableLength(BrainAnnotation, boolean) -> double``
 
    **Parameters:**
 
    * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
    **Returns:** ``float``
 
-.. method:: getCableLengthNorm(arg0)
+.. method:: getCableLengthNorm(arg0, arg1)
 
-   **Signature:** ``getCableLengthNorm(BrainAnnotation) -> double``
+   **Signature:** ``getCableLengthNorm(BrainAnnotation, boolean) -> double``
 
    **Parameters:**
 
    * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
    **Returns:** ``float``
 
@@ -2557,14 +2809,17 @@ In PathStatistics, all paths are considered as branches since each path represen
 
    **Returns:** ``Any``
 
-.. method:: getFlowPlot(arg0, arg1)
+.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
 
-   **Signature:** ``getFlowPlot(String, Collection) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
 
    **Parameters:**
 
    * **arg0** (``str``)
    * **arg1** (``List[Any]``)
+   * **arg2** (``str``)
+   * **arg3** (``float``)
+   * **arg4** (``bool``)
 
    **Returns:** ``SNTChart``
 
@@ -2616,7 +2871,7 @@ In PathStatistics, this returns the same value as getPrimaryLength().
 
    **Returns:** (``float``) the total length of inner branches
 
-.. method:: getMetric(arg0, arg1)
+.. method:: getMetric(arg0)
 
    Gets a specific metric value for an individual path.
 
@@ -2626,14 +2881,13 @@ Supported metrics include:
 
 Geometric: length, volume, surface area, mean radius Structural: number of nodes, branch points, children Angular: extension angles in XY, XZ, ZY planes Morphological: contraction, fractal dimension, spine density Metadata: path ID, channel, frame, order
 
-   **Signature:** ``getMetric(String, Path) -> Number``
+   **Signature:** ``getMetric(String) -> Number``
 
    **Parameters:**
 
-   * **arg0** (``str``)
-   * **arg1** (``Path``)
+   * **arg0** (``str``): - the name of the metric to retrieve
 
-   **Returns:** ``Union[int, float]``
+   **Returns:** (``Union[int, float]``) the metric value for the specified path
 
 
 PersistenceAnalyzer
@@ -2993,11 +3247,11 @@ RootAngleAnalyzer
 
    Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.
 
-   **Signature:** ``getTaggedTree(ColorTable, double, double) -> Tree``
+   **Signature:** ``getTaggedTree(String, double, double) -> Tree``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **arg0** (``str``)
    * **arg1** (``float``)
    * **arg2** (``float``)
 
@@ -3385,6 +3639,16 @@ SNTTable
 
    **Returns:** ``str``
 
+.. method:: getColumnHeaders(arg0)
+
+   **Signature:** ``getColumnHeaders(String) -> List``
+
+   **Parameters:**
+
+   * **arg0** (``str``)
+
+   **Returns:** ``List[Any]``
+
 .. method:: getColumnIndex(arg0)
 
    **Signature:** ``getColumnIndex(String) -> int``
@@ -3401,43 +3665,17 @@ SNTTable
 
    **Returns:** ``Any``
 
-.. method:: getLast()
 
-   **Signature:** ``getLast() -> Object``
+SNTUtils
+--------
 
-   **Returns:** ``Any``
+.. method:: static getCacheDirSize()
 
-.. method:: getRowCount()
+   Computes the on-disk size of getCacheDir(). This walks the whole cache tree, so it can be slow once many files have accumulated; avoid calling this on the EDT
 
-   **Signature:** ``getRowCount() -> int``
+   **Signature:** ``static getCacheDirSize() -> long``
 
-   **Returns:** ``int``
-
-.. method:: getRowHeader(arg0)
-
-   **Signature:** ``getRowHeader(int) -> String``
-
-   **Parameters:**
-
-   * **arg0** (``int``)
-
-   **Returns:** ``str``
-
-.. method:: getRowIndex(arg0)
-
-   **Signature:** ``getRowIndex(String) -> int``
-
-   **Parameters:**
-
-   * **arg0** (``str``)
-
-   **Returns:** ``int``
-
-.. method:: getSummaryRow()
-
-   **Signature:** ``getSummaryRow() -> int``
-
-   **Returns:** ``int``
+   **Returns:** (``int``) the cache directory's size in bytes, or 0 if it could not be read
 
 
 SWCPoint
@@ -3702,6 +3940,30 @@ SkeletonConverter
    **Returns:** ``None``
 
 
+SpectralSimilarity
+------------------
+
+.. method:: getArity()
+
+   **Signature:** ``getArity() -> int``
+
+   **Returns:** ``int``
+
+.. method:: getIndependentInstance()
+
+   **Signature:** ``getIndependentInstance() -> SpecialOp``
+
+   **Returns:** ``Any``
+
+.. method:: getReferenceColor()
+
+   Returns the reference color vector used by this filter.
+
+   **Signature:** ``getReferenceColor() -> [D``
+
+   **Returns:** (``Any``) a copy of the reference color array
+
+
 StrahlerAnalyzer
 ----------------
 
@@ -3766,11 +4028,15 @@ StrahlerAnalyzer
 
    **Returns:** (``Dict[str, Any]``) the map containing the number of branch points on each order (Horton-Strahler numbers as key and branch points count as value).
 
-.. method:: getBranches()
+.. method:: getBranches(arg0)
 
-   **Signature:** ``getBranches() -> Map``
+   **Signature:** ``getBranches(int) -> List``
 
-   **Returns:** ``Dict[str, Any]``
+   **Parameters:**
+
+   * **arg0** (``int``)
+
+   **Returns:** ``List[Any]``
 
 .. method:: getExtensionAngles(arg0)
 
@@ -4212,16 +4478,17 @@ TreeStatistics
 
    **Returns:** ``None``
 
-.. method:: getAnnotatedLength(arg0, arg1)
+.. method:: getAnnotatedLength(arg0, arg1, arg2)
 
    Retrieves the amount of cable length present on each brain compartment innervated by the analyzed neuron.
 
-   **Signature:** ``getAnnotatedLength(int, String) -> Map``
+   **Signature:** ``getAnnotatedLength(int, String, boolean) -> Map``
 
    **Parameters:**
 
    * **arg0** (``int``)
    * **arg1** (``str``)
+   * **arg2** (``bool``)
 
    **Returns:** ``Dict[str, Any]``
 
@@ -4307,18 +4574,17 @@ TreeStatistics
 
    **Returns:** (``float``) the average remote bifurcation angle
 
-.. method:: getBranchPoints(arg0, arg1)
+.. method:: getBranchPoints(arg0)
 
    Gets the position of all the branch points in the analyzed tree associated with the specified annotation.
 
-   **Signature:** ``getBranchPoints(BrainAnnotation, boolean) -> Set``
+   **Signature:** ``getBranchPoints(BrainAnnotation) -> Set``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``bool``)
+   * **arg0** (``Any``): - the BrainAnnotation to be queried.
 
-   **Returns:** ``Set[Any]``
+   **Returns:** (``Set[Any]``) the branch points positions, or an empty set if no branch points were retrieved
 
 .. method:: getBranches()
 
@@ -4328,29 +4594,31 @@ TreeStatistics
 
    **Returns:** (``List[Any]``) the list of branches as Path objects.
 
-.. method:: getCableLength(arg0)
+.. method:: getCableLength(arg0, arg1)
 
    Gets the cable length associated with the specified compartment (neuropil label).
 
-   **Signature:** ``getCableLength(BrainAnnotation) -> double``
+   **Signature:** ``getCableLength(BrainAnnotation, boolean) -> double``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the query compartment (null not allowed)
+   * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
-   **Returns:** (``float``) the filtered cable length
+   **Returns:** ``float``
 
-.. method:: getCableLengthNorm(arg0)
+.. method:: getCableLengthNorm(arg0, arg1)
 
    Gets the cable length associated with the specified compartment (neuropil label) as a ratio of total length.
 
-   **Signature:** ``getCableLengthNorm(BrainAnnotation) -> double``
+   **Signature:** ``getCableLengthNorm(BrainAnnotation, boolean) -> double``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the query compartment (null not allowed)
+   * **arg0** (``Any``)
+   * **arg1** (``bool``)
 
-   **Returns:** (``float``) the filtered cable length normalized to total cable length
+   **Returns:** ``float``
 
 .. method:: getCancelReason()
 
@@ -4404,18 +4672,21 @@ TreeStatistics
 
    **Returns:** (``Any``) the DescriptiveStatistics object.
 
-.. method:: getFlowPlot(arg0, arg1)
+.. method:: getFlowPlot(arg0, arg1, arg2, arg3, arg4)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 
-   **Signature:** ``getFlowPlot(String, Collection) -> SNTChart``
+   **Signature:** ``getFlowPlot(String, Collection, String, double, boolean) -> SNTChart``
 
    **Parameters:**
 
-   * **arg0** (``str``): - the feature ("Cable length", "No. of branch points", "No. of tips", etc.). Note that the majority of getAllMetrics() metrics are currently not supported.
+   * **arg0** (``str``)
    * **arg1** (``List[Any]``)
+   * **arg2** (``str``)
+   * **arg3** (``float``)
+   * **arg4** (``bool``)
 
-   **Returns:** (``SNTChart``) the SNTChart holding the flow plot
+   **Returns:** ``SNTChart``
 
 .. method:: getFractalDimension()
 
@@ -4479,17 +4750,78 @@ TreeStatistics
 
    **Returns:** (``Union[int, float]``) the computed value (average if metric is associated with multiple values)
 
-.. method:: getNBranchPoints(arg0)
+.. method:: getNBranchPoints(arg0, arg1)
 
    Gets the number of branch points in the analyzed tree associated with the specified annotation.
 
-   **Signature:** ``getNBranchPoints(BrainAnnotation) -> int``
+   **Signature:** ``getNBranchPoints(BrainAnnotation, boolean) -> int``
 
    **Parameters:**
 
    * **arg0** (``Any``): - the BrainAnnotation to be queried.
+   * **arg1** (``bool``)
 
    **Returns:** (``int``) the number of branch points
+
+
+TreeToRaster
+------------
+
+.. method:: getAxialRes()
+
+   Gets the axial (z) voxel size.
+
+   **Signature:** ``getAxialRes() -> double``
+
+   **Returns:** (``float``) the axial (z) voxel size in the tree's spatial units (typically µm), or 0 when rasterizing in 2D mode
+
+.. method:: getLateralRes()
+
+   Gets the lateral (x, y) voxel size.
+
+   **Signature:** ``getLateralRes() -> double``
+
+   **Returns:** (``float``) the lateral (x,y) voxel size in the tree's spatial units (typically µm)
+
+.. method:: getRadiusScale()
+
+   Gets the uniform radius multiplier applied to node radii.
+
+   **Signature:** ``getRadiusScale() -> double``
+
+   **Returns:** (``float``) the radius multiplier (1.0 by default)
+
+
+TreeUtils
+---------
+
+.. method:: static filterByCableLength(arg0, arg1, arg2)
+
+   Returns the subset of trees whose cable length falls within the specified range.
+
+   **Signature:** ``static filterByCableLength(Collection, double, double) -> List``
+
+   **Parameters:**
+
+   * **arg0** (``List[Any]``): - the input collection
+   * **arg1** (``float``)
+   * **arg2** (``float``)
+
+   **Returns:** (``List[Any]``) a new list containing only the trees that satisfy the bounds
+
+.. method:: static filterBySize(arg0, arg1, arg2)
+
+   Returns the subset of trees whose path count falls within the specified range.
+
+   **Signature:** ``static filterBySize(Collection, int, int) -> List``
+
+   **Parameters:**
+
+   * **arg0** (``List[Any]``): - the input collection
+   * **arg1** (``int``)
+   * **arg2** (``int``)
+
+   **Returns:** (``List[Any]``) a new list containing only the trees that satisfy the bounds
 
 
 Tubeness
@@ -4503,7 +4835,7 @@ Tubeness
 
 .. method:: getIndependentInstance()
 
-   **Signature:** ``getIndependentInstance() -> UnaryComputerOp``
+   **Signature:** ``getIndependentInstance() -> SpecialOp``
 
    **Returns:** ``Any``
 
@@ -4865,4 +5197,4 @@ WekaModelLoader
 
 ----
 
-*Category index generated on 2026-09-27 22:17:09*
+*Category index generated on 2026-09-27 23:02:20*

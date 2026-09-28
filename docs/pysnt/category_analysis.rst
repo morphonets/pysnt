@@ -3,7 +3,7 @@ Analysis Methods
 
 Methods that perform calculations, measurements, or statistical analysis.
 
-Total methods in this category: **20**
+Total methods in this category: **25**
 
 .. contents:: Classes in this Category
    :local:
@@ -65,7 +65,7 @@ Frangi
 
 .. method:: compute(arg0, arg1)
 
-   **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
+   **Signature:** ``compute(Object, Object) -> void``
 
    **Parameters:**
 
@@ -157,6 +157,22 @@ NodeStatistics
    **Returns:** (``List[Any]``) the list of supported metrics
 
 
+OBJMesh
+-------
+
+.. method:: computePrincipalAxes(arg0)
+
+   Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated `getPrincipalAxes(String)` method.
+
+   **Signature:** ``computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;``
+
+   **Parameters:**
+
+   * **arg0** (``str``): - either "left", "l", "right", "r", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh
+
+   **Returns:** (``Any``) array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails
+
+
 PathStatistics
 --------------
 
@@ -170,13 +186,9 @@ Returns paths that have children, representing non-terminal segments. Note: This
 
    **Returns:** (``List[Any]``) the list of paths with children
 
-.. method:: static getMetrics(arg0)
+.. method:: static getMetrics()
 
-   **Signature:** ``static getMetrics(String) -> List``
-
-   **Parameters:**
-
-   * **arg0** (``str``)
+   **Signature:** ``static getMetrics() -> List``
 
    **Returns:** ``List[Any]``
 
@@ -191,6 +203,20 @@ RootAngleAnalyzer
    **Returns:** ``List[Any]``
 
 
+SeedManager
+-----------
+
+.. method:: computeVisibleRect(arg0)
+
+   **Signature:** ``computeVisibleRect(Rectangle) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+
+   **Returns:** ``None``
+
+
 ShollAnalyzer
 -------------
 
@@ -199,6 +225,23 @@ ShollAnalyzer
    **Signature:** ``static getMetrics() -> List``
 
    **Returns:** ``List[Any]``
+
+
+SpectralSimilarity
+------------------
+
+.. method:: compute(arg0, arg1)
+
+   Computes the spectral similarity map.
+
+   **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
+
+   **Parameters:**
+
+   * **arg0** (``Any``)
+   * **arg1** (``Any``)
+
+   **Returns:** ``None``
 
 
 TreeColorMapper
@@ -223,6 +266,37 @@ TreeStatistics
    **Signature:** ``static getAllMetrics() -> List``
 
    **Returns:** (``List[Any]``) the list of available metrics
+
+
+TreeUtils
+---------
+
+.. method:: static analyzeEndpointClusters(arg0)
+
+   Analyzes a collection of paths to determine which endpoint cluster (starts or ends) is more tightly grouped, suggesting the root location.
+
+This is useful for auto-orienting paths toward a common root when the user hasn't specified an explicit root location.
+
+   **Signature:** ``static analyzeEndpointClusters(Collection) -> TreeUtils$EndpointClusterAnalysis``
+
+   **Parameters:**
+
+   * **arg0** (``List[Any]``): - the paths to analyze (must have at least 2)
+
+   **Returns:** (``Any``) analysis result, or null if paths is null or has fewer than 2 paths
+
+.. method:: static computeUprightAngle(arg0, arg1)
+
+   Computes the angle (in degrees) needed to make a tree appear upright in the XY viewing plane. The angle is derived from the extension angle of a reference path (the longest geodesic by default) using compass conventions where North is 0 degrees.
+
+   **Signature:** ``static computeUprightAngle(Tree, boolean) -> double``
+
+   **Parameters:**
+
+   * **arg0** (``Tree``): - the tree to analyze
+   * **arg1** (``bool``)
+
+   **Returns:** (``float``) the rotation angle in degrees, or Double.NaN if it cannot be computed (e.g., single-node tree)
 
 
 Tubeness
@@ -252,4 +326,4 @@ Viewer2D
 
 ----
 
-*Category index generated on 2026-09-27 22:17:09*
+*Category index generated on 2026-09-27 23:02:20*

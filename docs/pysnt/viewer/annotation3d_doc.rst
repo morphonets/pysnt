@@ -108,7 +108,7 @@ Setters Methods
    Determines whether the mesh bounding box should be displayed.
 
 
-.. py:method:: setColor(String, double)
+.. py:method:: setColor(ColorRGB, double)
 
    Script friendly method to assign a color to the annotation.
 
@@ -123,7 +123,7 @@ Setters Methods
    Script friendly method to assign a transparency to the annotation.
 
 
-.. py:method:: setWireframeColor(String)
+.. py:method:: setWireframeColor(ColorRGB)
 
    Assigns a wireframe color to the annotation.
 
