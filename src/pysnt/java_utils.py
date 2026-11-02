@@ -846,6 +846,13 @@ def get_methods(class_or_object: Union[str, Any], static_only: bool = False, inc
                 
                 if static_only and not is_static:
                     continue
+
+                # main(String[]) is a Java entry point (IDE debugging aid): not useful from Python
+                if method_name == 'main' and is_static and len(method.get('arguments', [])) == 1:
+                    arg = method['arguments'][0]
+                    arg_type = str(arg.get('type', '') if isinstance(arg, dict) else arg)
+                    if arg_type.split('.')[-1] in ('String[]', '[Ljava.lang.String;', 'String...'):
+                        continue
                 
                 # Extract parameter types
                 params = method.get('arguments', [])

@@ -104,6 +104,9 @@ def reflect_jar(sj):
                     mod = m.getModifiers()
                     if not Modifier.isPublic(mod) or m.isSynthetic() or m.isBridge():
                         continue
+                    if (str(m.getName()) == "main" and Modifier.isStatic(mod)
+                            and [str(t.getSimpleName()) for t in m.getParameterTypes()] == ["String[]"]):
+                        continue  # IDE entry point, not API
                     d, r = dep_info(m)
                     methods.append({
                         "name": str(m.getName()),

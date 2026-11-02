@@ -147,6 +147,10 @@ class Extractor:
             if inherited and not owner_name.startswith("sc.fiji.snt."):
                 continue
             params = self.params(m, own)
+            # main(String[]) is a Java entry point (IDE debugging aid): not useful from Python
+            if (str(m.getName()) == "main" and M.isStatic(m.getModifiers())
+                    and [p["java_type"] for p in params] == ["String[]"]):
+                continue
             ret = str(m.getReturnType().getSimpleName())
             d, r = self.dep(m)
             ov = {

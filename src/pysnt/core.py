@@ -236,10 +236,11 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # Decide where SNT comes from: a Fiji install, or Maven
         fiji_path = _select_source(fiji_path, source, interactive)
         if fiji_path:
-            if not Path(fiji_path).exists():
+            if not Path(fiji_path).expanduser().exists():
                 raise FijiNotFoundError(f"Fiji not found at: {fiji_path}")
-            elif not _validate_fiji_path(fiji_path):
-                logger.warning(f"Path may not be a valid Fiji installation: {fiji_path}")
+            fiji_path = _resolve_fiji_path(fiji_path)
+            if not _validate_fiji_path(fiji_path):
+                logger.warning(f"Fiji at {fiji_path} may be incomplete (e.g., no SNT jar found)")
             ij_source = fiji_path
         else:
             from ._endpoints import build_endpoints
@@ -286,6 +287,8 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             
         _jvm_started = True
         logger.info("SNT initialization complete")
+        # An explicit Maven version pin is deliberate: no mismatch warning for it
+        _check_snt_version(requested=not fiji_path and bool(snt_version or os.environ.get("SNT_VERSION")))
         
     except FijiNotFoundError:
         # Re-raise FijiNotFoundError as-is (it already has helpful messages)
@@ -299,6 +302,75 @@ _SOURCE_ALIASES = {
     "maven": "maven", "remote": "maven", "online": "maven",
     "fiji": "fiji", "local": "fiji",
 }
+
+
+def _major_minor(version: str) -> Optional[tuple]:
+    """(major, minor) from e.g. '5.0.24-SNAPSHOT-abc123', or None"""
+    import re
+    m = re.match(r"\s*(\d+)\.(\d+)", str(version or ""))
+    return (int(m.group(1)), int(m.group(2))) if m else None
+
+
+def snt_version() -> Optional[str]:
+    """
+    Version of the SNT library loaded in the JVM (e.g. '5.0.24'), or None if
+    PySNT has not been initialized.
+    """
+    # Never start a JVM as a side effect of asking for a version
+    if not _jvm_started or not scyjava.jvm_started():
+        return None
+    try:
+        return str(scyjava.jimport("sc.fiji.snt.SNTUtils").VERSION)
+    except Exception:
+        return None
+
+
+def _check_snt_version(requested: bool) -> None:
+    """
+    Warn (never fail) when the loaded SNT differs in major.minor from the version
+    PySNT's stubs and docs describe. Silent if the user pinned a version explicitly.
+    """
+    if requested:
+        return
+    from ._endpoints import DEFAULT_SNT_VERSION
+    loaded = snt_version()
+    if loaded is None:
+        return
+    if _major_minor(loaded) != _major_minor(DEFAULT_SNT_VERSION):
+        logger.warning(
+            f"Loaded SNT {loaded}, but this PySNT targets SNT {DEFAULT_SNT_VERSION}: "
+            "some classes or methods may be missing or behave differently. "
+            "Use source='maven' (default without a configured Fiji) or update Fiji."
+        )
+
+
+def _is_imagej_root(path: Path) -> bool:
+    """True if path looks like an ImageJ2/Fiji application directory (has a jars folder)."""
+    return (path / "jars").is_dir()
+
+
+def _resolve_fiji_path(fiji_path: str) -> str:
+    """
+    Return the ImageJ/Fiji root for a user-supplied path, tolerating near misses.
+
+    Accepts the path itself, a child named Fiji.app/Fiji (user pointed to the folder
+    that contains the install), or the parent (user pointed one level too deep).
+    Anything else raises FijiNotFoundError with the locations that were checked,
+    rather than letting pyimagej fail later with a generic JVM error.
+    """
+    path = Path(fiji_path).expanduser()
+    if _is_imagej_root(path):
+        return str(path)
+    candidates = [path / "Fiji.app", path / "Fiji", path.parent]
+    for candidate in candidates:
+        if _is_imagej_root(candidate):
+            logger.info(f"'{path}' is not an ImageJ/Fiji root; using '{candidate}' instead")
+            return str(candidate)
+    raise FijiNotFoundError(
+        f"'{path}' does not look like a Fiji/ImageJ2 installation (no 'jars' folder).\n"
+        "Checked: " + ", ".join(str(c) for c in [path] + candidates) + "\n"
+        "Point fiji_path to the Fiji.app folder, or omit it to download SNT from Maven."
+    )
 
 
 def _select_source(fiji_path: Optional[str], source: Optional[str], interactive: bool = False) -> Optional[str]:
@@ -344,7 +416,10 @@ def _find_configured_fiji() -> Optional[str]:
         logger.info(f"Using Fiji from saved config: {fiji_config}")
         return fiji_config
     elif fiji_config:
-        logger.warning(f"Saved Fiji path no longer exists: {fiji_config}")
+        logger.warning(f"Saved Fiji path no longer exists, removing it from config: {fiji_config}")
+        config = setup_utils.load_config()
+        config.pop("fiji_path", None)
+        setup_utils.save_config(config)
     return None
 
 
@@ -371,25 +446,12 @@ def _find_fiji(interactive: bool = True) -> Optional[str]:
         Path to Fiji if found, None otherwise.
     """
     from . import setup_utils
-    
-    # 1. Check environment variable first (highest priority)
-    fiji_env = os.environ.get("FIJI_PATH")
-    if fiji_env and Path(fiji_env).exists():
-        logger.info(f"Found Fiji via FIJI_PATH environment variable: {fiji_env}")
-        return fiji_env
-    
-    # 2. Check config file
-    config = setup_utils.load_config()
-    fiji_config = config.get("fiji_path")
-    if fiji_config and Path(fiji_config).exists():
-        logger.info(f"Found Fiji via config file: {fiji_config}")
-        return fiji_config
-    elif fiji_config:
-        logger.warning(f"Config file contains invalid Fiji path: {fiji_config}")
-        # Remove invalid path from config
-        config.pop("fiji_path", None)
-        setup_utils.save_config(config)
-        
+
+    # 1-2. FIJI_PATH environment variable, then saved config (single implementation)
+    configured = _find_configured_fiji()
+    if configured:
+        return configured
+
     # 3. Check common installation locations
     common_paths = setup_utils.find_fiji_installations()
     for path in common_paths:

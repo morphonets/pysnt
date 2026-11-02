@@ -52,7 +52,9 @@ class TestInitialize:
         """initialize() calls configure_java_logging() once the (mocked) JVM
         'has started'; unpatched, it jimports and starts a REAL JVM that
         poisons later real initialize() calls in the same session."""
-        with patch('pysnt.java_utils.configure_java_logging', return_value=True):
+        with patch('pysnt.java_utils.configure_java_logging', return_value=True), \
+                patch('pysnt.core.snt_version', return_value=None), \
+                patch('pysnt.core._resolve_fiji_path', side_effect=lambda p: str(p)):
             yield
 
     def test_initialize_already_initialized(self):
@@ -631,3 +633,77 @@ class TestPyImageJIntegration:
 
 if __name__ == '__main__':
     pytest.main([__file__])
+
+
+class TestVersionCheck:
+    """SNT version helpers (kept apart from TestInitialize, which stubs snt_version)."""
+
+    def test_major_minor_parsing(self):
+        from pysnt.core import _major_minor
+        assert _major_minor("5.0.24-SNAPSHOT-abc123") == (5, 0)
+        assert _major_minor("5.1.0") == (5, 1)
+        assert _major_minor("garbage") is None
+        assert _major_minor(None) is None
+
+    def test_version_mismatch_warns(self):
+        """A loaded SNT with a different major.minor logs a warning (never raises)."""
+        import pysnt.core as core
+        with patch('pysnt.core.snt_version', return_value="4.9.9"):
+            with patch('pysnt.core.logger') as mock_logger:
+                core._check_snt_version(requested=False)
+                mock_logger.warning.assert_called_once()
+
+    def test_version_match_is_silent(self):
+        import pysnt.core as core
+        from pysnt._endpoints import DEFAULT_SNT_VERSION
+        with patch('pysnt.core.snt_version', return_value=DEFAULT_SNT_VERSION):
+            with patch('pysnt.core.logger') as mock_logger:
+                core._check_snt_version(requested=False)
+                mock_logger.warning.assert_not_called()
+
+    def test_explicit_version_is_silent(self):
+        """A deliberately pinned version never triggers the mismatch warning."""
+        import pysnt.core as core
+        with patch('pysnt.core.snt_version', return_value="4.9.9"):
+            with patch('pysnt.core.logger') as mock_logger:
+                core._check_snt_version(requested=True)
+                mock_logger.warning.assert_not_called()
+
+    def test_snt_version_none_when_not_initialized(self):
+        import pysnt.core as core
+        core._jvm_started = False
+        assert core.snt_version() is None
+
+
+class TestResolveFijiPath:
+    """Tolerance for near-miss Fiji paths (no fixtures that stub the resolver)."""
+
+    @staticmethod
+    def _make_root(path):
+        (path / "jars").mkdir(parents=True)
+        return path
+
+    def test_exact_root(self, tmp_path):
+        from pysnt.core import _resolve_fiji_path
+        root = self._make_root(tmp_path / "Fiji.app")
+        assert _resolve_fiji_path(str(root)) == str(root)
+
+    def test_parent_of_misdirected_path(self, tmp_path):
+        """Pointing one level too deep resolves to the parent that has jars/."""
+        from pysnt.core import _resolve_fiji_path
+        root = self._make_root(tmp_path / "upload")
+        (root / "Fiji.app").mkdir()
+        assert _resolve_fiji_path(str(root / "Fiji.app")) == str(root)
+
+    def test_child_fiji_app(self, tmp_path):
+        """Pointing to the folder that contains Fiji.app resolves to the child."""
+        from pysnt.core import _resolve_fiji_path
+        child = self._make_root(tmp_path / "Fiji.app")
+        assert _resolve_fiji_path(str(tmp_path)) == str(child)
+
+    def test_nothing_valid_raises(self, tmp_path):
+        from pysnt.core import _resolve_fiji_path, FijiNotFoundError
+        (tmp_path / "somewhere").mkdir()
+        with pytest.raises(FijiNotFoundError) as exc:
+            _resolve_fiji_path(str(tmp_path / "somewhere"))
+        assert "jars" in str(exc.value)
