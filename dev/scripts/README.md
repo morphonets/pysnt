@@ -71,7 +71,7 @@ Generate type stub files (`.pyi`) exclusively from cached JSON signatures.
 **Notes**:
 - Cache-only approach - if signatures are missing, extraction is required first.
 - Only regenerates stubs when needed based on:
-  - Cache age (considers stale after 7 days) // TODO: In the future this would be replaced by a proper versioning system
+  - SNT version: each cached signature is stamped with the SNT version it was extracted from
   - File timestamps (cache vs stub file modification times)
   - Cache version compatibility
   - `--check-cache`: Shows cache status for all classes
