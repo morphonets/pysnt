@@ -13,10 +13,17 @@ from . import print_version, info
 
 def main():
     """Main command-line interface."""
+    # "pysnt setup ..." delegates to the Fiji configuration utility
+    if len(sys.argv) > 1 and sys.argv[1] == 'setup':
+        from .setup_utils import main as setup_main
+        return setup_main(sys.argv[2:])
+
     parser = argparse.ArgumentParser(
         prog='pysnt',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
         description='pySNT: Python interface for SNT',
-        epilog='For more information, visit: https://github.com/morphonets/pysnt'
+        epilog='Fiji configuration: pysnt setup [--status|--auto-detect|--set PATH|--clear|--reset|--check]\n'
+               'For more information, visit: https://github.com/morphonets/pysnt'
     )
     
     parser.add_argument(

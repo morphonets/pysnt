@@ -405,7 +405,7 @@ python dev/scripts/generate_stubs.py --verbose --overwrite
 
 ```bash
 # Check Fiji configuration
-python -m pysnt.setup_utils --status
+pysnt setup --status
 
 # Validate module configurations
 python dev/scripts/pysnt_utils.py --analyze --verbose
@@ -432,12 +432,12 @@ How it works:
 
 ```bash
 # Fiji configuration management
-python -m pysnt.setup_utils --status
-python -m pysnt.setup_utils --auto-detect
-python -m pysnt.setup_utils --set /Applications/Fiji.app
-python -m pysnt.setup_utils --clear
-python -m pysnt.setup_utils --reset
-python -m pysnt.setup_utils --check
+pysnt setup --status
+pysnt setup --auto-detect
+pysnt setup --set /Applications/Fiji.app
+pysnt setup --clear
+pysnt setup --reset
+pysnt setup --check
 ```
 
 ## Development Tools

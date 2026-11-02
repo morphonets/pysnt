@@ -33,8 +33,8 @@ def main():
             print(f"INIT_ERROR: Fiji/SNT not configured properly:")
             print(str(e))
             print("\nTo fix this, run one of:")
-            print("  python -m pysnt.setup_utils --auto-detect")
-            print("  python -m pysnt.setup_utils --set /path/to/Fiji.app")
+            print("  pysnt setup --auto-detect")
+            print("  pysnt setup --set /path/to/Fiji.app")
             sys.exit(1)  # Fatal error - environment not configured
         except Exception as e:
             print(f"INIT_ERROR: SNT initialization failed: {e}")

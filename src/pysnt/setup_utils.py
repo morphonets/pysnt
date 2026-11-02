@@ -268,7 +268,7 @@ def is_fiji_valid() -> bool:
     >>> import pysnt.setup_utils as setup
     >>> if not setup.is_fiji_valid():
     ...     print("Error: Fiji installation not found or SNT plugin missing")
-    ...     print("Run: python -m pysnt.setup_utils --auto-detect")
+    ...     print("Run: pysnt setup --auto-detect")
     ...     sys.exit(1)
     """
     # Get current effective path
@@ -569,6 +569,16 @@ def find_fiji_installations() -> List[str]:
         # Common user locations
         os.path.expanduser("~/Software/Fiji.app"),
         os.path.expanduser("~/Programs/Fiji.app"),
+
+        # Install roots that are not named Fiji.app (launcher bundle nested inside)
+        os.path.expanduser("~/Fiji"),
+        os.path.expanduser("~/Applications/Fiji"),
+        os.path.expanduser("~/Desktop/Fiji"),
+        os.path.expanduser("~/Downloads/Fiji"),
+        os.path.expanduser("~/Software/Fiji"),
+        "/Applications/Fiji",
+        "/opt/Fiji",
+        "C:/Fiji",
     ]
     
     found_installations = []
@@ -625,12 +635,19 @@ def check_fiji_installation(fiji_path: str) -> dict:
     result["exists"] = True
     path_obj = Path(fiji_path)
     
-    # Check for executables
-    executables = ["fiji"]
+    # Check for launchers: jaunch-based Fiji ('fiji', 'fiji.bat'), older per-platform
+    # launchers, or a Fiji.app launcher bundle sitting inside the install root
+    executables = [
+        "fiji", "fiji.bat", "fiji.exe",
+        "fiji-macos", "fiji-linux-x64", "fiji-windows-x64.exe",
+        "ImageJ-macosx", "ImageJ-linux64", "ImageJ-win64.exe",
+    ]
     
     for exe in executables:
         if (path_obj / exe).exists():
             result["executables"].append(exe)
+    if (path_obj / "Fiji.app").is_dir():
+        result["executables"].append("Fiji.app")
     
     if not result["executables"]:
         result["issues"].append("No Fiji executable found")
@@ -802,24 +819,26 @@ def interactive_fiji_setup():
     return None
 
 
-if __name__ == "__main__":
+def main(argv=None):
+    """Command-line entry point (pysnt setup ...)."""
     import argparse
-    
+
     parser = argparse.ArgumentParser(
+        prog="pysnt setup",
         description="PySNT Fiji Configuration Utility",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python -m pysnt.setup_utils                    # Interactive setup
-  python -m pysnt.setup_utils --status           # Show configuration status
-  python -m pysnt.setup_utils --auto-detect      # Auto-detect Fiji
-  python -m pysnt.setup_utils --set /path/to/Fiji.app  # Set Fiji path
-  python -m pysnt.setup_utils --clear            # Clear saved path
-  python -m pysnt.setup_utils --reset            # Reset everything (config + env var)
-  python -m pysnt.setup_utils --check            # Check if configuration is valid
+  pysnt setup                    # Interactive setup
+  pysnt setup --status           # Show configuration status
+  pysnt setup --auto-detect      # Auto-detect Fiji
+  pysnt setup --set /path/to/Fiji.app  # Set Fiji path
+  pysnt setup --clear            # Clear saved path
+  pysnt setup --reset            # Reset everything (config + env var)
+  pysnt setup --check            # Check if configuration is valid
         """
     )
-    
+
     parser.add_argument('--status', action='store_true', help='Show configuration status')
     parser.add_argument('--auto-detect', action='store_true', help='Auto-detect Fiji installation')
     parser.add_argument('--set', metavar='PATH', help='Set Fiji path')
@@ -827,9 +846,9 @@ Examples:
     parser.add_argument('--reset', action='store_true', help='Reset Fiji path (clear config and env var)')
     parser.add_argument('--check', action='store_true', help='Check if Fiji configuration is valid (exit code 0=valid, 1=invalid)')
     parser.add_argument('--no-validate', action='store_true', help='Skip path validation when setting')
-    
-    args = parser.parse_args()
-    
+
+    args = parser.parse_args(argv)
+
     if args.status:
         show_config_status()
     elif args.auto_detect:
@@ -870,24 +889,28 @@ Examples:
                 for issue in status['issues']:
                     print(f"  • {issue}")
             print("\nTo fix, try:")
-            print("  python -m pysnt.setup_utils --auto-detect")
-            print("  python -m pysnt.setup_utils --set /path/to/Fiji.app")
+            print("  pysnt setup --auto-detect")
+            print("  pysnt setup --set /path/to/Fiji.app")
             sys.exit(1)
     else:
         # Run interactive setup if no arguments provided
         fiji_path = interactive_fiji_setup()
-        
+    
         if fiji_path:
             print(f"\n🎯 Selected Fiji path: {fiji_path}")
-            
+        
             # Offer to set up environment variable as well
             setup_env = input("Also set up FIJI_PATH environment variable? (y/N): ").strip().lower()
             if setup_env in ['y', 'yes']:
                 permanent = input("Make permanent (add to shell profile)? (y/N): ").strip().lower()
                 setup_fiji_environment(fiji_path, permanent=(permanent in ['y', 'yes']))
-            
+        
             print("\n✅ Setup complete! You can now use:")
             print("   import pysnt")
             print("   pysnt.initialize()")
         else:
             print("\n❌ Setup cancelled.")
+
+
+if __name__ == "__main__":
+    main()

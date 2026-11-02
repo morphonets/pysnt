@@ -14,7 +14,7 @@ api
 ## Installation Requirements
 
 
-The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
+The stack of dependencies used by PySNT is rather complex and includes Python 3.11+, Java 21+, [SNTv5](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
 since Conda can be painfully slow with complex environments. If you do not have Mamba installed you can do
 so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
 
@@ -91,9 +91,8 @@ you want to debug or improve PySNT have a look at
 
 ### Attaching to SNT
 
-`pysnt.initialize()` needs SNT in the JVM. By default it is **downloaded from Maven** the first time
-(`org.morphonets:SNT`, plus the BigVolumeViewer dependency used by `Bvv`) and cached for later runs, so
-no Fiji installation is required:
+`pysnt.initialize()` needs SNT in the JVM. By default it is **downloaded from [Maven](https://maven.scijava.org/)** the first time
+and cached for later runs, so no Fiji installation is required:
 
 ```python
 import pysnt
@@ -136,9 +135,9 @@ jar is used: `rm -rf ~/.jgo ~/.cache/jgo`
 ### Configuring a local Fiji
 
 ```console
-python -m pysnt.setup_utils               # interactive setup
-python -m pysnt.setup_utils --auto-detect # search common locations and save the first valid one
-python -m pysnt.setup_utils --status      # show the current configuration
+pysnt setup               # interactive setup
+pysnt setup --auto-detect # search common locations and save the first valid one
+pysnt setup --status      # show the current configuration
 ```
 
 ## Verify Installation

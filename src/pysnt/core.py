@@ -399,7 +399,7 @@ def _select_source(fiji_path: Optional[str], source: Optional[str], interactive:
         if found is None:
             raise FijiNotFoundError(
                 "source='fiji' requested but no Fiji was found. Pass fiji_path, set "
-                "FIJI_PATH, or run: python -m pysnt.setup_utils --auto-detect")
+                "FIJI_PATH, or run: pysnt setup --auto-detect")
     return found
 
 
