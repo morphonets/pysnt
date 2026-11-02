@@ -40,7 +40,7 @@ EXTENDED_CLASSES = [
 
 # Setup common module functionality
 _module_funcs = setup_module_classes(
-    package_name="sc.fiji.snt..seed",  # Edit this: e.g., "sc.fiji.snt.analysis.morphology"
+    package_name="sc.fiji.snt.seed",  # Edit this: e.g., "sc.fiji.snt.analysis.morphology"
     curated_classes=CURATED_CLASSES,
     extended_classes=EXTENDED_CLASSES,
     globals_dict=globals(),
@@ -57,7 +57,7 @@ get_curated_classes = _module_funcs['get_curated_classes']
 get_extended_classes = _module_funcs['get_extended_classes']
 
 # Create module-level __getattr__ and __dir__
-__getattr__ = _module_funcs['create_getattr']('pysnt..seed')  # Edit this: e.g., 'pysnt.analysis.morphology'
+__getattr__ = _module_funcs['create_getattr']('pysnt.seed')  # Edit this: e.g., 'pysnt.analysis.morphology'
 __dir__ = _module_funcs['create_dir']()
 
 # =============================================================================
@@ -87,4 +87,4 @@ __all__ = [
 # from . import submodule1, submodule2
 # 
 # # Update __getattr__ to handle submodules:
-# __getattr__ = _module_funcs['create_getattr']('pysnt..seed', submodules=['submodule1', 'submodule2'])
+# __getattr__ = _module_funcs['create_getattr']('pysnt.seed', submodules=['submodule1', 'submodule2'])

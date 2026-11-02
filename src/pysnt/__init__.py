@@ -74,7 +74,6 @@ CURATED_ROOT_CLASSES = [
     "SNTService",
     "SNTUI",
     "SNTUtils",
-    "SciViewSNT",
     "SeedManager",
     "SeedOverlayRenderer",
     "TracerCanvas",
@@ -92,6 +91,7 @@ EXTENDED_ROOT_CLASSES = [
     "PathNodeCanvas",
     "PathNodeEditor",
     "PathTransformer",
+    "SciViewSNT",
     "SearchProgressCallback",
 ]
 
