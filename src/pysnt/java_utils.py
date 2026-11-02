@@ -14,6 +14,7 @@ The reflection functions use scyjava's reflection tools:
 
 import logging
 import os
+import shutil
 import subprocess
 import sys
 import zipfile
@@ -133,31 +134,18 @@ def _find_java_executable() -> Optional[str]:
     str or None
         Path to Java executable if found
     """
+    exe_name = "java.exe" if os.name == "nt" else "java"
+
     # Check JAVA_HOME first
     java_home = os.environ.get('JAVA_HOME')
     if java_home:
-        java_exe = Path(java_home) / 'bin' / 'java'
-        if java_exe.exists():
+        java_exe = Path(java_home) / 'bin' / exe_name
+        if java_exe.is_file():
             return str(java_exe)
-    
-    # Check PATH
-    try:
-        result = subprocess.run(['which', 'java'], capture_output=True, text=True)
-        if result.returncode == 0:
-            return result.stdout.strip()
-    except:
-        pass
-    
-    # Windows-specific check
-    if sys.platform == 'win32':
-        try:
-            result = subprocess.run(['where', 'java'], capture_output=True, text=True)
-            if result.returncode == 0:
-                return result.stdout.strip().split('\n')[0]
-        except:
-            pass
-    
-    return None
+
+    # Check PATH (shutil.which also handles .exe/PATHEXT on Windows)
+    found = shutil.which("java")
+    return found if found else None
 
 
 def _parse_java_version(version_output: str) -> Dict[str, Any]:

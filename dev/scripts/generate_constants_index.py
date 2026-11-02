@@ -23,7 +23,7 @@ def load_static_fields() -> List[Tuple[str, str, str, str]]:
     
     for json_file in stubs_dir.glob('*.json'):
         try:
-            with open(json_file, 'r') as f:
+            with open(json_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
             class_name = data.get('class_name', json_file.stem)

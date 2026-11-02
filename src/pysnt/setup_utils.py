@@ -47,7 +47,7 @@ def load_config() -> Dict[str, Any]:
         return {}
     
     try:
-        with open(config_file, 'r') as f:
+        with open(config_file, 'r', encoding='utf-8') as f:
             return json.load(f)
     except (json.JSONDecodeError, IOError):
         return {}
@@ -74,7 +74,7 @@ def save_config(config: Dict[str, Any]) -> bool:
         # Create config directory if it doesn't exist
         config_dir.mkdir(parents=True, exist_ok=True)
         
-        with open(config_file, 'w') as f:
+        with open(config_file, 'w', encoding='utf-8') as f:
             json.dump(config, f, indent=2)
         return True
     except (IOError, OSError):
@@ -513,14 +513,14 @@ def _setup_permanent_fiji_path(fiji_path: str) -> bool:
         export_line = f'export FIJI_PATH="{fiji_path}"'
         
         if profile_file.exists():
-            content = profile_file.read_text()
+            content = profile_file.read_text(encoding="utf-8")
             if "FIJI_PATH" in content:
                 print(f"⚠️  FIJI_PATH already exists in {profile_file}")
                 print("Please update it manually if needed.")
                 return True
         
         # Append to profile file
-        with open(profile_file, "a") as f:
+        with open(profile_file, "a", encoding='utf-8') as f:
             f.write(f"\n# Added by PySNT\n{export_line}\n")
         
         print(f"✅ Added FIJI_PATH to {profile_file}")

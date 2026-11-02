@@ -163,7 +163,7 @@ This section contains automatically generated API documentation for all pySNT mo
 
 """
 
-    with open(index_file, 'w') as f:
+    with open(index_file, 'w', encoding='utf-8') as f:
         f.write(content)
 
     print(f"Created API index: {index_file}")

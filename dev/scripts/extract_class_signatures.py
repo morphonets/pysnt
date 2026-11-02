@@ -62,7 +62,7 @@ def parse_curated(src):
     for init in sorted(Path(src).rglob("__init__.py")):
         rel = init.parent.relative_to(src)
         pkg = BASE + "".join("." + p for p in rel.parts)
-        text = "\n".join(line.split("#")[0] for line in init.read_text().splitlines())
+        text = "\n".join(line.split("#")[0] for line in init.read_text(encoding="utf-8").splitlines())
         # Lists are named CURATED_CLASSES, or e.g. CURATED_ROOT_CLASSES in the root module
         for m in re.finditer(r"^\w*CURATED\w*\s*=\s*\[(.*?)\]", text, re.S | re.M):
             for name in re.findall(r"[\"']([\w$.]+)[\"']", m.group(1)):
@@ -206,7 +206,7 @@ class Extractor:
 
     def save(self, info):
         path = self.stubs_dir / f"{info['class_name'].replace('.', '_')}.json"
-        path.write_text(json.dumps(info, indent=2, ensure_ascii=False))
+        path.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
         if self.verbose:
             n = sum(len(m["overloads"]) for m in info["methods"])
             print(f"  {info['class_name']}: {len(info['methods'])} methods ({n} overloads), "

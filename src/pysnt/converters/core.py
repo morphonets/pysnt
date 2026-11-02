@@ -17,7 +17,8 @@ try:
     import cairosvg  # noqa
 
     HAS_CAIROSVG = True
-except ImportError:
+except (ImportError, OSError):
+    # OSError: cairosvg is installed but the native cairo library is not (cairocffi)
     HAS_CAIROSVG = False
     cairosvg = None
 
@@ -99,7 +100,7 @@ ERROR_MISSING_PANDAS = (
     "pandas is required for table operations. Install with: pip install pandas"
 )
 ERROR_MISSING_CAIROSVG = (
-    "cairosvg is required for SVG conversion. Install with: pip install cairosvg"
+    "cairosvg and the native cairo library are required for SVG conversion. Install with: pip install cairosvg (and, e.g., brew install cairo or conda install cairo)"
 )
 ERROR_MISSING_PYMUPDF = (
     "PyMuPDF is required for PDF conversion. Install with: pip install PyMuPDF"

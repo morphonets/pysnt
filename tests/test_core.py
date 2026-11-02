@@ -719,7 +719,7 @@ class TestResolveJavaHome:
         from pysnt.java_utils import resolve_java_home
         exe = "java.exe" if __import__("os").name == "nt" else "java"
         (tmp_path / "bin").mkdir()
-        (tmp_path / "bin" / exe).write_text("")
+        (tmp_path / "bin" / exe).write_text("", encoding="utf-8")
         monkeypatch.setenv("JAVA_HOME", str(tmp_path))
         assert resolve_java_home() == str(tmp_path)
 
@@ -729,7 +729,7 @@ class TestResolveJavaHome:
         from pysnt import java_utils
         exe = "java.exe" if __import__("os").name == "nt" else "java"
         (tmp_path / "bin").mkdir()
-        (tmp_path / "bin" / exe).write_text("")
+        (tmp_path / "bin" / exe).write_text("", encoding="utf-8")
         monkeypatch.delenv("JAVA_HOME", raising=False)
         out = MagicMock(stderr=f"Property settings:\n    java.home = {tmp_path}\n")
         with patch.object(java_utils, "_find_java_executable", return_value="/usr/bin/java"), \

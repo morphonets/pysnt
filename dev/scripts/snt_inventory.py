@@ -152,7 +152,7 @@ def parse_pysnt(src):
     for init in Path(src).rglob("__init__.py"):
         rel = init.parent.relative_to(src)
         pkg = BASE + "".join("." + p for p in rel.parts)
-        text = "\n".join(line.split("#")[0] for line in init.read_text().splitlines())
+        text = "\n".join(line.split("#")[0] for line in init.read_text(encoding="utf-8").splitlines())
         for m in re.finditer(r"^(\w*(CURATED|EXTENDED)\w*)\s*=\s*\[(.*?)\]", text, re.S | re.M):
             kind = "curated" if "CURATED" in m.group(1) else "extended"
             names = set(re.findall(r"[\"']([\w$]+)[\"']", m.group(3)))
@@ -275,8 +275,8 @@ def main():
     inv = build(args)
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    (out / "snt_inventory.json").write_text(json.dumps(inv, indent=1))
-    (out / "snt_inventory.md").write_text(report(inv))
+    (out / "snt_inventory.json").write_text(json.dumps(inv, indent=1), encoding="utf-8")
+    (out / "snt_inventory.md").write_text(report(inv), encoding="utf-8")
     n = sum(len(v) for v in inv["packages"].values())
     print(f"SNT {inv['snt_version']}: {n} types in {len(inv['packages'])} packages")
     print(f"Wrote {out / 'snt_inventory.json'} and {out / 'snt_inventory.md'}")

@@ -25,7 +25,25 @@ No Java? Leave `ensure_java=True` (the default) in `pysnt.initialize()`: if no s
 
 Install into a *fresh, dedicated* environment: PySNT pulls in a large Java/Python stack and mixing it with other projects invites version conflicts.
 
+```{tip}
+Starting afresh and with no preference for a package manager? We recommend **pixi**: it is fast, installs Python, a JDK, and native libraries (such as cairo) in a single step, and keeps each project's environment isolated and reproducible. [Install pixi](https://pixi.sh), then follow the *pixi* tab below.
+```
+
 ::::{tab-set}
+
+:::{tab-item} pixi
+[pixi](https://pixi.sh) installs Python, a JDK and Maven from conda-forge and records the environment in a lock file.
+
+```bash
+pixi init pysnt-project && cd pysnt-project
+pixi add python=3.12 openjdk=21 maven pip cairo
+pixi run pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
+pixi shell
+```
+
+Already use conda or mamba? Create an environment with the same `python`, `openjdk=21`, `maven` and `cairo` packages from
+conda-forge, then `pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"` inside it.
+:::
 
 :::{tab-item} pip
 Use a dedicated virtual environment (Python 3.11+):
@@ -33,29 +51,23 @@ Use a dedicated virtual environment (Python 3.11+):
 ```bash
 python -m venv pysnt-env
 source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
-pip install "pysnt[all]"
+pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
 ```
 
-`pysnt[all]` includes all optional features. Use `pip install pysnt` for the core install, or pick extras
+`pysnt[all]` includes all optional features. For the core install, drop the extras: `pip install "pysnt @ git+https://github.com/morphonets/pysnt"`. Or pick extras
 individually: `display`, `gui`, `java`, `zarr`, `info`. [uv](https://docs.astral.sh/uv/) users can run the same
 commands with `uv venv` and `uv pip install`.
-:::
 
-:::{tab-item} pixi
-[pixi](https://pixi.sh) installs Python, a JDK and Maven from conda-forge and records the environment in a lock file.
-
-```bash
-pixi init pysnt-project && cd pysnt-project
-pixi add python=3.12 openjdk=21 maven
-pixi add --pypi "pysnt[all]"
-pixi shell
+```{note}
+The optional `display` extra (SVG chart conversion) needs the native *cairo* library, which pip cannot install: use `brew install cairo` (macOS) or `apt install libcairo2` (Linux). Without it PySNT still works, but SVG-based chart conversion is unavailable.
 ```
-
-Already use conda or mamba? Create an environment with the same `python`, `openjdk=21` and `maven` packages from
-conda-forge, then `pip install "pysnt[all]"` inside it.
 :::
 
 ::::
+
+```{note}
+PySNT is installed directly from GitHub. Add `@ <tag or branch>` after the repository URL (e.g., `.../pysnt@dev`) to install a specific version.
+```
 
 Then check that PySNT is installed:
 

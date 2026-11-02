@@ -29,7 +29,7 @@ def run_tests(out, env):
     cmd = [sys.executable, "-m", "pytest", str(ROOT / "tests"), "-q", "-p", "no:cacheprovider",
            f"--junitxml={xml}", "--tb=short"]
     proc = subprocess.run(cmd, cwd=ROOT, env=env, capture_output=True, text=True)
-    (out / "pytest.log").write_text(proc.stdout + "\n" + proc.stderr)
+    (out / "pytest.log").write_text(proc.stdout + "\n" + proc.stderr, encoding="utf-8")
     res = {"total": 0, "failed": [], "errors": [], "skipped": 0, "xml": xml.exists()}
     if xml.exists():
         for case in ET.parse(xml).getroot().iter("testcase"):
@@ -128,7 +128,7 @@ def main():
             for n, i, en, ev, src in r["errors"]:
                 details.append(f"- `{r['name']}` code cell {n}: **{en}**: {ev}  (`{src}`)")
         L += ["", "### Errors", ""] + (details or ["none"])
-    (out / "baseline.md").write_text("\n".join(L) + "\n")
+    (out / "baseline.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"Wrote {out / 'baseline.md'}")
 
 

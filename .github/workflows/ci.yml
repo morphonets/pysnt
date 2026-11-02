@@ -17,12 +17,26 @@ env:
 
 jobs:
   tests:
-    name: Tests (Python ${{ matrix.python }})
-    runs-on: ubuntu-latest
+    name: Tests (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    # Platforms and interpreters flagged "experimental" report failures without failing the workflow
+    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest]
         python: ["3.11", "3.12", "3.13"]
+        include:
+          - os: ubuntu-latest
+            python: "3.14"
+            experimental: true
+          - os: macos-latest
+            python: "3.12"
+            experimental: true
+          - os: windows-latest
+            python: "3.12"
+            experimental: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,11 +48,29 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
+      - name: Cache Maven/jgo downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.jgo
+            ~/.cache/jgo
+          key: jgo-${{ runner.os }}-${{ hashFiles('src/pysnt/_endpoints.py') }}
+          restore-keys: jgo-${{ runner.os }}-
       - name: Install
         # pandasgui/pyobjc (extra "gui") are interactive-only and heavy: not needed here
-        run: pip install -e ".[display,zarr,info]" pytest pytest-cov nbclient typing_extensions
+        run: pip install -e ".[display,zarr,info]" pytest pytest-cov pytest-timeout nbclient typing_extensions
+      - name: Warm up SNT download
+        # First start resolves SNT's whole Maven dependency tree (many minutes on a cold runner):
+        # do it once here, outside the per-test timeout. Also exercises the documented user flow
+        timeout-minutes: 25
+        run: python -c "import pysnt; pysnt.initialize(source='maven'); print(pysnt.snt_version())"
       - name: Test
-        run: python -m pytest tests -q -rs
+        # A test stuck for 5 min is aborted with the stack of every thread (thread method also
+        # works on Windows); -v names each test so a stall is easy to locate in the log.
+        # -p no:faulthandler: the JVM triggers (handled, harmless) access violations while starting
+        # on Windows, which pytest's faulthandler would print as "fatal exception" dumps
+        run: python -m pytest tests -v -rs --timeout=300 --timeout-method=thread -p no:faulthandler
 
   minimum-versions:
     name: Tests (lowest declared dependencies)
@@ -53,6 +85,15 @@ jobs:
           distribution: temurin
           java-version: "21"
       - uses: astral-sh/setup-uv@v5
+      - name: Cache Maven/jgo downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.jgo
+            ~/.cache/jgo
+          key: jgo-${{ runner.os }}-${{ hashFiles('src/pysnt/_endpoints.py') }}
+          restore-keys: jgo-${{ runner.os }}-
       - name: Install the oldest versions allowed by pyproject.toml
         run: |
           uv venv
