@@ -56,7 +56,12 @@ jobs:
       - name: Install the oldest versions allowed by pyproject.toml
         run: |
           uv venv
-          uv pip install --resolution lowest-direct -e ".[display,zarr,info]" pytest pytest-cov nbclient typing_extensions
+          # lowest-direct applies to every direct requirement given on the command line, so it
+          # must only see PySNT's own declared dependencies (unpinned test tools would resolve
+          # to ancient releases that cannot even build)
+          uv pip install --resolution lowest-direct -e ".[display,zarr,info]"
+          # Test tooling: regular (latest) resolution; already-installed floors are kept
+          uv pip install pytest pytest-cov nbclient typing_extensions
       - name: Test
         run: .venv/bin/python -m pytest tests -q -rs
 
