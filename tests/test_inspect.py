@@ -149,8 +149,11 @@ def test_inspect_detailed_java_reflection():
         # Skip test if JVM is not available
         if not scyjava.jvm_started():
             try:
-                scyjava.start_jvm()
-            except:
+                # Never call scyjava.start_jvm() directly: a bare JVM start skips
+                # pyimagej's startup callbacks and breaks any later initialize()
+                import pysnt
+                pysnt.initialize()
+            except Exception:
                 print("  Skipping comprehensive test - JVM not available")
                 return
         

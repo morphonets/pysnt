@@ -46,7 +46,15 @@ class TestInitialize:
         import pysnt.core
         pysnt.core._ij = None
         pysnt.core._jvm_started = False
-    
+
+    @pytest.fixture(autouse=True)
+    def _no_real_jvm(self):
+        """initialize() calls configure_java_logging() once the (mocked) JVM
+        'has started'; unpatched, it jimports and starts a REAL JVM that
+        poisons later real initialize() calls in the same session."""
+        with patch('pysnt.java_utils.configure_java_logging', return_value=True):
+            yield
+
     def test_initialize_already_initialized(self):
         """Test that initialize returns early if already initialized."""
         import pysnt.core
