@@ -29,6 +29,6 @@ def test_listed_classes_are_public_and_curated_are_classes_or_interfaces():
         sync = _load_sync()
     except ModuleNotFoundError as e:
         pytest.skip(f"sync script needs tomllib/tomli: {e}")
-    inventory = json.loads(INVENTORY.read_text())
+    inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
     violations = sync.check(inventory, ROOT / "src" / "pysnt")
     assert not violations, "\n".join(violations)

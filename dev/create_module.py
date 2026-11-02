@@ -56,7 +56,7 @@ def create_module(module_path: str, curated_classes: list = None, extended_class
         print(f"❌ Template not found: {template_path}")
         return False
     
-    template_content = template_path.read_text()
+    template_content = template_path.read_text(encoding="utf-8")
     
     # Configure template
     java_package_path = "/".join(parts)  # For URLs and paths
@@ -111,7 +111,7 @@ def create_module(module_path: str, curated_classes: list = None, extended_class
     )
     
     # Write configured template
-    module_file.write_text(configured_content)
+    module_file.write_text(configured_content, encoding="utf-8")
     print(f"📝 Created module: {module_file}")
     
     # Show next steps

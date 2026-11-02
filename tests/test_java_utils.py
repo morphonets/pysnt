@@ -118,7 +118,7 @@ class TestFindJavaExecutable:
         """JAVA_HOME/bin/java(.exe) is preferred when it exists."""
         exe = "java.exe" if os.name == "nt" else "java"
         (tmp_path / "bin").mkdir()
-        (tmp_path / "bin" / exe).write_text("")
+        (tmp_path / "bin" / exe).write_text("", encoding="utf-8")
         with patch.dict(os.environ, {"JAVA_HOME": str(tmp_path)}):
             assert _find_java_executable() == str(tmp_path / "bin" / exe)
 

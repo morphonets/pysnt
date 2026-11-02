@@ -6,9 +6,9 @@ def _layout(root, launchers=("fiji",), snt=True, bundle=False):
     (root / "jars").mkdir(parents=True)
     (root / "plugins").mkdir()
     for name in launchers:
-        (root / name).write_text("")
+        (root / name).write_text("", encoding="utf-8")
     if snt:
-        (root / "jars" / "SNT-5.0.24.jar").write_text("")
+        (root / "jars" / "SNT-5.0.24.jar").write_text("", encoding="utf-8")
     if bundle:
         (root / "Fiji.app").mkdir()
     return root

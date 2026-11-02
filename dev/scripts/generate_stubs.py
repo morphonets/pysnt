@@ -718,7 +718,7 @@ class CleanStubGenerator:
                 continue
 
             stub_file.parent.mkdir(parents=True, exist_ok=True)
-            with open(stub_file, 'w') as f:
+            with open(stub_file, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(stub_lines))
 
             print(f"    ✅ Generated: {stub_file}")

@@ -38,7 +38,7 @@ def module_dir(src, pkg):
 
 def read_lists(init_file):
     """[(variable name, kind, [names])] for each list literal in a module"""
-    text = init_file.read_text()
+    text = init_file.read_text(encoding="utf-8")
     out = []
     for m in LIST_RE.finditer(text):
         var = m.group(1).split("=")[0].strip()
@@ -113,8 +113,8 @@ def main():
     ap.add_argument("--src", default=str(ROOT / "src" / "pysnt"))
     args = ap.parse_args()
 
-    inv = json.loads(Path(args.inventory).read_text())
-    policy = tomllib.loads(Path(args.policy).read_text())
+    inv = json.loads(Path(args.inventory).read_text(encoding="utf-8"))
+    policy = tomllib.loads(Path(args.policy).read_text(encoding="utf-8"))
     if args.check:
         bad = check(inv, args.src)
         print("\n".join(bad) if bad else "OK: all listed classes are public (curated: class/interface)")
@@ -166,7 +166,7 @@ def main():
         if removed:
             print(f"   remove: {', '.join(removed)}")
         if args.apply:
-            text = init.read_text()
+            text = init.read_text(encoding="utf-8")
 
             def repl(m):
                 var = m.group(1).split("=")[0].strip()
@@ -174,7 +174,7 @@ def main():
                 return format_list(m.group(1), want[kind]) + m.group(3)
 
             if lists:
-                init.write_text(LIST_RE.sub(repl, text))
+                init.write_text(LIST_RE.sub(repl, text), encoding="utf-8")
 
     orphans = sorted(set(p.parent.relative_to(args.src).as_posix()
                          for p in Path(args.src).rglob("__init__.py")
