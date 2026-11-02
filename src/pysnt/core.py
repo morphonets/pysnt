@@ -243,6 +243,14 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             fetch="auto", version=f"{REQUIRED_JAVA_VERSION}+"
         )
 
+        # Java 17+ blocks the bytecode patching that ImageJ1 needs unless java.lang is opened.
+        # pyimagej adds this option itself, but only if it can parse the requested Java version,
+        # which fails for a constraint such as "21+" ("Failed to guess the Java version.")
+        # and then surfaces as "Invalid service: net.imagej.legacy.LegacyService"
+        _add_opens = "--add-opens=java.base/java.lang=ALL-UNNAMED"
+        if _add_opens not in scyjava.config.get_options():
+            scyjava.config.add_option(_add_opens)
+
         # Decide where SNT comes from: a Fiji install, or Maven
         fiji_path = _select_source(fiji_path, source, interactive)
         if fiji_path:
