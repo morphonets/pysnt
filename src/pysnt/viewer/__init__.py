@@ -13,17 +13,25 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "AbstractBigViewer", "Annotation3D",
-    "Bdv", "Bvv", "BvvMultiSource", "BvvUtils",
-    "MultiViewer2D", "MultiViewer3D", "OBJMesh",
-    "Viewer2D", "Viewer3D"
+    "Annotation3D",
+    "Bdv",
+    "Bvv",
+    "BvvMultiSource",
+    "BvvUtils",
+    "MultiViewer2D",
+    "MultiViewer3D",
+    "OBJMesh",
+    "Viewer2D",
+    "Viewer3D",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "BigViewerPanel",
-    "ColorTableMapper",
-    "GraphViewer"
+    "AbstractBigViewer",
+    "BvvProfiler",
+    "GraphViewer",
+    "Keyframe",
+    "PathPlayer",
 ]
 
 

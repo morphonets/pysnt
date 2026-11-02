@@ -18,7 +18,6 @@ CURATED_CLASSES = [
     "CrossSectionUtils",
     "DefaultSearchNode",
     "FillerThread",
-    "PathResult",
     "SearchNode",
     "SearchThread",
     "TracerThread",

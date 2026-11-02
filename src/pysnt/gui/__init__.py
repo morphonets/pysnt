@@ -20,13 +20,11 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 # These are the most commonly used GUI classes that users will import directly
-CURATED_CLASSES = [
-    "FigCreatorCmd",  # Command for creating figures
-]
+CURATED_CLASSES = []
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used GUI classes that are loaded on-demand
-EXTENDED_CLASSES = [  "FileChooser", "SNTREPL"]
+EXTENDED_CLASSES = []
 
 # =============================================================================
 # MODULE SETUP

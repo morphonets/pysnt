@@ -20,15 +20,12 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 # These are the most commonly used command classes
-CURATED_CLASSES = [
-    "FigCreatorCmd",  # Command for creating figures
-]
+CURATED_CLASSES = []
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used command classes that are loaded on-demand
 EXTENDED_CLASSES = [
-    # Add additional command classes here as they are discovered
-    # Examples: "PathManagerCmd", "AnalysisCmd", etc.
+    "FigCreatorCmd",
 ]
 
 # =============================================================================

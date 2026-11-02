@@ -19,19 +19,23 @@ logger = logging.getLogger(__name__)
 # These are the most commonly used classes that users will import directly
 CURATED_CLASSES = [
     "AutoTraceConfig",
+    "AutoTracer",
     "BinaryTracer",
     "DiskBackedGWDTTracer",
-    "GWDTTracer", "GWDTTracerFactory",
-    "RootDetector", "SomaUtils",
-    'SparseGWDTTracer',
-    "TuftDetector"
+    "GWDTTracer",
+    "GWDTTracerFactory",
+    "RootDetector",
+    "SomaUtils",
+    "SparseGWDTTracer",
+    "TuftDetector",
 ]
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used classes that are loaded on-demand
 EXTENDED_CLASSES = [
-    "AbstractAutoTracer", "AbstractGWDTTracer",
-    "AutoTracer", "ComponentReconnector", "DensityClusterer"
+    "AbstractAutoTracer",
+    "AbstractGWDTTracer",
+    "ComponentReconnector",
 ]
 
 # =============================================================================

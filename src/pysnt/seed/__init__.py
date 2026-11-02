@@ -19,10 +19,10 @@ logger = logging.getLogger(__name__)
 # These are the most commonly used classes that users will import directly
 CURATED_CLASSES = [
     "LabelsToSeeds",
-    "SeedConfidence"
+    "SeedConfidence",
     "SeedOverlay",
     "SeedPoint",
-    "SeedRois"
+    "SeedRois",
 ]
 
 # Extended classes - available via get_class() after discovery
@@ -30,7 +30,8 @@ CURATED_CLASSES = [
 EXTENDED_CLASSES = [
     "SeedOverlayBigViewerHandler",
     "SeedOverlayCanvasHandler",
-    #"SeedPointEditDialog", "SeedTableModel"
+    "SeedPointEditDialog",
+    "SeedTableModel",
 ]
 
 # =============================================================================
