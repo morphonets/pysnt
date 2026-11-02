@@ -108,15 +108,6 @@ Setters Methods
    Sets the polynomial fit range for linear Sholl statistics.
 
 
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

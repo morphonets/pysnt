@@ -127,15 +127,6 @@ I/O Operations Methods
    
 
 
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

@@ -162,11 +162,6 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: map(String, ColorTable)
 
    Maps nodes after the specified measurement. Mapping bounds are automatically determined.

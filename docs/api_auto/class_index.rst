@@ -103,7 +103,7 @@ I
 * `InsectBrainLoader <../pysnt/io/insectbrainloader.html>`_ (``sc.fiji.snt.io``) - Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.
 * `InsectBrainUtils <../pysnt/annotation/insectbrainutils.html>`_ (``sc.fiji.snt.annotation``) - Utility methods for retrieving species, brain, and neuron data from the Insect Brain Database
 * `InteractiveTracerCanvas <../pysnt/interactivetracercanvas.html>`_ (``sc.fiji.snt``) - Enhanced documentation for InteractiveTracerCanvas class.
-* `IOUtils <../pysnt/util/ioutils.html>`_ (``sc.fiji.snt.util``) - Enhanced documentation for IOUtils class.
+* `IOUtils <../pysnt/util/ioutils.html>`_ (``sc.fiji.snt.util``) - Static utilities for file I/O, namely the detection of reconstruction file formats.
 
 L
 -

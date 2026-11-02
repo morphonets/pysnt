@@ -492,11 +492,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: restrictToSWCType(int[])
 
    

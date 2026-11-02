@@ -177,11 +177,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: skeletonize(ImagePlus, boolean)
 
    

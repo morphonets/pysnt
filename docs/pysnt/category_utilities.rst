@@ -3,7 +3,7 @@ Utilities Methods
 
 General utility methods and helper functions.
 
-Total methods in this category: **954**
+Total methods in this category: **916**
 
 .. contents:: Classes in this Category
    :local:
@@ -95,16 +95,6 @@ AllenCompartment
 
    **Returns:** ``bool``
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: name()
 
    Description copied from interface: `BrainAnnotation`
@@ -178,16 +168,6 @@ This method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)
    **Signature:** ``brainCenter() -> SNTPoint``
 
    **Returns:** (``SNTPoint``) the SNT point defining the (X,Y,Z) center of the ARA
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: splitByHemisphere(graph)
 
@@ -293,16 +273,6 @@ AnnotationGraph
    **Parameters:**
 
    * **predicate** (``Any``)
-
-   **Returns:** ``None``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
 
    **Returns:** ``None``
 
@@ -738,16 +708,6 @@ BinaryTracer
    **Signature:** ``honoredSeedRoles() -> EnumSet``
 
    **Returns:** ``Any``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: skeletonize(imp, erodeIsolatedPixels)
 
@@ -1692,16 +1652,6 @@ ConvexHull2D
 
    **Returns:** ``BoundingBox``
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 
 ConvexHull3D
 ------------
@@ -1727,16 +1677,6 @@ ConvexHull3D
    * **convexHulls** (``List[Any]``)
 
    **Returns:** ``BoundingBox``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 
 ConvexHullAnalyzer
@@ -1771,20 +1711,6 @@ Retrieves the computed value for the specified metric name. The metric must be o
    * **metric** (``str``): - the name of the metric to retrieve
 
    **Returns:** (``float``) the computed value for the metric
-
-.. method:: main(args)
-
-   Main method for testing and demonstration purposes.
-
-Creates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``): - command line arguments (not used)
-
-   **Returns:** ``None``
 
 .. method:: run()
 
@@ -2557,16 +2483,6 @@ FillManagerUI
 
    **Returns:** ``None``
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: maximumDistanceCompletelyExplored(source, f)
 
    **Signature:** ``maximumDistanceCompletelyExplored(FillerThread, double) -> void``
@@ -2679,20 +2595,6 @@ FillerThreadArtist
    **Returns:** ``DefaultSearchNode``
 
 
-FlyCircuitLoader
-----------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
-
 Frangi
 ------
 
@@ -2801,16 +2703,6 @@ GWDTTracer
    * **dim** (``int``)
    * **nDims** (``int``)
    * **action** (``Any``)
-
-   **Returns:** ``None``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
 
    **Returns:** ``None``
 
@@ -2941,16 +2833,6 @@ GroupedTreeStatistics
    * **measurement** (``str``): - the measurement (N_NODES, NODE_RADIUS, etc.)
 
    **Returns:** (``float``) the p-value
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: tTest(measurement, group1Label, group2Label)
 
@@ -4004,16 +3886,6 @@ InsectBrainLoader
 
    **Returns:** (``bool``) true, if the neuron id specified in the constructor was found in the database
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 
 LabelProximityDetector
 ----------------------
@@ -4145,16 +4017,6 @@ MouseLightLoader
 
    **Returns:** (``bool``) true if the ID exists, false otherwise
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: save(file)
 
    Convenience method to save JSON data.
@@ -4166,20 +4028,6 @@ MouseLightLoader
    * **file** (``str``): - the output directory or the output file
 
    **Returns:** (``bool``) true, if successful
-
-
-MouseLightQuerier
------------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 
 MultiSpectralRefiner
@@ -4237,16 +4085,6 @@ MultiSpectralRefiner
 
 MultiTreeColorMapper
 --------------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: map(measurement, colorTable)
 
@@ -4320,20 +4158,6 @@ MultiTreeStatistics
 
    **Returns:** ``TreeStatistics``
 
-.. method:: main(args)
-
-   Main method for testing and demonstration purposes.
-
-Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``): - command line arguments (not used)
-
-   **Returns:** ``None``
-
 .. method:: resetRestrictions()
 
    Description copied from class: `TreeStatistics`
@@ -4380,16 +4204,6 @@ Creates a MultiTreeStatistics instance using demo data and displays various anal
 MultiViewer2D
 -------------
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: save(filePath)
 
    **Signature:** ``save(String) -> void``
@@ -4409,16 +4223,6 @@ MultiViewer2D
 
 MultiViewer3D
 -------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: show()
 
@@ -4444,29 +4248,9 @@ NeuroMorphoLoader
 
    **Returns:** (``Tree``) the specified neuron as a `Tree` object, or null if data could not be retrieved
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 
 NodeColorMapper
 ---------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: map(measurement, colorTable)
 
@@ -4494,16 +4278,6 @@ NodeColorMapper
 
 NodeProfiler
 ------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: run()
 
@@ -4552,16 +4326,6 @@ NodeStatistics
    * **compartment** (``Any``): - the query compartment (null not allowed)
 
    **Returns:** (``List[Any]``) the list of filtered nodes
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 
 NormalizedProfileStats
@@ -5241,16 +5005,6 @@ PathManagerUI
 
    **Returns:** ``None``
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: reload()
 
    Reloads the contents of `PathAndFillManager`
@@ -5351,16 +5105,6 @@ A maxima (peak) will only be considered if protruding less than the profile's st
 
    **Returns:** (``List[int]``) the indices of the minima
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: run()
 
    **Signature:** ``run() -> void``
@@ -5387,16 +5131,6 @@ PathStatistics
    * **metric** (``str``)
 
    **Returns:** ``TreeStatistics``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: resetRestrictions()
 
@@ -5440,39 +5174,11 @@ PathStatistics
 PathStraightener
 ----------------
 
-.. method:: main(args)
-
-   Main method for testing and demonstration purposes.
-
-Creates a PathStraightener instance using demo data and displays the straightened path result. This method is primarily used for development and debugging.
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``): - command line arguments (not used)
-
-   **Returns:** ``None``
-
 .. method:: straighten()
 
    **Signature:** ``straighten() -> ImagePlus``
 
    **Returns:** ``Any``
-
-
-PersistenceAnalyzer
--------------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 
 PlausibilityCalibrator
@@ -6020,16 +5726,6 @@ RootAngleAnalyzer
 
    **Returns:** (``float``) Returns the centripetal bias, or κ (dimensionless, range: [0, ∞[).
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: max()
 
    **Signature:** ``max() -> double``
@@ -6271,16 +5967,6 @@ Deliberately scoped to editing, not tracing: this reuses the normal `initialize(
    **Signature:** ``is2D() -> boolean``
 
    **Returns:** (``bool``) true if the image currently loaded does not have a depth (Z) dimension
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: manualTrace(start, end, forkPoint)
 
@@ -6688,16 +6374,6 @@ Returns true if the chart object exists and presumably contains data that can be
 Closes the chart window and removes it from the list of open instances. This method should be called when the chart is no longer needed to prevent memory leaks.
 
    **Signature:** ``dispose() -> void``
-
-   **Returns:** ``None``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
 
    **Returns:** ``None``
 
@@ -8229,20 +7905,6 @@ SeedRois
    **Returns:** ``List[Any]``
 
 
-ShollAnalyzer
--------------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
-
 ShollOverlay
 ------------
 
@@ -8886,16 +8548,6 @@ StrahlerAnalyzer
 
    **Returns:** ``None``
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 
 SupplierUtil
 ------------
@@ -9314,16 +8966,6 @@ Note that 1) upsampling is not supported (cf. `Path.upsample(double)`), and 2) t
 
    **Returns:** (``List[Any]``) the list of imported `Tree`s. An empty list is retrieved if `dir` is not a valid, readable directory.
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: merge(tree)
 
    Appends all paths of a specified `Tree` to this one.
@@ -9533,16 +9175,6 @@ The upscaling will include all the original nodes plus additional interpolated n
 TreeColorMapper
 ---------------
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 .. method:: map(measurement, colorTable)
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
@@ -9582,16 +9214,6 @@ TreeColorMapper
 
 TreeParser
 ----------
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: parse()
 
@@ -9635,16 +9257,6 @@ TreeStatistics
    * **metric** (``str``)
 
    **Returns:** (``TreeStatistics``) the TreeStatistics instance
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
 
 .. method:: resetRestrictions()
 
@@ -9935,16 +9547,6 @@ VFBUtils
 
    **Returns:** (``SNTPoint``) the SNT point defining the (X,Y,Z) center of brain mesh.
 
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
-
-   **Returns:** ``None``
-
 
 Viewer2D
 --------
@@ -9958,16 +9560,6 @@ Viewer2D
    **Parameters:**
 
    * **object** (``Any``): - the tree to be plotted
-
-   **Returns:** ``None``
-
-.. method:: main(args)
-
-   **Signature:** ``main(String[]) -> void``
-
-   **Parameters:**
-
-   * **args** (``List[str]``)
 
    **Returns:** ``None``
 
@@ -10310,4 +9902,4 @@ ZBAtlasUtils
 
 ----
 
-*Category index generated on 2026-11-02 07:57:40*
+*Category index generated on 2026-11-02 08:38:08*

@@ -91,66 +91,54 @@ you want to debug or improve PySNT have a look at
 
 ### Attaching to SNT
 
-PySNT requires a connection to a local SNT installation. There are two options:
-
-1. **Use an existing Fiji installation** (recommended): Point PySNT to a Fiji install that's subscribed to the [NeuroAnatomy update site](https://imagej.net/SNT#install)
-
-2. **Automatic download**: PySNT will automatically download the SNT binary in the background the first time you import an SNT class. This initial download may take several minutes, but subsequent runs will start instantly.
-
-
-```{important}
-Currently the automatic option does not retrieve the latest version of SNT. Until PySNT is officially released, it is best to point pyimagej to a Fiji installation with SNT pre-installed:
-
-1. Download **Fiji LATEST** from imagej.net/software/fiji/downloads
-
-2. Extract the ZIP. _Optional_: Rename Fiji.app to Fiji-SNT.app if you want to keep multiple Fiji installations side by side
-
-3. Run the Fiji Updater (Help › Update…, the penultimate entry in the Help menu)
-
-4. Click Manage update sites
-
-5. Search for `Neuroanatomy` (or `SNT`) and activate the _Neuroanatomy_ checkbox
-
-6. Click _Apply Changes_ and close Fiji
-
-7. Provide the installer with the path to the unzipped directory (see below)
-```
-
-### Interactive Setup
-
-When you initialize pysnt using default options:
+`pysnt.initialize()` needs SNT in the JVM. By default it is **downloaded from Maven** the first time
+(`org.morphonets:SNT`, plus the BigVolumeViewer dependency used by `Bvv`) and cached for later runs, so
+no Fiji installation is required:
 
 ```python
 import pysnt
 pysnt.initialize()
 ```
 
-The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
+The first start may take several minutes while dependencies are resolved. Java 21 is required
+(`JAVA_HOME` must point to it, or let PySNT set it up with `ensure_java=True`).
+
+To use a local Fiji instead (e.g., to access your plugins or update sites), provide its path. PySNT picks
+the first source that applies:
+
+1. `pysnt.initialize(fiji_path="/path/to/Fiji.app")`
+2. The `FIJI_PATH` environment variable
+3. A path saved with `pysnt.set_fiji_path("/path/to/Fiji.app")` (persists across sessions)
+4. Maven (default)
+
+Related options of `initialize()`:
+
+| Argument | Effect |
+|---|---|
+| `source="maven"` (alias `"remote"`) | Ignore any configured Fiji and use Maven |
+| `source="fiji"` (alias `"local"`) | Require a local Fiji: if none is configured, common install locations are searched and, when `interactive=True`, you are asked for the path |
+| `snt_version="5.0.24"` | Maven only: SNT version to download (also settable with the `SNT_VERSION` environment variable) |
+| `extras=[...]` | Maven only: additional Maven endpoints; `[]` skips the defaults (BigVolumeViewer) |
+
+PySNT warns if the loaded SNT differs in major.minor from the version it was written for (e.g., an outdated
+Fiji): classes or methods may then be missing. `pysnt.snt_version()` returns the version in use.
+
+```{note}
+For a Fiji install, subscribe to the [NeuroAnatomy update site](https://imagej.net/SNT#install) and run the
+Updater so that SNT is current.
+```
+
+```{tip}
+Developing against a local snapshot of SNT (`mvn install`)? Clear the cached environment so that the new
+jar is used: `rm -rf ~/.jgo ~/.cache/jgo`
+```
+
+### Configuring a local Fiji
 
 ```console
-❌ Fiji installation not found!
-
-PySNT requires Fiji to function. Here's how to fix this:
-
-🔧 Quick Solutions:
-  1. Run the interactive setup:
-     python -m pysnt.setup_utils
-
-  2. Auto-detect Fiji installation:
-     python -m pysnt.setup_utils --auto-detect
-
-📋 Alternative Methods:
-  • Set environment variable: export FIJI_PATH='/path/to/Fiji.app'
-  • Pass path directly: pysnt.initialize(fiji_path='/path/to/Fiji.app')
-  • Use pysnt.set_fiji_path('/path/to/Fiji.app')
-
-🔍 We checked these common locations:
-  ✗ /Applications/Fiji.app
-  ✗ ~/Downloads/Fiji.app
-  ... and 3 more locations
-
-💡 Need help? Check configuration status:
-   python -m pysnt.setup_utils --status
+python -m pysnt.setup_utils               # interactive setup
+python -m pysnt.setup_utils --auto-detect # search common locations and save the first valid one
+python -m pysnt.setup_utils --status      # show the current configuration
 ```
 
 ## Verify Installation
@@ -276,11 +264,8 @@ setup_java_environment()
 
 ### Common Issues
 
-1. **"Fiji not found" error**: Set `FIJI_PATH` environment variable, or use the interactive setup:
-   ```python
-   import pysnt
-   pysnt.initialize(interactive =True)  # 8GB heap
-   ```
+1. **"Fiji not found" error** (only when a Fiji is requested explicitly): check the path passed to `fiji_path`,
+   or set the `FIJI_PATH` environment variable. Omit both to use Maven instead.
 2. **Java version issues**: Ensure Java 21+ is installed and accessible
 3. **Memory issues**: Use memory configuration:
    ```python

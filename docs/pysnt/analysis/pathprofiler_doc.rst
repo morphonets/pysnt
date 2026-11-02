@@ -161,11 +161,6 @@ Other Methods
    A maxima (peak) will only be considered if protruding less than the profile's standard deviation from the ridge to a lower minimum
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: run()
 
    

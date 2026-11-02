@@ -3,7 +3,7 @@
   "package": "sc.fiji.snt.analysis",
   "extracted_at": "2026-11-02T00:24:01.651205",
   "extractor_version": "2.0.0",
-  "enhancement_timestamp": "2026-11-02T07:57:40.289434",
+  "enhancement_timestamp": "2026-11-02T08:38:08.287655",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -2076,34 +2076,6 @@
       "examples": []
     },
     {
-      "name": "main",
-      "overloads": [
-        {
-          "signature": "main(String[]) -> void",
-          "params": [
-            {
-              "name": "args",
-              "type": "List[str]",
-              "java_type": "String[]",
-              "description": "- command line arguments (not used)",
-              "javadoc_name": "args"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: main",
-      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "measure",
       "overloads": [
         {
@@ -2246,8 +2218,8 @@
               "name": "exactMetricMatch",
               "type": "bool",
               "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
+              "description": "- command line arguments (not used)",
+              "javadoc_name": "args"
             }
           ],
           "return_type": "None",
@@ -2257,7 +2229,7 @@
         }
       ],
       "documentation": "Java method: setExactMetricMatch",
-      "javadoc_description": "",
+      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -2464,35 +2436,35 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Constant Field Values",
-    "StrahlerAnalyzer.getBranches()",
-    "TreeStatistics.getPrimaryBranches()",
-    "getMetrics()",
-    "AllenCompartment.getOntologyDepth()",
     "TreeStatistics.getPrimaryPaths()",
-    "TreeStatistics.getMetric(String)",
-    "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "TreeStatistics.getHistogram(String)",
-    "AllenCompartment",
-    "StrahlerAnalyzer.getHighestBranchOrder()",
     "TreeStatistics",
+    "Constant Field Values",
+    "getMetrics()",
+    "TreeStatistics.getMetric(String)",
+    "StrahlerAnalyzer.getBranches()",
+    "AllenCompartment.getOntologyDepth()",
+    "TreeStatistics.getPrimaryBranches()",
+    "StrahlerAnalyzer.getRootAssociatedBranches()",
+    "StrahlerAnalyzer.getHighestBranchOrder()",
+    "AllenCompartment",
+    "TreeStatistics.getHistogram(String)",
     "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 36,
-      "total_json_methods": 75,
+      "total_json_methods": 74,
       "total_matches": 35,
-      "exact_matches": 33,
-      "signature_matches": 2,
+      "exact_matches": 32,
+      "signature_matches": 3,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 1,
-      "unmatched_json": 40,
+      "unmatched_json": 39,
       "match_percentage": 97.2
     },
     "unmatched_javadoc_methods": 1,
-    "unmatched_json_methods": 48,
+    "unmatched_json_methods": 47,
     "enhancement_quality_score": 1.0
   }
 }

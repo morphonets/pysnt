@@ -3120,11 +3120,15 @@ MultiTreeStatistics
 
 .. method:: setExactMetricMatch(exactMetricMatch)
 
+   Main method for testing and demonstration purposes.
+
+Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
+
    **Signature:** ``setExactMetricMatch(boolean) -> void``
 
    **Parameters:**
 
-   * **exactMetricMatch** (``bool``)
+   * **exactMetricMatch** (``bool``): - command line arguments (not used)
 
    **Returns:** ``None``
 
@@ -7964,4 +7968,4 @@ Viewer3D
 
 ----
 
-*Category index generated on 2026-11-02 07:57:40*
+*Category index generated on 2026-11-02 08:38:08*

@@ -389,11 +389,6 @@ Other Methods
    Gets all the paths from this tree.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: merge(Tree)
 
    Appends all paths of a specified ``Tree`` to this one.

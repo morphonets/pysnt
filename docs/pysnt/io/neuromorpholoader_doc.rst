@@ -98,11 +98,6 @@ Other Methods
    Enables or disables the use of source version URLs.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

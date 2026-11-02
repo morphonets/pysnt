@@ -93,15 +93,6 @@ Setters Methods
    Sets the version of the Common Coordinate Framework to be used by the Querier.
 
 
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

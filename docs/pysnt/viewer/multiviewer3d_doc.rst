@@ -117,11 +117,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

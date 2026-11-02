@@ -169,11 +169,6 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: map(String, ColorTable)
 
    Description copied from class: ``ColorMapper``

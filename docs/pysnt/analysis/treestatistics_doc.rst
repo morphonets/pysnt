@@ -419,11 +419,6 @@ Other Methods
    Creates a TreeStatistics instance from a group of Trees and a specific metric for convenient retrieval of histograms
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: restrictToSWCType(int[])
 
    Restricts analysis to Paths sharing the specified SWC flag(s).

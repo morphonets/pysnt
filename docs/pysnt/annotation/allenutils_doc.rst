@@ -150,11 +150,6 @@ Other Methods
    Returns the spatial centroid of the Allen CCF.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: splitByHemisphere(DirectedWeightedGraph)
 
    

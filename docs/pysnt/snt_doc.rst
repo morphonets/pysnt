@@ -892,11 +892,6 @@ Other Methods
    Deliberately scoped to editing, not tracing: this reuses the normal ``initialize(ImagePlus)`` pipeline, which also replaces ``ctSlice3d`` with the crop's own (small) pixel data. A* search/GWDT tracing initiated after materializing is therefore scoped to the crop's own bounds, not the full streamed volume, until a different region is materialized (or the session is reconnected). There is no path for pixel edits to write back into the canonical streamed source: only geometry/paths persist, pixel edits are local to this session.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: makePathVolume(Collection, boolean)
 
    Rasterizes centerline of paths into an ImagePlus

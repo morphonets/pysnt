@@ -103,11 +103,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: maximumDistanceCompletelyExplored(FillerThread, double)
 
    

@@ -73,13 +73,6 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: main(String[])
-
-   Main method for testing and demonstration purposes.
-
-   Creates a PathStraightener instance using demo data and displays the straightened path result. This method is primarily used for development and debugging.
-
-
 .. py:method:: straighten()
 
    

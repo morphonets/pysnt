@@ -118,11 +118,6 @@ Other Methods
    Returns the strength of the centripetal bias, also known as κ. κ is defined as the concentration of the von Mises fit of the root angle distribution. κ= 0 indicate no bias (root angles are distributed uniformly). K->∞ indicate that all neurites point directly toward the root of the tree
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: max()
 
    

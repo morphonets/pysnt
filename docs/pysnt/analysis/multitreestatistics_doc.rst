@@ -396,7 +396,9 @@ Setters Methods
 
 .. py:method:: setExactMetricMatch(boolean)
 
-   
+   Main method for testing and demonstration purposes.
+
+   Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
 
 
 .. py:method:: setLabel(String)
@@ -439,13 +441,6 @@ Other Methods
 .. py:method:: fromCollection(Collection, String)
 
    
-
-
-.. py:method:: main(String[])
-
-   Main method for testing and demonstration purposes.
-
-   Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
 
 
 .. py:method:: restrictToSWCType(int[])

@@ -387,11 +387,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: posToIndex(long[], long[])
 
    

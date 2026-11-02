@@ -247,15 +247,6 @@ Getters Methods
    **Output Structure:** Returns a 1D array of length ``numLandscapes × resolution`` where the first ``resolution`` values represent the first landscape function, the next ``resolution`` values represent the second landscape function, and so on.
 
 
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

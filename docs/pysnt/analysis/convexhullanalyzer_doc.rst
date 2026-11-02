@@ -161,13 +161,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   Main method for testing and demonstration purposes.
-
-   Creates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.
-
-
 .. py:method:: run()
 
    

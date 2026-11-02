@@ -998,7 +998,7 @@ Matching Methods
    * - :meth:`MultiTreeStatistics.setExactMetricMatch`
      - :class:`MultiTreeStatistics`
      - ``None``
-     - No description available
+     - Main method for testing and demonstration purposes. Creates a MultiTreeStatistics instance using demo data and displays...
    * - :meth:`PathStatistics.setExactMetricMatch`
      - :class:`PathStatistics`
      - ``None``
@@ -2802,4 +2802,4 @@ Matching Methods
 
 ----
 
-*Filtered index generated on 2026-11-02 07:57:40*
+*Filtered index generated on 2026-11-02 08:38:08*

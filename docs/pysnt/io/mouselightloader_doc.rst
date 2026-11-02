@@ -167,11 +167,6 @@ Other Methods
    Checks if the neuron ID exists in the database.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

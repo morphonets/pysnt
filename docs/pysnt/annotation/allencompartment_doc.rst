@@ -158,11 +158,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: name()
 
    Description copied from interface: ``BrainAnnotation``

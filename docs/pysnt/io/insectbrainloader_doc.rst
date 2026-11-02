@@ -98,11 +98,6 @@ Other Methods
    Checks whether the neuron to be loaded was found in the database.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

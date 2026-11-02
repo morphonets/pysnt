@@ -97,11 +97,6 @@ Other Methods
    
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: size()
 
    Description copied from class: ``AbstractConvexHull``

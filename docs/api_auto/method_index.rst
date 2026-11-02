@@ -3,7 +3,7 @@ Method Index
 
 This page provides an index of all methods available in the SNT API.
 
-Total methods: **3210** across **149** classes.
+Total methods: **3172** across **149** classes.
 
 
 A
@@ -2012,44 +2012,6 @@ L
 M
 ^
 
-* `AllenCompartment.main <../pysnt/annotation/allencompartment_doc.html#main>`_ - No description available
-* `AllenUtils.main <../pysnt/annotation/allenutils_doc.html#main>`_ - No description available
-* `AnnotationGraph.main <../pysnt/analysis/annotationgraph_doc.html#main>`_ - No description available
-* `BinaryTracer.main <../pysnt/tracing/binarytracer_doc.html#main>`_ - No description available
-* `ConvexHull2D.main <../pysnt/analysis/convexhull2d_doc.html#main>`_ - No description available
-* `ConvexHull3D.main <../pysnt/analysis/convexhull3d_doc.html#main>`_ - No description available
-* `ConvexHullAnalyzer.main <../pysnt/analysis/convexhullanalyzer_doc.html#main>`_ - Main method for testing and demonstration purposes. Creates a ConvexHullAnalyzer instance using demo data and runs the...
-* `FillManagerUI.main <../pysnt/fillmanagerui_doc.html#main>`_ - No description available
-* `FlyCircuitLoader.main <../pysnt/io/flycircuitloader_doc.html#main>`_ - No description available
-* `GWDTTracer.main <../pysnt/tracing/gwdttracer_doc.html#main>`_ - No description available
-* `GroupedTreeStatistics.main <../pysnt/analysis/groupedtreestatistics_doc.html#main>`_ - No description available
-* `InsectBrainLoader.main <../pysnt/io/insectbrainloader_doc.html#main>`_ - No description available
-* `MouseLightLoader.main <../pysnt/io/mouselightloader_doc.html#main>`_ - No description available
-* `MouseLightQuerier.main <../pysnt/io/mouselightquerier_doc.html#main>`_ - No description available
-* `MultiTreeColorMapper.main <../pysnt/analysis/multitreecolormapper_doc.html#main>`_ - No description available
-* `MultiTreeStatistics.main <../pysnt/analysis/multitreestatistics_doc.html#main>`_ - Main method for testing and demonstration purposes. Creates a MultiTreeStatistics instance using demo data and displays...
-* `MultiViewer2D.main <../pysnt/viewer/multiviewer2d_doc.html#main>`_ - No description available
-* `MultiViewer3D.main <../pysnt/viewer/multiviewer3d_doc.html#main>`_ - No description available
-* `NeuroMorphoLoader.main <../pysnt/io/neuromorpholoader_doc.html#main>`_ - No description available
-* `NodeColorMapper.main <../pysnt/analysis/nodecolormapper_doc.html#main>`_ - No description available
-* `NodeProfiler.main <../pysnt/analysis/nodeprofiler_doc.html#main>`_ - No description available
-* `NodeStatistics.main <../pysnt/analysis/nodestatistics_doc.html#main>`_ - No description available
-* `PathManagerUI.main <../pysnt/pathmanagerui_doc.html#main>`_ - No description available
-* `PathProfiler.main <../pysnt/analysis/pathprofiler_doc.html#main>`_ - No description available
-* `PathStatistics.main <../pysnt/analysis/pathstatistics_doc.html#main>`_ - No description available
-* `PathStraightener.main <../pysnt/analysis/pathstraightener_doc.html#main>`_ - Main method for testing and demonstration purposes. Creates a PathStraightener instance using demo data and displays...
-* `PersistenceAnalyzer.main <../pysnt/analysis/persistenceanalyzer_doc.html#main>`_ - No description available
-* `RootAngleAnalyzer.main <../pysnt/analysis/rootangleanalyzer_doc.html#main>`_ - No description available
-* `SNT.main <../pysnt/snt_doc.html#main>`_ - No description available
-* `SNTChart.main <../pysnt/analysis/sntchart_doc.html#main>`_ - No description available
-* `ShollAnalyzer.main <../pysnt/analysis/shollanalyzer_doc.html#main>`_ - No description available
-* `StrahlerAnalyzer.main <../pysnt/analysis/strahleranalyzer_doc.html#main>`_ - No description available
-* `Tree.main <../pysnt/tree_doc.html#main>`_ - No description available
-* `TreeColorMapper.main <../pysnt/analysis/treecolormapper_doc.html#main>`_ - No description available
-* `TreeParser.main <../pysnt/analysis/treeparser_doc.html#main>`_ - No description available
-* `TreeStatistics.main <../pysnt/analysis/treestatistics_doc.html#main>`_ - No description available
-* `VFBUtils.main <../pysnt/annotation/vfbutils_doc.html#main>`_ - No description available
-* `Viewer2D.main <../pysnt/viewer/viewer2d_doc.html#main>`_ - No description available
 * `SNT.makePathVolume <../pysnt/snt_doc.html#makePathVolume>`_ - Rasterizes centerline of paths into an ImagePlus
 * `SNT.manualTrace <../pysnt/snt_doc.html#manualTrace>`_ - Manually traces a straight path from a point A to a point B, bypassing A* (or any other configured `SearchInterface`)...
 * `MultiTreeColorMapper.map <../pysnt/analysis/multitreecolormapper_doc.html#map>`_ - Description copied from class: `ColorMapper`
@@ -2577,7 +2539,7 @@ S
 * `PlausibilityMonitor.setEnabled <../pysnt/analysis/plausibilitymonitor_doc.html#setEnabled>`_ - No description available
 * `SNTChart.setEqualizeAxes <../pysnt/analysis/sntchart_doc.html#setEqualizeAxes>`_ - Sets whether the axes of the underlying XY plot should be equalized (same scale). When enabled, both X and Y axes will...
 * `Viewer2D.setEqualizeAxes <../pysnt/viewer/viewer2d_doc.html#setEqualizeAxes>`_ - /** Sets whether the axes should be equalized (same scale). When enabled, both X and Y axes will use the same scale to...
-* `MultiTreeStatistics.setExactMetricMatch <../pysnt/analysis/multitreestatistics_doc.html#setExactMetricMatch>`_ - No description available
+* `MultiTreeStatistics.setExactMetricMatch <../pysnt/analysis/multitreestatistics_doc.html#setExactMetricMatch>`_ - Main method for testing and demonstration purposes. Creates a MultiTreeStatistics instance using demo data and displays...
 * `PathStatistics.setExactMetricMatch <../pysnt/analysis/pathstatistics_doc.html#setExactMetricMatch>`_ - No description available
 * `TreeStatistics.setExactMetricMatch <../pysnt/analysis/treestatistics_doc.html#setExactMetricMatch>`_ - Sets whether loose phrases (e.g., "# bps" or "n junctions") should be matched to the closest supported metric when...
 * `Profile.setExtraMeasurement <../pysnt/analysis/profile_doc.html#setExtraMeasurement>`_ - No description available

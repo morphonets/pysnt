@@ -93,11 +93,6 @@ Other Methods
    Returns the spatial centroid of an adult Drosophila template brain.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

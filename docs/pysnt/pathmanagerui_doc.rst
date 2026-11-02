@@ -186,11 +186,6 @@ Other Methods
    Gets the collection of paths listed in the Path Manager as a ``Tree`` object. All paths are retrieved if none are currently selected.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: refreshForPaths(Collection)
 
    Repaints the Path Manager view for the given paths. Public hook used by external mutators (e.g. the Curation Assistant's review-tag actions in ``CurationManager``) that change path names directly and need the table to pick the change up; bypasses the heavier viewer-update pass because path mutations like tag-suffix edits don't affect 3D viewers.

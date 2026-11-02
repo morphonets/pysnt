@@ -141,11 +141,6 @@ Other Methods
    Filters the current pool of nodes matching a measurement-based criterion.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

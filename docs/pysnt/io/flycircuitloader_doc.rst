@@ -84,15 +84,6 @@ Getters Methods
    Checks whether a connection to the FlyCircuit database can be established.
 
 
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

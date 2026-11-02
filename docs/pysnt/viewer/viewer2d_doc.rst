@@ -273,11 +273,6 @@ Other Methods
    Adds a collection of trees. Each tree will be rendered using a unique color.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: map(String, ColorTable)
 
    

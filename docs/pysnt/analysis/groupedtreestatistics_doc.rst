@@ -122,11 +122,6 @@ Other Methods
    Computes the one-way ANOVA P-value for all the groups being analyzed. It is assumed that data fulfills basic assumptions on normality, variance homogeneity, sample size, etc.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: tTest(String, String, String)
 
    Computes a two-sample, two-tailed t-test P-value for two of groups being analyzed. It is assumed that data fulfills basic assumptions on normality, variance homogeneity, etc.

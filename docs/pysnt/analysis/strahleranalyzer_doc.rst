@@ -158,11 +158,6 @@ Other Methods
    Clears internal caches and mappings to free memory.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 See Also
 --------
 

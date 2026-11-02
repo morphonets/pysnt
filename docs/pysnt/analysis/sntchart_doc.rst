@@ -351,11 +351,6 @@ Other Methods
    Closes the chart window and removes it from the list of open instances. This method should be called when the chart is no longer needed to prevent memory leaks.
 
 
-.. py:method:: main(String[])
-
-   
-
-
 .. py:method:: openCharts()
 
    
