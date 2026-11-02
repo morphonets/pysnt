@@ -48,9 +48,23 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
+      - name: Cache Maven/jgo downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.jgo
+            ~/.cache/jgo
+          key: jgo-${{ runner.os }}-${{ hashFiles('src/pysnt/_endpoints.py') }}
+          restore-keys: jgo-${{ runner.os }}-
       - name: Install
         # pandasgui/pyobjc (extra "gui") are interactive-only and heavy: not needed here
         run: pip install -e ".[display,zarr,info]" pytest pytest-cov pytest-timeout nbclient typing_extensions
+      - name: Warm up SNT download
+        # First start resolves SNT's whole Maven dependency tree (many minutes on a cold runner):
+        # do it once here, outside the per-test timeout. Also exercises the documented user flow
+        timeout-minutes: 25
+        run: python -c "import pysnt; pysnt.initialize(source='maven'); print(pysnt.snt_version())"
       - name: Test
         # A test stuck for 5 min is aborted with the stack of every thread (thread method also
         # works on Windows); -v names each test so a stall is easy to locate in the log.
@@ -71,6 +85,15 @@ jobs:
           distribution: temurin
           java-version: "21"
       - uses: astral-sh/setup-uv@v5
+      - name: Cache Maven/jgo downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.jgo
+            ~/.cache/jgo
+          key: jgo-${{ runner.os }}-${{ hashFiles('src/pysnt/_endpoints.py') }}
+          restore-keys: jgo-${{ runner.os }}-
       - name: Install the oldest versions allowed by pyproject.toml
         run: |
           uv venv
