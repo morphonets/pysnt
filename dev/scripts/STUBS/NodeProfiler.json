@@ -1,266 +1,75 @@
 {
   "class_name": "NodeProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.652906",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.NodeProfiler",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.658199",
+  "extractor_version": "2.0.0",
   "methods": [
-    {
-      "name": "addInput",
-      "overloads": [
-        {
-          "signature": "addInput(String, Class) -> MutableModuleItem",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "type",
-              "java_type": "Class"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleItem"
-        },
-        {
-          "signature": "addInput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: addInput"
-    },
-    {
-      "name": "addOutput",
-      "overloads": [
-        {
-          "signature": "addOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addOutput(String, Class) -> MutableModuleItem",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "type",
-              "java_type": "Class"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleItem"
-        }
-      ],
-      "documentation": "Java method: addOutput"
-    },
     {
       "name": "cancel",
       "overloads": [
         {
+          "signature": "cancel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "CommonDynamicCmd"
+        },
+        {
           "signature": "cancel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "reason",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "cancel() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "CommonDynamicCmd"
         }
       ],
       "documentation": "Java method: cancel"
     },
     {
-      "name": "context",
-      "overloads": [
-        {
-          "signature": "context() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context"
-        }
-      ],
-      "documentation": "Java method: context"
-    },
-    {
-      "name": "getCancelReason",
-      "overloads": [
-        {
-          "signature": "getCancelReason() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String"
-        }
-      ],
-      "documentation": "Java method: getCancelReason"
-    },
-    {
-      "name": "getContext",
-      "overloads": [
-        {
-          "signature": "getContext() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context"
-        }
-      ],
-      "documentation": "Java method: getContext"
-    },
-    {
-      "name": "getDelegateObject",
-      "overloads": [
-        {
-          "signature": "getDelegateObject() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        }
-      ],
-      "documentation": "Java method: getDelegateObject"
-    },
-    {
-      "name": "getInfo",
-      "overloads": [
-        {
-          "signature": "getInfo() -> DynamicCommandInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "DynamicCommandInfo"
-        },
-        {
-          "signature": "getInfo() -> MutableModuleInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleInfo"
-        },
-        {
-          "signature": "getInfo() -> ModuleInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ModuleInfo"
-        }
-      ],
-      "documentation": "Java method: getInfo"
-    },
-    {
-      "name": "getInput",
-      "overloads": [
-        {
-          "signature": "getInput(String) -> Object",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        }
-      ],
-      "documentation": "Java method: getInput"
-    },
-    {
-      "name": "getInputs",
-      "overloads": [
-        {
-          "signature": "getInputs() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        }
-      ],
-      "documentation": "Java method: getInputs"
-    },
-    {
-      "name": "getOutput",
-      "overloads": [
-        {
-          "signature": "getOutput(String) -> Object",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        }
-      ],
-      "documentation": "Java method: getOutput"
-    },
-    {
-      "name": "getOutputs",
-      "overloads": [
-        {
-          "signature": "getOutputs() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        }
-      ],
-      "documentation": "Java method: getOutputs"
-    },
-    {
       "name": "getPlot",
       "overloads": [
+        {
+          "signature": "getPlot(Path) -> Plot",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Plot",
+          "is_static": false
+        },
         {
           "signature": "getPlot(Path, int) -> Plot",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "channel",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Plot"
-        },
-        {
-          "signature": "getPlot(Path) -> Plot",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Plot"
+          "java_return_type": "Plot",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPlot"
@@ -269,33 +78,35 @@
       "name": "getTable",
       "overloads": [
         {
+          "signature": "getTable(Path) -> SNTTable",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "is_static": false
+        },
+        {
           "signature": "getTable(Path, int) -> SNTTable",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "channel",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
-        },
-        {
-          "signature": "getTable(Path) -> SNTTable",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
+          "java_return_type": "SNTTable",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTable"
@@ -304,53 +115,43 @@
       "name": "getValues",
       "overloads": [
         {
-          "signature": "getValues(Path, int, int) -> SortedMap",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "SortedMap"
-        },
-        {
           "signature": "getValues(Path) -> SortedMap",
           "params": [
             {
-              "name": "arg0",
+              "name": "p",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "SortedMap"
+          "java_return_type": "SortedMap",
+          "is_static": false
+        },
+        {
+          "signature": "getValues(Path, int, int) -> SortedMap",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SortedMap",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getValues"
-    },
-    {
-      "name": "initialize",
-      "overloads": [
-        {
-          "signature": "initialize() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: initialize"
     },
     {
       "name": "isCanceled",
@@ -359,166 +160,12 @@
           "signature": "isCanceled() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "CommonDynamicCmd"
         }
       ],
       "documentation": "Java method: isCanceled"
-    },
-    {
-      "name": "isInputResolved",
-      "overloads": [
-        {
-          "signature": "isInputResolved(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: isInputResolved"
-    },
-    {
-      "name": "isOutputResolved",
-      "overloads": [
-        {
-          "signature": "isOutputResolved(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: isOutputResolved"
-    },
-    {
-      "name": "isResolved",
-      "overloads": [
-        {
-          "signature": "isResolved(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: isResolved"
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
-    },
-    {
-      "name": "preview",
-      "overloads": [
-        {
-          "signature": "preview() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: preview"
-    },
-    {
-      "name": "removeInput",
-      "overloads": [
-        {
-          "signature": "removeInput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: removeInput"
-    },
-    {
-      "name": "removeOutput",
-      "overloads": [
-        {
-          "signature": "removeOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: removeOutput"
-    },
-    {
-      "name": "resolveInput",
-      "overloads": [
-        {
-          "signature": "resolveInput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: resolveInput"
-    },
-    {
-      "name": "resolveOutput",
-      "overloads": [
-        {
-          "signature": "resolveOutput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: resolveOutput"
     },
     {
       "name": "run",
@@ -527,69 +174,11 @@
           "signature": "run() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: run"
-    },
-    {
-      "name": "setContext",
-      "overloads": [
-        {
-          "signature": "setContext(Context) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setContext"
-    },
-    {
-      "name": "setInput",
-      "overloads": [
-        {
-          "signature": "setInput(String, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setInput"
-    },
-    {
-      "name": "setInputs",
-      "overloads": [
-        {
-          "signature": "setInputs(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setInputs"
     },
     {
       "name": "setNodeStep",
@@ -598,57 +187,17 @@
           "signature": "setNodeStep(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "nodeStep",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setNodeStep"
-    },
-    {
-      "name": "setOutput",
-      "overloads": [
-        {
-          "signature": "setOutput(String, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setOutput"
-    },
-    {
-      "name": "setOutputs",
-      "overloads": [
-        {
-          "signature": "setOutputs(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setOutputs"
     },
     {
       "name": "setRadius",
@@ -657,132 +206,64 @@
           "signature": "setRadius(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "radius",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setRadius"
     },
     {
-      "name": "setResolved",
-      "overloads": [
-        {
-          "signature": "setResolved(String, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setResolved"
-    },
-    {
       "name": "setShape",
       "overloads": [
         {
-          "signature": "setShape(ProfileProcessor$Shape) -> void",
+          "signature": "setShape(Shape) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "shape",
               "type": "Any",
-              "java_type": "ProfileProcessor$Shape"
+              "java_type": "Shape"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setShape"
-    },
-    {
-      "name": "uncancel",
-      "overloads": [
-        {
-          "signature": "uncancel() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: uncancel"
-    },
-    {
-      "name": "unresolveInput",
-      "overloads": [
-        {
-          "signature": "unresolveInput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: unresolveInput"
-    },
-    {
-      "name": "unresolveOutput",
-      "overloads": [
-        {
-          "signature": "unresolveOutput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: unresolveOutput"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
+          "signature": "NodeProfiler()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "NodeProfiler(Dataset)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "NodeProfiler()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for NodeProfiler"
+      "documentation": "Constructors of NodeProfiler"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

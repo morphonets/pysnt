@@ -64,22 +64,22 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAllIDs()
+.. py:method:: getAllIDs()
 
    Gets all available neuron IDs from the database.
 
 
-.. py:method:: static getIDs(Collection)
+.. py:method:: getIDs(AllenCompartment)
 
    Gets neuron IDs matching the specified collection of IDs or DOIs.
 
 
-.. py:method:: static getNeuronCount()
+.. py:method:: getNeuronCount()
 
    Gets the number of cells publicly available in the MouseLight database.
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: isDatabaseAvailable()
 
    Checks whether a connection to the MouseLight database can be established.
 
@@ -88,18 +88,9 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static setCCFVersion(String)
+.. py:method:: setCCFVersion(String)
 
    Sets the version of the Common Coordinate Framework to be used by the Querier.
-
-
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

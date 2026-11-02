@@ -56,22 +56,6 @@
 SNT's default tracer thread: explores between two points in an image, doing an A* search with a choice of distance measures.
 
 
-Fields
-------
-
-
-**imgDepth** : ``int``
-    No description available.
-
-
-**imgHeight** : ``int``
-    No description available.
-
-
-**imgWidth** : ``int``
-    No description available.
-
-
 Methods
 -------
 

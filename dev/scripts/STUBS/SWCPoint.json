@@ -1,8 +1,13 @@
 {
   "class_name": "SWCPoint",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.939652",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.SWCPoint",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.717658",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "chebyshevDxTo",
@@ -11,13 +16,15 @@
           "signature": "chebyshevDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: chebyshevDxTo"
@@ -29,13 +36,15 @@
           "signature": "chebyshevXYdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: chebyshevXYdxTo"
@@ -47,13 +56,15 @@
           "signature": "chebyshevZdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: chebyshevZdxTo"
@@ -65,34 +76,31 @@
           "signature": "clone() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
-        },
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
+          "java_return_type": "PointInImage",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: clone"
     },
     {
-      "name": "static collectionAsReader",
+      "name": "collectionAsReader",
       "overloads": [
         {
-          "signature": "static collectionAsReader(Collection) -> StringReader",
+          "signature": "collectionAsReader(Collection) -> StringReader",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "StringReader"
+          "java_return_type": "StringReader",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static collectionAsReader"
+      "documentation": "Java method: collectionAsReader"
     },
     {
       "name": "compareTo",
@@ -101,25 +109,14 @@
           "signature": "compareTo(SWCPoint) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "SWCPoint",
               "java_type": "SWCPoint"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: compareTo"
@@ -131,35 +128,39 @@
           "signature": "distanceSquaredTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         },
         {
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "ox",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "oy",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "oz",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: distanceSquaredTo"
@@ -171,16 +172,37 @@
           "signature": "distanceTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: distanceTo"
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
     },
     {
       "name": "euclideanDxTo",
@@ -189,39 +211,42 @@
           "signature": "euclideanDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: euclideanDxTo"
     },
     {
-      "name": "static flush",
+      "name": "flush",
       "overloads": [
         {
-          "signature": "static flush(Collection, PrintWriter) -> void",
+          "signature": "flush(Collection, PrintWriter) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static flush"
+      "documentation": "Java method: flush"
     },
     {
       "name": "getAnnotation",
@@ -230,7 +255,8 @@
           "signature": "getAnnotation() -> BrainAnnotation",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotation"
@@ -242,7 +268,8 @@
           "signature": "getColor() -> Color",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Color"
+          "java_return_type": "Color",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getColor"
@@ -254,13 +281,15 @@
           "signature": "getCoordinateOnAxis(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: getCoordinateOnAxis"
@@ -272,7 +301,9 @@
           "signature": "getHemisphere() -> char",
           "params": [],
           "return_type": "str",
-          "java_return_type": "char"
+          "java_return_type": "char",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: getHemisphere"
@@ -284,7 +315,8 @@
           "signature": "getNextPoints() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNextPoints"
@@ -296,7 +328,9 @@
           "signature": "getPath() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: getPath"
@@ -308,7 +342,8 @@
           "signature": "getTags() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTags"
@@ -317,22 +352,26 @@
       "name": "getUnscaledPoint",
       "overloads": [
         {
+          "signature": "getUnscaledPoint() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "is_static": false,
+          "inherited_from": "PointInImage"
+        },
+        {
           "signature": "getUnscaledPoint(int) -> PointInCanvas",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "PointInCanvas"
-        },
-        {
-          "signature": "getUnscaledPoint() -> PointInCanvas",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "PointInCanvas"
+          "java_return_type": "PointInCanvas",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: getUnscaledPoint"
@@ -344,7 +383,8 @@
           "signature": "getX() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getX"
@@ -356,7 +396,8 @@
           "signature": "getY() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getY"
@@ -368,10 +409,24 @@
           "signature": "getZ() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getZ"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
     },
     {
       "name": "isReal",
@@ -380,7 +435,9 @@
           "signature": "isReal() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: isReal"
@@ -392,13 +449,15 @@
           "signature": "isSameLocation(PointInImage) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "pim",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: isSameLocation"
@@ -410,7 +469,8 @@
           "signature": "previous() -> SWCPoint",
           "params": [],
           "return_type": "SWCPoint",
-          "java_return_type": "SWCPoint"
+          "java_return_type": "SWCPoint",
+          "is_static": false
         }
       ],
       "documentation": "Java method: previous"
@@ -422,23 +482,25 @@
           "signature": "scale(double, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xScale",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "yScale",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "zScale",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: scale"
@@ -450,13 +512,14 @@
           "signature": "setAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setAnnotation"
@@ -468,13 +531,14 @@
           "signature": "setColor(Color) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "Color"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setColor"
@@ -486,13 +550,15 @@
           "signature": "setHemisphere(char) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lr",
               "type": "str",
               "java_type": "char"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: setHemisphere"
@@ -504,13 +570,15 @@
           "signature": "setPath(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "onPath",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: setPath"
@@ -522,13 +590,14 @@
           "signature": "setPrevious(SWCPoint) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "previousNode",
               "type": "SWCPoint",
               "java_type": "SWCPoint"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPrevious"
@@ -540,16 +609,30 @@
           "signature": "setTags(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tags",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setTags"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
     },
     {
       "name": "transform",
@@ -558,13 +641,15 @@
           "signature": "transform(PathTransformer) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "transformer",
               "type": "Any",
               "java_type": "PathTransformer"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false,
+          "inherited_from": "PointInImage"
         }
       ],
       "documentation": "Java method: transform"
@@ -576,7 +661,8 @@
           "signature": "xSeparationFromPreviousPoint() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: xSeparationFromPreviousPoint"
@@ -588,7 +674,8 @@
           "signature": "ySeparationFromPreviousPoint() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: ySeparationFromPreviousPoint"
@@ -600,84 +687,11 @@
           "signature": "zSeparationFromPreviousPoint() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: zSeparationFromPreviousPoint"
-    }
-  ],
-  "fields": [
-    {
-      "name": "id",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field id of type int",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "onPath",
-      "type": "Path",
-      "java_type": "Path",
-      "documentation": "Field onPath of type Path",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "parent",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field parent of type int",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "radius",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field radius of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "type",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field type of type int",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "v",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field v of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "x",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field x of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "y",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field y of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "z",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field z of type double",
-      "is_static": false,
-      "is_final": false
     }
   ],
   "constructors": [
@@ -688,37 +702,37 @@
           "signature": "SWCPoint(int, int, double, double, double, double, int)",
           "params": [
             {
-              "name": "arg0",
+              "name": "id",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "type",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "x",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "y",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "z",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
+              "name": "radius",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg6",
+              "name": "parent",
               "type": "int",
               "java_type": "int"
             }
@@ -727,7 +741,34 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SWCPoint"
+      "documentation": "Constructors of SWCPoint"
     }
-  ]
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field id of type int"
+    },
+    {
+      "name": "parent",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field parent of type int"
+    },
+    {
+      "name": "type",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field type of type int"
+    }
+  ],
+  "static_fields": []
 }

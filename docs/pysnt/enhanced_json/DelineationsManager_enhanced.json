@@ -1,0 +1,240 @@
+{
+  "class_name": "DelineationsManager",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-11-02T00:24:01.605705",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.368144",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "getDelineationROIs",
+      "overloads": [
+        {
+          "signature": "getDelineationROIs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDelineationROIs",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasDelineationLabels",
+      "overloads": [
+        {
+          "signature": "hasDelineationLabels(Collection) -> boolean",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of paths to be inspected",
+              "javadoc_name": "tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the tree has delineation labels, false otherwise",
+          "throws": {}
+        },
+        {
+          "signature": "hasDelineationLabels(Tree) -> boolean",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasDelineationLabels",
+      "javadoc_description": "Checks if the given tree has any delineation labels.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "importFromLabelImage",
+      "overloads": [
+        {
+          "signature": "importFromLabelImage(ImagePlus) -> int",
+          "params": [
+            {
+              "name": "labelImp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the labels ImagePlus",
+              "javadoc_name": "labelImp"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of unique labels imported",
+          "throws": {}
+        },
+        {
+          "signature": "importFromLabelImage(RandomAccessibleInterval) -> int",
+          "params": [
+            {
+              "name": "labelImg",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "importFromLabelImage(RandomAccessibleInterval, double[]) -> int",
+          "params": [
+            {
+              "name": "labelImg",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: importFromLabelImage",
+      "javadoc_description": "Convenience overload accepting an `ImagePlus`, which is converted to an `ImgPlus` via `ImpUtils.toImgPlus3D(ImagePlus, int, int)`.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "load",
+      "overloads": [
+        {
+          "signature": "load(List) -> int",
+          "params": [
+            {
+              "name": "delineationROIs",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- the area ROIs to import;",
+              "javadoc_name": "delineationROIs"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of ROIs successfully associated with at least one path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: load",
+      "javadoc_description": "Loads delineations from a list of area ROIs. Each ROI is mapped to a delineation entry, and path nodes whose XY coordinates fall within the ROI are assigned to the corresponding delineation. If an ROI has been renamed or colored (stroke or fill), those properties are transferred to the delineation.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reset",
+      "overloads": [
+        {
+          "signature": "reset() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reset",
+      "javadoc_description": "Deletes all delineations.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "DelineationsManager(SNTUI)",
+          "params": [
+            {
+              "name": "sntui",
+              "type": "SNTUI",
+              "java_type": "SNTUI"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of DelineationsManager"
+    }
+  ],
+  "javadoc_description": "Implements the *Delineation Analysis* pane.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 9,
+      "total_json_methods": 5,
+      "total_matches": 8,
+      "exact_matches": 8,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 1,
+      "unmatched_json": -3,
+      "match_percentage": 88.9
+    },
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

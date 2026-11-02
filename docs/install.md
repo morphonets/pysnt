@@ -13,144 +13,128 @@ api
 
 ## Installation Requirements
 
+PySNT needs Python 3.11+ and Java 21+ (a JDK). SNT itself is downloaded automatically the first time you call
+`pysnt.initialize()` (see [Attaching to SNT](#attaching-to-snt)), so no Fiji installation is required. Any
+Python environment manager works; we document pip and pixi.
 
-The stack of dependencies used by PySNT is rather complex and includes Python 3.8+, Java 21+, [SNTv5](https://github.com/morphonets/SNT/releases), [imglyb](https://github.com/imglib/imglyb), [jgo](https://github.com/scijava/jgo), [numpy](https://github.com/numpy/numpy), [pyimagej][pyimagejdocs], [scyjava](https://github.com/scijava/scyjava), among others. Because of this complexity we recommend using a package manager. We endorse Mamba
-since Conda can be painfully slow with complex environments. If you do not have Mamba installed you can do
-so by [Installing Miniforge3](https://github.com/conda-forge/miniforge#miniforge3).
-
-```{important}
-In the future, PySNT will automatically download SNT if it is not found. For now, you'll need to download it manually
-(see installation instructions below).
+```{tip}
+No Java? Leave `ensure_java=True` (the default) in `pysnt.initialize()`: if no suitable JDK is found, PySNT offers to download one.
 ```
-
-Here we only summarize the _easiest_ way to install pysnt. For other (advanced) install options (via pip, condacolab,
-dynamic install, etc.) you should be able to adapt the advanced install documentation of [pyimagej][pyimagejdocs]. If
-you want to debug or improve PySNT have a look at
-[Install Instructions for Developers](https://github.com/morphonets/pysnt?tab=readme-ov-file#getting-started-for-developers).
 
 ## Setting Up
 
-1. Assuming you have `mamba` installed, activate conda-forge:
+Install into a *fresh, dedicated* environment: PySNT pulls in a large Java/Python stack and mixing it with other projects invites version conflicts.
 
-   ```bash
-   mamba config prepend channels conda-forge
-   conda config --set channel_priority strict
-   ```
+::::{tab-set}
 
-2. [Clone](https://github.com/morphonets/pysnt.git) or [download](https://github.com/morphonets/pysnt/archive/refs/heads/main.zip) pysnt
+:::{tab-item} pip
+Use a dedicated virtual environment (Python 3.11+):
 
-   ```bash
-   cd /path/to/hosting/directory
-   git clone https://github.com/morphonets/pysnt.git
-   ```
+```bash
+python -m venv pysnt-env
+source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
+pip install "pysnt[all]"
+```
 
-3. Create a new `pysnt` environment using the provided `environment.yml` file. This will install all the needed dependencies:
+`pysnt[all]` includes all optional features. Use `pip install pysnt` for the core install, or pick extras
+individually: `display`, `gui`, `java`, `zarr`, `info`. [uv](https://docs.astral.sh/uv/) users can run the same
+commands with `uv venv` and `uv pip install`.
+:::
 
-   ```bash
-   cd ./pysnt  # cd to pysnt root directory
-   mamba env create -f environment.yml
-   ```
+:::{tab-item} pixi
+[pixi](https://pixi.sh) installs Python, a JDK and Maven from conda-forge and records the environment in a lock file.
 
-   **Environment Options**: Other environment files are also provided for more granular installations:
+```bash
+pixi init pysnt-project && cd pysnt-project
+pixi add python=3.12 openjdk=21 maven
+pixi add --pypi "pysnt[all]"
+pixi shell
+```
 
-   | File                | Scope/Comments                                        |
-   |---------------------|-------------------------------------------------------|
-   | environment.yml     | Full install with interactive GUI features  (default) |
-   | environment-min.yml | Minimal CLI install with core dependencies only       |
-   | environment-dev.yml | Full install plus dev tools for contributing to PySNT |
+Already use conda or mamba? Create an environment with the same `python`, `openjdk=21` and `maven` packages from
+conda-forge, then `pip install "pysnt[all]"` inside it.
+:::
 
-4. Install pysnt in editable/development mode
+::::
 
-   ```bash
-   mamba activate pysnt  # activate the newly created environment
-   pip install -e .
-   ```
+Then check that PySNT is installed:
 
-5. Test that PySNT has been successfully installed, by displaying its version:
+```bash
+python -c "import pysnt; print(f'Using PySNT version: {pysnt.version()}')"
+```
 
-   ```bash
-   mamba activate pysnt
-   python -c "import pysnt; print(f'Using PySNT version: {pysnt.version()}')"
-   ```
+To contribute to PySNT (editable install from a clone), see
+[Install Instructions for Developers](https://github.com/morphonets/pysnt?tab=readme-ov-file#getting-started-for-developers).
+The `environment*.yml` files in the repository are meant for that use.
 
-   Which should print something like:
-   ```bash
-   Using PySNT version: 0.0.1
-   ```
+### Choosing an interpreter (IDEs and notebooks)
 
-6. **Optional**: Make the new `pysnt` environment available in Jupyter notebooks:
+Whatever you use, the one thing to get right is that it runs the Python of the environment above (and that
+`JAVA_HOME`, if set, points to a JDK 21+).
 
-   ```bash
-   mamba activate pysnt
-   mamba install ipykernel # Only if you haven't done so yet (i.e., if you used environment-min.yml)
-   python -m ipykernel install --user --name=pysnt
-   ```
+- **Jupyter**: `pip install ipykernel` in the environment, then `python -m ipykernel install --user --name=pysnt`
+  and select the `pysnt` kernel.
+- **VS Code**: install the Python and Jupyter extensions, press `Ctrl/Cmd+Shift+P`, run *Python: Select
+  Interpreter* and pick the environment (for notebooks, use the kernel picker at the top right).
+- **PyCharm**: *Settings > Project > Python Interpreter > Add Interpreter > Existing*, and select the
+  environment's `python`.
+- **Spyder**: install `spyder-kernels` in the environment, then in *Preferences > Python interpreter* choose
+  *Use the following interpreter* and select the environment's `python`.
 
-   Now, when you start jupyter (or Jupyter lab), it will show `pysnt` in the list of registered kernels. Selecting it makes all the packages installed in the `pysnt` environment available.
-
+```{note}
+The JVM can only be started once per Python process. If you change `initialize()` settings (heap size, source,
+version), restart the kernel/console. In Spyder and Jupyter this means restarting the kernel.
+```
 
 ### Attaching to SNT
 
-PySNT requires a connection to a local SNT installation. There are two options:
-
-1. **Use an existing Fiji installation** (recommended): Point PySNT to a Fiji install that's subscribed to the [NeuroAnatomy update site](https://imagej.net/SNT#install)
-
-2. **Automatic download**: PySNT will automatically download the SNT binary in the background the first time you import an SNT class. This initial download may take several minutes, but subsequent runs will start instantly.
-
-
-```{important}
-Currently the automatic option does not retrieve the latest version of SNT. Until PySNT is officially released, it is best to point pyimagej to a Fiji installation with SNT pre-installed:
-
-1. Download **Fiji LATEST** from imagej.net/software/fiji/downloads
-
-2. Extract the ZIP. _Optional_: Rename Fiji.app to Fiji-SNT.app if you want to keep multiple Fiji installations side by side
-
-3. Run the Fiji Updater (Help › Update…, the penultimate entry in the Help menu)
-
-4. Click Manage update sites
-
-5. Search for `Neuroanatomy` (or `SNT`) and activate the _Neuroanatomy_ checkbox
-
-6. Click _Apply Changes_ and close Fiji
-
-7. Provide the installer with the path to the unzipped directory (see below)
-```
-
-### Interactive Setup
-
-When you initialize pysnt using default options:
+`pysnt.initialize()` needs SNT in the JVM. By default it is **downloaded from [Maven](https://maven.scijava.org/)** the first time
+and cached for later runs, so no Fiji installation is required:
 
 ```python
 import pysnt
 pysnt.initialize()
 ```
 
-The program will look for a Fiji install in common locations. If Fiji is not found, an interactive installer kicks in:
+The first start may take several minutes while dependencies are resolved. Java 21 is required
+(`JAVA_HOME` must point to it, or let PySNT set it up with `ensure_java=True`).
+
+To use a local Fiji instead (e.g., to access your plugins or update sites), provide its path. PySNT picks
+the first source that applies:
+
+1. `pysnt.initialize(fiji_path="/path/to/Fiji.app")`
+2. The `FIJI_PATH` environment variable
+3. A path saved with `pysnt.set_fiji_path("/path/to/Fiji.app")` (persists across sessions)
+4. Maven (default)
+
+Related options of `initialize()`:
+
+| Argument | Effect |
+|---|---|
+| `source="maven"` (alias `"remote"`) | Ignore any configured Fiji and use Maven |
+| `source="fiji"` (alias `"local"`) | Require a local Fiji: if none is configured, common install locations are searched and, when `interactive=True`, you are asked for the path |
+| `snt_version="5.0.24"` | Maven only: SNT version to download (also settable with the `SNT_VERSION` environment variable) |
+| `extras=[...]` | Maven only: additional Maven endpoints; `[]` skips the defaults (BigVolumeViewer) |
+
+PySNT warns if the loaded SNT differs in major.minor from the version it was written for (e.g., an outdated
+Fiji): classes or methods may then be missing. `pysnt.snt_version()` returns the version in use.
+
+```{note}
+For a Fiji install, subscribe to the [NeuroAnatomy update site](https://imagej.net/SNT#install) and run the
+Updater so that SNT is current.
+```
+
+```{tip}
+Developing against a local snapshot of SNT (`mvn install`)? Clear the cached environment so that the new
+jar is used: `rm -rf ~/.jgo ~/.cache/jgo`
+```
+
+### Configuring a local Fiji
 
 ```console
-❌ Fiji installation not found!
-
-PySNT requires Fiji to function. Here's how to fix this:
-
-🔧 Quick Solutions:
-  1. Run the interactive setup:
-     python -m pysnt.setup_utils
-
-  2. Auto-detect Fiji installation:
-     python -m pysnt.setup_utils --auto-detect
-
-📋 Alternative Methods:
-  • Set environment variable: export FIJI_PATH='/path/to/Fiji.app'
-  • Pass path directly: pysnt.initialize(fiji_path='/path/to/Fiji.app')
-  • Use pysnt.set_fiji_path('/path/to/Fiji.app')
-
-🔍 We checked these common locations:
-  ✗ /Applications/Fiji.app
-  ✗ ~/Downloads/Fiji.app
-  ... and 3 more locations
-
-💡 Need help? Check configuration status:
-   python -m pysnt.setup_utils --status
+pysnt setup               # interactive setup
+pysnt setup --auto-detect # search common locations and save the first valid one
+pysnt setup --status      # show the current configuration
 ```
 
 ## Verify Installation
@@ -276,18 +260,15 @@ setup_java_environment()
 
 ### Common Issues
 
-1. **"Fiji not found" error**: Set `FIJI_PATH` environment variable, or use the interactive setup:
-   ```python
-   import pysnt
-   pysnt.initialize(interactive =True)  # 8GB heap
-   ```
+1. **"Fiji not found" error** (only when a Fiji is requested explicitly): check the path passed to `fiji_path`,
+   or set the `FIJI_PATH` environment variable. Omit both to use Maven instead.
 2. **Java version issues**: Ensure Java 21+ is installed and accessible
 3. **Memory issues**: Use memory configuration:
    ```python
    import pysnt
    pysnt.initialize(max_heap="8g")  # 8GB heap
    ```
-4. **Import errors**: Make sure you've activated the correct conda environment
+4. **Import errors**: Make sure your shell or IDE uses the environment PySNT was installed into (see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks))
 
 ### Getting Help
 

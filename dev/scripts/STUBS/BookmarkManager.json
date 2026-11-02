@@ -1,0 +1,782 @@
+{
+  "class_name": "BookmarkManager",
+  "package": "sc.fiji.snt",
+  "java_name": "sc.fiji.snt.BookmarkManager",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.591950",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(Map, String) -> void",
+          "params": [
+            {
+              "name": "map",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            },
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(Path, int) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(String, List) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(String, List, Color) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(double, double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(String, List, int, int) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "locations",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(String, List, int, int, String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "locations",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(double, double, double, Color, float) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(double, double, double, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "c",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "t",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(int, int, int, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "c",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "t",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(String, double, double, double, Color, float) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: add"
+    },
+    {
+      "name": "addViewerToolbarButton",
+      "overloads": [
+        {
+          "signature": "addViewerToolbarButton(JComponent) -> void",
+          "params": [
+            {
+              "name": "component",
+              "type": "Any",
+              "java_type": "JComponent"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addViewerToolbarButton"
+    },
+    {
+      "name": "clearSelection",
+      "overloads": [
+        {
+          "signature": "clearSelection() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: clearSelection"
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: dispose"
+    },
+    {
+      "name": "getCount",
+      "overloads": [
+        {
+          "signature": "getCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCount"
+    },
+    {
+      "name": "getLastPosition",
+      "overloads": [
+        {
+          "signature": "getLastPosition() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLastPosition"
+    },
+    {
+      "name": "getPixelPositions",
+      "overloads": [
+        {
+          "signature": "getPixelPositions(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPixelPositions"
+    },
+    {
+      "name": "getPositions",
+      "overloads": [
+        {
+          "signature": "getPositions(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPositions"
+    },
+    {
+      "name": "getROIs",
+      "overloads": [
+        {
+          "signature": "getROIs(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getROIs"
+    },
+    {
+      "name": "getRois",
+      "overloads": [
+        {
+          "signature": "getRois(String, List) -> List",
+          "params": [
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        },
+        {
+          "signature": "getRois(String, List, Color) -> List",
+          "params": [
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getRois"
+    },
+    {
+      "name": "getViewerDialogPanel",
+      "overloads": [
+        {
+          "signature": "getViewerDialogPanel() -> JDialog",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "JDialog",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getViewerDialogPanel"
+    },
+    {
+      "name": "hasBookmarks",
+      "overloads": [
+        {
+          "signature": "hasBookmarks() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasBookmarks"
+    },
+    {
+      "name": "isVisible",
+      "overloads": [
+        {
+          "signature": "isVisible() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isVisible"
+    },
+    {
+      "name": "load",
+      "overloads": [
+        {
+          "signature": "load(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "load(List) -> void",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "load(Roi[]) -> void",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "Roi[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "load(String) -> boolean",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: load"
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(Path, int) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: remove"
+    },
+    {
+      "name": "reset",
+      "overloads": [
+        {
+          "signature": "reset() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reset"
+    },
+    {
+      "name": "resyncOverlay",
+      "overloads": [
+        {
+          "signature": "resyncOverlay() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: resyncOverlay"
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: save"
+    },
+    {
+      "name": "setVisible",
+      "overloads": [
+        {
+          "signature": "setVisible(boolean) -> void",
+          "params": [
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setVisible"
+    },
+    {
+      "name": "showPanel",
+      "overloads": [
+        {
+          "signature": "showPanel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: showPanel"
+    },
+    {
+      "name": "toOverlay",
+      "overloads": [
+        {
+          "signature": "toOverlay(Overlay) -> void",
+          "params": [
+            {
+              "name": "overlay",
+              "type": "Any",
+              "java_type": "Overlay"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toOverlay"
+    },
+    {
+      "name": "toRoiManager",
+      "overloads": [
+        {
+          "signature": "toRoiManager() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toRoiManager"
+    },
+    {
+      "name": "toggleViewerPanel",
+      "overloads": [
+        {
+          "signature": "toggleViewerPanel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toggleViewerPanel"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BookmarkManager(AbstractBigViewer)",
+          "params": [
+            {
+              "name": "viewer",
+              "type": "Any",
+              "java_type": "AbstractBigViewer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BookmarkManager(SNTUI)",
+          "params": [
+            {
+              "name": "sntui",
+              "type": "SNTUI",
+              "java_type": "SNTUI"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of BookmarkManager"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

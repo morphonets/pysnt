@@ -13,25 +13,42 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
-    "ConvexHull2D", "ConvexHull3D", "ConvexHullAnalyzer",
+    "ConvexHull2D",
+    "ConvexHull3D",
+    "ConvexHullAnalyzer",
     "GroupedTreeStatistics",
-    "MultiSpectralRefiner", "MultiTreeColorMapper",
+    "MultiSpectralRefiner",
+    "MultiTreeColorMapper",
     "MultiTreeStatistics",
-    "NodeColorMapper", "NodeProfiler", "NodeStatistics",
-    "PathProfiler", "PathStatistics", "PathStraightener", "PCAnalyzer", "PersistenceAnalyzer",
+    "NodeColorMapper",
+    "NodeProfiler",
+    "NodeStatistics",
+    "PCAnalyzer",
+    "PathProfiler",
+    "PathStatistics",
+    "PathStraightener",
+    "PersistenceAnalyzer",
     "RootAngleAnalyzer",
-    "TreeColorMapper", "TreeStatistics",
-    "ShollAnalyzer", "SkeletonConverter", "StrahlerAnalyzer", "SNTChart", "SNTTable"
+    "SNTChart",
+    "SNTTable",
+    "ShollAnalyzer",
+    "StrahlerAnalyzer",
+    "TreeColorMapper",
+    "TreeStatistics",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "AbstractConvexHull", "AnalysisUtils", "AnnotationMapper",
-    "CircularModels", "ColorMapper",
+    "AbstractConvexHull",
+    "AnalysisUtils",
+    "AnnotationMapper",
+    "CandidatePathMetrics",
+    "CircularModels",
+    "ColorMapper",
     "NodeCollector",
     "ProfileProcessor",
-    "RoiConverter"
-    "UnknownMetricException"
+    "RoiConverter",
+    "UnknownMetricException",
 ]
 
 

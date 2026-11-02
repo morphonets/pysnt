@@ -1,31 +1,37 @@
 {
   "class_name": "StrahlerAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:10.928852",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.StrahlerAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.743219",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static classify",
+      "name": "classify",
       "overloads": [
         {
-          "signature": "static classify(DirectedWeightedGraph, boolean) -> void",
+          "signature": "classify(DirectedWeightedGraph, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "graph",
               "type": "DirectedWeightedGraph",
               "java_type": "DirectedWeightedGraph"
             },
             {
-              "name": "arg1",
+              "name": "reverseOrder",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static classify"
+      "documentation": "Java method: classify"
     },
     {
       "name": "dispose",
@@ -34,7 +40,8 @@
           "signature": "dispose() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: dispose"
@@ -46,7 +53,8 @@
           "signature": "getAvgBifurcationRatio() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAvgBifurcationRatio"
@@ -58,7 +66,8 @@
           "signature": "getAvgContractions() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAvgContractions"
@@ -70,18 +79,19 @@
           "signature": "getAvgExtensionAngle(boolean, int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean"
             },
             {
-              "name": "arg1",
+              "name": "order",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAvgExtensionAngle"
@@ -93,13 +103,14 @@
           "signature": "getAvgExtensionAngles(boolean) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAvgExtensionAngles"
@@ -111,7 +122,8 @@
           "signature": "getAvgFragmentations() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAvgFragmentations"
@@ -123,7 +135,8 @@
           "signature": "getBifurcationRatios() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBifurcationRatios"
@@ -135,7 +148,8 @@
           "signature": "getBranchCounts() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranchCounts"
@@ -147,7 +161,8 @@
           "signature": "getBranchPointCounts() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranchPointCounts"
@@ -156,22 +171,24 @@
       "name": "getBranches",
       "overloads": [
         {
+          "signature": "getBranches() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        },
+        {
           "signature": "getBranches(int) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "order",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "getBranches() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranches"
@@ -183,13 +200,14 @@
           "signature": "getExtensionAngles(boolean) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngles"
@@ -201,7 +219,8 @@
           "signature": "getGraph() -> DirectedWeightedGraph",
           "params": [],
           "return_type": "DirectedWeightedGraph",
-          "java_return_type": "DirectedWeightedGraph"
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGraph"
@@ -213,7 +232,8 @@
           "signature": "getHighestBranchOrder() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHighestBranchOrder"
@@ -225,7 +245,8 @@
           "signature": "getLengths() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLengths"
@@ -237,13 +258,14 @@
           "signature": "getRelativeExtensionAngle(Path) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "branch",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRelativeExtensionAngle"
@@ -255,7 +277,8 @@
           "signature": "getRootAssociatedBranches() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRootAssociatedBranches"
@@ -267,31 +290,13 @@
           "signature": "getRootNumber() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRootNumber"
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -300,7 +305,7 @@
           "signature": "StrahlerAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -309,7 +314,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for StrahlerAnalyzer"
+      "documentation": "Constructors of StrahlerAnalyzer"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

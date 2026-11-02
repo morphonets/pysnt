@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class for color coding of NodeStatistics results.
+Class for color coding of ``NodeStatistics`` results.
 
 
 Methods
@@ -62,6 +62,11 @@ Methods
 
 Getters Methods
 ~~~~~~~~~~~~~~~
+
+
+.. py:method:: getAvailableHeatmapLuts()
+
+   
 
 
 .. py:method:: getAvailableLuts()
@@ -79,19 +84,29 @@ Getters Methods
    
 
 
-.. py:method:: getColorTable(String)
+.. py:method:: getColorTable()
 
-   Description copied from class: ColorMapper
+   Description copied from class: ``ColorMapper``
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMeasurement()
+
+   Description copied from class: ``ColorMapper``
+
+
+.. py:method:: getMeasurementLabel()
+
+   
+
+
+.. py:method:: getMetrics()
 
    Gets the list of supported mapping metrics.
 
 
 .. py:method:: getMinMax()
 
-   Description copied from class: ColorMapper
+   Description copied from class: ``ColorMapper``
 
 
 .. py:method:: getNaNColor()
@@ -118,9 +133,24 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: setMaxPercentileClipped(double[], double)
+
+   
+
+
 .. py:method:: setMinMax(double, double)
 
-   Description copied from class: ColorMapper
+   Description copied from class: ``ColorMapper``
+
+
+.. py:method:: setMinMaxPercentileClipped(double[], double)
+
+   
+
+
+.. py:method:: setMinPercentileClipped(double[], double)
+
+   
 
 
 .. py:method:: setNaNColor(Color)
@@ -132,17 +162,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;)
-
-   
-
-
 .. py:method:: map(String, ColorTable)
 
    Maps nodes after the specified measurement. Mapping bounds are automatically determined.
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: unMap(Collection)
 
    
 

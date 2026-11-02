@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.tracing``
 
-A SearchNode which can maintain both a from-start and from-goal search state.
+A ``SearchNode`` which can maintain both a from-start and from-goal search state.
 
 
 Methods
@@ -149,6 +149,11 @@ Getters Methods
    
 
 
+.. py:method:: hashCode()
+
+   
+
+
 Setters Methods
 ~~~~~~~~~~~~~~~
 
@@ -188,17 +193,17 @@ Setters Methods
    
 
 
-.. py:method:: setHeapHandle(AddressableHeap$Handle, boolean)
+.. py:method:: setHeapHandle(Handle, boolean)
 
    
 
 
-.. py:method:: setHeapHandleFromGoal(AddressableHeap$Handle)
+.. py:method:: setHeapHandleFromGoal(Handle)
 
    
 
 
-.. py:method:: setHeapHandleFromStart(AddressableHeap$Handle)
+.. py:method:: setHeapHandleFromStart(Handle)
 
    
 
@@ -218,17 +223,17 @@ Setters Methods
    
 
 
-.. py:method:: setState(BiSearchNode$State, boolean)
+.. py:method:: setState(State, boolean)
 
    
 
 
-.. py:method:: setStateFromGoal(BiSearchNode$State)
+.. py:method:: setStateFromGoal(State)
 
    
 
 
-.. py:method:: setStateFromStart(BiSearchNode$State)
+.. py:method:: setStateFromStart(State)
 
    
 
@@ -250,6 +255,11 @@ Setters Methods
 
 Other Methods
 ~~~~~~~~~~~~~
+
+
+.. py:method:: equals(Object)
+
+   
 
 
 .. py:method:: heapDecreaseKey(boolean)

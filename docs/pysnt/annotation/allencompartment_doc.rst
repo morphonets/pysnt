@@ -81,7 +81,7 @@ Getters Methods
 
 .. py:method:: getMesh()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: getOntologyDepth()
@@ -96,10 +96,15 @@ Getters Methods
 
 .. py:method:: getTreePath()
 
-   Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this compartment in the ontologies hierarchical tree. The elements of the list are ordered with the root ('Whole Brain') as the first element of the list. In practice, this is equivalent to appending this compartment to the list returned by getAncestors().
+   Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this compartment in the ontologies hierarchical tree. The elements of the list are ordered with the root ('Whole Brain') as the first element of the list. In practice, this is equivalent to appending this compartment to the list returned by ``getAncestors()``.
 
 
 .. py:method:: getUUID()
+
+   
+
+
+.. py:method:: hashCode()
 
    
 
@@ -125,22 +130,27 @@ Other Methods
 
 .. py:method:: acronym()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: aliases()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: color()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
+
+
+.. py:method:: equals(Object)
+
+   
 
 
 .. py:method:: id()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: includes(BrainAnnotation)
@@ -148,14 +158,14 @@ Other Methods
    
 
 
-.. py:method:: static main(String;)
-
-   
-
-
 .. py:method:: name()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
+
+
+.. py:method:: toString()
+
+   
 
 
 See Also

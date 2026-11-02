@@ -64,32 +64,32 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAllNeuronIDs()
+.. py:method:: getAllNeuronIDs()
 
    
 
 
-.. py:method:: static getAllSpecies()
+.. py:method:: getAllSpecies()
 
    
 
 
-.. py:method:: static getBrainCompartments(int, String)
+.. py:method:: getBrainCompartments(int, String)
 
    
 
 
-.. py:method:: static getBrainJSON(int)
+.. py:method:: getBrainJSON(int)
 
    
 
 
-.. py:method:: static getBrainMeshes(int, String)
+.. py:method:: getBrainMeshes(int, String)
 
    
 
 
-.. py:method:: static getSpeciesNeuronIDs(int)
+.. py:method:: getSpeciesNeuronIDs(int)
 
    
 

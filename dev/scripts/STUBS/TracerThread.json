@@ -1,8 +1,13 @@
 {
   "class_name": "TracerThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-01-02T22:36:45.007490",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.tracing.TracerThread",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.747281",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "addNode",
@@ -11,18 +16,20 @@
           "signature": "addNode(DefaultSearchNode, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "n",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: addNode"
@@ -34,13 +41,15 @@
           "signature": "addProgressListener(SearchProgressCallback) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "callback",
               "type": "Any",
               "java_type": "SearchProgressCallback"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: addProgressListener"
@@ -52,43 +61,45 @@
           "signature": "createNewNode(int, int, int, double, double, DefaultSearchNode, byte) -> DefaultSearchNode",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "g",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "h",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
-              "type": "Any",
+              "name": "predecessor",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode"
             },
             {
-              "name": "arg6",
+              "name": "searchStatus",
               "type": "int",
               "java_type": "byte"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "DefaultSearchNode"
+          "return_type": "DefaultSearchNode",
+          "java_return_type": "DefaultSearchNode",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: createNewNode"
@@ -100,7 +111,9 @@
           "signature": "getExitReason() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: getExitReason"
@@ -111,8 +124,10 @@
         {
           "signature": "getNodesAsImageFromGoal() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: getNodesAsImageFromGoal"
@@ -123,8 +138,10 @@
         {
           "signature": "getNodesAsImageFromStart() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: getNodesAsImageFromStart"
@@ -136,7 +153,8 @@
           "signature": "getResult() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getResult"
@@ -148,7 +166,9 @@
           "signature": "pointsConsideredInSearch() -> long",
           "params": [],
           "return_type": "int",
-          "java_return_type": "long"
+          "java_return_type": "long",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: pointsConsideredInSearch"
@@ -160,7 +180,9 @@
           "signature": "printStatus() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: printStatus"
@@ -172,13 +194,15 @@
           "signature": "reportFinished(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: reportFinished"
@@ -190,36 +214,12 @@
           "signature": "run() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SearchThread"
         }
       ],
       "documentation": "Java method: run"
-    }
-  ],
-  "fields": [
-    {
-      "name": "imgDepth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgDepth of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgHeight",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgHeight of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgWidth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgWidth of type int",
-      "is_static": false,
-      "is_final": true
     }
   ],
   "constructors": [
@@ -227,114 +227,42 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "TracerThread(Dataset, int, int, int, int, int, int, int, long, Cost, Heuristic)",
+          "signature": "TracerThread(SNT, int, int, int, int, int, int)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Dataset"
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
-            },
-            {
-              "name": "arg7",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg8",
-              "type": "int",
-              "java_type": "long"
-            },
-            {
-              "name": "arg9",
-              "type": "Any",
-              "java_type": "Cost"
-            },
-            {
-              "name": "arg10",
-              "type": "Any",
-              "java_type": "Heuristic"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "TracerThread(Dataset, int, int, int, int, int, int, Cost, Heuristic)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Dataset"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg4",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg5",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg6",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg7",
-              "type": "Any",
-              "java_type": "Cost"
-            },
-            {
-              "name": "arg8",
-              "type": "Any",
-              "java_type": "Heuristic"
             }
           ],
           "return_type": "None",
@@ -344,42 +272,42 @@
           "signature": "TracerThread(Dataset, int, int, int, int, int, int, Cost)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             }
@@ -388,42 +316,52 @@
           "java_return_type": "void"
         },
         {
-          "signature": "TracerThread(SNT, int, int, int, int, int, int)",
+          "signature": "TracerThread(Dataset, int, int, int, int, int, int, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
-              "java_type": "SNT"
+              "java_type": "Dataset"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
+            },
+            {
+              "name": "costFunction",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "heuristic",
+              "type": "Heuristic",
+              "java_type": "Heuristic"
             }
           ],
           "return_type": "None",
@@ -433,48 +371,48 @@
           "signature": "TracerThread(SNT, int, int, int, int, int, int, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg8",
-              "type": "Any",
+              "name": "heuristic",
+              "type": "Heuristic",
               "java_type": "Heuristic"
             }
           ],
@@ -485,53 +423,53 @@
           "signature": "TracerThread(SNT, RandomAccessibleInterval, int, int, int, int, int, int, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "image",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg2",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg8",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg9",
-              "type": "Any",
+              "name": "heuristic",
+              "type": "Heuristic",
               "java_type": "Heuristic"
             }
           ],
@@ -539,138 +477,200 @@
           "java_return_type": "void"
         },
         {
-          "signature": "TracerThread(RandomAccessibleInterval, Calibration, int, int, int, int, int, int, int, long, SNT$SearchImageType, Cost, Heuristic)",
+          "signature": "TracerThread(Dataset, int, int, int, int, int, int, int, long, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "RandomAccessibleInterval"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Calibration"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg4",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg5",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg6",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg7",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg8",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg9",
-              "type": "int",
-              "java_type": "long"
-            },
-            {
-              "name": "arg10",
-              "type": "Any",
-              "java_type": "SNT$SearchImageType"
-            },
-            {
-              "name": "arg11",
-              "type": "Any",
-              "java_type": "Cost"
-            },
-            {
-              "name": "arg12",
-              "type": "Any",
-              "java_type": "Heuristic"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "TracerThread(Dataset, int, int, int, int, int, int, int, long, SNT$SearchImageType, Cost, Heuristic)",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "timeoutSeconds",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg8",
+              "name": "reportEveryMilliseconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg9",
-              "type": "Any",
-              "java_type": "SNT$SearchImageType"
-            },
-            {
-              "name": "arg10",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg11",
+              "name": "heuristic",
+              "type": "Heuristic",
+              "java_type": "Heuristic"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "TracerThread(Dataset, int, int, int, int, int, int, int, long, SearchImageType, Cost, Heuristic)",
+          "params": [
+            {
+              "name": "dataset",
               "type": "Any",
+              "java_type": "Dataset"
+            },
+            {
+              "name": "start_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "start_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "start_z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "timeoutSeconds",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "reportEveryMilliseconds",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType"
+            },
+            {
+              "name": "costFunction",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "heuristic",
+              "type": "Heuristic",
+              "java_type": "Heuristic"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "TracerThread(RandomAccessibleInterval, Calibration, int, int, int, int, int, int, int, long, SearchImageType, Cost, Heuristic)",
+          "params": [
+            {
+              "name": "image",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "calibration",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "start_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "start_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "start_z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "goal_z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "timeoutSeconds",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "reportEveryMilliseconds",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType"
+            },
+            {
+              "name": "costFunction",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "heuristic",
+              "type": "Heuristic",
               "java_type": "Heuristic"
             }
           ],
@@ -678,97 +678,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for TracerThread"
+      "documentation": "Constructors of TracerThread"
     }
   ],
-  "static_fields": [
-    {
-      "name": "CANCELLED",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field CANCELLED of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "CLOSED_FROM_GOAL",
-      "type": "int",
-      "java_type": "byte",
-      "documentation": "Field CLOSED_FROM_GOAL of type byte",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "CLOSED_FROM_START",
-      "type": "int",
-      "java_type": "byte",
-      "documentation": "Field CLOSED_FROM_START of type byte",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "EXIT_REASONS_STRINGS",
-      "type": "Any",
-      "java_type": "String;",
-      "documentation": "Field EXIT_REASONS_STRINGS of type String;",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "FREE",
-      "type": "int",
-      "java_type": "byte",
-      "documentation": "Field FREE of type byte",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "OPEN_FROM_GOAL",
-      "type": "int",
-      "java_type": "byte",
-      "documentation": "Field OPEN_FROM_GOAL of type byte",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "OPEN_FROM_START",
-      "type": "int",
-      "java_type": "byte",
-      "documentation": "Field OPEN_FROM_START of type byte",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "OUT_OF_MEMORY",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field OUT_OF_MEMORY of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "POINTS_EXHAUSTED",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field POINTS_EXHAUSTED of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "SUCCESS",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field SUCCESS of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "TIMED_OUT",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field TIMED_OUT of type int",
-      "is_static": true,
-      "is_final": true
-    }
-  ]
+  "fields": [],
+  "static_fields": []
 }

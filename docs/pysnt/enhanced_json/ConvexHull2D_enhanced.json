@@ -1,9 +1,9 @@
 {
   "class_name": "ConvexHull2D",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:00:54.967071",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.421360",
+  "extracted_at": "2026-11-02T00:24:01.601165",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.368030",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -19,7 +19,7 @@
         }
       ],
       "documentation": "Java method: boundarySize",
-      "javadoc_description": "Description copied from class: AbstractConvexHull",
+      "javadoc_description": "Description copied from class: `AbstractConvexHull`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -39,7 +39,7 @@
         }
       ],
       "documentation": "Java method: compute",
-      "javadoc_description": "Description copied from class: AbstractConvexHull",
+      "javadoc_description": "Description copied from class: `AbstractConvexHull`",
       "category": "Analysis",
       "deprecated": false,
       "since_version": null,
@@ -70,28 +70,12 @@
       "name": "intersection",
       "overloads": [
         {
-          "signature": "intersection(AbstractConvexHull;) -> AbstractConvexHull",
+          "signature": "intersection(AbstractConvexHull[]) -> ConvexHull2D",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "intersection(AbstractConvexHull;) -> ConvexHull2D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;",
+              "name": "convexHulls",
+              "type": "List[Any]",
+              "java_type": "AbstractConvexHull[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -103,7 +87,7 @@
         }
       ],
       "documentation": "Java method: intersection",
-      "javadoc_description": "Description copied from class: AbstractConvexHull",
+      "javadoc_description": "Description copied from class: `AbstractConvexHull`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -114,12 +98,12 @@
       "name": "intersectionBox",
       "overloads": [
         {
-          "signature": "intersectionBox(AbstractConvexHull;) -> BoundingBox",
+          "signature": "intersectionBox(AbstractConvexHull[]) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;",
+              "name": "convexHulls",
+              "type": "List[Any]",
+              "java_type": "AbstractConvexHull[]",
               "description": "",
               "javadoc_name": null
             }
@@ -139,34 +123,6 @@
       "examples": []
     },
     {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "size",
       "overloads": [
         {
@@ -179,7 +135,7 @@
         }
       ],
       "documentation": "Java method: size",
-      "javadoc_description": "Description copied from class: AbstractConvexHull",
+      "javadoc_description": "Description copied from class: `AbstractConvexHull`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -193,15 +149,10 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ConvexHull2D(Context, Collection)",
+          "signature": "ConvexHull2D(Collection)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            },
-            {
-              "name": "arg1",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -210,10 +161,15 @@
           "java_return_type": "void"
         },
         {
-          "signature": "ConvexHull2D(Collection)",
+          "signature": "ConvexHull2D(Context, Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -222,7 +178,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ConvexHull2D"
+      "documentation": "Constructors of ConvexHull2D"
     }
   ],
   "javadoc_description": "Computes the convex hull of a set of 2D points.",
@@ -241,17 +197,17 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 6,
-      "total_json_methods": 7,
-      "total_matches": 6,
-      "exact_matches": 6,
+      "total_json_methods": 6,
+      "total_matches": 5,
+      "exact_matches": 5,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
+      "unmatched_javadoc": 1,
       "unmatched_json": 1,
-      "match_percentage": 100.0
+      "match_percentage": 83.3
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 1,
     "unmatched_json_methods": 1,
     "enhancement_quality_score": 1.0
   }

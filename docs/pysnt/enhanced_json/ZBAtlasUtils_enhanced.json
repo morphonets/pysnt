@@ -1,16 +1,16 @@
 {
   "class_name": "ZBAtlasUtils",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-01-02T22:36:45.092046",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.307598",
+  "extracted_at": "2026-11-02T00:24:01.770383",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.279888",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static brainBarycentre",
+      "name": "brainBarycentre",
       "overloads": [
         {
-          "signature": "static brainBarycentre() -> SNTPoint",
+          "signature": "brainBarycentre() -> SNTPoint",
           "params": [],
           "return_type": "SNTPoint",
           "java_return_type": "SNTPoint",
@@ -18,21 +18,21 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static brainBarycentre",
+      "documentation": "Java method: brainBarycentre",
       "javadoc_description": "Returns the spatial centroid of the template brain.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getRefBrain",
+      "name": "getRefBrain",
       "overloads": [
         {
-          "signature": "static getRefBrain() -> OBJMesh",
+          "signature": "getRefBrain() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "the outline mesh.",
           "throws": {
@@ -40,39 +40,39 @@
           }
         }
       ],
-      "documentation": "Java method: static getRefBrain",
+      "documentation": "Java method: getRefBrain",
       "javadoc_description": "Retrieves the surface mesh (outline) of the zebrafish template brain.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getXYZLabels",
+      "name": "getXYZLabels",
       "overloads": [
         {
-          "signature": "static getXYZLabels() -> String;",
+          "signature": "getXYZLabels() -> String[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "String;",
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
           "return_description": "the anatomical descriptions associated with the Cartesian X,Y,Z axes",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getXYZLabels",
+      "documentation": "Java method: getXYZLabels",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
@@ -80,9 +80,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable",
+      "documentation": "Java method: isDatabaseAvailable",
       "javadoc_description": "Checks whether a connection to the FishAtlas database can be established.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],

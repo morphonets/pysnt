@@ -1,27 +1,14 @@
 {
   "class_name": "ConvexHullAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:00:55.199366",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.ConvexHullAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.602039",
+  "extractor_version": "2.0.0",
   "methods": [
-    {
-      "name": "cancel",
-      "overloads": [
-        {
-          "signature": "cancel(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: cancel"
-    },
     {
       "name": "context",
       "overloads": [
@@ -29,7 +16,8 @@
           "signature": "context() -> Context",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Context"
+          "java_return_type": "Context",
+          "is_static": false
         }
       ],
       "documentation": "Java method: context"
@@ -41,13 +29,14 @@
           "signature": "dump(SNTTable) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "table",
               "type": "SNTTable",
               "java_type": "SNTTable"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: dump"
@@ -59,13 +48,14 @@
           "signature": "get(String) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: get"
@@ -77,7 +67,8 @@
           "signature": "getAnalysis() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnalysis"
@@ -89,7 +80,8 @@
           "signature": "getBoundarySize() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBoundarySize"
@@ -101,22 +93,11 @@
           "signature": "getBoxivity() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBoxivity"
-    },
-    {
-      "name": "getCancelReason",
-      "overloads": [
-        {
-          "signature": "getCancelReason() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String"
-        }
-      ],
-      "documentation": "Java method: getCancelReason"
     },
     {
       "name": "getCentroid",
@@ -125,7 +106,8 @@
           "signature": "getCentroid() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCentroid"
@@ -137,7 +119,8 @@
           "signature": "getCompactness() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCompactness"
@@ -149,7 +132,8 @@
           "signature": "getContext() -> Context",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Context"
+          "java_return_type": "Context",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getContext"
@@ -161,7 +145,8 @@
           "signature": "getEccentricity() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getEccentricity"
@@ -173,7 +158,8 @@
           "signature": "getElongation() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getElongation"
@@ -185,7 +171,8 @@
           "signature": "getHull() -> AbstractConvexHull",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "AbstractConvexHull"
+          "java_return_type": "AbstractConvexHull",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHull"
@@ -197,7 +184,8 @@
           "signature": "getRoundness() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRoundness"
@@ -209,7 +197,8 @@
           "signature": "getSize() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSize"
@@ -221,7 +210,8 @@
           "signature": "getTree() -> Tree",
           "params": [],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTree"
@@ -233,46 +223,17 @@
           "signature": "getUnit(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getUnit"
-    },
-    {
-      "name": "isCanceled",
-      "overloads": [
-        {
-          "signature": "isCanceled() -> boolean",
-          "params": [],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: isCanceled"
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
     },
     {
       "name": "run",
@@ -281,28 +242,11 @@
           "signature": "run() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: run"
-    },
-    {
-      "name": "setContext",
-      "overloads": [
-        {
-          "signature": "setContext(Context) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: setContext"
     },
     {
       "name": "setLabel",
@@ -311,119 +255,121 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "analysisLabel",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLabel"
     },
     {
-      "name": "static supportedMetrics",
+      "name": "supportedMetrics",
       "overloads": [
         {
-          "signature": "static supportedMetrics() -> List",
+          "signature": "supportedMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static supportedMetrics"
+      "documentation": "Java method: supportedMetrics"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ConvexHullAnalyzer(Tree)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "ConvexHullAnalyzer(AbstractConvexHull)",
           "params": [
             {
-              "name": "arg0",
+              "name": "convexHull",
               "type": "Any",
               "java_type": "AbstractConvexHull"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "ConvexHullAnalyzer(Tree)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ConvexHullAnalyzer"
+      "documentation": "Constructors of ConvexHullAnalyzer"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "BOUNDARY_SIZE",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field BOUNDARY_SIZE of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field BOUNDARY_SIZE of type String"
     },
     {
       "name": "BOXIVITY",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field BOXIVITY of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field BOXIVITY of type String"
     },
     {
       "name": "COMPACTNESS_3D",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field COMPACTNESS_3D of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field COMPACTNESS_3D of type String"
     },
     {
       "name": "ECCENTRICITY_2D",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field ECCENTRICITY_2D of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field ECCENTRICITY_2D of type String"
     },
     {
       "name": "ELONGATION",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field ELONGATION of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field ELONGATION of type String"
     },
     {
       "name": "ROUNDNESS",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field ROUNDNESS of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field ROUNDNESS of type String"
     },
     {
       "name": "SIZE",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SIZE of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SIZE of type String"
     }
   ]
 }

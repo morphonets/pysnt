@@ -21,17 +21,21 @@ logger = logging.getLogger(__name__)
 # Curated classes - always available for direct import
 # These are the most commonly used classes that users will import directly
 CURATED_CLASSES = [
+    "AllenCompartment",
     "AllenUtils",
-    "AllenCompartment", 
     "InsectBrainCompartment",
     "InsectBrainUtils",
     "VFBUtils",
-    "ZBAtlasUtils"
+    "ZBAtlasUtils",
 ]
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used classes that are loaded on-demand
-EXTENDED_CLASSES = [ "BrainAnnotation"]
+EXTENDED_CLASSES = [
+    "BrainAnnotation",
+    "DrosophilaCompartment",
+    "DrosophilaUtils",
+]
 
 # =============================================================================
 # MODULE SETUP

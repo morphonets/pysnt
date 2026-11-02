@@ -1,9 +1,9 @@
 {
   "class_name": "PersistenceAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:04.716953",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.410741",
+  "extracted_at": "2026-11-02T00:24:01.681553",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.364127",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "getBarcode(String) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "descriptor",
               "type": "str",
               "java_type": "String",
               "description": "- A descriptor for the filter function as per getDescriptors() (case-insensitive). Supported values: \"geodesic\", \"radial\", \"centrifugal\", \"path order\", \"x\", \"y\", \"z\".",
@@ -30,7 +30,7 @@
         }
       ],
       "documentation": "Java method: getBarcode",
-      "javadoc_description": "Gets the persistence barcode for the specified filter function.\n\nThe barcode is a simplified representation of the persistence diagram that contains only the persistence values (death - birth) for each topological feature, akin to a one-dimensional summary of branch significance.\n\nInterpretation:\n\nHigh values: Morphologically significant branches Low values: Minor branches or potential noise Distribution: The spread of values indicates branching complexity\n\nSpecial Properties:\n\nAll values are non-negative (|death - birth|) For geodesic descriptor: sum of all values equals total cable length Number of values equals number of tips in the tree\n\nExample Usage: \n```\nList<Double> barcode = analyzer.getBarcode(\"geodesic\");\n \n // Find most significant branches\n barcode.sort(Collections.reverseOrder());\n System.out.println(\"Top 5 most persistent branches:\");\n for (int i = 0; i < Math.min(5, barcode.size()); i++) {\n     System.out.println(\"Branch \" + (i+1) + \": \" + barcode.get(i));\n }\n```\n",
+      "javadoc_description": "Gets the persistence barcode for the specified filter function.\n\nThe barcode is a simplified representation of the persistence diagram that contains only the persistence values (death - birth) for each topological feature, akin to a one-dimensional summary of branch significance.\n\n**Interpretation:**\n\n- **High values:** Morphologically significant branches\n\n- **Low values:** Minor branches or potential noise\n\n- **Distribution:** The spread of values indicates branching complexity\n\n**Special Properties:**\n\n- All values are non-negative (|death - birth|)\n\n- For geodesic descriptor: sum of all values equals total cable length\n\n- Number of values equals number of tips in the tree\n\n**Example Usage:** \n```\nList<Double> barcode = analyzer.getBarcode(\"geodesic\");\n \n // Find most significant branches\n barcode.sort(Collections.reverseOrder());\n System.out.println(\"Top 5 most persistent branches:\");\n for (int i = 0; i < Math.min(5, barcode.size()); i++) {\n     System.out.println(\"Branch \" + (i+1) + \": \" + barcode.get(i));\n }\n```\n",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -44,10 +44,10 @@
       ]
     },
     {
-      "name": "static getDescriptors",
+      "name": "getDescriptors",
       "overloads": [
         {
-          "signature": "static getDescriptors() -> List",
+          "signature": "getDescriptors() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -55,9 +55,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getDescriptors",
-      "javadoc_description": "Gets a list of supported descriptor functions for persistence analysis.\n\nReturns the string identifiers for all available filter functions that can be used with getDiagram(String), getBarcode(String), and other analysis methods. These descriptors are case-insensitive when used in method calls.",
-      "category": "Static Methods",
+      "documentation": "Java method: getDescriptors",
+      "javadoc_description": "Gets a list of supported descriptor functions for persistence analysis.\n\nReturns the string identifiers for all available filter functions that can be used with `getDiagram(String)`, `getBarcode(String)`, and other analysis methods. These descriptors are case-insensitive when used in method calls.",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [
@@ -74,7 +74,7 @@
           "signature": "getDiagram(String) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "descriptor",
               "type": "str",
               "java_type": "String",
               "description": "- A descriptor for the filter function as per getDescriptors() (case-insensitive). Supported values: \"geodesic\", \"radial\", \"centrifugal\", \"path order\", \"x\", \"y\", \"z\". Alternative names like \"reverse strahler\" for \"centrifugal\" are also accepted.",
@@ -91,7 +91,7 @@
         }
       ],
       "documentation": "Java method: getDiagram",
-      "javadoc_description": "Gets the persistence diagram for the specified filter function.\n\nThe persistence diagram is the core output of the analysis, consisting of birth-death pairs that represent the \"lifespan\" of topological features (branches) during the filtration process. Each point in the diagram corresponds to a branch in the neuronal tree.\n\nStructure: Returns a list where each inner list contains exactly two values:\n\nBirth [0]: The filter value where the branch appears (branch point) Death [1]: The filter value where the branch disappears (tip)\n\nProperties:\n\nNumber of points = Number of tips in the tree All values are non-negative For geodesic descriptor: sum of all (death-birth) = total cable length High persistence (death-birth) indicates morphologically significant branches\n\nExample usage: \n```\nList<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n for (List<Double> point : diagram) {\n     double birth = point.get(0);\n     double death = point.get(1);\n     double persistence = death - birth;\n     System.out.println(\"Branch: persistence = \" + persistence);\n }\n```\n",
+      "javadoc_description": "Gets the persistence diagram for the specified filter function.\n\nThe persistence diagram is the core output of the analysis, consisting of birth-death pairs that represent the \"lifespan\" of topological features (branches) during the filtration process. Each point in the diagram corresponds to a branch in the neuronal tree.\n\n**Structure:** Returns a list where each inner list contains exactly two values:\n\n- **Birth [0]:** The filter value where the branch appears (branch point)\n\n- **Death [1]:** The filter value where the branch disappears (tip)\n\n**Properties:**\n\n- Number of points = Number of tips in the tree\n\n- All values are non-negative\n\n- For geodesic descriptor: sum of all (death-birth) = total cable length\n\n- High persistence (death-birth) indicates morphologically significant branches\n\n**Example usage:** \n```\nList<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n for (List<Double> point : diagram) {\n     double birth = point.get(0);\n     double death = point.get(1);\n     double persistence = death - birth;\n     System.out.println(\"Branch: persistence = \" + persistence);\n }\n```\n",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -112,7 +112,7 @@
           "signature": "getDiagramNodes(String) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "descriptor",
               "type": "str",
               "java_type": "String",
               "description": "- A descriptor for the filter function as per getDescriptors() (case-insensitive). Supported values: \"geodesic\", \"radial\", \"centrifugal\", \"path order\", \"x\", \"y\", \"z\".",
@@ -129,7 +129,7 @@
         }
       ],
       "documentation": "Java method: getDiagramNodes",
-      "javadoc_description": "Gets the tree nodes associated with each point in the persistence diagram.\n\nThis method returns the actual SWCPoint nodes from the neuronal tree that correspond to each birth-death pair in the persistence diagram. This allows you to map topological features back to specific locations in the original morphology.\n\nStructure: Returns a list where each inner list contains exactly two nodes:\n\nBirth Node [0]: The branch point where the topological feature appears Death Node [1]: The tip node where the topological feature disappears\n\nCorrespondence: The order of node pairs matches the order of birth-death pairs returned by getDiagram(String), allowing direct correlation between topological features and their spatial locations.\n\nExample Usage: \n```\nList<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n List<List<SWCPoint>> nodes = analyzer.getDiagramNodes(\"geodesic\");\n \n for (int i = 0; i < diagram.size(); i++) {\n     List<Double> birthDeath = diagram.get(i);\n     List<SWCPoint> nodesPair = nodes.get(i);\n     \n     double persistence = birthDeath.get(1) - birthDeath.get(0);\n     SWCPoint branchPoint = nodesPair.get(0);\n     SWCPoint tipPoint = nodesPair.get(1);\n     \n     System.out.printf(\"Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n\",\n                       persistence, \n                       branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),\n                       tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());\n }\n```\n",
+      "javadoc_description": "Gets the tree nodes associated with each point in the persistence diagram.\n\nThis method returns the actual `SWCPoint` nodes from the neuronal tree that correspond to each birth-death pair in the persistence diagram. This allows you to map topological features back to specific locations in the original morphology.\n\n**Structure:** Returns a list where each inner list contains exactly two nodes:\n\n- **Birth Node [0]:** The branch point where the topological feature appears\n\n- **Death Node [1]:** The tip node where the topological feature disappears\n\n**Correspondence:** The order of node pairs matches the order of birth-death pairs returned by `getDiagram(String)`, allowing direct correlation between topological features and their spatial locations.\n\n**Example Usage:** \n```\nList<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n List<List<SWCPoint>> nodes = analyzer.getDiagramNodes(\"geodesic\");\n \n for (int i = 0; i < diagram.size(); i++) {\n     List<Double> birthDeath = diagram.get(i);\n     List<SWCPoint> nodesPair = nodes.get(i);\n     \n     double persistence = birthDeath.get(1) - birthDeath.get(0);\n     SWCPoint branchPoint = nodesPair.get(0);\n     SWCPoint tipPoint = nodesPair.get(1);\n     \n     System.out.printf(\"Branch with persistence %.2f: from (%.1f,%.1f,%.1f) to (%.1f,%.1f,%.1f)%n\",\n                       persistence, \n                       branchPoint.getX(), branchPoint.getY(), branchPoint.getZ(),\n                       tipPoint.getX(), tipPoint.getY(), tipPoint.getZ());\n }\n```\n",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -147,32 +147,32 @@
       "name": "getLandscape",
       "overloads": [
         {
-          "signature": "getLandscape(String, int, int) -> [D",
+          "signature": "getLandscape(String, int, int) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "descriptor",
               "type": "str",
               "java_type": "String",
               "description": "- A descriptor for the filter function as per getDescriptors() (case-insensitive). Supported values: \"geodesic\", \"radial\", \"centrifugal\", \"path order\", \"x\", \"y\", \"z\".",
               "javadoc_name": "descriptor"
             },
             {
-              "name": "arg1",
+              "name": "numLandscapes",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "getDescriptors()"
             },
             {
-              "name": "arg2",
+              "name": "resolution",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "the persistence landscape as a 1D array of length `numLandscapes × resolution`. All values are non-negative and scaled by √2 for proper L² normalization.",
           "throws": {
             "UnknownMetricException": "- If",
@@ -181,7 +181,7 @@
         }
       ],
       "documentation": "Java method: getLandscape",
-      "javadoc_description": "Gets the persistence landscape as a vectorized representation.\n\nPersistence landscapes transform persistence diagrams into a vector space representation that The landscape is a collection of piecewise-linear functions that capture the \"shape\" of the persistence diagram in a stable, vectorized format.\n\nMathematical Background: Each point (birth, death) in the persistence diagram contributes a \"tent\" function to the landscape. The k-th landscape function at any point is the k-th largest value among all tent functions at that point. This creates a stable, multi-resolution representation of the topological features.\n\nOutput Structure: Returns a 1D array of length `numLandscapes × resolution` where the first resolution values represent the first landscape function, the next resolution values represent the second landscape function, and so on.",
+      "javadoc_description": "Gets the persistence landscape as a vectorized representation.\n\nPersistence landscapes transform persistence diagrams into a vector space representation that The landscape is a collection of piecewise-linear functions that capture the \"shape\" of the persistence diagram in a stable, vectorized format.\n\n**Mathematical Background:** Each point (birth, death) in the persistence diagram contributes a \"tent\" function to the landscape. The k-th landscape function at any point is the k-th largest value among all tent functions at that point. This creates a stable, multi-resolution representation of the topological features.\n\n**Output Structure:** Returns a 1D array of length `numLandscapes × resolution` where the first `resolution` values represent the first landscape function, the next `resolution` values represent the second landscape function, and so on.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -189,34 +189,6 @@
         "for the underlying persistence diagram",
         "Bubenik (2015) JMLR"
       ],
-      "examples": []
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
       "examples": []
     }
   ],
@@ -229,7 +201,7 @@
           "signature": "PersistenceAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -238,10 +210,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PersistenceAnalyzer"
+      "documentation": "Constructors of PersistenceAnalyzer"
     }
   ],
-  "javadoc_description": "Performs persistent homology analysis on neuronal Trees.\n\nThis class implements the algorithm described in Kanari, L. et al. \"A Topological Representation of Branching Neuronal Morphologies\" (Neuroinformatics 16, 3–13, 2018) to extract topological features from neuronal morphologies.\n\nCore Concepts\n\nFilter Functions: Mathematical functions that assign scalar values to each node in the tree based on various morphological properties (distance from root, branch order, spatial coordinates, etc.).\n\nPersistence Diagram: A collection of 2D points (birth, death) representing when topological features (branches) appear and disappear during a filtration process. Each point corresponds to a branch in the neuronal tree.\n\nPersistence: The \"lifespan\" of a topological feature, calculated as death - birth. High persistence indicates morphologically significant branches, while low persistence may represent noise or minor branches.\n\nSupported Filter Functions\n\nGeodesic: Path distance from node to root along the tree structure Radial: Euclidean (straight-line) distance from node to root Centrifugal: Reverse Strahler number (branch order from tips) Path Order: SNT path order hierarchy X, Y, Z: Spatial coordinates for directional analysis\n\nUsage Example \n```\n// Create analyzer for a neuronal tree\n PersistenceAnalyzer analyzer = new PersistenceAnalyzer(tree);\n \n // Get persistence diagram using geodesic distance\n List<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n \n // Each inner list contains [birth, death] values\n for (List<Double> pair : diagram) {\n     double birth = pair.get(0);\n     double death = pair.get(1);\n     double persistence = death - birth;\n     System.out.println(\"Branch: birth=\" + birth + \", death=\" + death + \", persistence=\" + persistence);\n }\n \n // Get persistence landscape\n double[] landscape = analyzer.getLandscape(\"geodesic\", 5, 100);\n```\n",
+  "javadoc_description": "Performs persistent homology analysis on neuronal `Tree`s.\n\nThis class implements the algorithm described in Kanari, L. et al. \"A Topological Representation of Branching Neuronal Morphologies\" (Neuroinformatics 16, 3–13, 2018) to extract topological features from neuronal morphologies.\n\n**Core Concepts**\n\n**Filter Functions:** Mathematical functions that assign scalar values to each node in the tree based on various morphological properties (distance from root, branch order, spatial coordinates, etc.).\n\n**Persistence Diagram:** A collection of 2D points (birth, death) representing when topological features (branches) appear and disappear during a filtration process. Each point corresponds to a branch in the neuronal tree.\n\n**Persistence:** The \"lifespan\" of a topological feature, calculated as death - birth. High persistence indicates morphologically significant branches, while low persistence may represent noise or minor branches.\n\n**Supported Filter Functions**\n\n- **Geodesic:** Path distance from node to root along the tree structure\n\n- **Radial:** Euclidean (straight-line) distance from node to root\n\n- **Centrifugal:** Reverse Strahler number (branch order from tips)\n\n- **Path Order:** SNT path order hierarchy\n\n- **X, Y, Z:** Spatial coordinates for directional analysis\n\n**Usage Example** \n```\n// Create analyzer for a neuronal tree\n PersistenceAnalyzer analyzer = new PersistenceAnalyzer(tree);\n \n // Get persistence diagram using geodesic distance\n List<List<Double>> diagram = analyzer.getDiagram(\"geodesic\");\n \n // Each inner list contains [birth, death] values\n for (List<Double> pair : diagram) {\n     double birth = pair.get(0);\n     double death = pair.get(1);\n     double persistence = death - birth;\n     System.out.println(\"Branch: birth=\" + birth + \", death=\" + death + \", persistence=\" + persistence);\n }\n \n // Get persistence landscape\n double[] landscape = analyzer.getLandscape(\"geodesic\", 5, 100);\n```\n",
   "inheritance": {
     "extends": [
       "Object"
@@ -252,39 +224,39 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Bubenik (2015) JMLR",
-    "for associated tree nodes",
-    "Path.getOrder()",
-    "Kanari et al. (2018) Neuroinformatics",
-    "Constant Field Values",
-    "Object",
+    "getDiagram(String)",
+    "Tree",
     "getLandscape(String, int, int)",
+    "for the underlying persistence diagram",
+    "for associated tree nodes",
+    "Bubenik (2015) JMLR",
+    "Constant Field Values",
+    "for node properties and methods",
+    "Kanari et al. (2018) Neuroinformatics",
+    "to begin analysis",
+    "for corresponding birth-death values",
+    "Object",
+    "for persistence values only",
+    "Path.getOrder()",
+    "getBarcode(String)",
     "for available descriptors",
     "for tree structure requirements",
-    "for full birth-death pairs",
-    "getBarcode(String)",
-    "for corresponding birth-death values",
-    "getDiagram(String)",
-    "for node properties and methods",
-    "for persistence values only",
-    "to begin analysis",
-    "Tree",
-    "for the underlying persistence diagram"
+    "for full birth-death pairs"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 6,
-      "total_json_methods": 6,
-      "total_matches": 6,
-      "exact_matches": 6,
+      "total_json_methods": 5,
+      "total_matches": 5,
+      "exact_matches": 5,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
+      "unmatched_javadoc": 1,
       "unmatched_json": 0,
-      "match_percentage": 100.0
+      "match_percentage": 83.3
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 1,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

@@ -1,0 +1,945 @@
+{
+  "class_name": "SomaUtils",
+  "package": "sc.fiji.snt.tracing.auto",
+  "extracted_at": "2026-11-02T00:24:01.736972",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.333021",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "computeIntegratedDensity",
+      "overloads": [
+        {
+          "signature": "computeIntegratedDensity(Img, RandomAccessibleInterval) -> double",
+          "params": [
+            {
+              "name": "mask",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeIntegratedDensity",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeMaskArea",
+      "overloads": [
+        {
+          "signature": "computeMaskArea(Img, double[]) -> double",
+          "params": [
+            {
+              "name": "mask",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeMaskArea",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeMaskCentroid",
+      "overloads": [
+        {
+          "signature": "computeMaskCentroid(Img, double[]) -> double[]",
+          "params": [
+            {
+              "name": "mask",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeMaskCentroid",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeMinimumThreshold",
+      "overloads": [
+        {
+          "signature": "computeMinimumThreshold(RandomAccessibleInterval) -> double",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeMinimumThreshold",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeOtsuThreshold",
+      "overloads": [
+        {
+          "signature": "computeOtsuThreshold(RandomAccessibleInterval) -> double",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeOtsuThreshold",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "detectAllSomas",
+      "overloads": [
+        {
+          "signature": "detectAllSomas(ImgPlus) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectAllSomas(RandomAccessibleInterval, double) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectAllSomas(RandomAccessibleInterval, double, double) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectAllSomas(ImgPlus, double, int, double) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zSlice",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectAllSomas(RandomAccessibleInterval, double, double, double) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minSomaDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectAllSomas(ImgPlus, double, int, double, double) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zSlice",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "minSomaDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: detectAllSomas",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "detectSoma",
+      "overloads": [
+        {
+          "signature": "detectSoma(ImgPlus) -> SomaResult",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SomaResult",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectSoma(ImgPlus, double, int) -> SomaResult",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zSlice",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SomaResult",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectSoma(RandomAccessibleInterval, double, double[]) -> SomaResult",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SomaResult",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: detectSoma",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "detectSomaAt",
+      "overloads": [
+        {
+          "signature": "detectSomaAt(RandomAccessibleInterval, long, long, double) -> SomaResult",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedX",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedY",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SomaResult",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectSomaAt(ImgPlus, long, long, double, int) -> SomaResult",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedX",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedY",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zSlice",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SomaResult",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: detectSomaAt",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "detectSomasAt",
+      "overloads": [
+        {
+          "signature": "detectSomasAt(ImagePlus, Collection) -> List",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectSomasAt(ImgPlus, List) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "detectSomasAt(RandomAccessibleInterval, List) -> List",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: detectSomasAt",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "estimateMinSomaDistance",
+      "overloads": [
+        {
+          "signature": "estimateMinSomaDistance(List) -> double",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "estimateMinSomaDistance(List, RandomAccessibleInterval) -> double",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: estimateMinSomaDistance",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "extractContour",
+      "overloads": [
+        {
+          "signature": "extractContour(Img) -> Polygon",
+          "params": [
+            {
+              "name": "mask",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Polygon",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: extractContour",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "filterSomasByIntensity",
+      "overloads": [
+        {
+          "signature": "filterSomasByIntensity(List, RandomAccessibleInterval) -> List",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: filterSomasByIntensity",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "filterSomasByThickness",
+      "overloads": [
+        {
+          "signature": "filterSomasByThickness(List, RandomAccessibleInterval) -> List",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: filterSomasByThickness",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "floodFillSoma",
+      "overloads": [
+        {
+          "signature": "floodFillSoma(RandomAccessibleInterval, long, long, double) -> Img",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedX",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "seedY",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Img",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: floodFillSoma",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "roiToSomaPath",
+      "overloads": [
+        {
+          "signature": "roiToSomaPath(Roi, Path) -> Path",
+          "params": [
+            {
+              "name": "roi",
+              "type": "Any",
+              "java_type": "Roi",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "referencePath",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "roiToSomaPath(Roi, double[]) -> Path",
+          "params": [
+            {
+              "name": "roi",
+              "type": "Any",
+              "java_type": "Roi",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: roiToSomaPath",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "selectTopSomasByThickness",
+      "overloads": [
+        {
+          "signature": "selectTopSomasByThickness(List, RandomAccessibleInterval, int) -> List",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "n",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: selectTopSomasByThickness",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [],
+  "enhancement_metadata": {
+    "javadoc_available": false,
+    "categorization_only": true
+  }
+}

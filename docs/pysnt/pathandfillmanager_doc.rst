@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt``
 
-The PathAndFillManager is responsible for importing, handling and managing of Paths and Fills. Typically, a PathAndFillManager is accessed from a SNT instance, but accessing a PathAndFillManager directly is useful for batch/headless operations.
+The PathAndFillManager is responsible for importing, handling and managing of Paths and Fills. Typically, a PathAndFillManager is accessed from a ``SNT`` instance, but accessing a PathAndFillManager directly is useful for batch/headless operations.
 
 
 Methods
@@ -67,6 +67,16 @@ Utilities Methods
 .. py:method:: clear()
 
    Deletes all paths and fills.
+
+
+.. py:method:: resetListeners(Path)
+
+   
+
+
+.. py:method:: validateImageDimensions()
+
+   Publicly triggers the same "does the loaded image accommodate these nodes" check that ``load(java.io.InputStream)`` and ``addTrees(java.util.Collection<sc.fiji.snt.Tree>, java.lang.String)`` perform automatically. Useful for callers (e.g. stream-mode importers) that add `Tree`s one at a time via ``addTree(Tree, String)``, which intentionally skips this check since it assumes a currently-traced image is large enough to contain the tree
 
 
 Getters Methods
@@ -88,6 +98,11 @@ Getters Methods
    
 
 
+.. py:method:: getOrphanedFittedPaths()
+
+   Returns the "orphaned" fitted paths currently registered with this manager: fitted-version paths (``Path.isFittedVersionOfAnotherPath()``) whose un-fitted original was never registered here (see ``isDeFactoPath(Path)``). Their pre-fit geometry no longer exists in this session, and saving them (see ``writeXML(java.lang.String, boolean)``) writes a ``fittedversionof`` reference to a path ID that is not present in the saved file.
+
+
 .. py:method:: getPath(int)
 
    Returns the Path at the specified position in the PathAndFillManager list.
@@ -107,16 +122,18 @@ Getters Methods
 
    Returns the "main" paths managed by this PathAndFillManager. This is a convenience method that excludes:
 
-Null entries (defensive filtering) Fitted paths (i.e., paths that are refined versions of other paths, created by path-fitting algorithms). These are typically displayed alongside their parent path rather than as standalone entries.
+   - Null entries (defensive filtering)
 
-The returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
+   - Fitted paths (i.e., paths that are refined versions of other paths, created by path-fitting algorithms). These are typically displayed alongside their parent path rather than as standalone entries.
+
+   The returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
 
 
 .. py:method:: getPathsFiltered()
 
    Returns the 'de facto' Paths (excluding null or fitted versions). he returned list is a snapshot safe for iteration even if paths are concurrently added or removed.
 
-A fitted-version path is only excluded when its un-fitted counterpart is also registered with this manager, i.e., when that counterpart is available to represent it instead. See isDeFactoPath(Path) for why that check -- rather than an unconditional exclusion -- is necessary.
+   A fitted-version path is only excluded when its un-fitted counterpart is also registered with this manager, i.e., when that counterpart is available to represent it instead. See ``isDeFactoPath(Path)`` for why that check -- rather than an unconditional exclusion -- is necessary.
 
 
 .. py:method:: getPathsInROI(Roi)
@@ -124,9 +141,14 @@ A fitted-version path is only excluded when its un-fitted counterpart is also re
    
 
 
-.. py:method:: getPathsStructured(Collection)
+.. py:method:: getPathsStructured()
 
    
+
+
+.. py:method:: getPhantomFittedPaths()
+
+   Returns "phantom" fitted paths: registered paths that look like ordinary, standalone paths but are actually the fitted flavor of an original that no longer exists in any form -- neither registered here nor resolvable from a ``fittedversionof`` reference. This happens when a traces file is loaded whose ``fittedversionof`` attribute points to a path ID absent from the file itself (e.g. the raw/unfitted original was deleted before saving), which leaves ``Path.fittedVersionOf`` ``null`` rather than merely unregistered. Such paths pass loading validation silently and are indistinguishable from a normal path except for their negative ID (see ``Path.setFitted(Path)``).
 
 
 .. py:method:: getPlugin()
@@ -138,13 +160,27 @@ A fitted-version path is only excluded when its un-fitted counterpart is also re
 
    Converts a collection of connected Path objects into SWC points for export.
 
-SWC is the standardized format used for neuromorphological data exchange. The conversion process:
+   SWC is the standardized format used for neuromorphological data exchange. The conversion process:
 
-Validates that paths form a proper tree structure with exactly one primary path (tree's root) Uses breadth-first traversal to ensure correct parent-child relationships Assigns sequential SWC IDs starting from 1 Establishes proper parent references based on path connectivity Preserves path properties including SWC type, color, annotations, and custom tags
+   - Validates that paths form a proper tree structure with exactly one primary path (tree's root)
 
-Path Requirements:
+   - Uses breadth-first traversal to ensure correct parent-child relationships
 
-Must contain exactly one primary path (root of the tree) All non-primary paths must have valid parent relationships Paths must form a connected tree structure (no disconnected components) Empty paths (size == 0) are automatically skipped
+   - Assigns sequential SWC IDs starting from 1
+
+   - Establishes proper parent references based on path connectivity
+
+   - Preserves path properties including SWC type, color, annotations, and custom tags
+
+   **Path Requirements:**
+
+   - Must contain exactly **one primary path** (root of the tree)
+
+   - All non-primary paths must have valid parent relationships
+
+   - Paths must form a connected tree structure (no disconnected components)
+
+   - Empty paths (size == 0) are automatically skipped
 
 
 .. py:method:: getSelectedPaths()
@@ -152,11 +188,47 @@ Must contain exactly one primary path (root of the tree) All non-primary paths m
    Gets all paths selected in the GUI
 
 
+.. py:method:: getTree(String)
+
+   Returns the specified Tree.
+
+
+.. py:method:: getTrees()
+
+   Returns all the paths associated with this PathAndFillManager instance, grouped by Tree.
+
+
+.. py:method:: getVersionInUse(Path)
+
+   Returns the version of a path that is in use, i.e., the one that is displayed and analyzed: its fitted flavor if ``Path.getUseFitted()``, otherwise the path itself. Same rule as ``Tree(Collection)``, which uses the collection itself as registry. A fitted copy whose original is registered with this manager is first resolved to that original (see ``isDeFactoPath(Path)``), so that both flavors of a path always resolve to the same version.
+
+
+.. py:method:: isDeFactoPath(Path)
+
+   Single source of truth (manager-bound convenience over ``Path.isDeFactoPath(Collection)``) for whether ``p`` should be treated as a normal, standalone/"de facto" path rather than one redundant with an un-fitted counterpart already registered here.
+
+   Deliberately checks object identity against ``allPaths`` rather than looking up ``p.getUnfitted().getID()`` via ``getPathFromID(int)``: registration (e.g. ``addTree(Tree, String)`` with ``forceNewId=true``) reassigns every path a new ID, discarding whatever ID it had in its source file. An un-fitted counterpart that was never registered still carries its *original* file ID, which can -- and in practice does -- collide with the freshly assigned ID of some unrelated, actually-registered path, making an ID-based lookup a false positive.
+
+
+.. py:method:: isSelected(Path)
+
+   Checks if a Path is currently selected in the GUI.
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setHeadless(boolean)
+
+   Sets whether this PathAndFillManager instance should run headless.
+
+
 I/O Operations Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static createFromFile(String, [I)
+.. py:method:: createFromFile(String, int[])
 
    Creates a PathAndFillManager instance from imported data
 
@@ -181,6 +253,31 @@ I/O Operations Methods
    
 
 
+.. py:method:: importNeurons(Map, ColorRGB, String)
+
+   Import neuron(s) as a collection of reconstruction nodes (SWC points)
+
+
+.. py:method:: importSWC(String, String)
+
+   Imports an SWC file using advanced options.
+
+
+.. py:method:: importSWCs(Map, ColorRGB)
+
+   Imports a group of SWC files (Remote URLs supported).
+
+
+.. py:method:: load(String, int[])
+
+   Imports a reconstruction file (any supported extension).
+
+
+.. py:method:: loadGuessingType(String)
+
+   
+
+
 Other Methods
 ~~~~~~~~~~~~~
 
@@ -195,14 +292,14 @@ Other Methods
    Adds a PathAndFillListener. This is used by the interface to have changes in the path manager reported so that they can be reflected in the UI.
 
 
-.. py:method:: addTree(Tree, String)
+.. py:method:: addTree(Tree)
 
-   Adds a Tree. If an image is currently being traced, it is assumed it is large enough to contain the tree.
+   Adds a ``Tree``. If an image is currently being traced, it is assumed it is large enough to contain the tree.
 
 
 .. py:method:: addTrees(Collection)
 
-   Adds a collection of Trees.
+   Adds a collection of `Tree`s.
 
 
 .. py:method:: allPointsIterator()
@@ -221,11 +318,6 @@ Other Methods
 
 
 .. py:method:: canvasResized()
-
-   
-
-
-.. py:method:: characters([C, int, int)
 
    
 
@@ -250,27 +342,22 @@ Other Methods
    
 
 
-.. py:method:: static createFromGraph(DirectedWeightedGraph, boolean)
+.. py:method:: createFromGraph(DirectedWeightedGraph, boolean)
 
    Create a new PathAndFillManager instance from the graph.
 
 
-.. py:method:: static createFromNodes(Collection)
+.. py:method:: createFromNodes(Collection)
 
    Creates a PathAndFillManager instance from a collection of reconstruction nodes.
 
 
-.. py:method:: declaration(String, String, String)
-
-   
-
-
-.. py:method:: deletePath(int)
+.. py:method:: deletePath(Path)
 
    Deletes a path.
 
 
-.. py:method:: deletePaths([I)
+.. py:method:: deletePaths(Collection)
 
    Delete paths by position.
 
@@ -285,27 +372,67 @@ Other Methods
    Downsamples alls path using Ramer-Douglas-Peucker simplification. Downsampling occurs only between branch points and terminal points.
 
 
-.. py:method:: endDocument()
-
-   
-
-
 .. py:method:: endElement(String, String, String)
 
    
 
 
-.. py:method:: endPrefixMapping(String)
+.. py:method:: nearestNodeInUse(Collection, double, double, double)
 
-   Sets whether this PathAndFillManager instance should run headless.
+   As ``nearestNodeOnPaths(Collection, double, double, double)``, but searching the version in use of each path (see ``getVersionInUse(Path)``). The returned ``PathAndFillManager.NodeRef.path()`` is that version.
 
 
-.. py:method:: error(SAXParseException)
+.. py:method:: nearestNodeOnPaths(Collection, double, double, double)
+
+   Finds the node nearest to a position, across the given paths as they are (no fitted/unfitted resolution: see ``nearestNodeInUse(Collection, double, double, double)``).
+
+
+.. py:method:: nearestPointOnAnyPath(Collection, PointInCanvas, double)
 
    
 
 
-.. py:method:: fatalError(SAXParseException)
+.. py:method:: pathChanged(PathChangeEvent)
+
+   
+
+
+.. py:method:: repairPhantomFittedPaths()
+
+   Repairs the paths returned by ``getPhantomFittedPaths()`` into ordinary, standalone paths: assigns each a fresh, valid (positive, collision-free) ID and a default name, since the fit-time name/ID are meaningless once the original they were fitted from is gone.
+
+
+.. py:method:: size()
+
+   Returns the number of Paths in the PathAndFillManager list.
+
+
+.. py:method:: startElement(String, String, String, Attributes)
+
+   
+
+
+.. py:method:: transformPaths(PathTransformer, ImagePlus, ImagePlus)
+
+   
+
+
+.. py:method:: transformationFinished(View)
+
+   
+
+
+.. py:method:: transformationStarted(View)
+
+   
+
+
+.. py:method:: transformationUpdated(View)
+
+   
+
+
+.. py:method:: universeClosed()
 
    
 

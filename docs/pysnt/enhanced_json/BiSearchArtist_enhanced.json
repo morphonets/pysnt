@@ -1,0 +1,256 @@
+{
+  "class_name": "BiSearchArtist",
+  "package": "sc.fiji.snt.tracing.artist",
+  "extracted_at": "2026-11-02T00:24:01.588089",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.265042",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "anyNodeUnderThreshold",
+      "overloads": [
+        {
+          "signature": "anyNodeUnderThreshold(int, int, int, double) -> BiSearchNode",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "BiSearchNode",
+          "java_return_type": "BiSearchNode",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: anyNodeUnderThreshold",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "drawProgressOnSlice",
+      "overloads": [
+        {
+          "signature": "drawProgressOnSlice(int, int, TracerCanvas, Graphics) -> void",
+          "params": [
+            {
+              "name": "plane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "currentSliceInPlane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "canvas",
+              "type": "TracerCanvas",
+              "java_type": "TracerCanvas",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "g",
+              "type": "Any",
+              "java_type": "Graphics",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: drawProgressOnSlice",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSearch",
+      "overloads": [
+        {
+          "signature": "getSearch() -> SearchInterface",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchInterface",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSearch",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setClosedColor",
+      "overloads": [
+        {
+          "signature": "setClosedColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setClosedColor",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDrawingThreshold",
+      "overloads": [
+        {
+          "signature": "setDrawingThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDrawingThreshold",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOpenColor",
+      "overloads": [
+        {
+          "signature": "setOpenColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOpenColor",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BiSearchArtist(BiSearch, Color, Color)",
+          "params": [
+            {
+              "name": "search",
+              "type": "BiSearch",
+              "java_type": "BiSearch"
+            },
+            {
+              "name": "openColor",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "closedColor",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of BiSearchArtist"
+    }
+  ],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [],
+  "enhancement_metadata": {
+    "javadoc_available": false,
+    "categorization_only": true
+  }
+}

@@ -1,26 +1,383 @@
 {
   "class_name": "BvvUtils",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:00:54.679057",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.315092",
+  "extracted_at": "2026-11-02T00:24:01.599385",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.291094",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static preferMultiResolutionIfSafe",
+      "name": "buildTiledPyramid",
       "overloads": [
         {
-          "signature": "static preferMultiResolutionIfSafe(Source, int) -> void",
+          "signature": "buildTiledPyramid(ImgPlus, int) -> N5Sources",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- image with X, Y, Z leading, an optional channel axis, and no time axis (see ImgUtils.normalizeToXYZ(net.imagej.ImgPlus<T>))",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "nLevels",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "ImgUtils.normalizeToXYZ(net.imagej.ImgPlus<T>)"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "N5Sources",
+          "return_description": "one source per channel, ready for `Bvv.show(SpimDataUtils.N5Sources)`",
+          "throws": {
+            "IllegalArgumentException": "- if the axes layout is not XYZ[C]"
+          }
+        }
+      ],
+      "documentation": "Java method: buildTiledPyramid",
+      "javadoc_description": "Builds one pyramid-backed `Source` per channel of an in-memory image, such that BVV renders it with its tile-streaming path (`MultiResolutionStack3D`) instead of uploading the whole volume as a single 3D texture, which is capped by `GL_MAX_3D_TEXTURE_SIZE`. Level 0 and every coarser level is copied into its own `CellImg`, because BVV only streams sources backed by cell images. Level 0 is copied in memory (see `ImgUtils.materializeTiled(net.imglib2.RandomAccessibleInterval<T>, int)`), which costs the full volume in heap (see `estimateTiledPyramidBytes(net.imagej.ImgPlus<?>)`). Coarser levels (step 2, 4, 8...) are averaged from the previous level (see `averagedLevel(net.imglib2.RandomAccessibleInterval<T>)`) and computed lazily, on demand\n\nMeant for view-only sessions: the returned sources are independent copies, so an image also held for tracing would be stored twice",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearCaches",
+      "overloads": [
+        {
+          "signature": "clearCaches() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the number of cells that were resident (loaded) and have now been released",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearCaches",
+      "javadoc_description": "Releases the in-memory cell caches of all streamed (N5/Zarr/IMS) sources shown in BVV. Open viewers keep working: tiles are simply reloaded on demand. The GPU tile cache is not affected (it is freed when its window closes)",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "effectiveCacheMB",
+      "overloads": [
+        {
+          "signature": "effectiveCacheMB(int, boolean) -> int",
+          "params": [
+            {
+              "name": "nChannels",
+              "type": "int",
+              "java_type": "int",
+              "description": "- number of channels to be displayed",
+              "javadoc_name": "nChannels"
+            },
+            {
+              "name": "streaming",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the GPU tile cache size (MB) to use: session override, else user preference, else automatic",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: effectiveCacheMB",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "ensureCellBacked",
+      "overloads": [
+        {
+          "signature": "ensureCellBacked(SourceAndConverter) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter",
+              "description": "- the source about to be shown in BVV",
+              "javadoc_name": "soc"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "return_description": "`soc` itself if no wrapping is needed (or possible), or an equivalent, cell-backed one",
+          "throws": {}
+        },
+        {
+          "signature": "ensureCellBacked(SourceAndConverter, int[]) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "ensureCellBacked(SourceAndConverter, int[], boolean) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "remote",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: ensureCellBacked",
+      "javadoc_description": "As `ensureCellBacked(SourceAndConverter)`, sizing the cells after the chunks of the underlying data",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "estimateLocalCopyBytes",
+      "overloads": [
+        {
+          "signature": "estimateLocalCopyBytes(Source) -> long",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "- the source to estimate",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the estimated size in bytes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: estimateLocalCopyBytes",
+      "javadoc_description": "Estimates the heap needed to copy level 0 of `source` into memory (see `synthesizeMipmapPyramid(bdv.viewer.Source<T>, int, boolean)`)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "estimateTiledPyramidBytes",
+      "overloads": [
+        {
+          "signature": "estimateTiledPyramidBytes(ImgPlus) -> long",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- an image with X, Y, Z leading, and optionally a channel axis",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the estimated size in bytes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: estimateTiledPyramidBytes",
+      "javadoc_description": "Estimates the heap needed by `buildTiledPyramid(net.imagej.ImgPlus<T>, int)`: the full XYZ volume of every channel, plus ~15% for the coarser levels. Doubled if `img` is not lazily loaded, since it stays in memory during the copy",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "fetcherThreads",
+      "overloads": [
+        {
+          "signature": "fetcherThreads(boolean) -> int",
+          "params": [
+            {
+              "name": "remote",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether the data is read over the network",
+              "javadoc_name": "remote"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of tile fetcher threads: the `snt.bvv.fetchers` system property, else the user preference, else 64 for remote data or one less than the number of CPU cores",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: fetcherThreads",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCachePrefMB",
+      "overloads": [
+        {
+          "signature": "getCachePrefMB() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the user's GPU tile cache preference (MB). 0 means automatic",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCachePrefMB",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFetchersPref",
+      "overloads": [
+        {
+          "signature": "getFetchersPref() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the user's tile fetcher thread preference. 0 means automatic",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFetchersPref",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRenderQuality",
+      "overloads": [
+        {
+          "signature": "getRenderQuality() -> RenderQuality",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RenderQuality",
+          "return_description": "the persisted render quality preset (applies the next time a BVV window is opened)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRenderQuality",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "isCachePromptSuppressed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isCachePromptSuppressed",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "maxCacheMB",
+      "overloads": [
+        {
+          "signature": "maxCacheMB() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the largest GPU tile cache (MB) we allow: `MAX_CACHE_SIZE_MB` or 25% of the JVM max heap",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: maxCacheMB",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "preferMultiResolutionIfSafe",
+      "overloads": [
+        {
+          "signature": "preferMultiResolutionIfSafe(Source, int) -> void",
+          "params": [
+            {
+              "name": "source",
               "type": "Any",
               "java_type": "Source",
               "description": "- the source about to be shown in BVV",
               "javadoc_name": "source"
             },
             {
-              "name": "arg1",
+              "name": "timepoint",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -33,29 +390,29 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static preferMultiResolutionIfSafe",
-      "javadoc_description": "Forces BVV to render source with its pyramid-aware, block-streaming path (`bvv.core.multires.MultiResolutionStack3D`) instead of the naive single-texture path (`bvv.core.multires.SimpleStack3D`), when it is safe to do so.\n\nBVV auto-detects which path to use (`bvv.core.multires.SourceStacks#inferSourceStackType`): it only picks the multi-resolution path when source's pixel type is TileAccess-supported AND `source.getSource(timepoint, 0)` is (or wraps, via VolatileView) an AbstractCellImg. Many BDV/N5 source builders wrap their levels in a plain Views-based interval (not an AbstractCellImg), which makes BVV fall back to SimpleStack3D even for a genuinely multi-resolution, remote source. SimpleStack3D uploads the entire full-resolution volume as one texture on first paint, fetching all of it synchronously\n\nThis mirrors BVV's own inferSourceStackType check before overriding it, so it never forces multi-resolution rendering on a source that would actually fail it (which would throw `UnsupportedOperationException` from TileAccess.create on the render thread). If the check fails, this method does nothing and BVV falls back to its own (slower) default",
-      "category": "Static Methods",
+      "documentation": "Java method: preferMultiResolutionIfSafe",
+      "javadoc_description": "Forces BVV to render `source` with its pyramid-aware, block-streaming path (`bvv.core.multires.MultiResolutionStack3D`) instead of the naive single-texture path (`bvv.core.multires.SimpleStack3D`), when it is safe to do so.\n\nBVV auto-detects which path to use (`bvv.core.multires.SourceStacks#inferSourceStackType`): it only picks the multi-resolution path when `source`'s pixel type is `TileAccess`-supported AND `source.getSource(timepoint, 0)` is (or wraps, via `VolatileView`) an `AbstractCellImg`. Many BDV/N5 source builders wrap their levels in a plain `Views`-based interval (not an `AbstractCellImg`), which makes BVV fall back to `SimpleStack3D` even for a genuinely multi-resolution, remote source. `SimpleStack3D` uploads the entire full-resolution volume as one texture on first paint, fetching all of it synchronously\n\nThis mirrors BVV's own `inferSourceStackType` check before overriding it, so it never forces multi-resolution rendering on a source that would actually fail it (which would throw `UnsupportedOperationException` from `TileAccess.create` on the render thread). If the check fails, this method does nothing and BVV falls back to its own (slower) default",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static prefetchForShow",
+      "name": "prefetchForShow",
       "overloads": [
         {
-          "signature": "static prefetchForShow(Source, int) -> void",
+          "signature": "prefetchForShow(Source, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
               "java_type": "Source",
               "description": "- the source to warm up",
               "javadoc_name": "source"
             },
             {
-              "name": "arg1",
+              "name": "timepoint",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -66,66 +423,390 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "prefetchForShow(Source, int, DoubleConsumer) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "timepoint",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "progress",
+              "type": "Any",
+              "java_type": "DoubleConsumer",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static prefetchForShow",
-      "javadoc_description": "Fetches and locally caches whichever mipmap level BVV will actually render first for source, by touching every pixel on the calling thread. Call `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` first so the stack type is already decided when this runs\n\nSimpleStack3D always uploads level 0 (full resolution) as a single texture on first paint (see `bvv.core.render.DefaultSimpleStackManager`) so that upload is what must be warmed for it. `MultiResolutionStack3D` streams blocks progressively and never blocks the EDT regardless of what is cached, so warming its coarsest level here is only a courtesy (a faster first frame).\n\nCall this on a background thread before bvv.show(...) so the EDT only ever sees already-cached data",
-      "category": "Static Methods",
+      "documentation": "Java method: prefetchForShow",
+      "javadoc_description": "As `prefetchForShow(Source, int)`, reporting progress as the data is fetched",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static synthesizeMipmapPyramid",
+      "name": "recommendedCacheMB",
       "overloads": [
         {
-          "signature": "static synthesizeMipmapPyramid(Source, int) -> Source",
+          "signature": "recommendedCacheMB(int) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "nChannels",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the automatic GPU tile cache size (MB) for a streamed pyramid with `nChannels` channels",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: recommendedCacheMB",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "releaseSources",
+      "overloads": [
+        {
+          "signature": "releaseSources(Collection) -> void",
+          "params": [
+            {
+              "name": "sources",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the sources to release",
+              "javadoc_name": "sources"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: releaseSources",
+      "javadoc_description": "Releases the in-memory cell caches of the given sources (those not backed by `BvvUtils.CellBackedSource` are ignored) and forgets them. Meant for when the viewer showing them is disposed. The pinned-heap budget they hold is returned right away. That of levels not owned by a source (synthesized or tiled pyramids) is returned once they are garbage-collected",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reportChunking",
+      "overloads": [
+        {
+          "signature": "reportChunking(String, int[]) -> void",
+          "params": [
+            {
+              "name": "name",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the display name of the data",
+              "javadoc_name": "name"
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reportChunking",
+      "javadoc_description": "Logs how the cells streamed to BVV relate to the source chunks and, if the chunk layout is poorly suited to interactive 3D viewing, queues a notice for the notification center. Does nothing if the chunk shape is unknown",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCachePrefMB",
+      "overloads": [
+        {
+          "signature": "setCachePrefMB(int) -> void",
+          "params": [
+            {
+              "name": "mb",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCachePrefMB",
+      "javadoc_description": "Persists the GPU tile cache preference (MB). 0 means automatic. Applies next time a BVV window is opened",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "setCachePromptSuppressed(boolean) -> void",
+          "params": [
+            {
+              "name": "suppress",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCachePromptSuppressed",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFetchersPref",
+      "overloads": [
+        {
+          "signature": "setFetchersPref(int) -> void",
+          "params": [
+            {
+              "name": "n",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFetchersPref",
+      "javadoc_description": "Persists the tile fetcher thread preference. 0 means automatic. Applies when a dataset is next opened",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRenderQuality",
+      "overloads": [
+        {
+          "signature": "setRenderQuality(RenderQuality) -> void",
+          "params": [
+            {
+              "name": "quality",
+              "type": "Any",
+              "java_type": "RenderQuality",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRenderQuality",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSessionCacheMB",
+      "overloads": [
+        {
+          "signature": "setSessionCacheMB(int) -> void",
+          "params": [
+            {
+              "name": "mb",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSessionCacheMB",
+      "javadoc_description": "Overrides the preference for the current session only (0 clears the override)",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncQueuesWithViewer",
+      "overloads": [
+        {
+          "signature": "syncQueuesWithViewer(BvvHandle) -> void",
+          "params": [
+            {
+              "name": "handle",
+              "type": "Any",
+              "java_type": "BvvHandle",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: syncQueuesWithViewer",
+      "javadoc_description": "Registers all tracked fetch queues with the cache controls of `handle`, so that BVV advances them on every new frame (see `CacheControl.prepareNextFrame()`). Idempotent. Opt out with `-Dsnt.bvv.noQueueSync=true`",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "synthesizeMipmapPyramid",
+      "overloads": [
+        {
+          "signature": "synthesizeMipmapPyramid(Source, int, boolean) -> Source",
+          "params": [
+            {
+              "name": "source",
               "type": "Any",
               "java_type": "Source",
               "description": "- the single-level source to wrap",
               "javadoc_name": "source"
             },
             {
-              "name": "arg1",
+              "name": "nLevels",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
+            },
+            {
+              "name": "copyLocally",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_2"
             }
           ],
           "return_type": "Any",
           "java_return_type": "Source",
-          "return_description": "a multi-resolution Source wrapping source, or source unchanged if it already has more than one level",
+          "return_description": "a multi-resolution `Source` wrapping `source`, or `source` unchanged if it already has more than one level",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static synthesizeMipmapPyramid",
-      "javadoc_description": "Wraps a single-resolution Source in a synthetic mipmap pyramid, built by materializing it locally (see `ImgUtils.materialize(net.imglib2.RandomAccessibleInterval<T>)`) and lazily subsampling that local copy. BVV's VolumeRenderer requires multiple resolution levels to pick a LOD; without one it throws on every repaint. Use this for non-pyramidal N5/Zarr sources that cannot be re-exported with a real pyramid.\n\nLevel 0 is the full-resolution, now-local copy; each extra level doubles the previous step size along X/Y/Z, matching how a real N5/Zarr multiscale pyramid is laid out",
-      "category": "Static Methods",
+      "documentation": "Java method: synthesizeMipmapPyramid",
+      "javadoc_description": "Wraps a single-resolution `Source` in a synthetic mipmap pyramid. BVV's `VolumeRenderer` requires multiple resolution levels to pick a LOD; without one it throws on every repaint. Use this for non-pyramidal N5/Zarr sources that cannot be re-exported with a real pyramid.\n\nLevel 0 is either a local, cell-based copy of the source (see `ImgUtils.materializeTiled(net.imglib2.RandomAccessibleInterval<T>, int)`), or, if `copyLocally` is false, the source itself (as a zero-min view: a non-zero min of the source is moved into the returned source's transform, so its position in world space is unchanged). Each extra level doubles the previous step size along X/Y/Z, matching how a real N5/Zarr multiscale pyramid is laid out. Extra levels are averaged (2x2x2) from the previous level (see `averagedLevel(net.imglib2.RandomAccessibleInterval<T>)`) and computed lazily, on demand, so they cost no heap up front",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static warnIfLikelyRemoteImgPlus",
+      "name": "trackQueue",
       "overloads": [
         {
-          "signature": "static warnIfLikelyRemoteImgPlus(ImgPlus, String) -> void",
+          "signature": "trackQueue(CacheControl) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "queue",
+              "type": "Any",
+              "java_type": "CacheControl",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: trackQueue",
+      "javadoc_description": "Makes `syncQueuesWithViewer(bvv.vistools.BvvHandle)` aware of a fetch queue that feeds BVV",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "warnIfLikelyRemoteImgPlus",
+      "overloads": [
+        {
+          "signature": "warnIfLikelyRemoteImgPlus(ImgPlus, String) -> void",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the resolved",
               "javadoc_name": "img"
             },
             {
-              "name": "arg1",
+              "name": "pathOrUrl",
               "type": "str",
               "java_type": "String",
               "description": "about to be shown in BVV",
@@ -138,29 +819,29 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static warnIfLikelyRemoteImgPlus",
-      "javadoc_description": "Diagnostic-only warning for the plain ImgPlus fallback path (see `SpimDataUtils.resolvePathToSource(String)`). Unlike `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/ `warnIfLikelySimpleStack(bdv.viewer.Source<?>, int)`, an ImgPlus always has a single mipmap level, so BVV always renders it via the non-pyramid-aware SimpleStack3D path regardless of pixel type or backing storage - there is no \"is it structurally eligible for MULTIRESOLUTION\" question to ask here the way there is for AbstractSpimData/N5Sources.\n\nresolvePathToSource already knows this at resolution time - a remote ImgPlus is only ever produced by its own URL fallback branch (ImgUtils.open(url)) - so this simply carries that signal forward rather than trying to re-derive it by introspecting the RAI (which, for a lazily-opened remote image, may not even be a recognizable cache type)",
-      "category": "Static Methods",
+      "documentation": "Java method: warnIfLikelyRemoteImgPlus",
+      "javadoc_description": "Diagnostic-only warning for the plain `ImgPlus` fallback path (see `SpimDataUtils.resolvePathToSource(String)`). Unlike `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/ `warnIfLikelySimpleStack(bdv.viewer.Source<?>, int)`, an `ImgPlus` always has a single mipmap level, so BVV always renders it via the non-pyramid-aware `SimpleStack3D` path regardless of pixel type or backing storage - there is no \"is it structurally eligible for MULTIRESOLUTION\" question to ask here the way there is for `AbstractSpimData`/`N5Sources`.\n\n`resolvePathToSource` already knows this at resolution time - a remote `ImgPlus` is only ever produced by its own URL fallback branch (`ImgUtils.open(url)`) - so this simply carries that signal forward rather than trying to re-derive it by introspecting the RAI (which, for a lazily-opened remote image, may not even be a recognizable cache type)",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static warnIfLikelySimpleStack",
+      "name": "warnIfLikelySimpleStack",
       "overloads": [
         {
-          "signature": "static warnIfLikelySimpleStack(Source, int) -> void",
+          "signature": "warnIfLikelySimpleStack(Source, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
               "java_type": "Source",
               "description": "- the (already-shown) source to inspect",
               "javadoc_name": "source"
             },
             {
-              "name": "arg1",
+              "name": "timepoint",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -173,9 +854,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static warnIfLikelySimpleStack",
-      "javadoc_description": "Read-only counterpart to `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` for AbstractSpimData sources (BDV-XML/HDF5, IMS): logs a warning if source looks likely to fall back to BVV's non-pyramid-aware SimpleStack3D renderer, without attempting to prevent it.\n\nUnlike the `SpimDataUtils.N5Sources` path, \n```\nBvvFunctions.show(AbstractSpimData,\n BvvOptions)\n```\n builds its own Source instances internally (via `BigDataViewer#initSetups`), so there is no hook to call `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` on the actual instance before it first renders. inferSourceStackType's check is a pure function of the source's structural properties (pixel type, whether level 0 is an AbstractCellImg), not of instance identity or any per-instance cached state, so running the same check here - on the Source SNT already has a handle to after `show()` returns - still gives an accurate answer; it just can't change the outcome\n\nThis is diagnostic only: it neither prefetches nor forces a stack type, so it carries none of `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/`prefetchForShow(bdv.viewer.Source<T>, int)`'s risk of misbehaving on a source shape this hasn't been exercised against - it only makes a slow first paint traceable in the log after the fact, for whichever AbstractSpimData backend produced it",
-      "category": "Static Methods",
+      "documentation": "Java method: warnIfLikelySimpleStack",
+      "javadoc_description": "Read-only counterpart to `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` for `AbstractSpimData` sources (BDV-XML/HDF5, IMS): logs a warning if `source` looks likely to fall back to BVV's non-pyramid-aware `SimpleStack3D` renderer, without attempting to prevent it.\n\nUnlike the `SpimDataUtils.N5Sources` path, \n```\nBvvFunctions.show(AbstractSpimData,\n BvvOptions)\n```\n builds its own `Source` instances internally (via `BigDataViewer#initSetups`), so there is no hook to call `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)` on the actual instance before it first renders. `inferSourceStackType`'s check is a pure function of the source's structural properties (pixel type, whether level 0 is an `AbstractCellImg`), not of instance identity or any per-instance cached state, so running the same check here - on the `Source` SNT already has a handle to after `show()` returns - still gives an accurate answer; it just can't change the outcome\n\nThis is diagnostic only: it neither prefetches nor forces a stack type, so it carries none of `preferMultiResolutionIfSafe(bdv.viewer.Source<?>, int)`/`prefetchForShow(bdv.viewer.Source<T>, int)`'s risk of misbehaving on a source shape this hasn't been exercised against - it only makes a slow first paint traceable in the log after the fact, for whichever `AbstractSpimData` backend produced it",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -184,30 +865,33 @@
   ],
   "fields": [],
   "constructors": [],
-  "javadoc_description": "Package-private utility methods shared across BVV-related classes (Bvv, ChannelUnmixingCard, etc.).",
+  "javadoc_description": "Package-private utility methods shared across BVV-related classes (`Bvv`, `ChannelUnmixingCard`, etc.).",
   "inheritance": {
     "extends": [
       "Object"
     ],
     "implements": []
   },
-  "nested_classes": [],
+  "nested_classes": [
+    "BvvUtils.RenderQuality"
+  ],
   "deprecated": false,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
     "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 5,
-      "total_json_methods": 5,
-      "total_matches": 5,
-      "exact_matches": 5,
+      "total_javadoc_methods": 30,
+      "total_json_methods": 27,
+      "total_matches": 30,
+      "exact_matches": 30,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 0,
-      "unmatched_json": 0,
+      "unmatched_json": -3,
       "match_percentage": 100.0
     },
     "unmatched_javadoc_methods": 0,

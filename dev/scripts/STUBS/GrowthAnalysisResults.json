@@ -1,0 +1,213 @@
+{
+  "class_name": "GrowthAnalysisResults",
+  "package": "sc.fiji.snt.analysis.growth",
+  "java_name": "sc.fiji.snt.analysis.growth.GrowthAnalysisResults",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.630292",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "getFrameInterval",
+      "overloads": [
+        {
+          "signature": "getFrameInterval() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFrameInterval"
+    },
+    {
+      "name": "getNeuriteCount",
+      "overloads": [
+        {
+          "signature": "getNeuriteCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNeuriteCount"
+    },
+    {
+      "name": "getNeuriteGrowthData",
+      "overloads": [
+        {
+          "signature": "getNeuriteGrowthData() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        },
+        {
+          "signature": "getNeuriteGrowthData(String) -> NeuriteGrowthData",
+          "params": [
+            {
+              "name": "neuriteId",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "NeuriteGrowthData",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNeuriteGrowthData"
+    },
+    {
+      "name": "getNeuritePhases",
+      "overloads": [
+        {
+          "signature": "getNeuritePhases() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNeuritePhases"
+    },
+    {
+      "name": "getNeuritesByPattern",
+      "overloads": [
+        {
+          "signature": "getNeuritesByPattern(NeuriteSelectionCriterion) -> List",
+          "params": [
+            {
+              "name": "criterion",
+              "type": "Any",
+              "java_type": "NeuriteSelectionCriterion"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNeuritesByPattern"
+    },
+    {
+      "name": "getPhaseDistribution",
+      "overloads": [
+        {
+          "signature": "getPhaseDistribution() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPhaseDistribution"
+    },
+    {
+      "name": "getPhaseDistributionForVisualization",
+      "overloads": [
+        {
+          "signature": "getPhaseDistributionForVisualization() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPhaseDistributionForVisualization"
+    },
+    {
+      "name": "getPhasePercentage",
+      "overloads": [
+        {
+          "signature": "getPhasePercentage(GrowthPhaseType) -> double",
+          "params": [
+            {
+              "name": "phaseType",
+              "type": "Any",
+              "java_type": "GrowthPhaseType"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPhasePercentage"
+    },
+    {
+      "name": "getSummaryStatistics",
+      "overloads": [
+        {
+          "signature": "getSummaryStatistics() -> GrowthSummaryStatistics",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "GrowthSummaryStatistics",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSummaryStatistics"
+    },
+    {
+      "name": "getTimeUnits",
+      "overloads": [
+        {
+          "signature": "getTimeUnits() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTimeUnits"
+    },
+    {
+      "name": "getTotalPhaseCount",
+      "overloads": [
+        {
+          "signature": "getTotalPhaseCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTotalPhaseCount"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "GrowthAnalysisResults(Map, double, String)",
+          "params": [
+            {
+              "name": "neuriteGrowthData",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            },
+            {
+              "name": "frameInterval",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "timeUnits",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of GrowthAnalysisResults"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

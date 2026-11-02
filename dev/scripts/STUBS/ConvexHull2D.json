@@ -1,8 +1,13 @@
 {
   "class_name": "ConvexHull2D",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:00:54.967071",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.ConvexHull2D",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.601165",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "boundarySize",
@@ -11,7 +16,8 @@
           "signature": "boundarySize() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: boundarySize"
@@ -23,7 +29,8 @@
           "signature": "compute() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: compute"
@@ -35,7 +42,8 @@
           "signature": "getPolygon() -> Polygon2D",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Polygon2D"
+          "java_return_type": "Polygon2D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPolygon"
@@ -44,28 +52,18 @@
       "name": "intersection",
       "overloads": [
         {
-          "signature": "intersection(AbstractConvexHull;) -> AbstractConvexHull",
+          "signature": "intersection(AbstractConvexHull[]) -> ConvexHull2D",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "AbstractConvexHull"
-        },
-        {
-          "signature": "intersection(AbstractConvexHull;) -> ConvexHull2D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;"
+              "name": "convexHulls",
+              "type": "List[Any]",
+              "java_type": "AbstractConvexHull[]",
+              "varargs": true
             }
           ],
           "return_type": "ConvexHull2D",
-          "java_return_type": "ConvexHull2D"
+          "java_return_type": "ConvexHull2D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: intersection"
@@ -74,37 +72,22 @@
       "name": "intersectionBox",
       "overloads": [
         {
-          "signature": "intersectionBox(AbstractConvexHull;) -> BoundingBox",
+          "signature": "intersectionBox(AbstractConvexHull[]) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AbstractConvexHull;"
+              "name": "convexHulls",
+              "type": "List[Any]",
+              "java_type": "AbstractConvexHull[]",
+              "varargs": true
             }
           ],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false,
+          "inherited_from": "AbstractConvexHull"
         }
       ],
       "documentation": "Java method: intersectionBox"
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
     },
     {
       "name": "size",
@@ -113,27 +96,22 @@
           "signature": "size() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: size"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ConvexHull2D(Context, Collection)",
+          "signature": "ConvexHull2D(Collection)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            },
-            {
-              "name": "arg1",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -142,10 +120,15 @@
           "java_return_type": "void"
         },
         {
-          "signature": "ConvexHull2D(Collection)",
+          "signature": "ConvexHull2D(Context, Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -154,7 +137,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ConvexHull2D"
+      "documentation": "Constructors of ConvexHull2D"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

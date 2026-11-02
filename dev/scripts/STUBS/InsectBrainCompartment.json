@@ -1,8 +1,13 @@
 {
   "class_name": "InsectBrainCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-09-27T23:00:59.876365",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.annotation.InsectBrainCompartment",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.641276",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "acronym",
@@ -11,7 +16,8 @@
           "signature": "acronym() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: acronym"
@@ -20,10 +26,11 @@
       "name": "aliases",
       "overloads": [
         {
-          "signature": "aliases() -> String;",
+          "signature": "aliases() -> String[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "String;"
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: aliases"
@@ -35,10 +42,30 @@
           "signature": "color() -> ColorRGB",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ColorRGB"
+          "java_return_type": "ColorRGB",
+          "is_static": false
         }
       ],
       "documentation": "Java method: color"
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
     },
     {
       "name": "getAncestor",
@@ -47,13 +74,14 @@
           "signature": "getAncestor(int) -> BrainAnnotation",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAncestor"
@@ -64,8 +92,9 @@
         {
           "signature": "getMesh() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh"
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMesh"
@@ -77,7 +106,8 @@
           "signature": "getOntologyDepth() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getOntologyDepth"
@@ -89,10 +119,24 @@
           "signature": "getParent() -> BrainAnnotation",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getParent"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
     },
     {
       "name": "id",
@@ -101,7 +145,8 @@
           "signature": "id() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: id"
@@ -113,13 +158,14 @@
           "signature": "isChildOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isChildOf"
@@ -131,7 +177,8 @@
           "signature": "isMeshAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isMeshAvailable"
@@ -143,13 +190,14 @@
           "signature": "isParentOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "parentCompartment",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isParentOf"
@@ -161,38 +209,14 @@
           "signature": "name() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: name"
     }
   ],
-  "fields": [],
   "constructors": [],
-  "static_fields": [
-    {
-      "name": "ANY_HEMISPHERE",
-      "type": "str",
-      "java_type": "char",
-      "documentation": "Field ANY_HEMISPHERE of type char",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "LEFT_HEMISPHERE",
-      "type": "str",
-      "java_type": "char",
-      "documentation": "Field LEFT_HEMISPHERE of type char",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "RIGHT_HEMISPHERE",
-      "type": "str",
-      "java_type": "char",
-      "documentation": "Field RIGHT_HEMISPHERE of type char",
-      "is_static": true,
-      "is_final": true
-    }
-  ]
+  "fields": [],
+  "static_fields": []
 }

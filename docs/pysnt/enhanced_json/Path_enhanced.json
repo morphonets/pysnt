@@ -1,9 +1,9 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.680592",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.301974",
+  "extracted_at": "2026-11-02T00:24:01.663057",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.267016",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "add(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "other",
               "type": "Path",
               "java_type": "Path",
               "description": "",
@@ -41,21 +41,21 @@
           "signature": "addAsLinesTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
               "java_type": "Color",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -80,24 +80,24 @@
       "name": "addDiscsTo3DViewer",
       "overloads": [
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
-              "java_type": "Color3f",
+              "java_type": "Color",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -110,24 +110,24 @@
           "throws": {}
         },
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
-              "java_type": "Color",
+              "java_type": "Color3f",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -155,7 +155,7 @@
           "signature": "addNode(PointInImage) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "- the node to be inserted",
@@ -183,21 +183,21 @@
           "signature": "addPointDouble(double, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -222,24 +222,24 @@
       "name": "addTo3DViewer",
       "overloads": [
         {
-          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
+          "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse",
               "description": "- the Image3DUniverse to add this path to",
               "javadoc_name": "univ"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
-              "java_type": "Color3f",
+              "java_type": "Color",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -252,24 +252,24 @@
           "throws": {}
         },
         {
-          "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
+          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
-              "java_type": "Color",
+              "java_type": "Color3f",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -294,14 +294,6 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "clone() -> Path",
           "params": [],
           "return_type": "Path",
@@ -313,7 +305,7 @@
           "signature": "clone(boolean) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "includeImmediateChildren",
               "type": "bool",
               "java_type": "boolean",
               "description": "- if true, includes clones of immediate child paths; if false, returns a clone without children",
@@ -327,7 +319,7 @@
         }
       ],
       "documentation": "Java method: clone",
-      "javadoc_description": "Creates a copy of this Path with optional inclusion of immediate children.\n\nThis method creates a clone of this path and optionally includes clones of its immediate child paths. When children are included, they are properly reconnected to the cloned parent path, maintaining the parent-child relationships. Note that only immediate children are cloned - grandchildren and deeper descendants are not included.\n\nLimitations: This method only clones the immediate children and does not recursively clone the entire subtree. For complex tree structures, consider using Tree.clone() instead.",
+      "javadoc_description": "Creates a copy of this Path with optional inclusion of immediate children.\n\nThis method creates a clone of this path and optionally includes clones of its immediate child paths. When children are included, they are properly reconnected to the cloned parent path, maintaining the parent-child relationships. Note that only immediate children are cloned - grandchildren and deeper descendants are not included.\n\n**Limitations:** This method only clones the immediate children and does not recursively clone the entire subtree. For complex tree structures, consider using `Tree.clone()` instead.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -338,30 +330,14 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "compareTo(Path) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "Path",
               "java_type": "Path",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_0"
             }
           ],
           "return_type": "int",
@@ -385,7 +361,7 @@
           "signature": "contains(PointInImage) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "pim",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "- the point to check",
@@ -401,14 +377,14 @@
           "signature": "contains(PointInImage, double) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "tolerance",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -485,7 +461,7 @@
         }
       ],
       "documentation": "Java method: detachFromParent",
-      "javadoc_description": "Detaches this path from its parent, converting it into an independent primary path.\n\nRemoves the parent-child relationship established by `setBranchFrom(Path, PointInImage)` In\n\nClears the parent path reference and branch point Removes this path from the parent's children collection Updates bidirectional references for tree traversal Resets the path order to -1 (no hierarchical position) Converts this path from a branch to a primary path",
+      "javadoc_description": "Detaches this path from its parent, converting it into an independent primary path.\n\nRemoves the parent-child relationship established by `setBranchFrom(Path, PointInImage)` In\n\n- Clears the parent path reference and branch point\n\n- Removes this path from the parent's children collection\n\n- Updates bidirectional references for tree traversal\n\n- Resets the path order to -1 (no hierarchical position)\n\n- Converts this path from a branch to a primary path",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -506,7 +482,7 @@
           "signature": "downsample(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "internodeSpacing",
               "type": "float",
               "java_type": "double",
               "description": "- the target spacing between nodes after downsampling. This parameter controls the aggressiveness of the downsampling - smaller values preserve more detail, larger values result in more aggressive simplification. Must be greater than zero.",
@@ -522,7 +498,7 @@
         }
       ],
       "documentation": "Java method: downsample",
-      "javadoc_description": "Downsamples this path (in-place) by reducing the number of nodes while preserving its overall shape.\n\nThis method reduces the density of nodes in the path by removing redundant points expected to not significantly contribute to the path's shape. The downsampling is performed using the Douglas-Peucker algorithm, which preserves fidelity within the specified tolerance.\n\nThe method operates on the segments flanked by anchor points (junctions, start, and end points). Each segment is downsampled independently, and the results are combined to form the final downsampled path. Node radii are averaged appropriately for retained points\n\nThread Safety: This method is synchronized to prevent concurrent modification of the path structure during the downsampling operation.",
+      "javadoc_description": "Downsamples this path (in-place) by reducing the number of nodes while preserving its overall shape.\n\nThis method reduces the density of nodes in the path by removing redundant points expected to not significantly contribute to the path's shape. The downsampling is performed using the Douglas-Peucker algorithm, which preserves fidelity within the specified tolerance.\n\nThe method operates on the segments flanked by anchor points (junctions, start, and end points). Each segment is downsampled independently, and the results are combined to form the final downsampled path. Node radii are averaged appropriately for retained points\n\n**Thread Safety:** This method is synchronized to prevent concurrent modification of the path structure during the downsampling operation.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -537,56 +513,49 @@
       "name": "drawPathAsPoints",
       "overloads": [
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "canvas",
+              "type": "TracerCanvas",
               "java_type": "TracerCanvas",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "g",
               "type": "Any",
               "java_type": "Graphics2D",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "c",
               "type": "Any",
               "java_type": "Color",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
+              "name": "plane",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": "param_3"
             },
             {
-              "name": "arg4",
+              "name": "highContrast",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
               "javadoc_name": "param_4"
             },
             {
-              "name": "arg5",
-              "type": "int",
-              "java_type": "int",
+              "name": "drawDiameter",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": "param_5"
-            },
-            {
-              "name": "arg6",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": "param_6"
             }
           ],
           "return_type": "None",
@@ -595,47 +564,54 @@
           "throws": {}
         },
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "canvas",
+              "type": "TracerCanvas",
               "java_type": "TracerCanvas",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "g2",
               "type": "Any",
               "java_type": "Graphics2D",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "c",
               "type": "Any",
               "java_type": "Color",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "highContrast",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "drawDiameter",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "slice",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg5",
-              "type": "bool",
-              "java_type": "boolean",
+              "name": "either_side",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -685,7 +661,7 @@
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the list of nodes as PointInImage objects",
+          "return_description": "the list of nodes as `PointInImage` objects",
           "throws": {}
         }
       ],
@@ -721,13 +697,46 @@
       "examples": []
     },
     {
+      "name": "fitRadii",
+      "overloads": [
+        {
+          "signature": "fitRadii(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the image containing the signal to fit against",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the fit succeeded",
+          "throws": {
+            "IllegalArgumentException": "- if this path is already a fitted version of another path, or if the image is null"
+          }
+        }
+      ],
+      "documentation": "Java method: fitRadii",
+      "javadoc_description": "Fits radii to this Path by fitting circular cross-sections to the image signal. This is the scripting equivalent of the UI's \"Fit Path\" action. Node positions are not modified; only radii and tangent vectors are computed.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathFitter",
+        "setRadii(double[])"
+      ],
+      "examples": []
+    },
+    {
       "name": "getAngle",
       "overloads": [
         {
           "signature": "getAngle(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "nodeIndex",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -848,7 +857,7 @@
         }
       ],
       "documentation": "Java method: getBranchPoints",
-      "javadoc_description": "This is a version of findJunctions() ensuring that a junction node is only retrieved once even if multiple child paths are associated with it.",
+      "javadoc_description": "This is a version of `findJunctions()` ensuring that a junction node is only retrieved once even if multiple child paths are associated with it.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -890,7 +899,7 @@
         }
       ],
       "documentation": "Java method: getCanvasOffset",
-      "javadoc_description": "Returns the translation offset used to render this Path in a TracerCanvas.",
+      "javadoc_description": "Returns the translation offset used to render this Path in a `TracerCanvas`.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -993,7 +1002,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the Contraction of this Path, or NaN if this Path has no length",
+          "return_description": "the Contraction of this Path, or `NaN` if this Path has no length",
           "throws": {}
         }
       ],
@@ -1029,12 +1038,12 @@
       "name": "getExtensionAngle3D",
       "overloads": [
         {
-          "signature": "getExtensionAngle3D(boolean) -> double",
+          "signature": "getExtensionAngle3D(Vector3d) -> double",
           "params": [
             {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
+              "name": "referenceVector",
+              "type": "Any",
+              "java_type": "Vector3d",
               "description": "- the reference vector to measure angle from (e.g., new Vector3d(0, 0, 1) for vertical reference, or new Vector3d(1, 0, 0) for horizontal)",
               "javadoc_name": "referenceVector"
             }
@@ -1045,12 +1054,12 @@
           "throws": {}
         },
         {
-          "signature": "getExtensionAngle3D(Vector3d) -> double",
+          "signature": "getExtensionAngle3D(boolean) -> double",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Vector3d",
+              "name": "relative",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -1173,11 +1182,11 @@
       "name": "getExtensionAngles3D",
       "overloads": [
         {
-          "signature": "getExtensionAngles3D() -> [D",
+          "signature": "getExtensionAngles3D() -> double[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D",
-          "return_description": "double array containing [azimuth, elevation] in degrees, where:\n\nazimuth (index 0): Compass bearing in XY plane (0-360°) following navigation convention:\n\n0° = North (negative Y direction in image coordinates) 90° = East (positive X direction) 180° = South (positive Y direction in image coordinates) 270° = West (negative X direction)\n\nelevation (index 1): Vertical angle from XY plane (-90° to +90°):\n\n0° = horizontal (parallel to XY plane) +90° = pointing straight up (positive Z direction) -90° = pointing straight down (negative Z direction)\n\nReturns null if path has only one point or extension direction cannot be determined",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "double array containing [azimuth, elevation] in degrees, where:\n\n**azimuth** (index 0): Compass bearing in XY plane (0-360°) following navigation convention:\n\n- 0° = North (negative Y direction in image coordinates)\n\n- 90° = East (positive X direction)\n\n- 180° = South (positive Y direction in image coordinates)\n\n- 270° = West (negative X direction)\n\n**elevation** (index 1): Vertical angle from XY plane (-90° to +90°):\n\n- 0° = horizontal (parallel to XY plane)\n\n- +90° = pointing straight up (positive Z direction)\n\n- -90° = pointing straight down (negative Z direction)\n\nReturns null if path has only one point or extension direction cannot be determined",
           "throws": {}
         }
       ],
@@ -1273,6 +1282,3086 @@
       "since_version": null,
       "see_also": [],
       "examples": []
+    },
+    {
+      "name": "getID",
+      "overloads": [
+        {
+          "signature": "getID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the identifier",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getID",
+      "javadoc_description": "Gets the identifier of this Path",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInitialDirection",
+      "overloads": [
+        {
+          "signature": "getInitialDirection(int) -> double[]",
+          "params": [
+            {
+              "name": "maxNodes",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the maximum node index to use as the end point",
+              "javadoc_name": "maxNodes"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "a 3-element array `[dx, dy, dz]`, or `null` if the path has fewer than 2 nodes or the resulting vector is zero-length",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInitialDirection",
+      "javadoc_description": "Returns a (non-normalized) direction vector from the first node to the node at index `min(maxNodes, size()-1)`. This is useful for measuring the initial heading of a child path near a fork point.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInterpolatedPath",
+      "overloads": [
+        {
+          "signature": "getInterpolatedPath(double) -> Path",
+          "params": [
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the maximum distance allowed between consecutive nodes",
+              "javadoc_name": "maxDistance"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the interpolated path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInterpolatedPath",
+      "javadoc_description": "Returns a new Path in which nodes have been interpolated to ensure that the distance between consecutive nodes does not exceed the specified threshold.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getJunctionNodes",
+      "overloads": [
+        {
+          "signature": "getJunctionNodes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getJunctionNodes",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLength",
+      "overloads": [
+        {
+          "signature": "getLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the length of this Path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLength",
+      "javadoc_description": "Gets the length of this Path",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMeanRadius",
+      "overloads": [
+        {
+          "signature": "getMeanRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the average radius of the path, or zero if path has no defined thickness",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMeanRadius",
+      "javadoc_description": "Gets the path mean radius.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "hasRadii()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMinimumSeparation",
+      "overloads": [
+        {
+          "signature": "getMinimumSeparation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMinimumSeparation",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getName",
+      "overloads": [
+        {
+          "signature": "getName() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the name. If no name as been set, the default name is returned.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getName",
+      "javadoc_description": "Gets this Path's name.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setName(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getNode",
+      "overloads": [
+        {
+          "signature": "getNode(int) -> PathNode",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathNode",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNode",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeAnnotation",
+      "overloads": [
+        {
+          "signature": "getNodeAnnotation(int) -> BrainAnnotation",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "return_description": "the annotation of this node,",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeAnnotation",
+      "javadoc_description": "Returns the neuropil annotation associated with this node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTPoint.getAnnotation()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getNodeColor",
+      "overloads": [
+        {
+          "signature": "getNodeColor(int) -> Color",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the node color, or null if no color nodes have been assigned to this path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeColor",
+      "javadoc_description": "Gets the node color.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeColors",
+      "overloads": [
+        {
+          "signature": "getNodeColors() -> Color[]",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Color[]",
+          "return_description": "the colors used to render the nodes of this path, or null if nodes are rendered using the Path color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeColors",
+      "javadoc_description": "Gets the node colors.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeHemisphereFlag",
+      "overloads": [
+        {
+          "signature": "getNodeHemisphereFlag(int) -> char",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "char",
+          "return_description": "the flag associated with this node, either `BrainAnnotation.LEFT_HEMISPHERE`, `BrainAnnotation.RIGHT_HEMISPHERE`, or `BrainAnnotation.ANY_HEMISPHERE`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeHemisphereFlag",
+      "javadoc_description": "Returns the hemisphere flag associated with this node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTPoint.getAnnotation()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getNodeIndex",
+      "overloads": [
+        {
+          "signature": "getNodeIndex(PointInImage) -> int",
+          "params": [
+            {
+              "name": "pim",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- the image position (calibrated coordinates)",
+              "javadoc_name": "pim"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the index of the first node occurrence or -1 if there is no such occurrence",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeIndex",
+      "javadoc_description": "Gets the first node index associated with the specified image coordinates. Returns -1 if no such node was found.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeRadius",
+      "overloads": [
+        {
+          "signature": "getNodeRadius(int) -> double",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the radius at the specified position, or zero if path has no defined thickness",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeRadius",
+      "javadoc_description": "Gets the radius of the specified node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeTangent",
+      "overloads": [
+        {
+          "signature": "getNodeTangent(int) -> double[]",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "the tangent vector [x, y, z] or null if not defined",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeTangent",
+      "javadoc_description": "Gets the tangent vector of a specific node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeValue",
+      "overloads": [
+        {
+          "signature": "getNodeValue(int) -> double",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the value property of this node",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeValue",
+      "javadoc_description": "Returns the \"value\" property of this node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathProfiler.assignValues()",
+        "PointInImage.v"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getNodes",
+      "overloads": [
+        {
+          "signature": "getNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a new list containing all nodes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodes",
+      "javadoc_description": "Gets all nodes as a list.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOrder",
+      "overloads": [
+        {
+          "signature": "getOrder() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the order of this path. A primary path is always of order 1.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOrder",
+      "javadoc_description": "Gets the \"bifurcation\" (branching) order of this Path. If registered in the GUI, this would correspond to the level of this Path in `PathManagerUI`'s JTree: E.g., a Path connected to a primary Path (order 1) will be assigned order 2, etc. N.B.: Albeit related to reverse Horton-Strahler classification, Path ordering is formally distinct, as it classifies *Paths* instead of *branches*.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "StrahlerAnalyzer"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getParentPath",
+      "overloads": [
+        {
+          "signature": "getParentPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the parent path, or null if this is a primary (root) path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getParentPath",
+      "javadoc_description": "Gets the parent path that this path branches from.\n\nReturns the path from which this path originates as a branch. For primary (root) paths, this method returns null since they don't branch from any other path. The parent-child relationship is established when a path is created as a branch using `setBranchFrom(Path, PointInImage)`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for establishing parent-child relationships",
+        "for checking if this is a root path",
+        "for the specific branching point"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPoint3fList",
+      "overloads": [
+        {
+          "signature": "getPoint3fList() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPoint3fList",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPointInCanvas",
+      "overloads": [
+        {
+          "signature": "getPointInCanvas(int) -> PointInCanvas",
+          "params": [
+            {
+              "name": "node",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPointInCanvas",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getResampledPath",
+      "overloads": [
+        {
+          "signature": "getResampledPath(double) -> Path",
+          "params": [
+            {
+              "name": "targetSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the desired spacing between consecutive nodes",
+              "javadoc_name": "targetSpacing"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the resampled path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getResampledPath",
+      "javadoc_description": "Returns a new Path in which nodes have been resampled to ensure uniform spacing along the path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCType",
+      "overloads": [
+        {
+          "signature": "getSWCType() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the SWC type",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCType",
+      "javadoc_description": "Gets the SWC type.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCcolor",
+      "overloads": [
+        {
+          "signature": "getSWCcolor(int) -> Color",
+          "params": [
+            {
+              "name": "swcType",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the SEC type (e.g., SWC_AXON, SWC_DENDRITE, etc.)",
+              "javadoc_name": "swcType"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the SWC color",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCcolor",
+      "javadoc_description": "Gets the default SWC colors used by SNT.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCtypeName",
+      "overloads": [
+        {
+          "signature": "getSWCtypeName(int, boolean) -> String",
+          "params": [
+            {
+              "name": "type",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the SWC type flag",
+              "javadoc_name": "type"
+            },
+            {
+              "name": "capitalized",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the respective label, or `SWC_UNDEFINED_LABEL` if flag was not recognized",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCtypeName",
+      "javadoc_description": "Gets the SWC type label associated with the specified type flag. SNT follows the specification detailed at swc-specification.readthedocs.io",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCtypeNames",
+      "overloads": [
+        {
+          "signature": "getSWCtypeNames() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of SWC type names",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCtypeNames",
+      "javadoc_description": "Gets the list of string representations of SWC types",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSWCtypes",
+      "overloads": [
+        {
+          "signature": "getSWCtypes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of SWC type flags",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSWCtypes",
+      "javadoc_description": "Gets the list of SWC types.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSection",
+      "overloads": [
+        {
+          "signature": "getSection(int, int) -> Path",
+          "params": [
+            {
+              "name": "startIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the node index defining the first node of the section",
+              "javadoc_name": "startIndex"
+            },
+            {
+              "name": "endIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the section. Note that the sectioned Path will share of all of this Path's properties but will not contain any information on junction points or connectivity to other Paths.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSection",
+      "javadoc_description": "Gets a section between two nodes of this Path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSmoothedPath",
+      "overloads": [
+        {
+          "signature": "getSmoothedPath(int) -> Path",
+          "params": [
+            {
+              "name": "windowSize",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the size of the smoothing window (must be odd and >= 3)",
+              "javadoc_name": "windowSize"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the smoothed path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSmoothedPath",
+      "javadoc_description": "Returns a smoothed version of this path using a simple moving average filter.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSpineOrVaricosityCount",
+      "overloads": [
+        {
+          "signature": "getSpineOrVaricosityCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of spines or varicosities. Returns 0 if no features have been annotated.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpineOrVaricosityCount",
+      "javadoc_description": "Gets the number of spines or varicosities associated with this path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for setting the count"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getStartJoins",
+      "overloads": [
+        {
+          "signature": "getStartJoins() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStartJoins",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStartJoinsPoint",
+      "overloads": [
+        {
+          "signature": "getStartJoinsPoint() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStartJoinsPoint",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTangent",
+      "overloads": [
+        {
+          "signature": "getTangent(int, int, double[]) -> void",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "pointsEitherSide",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "result",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTangent",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTreeID",
+      "overloads": [
+        {
+          "signature": "getTreeID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the Tree identifier",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTreeID",
+      "javadoc_description": "Gets the identifier of the `Tree` associated to this Path (if any).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTreeLabel",
+      "overloads": [
+        {
+          "signature": "getTreeLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTreeLabel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUnfitted",
+      "overloads": [
+        {
+          "signature": "getUnfitted() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the unfitted original, or `null` if this is not a fitted path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUnfitted",
+      "javadoc_description": "Gets the original (unfitted) path that this path is a fitted version of.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "isFittedVersionOfAnotherPath()",
+        "getFitted()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getUnscaledNodes",
+      "overloads": [
+        {
+          "signature": "getUnscaledNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of nodes in image space (pixel coordinates). This takes already takes into account `getCanvasOffset()`.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUnscaledNodes",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUseFitted",
+      "overloads": [
+        {
+          "signature": "getUseFitted() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if the fitted version of this Path is in use, otherwise false",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUseFitted",
+      "javadoc_description": "Gets whether the fitted 'flavor' of this Path is in use.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getVersionInUse",
+      "overloads": [
+        {
+          "signature": "getVersionInUse() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the version in use. Never null",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getVersionInUse",
+      "javadoc_description": "Returns the version of this path that is in use, i.e., the one that is displayed and analyzed: its fitted flavor if `getUseFitted()`, otherwise this path. This is the registry-free rule: for the registry-aware one see `PathAndFillManager.getVersionInUse(Path)`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getXUnscaled",
+      "overloads": [
+        {
+          "signature": "getXUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the path node",
+              "javadoc_name": "i"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the 0-based index of the X-position of the node.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getXUnscaled",
+      "javadoc_description": "Returns the unscaled X position of a node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getXUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getXUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getXUnscaledDouble",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getYUnscaled",
+      "overloads": [
+        {
+          "signature": "getYUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the path node",
+              "javadoc_name": "i"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the 0-based index of the Y-position of the node.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getYUnscaled",
+      "javadoc_description": "Returns the unscaled Y position of a node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getYUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getYUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getYUnscaledDouble",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getZUnscaled",
+      "overloads": [
+        {
+          "signature": "getZUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the path node",
+              "javadoc_name": "i"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the 0-based index of the Z-position of the node. Note that Z-indices in ImagePlus are 1-based, i.e., outside SNT the proper Z-slice for this position in an ImagePlus is `getZUnscaled(i) + 1`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getZUnscaled",
+      "javadoc_description": "Returns the unscaled Z position of a node.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getZUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getZUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getZUnscaledDouble",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasCustomColor",
+      "overloads": [
+        {
+          "signature": "hasCustomColor() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasCustomColor",
+      "javadoc_description": "Assesses whether a custom color has been assigned to this Path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "hasNodeColors()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "hasNodeAnnotations",
+      "overloads": [
+        {
+          "signature": "hasNodeAnnotations() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasNodeAnnotations",
+      "javadoc_description": "Assesses whether the nodes of this path have been assigned `BrainAnnotation`s.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTPoint.getAnnotation()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "hasNodeColors",
+      "overloads": [
+        {
+          "signature": "hasNodeColors() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if any nodes have custom colors",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasNodeColors",
+      "javadoc_description": "Checks whether any nodes have custom colors assigned.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getNodeColors()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "hasNodeHemisphereFlags",
+      "overloads": [
+        {
+          "signature": "hasNodeHemisphereFlags() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasNodeHemisphereFlags",
+      "javadoc_description": "Assesses whether the nodes of this path have been assigned hemisphere flags.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNTPoint.getHemisphere()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "hasNodeValues",
+      "overloads": [
+        {
+          "signature": "hasNodeValues() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if successful",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasNodeValues",
+      "javadoc_description": "Assesses whether the nodes of this path have been assigned an array of values",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PointInImage.v",
+        "PathProfiler.assignValues()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "hasRadii",
+      "overloads": [
+        {
+          "signature": "hasRadii() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if the points defining with this path are associated with a list of radii",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasRadii",
+      "javadoc_description": "Checks whether the nodes of this path have been assigned defined thickness.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasTangents",
+      "overloads": [
+        {
+          "signature": "hasTangents() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if any nodes have tangents",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasTangents",
+      "javadoc_description": "Checks whether any nodes have tangent vectors defined.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "indexNearestTo",
+      "overloads": [
+        {
+          "signature": "indexNearestTo(double, double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: indexNearestTo",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "indexNearestToUnscaled",
+      "overloads": [
+        {
+          "signature": "indexNearestToUnscaled(double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the x-coordinate in pixel units",
+              "javadoc_name": "x"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the index of the closest node",
+          "throws": {}
+        },
+        {
+          "signature": "indexNearestToUnscaled(double, double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: indexNearestToUnscaled",
+      "javadoc_description": "Returns the index of the node nearest to the specified position in pixel (unscaled) coordinates, searching across all nodes regardless of distance.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "indexNearestToUnscaled(double, double, double, double)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "insertNode",
+      "overloads": [
+        {
+          "signature": "insertNode(int, PointInImage) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the position at which the node is to be inserted",
+              "javadoc_name": "index"
+            },
+            {
+              "name": "point",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if index is out-of-range"
+          }
+        },
+        {
+          "signature": "insertNode(int, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "point",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: insertNode",
+      "javadoc_description": "Inserts a node at the specified position.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "interpolateMissingRadii",
+      "overloads": [
+        {
+          "signature": "interpolateMissingRadii(DoublePredicate, boolean) -> Map",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "DoublePredicate",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: interpolateMissingRadii",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isActiveVersion",
+      "overloads": [
+        {
+          "signature": "isActiveVersion() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this version is active, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isActiveVersion",
+      "javadoc_description": "Checks if this version of the path is currently being used for display/analysis.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isConnectedTo",
+      "overloads": [
+        {
+          "signature": "isConnectedTo(Path) -> boolean",
+          "params": [
+            {
+              "name": "other",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isConnectedTo",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isDeFactoPath",
+      "overloads": [
+        {
+          "signature": "isDeFactoPath(Collection) -> boolean",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection this path is being considered against (e.g., an entire PathAndFillManager's paths, or a Tree's own path list). For large collections, prefer passing a Set -- membership is tested with Collection.contains(Object)",
+              "javadoc_name": "paths"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this path should be treated as a normal, standalone/\"de facto\" path (either it is not a fitted version, or its un-fitted counterpart is missing from `paths`); false if it is redundant and should be skipped in favor of that counterpart",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isDeFactoPath",
+      "javadoc_description": "Single source of truth for the \"should this fitted-version path be treated as redundant/standalone\" decision used throughout listings, filters, and measurements.\n\nA fitted-version path (`isFittedVersionOfAnotherPath()`) is normally considered redundant -- it is expected to be represented instead by its un-fitted counterpart (`getUnfitted()`), which is typically registered alongside it. But that assumption can be violated: `Tree(java.util.Collection)` (used e.g. by `Tree.listFromFile(String)`) substitutes a path's fitted flavor in place of the original whenever `getUseFitted()` is true, so if the source file also flagged that original path as primary/root, only the fitted substitute ever ends up in `paths`, and its un-fitted twin never arrives. In that case this path is the only remaining representative and must NOT be treated as redundant, or it silently vanishes from whatever is being listed/measured.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathAndFillManager.isDeFactoPath(Path)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "isFittedVersionOfAnotherPath",
+      "overloads": [
+        {
+          "signature": "isFittedVersionOfAnotherPath() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if it is a fitted version of another path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isFittedVersionOfAnotherPath",
+      "javadoc_description": "Checks if this Path is a fitted version of another path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isPrimary",
+      "overloads": [
+        {
+          "signature": "isPrimary() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if is primary (root)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isPrimary",
+      "javadoc_description": "Checks if this Path is root.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSelected",
+      "overloads": [
+        {
+          "signature": "isSelected() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSelected",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "lastNode",
+      "overloads": [
+        {
+          "signature": "lastNode() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "the terminal node, or null if path is empty",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: lastNode",
+      "javadoc_description": "Returns the last node of this path.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "moveNode",
+      "overloads": [
+        {
+          "signature": "moveNode(int, PointInImage) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the node to move",
+              "javadoc_name": "index"
+            },
+            {
+              "name": "destination",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IndexOutOfBoundsException": "- if the index is out of range"
+          }
+        },
+        {
+          "signature": "moveNode(int, double, double, double) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: moveNode",
+      "javadoc_description": "Assigns a new location to the specified node using raw coordinates. This is a performance-optimized version of `moveNode(int, PointInImage)` that avoids object allocation.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "nearestNodeTo",
+      "overloads": [
+        {
+          "signature": "nearestNodeTo(PointInImage, double) -> PathNode",
+          "params": [
+            {
+              "name": "node",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "- location to be searched for",
+              "javadoc_name": "node"
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathNode",
+          "return_description": "the closest node to the specified one or null if no such node was found.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: nearestNodeTo",
+      "javadoc_description": "Gets the closest node associated with the specified node.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeFrom3DViewer",
+      "overloads": [
+        {
+          "signature": "removeFrom3DViewer(Image3DUniverse) -> void",
+          "params": [
+            {
+              "name": "univ",
+              "type": "Any",
+              "java_type": "Image3DUniverse",
+              "description": "- the Image3DUniverse from which to remove this path's 3D representation. Must not be null.",
+              "javadoc_name": "univ"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeFrom3DViewer",
+      "javadoc_description": "Removes this path from the specified 3D viewer universe.",
+      "category": "Setters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeNode",
+      "overloads": [
+        {
+          "signature": "removeNode(int) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the zero-based index of the node to be removed",
+              "javadoc_name": "index"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if index is out-of-range"
+          }
+        }
+      ],
+      "documentation": "Java method: removeNode",
+      "javadoc_description": "Removes the specified node if this path has at least two nodes. Does nothing if this is a single point path.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "replaceNodes",
+      "overloads": [
+        {
+          "signature": "replaceNodes(Path) -> void",
+          "params": [
+            {
+              "name": "replacementPath",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path providing the new node geometry",
+              "javadoc_name": "replacementPath"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if replacementPath is null or empty"
+          }
+        }
+      ],
+      "documentation": "Java method: replaceNodes",
+      "javadoc_description": "Replaces all nodes of this path with those from the replacement path, preserving hierarchical relationships (parent, children, connections).\n\nThis method is useful for refining path geometry (e.g., from A* tracing) while maintaining the tree structure.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resetColor",
+      "overloads": [
+        {
+          "signature": "resetColor() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resetColor",
+      "javadoc_description": "Resets this path color, forcing SNT to render it under default settings.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reverse",
+      "overloads": [
+        {
+          "signature": "reverse() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reverse",
+      "javadoc_description": "Reverses this path so that its starting node becomes the last and vice versa.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reversed",
+      "overloads": [
+        {
+          "signature": "reversed() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "a reversed version of this path in which node coordinates are reversed. Note that for legacy reasons only the node coordinates are reversed. Other properties (node colors, etc.) are not included in the returned path",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reversed",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sanitizeRadii",
+      "overloads": [
+        {
+          "signature": "sanitizeRadii(boolean) -> Map",
+          "params": [
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- minimum valid radius (inclusive)",
+              "javadoc_name": "minRadius"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "map of corrected `(node index, radius)` pairs, or `null` if path has no radii or fewer than 2 nodes. Empty map if all radii are already within range.",
+          "throws": {
+            "IllegalArgumentException": "- if bounds are negative or",
+            "minRadius > maxRadius": ""
+          }
+        },
+        {
+          "signature": "sanitizeRadii(DoublePredicate, boolean) -> Map",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "DoublePredicate",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "sanitizeRadii(double, double, boolean) -> Map",
+          "params": [
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "maxRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sanitizeRadii",
+      "javadoc_description": "Sanitizes node radii by enforcing bounds and interpolating outliers.\n\nIdentifies nodes with radii outside `[minRadius, maxRadius]` and assigns new values using linear interpolation based on remaining valid nodes. Interpolated values are clamped to the specified range to prevent extrapolation artifacts.\n\nIf fewer than two nodes have valid radii, a context-appropriate fallback is used:\n\n- All radii above range → `maxRadius`\n\n- All radii below range → `minRadius`\n\n- Mixed or NaN values → midpoint of range",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "sanitizeRadii(DoublePredicate, boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setBranchFrom",
+      "overloads": [
+        {
+          "signature": "setBranchFrom(Path, PointInImage) -> void",
+          "params": [
+            {
+              "name": "parentPath",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the parent path that this path branches from. Must not be null. Some operations may expect it to be an existing path in the same tree structure",
+              "javadoc_name": "parentPath"
+            },
+            {
+              "name": "branchPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if parentPath is null"
+          }
+        }
+      ],
+      "documentation": "Java method: setBranchFrom",
+      "javadoc_description": "Establishes this path as a child path originating from the specified parent path.\n\nIn detail:\n\n- Sets the parent path that this path branches from\n\n- Records the exact point where branching occurs\n\n- Adds this path to the parent's children collection\n\n- Updates this path's order to be parent order + 1\n\n- Maintains bidirectional references for tree traversal",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "to retrieve the parent path",
+        "to get the branching point",
+        "to access child paths branching from this path",
+        "for the hierarchical level (parent order + 1)",
+        "for disconnecting this path"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setCTposition",
+      "overloads": [
+        {
+          "signature": "setCTposition(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the channel (one-based index)",
+              "javadoc_name": "channel"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCTposition",
+      "javadoc_description": "Sets the hyperstack position of this Path",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCanvasOffset",
+      "overloads": [
+        {
+          "signature": "setCanvasOffset(PointInCanvas) -> void",
+          "params": [
+            {
+              "name": "canvasOffset",
+              "type": "Any",
+              "java_type": "PointInCanvas",
+              "description": "- the x,y,z coordinates (pixel-based) specifying the translation offset",
+              "javadoc_name": "canvasOffset"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCanvasOffset",
+      "javadoc_description": "Specifies a translation offset when rendering this Path in a `TracerCanvas`. Path coordinates remain unaltered.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the path color. Set it to null, to have SNT render this Path using default settings. You may need to cast the null reference to",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setColor",
+      "javadoc_description": "Sets this path color.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEditableNode",
+      "overloads": [
+        {
+          "signature": "setEditableNode(int) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the index of the point to be tagged. Set it to -1 to for no tagging",
+              "javadoc_name": "index"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEditableNode",
+      "javadoc_description": "Tags the specified point position as 'editable'.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setGuessedTangents",
+      "overloads": [
+        {
+          "signature": "setGuessedTangents(int) -> void",
+          "params": [
+            {
+              "name": "pointsEitherSide",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setGuessedTangents",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setName",
+      "overloads": [
+        {
+          "signature": "setName(String) -> void",
+          "params": [
+            {
+              "name": "newName",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the new name.",
+              "javadoc_name": "newName"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setName",
+      "javadoc_description": "Sets this Path's name. Set it to null or `\"\"`, to reset it to the default.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getName()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setNodeAnnotation",
+      "overloads": [
+        {
+          "signature": "setNodeAnnotation(BrainAnnotation, int) -> void",
+          "params": [
+            {
+              "name": "annotation",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "- the node annotation",
+              "javadoc_name": "annotation"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeAnnotation",
+      "javadoc_description": "Assigns an annotation to an existing node.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeColor",
+      "overloads": [
+        {
+          "signature": "setNodeColor(Color, int) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "- the node color",
+              "javadoc_name": "color"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setNodeColor(ColorRGB, int) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeColor",
+      "javadoc_description": "Sets the node color.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeColors",
+      "overloads": [
+        {
+          "signature": "setNodeColors(Color[]) -> void",
+          "params": [
+            {
+              "name": "colors",
+              "type": "List[Any]",
+              "java_type": "Color[]",
+              "description": "- the colors used to render the nodes of this. If null (the default) all nodes are rendered using the Path color.",
+              "javadoc_name": "colors"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeColors",
+      "javadoc_description": "Sets the node colors.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeHemisphere",
+      "overloads": [
+        {
+          "signature": "setNodeHemisphere(char, int) -> void",
+          "params": [
+            {
+              "name": "hemisphereFlag",
+              "type": "str",
+              "java_type": "char",
+              "description": "- the node hemisphere flag.",
+              "javadoc_name": "hemisphereFlag"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeHemisphere",
+      "javadoc_description": "Assigns a hemisphere to an existing node.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeRadius",
+      "overloads": [
+        {
+          "signature": "setNodeRadius(double, int) -> void",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the radius value",
+              "javadoc_name": "radius"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeRadius",
+      "javadoc_description": "Sets the radius of a specific node.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeTangent",
+      "overloads": [
+        {
+          "signature": "setNodeTangent(double[], int) -> void",
+          "params": [
+            {
+              "name": "tangent",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "- the X component of the tangent",
+              "javadoc_name": "tx"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setNodeTangent(double, double, double, int) -> void",
+          "params": [
+            {
+              "name": "tx",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "ty",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeTangent",
+      "javadoc_description": "Sets the tangent vector of a specific node.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNodeValue",
+      "overloads": [
+        {
+          "signature": "setNodeValue(double, int) -> void",
+          "params": [
+            {
+              "name": "value",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the node value",
+              "javadoc_name": "value"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeValue",
+      "javadoc_description": "Assigns the \"value\" property to this node.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathProfiler.assignValues()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setNodeValues",
+      "overloads": [
+        {
+          "signature": "setNodeValues(double[]) -> void",
+          "params": [
+            {
+              "name": "values",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "- the new node values",
+              "javadoc_name": "values"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNodeValues",
+      "javadoc_description": "Sets the path \"values\", the array containing the numeric property assigned to path nodes, typically voxel intensities.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PointInImage.v",
+        "PathProfiler.assignValues()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setOrder",
+      "overloads": [
+        {
+          "signature": "setOrder(int) -> void",
+          "params": [
+            {
+              "name": "order",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOrder",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRadii",
+      "overloads": [
+        {
+          "signature": "setRadii(double[]) -> void",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "- the radii array. Setting it null removes the radius attribute from the Path",
+              "javadoc_name": "radii"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRadii",
+      "javadoc_description": "Assigns radii to this Path",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setRadius(double)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setRadius",
+      "overloads": [
+        {
+          "signature": "setRadius(double) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the radius to be assigned to the node. NaN values are ignored.",
+              "javadoc_name": "r"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IndexOutOfBoundsException": "- if index is out of range"
+          }
+        },
+        {
+          "signature": "setRadius(double, int) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRadius",
+      "javadoc_description": "Assigns a radius to a specific node of this Path.\n\nSets the radius for the node at the specified index. If this is the first radius being set for the path and no tangents exist, this method will also compute guessed tangents to support proper 3D rendering.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for setting radius on all nodes",
+        "for getting the radius of a specific node"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setSWCType",
+      "overloads": [
+        {
+          "signature": "setSWCType(int) -> void",
+          "params": [
+            {
+              "name": "newSWCType",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSWCType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSelected",
+      "overloads": [
+        {
+          "signature": "setSelected(boolean) -> void",
+          "params": [
+            {
+              "name": "newSelectedStatus",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSelected",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSpacing",
+      "overloads": [
+        {
+          "signature": "setSpacing(Calibration) -> void",
+          "params": [
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setSpacing(double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSpacing",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSpineOrVaricosityCount",
+      "overloads": [
+        {
+          "signature": "setSpineOrVaricosityCount(int) -> void",
+          "params": [
+            {
+              "name": "newCount",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the new count of spines or varicosities. Should be non-negative.",
+              "javadoc_name": "newCount"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSpineOrVaricosityCount",
+      "javadoc_description": "Sets the number of spines or varicosities associated with this path.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "for getting the current count"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setStartJoin",
+      "overloads": [
+        {
+          "signature": "setStartJoin(Path, PointInImage) -> void",
+          "params": [
+            {
+              "name": "parentPath",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "branchPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setStartJoin",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setUseFitted",
+      "overloads": [
+        {
+          "signature": "setUseFitted(boolean) -> void",
+          "params": [
+            {
+              "name": "useFitted",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the new use fitted",
+              "javadoc_name": "useFitted"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if this Path has not been fitted"
+          }
+        }
+      ],
+      "documentation": "Java method: setUseFitted",
+      "javadoc_description": "Sets whether the fitted flavor of this Path should be used.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "size",
+      "overloads": [
+        {
+          "signature": "size() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the size, i.e., number of nodes",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: size",
+      "javadoc_description": "Returns the number of nodes of this path",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the string",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "This toString() method shows details of the path which is actually being displayed, not necessarily this path object.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "transform",
+      "overloads": [
+        {
+          "signature": "transform(PathTransformer, ImagePlus, ImagePlus) -> Path",
+          "params": [
+            {
+              "name": "transformation",
+              "type": "Any",
+              "java_type": "PathTransformer",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "template",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "model",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: transform",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "unsetStartJoin",
+      "overloads": [
+        {
+          "signature": "unsetStartJoin() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: unsetStartJoin",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "upsample",
+      "overloads": [
+        {
+          "signature": "upsample(double) -> void",
+          "params": [
+            {
+              "name": "internodeSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the desired distance between adjacent nodes",
+              "javadoc_name": "internodeSpacing"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if spacing is less than or equal to zero"
+          }
+        }
+      ],
+      "documentation": "Java method: upsample",
+      "javadoc_description": "Upsamples this path by spacing nodes at a specified distance.\n\nThe original nodes are preserved and additional interpolated nodes are placed at regular intervals between them. The spacing between adjacent nodes will thus be approximately equal to the specified distance. If the distance between two adjacent original nodes is less than the specified pacing, no additional nodes are added between them.\n\n**NB:**Some assigned properties (node colors, node values, etc.) will be lost.\n\n**Thread Safety:** This method is synchronized to prevent concurrent modification of the path structure during the upsampling operation.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "versionInUse",
+      "overloads": [
+        {
+          "signature": "versionInUse() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: versionInUse",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
     }
   ],
   "fields": [],
@@ -1290,22 +4379,22 @@
           "signature": "Path(double, double, double, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "spacing_units",
               "type": "str",
               "java_type": "String"
             }
@@ -1314,10 +4403,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Path"
+      "documentation": "Constructors of Path"
     }
   ],
-  "javadoc_description": "This class represents a traced segment (i.e., a Path) in a reconstruction. It has methods to manipulate its points (nodes) with sup-pixel accuracy, including drawing them onto threePane-style canvases, etc.\n\nPaths are non-branching sequences of adjacent points (including diagonals) in the image. Branches and joins are supported by attributes of paths that specify that they begin on (or end on) other paths.\n\nIn SNT, a Path can exist in two versions or flavors: itself and a fitted version generated by PathFitter. Because fitting may fail around certain nodes, the fitted version may have a different number of nodes relatively to its non-fitted version",
+  "javadoc_description": "This class represents a traced segment (i.e., a *Path*) in a reconstruction. It has methods to manipulate its points (nodes) with sup-pixel accuracy, including drawing them onto threePane-style canvases, etc.\n\nPaths are non-branching sequences of adjacent points (including diagonals) in the image. Branches and joins are supported by attributes of paths that specify that they begin on (or end on) other paths.\n\nIn SNT, a Path can exist in two versions or flavors: itself and a fitted version generated by `PathFitter`. Because fitting may fail around certain nodes, the fitted version may have a different number of nodes relatively to its non-fitted version",
   "inheritance": {
     "extends": [
       "Object",
@@ -1337,81 +4426,81 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "getExtensionAngle3D(boolean)",
-    "getExtensionAngle3D(Vector3d)",
-    "getExtensionAngles3D()",
-    "for getting the radius of a specific node",
-    "for establishing parent-child relationships",
-    "getName()",
-    "findJunctionIndices()",
-    "PathProfiler.assignValues()",
     "getExtensionDirection3D()",
-    "PathFitter",
-    "for getting the parent of this path",
+    "to access paths that branch from this path",
+    "PathDownsampler.downsample(ArrayList, double)",
+    "for setting radius on all nodes",
+    "getExtensionAngles3D()",
+    "SNTPoint.getHemisphere()",
+    "setRadius(double)",
+    "getFitted()",
+    "hasNodeColors()",
+    "StrahlerAnalyzer",
+    "findJunctions()",
+    "Cloneable",
+    "to get the current branch point (before detaching)",
+    "getNodeColors()",
+    "getExtensionAngleXY()",
+    "setRadii(double[])",
+    "Path",
+    "to check if this path is already independent",
+    "to establish a parent-child relationship",
+    "for getting the current count",
     "for checking if this is a root path",
+    "Object",
+    "PathFitter",
+    "indexNearestTo(double, double, double, double)",
+    "indexNearestToUnscaled(double, double, double, double)",
+    "PathAndFillManager.isDeFactoPath(Path)",
+    "to check if this path has a parent",
+    "getBranchPoints()",
+    "sanitizeRadii(DoublePredicate, boolean)",
+    "getExtensionAngleFromVertical()",
+    "SNTPoint.getAnnotation()",
+    "PathProfiler.assignValues()",
+    "setName(String)",
+    "Constant Field Values",
+    "getExtensionAngle3D(Vector3d)",
+    "sanitizeRadii(double, double, boolean)",
+    "for the hierarchical level (parent order + 1)",
+    "for setting the count",
+    "getName()",
+    "for establishing parent-child relationships",
+    "getExtensionAngle3D(boolean)",
+    "getUnscaledNodes()",
+    "for the deprecated version with child inclusion option",
+    "for getting the parent of this path",
     "isFittedVersionOfAnotherPath()",
     "upsample(double)",
-    "getUnscaledNodes()",
-    "to get the branching point",
-    "setRadius(double)",
-    "hasRadii()",
-    "findJunctions()",
-    "getExtensionAngleXY()",
-    "getBranchPoints()",
-    "for hierarchical position information",
-    "for the hierarchical level (parent order + 1)",
-    "SNTPoint.getHemisphere()",
-    "for creating parent-child relationships",
-    "setRadii(double[])",
-    "PathDownsampler.downsample(ArrayList, double)",
-    "getNodeColors()",
-    "to access child paths branching from this path",
-    "for getting the current count",
-    "Constant Field Values",
-    "SNTPoint.getAnnotation()",
-    "setName(String)",
-    "to retrieve the parent path",
-    "indexNearestToUnscaled(double, double, double, double)",
-    "for the deprecated version with child inclusion option",
-    "hasNodeColors()",
     "Comparable",
-    "to check if this path has a parent",
-    "sanitizeRadii(DoublePredicate, boolean)",
-    "PathAndFillManager.isDeFactoPath(Path)",
-    "for setting radius on all nodes",
     "for the specific branching point",
-    "StrahlerAnalyzer",
-    "Path",
-    "for disconnecting this path",
-    "Object",
-    "to access paths that branch from this path",
+    "for creating parent-child relationships",
+    "to retrieve the parent path",
     "PointInImage.v",
-    "indexNearestTo(double, double, double, double)",
-    "Cloneable",
-    "to establish a parent-child relationship",
-    "getFitted()",
-    "getExtensionAngleFromVertical()",
-    "for setting the count",
-    "to check if this path is already independent",
-    "to get the current branch point (before detaching)",
-    "sanitizeRadii(double, double, boolean)",
-    "getApproximatedVolume()"
+    "hasRadii()",
+    "getApproximatedVolume()",
+    "findJunctionIndices()",
+    "to access child paths branching from this path",
+    "for hierarchical position information",
+    "to get the branching point",
+    "for getting the radius of a specific node",
+    "for disconnecting this path"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 196,
-      "total_json_methods": 42,
-      "total_matches": 51,
-      "exact_matches": 51,
+      "total_javadoc_methods": 197,
+      "total_json_methods": 146,
+      "total_matches": 168,
+      "exact_matches": 168,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 145,
-      "unmatched_json": -9,
-      "match_percentage": 26.0
+      "unmatched_javadoc": 29,
+      "unmatched_json": -22,
+      "match_percentage": 85.3
     },
-    "unmatched_javadoc_methods": 145,
+    "unmatched_javadoc_methods": 29,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.312
+    "enhancement_quality_score": 1.0
   }
 }

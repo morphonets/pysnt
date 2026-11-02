@@ -1,0 +1,122 @@
+{
+  "class_name": "IOUtils",
+  "package": "sc.fiji.snt.util",
+  "java_name": "sc.fiji.snt.util.IOUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.631874",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "detectFormat",
+      "overloads": [
+        {
+          "signature": "detectFormat(File) -> ReconstructionFormat",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ReconstructionFormat",
+          "is_static": true
+        },
+        {
+          "signature": "detectFormat(InputStream, boolean) -> ReconstructionFormat",
+          "params": [
+            {
+              "name": "is",
+              "type": "Any",
+              "java_type": "InputStream"
+            },
+            {
+              "name": "closeStreamAfterGuess",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ReconstructionFormat",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: detectFormat"
+    },
+    {
+      "name": "getReconstructionExtensions",
+      "overloads": [
+        {
+          "signature": "getReconstructionExtensions() -> String[]",
+          "params": [],
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getReconstructionExtensions"
+    },
+    {
+      "name": "isReconstructionFile",
+      "overloads": [
+        {
+          "signature": "isReconstructionFile(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        },
+        {
+          "signature": "isReconstructionFile(File, boolean) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "sniffXml",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: isReconstructionFile"
+    },
+    {
+      "name": "isSWCFile",
+      "overloads": [
+        {
+          "signature": "isSWCFile(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: isSWCFile"
+    }
+  ],
+  "constructors": [],
+  "fields": [],
+  "static_fields": []
+}

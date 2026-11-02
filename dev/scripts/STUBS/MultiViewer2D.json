@@ -1,27 +1,14 @@
 {
   "class_name": "MultiViewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:01.703045",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.MultiViewer2D",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.655129",
+  "extractor_version": "2.0.0",
   "methods": [
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
-    },
     {
       "name": "save",
       "overloads": [
@@ -29,13 +16,14 @@
           "signature": "save(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: save"
@@ -47,13 +35,14 @@
           "signature": "setAxesVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setAxesVisible"
@@ -65,62 +54,65 @@
           "signature": "setColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "setColorBarLegend(ColorTable, double, double, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorTable"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "setColorBarLegend(String, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lut",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setColorBarLegend(ColorTable, double, double, int) -> void",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "nDecimalPlaces",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setColorBarLegend"
@@ -132,13 +124,14 @@
           "signature": "setGridlinesVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setGridlinesVisible"
@@ -150,13 +143,16 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: setLabel"
@@ -168,13 +164,14 @@
           "signature": "setLayoutColumns(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cols",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLayoutColumns"
@@ -186,13 +183,14 @@
           "signature": "setOutlineVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setOutlineVisible"
@@ -204,13 +202,14 @@
           "signature": "setTitle(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "title",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setTitle"
@@ -222,18 +221,19 @@
           "signature": "setXrange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xMin",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "xMax",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setXrange"
@@ -245,18 +245,19 @@
           "signature": "setYrange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "yMin",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "yMax",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setYrange"
@@ -268,43 +269,45 @@
           "signature": "show() -> JFrame",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "JFrame"
+          "java_return_type": "JFrame",
+          "is_static": false
         }
       ],
       "documentation": "Java method: show"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "MultiViewer2D(List)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "MultiViewer2D(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "MultiViewer2D(List)",
+          "params": [
+            {
+              "name": "viewers",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MultiViewer2D"
+      "documentation": "Constructors of MultiViewer2D"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

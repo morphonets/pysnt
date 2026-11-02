@@ -1,44 +1,51 @@
 {
   "class_name": "SNTPoint",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-09-27T23:01:07.075778",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.SNTPoint",
+  "kind": "interface",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.705833",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static average",
+      "name": "average",
       "overloads": [
         {
-          "signature": "static average(Collection) -> PointInImage",
+          "signature": "average(Collection) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static average"
+      "documentation": "Java method: average"
     },
     {
-      "name": "static fromString",
+      "name": "fromString",
       "overloads": [
         {
-          "signature": "static fromString(String) -> PointInImage",
+          "signature": "fromString(String) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "string",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static fromString"
+      "documentation": "Java method: fromString"
     },
     {
       "name": "getAnnotation",
@@ -47,7 +54,8 @@
           "signature": "getAnnotation() -> BrainAnnotation",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotation"
@@ -59,13 +67,14 @@
           "signature": "getCoordinateOnAxis(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCoordinateOnAxis"
@@ -77,7 +86,8 @@
           "signature": "getHemisphere() -> char",
           "params": [],
           "return_type": "str",
-          "java_return_type": "char"
+          "java_return_type": "char",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHemisphere"
@@ -89,7 +99,8 @@
           "signature": "getX() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getX"
@@ -101,7 +112,8 @@
           "signature": "getY() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getY"
@@ -113,50 +125,53 @@
           "signature": "getZ() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getZ"
     },
     {
-      "name": "static of",
+      "name": "of",
       "overloads": [
         {
-          "signature": "static of(Number, Number, Number) -> PointInImage",
+          "signature": "of(Number[]) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
-              "type": "Union[int, float]",
-              "java_type": "Number"
-            },
-            {
-              "name": "arg1",
-              "type": "Union[int, float]",
-              "java_type": "Number"
-            },
-            {
-              "name": "arg2",
-              "type": "Union[int, float]",
-              "java_type": "Number"
+              "name": "coords",
+              "type": "List[Union[int, float]]",
+              "java_type": "Number[]"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": true
         },
         {
-          "signature": "static of(Number;) -> PointInImage",
+          "signature": "of(Number, Number, Number) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Number;"
+              "name": "x",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "y",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "z",
+              "type": "Union[int, float]",
+              "java_type": "Number"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static of"
+      "documentation": "Java method: of"
     },
     {
       "name": "setAnnotation",
@@ -165,13 +180,14 @@
           "signature": "setAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setAnnotation"
@@ -183,18 +199,20 @@
           "signature": "setHemisphere(char) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lr",
               "type": "str",
               "java_type": "char"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setHemisphere"
     }
   ],
+  "constructors": [],
   "fields": [],
-  "constructors": []
+  "static_fields": []
 }

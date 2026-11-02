@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.io``
 
-Importer for Neurolucida XML files (Neuromorphological File Specification / NMF format). Parses <tree> elements into SNT Path/Tree objects and <marker> elements into bookmark data (centroid coordinates). Contours and vessels are skipped in this implementation.
+Importer for Neurolucida XML files (Neuromorphological File Specification / NMF format). Parses ``<tree>`` elements into SNT ``Path``/``Tree`` objects and ``<marker>`` elements into bookmark data (centroid coordinates). Contours and vessels are skipped in this implementation.
 
 
 Methods
@@ -71,17 +71,17 @@ Getters Methods
 
 .. py:method:: getMarkerColors()
 
-   Returns the colors for each parsed marker, in the same order as getMarkerPoints().
+   Returns the colors for each parsed marker, in the same order as ``getMarkerPoints()``.
 
 
 .. py:method:: getMarkerLabels()
 
-   Returns the labels for each parsed marker, in the same order as getMarkerPoints().
+   Returns the labels for each parsed marker, in the same order as ``getMarkerPoints()``.
 
 
 .. py:method:: getMarkerPoints()
 
-   Returns the marker centroids parsed from <marker> elements. Each entry is a double[3] array of {x, y, z} coordinates in the file's coordinate system (typically micrometers).
+   Returns the marker centroids parsed from ``<marker>`` elements. Each entry is a ``double[3]`` array of {x, y, z} coordinates in the file's coordinate system (typically micrometers).
 
 
 .. py:method:: getSpacingUnits()
@@ -91,12 +91,12 @@ Getters Methods
 
 .. py:method:: getTrees()
 
-   Returns the parsed trees (one per <tree> element in the file).
+   Returns the parsed trees (one per ``<tree>`` element in the file).
 
 
-.. py:method:: static isNeurolucidaXML(InputStream)
+.. py:method:: isNeurolucidaXML(InputStream)
 
-   Checks whether the given input stream starts with Neurolucida XML content. The stream must support `InputStream.mark(int)`.
+   Checks whether the given input stream starts with Neurolucida XML content. The stream must support ``InputStream.mark(int)``.
 
 
 See Also

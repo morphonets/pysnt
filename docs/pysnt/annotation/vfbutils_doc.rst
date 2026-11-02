@@ -64,22 +64,22 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getMesh(String, ColorRGB)
+.. py:method:: getMesh(String)
 
    Retrieves the mesh associated with the specified VFB id.
 
 
-.. py:method:: static getRefBrain(String)
+.. py:method:: getRefBrain(String)
 
    Retrieves the surface mesh of an adult Drosophila template brain. No Internet connection is required, as these meshes (detailed on the nat.flybrains documentation) are bundled with SNT.
 
 
-.. py:method:: static getXYZLabels()
+.. py:method:: getXYZLabels()
 
    
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: isDatabaseAvailable()
 
    Checks whether a connection to the Virtual Fly Brain database can be established.
 
@@ -88,14 +88,9 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static brainBarycentre(String)
+.. py:method:: brainBarycentre(String)
 
    Returns the spatial centroid of an adult Drosophila template brain.
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

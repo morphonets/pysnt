@@ -1,0 +1,840 @@
+{
+  "class_name": "CrossSectionUtils",
+  "package": "sc.fiji.snt.tracing",
+  "extracted_at": "2026-11-02T00:24:01.602883",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.331311",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "applyAnnularMask",
+      "overloads": [
+        {
+          "signature": "applyAnnularMask(FloatProcessor, double, double) -> void",
+          "params": [
+            {
+              "name": "fp",
+              "type": "Any",
+              "java_type": "FloatProcessor",
+              "description": "- the cross-section image to mask (modified in place)",
+              "javadoc_name": "fp"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyAnnularMask",
+      "javadoc_description": "Applies an annular mask to a cross-section `FloatProcessor`. Pixels outside the annulus (closer than `innerRadius` or farther than `outerRadius` from center) are set to `Float.NaN`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "applyAnnularMask1D",
+      "overloads": [
+        {
+          "signature": "applyAnnularMask1D(float[], double, double) -> void",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]",
+              "description": "- the profile array (modified in place)",
+              "javadoc_name": "profile"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applyAnnularMask1D",
+      "javadoc_description": "Applies an annular mask to a 1D profile. Samples closer than `innerRadius` or farther than `outerRadius` from the center are set to `Float.NaN`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "backProject",
+      "overloads": [
+        {
+          "signature": "backProject(int, int, int, double, double, double, double, double[], double[]) -> double[]",
+          "params": [
+            {
+              "name": "gridX",
+              "type": "int",
+              "java_type": "int",
+              "description": "- grid X coordinate (pixel in the cross-section)",
+              "javadoc_name": "gridX"
+            },
+            {
+              "name": "gridY",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "scaleIso",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_6"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_7"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_8"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "`double[3]` world coordinates `{x, y, z}`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: backProject",
+      "javadoc_description": "Back-projects a 2D cross-section grid coordinate to 3D world coordinates.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeGridSize",
+      "overloads": [
+        {
+          "signature": "computeGridSize(double, double, int) -> int",
+          "params": [
+            {
+              "name": "physicalRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "- radius in calibrated units",
+              "javadoc_name": "physicalRadius"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "maxSide",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the grid size (always odd, so center pixel is well-defined)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeGridSize",
+      "javadoc_description": "Computes the grid size needed to cover a given physical radius at the specified scale, capped to a maximum.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeIsotropicScale",
+      "overloads": [
+        {
+          "signature": "computeIsotropicScale(double[], double[], double, double, double) -> double",
+          "params": [
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "- first basis vector",
+              "javadoc_name": "aBasis"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the isotropic scale (geometric mean of scales along both basis vectors)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeIsotropicScale",
+      "javadoc_description": "Computes the isotropic scale for a cross-section plane given the tangent plane basis vectors and voxel spacing.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeScaleAlongVector",
+      "overloads": [
+        {
+          "signature": "computeScaleAlongVector(double, double, double, double, double, double) -> double",
+          "params": [
+            {
+              "name": "vx",
+              "type": "float",
+              "java_type": "double",
+              "description": "- X component of direction vector",
+              "javadoc_name": "vx"
+            },
+            {
+              "name": "vy",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "vz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "effective scale (physical distance per unit in the given direction)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeScaleAlongVector",
+      "javadoc_description": "Computes the effective physical scale along an arbitrary direction vector given anisotropic voxel spacing.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeTangentPlaneBasis",
+      "overloads": [
+        {
+          "signature": "computeTangentPlaneBasis(double, double, double) -> double[][]",
+          "params": [
+            {
+              "name": "nx",
+              "type": "float",
+              "java_type": "double",
+              "description": "- X component of the normal vector",
+              "javadoc_name": "nx"
+            },
+            {
+              "name": "ny",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "nz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "return_description": "`double[2][3]`: `[0]` is the first basis vector, `[1]` is the second basis vector",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeTangentPlaneBasis",
+      "javadoc_description": "Computes an orthonormal basis for the plane perpendicular to the given normal (tangent) vector.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findMaxima1D",
+      "overloads": [
+        {
+          "signature": "findMaxima1D(float[], double) -> int[]",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]",
+              "description": "- the 1D intensity profile (may contain NaN for masked regions)",
+              "javadoc_name": "profile"
+            },
+            {
+              "name": "prominence",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "return_description": "array of indices into `profile` where maxima were found",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findMaxima1D",
+      "javadoc_description": "Finds local maxima in a 1D profile using prominence-based filtering. A sample is a local maximum if it is strictly greater than both its neighbors (ignoring NaN) and its prominence exceeds the threshold. Prominence is defined as the peak value minus the highest saddle point connecting the peak to any higher peak (or the profile boundary).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findMinima1D",
+      "overloads": [
+        {
+          "signature": "findMinima1D(float[], double) -> int[]",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]",
+              "description": "- the 1D intensity profile (may contain NaN for masked regions)",
+              "javadoc_name": "profile"
+            },
+            {
+              "name": "prominence",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "return_description": "array of indices into `profile` where minima were found",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findMinima1D",
+      "javadoc_description": "Finds local minima in a 1D profile using prominence-based filtering. Symmetric inversion of `findMaxima1D(float[], double)`: a sample is a local minimum if it is strictly less than both its neighbors (ignoring NaN) and its prominence (the height it would need to climb to escape the basin and reach a deeper minimum, or the profile boundary) exceeds the threshold.\n\nUseful for detecting localized intensity valleys along a path's intensity profile -- the inverse of finding peaks.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "paintAnnulus",
+      "overloads": [
+        {
+          "signature": "paintAnnulus(RandomAccessibleInterval, int, double, double, double, double, double[], double[], double, double, double, double, double, double, double, double, double) -> void",
+          "params": [
+            {
+              "name": "output",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the 3D output image (modified in place); dimensions correspond to pixel coordinates",
+              "javadoc_name": "output"
+            },
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "scaleIso",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_6"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_7"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_8"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_9"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_10"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_11"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_12"
+            },
+            {
+              "name": "offsetZ",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_13"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_14"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_15"
+            },
+            {
+              "name": "fillValue",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_16"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: paintAnnulus",
+      "javadoc_description": "Paints an annular cross-section into a 3D output image. For each pixel in the annulus (between `innerRadius` and `outerRadius` in grid space), the corresponding voxel in the output image is set to `fillValue`. Existing non-zero voxels are preserved (logical OR).",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sampleCrossSection",
+      "overloads": [
+        {
+          "signature": "sampleCrossSection(int, double, double, double, double, double, double[], double[], double, double, double, double, double, double, RealRandomAccess) -> FloatProcessor",
+          "params": [
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int",
+              "description": "- grid size in pixels (width = height = side)",
+              "javadoc_name": "side"
+            },
+            {
+              "name": "scaleA",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "scaleB",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_6"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_7"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_8"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_9"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_10"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_11"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_12"
+            },
+            {
+              "name": "offsetZ",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_13"
+            },
+            {
+              "name": "realAccess",
+              "type": "Any",
+              "java_type": "RealRandomAccess",
+              "description": "",
+              "javadoc_name": "param_14"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "FloatProcessor",
+          "return_description": "the sampled cross-section as a `FloatProcessor`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sampleCrossSection",
+      "javadoc_description": "Samples a square cross-section of an image on the plane perpendicular to a path tangent at a given node position. The section is centered on the node and oriented according to the precomputed basis vectors.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sampleProfile",
+      "overloads": [
+        {
+          "signature": "sampleProfile(int, double, double, double, double[], double, double, double, double, RealRandomAccess) -> float[]",
+          "params": [
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int",
+              "description": "- number of samples (should be odd so center is well-defined)",
+              "javadoc_name": "nSamples"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "direction",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_6"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_7"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_8"
+            },
+            {
+              "name": "realAccess",
+              "type": "Any",
+              "java_type": "RealRandomAccess",
+              "description": "",
+              "javadoc_name": "param_9"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "float[]",
+          "return_description": "the sampled profile as a float array",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sampleProfile",
+      "javadoc_description": "Samples a 1D intensity profile along a direction vector, centered on a given world position. Intended for 2D images where the cross-section perpendicular to a path tangent is a line, not a plane.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Static utilities for computing cross-sectional planes perpendicular to a path tangent. Extracted from `PathFitter` for reuse by other path-analysis tools (e.g., varicosity detection, torus mask generation).",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 12,
+      "total_json_methods": 12,
+      "total_matches": 12,
+      "exact_matches": 12,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": 0,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

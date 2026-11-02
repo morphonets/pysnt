@@ -1,0 +1,448 @@
+{
+  "class_name": "SeedPoint",
+  "package": "sc.fiji.snt.seed",
+  "java_name": "sc.fiji.snt.seed.SeedPoint",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.725387",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "asArray",
+      "overloads": [
+        {
+          "signature": "asArray() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: asArray"
+    },
+    {
+      "name": "distanceSqTo",
+      "overloads": [
+        {
+          "signature": "distanceSqTo(double, double, double) -> double",
+          "params": [
+            {
+              "name": "px",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "py",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "pz",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: distanceSqTo"
+    },
+    {
+      "name": "distanceSquaredTo",
+      "overloads": [
+        {
+          "signature": "distanceSquaredTo(SeedPoint) -> double",
+          "params": [
+            {
+              "name": "other",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: distanceSquaredTo"
+    },
+    {
+      "name": "getAnnotation",
+      "overloads": [
+        {
+          "signature": "getAnnotation() -> BrainAnnotation",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAnnotation"
+    },
+    {
+      "name": "getCoordinateOnAxis",
+      "overloads": [
+        {
+          "signature": "getCoordinateOnAxis(int) -> double",
+          "params": [
+            {
+              "name": "axis",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCoordinateOnAxis"
+    },
+    {
+      "name": "getHemisphere",
+      "overloads": [
+        {
+          "signature": "getHemisphere() -> char",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "char",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getHemisphere"
+    },
+    {
+      "name": "getX",
+      "overloads": [
+        {
+          "signature": "getX() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getX"
+    },
+    {
+      "name": "getY",
+      "overloads": [
+        {
+          "signature": "getY() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getY"
+    },
+    {
+      "name": "getZ",
+      "overloads": [
+        {
+          "signature": "getZ() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getZ"
+    },
+    {
+      "name": "setAnnotation",
+      "overloads": [
+        {
+          "signature": "setAnnotation(BrainAnnotation) -> void",
+          "params": [
+            {
+              "name": "annotation",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnnotation"
+    },
+    {
+      "name": "setHemisphere",
+      "overloads": [
+        {
+          "signature": "setHemisphere(char) -> void",
+          "params": [
+            {
+              "name": "lr",
+              "type": "str",
+              "java_type": "char"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setHemisphere"
+    },
+    {
+      "name": "toPointInImage",
+      "overloads": [
+        {
+          "signature": "toPointInImage() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toPointInImage"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SeedPoint(double, double, double, double, double)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "confidence",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SeedPoint(double, double, double, double, double, int, int)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "confidence",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SeedPoint(double, double, double, double, double, int, int, String, String)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "confidence",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "source",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of SeedPoint"
+    }
+  ],
+  "fields": [
+    {
+      "name": "channel",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field channel of type int"
+    },
+    {
+      "name": "confidence",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field confidence of type double"
+    },
+    {
+      "name": "frame",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field frame of type int"
+    },
+    {
+      "name": "radius",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field radius of type double"
+    },
+    {
+      "name": "source",
+      "type": "str",
+      "java_type": "String",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field source of type String"
+    },
+    {
+      "name": "type",
+      "type": "str",
+      "java_type": "String",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field type of type String"
+    },
+    {
+      "name": "x",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field x of type double"
+    },
+    {
+      "name": "y",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field y of type double"
+    },
+    {
+      "name": "z",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field z of type double"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "CT_UNSET",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field CT_UNSET of type int"
+    },
+    {
+      "name": "TAG_UNSET",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field TAG_UNSET of type String"
+    }
+  ]
+}

@@ -66,37 +66,42 @@ Getters Methods
 
 .. py:method:: getAncestor(int)
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: getMesh()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: getOntologyDepth()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: getParent()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
+
+
+.. py:method:: hashCode()
+
+   
 
 
 .. py:method:: isChildOf(BrainAnnotation)
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: isMeshAvailable()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: isParentOf(BrainAnnotation)
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 Other Methods
@@ -105,27 +110,32 @@ Other Methods
 
 .. py:method:: acronym()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: aliases()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: color()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
+
+
+.. py:method:: equals(Object)
+
+   
 
 
 .. py:method:: id()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 .. py:method:: name()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: ``BrainAnnotation``
 
 
 See Also

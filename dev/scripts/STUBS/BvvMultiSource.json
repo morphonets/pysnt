@@ -1,8 +1,13 @@
 {
   "class_name": "BvvMultiSource",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:00:54.555498",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.BvvMultiSource",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.598740",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "applyTransform",
@@ -11,16 +16,55 @@
           "signature": "applyTransform(AffineTransform3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "transform",
               "type": "Any",
               "java_type": "AffineTransform3D"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: applyTransform"
+    },
+    {
+      "name": "channelSetup",
+      "overloads": [
+        {
+          "signature": "channelSetup(int) -> ConverterSetup",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ConverterSetup",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: channelSetup"
+    },
+    {
+      "name": "channelSource",
+      "overloads": [
+        {
+          "signature": "channelSource(int) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: channelSource"
     },
     {
       "name": "getFollowers",
@@ -29,7 +73,8 @@
           "signature": "getFollowers() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFollowers"
@@ -41,7 +86,8 @@
           "signature": "getLeader() -> BvvStackSource",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BvvStackSource"
+          "java_return_type": "BvvStackSource",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLeader"
@@ -53,13 +99,14 @@
           "signature": "getLeaderTransform(AffineTransform3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "result",
               "type": "Any",
               "java_type": "AffineTransform3D"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLeaderTransform"
@@ -71,7 +118,8 @@
           "signature": "getSources() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSources"
@@ -83,7 +131,8 @@
           "signature": "isLiveSync() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isLiveSync"
@@ -95,7 +144,8 @@
           "signature": "removeFromBvv() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: removeFromBvv"
@@ -107,13 +157,14 @@
           "signature": "setActive(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "active",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setActive"
@@ -125,13 +176,14 @@
           "signature": "setColor(ARGBType) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "ARGBType"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setColor"
@@ -143,18 +195,19 @@
           "signature": "setDisplayRange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "min",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "max",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setDisplayRange"
@@ -166,13 +219,14 @@
           "signature": "setLiveSync(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "live",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLiveSync"
@@ -184,7 +238,8 @@
           "signature": "size() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: size"
@@ -196,48 +251,50 @@
           "signature": "syncTransforms() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: syncTransforms"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "BvvMultiSource(BvvStackSource, List)",
+          "signature": "BvvMultiSource(BvvStackSource)",
           "params": [
             {
-              "name": "arg0",
+              "name": "single",
               "type": "Any",
               "java_type": "BvvStackSource"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "List"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "BvvMultiSource(BvvStackSource)",
+          "signature": "BvvMultiSource(BvvStackSource, List)",
           "params": [
             {
-              "name": "arg0",
+              "name": "leader",
               "type": "Any",
               "java_type": "BvvStackSource"
+            },
+            {
+              "name": "followers",
+              "type": "List[Any]",
+              "java_type": "List"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for BvvMultiSource"
+      "documentation": "Constructors of BvvMultiSource"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

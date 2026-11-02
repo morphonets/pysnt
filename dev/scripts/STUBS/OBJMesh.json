@@ -1,23 +1,29 @@
 {
   "class_name": "OBJMesh",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:02.734106",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.OBJMesh",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.661199",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "computePrincipalAxes",
       "overloads": [
         {
-          "signature": "computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "computePrincipalAxes(String) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: computePrincipalAxes"
@@ -28,8 +34,9 @@
         {
           "signature": "duplicate() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh"
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "is_static": false
         }
       ],
       "documentation": "Java method: duplicate"
@@ -38,31 +45,32 @@
       "name": "getAngleWithLocalDirection",
       "overloads": [
         {
-          "signature": "getAngleWithLocalDirection(SNTPoint, [D, String, int) -> double",
+          "signature": "getAngleWithLocalDirection(SNTPoint, double[], String, int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[D"
+              "name": "direction",
+              "type": "List[float]",
+              "java_type": "double[]"
             },
             {
-              "name": "arg2",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg3",
+              "name": "neighborCount",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAngleWithLocalDirection"
@@ -74,13 +82,14 @@
           "signature": "getBoundingBox(String) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBoundingBox"
@@ -92,13 +101,14 @@
           "signature": "getCentroid(String) -> SNTPoint",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemihalf",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTPoint",
-          "java_return_type": "SNTPoint"
+          "java_return_type": "SNTPoint",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCentroid"
@@ -110,7 +120,8 @@
           "signature": "getDisplayedHemisphere() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDisplayedHemisphere"
@@ -122,7 +133,8 @@
           "signature": "getDrawable() -> DrawableVBO",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "DrawableVBO"
+          "java_return_type": "DrawableVBO",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDrawable"
@@ -134,7 +146,10 @@
           "signature": "getLabel() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: getLabel"
@@ -143,26 +158,27 @@
       "name": "getLocalDirection",
       "overloads": [
         {
-          "signature": "getLocalDirection(SNTPoint, String, int) -> [D",
+          "signature": "getLocalDirection(SNTPoint, String, int) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg1",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "neighborCount",
               "type": "int",
               "java_type": "int"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLocalDirection"
@@ -174,7 +190,8 @@
           "signature": "getObj() -> OBJFile",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "OBJFile"
+          "java_return_type": "OBJFile",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getObj"
@@ -183,16 +200,17 @@
       "name": "getPrincipalAxes",
       "overloads": [
         {
-          "signature": "getPrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "getPrincipalAxes(String) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPrincipalAxes"
@@ -204,7 +222,8 @@
           "signature": "getSourceAnnotation() -> BrainAnnotation",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BrainAnnotation"
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSourceAnnotation"
@@ -216,7 +235,8 @@
           "signature": "getSymmetryAxis() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSymmetryAxis"
@@ -228,19 +248,21 @@
           "signature": "getVertices() -> Collection",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "Collection"
+          "java_return_type": "Collection",
+          "is_static": false
         },
         {
           "signature": "getVertices(String) -> Collection",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemihalf",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "Collection"
+          "java_return_type": "Collection",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getVertices"
@@ -252,10 +274,24 @@
           "signature": "getVolume() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getVolume"
+    },
+    {
+      "name": "hasFileColor",
+      "overloads": [
+        {
+          "signature": "hasFileColor() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasFileColor"
     },
     {
       "name": "label",
@@ -264,7 +300,8 @@
           "signature": "label() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: label"
@@ -273,28 +310,30 @@
       "name": "setBoundingBoxColor",
       "overloads": [
         {
-          "signature": "setBoundingBoxColor(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "setBoundingBoxColor(ColorRGB) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "boundingBoxColor",
               "type": "Any",
               "java_type": "ColorRGB"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setBoundingBoxColor(String) -> void",
+          "params": [
+            {
+              "name": "boundingBoxColor",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setBoundingBoxColor"
@@ -306,35 +345,37 @@
           "signature": "setColor(ColorRGB, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB"
             },
             {
-              "name": "arg1",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "setColor(String, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setColor"
@@ -346,13 +387,14 @@
           "signature": "setDisplayedHemisphere(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setDisplayedHemisphere"
@@ -364,13 +406,14 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLabel"
@@ -382,13 +425,14 @@
           "signature": "setSourceAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSourceAnnotation"
@@ -400,13 +444,14 @@
           "signature": "setSymmetryAxis(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSymmetryAxis"
@@ -418,13 +463,14 @@
           "signature": "setTransparency(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setTransparency"
@@ -436,16 +482,30 @@
           "signature": "setVolume(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "volume",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setVolume"
+    },
+    {
+      "name": "toMesh",
+      "overloads": [
+        {
+          "signature": "toMesh() -> Mesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Mesh",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toMesh"
     },
     {
       "name": "translate",
@@ -454,19 +514,19 @@
           "signature": "translate(SNTPoint) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "offset",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: translate"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -475,7 +535,7 @@
           "signature": "OBJMesh(String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             }
@@ -487,12 +547,12 @@
           "signature": "OBJMesh(URL, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "url",
               "type": "str",
               "java_type": "URL"
             },
             {
-              "name": "arg1",
+              "name": "meshUnit",
               "type": "str",
               "java_type": "String"
             }
@@ -501,25 +561,26 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for OBJMesh"
+      "documentation": "Constructors of OBJMesh"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "SHADING_DEFAULT",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SHADING_DEFAULT of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SHADING_DEFAULT of type int"
     },
     {
       "name": "SHADING_SMOOTH",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SHADING_SMOOTH of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SHADING_SMOOTH of type int"
     }
   ]
 }

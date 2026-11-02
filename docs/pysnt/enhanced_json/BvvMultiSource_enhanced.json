@@ -1,9 +1,9 @@
 {
   "class_name": "BvvMultiSource",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:00:54.555498",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.329973",
+  "extracted_at": "2026-11-02T00:24:01.598740",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.295739",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "applyTransform(AffineTransform3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "transform",
               "type": "Any",
               "java_type": "AffineTransform3D",
               "description": "- the transform to apply",
@@ -28,6 +28,62 @@
       ],
       "documentation": "Java method: applyTransform",
       "javadoc_description": "Applies the given transform as the fixed transform to the leader and all followers. This is the primary entry point for loading a saved transform.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "channelSetup",
+      "overloads": [
+        {
+          "signature": "channelSetup(int) -> ConverterSetup",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ConverterSetup",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: channelSetup",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "channelSource",
+      "overloads": [
+        {
+          "signature": "channelSource(int) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: channelSource",
+      "javadoc_description": "",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -81,7 +137,7 @@
           "signature": "getLeaderTransform(AffineTransform3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "result",
               "type": "Any",
               "java_type": "AffineTransform3D",
               "description": "- set to the cached transform",
@@ -130,7 +186,7 @@
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "true if live transform sync is enabled",
+          "return_description": "`true` if live transform sync is enabled",
           "throws": {}
         }
       ],
@@ -169,7 +225,7 @@
           "signature": "setActive(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "active",
               "type": "bool",
               "java_type": "boolean",
               "description": "-",
@@ -197,7 +253,7 @@
           "signature": "setColor(ARGBType) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "ARGBType",
               "description": "- the ARGB color",
@@ -225,14 +281,14 @@
           "signature": "setDisplayRange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "- minimum display value",
               "javadoc_name": "min"
             },
             {
-              "name": "arg1",
+              "name": "max",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -260,7 +316,7 @@
           "signature": "setLiveSync(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "live",
               "type": "bool",
               "java_type": "boolean",
               "description": "-",
@@ -274,7 +330,7 @@
         }
       ],
       "documentation": "Java method: setLiveSync",
-      "javadoc_description": "Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms() calls (false).",
+      "javadoc_description": "Sets whether transforms are propagated to followers on every render frame (`true`) or only on explicit `syncTransforms()` calls (`false`).",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -328,39 +384,39 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "BvvMultiSource(BvvStackSource, List)",
+          "signature": "BvvMultiSource(BvvStackSource)",
           "params": [
             {
-              "name": "arg0",
+              "name": "single",
               "type": "Any",
               "java_type": "BvvStackSource"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "List"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "BvvMultiSource(BvvStackSource)",
+          "signature": "BvvMultiSource(BvvStackSource, List)",
           "params": [
             {
-              "name": "arg0",
+              "name": "leader",
               "type": "Any",
               "java_type": "BvvStackSource"
+            },
+            {
+              "name": "followers",
+              "type": "List[Any]",
+              "java_type": "List"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for BvvMultiSource"
+      "documentation": "Constructors of BvvMultiSource"
     }
   ],
-  "javadoc_description": "A group of BvvSource objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the leader source are propagated to all follower sources.\n\nThis is particularly useful for:\n\nMultichannel images where each channel is a separate BVV source but should move together during manual registration (press T in BVV to enter manual transform mode). Multi-image workflows where multiple volumes must be grouped and manipulated as one.\n\nTransform synchronization is achieved by making all follower TransformedSources share the leader's fixedTransform and incrementalTransform field objects via reflection. This means any transform applied to the leader, including live T-mode (press T) dragging: It is immediately visible on all followers with no listener overhead. If reflection fails, a `renderTransformListeners` fallback is used.",
+  "javadoc_description": "A group of `BvvSource` objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the *leader* source are propagated to all *follower* sources.\n\nThis is particularly useful for:\n\n- Multichannel images where each channel is a separate BVV source but should move together during manual registration (press `T` in BVV to enter manual transform mode).\n\n- Multi-image workflows where multiple volumes must be grouped and manipulated as one.\n\n**Transform synchronization** is achieved by making all follower `TransformedSource`s share the leader's `fixedTransform` and `incrementalTransform` field objects via reflection. This means any transform applied to the leader, including live T-mode (press `T`) dragging: It is immediately visible on all followers with no listener overhead. If reflection fails, a `renderTransformListeners` fallback is used.",
   "inheritance": {
     "extends": [
       "Object"
@@ -375,10 +431,10 @@
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 13,
-      "total_json_methods": 13,
-      "total_matches": 13,
-      "exact_matches": 13,
+      "total_javadoc_methods": 15,
+      "total_json_methods": 15,
+      "total_matches": 15,
+      "exact_matches": 15,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,

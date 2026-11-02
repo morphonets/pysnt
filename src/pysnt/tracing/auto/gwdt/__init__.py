@@ -20,13 +20,13 @@ logger = logging.getLogger(__name__)
 CURATED_CLASSES = [
     "ArrayStorageBackend",
     "DiskBackedStorageBackend",
-    "SparseStorageBackend"
+    "SparseStorageBackend",
 ]
 
 # Extended classes - available via get_class() after discovery
 # These are less commonly used classes that are loaded on-demand
 EXTENDED_CLASSES = [
-    "BucketPriorityQueue", "StorageBackend"
+    "StorageBackend",
 ]
 
 # =============================================================================

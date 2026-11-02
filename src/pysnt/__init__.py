@@ -5,7 +5,7 @@ This package provides convenient Python access to SNT's Java classes, including
 `core classes <https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/package-summary.html>`__.
 """
 
-__version__ = "0.0.1"
+__version__ = "5.0.0.dev0"
 __author__ = "SNT contributors"
 
 import logging
@@ -15,7 +15,7 @@ from typing import Dict, Any, List
 logger = logging.getLogger(__name__)
 
 # Import main initialization
-from .core import initialize, dispose, FijiNotFoundError, ij, is_initialized, get_mode
+from .core import initialize, dispose, FijiNotFoundError, ij, is_initialized, get_mode, snt_version
 
 # Import PyImageJ integration functions
 from .core import to_python, from_java, show, extract_figure
@@ -58,27 +58,24 @@ from .gui_utils import (
 # Curated classes from root sc.fiji.snt package - always available for direct import
 CURATED_ROOT_CLASSES = [
     "AStarRefiner",
-    "BookmarkManager", "BookmarkManager.Bookmark",
+    "BookmarkManager",
     "CurationManager",
     "DelineationsManager",
     "Fill",
     "FillConverter",
     "FillManagerUI",
-    "FillManagerUI.FillManagerUI",
-    "InteractiveTracerCanvas",
     "Path",
     "PathAndFillManager",
-    "PathChangeListener",
     "PathDownsampler",
     "PathFitter",
     "PathManagerUI",
-    "SeedManager", "SeedOverlayRenderer",
-    "SciViewSNT",
     "SNT",
     "SNTPrefs",
     "SNTService",
     "SNTUI",
     "SNTUtils",
+    "SeedManager",
+    "SeedOverlayRenderer",
     "TracerCanvas",
     "Tree",
     "TreeProperties",
@@ -86,22 +83,16 @@ CURATED_ROOT_CLASSES = [
 
 # Extended classes - available via get_class() (root package discovers dynamically)
 EXTENDED_ROOT_CLASSES = [
-    "ClarifyingKeyListener",
     "FillerProgressCallback",
-    "FillManagerUI",
-    "FittingProgress",
     "HessianGenerationCallback",
-    "MultiTaskProgress",
+    "MultiPathTracerCanvas",
     "NearPoint",
-    "NormalPlaneCanvas",
     "NotesUI",
-    "PathAndFillListener",
-    "PathChangeEvent",
-    "PathChangeListener",
     "PathNodeCanvas",
+    "PathNodeEditor",
     "PathTransformer",
-    "QueueJumpingKeyListener",
-    "SearchProgressCallback"
+    "SciViewSNT",
+    "SearchProgressCallback",
 ]
 
 
@@ -366,6 +357,7 @@ __all__ = [
     "ij",
     "is_initialized",
     "get_mode",
+    "snt_version",
     "inspect",
     "get_methods",
     "get_fields",

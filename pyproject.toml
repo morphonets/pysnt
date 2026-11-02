@@ -4,81 +4,80 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pysnt"
-version = "0.0.1"
+dynamic = ["version"]
 authors = [
     {name = "SNT contributors"},
 ]
 description = "Python interface for SNT, the ImageJ framework for neuroanatomy"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
 ]
+# Floors are the oldest versions PySNT is expected to work with; the CI "minimum" job
+# (installing exactly these) keeps them honest. Upper bounds only where something breaks.
 dependencies = [
-    "scyjava>=1.12.1",
+    "scyjava>=1.12.3",  # 1.12.1/2 import a jgo name removed in jgo 2.x
     "pyimagej>=1.7.0",
     "JPype1>=1.5.0",
-    "numpy>=2.3.3",
-    "matplotlib>=3.10.7",
-    "xarray>=2025.10.1",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "xarray>=2023.12",
+    "pandas>=2.1",
 ]
 
 [project.optional-dependencies]
 # Enhanced display and conversion features
 display = [
-    "pandas>=2.3.3",
     "networkx>=3.0",
-    "cairosvg>=2.8.2",
-    "PyMuPDF>=1.26.3",
+    "cairosvg>=2.7",
+    "PyMuPDF>=1.23",
 ]
 # Interactive GUI features
 gui = [
     "pandasgui>=0.2.15",
-    "ipykernel>=7.1.0",
-    "pyobjc-core>=11.1; sys_platform == 'darwin'",
-    "pyobjc-framework-cocoa>=11.1; sys_platform == 'darwin'",
+    "ipykernel>=6.0",
+    "pyobjc-core>=10.0; sys_platform == 'darwin'",
+    "pyobjc-framework-cocoa>=10.0; sys_platform == 'darwin'",
 ]
-# Optional Java auto-install support
+# Optional Java auto-install support (scyjava can also fetch a JDK on its own)
 java = [
-    "install-jdk>=1.1.0",
+    "install-jdk>=1.0",
 ]
 # Optional OME-Zarr support
 zarr = [
-    "zarr>=2.10.0",
+    "zarr>=2.16",
     "fsspec>=2023.1.0",
+]
+# Memory/CPU details in pysnt.version(detailed=True)
+info = [
+    "psutil>=5.9",
 ]
 # All optional features
 all = [
-    "pandas>=2.3.3",
-    "networkx>=3.0",
-    "cairosvg>=2.8.2",
-    "PyMuPDF>=1.26.3",
-    "pandasgui>=0.2.15",
-    "ipykernel>=7.1.0",
-    "pyobjc-core>=11.1; sys_platform == 'darwin'",
-    "pyobjc-framework-cocoa>=11.1; sys_platform == 'darwin'",
-    "install-jdk>=1.1.0",
-    "zarr>=2.10.0",
-    "fsspec>=2023.1.0",
+    "pysnt[display,gui,java,zarr,info]",
 ]
 # Development dependencies
 dev = [
-    "pytest>=6.0",
+    "pysnt[all]",
+    "pytest>=8.0",
     "pytest-cov",
+    "nbclient",
     "black",
     "flake8",
     "mypy",
     "isort",
+    "typing_extensions",
 ]
 # Documentation dependencies
 docs = [
@@ -103,11 +102,18 @@ where = ["src"]
 [tool.setuptools.package-dir]
 "" = "src"
 
+[tool.setuptools.dynamic]
+version = {attr = "pysnt.__version__"}
+
+# Ship type stubs (.pyi) and the PEP 561 marker with the wheel
+[tool.setuptools.package-data]
+pysnt = ["py.typed", "**/*.pyi", "*.pyi"]
+
 [tool.black]
 line-length = 88
-target-version = ['py38']
+target-version = ['py311']
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true

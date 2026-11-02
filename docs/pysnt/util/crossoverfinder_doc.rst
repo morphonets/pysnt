@@ -55,18 +55,22 @@
 
 Utility to detect crossover locations between paths: spatially close locations between paths that look like intersections in the image but are not topological joins in the traced graph.
 
-Here, a crossover is defined as a spatial location where two distinct paths approach within a distance threshold (in real units) for at least minRunNodes consecutive node pairs, but do not share an actual tracing node at that location. Optional geometric filtering by crossing angle is supported.
+Here, a crossover is defined as a spatial location where two distinct paths approach within a distance threshold (in real units) for at least ``minRunNodes`` consecutive node pairs, but do not share an actual tracing node at that location. Optional geometric filtering by crossing angle is supported.
 
 Usage: 
-```
-CrossoverFinder.Config cfg = new CrossoverFinder.Config()
-       .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)
-       .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)
-       .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate
-       .sameCTOnly(true)        // ignore pairs from different channel/time
-       .includeSelfCrossovers(false) // whether crossover events within the same path should be detected
-   List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);
-```
+
+
+::
+
+    CrossoverFinder.Config cfg = new CrossoverFinder.Config()
+           .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)
+           .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)
+           .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate
+           .sameCTOnly(true)        // ignore pairs from different channel/time
+           .includeSelfCrossovers(false) // whether crossover events within the same path should be detected
+       List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);
+
+
 
 
 Methods
@@ -77,7 +81,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static find(Collection, CrossoverFinder$Config)
+.. py:method:: find(Collection, Config)
 
    Entry point: detect crossover events for a collection of paths using the given config.
 

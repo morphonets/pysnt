@@ -1,725 +1,766 @@
 {
   "class_name": "TreeUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-09-27T23:01:12.178369",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.TreeUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.759739",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static analyzeEndpointClusters",
+      "name": "analyzeEndpointClusters",
       "overloads": [
         {
-          "signature": "static analyzeEndpointClusters(Collection) -> TreeUtils$EndpointClusterAnalysis",
+          "signature": "analyzeEndpointClusters(Collection) -> EndpointClusterAnalysis",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "TreeUtils$EndpointClusterAnalysis"
+          "java_return_type": "EndpointClusterAnalysis",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static analyzeEndpointClusters"
+      "documentation": "Java method: analyzeEndpointClusters"
     },
     {
-      "name": "static assignUniqueColors",
+      "name": "assignUniqueColors",
       "overloads": [
         {
-          "signature": "static assignUniqueColors(Tree) -> void",
+          "signature": "assignUniqueColors(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "assignUniqueColors(Tree) -> void",
+          "params": [
+            {
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         },
         {
-          "signature": "static assignUniqueColors(Tree, String) -> void",
+          "signature": "assignUniqueColors(Collection, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "excludedHue",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "assignUniqueColors(Tree, String) -> void",
+          "params": [
+            {
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             },
             {
-              "name": "arg1",
+              "name": "excludedHue",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static assignUniqueColors(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static assignUniqueColors(Collection, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static assignUniqueColors"
+      "documentation": "Java method: assignUniqueColors"
     },
     {
-      "name": "static assignUniqueColorsIfUncolored",
+      "name": "assignUniqueColorsIfUncolored",
       "overloads": [
         {
-          "signature": "static assignUniqueColorsIfUncolored(Collection, String) -> void",
+          "signature": "assignUniqueColorsIfUncolored(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "assignUniqueColorsIfUncolored(Collection, String) -> void",
+          "params": [
+            {
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "excludedHue",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static assignUniqueColorsIfUncolored(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static assignUniqueColorsIfUncolored"
+      "documentation": "Java method: assignUniqueColorsIfUncolored"
     },
     {
-      "name": "static canFormContinuousChain",
+      "name": "canFormContinuousChain",
       "overloads": [
         {
-          "signature": "static canFormContinuousChain(Collection, double) -> boolean",
+          "signature": "canFormContinuousChain(Collection, double) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "tolerance",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static canFormContinuousChain"
+      "documentation": "Java method: canFormContinuousChain"
     },
     {
-      "name": "static collectChildren",
+      "name": "collectChildren",
       "overloads": [
         {
-          "signature": "static collectChildren(Path, Collection) -> void",
+          "signature": "collectChildren(Path, Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "children",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static collectChildren"
+      "documentation": "Java method: collectChildren"
     },
     {
-      "name": "static collectDescendants",
+      "name": "collectDescendants",
       "overloads": [
         {
-          "signature": "static collectDescendants(Path, Collection) -> void",
+          "signature": "collectDescendants(Path, Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "descendants",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static collectDescendants"
+      "documentation": "Java method: collectDescendants"
     },
     {
-      "name": "static computeUprightAngle",
+      "name": "computeUprightAngle",
       "overloads": [
         {
-          "signature": "static computeUprightAngle(Tree, boolean) -> double",
+          "signature": "computeUprightAngle(Tree, boolean) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             },
             {
-              "name": "arg1",
+              "name": "useCentroid",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static computeUprightAngle"
+      "documentation": "Java method: computeUprightAngle"
     },
     {
-      "name": "static countDescendants",
+      "name": "countDescendants",
       "overloads": [
         {
-          "signature": "static countDescendants(Path) -> int",
+          "signature": "countDescendants(Path) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static countDescendants"
+      "documentation": "Java method: countDescendants"
     },
     {
-      "name": "static filterByCableLength",
+      "name": "filterByCableLength",
       "overloads": [
         {
-          "signature": "static filterByCableLength(Collection, double, double) -> List",
+          "signature": "filterByCableLength(Collection, double, double) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "minLength",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "maxLength",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static filterByCableLength"
+      "documentation": "Java method: filterByCableLength"
     },
     {
-      "name": "static filterBySize",
+      "name": "filterBySize",
       "overloads": [
         {
-          "signature": "static filterBySize(Collection, int, int) -> List",
+          "signature": "filterBySize(Collection, int, int) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "minPaths",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "maxPaths",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static filterBySize"
+      "documentation": "Java method: filterBySize"
     },
     {
-      "name": "static findClosestEndpoints",
+      "name": "findClosestEndpoints",
       "overloads": [
         {
-          "signature": "static findClosestEndpoints(Path, Path) -> TreeUtils$EndpointMatch",
+          "signature": "findClosestEndpoints(Path, Path) -> EndpointMatch",
           "params": [
             {
-              "name": "arg0",
+              "name": "p1",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "p2",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "TreeUtils$EndpointMatch"
+          "java_return_type": "EndpointMatch",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static findClosestEndpoints"
+      "documentation": "Java method: findClosestEndpoints"
     },
     {
-      "name": "static findPathsNeedingReversal",
+      "name": "findPathsNeedingReversal",
       "overloads": [
         {
-          "signature": "static findPathsNeedingReversal(Collection, PointInImage) -> List",
+          "signature": "findPathsNeedingReversal(Collection, PointInImage) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "rootLocation",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static findPathsNeedingReversal"
+      "documentation": "Java method: findPathsNeedingReversal"
     },
     {
-      "name": "static getConnectedTree",
+      "name": "getConnectedTree",
       "overloads": [
         {
-          "signature": "static getConnectedTree(Path) -> Tree",
+          "signature": "getConnectedTree(Path) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getConnectedTree"
+      "documentation": "Java method: getConnectedTree"
     },
     {
-      "name": "static getMaxOrder",
+      "name": "getMaxOrder",
       "overloads": [
         {
-          "signature": "static getMaxOrder(Path) -> int",
+          "signature": "getMaxOrder(Path) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getMaxOrder"
+      "documentation": "Java method: getMaxOrder"
     },
     {
-      "name": "static getRootPath",
+      "name": "getRootPath",
       "overloads": [
         {
-          "signature": "static getRootPath(Path) -> Path",
+          "signature": "getRootPath(Path) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getRootPath"
+      "documentation": "Java method: getRootPath"
     },
     {
-      "name": "static isAncestorOf",
+      "name": "isAncestorOf",
       "overloads": [
         {
-          "signature": "static isAncestorOf(Path, Path) -> boolean",
+          "signature": "isAncestorOf(Path, Path) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "potentialAncestor",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "potentialDescendant",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isAncestorOf"
+      "documentation": "Java method: isAncestorOf"
     },
     {
-      "name": "static isDescendantOf",
+      "name": "isDescendantOf",
       "overloads": [
         {
-          "signature": "static isDescendantOf(Path, Path) -> boolean",
+          "signature": "isDescendantOf(Path, Path) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "potentialDescendant",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "potentialAncestor",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isDescendantOf"
+      "documentation": "Java method: isDescendantOf"
     },
     {
-      "name": "static isInSubtree",
+      "name": "isInSubtree",
       "overloads": [
         {
-          "signature": "static isInSubtree(Path, Path) -> boolean",
+          "signature": "isInSubtree(Path, Path) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "target",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "root",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isInSubtree"
+      "documentation": "Java method: isInSubtree"
     },
     {
-      "name": "static merge",
+      "name": "merge",
       "overloads": [
         {
-          "signature": "static merge(Collection) -> Tree",
+          "signature": "merge(Collection) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static merge"
+      "documentation": "Java method: merge"
     },
     {
-      "name": "static mergeContinuousPaths",
+      "name": "mergeContinuousPaths",
       "overloads": [
         {
-          "signature": "static mergeContinuousPaths(Tree, double) -> int",
+          "signature": "mergeContinuousPaths(Tree, double) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             },
             {
-              "name": "arg1",
+              "name": "angleThreshold",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static mergeContinuousPaths"
+      "documentation": "Java method: mergeContinuousPaths"
     },
     {
-      "name": "static mergePaths",
+      "name": "mergePaths",
       "overloads": [
         {
-          "signature": "static mergePaths(List, boolean) -> Path",
+          "signature": "mergePaths(List, boolean) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "orderedPaths",
               "type": "List[Any]",
               "java_type": "List"
             },
             {
-              "name": "arg1",
+              "name": "reparentChildren",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static mergePaths"
+      "documentation": "Java method: mergePaths"
     },
     {
-      "name": "static orderByEndpointProximity",
+      "name": "orderByEndpointProximity",
       "overloads": [
         {
-          "signature": "static orderByEndpointProximity(Collection) -> List",
+          "signature": "orderByEndpointProximity(Collection) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static orderByEndpointProximity"
+      "documentation": "Java method: orderByEndpointProximity"
     },
     {
-      "name": "static orientPathsForMerging",
+      "name": "orientPathsForMerging",
       "overloads": [
         {
-          "signature": "static orientPathsForMerging(List) -> void",
+          "signature": "orientPathsForMerging(List) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "orderedPaths",
               "type": "List[Any]",
               "java_type": "List"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static orientPathsForMerging"
+      "documentation": "Java method: orientPathsForMerging"
     },
     {
-      "name": "static orientPathsTowardRoot",
+      "name": "orientPathsTowardRoot",
       "overloads": [
         {
-          "signature": "static orientPathsTowardRoot(Collection, PointInImage) -> int",
+          "signature": "orientPathsTowardRoot(Collection, PointInImage) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "rootLocation",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static orientPathsTowardRoot"
+      "documentation": "Java method: orientPathsTowardRoot"
     },
     {
-      "name": "static rasterize",
+      "name": "rasterize",
       "overloads": [
         {
-          "signature": "static rasterize(Tree, double, double) -> ImagePlus",
+          "signature": "rasterize(Tree) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": true
         },
         {
-          "signature": "static rasterize(Tree) -> ImagePlus",
+          "signature": "rasterize(Tree, double, double) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
+            },
+            {
+              "name": "lateralRes",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "axialRes",
+              "type": "float",
+              "java_type": "double"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static rasterize"
+      "documentation": "Java method: rasterize"
     },
     {
-      "name": "static restoreNodeValues",
+      "name": "restoreNodeValues",
       "overloads": [
         {
-          "signature": "static restoreNodeValues(Map) -> void",
+          "signature": "restoreNodeValues(Map) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "snapshot",
               "type": "Dict[str, Any]",
               "java_type": "Map"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static restoreNodeValues"
+      "documentation": "Java method: restoreNodeValues"
     },
     {
-      "name": "static snapshotNodeValues",
+      "name": "snapshotNodeValues",
       "overloads": [
         {
-          "signature": "static snapshotNodeValues(Tree) -> Map",
+          "signature": "snapshotNodeValues(Tree) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static snapshotNodeValues"
+      "documentation": "Java method: snapshotNodeValues"
     },
     {
-      "name": "static splitByPrimaryPaths",
+      "name": "splitByPrimaryPaths",
       "overloads": [
         {
-          "signature": "static splitByPrimaryPaths(Tree) -> List",
+          "signature": "splitByPrimaryPaths(Tree) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static splitByPrimaryPaths"
+      "documentation": "Java method: splitByPrimaryPaths"
     },
     {
-      "name": "static suggestRootLocation",
+      "name": "suggestRootLocation",
       "overloads": [
         {
-          "signature": "static suggestRootLocation(Collection, PointInImage) -> PointInImage",
+          "signature": "suggestRootLocation(Collection, PointInImage) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "referencePoint",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static suggestRootLocation"
+      "documentation": "Java method: suggestRootLocation"
     },
     {
-      "name": "static syncCanvasOffset",
+      "name": "syncCanvasOffset",
       "overloads": [
         {
-          "signature": "static syncCanvasOffset(Path, Path) -> void",
+          "signature": "syncCanvasOffset(Path, Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "child",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "parent",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static syncCanvasOffset"
+      "documentation": "Java method: syncCanvasOffset"
     }
   ],
+  "constructors": [],
   "fields": [],
-  "constructors": []
+  "static_fields": []
 }

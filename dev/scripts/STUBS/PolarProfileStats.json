@@ -1,0 +1,568 @@
+{
+  "class_name": "PolarProfileStats",
+  "package": "sc.fiji.snt.analysis.sholl.math",
+  "java_name": "sc.fiji.snt.analysis.sholl.math.PolarProfileStats",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.685898",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "appendSummaryReport",
+      "overloads": [
+        {
+          "signature": "appendSummaryReport(SNTTable) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "SNTTable",
+              "java_type": "SNTTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: appendSummaryReport"
+    },
+    {
+      "name": "detailReport",
+      "overloads": [
+        {
+          "signature": "detailReport(SNTTable) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "SNTTable",
+              "java_type": "SNTTable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: detailReport"
+    },
+    {
+      "name": "findDirectionPeaks",
+      "overloads": [
+        {
+          "signature": "findDirectionPeaks(double, double) -> List",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        },
+        {
+          "signature": "findDirectionPeaks(double, double, int, double) -> List",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxPeaks",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "minProminence",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: findDirectionPeaks"
+    },
+    {
+      "name": "findOrientationPeaks",
+      "overloads": [
+        {
+          "signature": "findOrientationPeaks(double, double) -> List",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        },
+        {
+          "signature": "findOrientationPeaks(double, double, int, double) -> List",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxPeaks",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "minProminence",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: findOrientationPeaks"
+    },
+    {
+      "name": "getAngleStepSize",
+      "overloads": [
+        {
+          "signature": "getAngleStepSize() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAngleStepSize"
+    },
+    {
+      "name": "getAngularDistribution",
+      "overloads": [
+        {
+          "signature": "getAngularDistribution() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        },
+        {
+          "signature": "getAngularDistribution(double, double) -> double[]",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAngularDistribution"
+    },
+    {
+      "name": "getAngularDistributionCoherence",
+      "overloads": [
+        {
+          "signature": "getAngularDistributionCoherence() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAngularDistributionCoherence"
+    },
+    {
+      "name": "getDataMode",
+      "overloads": [
+        {
+          "signature": "getDataMode() -> DataMode",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DataMode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDataMode"
+    },
+    {
+      "name": "getFitYValues",
+      "overloads": [
+        {
+          "signature": "getFitYValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        },
+        {
+          "signature": "getFitYValues(boolean) -> double[]",
+          "params": [
+            {
+              "name": "asCumulativeFrequencies",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFitYValues"
+    },
+    {
+      "name": "getMatrix",
+      "overloads": [
+        {
+          "signature": "getMatrix() -> double[][]",
+          "params": [],
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMatrix"
+    },
+    {
+      "name": "getN",
+      "overloads": [
+        {
+          "signature": "getN() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getN"
+    },
+    {
+      "name": "getOrientationDistributionCoherence",
+      "overloads": [
+        {
+          "signature": "getOrientationDistributionCoherence() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getOrientationDistributionCoherence"
+    },
+    {
+      "name": "getPlot",
+      "overloads": [
+        {
+          "signature": "getPlot() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
+        {
+          "signature": "getPlot(ColorTable) -> SNTChart",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
+        {
+          "signature": "getPlot(String) -> SNTChart",
+          "params": [
+            {
+              "name": "colormap",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPlot"
+    },
+    {
+      "name": "getPreferredDirection",
+      "overloads": [
+        {
+          "signature": "getPreferredDirection() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getPreferredDirection(double, double) -> double",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPreferredDirection"
+    },
+    {
+      "name": "getPreferredOrientation",
+      "overloads": [
+        {
+          "signature": "getPreferredOrientation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getPreferredOrientation(double, double) -> double",
+          "params": [
+            {
+              "name": "rMin",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rMax",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPreferredOrientation"
+    },
+    {
+      "name": "getProfile",
+      "overloads": [
+        {
+          "signature": "getProfile() -> Profile",
+          "params": [],
+          "return_type": "Profile",
+          "java_return_type": "Profile",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getProfile"
+    },
+    {
+      "name": "getReport",
+      "overloads": [
+        {
+          "signature": "getReport() -> Report",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Report",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getReport"
+    },
+    {
+      "name": "getXValues",
+      "overloads": [
+        {
+          "signature": "getXValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getXValues"
+    },
+    {
+      "name": "getYValues",
+      "overloads": [
+        {
+          "signature": "getYValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        },
+        {
+          "signature": "getYValues(boolean) -> double[]",
+          "params": [
+            {
+              "name": "asCumulativeFrequencies",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getYValues"
+    },
+    {
+      "name": "setAngleStepSize",
+      "overloads": [
+        {
+          "signature": "setAngleStepSize(double) -> void",
+          "params": [
+            {
+              "name": "angleStepSize",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAngleStepSize"
+    },
+    {
+      "name": "setDataMode",
+      "overloads": [
+        {
+          "signature": "setDataMode(DataMode) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "Any",
+              "java_type": "DataMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDataMode"
+    },
+    {
+      "name": "validFit",
+      "overloads": [
+        {
+          "signature": "validFit() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: validFit"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PolarProfileStats(Profile)",
+          "params": [
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PolarProfileStats(LinearProfileStats, double)",
+          "params": [
+            {
+              "name": "linerStats",
+              "type": "LinearProfileStats",
+              "java_type": "LinearProfileStats"
+            },
+            {
+              "name": "angleStepSize",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PolarProfileStats(Profile, DataMode, double)",
+          "params": [
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile"
+            },
+            {
+              "name": "dataMode",
+              "type": "Any",
+              "java_type": "DataMode"
+            },
+            {
+              "name": "angleStepSize",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of PolarProfileStats"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

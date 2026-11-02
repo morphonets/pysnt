@@ -1,0 +1,786 @@
+{
+  "class_name": "Profile",
+  "package": "sc.fiji.snt.analysis.sholl",
+  "java_name": "sc.fiji.snt.analysis.sholl.Profile",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.687310",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(ProfileEntry) -> boolean",
+          "params": [
+            {
+              "name": "entry",
+              "type": "ProfileEntry",
+              "java_type": "ProfileEntry"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: add"
+    },
+    {
+      "name": "assignImage",
+      "overloads": [
+        {
+          "signature": "assignImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: assignImage"
+    },
+    {
+      "name": "center",
+      "overloads": [
+        {
+          "signature": "center() -> ShollPoint",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: center"
+    },
+    {
+      "name": "counts",
+      "overloads": [
+        {
+          "signature": "counts() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: counts"
+    },
+    {
+      "name": "countsAsArray",
+      "overloads": [
+        {
+          "signature": "countsAsArray() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: countsAsArray"
+    },
+    {
+      "name": "duplicate",
+      "overloads": [
+        {
+          "signature": "duplicate() -> Profile",
+          "params": [],
+          "return_type": "Profile",
+          "java_return_type": "Profile",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: duplicate"
+    },
+    {
+      "name": "endRadius",
+      "overloads": [
+        {
+          "signature": "endRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: endRadius"
+    },
+    {
+      "name": "entries",
+      "overloads": [
+        {
+          "signature": "entries() -> SortedSet",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SortedSet",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: entries"
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
+    },
+    {
+      "name": "extras",
+      "overloads": [
+        {
+          "signature": "extras() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: extras"
+    },
+    {
+      "name": "getCountAtRadius",
+      "overloads": [
+        {
+          "signature": "getCountAtRadius(double) -> double",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCountAtRadius"
+    },
+    {
+      "name": "getExtraMeasurement",
+      "overloads": [
+        {
+          "signature": "getExtraMeasurement() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getExtraMeasurement"
+    },
+    {
+      "name": "getProperties",
+      "overloads": [
+        {
+          "signature": "getProperties() -> Properties",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Properties",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getProperties"
+    },
+    {
+      "name": "getROIs",
+      "overloads": [
+        {
+          "signature": "getROIs() -> Overlay",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Overlay",
+          "is_static": false
+        },
+        {
+          "signature": "getROIs(ImagePlus) -> Overlay",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Overlay",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getROIs"
+    },
+    {
+      "name": "hasExtraMeasurement",
+      "overloads": [
+        {
+          "signature": "hasExtraMeasurement() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasExtraMeasurement"
+    },
+    {
+      "name": "hasPoints",
+      "overloads": [
+        {
+          "signature": "hasPoints() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasPoints"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
+    },
+    {
+      "name": "identifier",
+      "overloads": [
+        {
+          "signature": "identifier() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: identifier"
+    },
+    {
+      "name": "is2D",
+      "overloads": [
+        {
+          "signature": "is2D() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: is2D"
+    },
+    {
+      "name": "isEmpty",
+      "overloads": [
+        {
+          "signature": "isEmpty() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isEmpty"
+    },
+    {
+      "name": "isIntDensityProfile",
+      "overloads": [
+        {
+          "signature": "isIntDensityProfile() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isIntDensityProfile"
+    },
+    {
+      "name": "lengths",
+      "overloads": [
+        {
+          "signature": "lengths() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: lengths"
+    },
+    {
+      "name": "lengthsAsArray",
+      "overloads": [
+        {
+          "signature": "lengthsAsArray() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: lengthsAsArray"
+    },
+    {
+      "name": "nDimensions",
+      "overloads": [
+        {
+          "signature": "nDimensions() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: nDimensions"
+    },
+    {
+      "name": "plot",
+      "overloads": [
+        {
+          "signature": "plot() -> ShollPlot",
+          "params": [],
+          "return_type": "ShollPlot",
+          "java_return_type": "ShollPlot",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: plot"
+    },
+    {
+      "name": "points",
+      "overloads": [
+        {
+          "signature": "points() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: points"
+    },
+    {
+      "name": "radii",
+      "overloads": [
+        {
+          "signature": "radii() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: radii"
+    },
+    {
+      "name": "radiiAsArray",
+      "overloads": [
+        {
+          "signature": "radiiAsArray() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: radiiAsArray"
+    },
+    {
+      "name": "radiiSquared",
+      "overloads": [
+        {
+          "signature": "radiiSquared() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: radiiSquared"
+    },
+    {
+      "name": "scale",
+      "overloads": [
+        {
+          "signature": "scale(double, double, double) -> void",
+          "params": [
+            {
+              "name": "xScale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yScale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zScale",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: scale"
+    },
+    {
+      "name": "scaled",
+      "overloads": [
+        {
+          "signature": "scaled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: scaled"
+    },
+    {
+      "name": "setCenter",
+      "overloads": [
+        {
+          "signature": "setCenter(ShollPoint) -> void",
+          "params": [
+            {
+              "name": "center",
+              "type": "Any",
+              "java_type": "ShollPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCenter"
+    },
+    {
+      "name": "setExtraMeasurement",
+      "overloads": [
+        {
+          "signature": "setExtraMeasurement(String, String) -> void",
+          "params": [
+            {
+              "name": "measurement",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setExtraMeasurement"
+    },
+    {
+      "name": "setIdentifier",
+      "overloads": [
+        {
+          "signature": "setIdentifier(String) -> void",
+          "params": [
+            {
+              "name": "identifier",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIdentifier"
+    },
+    {
+      "name": "setIsIntDensityProfile",
+      "overloads": [
+        {
+          "signature": "setIsIntDensityProfile(boolean) -> void",
+          "params": [
+            {
+              "name": "isIntDensityProfile",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIsIntDensityProfile"
+    },
+    {
+      "name": "setNDimensions",
+      "overloads": [
+        {
+          "signature": "setNDimensions(int) -> void",
+          "params": [
+            {
+              "name": "twoDthreeD",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNDimensions"
+    },
+    {
+      "name": "setProperties",
+      "overloads": [
+        {
+          "signature": "setProperties(Properties) -> void",
+          "params": [
+            {
+              "name": "properties",
+              "type": "Any",
+              "java_type": "Properties"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setProperties"
+    },
+    {
+      "name": "setSpatialCalibration",
+      "overloads": [
+        {
+          "signature": "setSpatialCalibration(Calibration) -> void",
+          "params": [
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSpatialCalibration"
+    },
+    {
+      "name": "size",
+      "overloads": [
+        {
+          "signature": "size() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: size"
+    },
+    {
+      "name": "source",
+      "overloads": [
+        {
+          "signature": "source() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: source"
+    },
+    {
+      "name": "spatialCalibration",
+      "overloads": [
+        {
+          "signature": "spatialCalibration() -> Calibration",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: spatialCalibration"
+    },
+    {
+      "name": "startRadius",
+      "overloads": [
+        {
+          "signature": "startRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: startRadius"
+    },
+    {
+      "name": "stepSize",
+      "overloads": [
+        {
+          "signature": "stepSize() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: stepSize"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
+    },
+    {
+      "name": "trimNaNCounts",
+      "overloads": [
+        {
+          "signature": "trimNaNCounts() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: trimNaNCounts"
+    },
+    {
+      "name": "trimZeroCounts",
+      "overloads": [
+        {
+          "signature": "trimZeroCounts() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: trimZeroCounts"
+    },
+    {
+      "name": "zeroCounts",
+      "overloads": [
+        {
+          "signature": "zeroCounts() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: zeroCounts"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Profile()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Profile(double[][])",
+          "params": [
+            {
+              "name": "sampledData",
+              "type": "List[List[float]]",
+              "java_type": "double[][]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Profile(List, List)",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "sampledInters",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Profile(Number[], Number[])",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[Union[int, float]]",
+              "java_type": "Number[]"
+            },
+            {
+              "name": "sampledInters",
+              "type": "List[Union[int, float]]",
+              "java_type": "Number[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of Profile"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

@@ -100,14 +100,6 @@ def _layout_algorithm_validator(value: str) -> str:
     return value
 
 
-def _graph_type_validator(value: str) -> str:
-    """Validate graph type for layout defaults."""
-    valid_types = {
-        'DirectedWeightedGraph', 'AnnotationGraph', 'SWCPoint', 'BrainAnnotation', 'Unknown'
-    }
-    if value not in valid_types:
-        raise ValueError(f"Invalid graph type '{value}'. Must be one of {valid_types}")
-    return value
 
 
 # Global configuration registry

@@ -1,0 +1,140 @@
+{
+  "class_name": "SeedRois",
+  "package": "sc.fiji.snt.seed",
+  "java_name": "sc.fiji.snt.seed.SeedRois",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.726271",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "toRois",
+      "overloads": [
+        {
+          "signature": "toRois(Collection, ImagePlus) -> List",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        },
+        {
+          "signature": "toRois(Collection, ImagePlus, double[]) -> List",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "offset",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: toRois"
+    },
+    {
+      "name": "toSeeds",
+      "overloads": [
+        {
+          "signature": "toSeeds(Roi[], ImagePlus, double, String, String) -> List",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "Roi[]"
+            },
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "confidence",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "source",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        },
+        {
+          "signature": "toSeeds(Roi[], ImagePlus, double, String, String, double[]) -> List",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "Roi[]"
+            },
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "confidence",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "source",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "offset",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: toSeeds"
+    }
+  ],
+  "constructors": [],
+  "fields": [],
+  "static_fields": []
+}

@@ -1,42 +1,19 @@
 {
   "class_name": "Viewer3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-01-02T22:36:45.083274",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.384135",
+  "extracted_at": "2026-11-02T00:24:01.765226",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.311625",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
         {
-          "signature": "add(File;, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "File;",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "add(Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "object",
               "type": "Any",
               "java_type": "Object",
               "description": "- the object to be added. No exception is triggered if null",
@@ -49,10 +26,33 @@
           "throws": {
             "IllegalArgumentException": "- if object is not supported"
           }
+        },
+        {
+          "signature": "add(File[], String) -> void",
+          "params": [
+            {
+              "name": "files",
+              "type": "List[str]",
+              "java_type": "File[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: add",
-      "javadoc_description": "Script friendly method to add a supported object (Tree, OBJMesh, AbstractDrawable, etc.) to this viewer. Note that collections of supported objects are also supported, which is an effective way of adding multiple items since the scene is only rebuilt once all items have been added.",
+      "javadoc_description": "Script friendly method to add a supported object (`Tree`, `OBJMesh`, AbstractDrawable, etc.) to this viewer. Note that collections of supported objects are also supported, which is an effective way of adding multiple items since the scene is only rebuilt once all items have been added.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -66,7 +66,7 @@
           "signature": "addColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper",
               "description": "- the color table",
@@ -79,26 +79,86 @@
           "throws": {}
         },
         {
+          "signature": "addColorBarLegend(ColorMapper, String) -> void",
+          "params": [
+            {
+              "name": "colorMapper",
+              "type": "Any",
+              "java_type": "ColorMapper",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "addColorBarLegend(ColorTable, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, String) -> void",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -112,28 +172,28 @@
           "signature": "addColorBarLegend(ColorTable, double, double, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "replaceExisting",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -149,44 +209,102 @@
           "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "font",
               "type": "Any",
               "java_type": "Font",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
+              "name": "steps",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg5",
+              "name": "precision",
               "type": "int",
               "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int, String) -> void",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "font",
+              "type": "Any",
+              "java_type": "Font",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "steps",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "precision",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -198,7 +316,7 @@
         }
       ],
       "documentation": "Java method: addColorBarLegend",
-      "javadoc_description": "Adds a color bar legend (LUT ramp).",
+      "javadoc_description": "Adds a color bar legend (LUT ramp) with a title.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -212,7 +330,7 @@
           "signature": "addLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the annotation text",
@@ -243,8 +361,8 @@
           "signature": "addMesh(OBJMesh) -> boolean",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "objMesh",
+              "type": "OBJMesh",
               "java_type": "OBJMesh",
               "description": "- the mesh to be loaded",
               "javadoc_name": "objMesh"
@@ -259,7 +377,7 @@
         }
       ],
       "documentation": "Java method: addMesh",
-      "javadoc_description": "Loads a Wavefront .OBJ file. Should be called before_ displaying the scene, otherwise, if the scene is already visible, validate() should be called to ensure all meshes are visible.",
+      "javadoc_description": "Loads a Wavefront .OBJ file. Should be called before_ displaying the scene, otherwise, if the scene is already visible, `validate()` should be called to ensure all meshes are visible.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -273,7 +391,7 @@
           "signature": "addTree(Tree) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "- the Tree to be added. The Tree's label will be used as identifier. It is expected to be unique when rendering multiple Trees, if not (or no label exists) a unique label will be generated.",
@@ -287,7 +405,7 @@
         }
       ],
       "documentation": "Java method: addTree",
-      "javadoc_description": "Adds a tree to this viewer. Note that calling updateView() may be required to ensure that the current View's bounding box includes the added Tree.",
+      "javadoc_description": "Adds a tree to this viewer. Note that calling `updateView()` may be required to ensure that the current View's bounding box includes the added Tree.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -303,58 +421,21 @@
       "name": "addTrees",
       "overloads": [
         {
-          "signature": "addTrees(Collection, String, String;) -> void",
+          "signature": "addTrees(Collection, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_2"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "addTrees(Collection, String, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -366,14 +447,14 @@
           "signature": "addTrees(Collection, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "assignUniqueColors",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -386,19 +467,56 @@
           "throws": {}
         },
         {
-          "signature": "addTrees(Collection, String) -> void",
+          "signature": "addTrees(Collection, String, String[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "str",
               "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "commonTags",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addTrees(Collection, String, double) -> void",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "transparencyPercent",
+              "type": "float",
+              "java_type": "double",
               "description": "",
               "javadoc_name": null
             }
@@ -424,23 +542,23 @@
           "signature": "annotateLine(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of points in the line annotation (at least 2 elements required). Start and end of line are highlighted if 2 points are specified.",
               "javadoc_name": "points"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
-          "return_description": "the Annotation3D or null if collection contains less than 2 elements",
+          "return_description": "the `Annotation3D` or null if collection contains less than 2 elements",
           "throws": {}
         }
       ],
@@ -459,28 +577,28 @@
           "signature": "annotateMidPlane(BoundingBox, int, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "boundingBox",
               "type": "BoundingBox",
               "java_type": "BoundingBox",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "axis",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
           "return_description": "",
           "throws": {}
@@ -501,28 +619,28 @@
           "signature": "annotatePlane(SNTPoint, SNTPoint, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "origin",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "originOpposite",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
           "return_description": "",
           "throws": {}
@@ -543,58 +661,58 @@
           "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "- the node to be highlighted",
               "javadoc_name": "node"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
-          "return_description": "the Annotation3D",
+          "return_description": "the `Annotation3D`",
           "throws": {}
         },
         {
           "signature": "annotatePoint(SNTPoint, String, String, float) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "node",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "color",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "size",
               "type": "float",
               "java_type": "float",
               "description": "",
               "javadoc_name": null
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
           "return_description": "",
           "throws": {}
@@ -615,23 +733,23 @@
           "signature": "annotatePoints(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of points in the annotation",
               "javadoc_name": "points"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
-          "return_description": "the Annotation3D",
+          "return_description": "the `Annotation3D`",
           "throws": {}
         }
       ],
@@ -647,56 +765,56 @@
       "name": "annotateSurface",
       "overloads": [
         {
-          "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "annotateSurface(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of points defining the convex set.",
               "javadoc_name": "points"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
-          "return_description": "the Annotation3D",
+          "return_description": "the `Annotation3D`",
+          "throws": {}
+        },
+        {
+          "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
+          "params": [
+            {
+              "name": "points",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "computeVolume",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -715,7 +833,7 @@
           "signature": "assignUniqueColors(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabels",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -740,68 +858,68 @@
       "name": "colorCode",
       "overloads": [
         {
-          "signature": "colorCode(Collection, String, ColorTable) -> [D",
+          "signature": "colorCode(Collection, String, ColorTable) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabels",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the identifier of the Tree (as per addTree(Tree))to be color mapped",
               "javadoc_name": "treeLabel"
             },
             {
-              "name": "arg1",
+              "name": "measurement",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "addTree(Tree)"
             },
             {
-              "name": "arg2",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "the double[] the limits (min and max) of the mapped values",
           "throws": {}
         },
         {
-          "signature": "colorCode(String, String, ColorTable) -> [D",
+          "signature": "colorCode(String, String, ColorTable) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabel",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "measurement",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: colorCode",
-      "javadoc_description": "Runs TreeColorMapper on the specified Tree.",
+      "javadoc_description": "Runs `TreeColorMapper` on the specified `Tree`.",
       "category": "Visualization",
       "deprecated": false,
       "since_version": null,
@@ -849,6 +967,34 @@
       "examples": []
     },
     {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "obj",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "freeze",
       "overloads": [
         {
@@ -871,20 +1017,60 @@
       "examples": []
     },
     {
+      "name": "getAnimationAxis",
+      "overloads": [
+        {
+          "signature": "getAnimationAxis() -> RotationAxis",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RotationAxis",
+          "return_description": "the current rotation axis, or Z if not set",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnimationAxis",
+      "javadoc_description": "Gets the current rotation axis for the live animation.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAnimationMode",
+      "overloads": [
+        {
+          "signature": "getAnimationMode() -> AnimationMode",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AnimationMode",
+          "return_description": "the current animation mode",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAnimationMode",
+      "javadoc_description": "Gets the current animation mode.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getAnnotation",
       "overloads": [
         {
           "signature": "getAnnotation(String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the (unique) label as displayed in Viewer's list",
               "javadoc_name": "label"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
           "return_description": "the annotation or null if no annotation is associated with the specified label",
           "throws": {}
@@ -919,6 +1105,26 @@
       "examples": []
     },
     {
+      "name": "getColorCodeLabel",
+      "overloads": [
+        {
+          "signature": "getColorCodeLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the label, or null if no color coding has been performed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getColorCodeLabel",
+      "javadoc_description": "Gets the label (measurement and unit, e.g., \"Path length (µm)\") of the last color coding performed through `colorCode()`. Useful as legend title.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getFrame",
       "overloads": [
         {
@@ -933,7 +1139,7 @@
           "signature": "getFrame(boolean) -> Frame",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean",
               "description": "- whether the frame should be visible when created",
@@ -980,10 +1186,10 @@
       "name": "getManagerPanel",
       "overloads": [
         {
-          "signature": "getManagerPanel() -> Viewer3D$ManagerPanel",
+          "signature": "getManagerPanel() -> ManagerPanel",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Viewer3D$ManagerPanel",
+          "java_return_type": "ManagerPanel",
           "return_description": "the ManagerPanel associated with this Viewer, or null if the 'RV Controls' dialog is not being displayed.",
           "throws": {}
         }
@@ -1003,14 +1209,14 @@
           "signature": "getMesh(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the (unique) label as displayed in Viewer's list",
               "javadoc_name": "label"
             }
           ],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "the mesh or null if no mesh is associated with the specified label",
           "throws": {}
@@ -1018,6 +1224,26 @@
       ],
       "documentation": "Java method: getMesh",
       "javadoc_description": "Gets the mesh associated with the specified label.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMeshShadingMode",
+      "overloads": [
+        {
+          "signature": "getMeshShadingMode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "`OBJMesh.SHADING_DEFAULT` or `OBJMesh.SHADING_SMOOTH`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMeshShadingMode",
+      "javadoc_description": "Returns the current mesh shading mode.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1039,7 +1265,7 @@
           "signature": "getMeshes(boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "visibleOnly",
               "type": "bool",
               "java_type": "boolean",
               "description": "- If true, only visible meshes are retrieved.",
@@ -1067,7 +1293,7 @@
           "signature": "getRecorder(boolean) -> ScriptRecorder",
           "params": [
             {
-              "name": "arg0",
+              "name": "createIfNeeded",
               "type": "bool",
               "java_type": "boolean",
               "description": "- if true, creates a new recorder if one doesn't exist; if false, returns null when no recorder exists",
@@ -1095,7 +1321,7 @@
           "signature": "getTree(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the (unique) label as displayed in Viewer's list",
@@ -1131,7 +1357,7 @@
           "signature": "getTrees(boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "visibleOnly",
               "type": "bool",
               "java_type": "boolean",
               "description": "- If true, only visible Trees are retrieved.",
@@ -1146,6 +1372,26 @@
       ],
       "documentation": "Java method: getTrees",
       "javadoc_description": "Returns all trees added to this viewer.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1173,6 +1419,26 @@
       "examples": []
     },
     {
+      "name": "isAutoDetectAnimationAxis",
+      "overloads": [
+        {
+          "signature": "isAutoDetectAnimationAxis() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if auto-detection is active",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isAutoDetectAnimationAxis",
+      "javadoc_description": "Returns whether automatic rotation axis detection is enabled.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "isDarkModeOn",
       "overloads": [
         {
@@ -1186,6 +1452,26 @@
       ],
       "documentation": "Java method: isDarkModeOn",
       "javadoc_description": "Checks if scene is being rendered under dark or light background.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isMeshBackfaceCull",
+      "overloads": [
+        {
+          "signature": "isMeshBackfaceCull() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if backface culling is enabled",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isMeshBackfaceCull",
+      "javadoc_description": "Returns whether backface culling is enabled for OBJ meshes.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1210,6 +1496,28 @@
       "deprecated": false,
       "since_version": null,
       "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isScaleBarDisplayed",
+      "overloads": [
+        {
+          "signature": "isScaleBarDisplayed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the scale bar is displayed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isScaleBarDisplayed",
+      "javadoc_description": "Checks whether the scale bar is being displayed.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setScaleBarDisplayed(boolean)"
+      ],
       "examples": []
     },
     {
@@ -1239,28 +1547,28 @@
           "signature": "loadMesh(String, ColorRGB, double) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String",
               "description": "- the absolute file path (or URL) of the file to be imported. The filename is used as unique identifier of the object (see setVisible(String, boolean))",
               "javadoc_name": "filePath"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB",
               "description": "",
               "javadoc_name": "setVisible(String, boolean)"
             },
             {
-              "name": "arg2",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "the loaded OBJ mesh",
           "throws": {
@@ -1269,7 +1577,7 @@
         }
       ],
       "documentation": "Java method: loadMesh",
-      "javadoc_description": "Loads a Wavefront .OBJ file. Files should be loaded _before_ displaying the scene, otherwise, if the scene is already visible, validate() should be called to ensure all meshes are visible.",
+      "javadoc_description": "Loads a Wavefront .OBJ file. Files should be loaded _before_ displaying the scene, otherwise, if the scene is already visible, `validate()` should be called to ensure all meshes are visible.",
       "category": "I/O Operations",
       "deprecated": false,
       "since_version": null,
@@ -1283,14 +1591,14 @@
           "signature": "loadRefBrain(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "template",
               "type": "str",
               "java_type": "String",
               "description": "- the reference brain to be loaded (case-insensitive). E.g., \"zebrafish\" (MP ZBA); \"mouse\" (Allen CCF); \"JFRC2\", \"JFRC3\" \"JFRC2018\", \"FCWB\"(adult), \"L1\", \"L3\", \"VNC\" (Drosophila)",
               "javadoc_name": "template"
             }
           ],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "a reference to the loaded mesh",
           "throws": {
@@ -1338,23 +1646,23 @@
           "signature": "mergeAnnotations(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of annotations.",
               "javadoc_name": "annotations"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "Annotation3D",
           "java_return_type": "Annotation3D",
-          "return_description": "the merged Annotation3D",
+          "return_description": "the merged `Annotation3D`",
           "throws": {}
         }
       ],
@@ -1373,7 +1681,7 @@
           "signature": "rebuild(Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "obj",
               "type": "Any",
               "java_type": "Object",
               "description": "- the object to be re-rendered (or its label)",
@@ -1401,21 +1709,21 @@
           "signature": "recordRotation(float, int, File) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "angle",
               "type": "float",
               "java_type": "float",
               "description": "- the rotation angle (e.g., 360 for a full rotation)",
               "javadoc_name": "angle"
             },
             {
-              "name": "arg1",
+              "name": "frames",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "destinationDirectory",
               "type": "str",
               "java_type": "File",
               "description": "",
@@ -1428,10 +1736,2252 @@
           "throws": {
             "IllegalArgumentException": "- if no view exists, or current view is constrained and does not allow rotation"
           }
+        },
+        {
+          "signature": "recordRotation(float, int, File, RotationAxis) -> void",
+          "params": [
+            {
+              "name": "angle",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frames",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "destinationDirectory",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "axis",
+              "type": "Any",
+              "java_type": "RotationAxis",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: recordRotation",
       "javadoc_description": "Records an animated rotation of the scene around the specified axis as a sequence of images.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(Object) -> void",
+          "params": [
+            {
+              "name": "object",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "- the object to be removed, or the unique String identifying it. Collections supported.",
+              "javadoc_name": "object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if object is not supported"
+          }
+        }
+      ],
+      "documentation": "Java method: remove",
+      "javadoc_description": "Script friendly method to remove an object (`Tree`, `OBJMesh`, AbstractDrawable, `String` (object label), etc.) from this viewer's scene.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeAllMeshes",
+      "overloads": [
+        {
+          "signature": "removeAllMeshes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeAllMeshes",
+      "javadoc_description": "Removes all loaded OBJ meshes from current viewer",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeAllTrees",
+      "overloads": [
+        {
+          "signature": "removeAllTrees() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeAllTrees",
+      "javadoc_description": "Removes all the Trees from current viewer",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeAnnotation",
+      "overloads": [
+        {
+          "signature": "removeAnnotation(Annotation3D) -> boolean",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Annotation3D",
+              "java_type": "Annotation3D",
+              "description": "- the Annotation3D object to remove",
+              "javadoc_name": "annot"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the annotation was successfully removed, false if the annotation was not found in this viewer",
+          "throws": {}
+        },
+        {
+          "signature": "removeAnnotation(String) -> boolean",
+          "params": [
+            {
+              "name": "annotLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeAnnotation",
+      "javadoc_description": "Removes the specified annotation from the viewer.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeMesh",
+      "overloads": [
+        {
+          "signature": "removeMesh(OBJMesh) -> boolean",
+          "params": [
+            {
+              "name": "mesh",
+              "type": "OBJMesh",
+              "java_type": "OBJMesh",
+              "description": "- the key defining the OBJ mesh to be removed.",
+              "javadoc_name": "meshLabel"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if mesh was successfully removed.",
+          "throws": {}
+        },
+        {
+          "signature": "removeMesh(String) -> boolean",
+          "params": [
+            {
+              "name": "meshLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeMesh",
+      "javadoc_description": "Removes the specified OBJ mesh.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "loadMesh(String, ColorRGB, double)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "removeTree",
+      "overloads": [
+        {
+          "signature": "removeTree(String) -> boolean",
+          "params": [
+            {
+              "name": "treeLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the key defining the tree to be removed.",
+              "javadoc_name": "treeLabel"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if tree was successfully removed.",
+          "throws": {}
+        },
+        {
+          "signature": "removeTree(Tree) -> boolean",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeTree",
+      "javadoc_description": "Removes the specified Tree.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "addTree(Tree)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "resetView",
+      "overloads": [
+        {
+          "signature": "resetView() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resetView",
+      "javadoc_description": "Resets the view to its default position and orientation.\n\nThis method restores the camera to its initial position, orientation, and zoom level, providing a consistent starting point for viewing the scene.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "rotate",
+      "overloads": [
+        {
+          "signature": "rotate(float) -> void",
+          "params": [
+            {
+              "name": "degrees",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the angle, in degrees",
+              "javadoc_name": "degrees"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if current view mode does not allow rotations"
+          }
+        }
+      ],
+      "documentation": "Java method: rotate",
+      "javadoc_description": "Rotates the scene.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runCommand",
+      "overloads": [
+        {
+          "signature": "runCommand(String) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the recorded command",
+              "javadoc_name": "cmd"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runCommand",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "saveScene",
+      "overloads": [
+        {
+          "signature": "saveScene(File, boolean) -> int",
+          "params": [
+            {
+              "name": "directory",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the destination directory (created if needed)",
+              "javadoc_name": "directory"
+            },
+            {
+              "name": "visibleOnly",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of files written",
+          "throws": {
+            "IOException": "- if the directory could not be created or a file could not be written"
+          }
+        }
+      ],
+      "documentation": "Java method: saveScene",
+      "javadoc_description": "Saves the contents of the scene to a directory: reconstructions as `.traces` files and meshes as `.obj` files (with a companion `.mtl` file storing their color). Annotations are currently not saved.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "saveSnapshot",
+      "overloads": [
+        {
+          "signature": "saveSnapshot() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": ""
+          }
+        },
+        {
+          "signature": "saveSnapshot(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: saveSnapshot",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAnatomicalMapping",
+      "overloads": [
+        {
+          "signature": "setAnatomicalMapping(String) -> void",
+          "params": [
+            {
+              "name": "template",
+              "type": "str",
+              "java_type": "String",
+              "description": "- a 3-element array of axis labels for {X, Y, Z}, e.g., {\"Anterior-Posterior\", \"Dorsal-Ventral\", \"Left-Right\"}. If null, axes are reset to \"X\", \"Y\", \"Z\".",
+              "javadoc_name": "axisLabels"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if",
+            "dorsalAxis": "is not a valid axis descriptor"
+          }
+        },
+        {
+          "signature": "setAnatomicalMapping(String[], String) -> void",
+          "params": [
+            {
+              "name": "axisLabels",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "dorsalAxis",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnatomicalMapping",
+      "javadoc_description": "Applies a custom anatomical axis mapping to the scene, setting axis labels and the scene's up vector (dorsal direction). This is useful for custom atlases or coordinate systems not covered by the predefined templates.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setAnatomicalMapping(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setAnimationAxis",
+      "overloads": [
+        {
+          "signature": "setAnimationAxis(RotationAxis) -> void",
+          "params": [
+            {
+              "name": "axis",
+              "type": "Any",
+              "java_type": "RotationAxis",
+              "description": "- the axis of rotation (X, Y, or Z). null defaults to Z.",
+              "javadoc_name": "axis"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnimationAxis",
+      "javadoc_description": "Sets the rotation axis for the live animation (double-click spin). Calling this method disables automatic axis detection.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setAutoDetectAnimationAxis(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setAnimationEnabled",
+      "overloads": [
+        {
+          "signature": "setAnimationEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true animation starts. Stops if false",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnimationEnabled",
+      "javadoc_description": "Toggles the Viewer's animation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAnimationMode",
+      "overloads": [
+        {
+          "signature": "setAnimationMode(AnimationMode) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "Any",
+              "java_type": "AnimationMode",
+              "description": "- the animation mode (Viewer3D.AnimationMode.FULL_ROTATION or Viewer3D.AnimationMode.PING_PONG). null defaults to FULL_ROTATION.",
+              "javadoc_name": "mode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnimationMode",
+      "javadoc_description": "Sets the animation mode for both live (double-click) and recorded rotations.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAutoDetectAnimationAxis",
+      "overloads": [
+        {
+          "signature": "setAutoDetectAnimationAxis(boolean) -> void",
+          "params": [
+            {
+              "name": "auto",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to auto-detect the axis before each animation start",
+              "javadoc_name": "auto"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAutoDetectAnimationAxis",
+      "javadoc_description": "Enables or disables automatic detection of the best rotation axis based on the current viewpoint. When enabled (the default), double-clicking to start a live animation will infer the most natural axis by picking the world axis most aligned with the camera's viewing direction. Calling `setAnimationAxis(RotationAxis)` disables auto-detection.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setAnimationAxis(RotationAxis)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setAxesLabels",
+      "overloads": [
+        {
+          "signature": "setAxesLabels(String[]) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "- the axis labels in order: X-axis, Y-axis, Z-axis. If null, defaults to \"X\", \"Y\", \"Z\". If fewer than 3 labels are provided, only the available axes are labeled.",
+              "javadoc_name": "labels"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAxesLabels",
+      "javadoc_description": "Sets custom labels for the 3D coordinate axes.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBounds",
+      "overloads": [
+        {
+          "signature": "setBounds(float, float, float, float, float, float) -> void",
+          "params": [
+            {
+              "name": "xMin",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the X coordinate of the box origin",
+              "javadoc_name": "xMin"
+            },
+            {
+              "name": "xMax",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "yMin",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "yMax",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "zMin",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "zMax",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_5"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBounds",
+      "javadoc_description": "Sets a manual bounding box for the scene. The bounding box determines the zoom and framing of the scene. Current view point is logged to the Console when interacting with the Reconstruction Viewer in debug mode.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDefaultColor",
+      "overloads": [
+        {
+          "signature": "setDefaultColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "- the new color. Note that this value only applies to Paths that have no specified color and no colors assigned to its nodes",
+              "javadoc_name": "color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDefaultColor",
+      "javadoc_description": "Sets the default color for rendering `Tree`s.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDefaultThickness",
+      "overloads": [
+        {
+          "signature": "setDefaultThickness(float) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the new line thickness. Note that this value only applies to Paths that have no specified radius",
+              "javadoc_name": "thickness"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDefaultThickness",
+      "javadoc_description": "Sets the line thickness for rendering `Tree`s that have no specified radius. Must be called *before* adding paths to the scene.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDepthFog",
+      "overloads": [
+        {
+          "signature": "setDepthFog(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to apply depth fog to neurite rendering",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDepthFog",
+      "javadoc_description": "Enables or disables depth fog for all trees (current and future). The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnableAxes",
+      "overloads": [
+        {
+          "signature": "setEnableAxes(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable axes",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnableAxes",
+      "javadoc_description": "Enables/disables the display of X,Y,Z axis grid.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnableDarkMode",
+      "overloads": [
+        {
+          "signature": "setEnableDarkMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable \"Dark Mode\", \"Light Mode\" otherwise",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnableDarkMode",
+      "javadoc_description": "Enables/disables \"Dark Mode\" mode",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnableDebugMode",
+      "overloads": [
+        {
+          "signature": "setEnableDebugMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable debug mode, otherwise false",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnableDebugMode",
+      "javadoc_description": "Enables/disables debug mode",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFogIntensity",
+      "overloads": [
+        {
+          "signature": "setFogIntensity(float) -> void",
+          "params": [
+            {
+              "name": "intensity",
+              "type": "float",
+              "java_type": "float",
+              "description": "- 0 (very subtle) to 1 (fully fogged at far depth)",
+              "javadoc_name": "intensity"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFogIntensity",
+      "javadoc_description": "Sets the fog intensity for all trees and persists the preference.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFont",
+      "overloads": [
+        {
+          "signature": "setFont(Font, float, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "font",
+              "type": "Any",
+              "java_type": "Font",
+              "description": "- the font label, e.g.,",
+              "javadoc_name": "font"
+            },
+            {
+              "name": "angle",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "new Font(Font.SANS_SERIF, Font.ITALIC, 20)"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFont",
+      "javadoc_description": "Sets the font for label annotations",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFrameSize",
+      "overloads": [
+        {
+          "signature": "setFrameSize(int, int) -> void",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the width of the frame.",
+              "javadoc_name": "width"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int",
+              "description": "will set width to its maximum.",
+              "javadoc_name": "-1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFrameSize",
+      "javadoc_description": "Resizes the viewer to the specified dimensions. Useful when generating scene animations programmatically. Does nothing if viewer's frame does not exist.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "show(int, int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setLabelLocation",
+      "overloads": [
+        {
+          "signature": "setLabelLocation(float, float) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the x position of the label",
+              "javadoc_name": "x"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLabelLocation",
+      "javadoc_description": "Sets the location for annotation labels",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLookAndFeel",
+      "overloads": [
+        {
+          "signature": "setLookAndFeel(String) -> void",
+          "params": [
+            {
+              "name": "lookAndFeelName",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLookAndFeel",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMeshBackfaceCull",
+      "overloads": [
+        {
+          "signature": "setMeshBackfaceCull(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to enable backface culling",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMeshBackfaceCull",
+      "javadoc_description": "Enables or disables backface culling for all OBJ meshes (current and future). Backface culling skips rendering of back-facing triangles, improving performance for closed meshes. The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMeshShadingMode",
+      "overloads": [
+        {
+          "signature": "setMeshShadingMode(int) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "int",
+              "java_type": "int",
+              "description": "- OBJMesh.SHADING_DEFAULT or OBJMesh.SHADING_SMOOTH",
+              "javadoc_name": "mode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMeshShadingMode",
+      "javadoc_description": "Sets the shading mode for all OBJ meshes (current and future). The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setPseudoLighting",
+      "overloads": [
+        {
+          "signature": "setPseudoLighting(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to apply tangent-based pseudo-lighting",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setPseudoLighting",
+      "javadoc_description": "Enables or disables pseudo-lighting for all trees (current and future). Mutually exclusive with depth fog. Enabling this disables fog.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRadiusScale",
+      "overloads": [
+        {
+          "signature": "setRadiusScale(float) -> void",
+          "params": [
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the Collection of keys specifying the subset of trees, or null to apply to all trees",
+              "javadoc_name": "labels"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setRadiusScale(Collection, float) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRadiusScale",
+      "javadoc_description": "Applies a tube radius scale to a subset of rendered trees.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setScaleBarDisplayed",
+      "overloads": [
+        {
+          "signature": "setScaleBarDisplayed(boolean) -> void",
+          "params": [
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to display the scale bar, false to hide it",
+              "javadoc_name": "displayed"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setScaleBarDisplayed",
+      "javadoc_description": "Toggles the display of a scale bar in the bottom-left corner of the scene. The scale bar assumes that scene coordinates are in micrometers, unless a different unit has been specified through `setScaleBarUnit(String)`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setScaleBarUnit(String)",
+        "isScaleBarDisplayed()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setScaleBarUnit",
+      "overloads": [
+        {
+          "signature": "setScaleBarUnit(String) -> void",
+          "params": [
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the unit of scene coordinates: \"µm\", \"nm\", \"mm\", \"cm\", \"m\" Unrecognized units are ignored.",
+              "javadoc_name": "unit"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setScaleBarUnit",
+      "javadoc_description": "Sets the base unit of the scene coordinates, used to compute the scale bar length. The unit is parsed by `BoundingBox.sanitizedUnit(String)`, so common aliases (e.g., \"um\", \"micron\") are accepted.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setScaleBarDisplayed(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setSceneUpdatesEnabled",
+      "overloads": [
+        {
+          "signature": "setSceneUpdatesEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- Whether scene updates should be enabled. Should be set to",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSceneUpdatesEnabled",
+      "javadoc_description": "Sets whether the scene should update (refresh) every time a new reconstruction (or mesh) is added/removed from the scene.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSnapshotDir",
+      "overloads": [
+        {
+          "signature": "setSnapshotDir(String) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the absolute path to the new snapshot directory.",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSnapshotDir",
+      "javadoc_description": "Sets the directory for storing snapshots.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSomaRadius",
+      "overloads": [
+        {
+          "signature": "setSomaRadius(float) -> void",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the Collection of keys specifying the subset of trees.",
+              "javadoc_name": "labels"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setSomaRadius(Collection, float) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSomaRadius",
+      "javadoc_description": "Applies a constant radius to the somas of a subset of rendered trees.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setSomaRadius(float)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setSomasDisplayed",
+      "overloads": [
+        {
+          "signature": "setSomasDisplayed(boolean) -> void",
+          "params": [
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether soma should be displayed",
+              "javadoc_name": "displayed"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setSomasDisplayed(Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSomasDisplayed",
+      "javadoc_description": "Toggles the visibility of somas for all trees in the scene.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSplitDendritesFromAxons",
+      "overloads": [
+        {
+          "signature": "setSplitDendritesFromAxons(boolean) -> void",
+          "params": [
+            {
+              "name": "split",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to segregate imported Trees into axonal and dendritic subtrees. This is likely only relevant to allow for subtree customizations using the GUI commands provided by the \"RV Controls\" dialog. This parameter is ignored if Trees have no annotations.",
+              "javadoc_name": "split"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSplitDendritesFromAxons",
+      "javadoc_description": "Sets whether axons and dendrites should be imported as separated objects.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTitle",
+      "overloads": [
+        {
+          "signature": "setTitle(String) -> void",
+          "params": [
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the viewer's title. Ignored if Viewer's frame does not exist",
+              "javadoc_name": "title"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTitle",
+      "javadoc_description": "Sets the title of the Viewer's frame.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTreeColor",
+      "overloads": [
+        {
+          "signature": "setTreeColor(Collection, ColorRGB, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the Collection of keys specifying the subset of trees",
+              "javadoc_name": "labels"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setTreeColor(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTreeColor",
+      "javadoc_description": "Recolors a subset of rendered trees.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTreeThickness",
+      "overloads": [
+        {
+          "signature": "setTreeThickness(float) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float",
+              "description": "- the thickness (line width)",
+              "javadoc_name": "thickness"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setTreeThickness(float, String) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setTreeThickness(Collection, float, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTreeThickness",
+      "javadoc_description": "Applies a constant thickness (line width) to all rendered trees.Note that by default, trees are rendered using their nodes' diameter.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setTreeThickness(float)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setTubeMode",
+      "overloads": [
+        {
+          "signature": "setTubeMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to render neurites as 3D tubes",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTubeMode",
+      "javadoc_description": "Enables or disables tube rendering for all trees (current and future). The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTubeSides",
+      "overloads": [
+        {
+          "signature": "setTubeSides(int) -> void",
+          "params": [
+            {
+              "name": "sides",
+              "type": "int",
+              "java_type": "int",
+              "description": "- number of sides (clamped to [3, 16])",
+              "javadoc_name": "sides"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTubeSides",
+      "javadoc_description": "Sets the number of sides for tube cross-sections for all trees. Only has a visual effect when tube rendering is active. The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTubeWireframe",
+      "overloads": [
+        {
+          "signature": "setTubeWireframe(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether to show wireframe edges on tubes",
+              "javadoc_name": "enabled"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTubeWireframe",
+      "javadoc_description": "Enables or disables the wireframe overlay on tube rendering for all trees. The preference is persisted across sessions.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setUpsamplingFactor",
+      "overloads": [
+        {
+          "signature": "setUpsamplingFactor(int) -> void",
+          "params": [
+            {
+              "name": "factor",
+              "type": "int",
+              "java_type": "int",
+              "description": "- upsampling factor (1-10)",
+              "javadoc_name": "factor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setUpsamplingFactor",
+      "javadoc_description": "Sets the Catmull-Rom upsampling factor for all trees and rebuilds them. 1 = no smoothing, higher = smoother paths at vertex joints.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setViewMode",
+      "overloads": [
+        {
+          "signature": "setViewMode(String) -> void",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the view mode (case-insensitive): \"xy\"; \"xz\"; \"yz\"; \"perspective\" or \"overview\"; \"default\" or \"\".",
+              "javadoc_name": "viewMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setViewMode(ViewMode) -> void",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "Any",
+              "java_type": "ViewMode",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setViewMode",
+      "javadoc_description": "Renders the scene from a specified camera angle (script-friendly).",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setViewPoint",
+      "overloads": [
+        {
+          "signature": "setViewPoint(double, double) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the radial coordinate",
+              "javadoc_name": "r"
+            },
+            {
+              "name": "t",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setViewPoint",
+      "javadoc_description": "Renders the scene from a specified camera angle using polar coordinates relative to the center of the scene. Only X and Y dimensions are required, as the distance to center is automatically computed. Current view point is logged to the Console by calling `logSceneControls()`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setViewPointCC",
+      "overloads": [
+        {
+          "signature": "setViewPointCC(double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the X coordinate",
+              "javadoc_name": "x"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setViewPointCC",
+      "javadoc_description": "Calls `setViewPoint(double, double)` using Cartesian coordinates.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setVisible",
+      "overloads": [
+        {
+          "signature": "setVisible(String, boolean) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the unique identifier of the Tree (as per addTree(Tree)), the filename/identifier of the loaded OBJ loadMesh(String, ColorRGB, double), or annotation label.",
+              "javadoc_name": "label"
+            },
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "addTree(Tree)"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setVisible",
+      "javadoc_description": "Toggles the visibility of a rendered Tree, a loaded OBJ mesh, or an annotation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show() -> Frame",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Frame",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(Object) -> Viewer3D",
+          "params": [
+            {
+              "name": "object",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(int, int) -> Frame",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the width of the frame.",
+              "javadoc_name": "width"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int",
+              "description": "will set width to its maximum.",
+              "javadoc_name": "-1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Frame",
+          "return_description": "the frame containing the viewer.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: show",
+      "javadoc_description": "Displays the viewer under specified dimensions. Useful when generating scene animations programmatically.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "show()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "showMessage",
+      "overloads": [
+        {
+          "signature": "showMessage(String, boolean) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the message to show",
+              "javadoc_name": "msg"
+            },
+            {
+              "name": "asBanner",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showMessage",
+      "javadoc_description": "Displays a short message in the viewer's canvas.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "snapshot",
+      "overloads": [
+        {
+          "signature": "snapshot() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "snapshot(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the view mode (case-insensitive) (\"xy\", \"yz\", etc.). Anatomical axes (\"sagittal\", \"coronal\", \"transverse/horizontal\") are also accepted when a reference brain is loaded.",
+              "javadoc_name": "viewMode"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the bitmap image of the scene view",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: snapshot",
+      "javadoc_description": "Retrieves the specified scene view as an image.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "snapshotWYSIWYG",
+      "overloads": [
+        {
+          "signature": "snapshotWYSIWYG() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the bitmap image of the current scene as displayed on screen",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: snapshotWYSIWYG",
+      "javadoc_description": "Retrieves the current scene as an image using a screen capture that matches the on-screen rendering exactly (WYSIWYG). This bypasses the OpenGL framebuffer readback, avoiding color discrepancies from premultiplied alpha and display color management. Falls back to `snapshot()` when the viewer is not visible (e.g., offscreen rendering or headless environments).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncPathManagerList",
+      "overloads": [
+        {
+          "signature": "syncPathManagerList() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if synchronization was apparently successful, false otherwise",
+          "throws": {
+            "UnsupportedOperationException": "- if SNT is not running"
+          }
+        }
+      ],
+      "documentation": "Java method: syncPathManagerList",
+      "javadoc_description": "(Re)loads the current list of Paths in the Path Manager list.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "translate",
+      "overloads": [
+        {
+          "signature": "translate(Collection, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "treeLabels",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- the collection of Tree identifiers (as per addTree(Tree)) specifying the Trees to be translated",
+              "javadoc_name": "treeLabels"
+            },
+            {
+              "name": "offset",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": "addTree(Tree)"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "translate(Tree, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "offset",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: translate",
+      "javadoc_description": "Translates the specified collection of `Tree`s.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "unfreeze",
+      "overloads": [
+        {
+          "signature": "unfreeze() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: unfreeze",
+      "javadoc_description": "Allows scene to be interactive.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "freeze()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "updateColorBarLegend",
+      "overloads": [
+        {
+          "signature": "updateColorBarLegend(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the minimum value in the color table",
+              "javadoc_name": "min"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "updateColorBarLegend(double, double, float, int, int, boolean, String) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "fontSize",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "steps",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "decimals",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "scientific",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateColorBarLegend",
+      "javadoc_description": "Updates all the properties of the existing color bar legend. Does nothing if no legend exists.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateView",
+      "overloads": [
+        {
+          "signature": "updateView() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateView",
+      "javadoc_description": "Updates the scene bounds to ensure all visible objects are displayed.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "validate",
+      "overloads": [
+        {
+          "signature": "validate() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: validate",
+      "javadoc_description": "Checks if all drawables in the 3D scene are being rendered properly, rebuilding the entire scene if not. Useful to \"hard-reset\" the viewer, e.g., to ensure all meshes are redrawn.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "updateView()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "zoomTo",
+      "overloads": [
+        {
+          "signature": "zoomTo(Object[]) -> void",
+          "params": [
+            {
+              "name": "objects",
+              "type": "List[Any]",
+              "java_type": "Object[]",
+              "description": "- the objects to be zoomed into. These can be OBJMesh, Tree, Annotation3D, etc., or string(s) defining objects listed in the control panel. Collections of supported objects are also supported. If Null view is reset. If \"visible\" view is zoomed to visible objects",
+              "javadoc_name": "objects"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: zoomTo",
+      "javadoc_description": "Zooms the scene into the bounding box enclosing the specified objects.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -1445,14 +3995,8 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Viewer3D(boolean)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
+          "signature": "Viewer3D()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -1460,7 +4004,7 @@
           "signature": "Viewer3D(Context)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             }
@@ -1469,8 +4013,14 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Viewer3D()",
-          "params": [],
+          "signature": "Viewer3D(boolean)",
+          "params": [
+            {
+              "name": "interactive",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -1478,12 +4028,12 @@
           "signature": "Viewer3D(boolean, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "interactive",
               "type": "bool",
               "java_type": "boolean"
             },
             {
-              "name": "arg1",
+              "name": "engine",
               "type": "str",
               "java_type": "String"
             }
@@ -1492,10 +4042,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Viewer3D"
+      "documentation": "Constructors of Viewer3D"
     }
   ],
-  "javadoc_description": "Implements SNT's Reconstruction Viewer. Relies heavily on the org.jzy3d package.",
+  "javadoc_description": "Implements SNT's Reconstruction Viewer. Relies heavily on the `org.jzy3d` package.",
   "inheritance": {
     "extends": [
       "Object"
@@ -1512,48 +4062,51 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "show()",
-    "setFont(Font, float, ColorRGB)",
-    "setTreeThickness(float, String)",
-    "loadRefBrain(String)",
-    "Tree.getLabel()",
-    "setAnimationAxis(RotationAxis)",
-    "setAnatomicalMapping(String)",
-    "setSomaRadius(float)",
-    "VFBUtils",
-    "add(Object)",
-    "setTreeThickness(float)",
     "unfreeze()",
-    "ZBAtlasUtils",
-    "freeze()",
-    "Constant Field Values",
-    "setLabelLocation(float, float)",
-    "loadMesh(String, ColorRGB, double)",
-    "setAnatomicalMapping(String[], String)",
-    "setAutoDetectAnimationAxis(boolean)",
-    "Object",
+    "setSomaRadius(float)",
     "AllenUtils",
+    "setFont(Font, float, ColorRGB)",
+    "setScaleBarUnit(String)",
+    "removeTree(String)",
     "updateView()",
-    "show(int, int)",
+    "setTreeThickness(float, String)",
+    "ZBAtlasUtils",
+    "VFBUtils",
+    "Object",
+    "show()",
+    "setAnatomicalMapping(String)",
+    "add(Object)",
     "addTree(Tree)",
+    "Constant Field Values",
+    "setAnimationAxis(RotationAxis)",
+    "setAutoDetectAnimationAxis(boolean)",
+    "Tree.getLabel()",
     "setSplitDendritesFromAxons(boolean)",
-    "removeTree(String)"
+    "show(int, int)",
+    "setScaleBarDisplayed(boolean)",
+    "freeze()",
+    "isScaleBarDisplayed()",
+    "setTreeThickness(float)",
+    "setLabelLocation(float, float)",
+    "setAnatomicalMapping(String[], String)",
+    "loadRefBrain(String)",
+    "loadMesh(String, ColorRGB, double)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 137,
-      "total_json_methods": 37,
-      "total_matches": 51,
-      "exact_matches": 51,
+      "total_javadoc_methods": 147,
+      "total_json_methods": 108,
+      "total_matches": 143,
+      "exact_matches": 143,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 86,
-      "unmatched_json": -14,
-      "match_percentage": 37.2
+      "unmatched_javadoc": 4,
+      "unmatched_json": -35,
+      "match_percentage": 97.3
     },
-    "unmatched_javadoc_methods": 86,
+    "unmatched_javadoc_methods": 4,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.446
+    "enhancement_quality_score": 1.0
   }
 }

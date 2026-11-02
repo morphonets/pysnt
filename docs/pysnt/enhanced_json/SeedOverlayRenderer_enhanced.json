@@ -1,75 +1,75 @@
 {
   "class_name": "SeedOverlayRenderer",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:01:09.074036",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.330329",
+  "extracted_at": "2026-11-02T00:24:01.725023",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.296159",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static colorForSeed",
+      "name": "colorForSeed",
       "overloads": [
         {
-          "signature": "static colorForSeed(ColorTable, Color, SeedOverlay$ColorMode, SeedPoint, double, double, double, Map, Map) -> Color",
+          "signature": "colorForSeed(ColorTable, Color, ColorMode, SeedPoint, double, double, double, Map, Map) -> Color",
           "params": [
             {
-              "name": "arg0",
+              "name": "table",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "unknownConfidenceColor",
               "type": "Any",
               "java_type": "Color",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "mode",
               "type": "Any",
-              "java_type": "SeedOverlay$ColorMode",
+              "java_type": "ColorMode",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
-              "type": "Any",
+              "name": "s",
+              "type": "SeedPoint",
               "java_type": "SeedPoint",
               "description": "",
               "javadoc_name": "param_3"
             },
             {
-              "name": "arg4",
+              "name": "low",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_4"
             },
             {
-              "name": "arg5",
+              "name": "high",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_5"
             },
             {
-              "name": "arg6",
+              "name": "depthFalloff",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_6"
             },
             {
-              "name": "arg7",
+              "name": "seedIndexMap",
               "type": "Dict[str, Any]",
               "java_type": "Map",
               "description": "",
               "javadoc_name": "param_7"
             },
             {
-              "name": "arg8",
+              "name": "categoryOrdinals",
               "type": "Dict[str, Any]",
               "java_type": "Map",
               "description": "",
@@ -82,8 +82,8 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static colorForSeed",
-      "javadoc_description": "Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on confidence); INDEX / TYPE / SOURCE use a categorical key and full opacity so every seed contributes equal visual weight.\n\nPublic so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass depthFalloff = 1.0 when there's no slice-distance concept (table rows have no Z).",
+      "documentation": "Java method: colorForSeed",
+      "javadoc_description": "Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on confidence); INDEX / TYPE / SOURCE use a categorical key and full opacity so every seed contributes equal visual weight.\n\nPublic so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass `depthFalloff = 1.0` when there's no slice-distance concept (table rows have no Z).",
       "category": "Visualization",
       "deprecated": false,
       "since_version": null,
@@ -93,7 +93,7 @@
   ],
   "fields": [],
   "constructors": [],
-  "javadoc_description": "Stateless renderer that draws a SeedOverlay's seeds onto a TracerCanvas's Graphics2D. Invoked from `TracerCanvas.drawOverlay(Graphics2D)` after paths are drawn so seeds appear on top.\n\nVisual conventions:\n\nColor is looked up from the overlay's active ColorTable using the seed's confidence normalized to [low, high]. Seeds outside that range are not drawn. Radius on screen is the seed's physical radius converted to voxels (using the active image's in-plane spacing) and then to canvas pixels via the current magnification. A small floor is applied so high-zoom-out seeds remain clickable. Alpha falls off with distance from the current depth slice (per-plane); seeds outside the canvas's eitherSide band (when just_near_slices is on) are skipped. Seeds whose 2D projection falls outside the visible canvas rectangle are skipped (the dominant performance optimization when the user is zoomed in). When the visible post-cull set exceeds SUBSAMPLE_RENDER_CAP, only the top-K seeds by confidence are drawn (full set remains available for queries).",
+  "javadoc_description": "Stateless renderer that draws a `SeedOverlay`'s seeds onto a `TracerCanvas`'s `Graphics2D`. Invoked from `TracerCanvas.drawOverlay(Graphics2D)` after paths are drawn so seeds appear on top.\n\nVisual conventions:\n\n- **Color** is looked up from the overlay's active `ColorTable` using the seed's confidence normalized to `[low, high]` . Seeds outside that range are not drawn.\n\n- **Radius** on screen is the seed's physical radius converted to voxels (using the active image's in-plane spacing) and then to canvas pixels via the current magnification. A small floor is applied so high-zoom-out seeds remain clickable.\n\n- **Alpha** falls off with distance from the current depth slice (per-plane); seeds outside the canvas's `eitherSide` band (when `just_near_slices` is on) are skipped.\n\n- Seeds whose 2D projection falls outside the visible canvas rectangle are skipped (the dominant performance optimization when the user is zoomed in).\n\n- When the visible post-cull set exceeds `SUBSAMPLE_RENDER_CAP` , only the top-K seeds by confidence are drawn (full set remains available for queries).",
   "inheritance": {
     "extends": [
       "Object"

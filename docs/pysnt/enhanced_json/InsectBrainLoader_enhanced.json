@@ -1,9 +1,9 @@
 {
   "class_name": "InsectBrainLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:00:59.985685",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.427668",
+  "extracted_at": "2026-11-02T00:24:01.641842",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.373811",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -50,10 +50,10 @@
       "name": "getNeuronInfo",
       "overloads": [
         {
-          "signature": "getNeuronInfo() -> InsectBrainLoader$NeuronInfo",
+          "signature": "getNeuronInfo() -> NeuronInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "InsectBrainLoader$NeuronInfo",
+          "java_return_type": "NeuronInfo",
           "return_description": "",
           "throws": {}
         }
@@ -74,7 +74,7 @@
           "params": [],
           "return_type": "Tree",
           "java_return_type": "Tree",
-          "return_description": "the data for the specified cell as a Tree, or null if data could not be retrieved",
+          "return_description": "the data for the specified cell as a `Tree`, or null if data could not be retrieved",
           "throws": {}
         }
       ],
@@ -107,10 +107,10 @@
       "examples": []
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
@@ -118,37 +118,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable",
+      "documentation": "Java method: isDatabaseAvailable",
       "javadoc_description": "Checks whether a connection to the Insect Brain Database can be established.",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -164,7 +136,7 @@
           "signature": "InsectBrainLoader(int)",
           "params": [
             {
-              "name": "arg0",
+              "name": "id",
               "type": "int",
               "java_type": "int"
             }
@@ -173,7 +145,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for InsectBrainLoader"
+      "documentation": "Constructors of InsectBrainLoader"
     }
   ],
   "javadoc_description": "Methods for retrieving reconstructions and annotations from the Insect Brain Database at insectbraindb.org *",
@@ -194,17 +166,17 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 7,
-      "total_json_methods": 7,
-      "total_matches": 7,
-      "exact_matches": 7,
+      "total_json_methods": 6,
+      "total_matches": 6,
+      "exact_matches": 6,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
+      "unmatched_javadoc": 1,
       "unmatched_json": 0,
-      "match_percentage": 100.0
+      "match_percentage": 85.7
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 1,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

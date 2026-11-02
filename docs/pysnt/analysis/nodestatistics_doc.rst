@@ -69,7 +69,7 @@ Getters Methods
    Gets the list of nodes associated with the specified compartment (neuropil label).
 
 
-.. py:method:: getAnnotatedFrequencies(int, String)
+.. py:method:: getAnnotatedFrequencies()
 
    Retrieves the count frequencies across brain compartment.
 
@@ -96,7 +96,7 @@ Getters Methods
 
 .. py:method:: getDescriptiveStatistics(String)
 
-   Computes the `DescriptiveStatistics` for the specified measurement.
+   Computes the ``DescriptiveStatistics`` for the specified measurement.
 
 
 .. py:method:: getHistogram(String)
@@ -104,7 +104,7 @@ Getters Methods
    Gets the relative frequencies histogram for a univariate measurement. The number of bins is determined using the Freedman-Diaconis rule.
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMetrics()
 
    Gets the list of supported metrics.
 
@@ -122,9 +122,9 @@ Analysis Methods
 ~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static computeNearestNeighborDistances(List)
+.. py:method:: computeNearestNeighborDistances(List)
 
-   Computes nearest neighbor distances. Assigns the computed value to the v value of each point
+   Computes nearest neighbor distances. Assigns the computed value to the ``v`` value of each point
 
 
 Other Methods
@@ -139,11 +139,6 @@ Other Methods
 .. py:method:: filter(String, double, double)
 
    Filters the current pool of nodes matching a measurement-based criterion.
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

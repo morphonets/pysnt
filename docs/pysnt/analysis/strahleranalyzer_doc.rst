@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class to perform Horton-Strahler analysis on a Tree.
+Class to perform Horton-Strahler analysis on a ``Tree``.
 
 
 Methods
@@ -104,7 +104,7 @@ Getters Methods
    
 
 
-.. py:method:: getBranches(int)
+.. py:method:: getBranches()
 
    
 
@@ -148,7 +148,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static classify(DirectedWeightedGraph, boolean)
+.. py:method:: classify(DirectedWeightedGraph, boolean)
 
    
 
@@ -156,11 +156,6 @@ Other Methods
 .. py:method:: dispose()
 
    Clears internal caches and mappings to free memory.
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

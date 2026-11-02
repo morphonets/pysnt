@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class for color coding groups of Trees.
+Class for color coding groups of `Tree`s.
 
 After a mapping property and a color table (LUT) are specified, the mapping proceeds as follows: 1) Each Tree in the group is measured for the mapping property; 2) each measurement is mapped to a LUT entry that is used to color each Tree. Mapping limits can be optionally specified
 
@@ -64,6 +64,11 @@ Methods
 
 Getters Methods
 ~~~~~~~~~~~~~~~
+
+
+.. py:method:: getAvailableHeatmapLuts()
+
+   
 
 
 .. py:method:: getAvailableLuts()
@@ -81,12 +86,22 @@ Getters Methods
    
 
 
-.. py:method:: getColorTable(String)
+.. py:method:: getColorTable()
 
    
 
 
-.. py:method:: static getMetrics(String)
+.. py:method:: getMeasurement()
+
+   Description copied from class: ``ColorMapper``
+
+
+.. py:method:: getMeasurementLabel()
+
+   
+
+
+.. py:method:: getMetrics()
 
    Gets the list of supported mapping metrics.
 
@@ -98,7 +113,7 @@ Getters Methods
 
 .. py:method:: getMultiViewer()
 
-   Description copied from class: TreeColorMapper
+   Description copied from class: ``TreeColorMapper``
 
 
 .. py:method:: getNaNColor()
@@ -106,7 +121,7 @@ Getters Methods
    
 
 
-.. py:method:: static getSingleValueMetrics()
+.. py:method:: getSingleValueMetrics()
 
    Gets the list of single-value mapping metrics.
 
@@ -125,7 +140,22 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: setMaxPercentileClipped(double[], double)
+
+   
+
+
 .. py:method:: setMinMax(double, double)
+
+   
+
+
+.. py:method:: setMinMaxPercentileClipped(double[], double)
+
+   
+
+
+.. py:method:: setMinPercentileClipped(double[], double)
 
    
 
@@ -139,14 +169,9 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;)
-
-   
-
-
 .. py:method:: map(String, ColorTable)
 
-   Description copied from class: ColorMapper
+   Description copied from class: ``ColorMapper``
 
 
 .. py:method:: mapRootDistanceToCentroid(AllenCompartment, ColorTable)
@@ -164,7 +189,7 @@ Other Methods
    
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: unMap(Collection)
 
    
 

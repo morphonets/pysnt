@@ -1,0 +1,499 @@
+{
+  "class_name": "AnnotationGraph",
+  "package": "sc.fiji.snt.analysis.graph",
+  "java_name": "sc.fiji.snt.analysis.graph.AnnotationGraph",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.577096",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "applyEdges",
+      "overloads": [
+        {
+          "signature": "applyEdges(UnaryOperator) -> void",
+          "params": [
+            {
+              "name": "operator",
+              "type": "Any",
+              "java_type": "UnaryOperator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: applyEdges"
+    },
+    {
+      "name": "applyVertices",
+      "overloads": [
+        {
+          "signature": "applyVertices(UnaryOperator) -> void",
+          "params": [
+            {
+              "name": "operator",
+              "type": "Any",
+              "java_type": "UnaryOperator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: applyVertices"
+    },
+    {
+      "name": "filterEdges",
+      "overloads": [
+        {
+          "signature": "filterEdges(Predicate) -> void",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "Predicate"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: filterEdges"
+    },
+    {
+      "name": "filterEdgesByWeight",
+      "overloads": [
+        {
+          "signature": "filterEdgesByWeight(int) -> void",
+          "params": [
+            {
+              "name": "minWeight",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: filterEdgesByWeight"
+    },
+    {
+      "name": "filterVertices",
+      "overloads": [
+        {
+          "signature": "filterVertices(Predicate) -> void",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "Predicate"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: filterVertices"
+    },
+    {
+      "name": "getEdgeColor",
+      "overloads": [
+        {
+          "signature": "getEdgeColor(DefaultWeightedEdge) -> ColorRGB",
+          "params": [
+            {
+              "name": "edge",
+              "type": "Any",
+              "java_type": "DefaultWeightedEdge"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getEdgeColor"
+    },
+    {
+      "name": "getEdgeColorRGBMap",
+      "overloads": [
+        {
+          "signature": "getEdgeColorRGBMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getEdgeColorRGBMap"
+    },
+    {
+      "name": "getMaxOntologyDepth",
+      "overloads": [
+        {
+          "signature": "getMaxOntologyDepth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaxOntologyDepth"
+    },
+    {
+      "name": "getMetric",
+      "overloads": [
+        {
+          "signature": "getMetric() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMetric"
+    },
+    {
+      "name": "getMetrics",
+      "overloads": [
+        {
+          "signature": "getMetrics() -> String[]",
+          "params": [],
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getMetrics"
+    },
+    {
+      "name": "getThreshold",
+      "overloads": [
+        {
+          "signature": "getThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getThreshold"
+    },
+    {
+      "name": "getTrees",
+      "overloads": [
+        {
+          "signature": "getTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTrees"
+    },
+    {
+      "name": "getVertexColor",
+      "overloads": [
+        {
+          "signature": "getVertexColor(Object) -> ColorRGB",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexColor"
+    },
+    {
+      "name": "getVertexColorRGBMap",
+      "overloads": [
+        {
+          "signature": "getVertexColorRGBMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexColorRGBMap"
+    },
+    {
+      "name": "getVertexValue",
+      "overloads": [
+        {
+          "signature": "getVertexValue(Object) -> double",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexValue"
+    },
+    {
+      "name": "getVertexValueMap",
+      "overloads": [
+        {
+          "signature": "getVertexValueMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexValueMap"
+    },
+    {
+      "name": "removeOrphans",
+      "overloads": [
+        {
+          "signature": "removeOrphans() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeOrphans"
+    },
+    {
+      "name": "setEdgeColor",
+      "overloads": [
+        {
+          "signature": "setEdgeColor(DefaultWeightedEdge, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "edge",
+              "type": "Any",
+              "java_type": "DefaultWeightedEdge"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setEdgeColor"
+    },
+    {
+      "name": "setVertexColor",
+      "overloads": [
+        {
+          "signature": "setVertexColor(Object, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setVertexColor"
+    },
+    {
+      "name": "setVertexValue",
+      "overloads": [
+        {
+          "signature": "setVertexValue(Object, double) -> void",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "value",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setVertexValue"
+    },
+    {
+      "name": "sumEdgeWeights",
+      "overloads": [
+        {
+          "signature": "sumEdgeWeights() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: sumEdgeWeights"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "AnnotationGraph(Collection, Collection, String)",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "annotations",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AnnotationGraph(Collection, Collection, String, double)",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "annotations",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "AnnotationGraph(Collection, String, double, int)",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxOntologyDepth",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of AnnotationGraph"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "BRANCH_POINTS",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field BRANCH_POINTS of type String"
+    },
+    {
+      "name": "EDGES",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field EDGES of type String"
+    },
+    {
+      "name": "LENGTH",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field LENGTH of type String"
+    },
+    {
+      "name": "TIPS",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field TIPS of type String"
+    }
+  ]
+}

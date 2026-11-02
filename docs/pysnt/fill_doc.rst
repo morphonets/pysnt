@@ -136,12 +136,12 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setMetric(SNT$CostType)
+.. py:method:: setMetric(CostType)
 
    Sets the cost metric for the filled structure.
 
 
-.. py:method:: setSourcePaths(Path;)
+.. py:method:: setSourcePaths(Path[])
 
    Sets the source paths for the filled structure using a set of paths.
 
@@ -177,6 +177,11 @@ Other Methods
 .. py:method:: add(int, int, int, double, int, boolean)
 
    Adds a node to the filled structure.
+
+
+.. py:method:: toString()
+
+   
 
 
 See Also

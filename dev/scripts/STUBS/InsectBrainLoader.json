@@ -1,8 +1,13 @@
 {
   "class_name": "InsectBrainLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:00:59.985685",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.io.InsectBrainLoader",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.641842",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "getAnnotations",
@@ -11,7 +16,8 @@
           "signature": "getAnnotations() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotations"
@@ -23,7 +29,8 @@
           "signature": "getMeshes() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMeshes"
@@ -32,10 +39,11 @@
       "name": "getNeuronInfo",
       "overloads": [
         {
-          "signature": "getNeuronInfo() -> InsectBrainLoader$NeuronInfo",
+          "signature": "getNeuronInfo() -> NeuronInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "InsectBrainLoader$NeuronInfo"
+          "java_return_type": "NeuronInfo",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNeuronInfo"
@@ -47,7 +55,8 @@
           "signature": "getTree() -> Tree",
           "params": [],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTree"
@@ -59,43 +68,26 @@
           "signature": "idExists() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: idExists"
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable"
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: isDatabaseAvailable"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -104,7 +96,7 @@
           "signature": "InsectBrainLoader(int)",
           "params": [
             {
-              "name": "arg0",
+              "name": "id",
               "type": "int",
               "java_type": "int"
             }
@@ -113,7 +105,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for InsectBrainLoader"
+      "documentation": "Constructors of InsectBrainLoader"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

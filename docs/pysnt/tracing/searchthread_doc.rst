@@ -56,22 +56,6 @@
 Implements a common thread that explores the image using a variety of strategies, e.g., to trace tubular structures or surfaces.
 
 
-Fields
-------
-
-
-**imgDepth** : ``int``
-    No description available.
-
-
-**imgHeight** : ``int``
-    No description available.
-
-
-**imgWidth** : ``int``
-    No description available.
-
-
 Methods
 -------
 
@@ -111,7 +95,7 @@ Other Methods
 
 .. py:method:: addProgressListener(SearchProgressCallback)
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: createNewNode(int, int, int, double, double, DefaultSearchNode, byte)
@@ -121,12 +105,12 @@ Other Methods
 
 .. py:method:: pointsConsideredInSearch()
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: printStatus()
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: reportFinished(boolean)

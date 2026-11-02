@@ -1,0 +1,872 @@
+{
+  "class_name": "SeedOverlay",
+  "package": "sc.fiji.snt.seed",
+  "java_name": "sc.fiji.snt.seed.SeedOverlay",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.723462",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(SeedPoint) -> void",
+          "params": [
+            {
+              "name": "seed",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: add"
+    },
+    {
+      "name": "addAll",
+      "overloads": [
+        {
+          "signature": "addAll(Collection) -> void",
+          "params": [
+            {
+              "name": "batch",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addAll"
+    },
+    {
+      "name": "addListener",
+      "overloads": [
+        {
+          "signature": "addListener(SeedOverlayListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "SeedOverlayListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addListener"
+    },
+    {
+      "name": "clear",
+      "overloads": [
+        {
+          "signature": "clear() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: clear"
+    },
+    {
+      "name": "clearSelection",
+      "overloads": [
+        {
+          "signature": "clearSelection() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: clearSelection"
+    },
+    {
+      "name": "countOutOfBounds",
+      "overloads": [
+        {
+          "signature": "countOutOfBounds(long[], double[], double[]) -> int",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "offset",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: countOutOfBounds"
+    },
+    {
+      "name": "filtered",
+      "overloads": [
+        {
+          "signature": "filtered() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: filtered"
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(int) -> SeedPoint",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "SeedPoint",
+          "java_return_type": "SeedPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: get"
+    },
+    {
+      "name": "getColorMode",
+      "overloads": [
+        {
+          "signature": "getColorMode() -> ColorMode",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorMode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getColorMode"
+    },
+    {
+      "name": "getColorTable",
+      "overloads": [
+        {
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ColorTable",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getColorTable"
+    },
+    {
+      "name": "getColorTableName",
+      "overloads": [
+        {
+          "signature": "getColorTableName() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getColorTableName"
+    },
+    {
+      "name": "getHighConfidence",
+      "overloads": [
+        {
+          "signature": "getHighConfidence() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getHighConfidence"
+    },
+    {
+      "name": "getLowConfidence",
+      "overloads": [
+        {
+          "signature": "getLowConfidence() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLowConfidence"
+    },
+    {
+      "name": "getSelectedSeeds",
+      "overloads": [
+        {
+          "signature": "getSelectedSeeds() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSelectedSeeds"
+    },
+    {
+      "name": "getTransparency",
+      "overloads": [
+        {
+          "signature": "getTransparency() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTransparency"
+    },
+    {
+      "name": "getUnknownConfidenceColor",
+      "overloads": [
+        {
+          "signature": "getUnknownConfidenceColor() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUnknownConfidenceColor"
+    },
+    {
+      "name": "indexOf",
+      "overloads": [
+        {
+          "signature": "indexOf(SeedPoint) -> int",
+          "params": [
+            {
+              "name": "seed",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: indexOf"
+    },
+    {
+      "name": "isEmpty",
+      "overloads": [
+        {
+          "signature": "isEmpty() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isEmpty"
+    },
+    {
+      "name": "isSelected",
+      "overloads": [
+        {
+          "signature": "isSelected(SeedPoint) -> boolean",
+          "params": [
+            {
+              "name": "seed",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isSelected"
+    },
+    {
+      "name": "isVisible",
+      "overloads": [
+        {
+          "signature": "isVisible() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isVisible"
+    },
+    {
+      "name": "list",
+      "overloads": [
+        {
+          "signature": "list() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: list"
+    },
+    {
+      "name": "loadCsv",
+      "overloads": [
+        {
+          "signature": "loadCsv(File, boolean) -> CsvImportResult",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "replace",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CsvImportResult",
+          "is_static": false
+        },
+        {
+          "signature": "loadCsv(String, boolean) -> CsvImportResult",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "replace",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CsvImportResult",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: loadCsv"
+    },
+    {
+      "name": "nearest",
+      "overloads": [
+        {
+          "signature": "nearest(double, double, double, double) -> SeedPoint",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "SeedPoint",
+          "java_return_type": "SeedPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: nearest"
+    },
+    {
+      "name": "parseCsv",
+      "overloads": [
+        {
+          "signature": "parseCsv(File) -> CsvImportResult",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CsvImportResult",
+          "is_static": true
+        },
+        {
+          "signature": "parseCsv(String) -> CsvImportResult",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "CsvImportResult",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: parseCsv"
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(SeedPoint) -> boolean",
+          "params": [
+            {
+              "name": "seed",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: remove"
+    },
+    {
+      "name": "removeAll",
+      "overloads": [
+        {
+          "signature": "removeAll(Collection) -> int",
+          "params": [
+            {
+              "name": "batch",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeAll"
+    },
+    {
+      "name": "removeAt",
+      "overloads": [
+        {
+          "signature": "removeAt(int) -> SeedPoint",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "SeedPoint",
+          "java_return_type": "SeedPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeAt"
+    },
+    {
+      "name": "removeListener",
+      "overloads": [
+        {
+          "signature": "removeListener(SeedOverlayListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "SeedOverlayListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeListener"
+    },
+    {
+      "name": "removeSelected",
+      "overloads": [
+        {
+          "signature": "removeSelected() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeSelected"
+    },
+    {
+      "name": "replaceAll",
+      "overloads": [
+        {
+          "signature": "replaceAll(Collection) -> void",
+          "params": [
+            {
+              "name": "replacement",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: replaceAll"
+    },
+    {
+      "name": "replaceAllAt",
+      "overloads": [
+        {
+          "signature": "replaceAllAt(Map) -> int",
+          "params": [
+            {
+              "name": "replacements",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: replaceAllAt"
+    },
+    {
+      "name": "replaceAt",
+      "overloads": [
+        {
+          "signature": "replaceAt(int, SeedPoint) -> boolean",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "replacement",
+              "type": "SeedPoint",
+              "java_type": "SeedPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: replaceAt"
+    },
+    {
+      "name": "saveAs",
+      "overloads": [
+        {
+          "signature": "saveAs(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: saveAs"
+    },
+    {
+      "name": "scaleConfidence",
+      "overloads": [
+        {
+          "signature": "scaleConfidence(Collection, double) -> int",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "factor",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: scaleConfidence"
+    },
+    {
+      "name": "scaleRadius",
+      "overloads": [
+        {
+          "signature": "scaleRadius(Collection, double) -> int",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "factor",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: scaleRadius"
+    },
+    {
+      "name": "setColorMode",
+      "overloads": [
+        {
+          "signature": "setColorMode(ColorMode) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "Any",
+              "java_type": "ColorMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setColorMode"
+    },
+    {
+      "name": "setColorTable",
+      "overloads": [
+        {
+          "signature": "setColorTable(String) -> void",
+          "params": [
+            {
+              "name": "name",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setColorTable"
+    },
+    {
+      "name": "setConfidenceRange",
+      "overloads": [
+        {
+          "signature": "setConfidenceRange(double, double) -> void",
+          "params": [
+            {
+              "name": "low",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "high",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setConfidenceRange"
+    },
+    {
+      "name": "setSelectedSeeds",
+      "overloads": [
+        {
+          "signature": "setSelectedSeeds(Collection) -> void",
+          "params": [
+            {
+              "name": "selection",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSelectedSeeds"
+    },
+    {
+      "name": "setTransparency",
+      "overloads": [
+        {
+          "signature": "setTransparency(double) -> void",
+          "params": [
+            {
+              "name": "t",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTransparency"
+    },
+    {
+      "name": "setUnknownConfidenceColor",
+      "overloads": [
+        {
+          "signature": "setUnknownConfidenceColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUnknownConfidenceColor"
+    },
+    {
+      "name": "setVisible",
+      "overloads": [
+        {
+          "signature": "setVisible(boolean) -> void",
+          "params": [
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setVisible"
+    },
+    {
+      "name": "size",
+      "overloads": [
+        {
+          "signature": "size() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: size"
+    },
+    {
+      "name": "topKByConfidence",
+      "overloads": [
+        {
+          "signature": "topKByConfidence(int) -> List",
+          "params": [
+            {
+              "name": "k",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: topKByConfidence"
+    },
+    {
+      "name": "visibleSize",
+      "overloads": [
+        {
+          "signature": "visibleSize() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: visibleSize"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SeedOverlay()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of SeedOverlay"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "DEFAULT_COLOR_TABLE_NAME",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_COLOR_TABLE_NAME of type String"
+    }
+  ]
+}

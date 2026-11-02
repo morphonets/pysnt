@@ -1,8 +1,13 @@
 {
   "class_name": "TreeToRaster",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-09-27T23:01:12.057382",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.TreeToRaster",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.758994",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "getAxialRes",
@@ -11,7 +16,8 @@
           "signature": "getAxialRes() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAxialRes"
@@ -23,7 +29,8 @@
           "signature": "getLateralRes() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLateralRes"
@@ -35,10 +42,37 @@
           "signature": "getRadiusScale() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRadiusScale"
+    },
+    {
+      "name": "getRasterOrigin",
+      "overloads": [
+        {
+          "signature": "getRasterOrigin() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRasterOrigin"
+    },
+    {
+      "name": "getRasterVoxelCount",
+      "overloads": [
+        {
+          "signature": "getRasterVoxelCount() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRasterVoxelCount"
     },
     {
       "name": "rasterize",
@@ -47,7 +81,8 @@
           "signature": "rasterize() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: rasterize"
@@ -59,7 +94,10 @@
           "signature": "rasterizeLabels() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: rasterizeLabels"
@@ -71,7 +109,8 @@
           "signature": "rasterizeNodeValueLabels() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: rasterizeNodeValueLabels"
@@ -83,7 +122,8 @@
           "signature": "rasterizePathLabels() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: rasterizePathLabels"
@@ -95,13 +135,14 @@
           "signature": "setAxialRes(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "axialRes",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setAxialRes"
@@ -113,13 +154,14 @@
           "signature": "setDefaultRadius(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "radius",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setDefaultRadius"
@@ -131,13 +173,14 @@
           "signature": "setGaussianBlur(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "sigma",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setGaussianBlur"
@@ -149,13 +192,14 @@
           "signature": "setLateralRes(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "lateralRes",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLateralRes"
@@ -167,18 +211,19 @@
           "signature": "setPoissonNoise(double, double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "snr",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "background",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPoissonNoise"
@@ -190,13 +235,14 @@
           "signature": "setRadiusScale(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "scale",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setRadiusScale"
@@ -205,38 +251,40 @@
       "name": "setReferenceBounds",
       "overloads": [
         {
-          "signature": "setReferenceBounds(int, int, int) -> TreeToRaster",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
-        },
-        {
           "signature": "setReferenceBounds(ImagePlus) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
+        },
+        {
+          "signature": "setReferenceBounds(int, int, int) -> TreeToRaster",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setReferenceBounds"
@@ -248,19 +296,19 @@
           "signature": "setThicknessModulation(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "factor",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster"
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setThicknessModulation"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -269,7 +317,7 @@
           "signature": "TreeToRaster(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -278,7 +326,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for TreeToRaster"
+      "documentation": "Constructors of TreeToRaster"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

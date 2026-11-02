@@ -1,9 +1,9 @@
 {
   "class_name": "MultiViewer3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:01.869762",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.352147",
+  "extracted_at": "2026-11-02T00:24:01.655854",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.298425",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,11 +13,34 @@
           "signature": "addColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper",
               "description": "",
               "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper, String) -> void",
+          "params": [
+            {
+              "name": "colorMapper",
+              "type": "Any",
+              "java_type": "ColorMapper",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "None",
@@ -35,41 +58,13 @@
       "examples": []
     },
     {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "setAnimationEnabled",
       "overloads": [
         {
           "signature": "setAnimationEnabled(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enabled",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -97,7 +92,7 @@
           "signature": "setGap(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gap",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -125,7 +120,7 @@
           "signature": "setLabels(List) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "labels",
               "type": "List[Any]",
               "java_type": "List",
               "description": "",
@@ -153,7 +148,7 @@
           "signature": "setLayoutColumns(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cols",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -181,7 +176,7 @@
           "signature": "setTitle(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "title",
               "type": "str",
               "java_type": "String",
               "description": "- the viewer's title.",
@@ -206,12 +201,12 @@
       "name": "setViewMode",
       "overloads": [
         {
-          "signature": "setViewMode(Viewer3D$ViewMode) -> void",
+          "signature": "setViewMode(ViewMode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "Any",
-              "java_type": "Viewer3D$ViewMode",
+              "java_type": "ViewMode",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -277,34 +272,34 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "MultiViewer3D(List)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "MultiViewer3D(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "MultiViewer3D(List)",
+          "params": [
+            {
+              "name": "viewers",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MultiViewer3D"
+      "documentation": "Constructors of MultiViewer3D"
     }
   ],
-  "javadoc_description": "Class for rendering individual Viewer3Ds as a multi-panel montage.",
+  "javadoc_description": "Class for rendering individual `Viewer3D`s as a multi-panel montage.",
   "inheritance": {
     "extends": [
       "Object"
@@ -319,18 +314,18 @@
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 10,
-      "total_json_methods": 10,
+      "total_javadoc_methods": 11,
+      "total_json_methods": 9,
       "total_matches": 10,
       "exact_matches": 10,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": 0,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 1,
+      "unmatched_json": -1,
+      "match_percentage": 90.9
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 1,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

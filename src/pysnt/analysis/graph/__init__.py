@@ -12,17 +12,20 @@ logger = logging.getLogger(__name__)
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
     "AnnotationGraph",
-    "DirectedWeightedGraph", "DirectedWeightedSubgraph",
-    "SNTGraph"
+    "DirectedWeightedGraph",
+    "DirectedWeightedSubgraph",
+    "SNTGraph",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "AnnotationWeightedEdge", "AnnotationGraphUtils",
-    "CsrDirectedSpecifics", "CsrGraphSpecificsStrategy",
-    "GraphColorMapper", "GraphUtils"
-    "SNTPseudograph", "SparseDirectedWeightedGraph",
-    "SWCWeightedEdge"
+    "AnnotationGraphUtils",
+    "AnnotationWeightedEdge",
+    "GraphColorMapper",
+    "GraphUtils",
+    "SNTPseudograph",
+    "SWCWeightedEdge",
+    "SparseDirectedWeightedGraph",
 ]
 
 # Global registries

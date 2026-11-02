@@ -1,9 +1,9 @@
 {
   "class_name": "FillConverter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:57.708489",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.310538",
+  "extracted_at": "2026-11-02T00:24:01.619160",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.282155",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,14 +13,14 @@
           "signature": "convert(RandomAccessible, RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "in",
               "type": "Any",
               "java_type": "RandomAccessible",
               "description": "- the input rai",
               "javadoc_name": "in"
             },
             {
-              "name": "arg1",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible",
               "description": "",
@@ -48,7 +48,7 @@
           "signature": "convertBinary(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible",
               "description": "- the output rai",
@@ -76,7 +76,7 @@
           "signature": "convertDistance(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible",
               "description": "- the output rai",
@@ -90,7 +90,7 @@
         }
       ],
       "documentation": "Java method: convertDistance",
-      "javadoc_description": "Map the node distance measure to fill voxel positions. This corresponds to the g-score of a node assigned during the Dijkstra search. This value is stored as Double.",
+      "javadoc_description": "Map the node distance measure to fill voxel positions. This corresponds to the g-score of a node assigned during the Dijkstra search. This value is stored as `Double`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -104,7 +104,7 @@
           "signature": "convertLabels(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible",
               "description": "- the output rai",
@@ -118,7 +118,7 @@
         }
       ],
       "documentation": "Java method: convertLabels",
-      "javadoc_description": "Map the fill component label to fill voxel positions. The concrete IntegerType should be chosen based on the cardinality of the given Collection of FillerThreads. For example, if there are less than 256 FillerThreads, choose UnsignedByteType. If there are more than 255 but less than 65536, choose UnsignedShortType, etc. Fill components are assigned labels based on their order in the collection. If you want to ensure labels are assigned based on insertion order, make sure to use an ordered collection such as List or LinkedHashSet. The first component will have label == 1, the second label == 2, and so on. The label 0 is not assigned to any voxel positions. 0-valued voxels may already exist in the output image.",
+      "javadoc_description": "Map the fill component label to fill voxel positions. The concrete `IntegerType` should be chosen based on the cardinality of the given `Collection` of `FillerThread`s. For example, if there are less than 256 `FillerThread`s, choose `UnsignedByteType`. If there are more than 255 but less than 65536, choose `UnsignedShortType`, etc. Fill components are assigned labels based on their order in the collection. If you want to ensure labels are assigned based on insertion order, make sure to use an ordered collection such as `List` or `LinkedHashSet`. The first component will have label == 1, the second label == 2, and so on. The label 0 is not assigned to any voxel positions. 0-valued voxels may already exist in the output image.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -131,14 +131,14 @@
         {
           "signature": "getFillerStack() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "the merged filler stack",
           "throws": {}
         }
       ],
       "documentation": "Java method: getFillerStack",
-      "javadoc_description": "Merges the input FillerThreads into a single SearchImageStack. When a filled voxel position is present in multiple filler instances, the node with the lowest g-score is chosen for inclusion in the merged stack.",
+      "javadoc_description": "Merges the input `FillerThread`s into a single `SearchImageStack`. When a filled voxel position is present in multiple filler instances, the node with the lowest g-score is chosen for inclusion in the merged stack.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -155,7 +155,7 @@
           "signature": "FillConverter(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "fillers",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -164,10 +164,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for FillConverter"
+      "documentation": "Constructors of FillConverter"
     }
   ],
-  "javadoc_description": "Map filled nodes from a Collection of FillerThreads to and between RandomAccessibles.",
+  "javadoc_description": "Map filled nodes from a `Collection` of `FillerThread`s to and between `RandomAccessible`s.",
   "inheritance": {
     "extends": [
       "Object"

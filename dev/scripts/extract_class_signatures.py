@@ -1,663 +1,264 @@
-#!/usr/bin/env python3
 """
-Class Signature Extractor for PySNT
+Extract Java signatures of PySNT's curated classes into dev/scripts/STUBS/*.json
 
-This script extracts complete method and field signatures from Java classes
-using reflection and stores them in structured text files for later stub generation.
+Replaces the old extractor that scraped pysnt.inspect() output. This one starts
+SNT from Maven (pysnt.initialize(source="maven")) and uses plain Java reflection
+(no static initializers run, no instantiation), so it records:
+  - real parameter names (SNT is compiled with -parameters)
+  - static vs instance methods, constructors and public fields/constants
+  - @Deprecated (and forRemoval) per method/constructor/class
+  - the SNT version the data came from (used by generate_stubs.py to decide
+    whether a cache is current, instead of a time-to-live)
 
 Usage:
-    python scripts/extract_class_signatures.py --all-classes
-    python scripts/extract_class_signatures.py --class SNTService
-    python scripts/extract_class_signatures.py --class SNTService Tree Path
-"""
+  python dev/scripts/extract_class_signatures.py --all-classes [-v]
+  python dev/scripts/extract_class_signatures.py --class Tree Path
+  python dev/scripts/extract_class_signatures.py --all-classes --snt-version 5.1.0
 
+Needs JAVA_HOME pointing to a JDK 21 and (when using a snapshot) a fresh jgo cache
+"""
 import argparse
 import json
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Union
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+ROOT = Path(__file__).resolve().parents[2]
+SRC = ROOT / "src" / "pysnt"
+BASE = "sc.fiji.snt"
+EXTRACTOR_VERSION = "2.0.0"
 
-class JavaSignatureExtractor:
-    """Extracts Java class signatures using reflection."""
-    
-    def __init__(self, stubs_dir: Path, verbose: bool = False):
+TYPE_MAP = {
+    "void": "None", "boolean": "bool", "Boolean": "bool",
+    "byte": "int", "short": "int", "int": "int", "long": "int",
+    "Integer": "int", "Long": "int", "Short": "int", "Byte": "int",
+    "float": "float", "double": "float", "Float": "float", "Double": "float",
+    "char": "str", "Character": "str", "String": "str", "CharSequence": "str",
+    "Object": "Any", "Class": "type", "Number": "Union[int, float]",
+    "List": "List[Any]", "ArrayList": "List[Any]", "LinkedList": "List[Any]",
+    "Collection": "List[Any]", "Iterable": "List[Any]", "Queue": "List[Any]",
+    "Map": "Dict[str, Any]", "HashMap": "Dict[str, Any]", "TreeMap": "Dict[str, Any]",
+    "LinkedHashMap": "Dict[str, Any]",
+    "Set": "Set[Any]", "HashSet": "Set[Any]", "TreeSet": "Set[Any]",
+    "File": "str", "URL": "str", "URI": "str",
+    "BigInteger": "int", "BigDecimal": "float",
+}
+
+
+def py_type(simple_name, own_classes):
+    """Python annotation for a Java simple type name (e.g. 'int[]', 'Tree')"""
+    if simple_name.endswith("[]"):
+        return f"List[{py_type(simple_name[:-2], own_classes)}]"
+    if simple_name in TYPE_MAP:
+        return TYPE_MAP[simple_name]
+    # Annotate with SNT classes the stub module can resolve; anything else is Any
+    return simple_name if simple_name in own_classes else "Any"
+
+
+def parse_curated(src):
+    """{class name: java package} for every CURATED_CLASSES entry in pysnt modules"""
+    found = {}
+    for init in sorted(Path(src).rglob("__init__.py")):
+        rel = init.parent.relative_to(src)
+        pkg = BASE + "".join("." + p for p in rel.parts)
+        text = "\n".join(line.split("#")[0] for line in init.read_text().splitlines())
+        # Lists are named CURATED_CLASSES, or e.g. CURATED_ROOT_CLASSES in the root module
+        for m in re.finditer(r"^\w*CURATED\w*\s*=\s*\[(.*?)\]", text, re.S | re.M):
+            for name in re.findall(r"[\"']([\w$.]+)[\"']", m.group(1)):
+                found[name] = pkg
+    return found
+
+
+class Extractor:
+    def __init__(self, stubs_dir, verbose=False):
         self.stubs_dir = Path(stubs_dir)
-        self.verbose = verbose
         self.stubs_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Java type to Python type mapping
-        self.type_mapping = {
-            # Primitive types
-            'void': 'None',
-            'boolean': 'bool',
-            'byte': 'int', 'short': 'int', 'int': 'int', 'long': 'int',
-            'float': 'float', 'double': 'float',
-            'char': 'str', 'String': 'str',
-            
-            # Generic Java types
-            'Object': 'Any',
-            'Class': 'type',
-            'Number': 'Union[int, float]',
-            
-            # Collections
-            'List': 'List[Any]', 'ArrayList': 'List[Any]', 'LinkedList': 'List[Any]',
-            'Collection': 'List[Any]', 'Iterable': 'List[Any]',
-            'Map': 'Dict[str, Any]', 'HashMap': 'Dict[str, Any]', 'TreeMap': 'Dict[str, Any]',
-            'Set': 'Set[Any]', 'HashSet': 'Set[Any]', 'TreeSet': 'Set[Any]',
-            'Queue': 'List[Any]', 'Deque': 'List[Any]',
-            
-            # Common Java types
-            'File': 'str',  # File paths as strings in Python
-            'URL': 'str',   # URLs as strings
-            'URI': 'str',   # URIs as strings
-            'BigInteger': 'int',
-            'BigDecimal': 'float',
-            'Date': 'Any',  # Could be datetime, but Any is safer
-            'Calendar': 'Any',
-            
-            # ImageJ types
-            'ImagePlus': 'Any',
-            'ImageProcessor': 'Any',
-            'ImageStack': 'Any',
-            'Roi': 'Any',
-            'Calibration': 'Any',
-            'ResultsTable': 'Any',
-            
-            # SNT specific types (use actual class names for better IDE support)
-            'Tree': 'Tree',
-            'Path': 'Path', 
-            'SNTService': 'SNTService',
-            'SNTUtils': 'SNTUtils',
-            'SNTTable': 'SNTTable',
-            'SNTChart': 'SNTChart',
-            'TreeStatistics': 'TreeStatistics',
-            'MultiTreeStatistics': 'MultiTreeStatistics',
-            'DirectedWeightedGraph': 'DirectedWeightedGraph',
-            'AnnotationGraph': 'AnnotationGraph',
-            'ConvexHull2D': 'ConvexHull2D',
-            'ConvexHull3D': 'ConvexHull3D',
-            'PointInImage': 'PointInImage',
-            'SNTPoint': 'SNTPoint',
-            'SWCPoint': 'SWCPoint',
-            'BoundingBox': 'BoundingBox',
-            
-            # Viewer types
-            'Viewer2D': 'Viewer2D',
-            'Viewer3D': 'Viewer3D',
-            'MultiViewer2D': 'MultiViewer2D',
-            'MultiViewer3D': 'MultiViewer3D',
-            
-            # Tracing types
-            'SearchNode': 'SearchNode',
-            'BiSearchNode': 'BiSearchNode',
-            'FillerThread': 'FillerThread',
-            'TracerThread': 'TracerThread',
-            
-            # Analysis types
-            'Profile': 'Profile',
-            'ProfileEntry': 'ProfileEntry',
-            'ShollStats': 'ShollStats',
-            'GrowthAnalyzer': 'GrowthAnalyzer',
-        }
-    
-    def map_java_type(self, java_type: str) -> str:
-        """Map Java type to Python type hint."""
-        # Handle array types
-        if java_type.endswith('[]'):
-            base_type = java_type[:-2]
-            mapped_base = self.type_mapping.get(base_type, 'Any')
-            return f'List[{mapped_base}]'
-        
-        # Handle generic types (basic)
-        if '<' in java_type:
-            base_type = java_type.split('<')[0]
-            return self.type_mapping.get(base_type, 'Any')
-        
-        return self.type_mapping.get(java_type, 'Any')
-    
-    def find_class_in_modules(self, class_name: str) -> Optional[tuple]:
-        """Find a class in pysnt modules and return (class_obj, module_name, package_name)."""
-        import pysnt
-        
-        # Try main pysnt module first
-        if hasattr(pysnt, class_name):
-            return (getattr(pysnt, class_name), 'pysnt', 'sc.fiji.snt')
-        
-        # Try submodules - need to import them explicitly
-        submodules = [
-            ('analysis', 'sc.fiji.snt.analysis'),
-            ('annotation', 'sc.fiji.snt.annotation'),
-            ('filter', 'sc.fiji.snt.filter'),
-            ('viewer', 'sc.fiji.snt.viewer'),
-            ('io', 'sc.fiji.snt.io'),
-            ('tracing', 'sc.fiji.snt.tracing'),
-            ('util', 'sc.fiji.snt.util')
-        ]
-        
-        for module_name, java_package in submodules:
-            try:
-                # Import the submodule explicitly
-                import importlib
-                full_module_name = f'pysnt.{module_name}'
-                module = importlib.import_module(full_module_name)
-                
-                if hasattr(module, class_name):
-                    return (getattr(module, class_name), full_module_name, java_package)
-            except (AttributeError, ImportError) as e:
-                continue
-        
-        return None
+        self.verbose = verbose
 
-    def extract_class_info(self, class_name: str) -> Optional[Dict[str, Any]]:
-        """Extract complete information for a Java class."""
+    def start(self, snt_version=None):
+        import pysnt
+        import scyjava as sj
+        pysnt.initialize(source="maven", snt_version=snt_version, interactive=False)
+        self.sj = sj
+        self.Class = sj.jimport("java.lang.Class")
+        self.Modifier = sj.jimport("java.lang.reflect.Modifier")
+        self.Deprecated = sj.jimport("java.lang.Deprecated").class_
+        utils = sj.jimport("sc.fiji.snt.SNTUtils")
+        self.snt_version = str(utils.VERSION)
+        self.loader = utils.class_.getClassLoader()
+        print(f"SNT version: {self.snt_version}")
+
+    def dep(self, obj):
+        if not obj.isAnnotationPresent(self.Deprecated):
+            return False, False
+        return True, bool(obj.getAnnotation(self.Deprecated).forRemoval())
+
+    def load(self, java_name):
+        # initialize=False: reflect without running static initializers
+        return self.Class.forName(java_name, False, self.loader)
+
+    def params(self, executable, own):
+        res = []
+        for p in executable.getParameters():
+            jt = str(p.getType().getSimpleName())
+            res.append({"name": str(p.getName()), "type": py_type(jt, own), "java_type": jt})
+        if executable.isVarArgs() and res:
+            res[-1]["varargs"] = True
+        return res
+
+    @staticmethod
+    def sig(name, params, ret=None):
+        s = f"{name}({', '.join(p['java_type'] for p in params)})"
+        return f"{s} -> {ret}" if ret is not None else s
+
+    def extract(self, class_name, package, own):
+        java_name = f"{package}.{class_name.replace('.', '$')}"
         try:
-            import pysnt
-            
-            # Initialize PySNT if not already done
-            try:
-                from pysnt.core import is_initialized
-                if not is_initialized():
-                    if self.verbose:
-                        print(f"Initializing PySNT...")
-                    pysnt.initialize()
-            except Exception as e:
-                if self.verbose:
-                    print(f"Could not check initialization status: {e}")
-                # Try to initialize anyway
-                try:
-                    pysnt.initialize()
-                except Exception as init_e:
-                    if self.verbose:
-                        print(f"Initialization failed: {init_e}")
-                    # Continue anyway, might work
-            
-            # Find the class in the appropriate module
-            class_info = self.find_class_in_modules(class_name)
-            if not class_info:
-                print(f"❌ Could not find class {class_name} in any pysnt module")
-                return None
-            
-            java_class, module_name, java_package = class_info
-            
-            if self.verbose:
-                print(f"🔍 Extracting signatures for {class_name} from {module_name}...")
-            
-            # Check if this is a dynamic placeholder class and get the real Java class
-            # Do this BEFORE trying to instantiate to avoid getting wrappers
-            is_dynamic_placeholder = (
-                type(java_class).__name__ == 'DynamicPlaceholderMeta' or
-                (hasattr(java_class, '__mro__') and any('DynamicPlaceholder' in str(base) for base in java_class.__mro__))
-            )
-            
-            if is_dynamic_placeholder:
-                if self.verbose:
-                    print(f"📋 Detected dynamic placeholder, using get_class() to get real Java class")
-                try:
-                    # Get the module and use its get_class function
-                    if module_name == 'pysnt':
-                        real_java_class = pysnt.get_class(class_name)
-                    else:
-                        # For submodules like pysnt.annotation
-                        import importlib
-                        module = importlib.import_module(module_name)
-                        real_java_class = module.get_class(class_name)
-                    
-                    if self.verbose:
-                        print(f"📋 Got real Java class: {type(real_java_class)}")
-                    java_class = real_java_class
-                    
-                    # For classes that return wrappers when instantiated (like Viewer3D),
-                    # we should use the class directly for inspection
-                    # Set java_instance to the class itself
-                    java_instance = java_class
-                    
-                    if self.verbose:
-                        print(f"📋 Using Java class directly for inspection: {type(java_instance)}")
-                    
-                except Exception as e:
-                    if self.verbose:
-                        print(f"⚠️  Could not get real Java class via get_class(): {e}")
-                    # Continue with the placeholder, might still work
-                    java_instance = None
-            else:
-                java_instance = None
-            
-            # Create an instance to get the actual Java object for inspection
-            # (unless already set above for dynamic placeholders)
-            if java_instance is None:
-                try:
-                    if class_name == 'SNTService':
-                        # SNTService can be instantiated directly
-                        java_instance = java_class()
-                    elif class_name in ['Tree', 'Path']:
-                        # These might need special handling or demo instances
-                        if class_name == 'Tree':
-                            # Try to get a demo tree
-                            service = pysnt.SNTService()
-                            java_instance = service.demoTree()
-                        else:
-                            # For Path, try to create an empty one or get from tree
-                            service = pysnt.SNTService()
-                            tree = service.demoTree()
-                            paths = tree.list() if hasattr(tree, 'list') else []
-                            if paths:
-                                java_instance = paths[0]
-                            else:
-                                # Fallback to class inspection
-                                java_instance = java_class
-                    elif class_name in ['SNTChart', 'SNTTable']:
-                        # These need data to be instantiated, try to get from TreeStatistics
-                        try:
-                            service = pysnt.SNTService()
-                            tree = service.demoTree()
-                            stats = pysnt.analysis.TreeStatistics(tree)
-                            if class_name == 'SNTChart':
-                                java_instance = stats.getHistogram("Branch length")
-                            else:  # SNTTable
-                                java_instance = stats.getSummaryTable()
-                        except Exception as chart_e:
-                            if self.verbose:
-                                print(f"⚠️  Could not create {class_name} from stats: {chart_e}")
-                            java_instance = java_class
-                    else:
-                        # Try direct instantiation
-                        try:
-                            java_instance = java_class()
-                        except Exception as inst_e:
-                            if self.verbose:
-                                print(f"⚠️  Could not instantiate {class_name}: {inst_e}")
-                            # For utility classes with static methods, try to get the actual Java class
-                            try:
-                                import scyjava as sj
-                                full_class_name = f'{java_package}.{class_name}'
-                                java_instance = sj.jimport(full_class_name)
-                                if self.verbose:
-                                    print(f"📋 Got Java class directly: {java_instance}")
-                            except Exception as java_e:
-                                if self.verbose:
-                                    print(f"⚠️  Could not get Java class directly: {java_e}")
-                                java_instance = java_class
-                    
-                        if self.verbose:
-                            print(f"📋 Created instance: {type(java_instance)}")
-                        
-                except Exception as e:
-                    if self.verbose:
-                        print(f"⚠️  Could not create instance, using class: {e}")
-                    java_instance = java_class
-            
-            # Use pysnt.inspect to get method information
-            # Capture the printed output since inspect() returns None
-            import io
-            from contextlib import redirect_stdout
-            
-            captured_output = io.StringIO()
-            with redirect_stdout(captured_output):
-                # Request fields explicitly
-                pysnt.inspect(java_instance, methods=True, fields=True, constructors=True)
-            
-            methods_info = captured_output.getvalue().split('\n')
-            
-            if self.verbose:
-                print(f"📋 Captured {len(methods_info)} lines of inspection output")
-                # Print first few lines to debug
-                for i, line in enumerate(methods_info[:20]):
-                    print(f"  Line {i}: {line}")
-            
-            if not methods_info or len(methods_info) < 5:
-                print(f"❌ Failed to inspect {class_name} - no reflection data available")
-                return None
-            
-            # Parse the inspection results
-            class_info_dict = {
-                'class_name': class_name,
-                'package': java_package,
-                'extracted_at': datetime.now().isoformat(),
-                'extractor_version': '1.0.0',
-                'methods': [],
-                'fields': [],
-                'constructors': []
-            }
-            
-            # Process methods, constructors, and fields from inspection output
-            current_method = None
-            method_groups = {}  # Group overloaded methods
-            constructor_list = []  # Store constructors
-            field_list = []  # Store non-static fields
-            static_field_list = []  # Store static fields (constants)
-            in_constructors_section = False
-            in_fields_section = False
-            
-            for line in methods_info:
-                line = line.strip()
-                if not line or line.startswith('='):
-                    continue
-                
-                # Track sections
-                if 'Constructors' in line:
-                    in_constructors_section = True
-                    in_fields_section = False
-                    continue
-                elif 'Fields' in line:
-                    in_fields_section = True
-                    in_constructors_section = False
-                    continue
-                elif 'Methods' in line:
-                    in_constructors_section = False
-                    in_fields_section = False
-                    continue
-                
-                # Parse constructor lines (format: "  1. ClassName(params)")
-                if in_constructors_section and line and line[0].isdigit():
-                    # Extract constructor signature
-                    if '(' in line and ')' in line:
-                        # Find the constructor signature part
-                        constructor_part = line[line.find('.')+1:].strip()  # Remove "1. " prefix
-                        if '(' in constructor_part:
-                            # Extract parameters from constructor
-                            params_start = constructor_part.find('(')
-                            params_end = constructor_part.rfind(')')
-                            params_str = constructor_part[params_start+1:params_end]
-                            
-                            # Parse parameters
-                            params = []
-                            if params_str.strip():
-                                # Handle special case where params end with semicolon
-                                params_str = params_str.rstrip(';')
-                                param_parts = params_str.split(',')
-                                for i, param in enumerate(param_parts):
-                                    param = param.strip()
-                                    if param:
-                                        param_name = f"arg{i}"
-                                        param_type = self.map_java_type(param)
-                                        params.append({
-                                            'name': param_name,
-                                            'type': param_type,
-                                            'java_type': param
-                                        })
-                            
-                            constructor_list.append({
-                                'signature': f"{class_name}({', '.join([p['java_type'] for p in params])})",
-                                'params': params,
-                                'return_type': 'None',
-                                'java_return_type': 'void'
-                            })
-                    continue
-                
-                # Parse field lines (format: "  • [static] [final] fieldName: fieldType")
-                if in_fields_section and line.startswith('•'):
-                    field_line = line[1:].strip()  # Remove bullet point
-                    if ':' in field_line:
-                        # Check for modifiers
-                        is_static = field_line.startswith('static ')
-                        is_final = 'final ' in field_line
-                        
-                        # Remove modifiers to get field name and type
-                        field_line_clean = field_line.replace('static ', '').replace('final ', '')
-                        field_name, field_type = field_line_clean.split(':', 1)
-                        field_name = field_name.strip()
-                        field_type = field_type.strip()
-                        
-                        field_data = {
-                            'name': field_name,
-                            'type': self.map_java_type(field_type),
-                            'java_type': field_type,
-                            'documentation': f"Field {field_name} of type {field_type}",
-                            'is_static': is_static,
-                            'is_final': is_final
-                        }
-                        
-                        # Separate static and non-static fields
-                        if is_static:
-                            static_field_list.append(field_data)
-                        else:
-                            field_list.append(field_data)
-                    continue
-                
-                if line.startswith('•'):
-                    # Method signature line
-                    method_sig = line[1:].strip()  # Remove bullet point
-                    
-                    # Parse method signature: "methodName(params) -> returnType"
-                    if ' -> ' in method_sig:
-                        method_part, return_type = method_sig.split(' -> ', 1)
-                        
-                        # Extract method name and parameters
-                        if '(' in method_part:
-                            method_name = method_part.split('(')[0]
-                            params_str = method_part[method_part.find('(')+1:method_part.rfind(')')]
-                            
-                            # Parse parameters
-                            params = []
-                            if params_str.strip():
-                                param_parts = params_str.split(',')
-                                for i, param in enumerate(param_parts):
-                                    param = param.strip()
-                                    if param:
-                                        # For now, use generic parameter names
-                                        param_name = f"arg{i}" if param != "boolean" else f"arg{i}"
-                                        param_type = self.map_java_type(param)
-                                        params.append({
-                                            'name': param_name,
-                                            'type': param_type,
-                                            'java_type': param
-                                        })
-                            
-                            # Group overloaded methods
-                            if method_name not in method_groups:
-                                method_groups[method_name] = []
-                            
-                            method_groups[method_name].append({
-                                'signature': method_sig,
-                                'params': params,
-                                'return_type': self.map_java_type(return_type),
-                                'java_return_type': return_type
-                            })
-            
-            # Convert method groups to final format
-            for method_name, overloads in method_groups.items():
-                class_info_dict['methods'].append({
-                    'name': method_name,
-                    'overloads': overloads,
-                    'documentation': f"Java method: {method_name}"
-                })
-            
-            # Add constructors to class info
-            if constructor_list:
-                class_info_dict['constructors'] = [{
-                    'name': '__init__',
-                    'overloads': constructor_list,
-                    'documentation': f"Java constructors for {class_name}"
-                }]
-            
-            # Add fields to class info
-            if field_list:
-                class_info_dict['fields'] = field_list
-            
-            # Add static fields (constants) to class info
-            if static_field_list:
-                class_info_dict['static_fields'] = static_field_list
-            
-            if self.verbose:
-                print(f"✅ Extracted {len(class_info_dict['methods'])} methods, {len(constructor_list)} constructors, {len(field_list)} fields, and {len(static_field_list)} static fields for {class_name}")
-            
-            return class_info_dict
-            
+            c = self.load(java_name)
         except Exception as e:
-            print(f"❌ Failed to extract {class_name}: {e}")
-            if self.verbose:
-                import traceback
-                traceback.print_exc()
+            print(f"  FAILED to load {java_name}: {str(e).splitlines()[0][:200]}")
             return None
-    
-    def save_class_info(self, class_info: Dict[str, Any]) -> bool:
-        """Save class information to a structured file."""
-        try:
-            class_name = class_info['class_name']
-            output_file = self.stubs_dir / f"{class_name}.json"
-            
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(class_info, f, indent=2, ensure_ascii=False)
-            
-            if self.verbose:
-                print(f"💾 Saved signatures to {output_file}")
-            
-            return True
-            
-        except Exception as e:
-            print(f"❌ Failed to save {class_info['class_name']}: {e}")
-            return False
-    
-    def extract_and_save(self, class_name: str) -> bool:
-        """Extract and save signatures for a single class."""
-        class_info = self.extract_class_info(class_name)
-        if class_info:
-            return self.save_class_info(class_info)
-        return False
-    
-    def get_curated_classes(self) -> List[str]:
-        """Get list of curated classes from all pysnt modules by parsing __init__.py files."""
-        all_classes = []
-        
-        try:
-            # Get the source directory - go up to project root first
-            # __file__ is dev/scripts/extract_class_signatures.py
-            # .parent.parent.parent gets us to project root
-            project_root = Path(__file__).parent.parent.parent
-            src_dir = project_root / "src" / "pysnt"
-            
-            if self.verbose:
-                print(f"🔍 Scanning {src_dir} for CURATED_CLASSES...")
-            
-            # Find all __init__.py files in the pysnt package
-            init_files = list(src_dir.rglob("__init__.py"))
-            
-            for init_file in init_files:
-                # Skip __pycache__ and other non-source directories
-                if "__pycache__" in str(init_file):
-                    continue
-                
-                try:
-                    with open(init_file, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    
-                    # Parse the file to extract CURATED_CLASSES
-                    import ast
-                    tree = ast.parse(content)
-                    
-                    for node in ast.walk(tree):
-                        if isinstance(node, ast.Assign):
-                            for target in node.targets:
-                                if isinstance(target, ast.Name):
-                                    if target.id in ["CURATED_CLASSES", "CURATED_ROOT_CLASSES"] and isinstance(node.value, ast.List):
-                                        # Extract string values from the list
-                                        classes = []
-                                        for item in node.value.elts:
-                                            if isinstance(item, ast.Constant) and isinstance(item.value, str):
-                                                classes.append(item.value)
-                                            elif isinstance(item, ast.Str):  # Python < 3.8 compatibility
-                                                classes.append(item.s)
-                                        
-                                        all_classes.extend(classes)
-                                        
-                                        if self.verbose:
-                                            relative_path = init_file.relative_to(src_dir)
-                                            print(f"    📋 Found {len(classes)} classes in {relative_path}: {classes}")
-                
-                except Exception as e:
-                    if self.verbose:
-                        print(f"    ⚠️  Failed to parse {init_file}: {e}")
-                    continue
-            
-            # Remove duplicates and sort
-            all_classes = sorted(list(set(all_classes)))
-            
-            if self.verbose:
-                print(f"📋 Total unique curated classes found: {len(all_classes)}")
-                print(f"    Classes: {all_classes}")
-            
-            return all_classes
-                
-        except Exception as e:
-            print(f"❌ Failed to scan for curated classes: {e}")
-            if self.verbose:
-                import traceback
-                traceback.print_exc()
-            
-            # Fallback to known core classes
-            fallback_classes = ['SNTService', 'Tree', 'Path', 'SNTUtils']
-            if self.verbose:
-                print(f"🔄 Using fallback classes: {fallback_classes}")
-            return fallback_classes
+        M = self.Modifier
+        cdep, cremoval = self.dep(c)
+        info = {
+            "class_name": class_name,
+            "package": package,
+            "java_name": java_name,
+            "kind": ("annotation" if c.isAnnotation() else "enum" if c.isEnum()
+                     else "interface" if c.isInterface() else "class"),
+            "deprecated": cdep, "for_removal": cremoval,
+            "snt_version": self.snt_version,
+            "extracted_at": datetime.now().isoformat(),
+            "extractor_version": EXTRACTOR_VERSION,
+            "methods": [], "constructors": [], "fields": [], "static_fields": [],
+        }
+
+        # Methods: public, incl. inherited from SNT (not JDK) supertypes
+        grouped = {}
+        for m in c.getMethods():
+            if m.isSynthetic() or m.isBridge():
+                continue
+            owner = m.getDeclaringClass()
+            owner_name = str(owner.getName())
+            if owner_name == "java.lang.Object":
+                continue
+            inherited = owner_name != str(c.getName())
+            if inherited and not owner_name.startswith("sc.fiji.snt."):
+                continue
+            params = self.params(m, own)
+            # main(String[]) is a Java entry point (IDE debugging aid): not useful from Python
+            if (str(m.getName()) == "main" and M.isStatic(m.getModifiers())
+                    and [p["java_type"] for p in params] == ["String[]"]):
+                continue
+            ret = str(m.getReturnType().getSimpleName())
+            d, r = self.dep(m)
+            ov = {
+                "signature": self.sig(str(m.getName()), params, ret),
+                "params": params,
+                "return_type": py_type(ret, own),
+                "java_return_type": ret,
+                "is_static": bool(M.isStatic(m.getModifiers())),
+            }
+            if d:
+                ov["deprecated"] = True
+                ov["for_removal"] = r
+            if inherited:
+                ov["inherited_from"] = owner_name.rpartition(".")[2]
+            grouped.setdefault(str(m.getName()), []).append(ov)
+        for name in sorted(grouped):
+            ovs = sorted(grouped[name], key=lambda o: (len(o["params"]), o["signature"]))
+            info["methods"].append({"name": name, "overloads": ovs,
+                                    "documentation": f"Java method: {name}"})
+
+        # Constructors (public classes only; interfaces/enums have none)
+        for k in c.getConstructors():
+            params = self.params(k, own)
+            d, r = self.dep(k)
+            ov = {"signature": self.sig(class_name.rpartition(".")[2], params),
+                  "params": params, "return_type": "None", "java_return_type": "void"}
+            if d:
+                ov["deprecated"], ov["for_removal"] = True, r
+            info["constructors"].append(ov)
+        if info["constructors"]:
+            info["constructors"] = [{"name": "__init__",
+                                     "overloads": sorted(info["constructors"],
+                                                         key=lambda o: (len(o["params"]), o["signature"])),
+                                     "documentation": f"Constructors of {class_name}"}]
+
+        # Public fields / constants
+        for f in c.getFields():
+            owner = str(f.getDeclaringClass().getName())
+            if owner != str(c.getName()):
+                continue
+            jt = str(f.getType().getSimpleName())
+            mods = f.getModifiers()
+            d, r = self.dep(f)
+            entry = {"name": str(f.getName()), "type": py_type(jt, own), "java_type": jt,
+                     "is_static": bool(M.isStatic(mods)), "is_final": bool(M.isFinal(mods)),
+                     "documentation": f"Field {f.getName()} of type {jt}"}
+            if d:
+                entry["deprecated"] = True
+            (info["static_fields"] if entry["is_static"] else info["fields"]).append(entry)
+        info["static_fields"].sort(key=lambda e: e["name"])
+        info["fields"].sort(key=lambda e: e["name"])
+        return info
+
+    def save(self, info):
+        path = self.stubs_dir / f"{info['class_name'].replace('.', '_')}.json"
+        path.write_text(json.dumps(info, indent=2, ensure_ascii=False))
+        if self.verbose:
+            n = sum(len(m["overloads"]) for m in info["methods"])
+            print(f"  {info['class_name']}: {len(info['methods'])} methods ({n} overloads), "
+                  f"{len(info['static_fields'])} constants -> {path.name}")
+        return path
 
 
 def main():
-    """Main entry point."""
-    parser = argparse.ArgumentParser(
-        description="Extract Java class signatures for PySNT stub generation"
-    )
-    parser.add_argument(
-        "--class", 
-        dest="classes",
-        nargs="*",
-        help="Specific class names to extract (e.g., SNTService Tree)"
-    )
-    parser.add_argument(
-        "--all-classes",
-        action="store_true",
-        help="Extract all curated classes"
-    )
-    parser.add_argument(
-        "--stubs-dir",
-        default="dev/scripts/STUBS",
-        help="Directory to store signature files (default: dev/scripts/STUBS)"
-    )
-    parser.add_argument(
-        "-v", "--verbose",
-        action="store_true",
-        help="Verbose output"
-    )
-    
-    args = parser.parse_args()
-    
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
+    ap.add_argument("--class", dest="classes", nargs="*", help="Class names to extract")
+    ap.add_argument("--all-classes", action="store_true", help="All curated classes")
+    ap.add_argument("--stubs-dir", default=str(Path(__file__).resolve().parent / "STUBS"))
+    ap.add_argument("--snt-version", default=None, help="SNT version from Maven (default: PySNT's)")
+    ap.add_argument("--prune", action="store_true",
+                    help="Delete cached JSON of classes that are no longer curated")
+    ap.add_argument("-v", "--verbose", action="store_true")
+    args = ap.parse_args()
     if not args.classes and not args.all_classes:
-        parser.error("Must specify either --class <names> or --all-classes")
-    
-    # Create extractor
-    extractor = JavaSignatureExtractor(args.stubs_dir, args.verbose)
-    
-    # Determine classes to extract
-    if args.all_classes:
-        classes_to_extract = extractor.get_curated_classes()
-    else:
-        classes_to_extract = args.classes
-    
-    print(f"🚀 Extracting signatures for {len(classes_to_extract)} classes...")
-    
-    # Extract each class
-    success_count = 0
-    for class_name in classes_to_extract:
-        print(f"\n📦 Processing {class_name}...")
-        if extractor.extract_and_save(class_name):
-            success_count += 1
+        ap.error("Must specify --class <names> or --all-classes")
+
+    curated = parse_curated(SRC)
+    names = sorted(curated) if args.all_classes else args.classes
+    unknown = [n for n in names if n not in curated]
+    if unknown:
+        sys.exit(f"Not curated in any pysnt module: {unknown}")
+
+    ex = Extractor(args.stubs_dir, args.verbose)
+    ex.start(args.snt_version)
+    own = set(curated)
+    ok, failed = 0, []
+    for name in names:
+        info = ex.extract(name, curated[name], own)
+        if info is None:
+            failed.append(name)
         else:
-            print(f"❌ Failed to process {class_name}")
-    
-    print(f"\n📊 Extraction Summary:")
-    print(f"✅ Successfully extracted: {success_count}/{len(classes_to_extract)} classes")
-    print(f"💾 Signatures saved to: {extractor.stubs_dir}")
-    
-    if success_count > 0:
-        print(f"\n💡 Next steps:")
-        print(f"1. Review generated files in {extractor.stubs_dir}")
-        print(f"2. Edit files manually if needed to improve signatures")
-        print(f"3. Run stub generator to create .pyi files from cached data")
-    
-    return 0 if success_count == len(classes_to_extract) else 1
+            ex.save(info)
+            ok += 1
+    print(f"Extracted {ok}/{len(names)} classes into {ex.stubs_dir}")
+    if failed:
+        print(f"Failed: {failed}")
+
+    stale = sorted(p for p in Path(ex.stubs_dir).glob("*.json")
+                   if p.stem not in {n.replace('.', '_') for n in curated})
+    if stale:
+        if args.prune:
+            for p in stale:
+                p.unlink()
+            print(f"Pruned {len(stale)} stale cache files: {[p.stem for p in stale]}")
+        else:
+            print(f"{len(stale)} cache files are no longer curated (use --prune): "
+                  f"{[p.stem for p in stale]}")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

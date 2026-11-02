@@ -1,0 +1,46 @@
+# Hand-edited policy for sync_module_lists.py
+# Decides which public SNT classes PySNT lists in each module __init__.py
+# Resolution order per top-level public class:
+#   1. [classes] override        2. skip_packages
+#   3. deprecated (skip_deprecated)   4. current list membership
+#   5. default_new_class
+# Nested classes are never listed: use get_class("Outer.Inner")
+# Hard rules (enforced by sync_module_lists.py --check and tests/test_class_lists.py):
+#   only public classes and interfaces can be curated; only public
+#   top-level types can be listed at all
+
+version = 1
+default_new_class = "extended"   # curated | extended
+skip_deprecated = true
+
+# Not needed from Python (headless support unverified or GUI only)
+skip_packages = [
+  "sc.fiji.snt.gui",
+  "sc.fiji.snt.gui.cmds",
+  "sc.fiji.snt.plugin",
+  "sc.fiji.snt.plugin.ij1",
+  # Not worth scripting from Python for now. Still reachable with
+  # scyjava.jimport("sc.fiji.snt.event.SNTListener") and the like
+  "sc.fiji.snt.event",
+  "sc.fiji.snt.hyperpanes",
+  "sc.fiji.snt.viewer.geditor",
+]
+
+# Per-class overrides, key is the fully qualified outer class
+# Values: curated | extended | skip
+[classes]
+
+# Curated: placeholder class, stubs and docs
+"sc.fiji.snt.util.TreeUtils" = "curated"
+"sc.fiji.snt.util.IOUtils" = "curated"
+"sc.fiji.snt.util.TreeToRaster" = "curated"
+"sc.fiji.snt.tracing.auto.AutoTracer" = "curated"
+"sc.fiji.snt.tracing.auto.GWDTTracer" = "curated"
+"sc.fiji.snt.tracing.auto.AutoTraceConfig" = "curated"
+"sc.fiji.snt.SeedManager" = "curated"
+"sc.fiji.snt.viewer.Bdv" = "curated"
+"sc.fiji.snt.viewer.Bvv" = "curated"
+"sc.fiji.snt.viewer.FigureUtils" = "curated"
+"sc.fiji.snt.viewer.AbstractBigViewer" = "extended"
+# Optional dependency (sciview/scenery) not on the default Maven classpath
+"sc.fiji.snt.SciViewSNT" = "extended"

@@ -1,9 +1,33 @@
 {
   "class_name": "BiSearchNode",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-09-27T23:00:53.643639",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.tracing.BiSearchNode",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.588559",
+  "extractor_version": "2.0.0",
   "methods": [
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
+    },
     {
       "name": "getF",
       "overloads": [
@@ -11,13 +35,14 @@
           "signature": "getF(boolean) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getF"
@@ -29,7 +54,8 @@
           "signature": "getFFromGoal() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFFromGoal"
@@ -41,7 +67,8 @@
           "signature": "getFFromStart() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFFromStart"
@@ -53,13 +80,14 @@
           "signature": "getG(boolean) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getG"
@@ -71,7 +99,8 @@
           "signature": "getGFromGoal() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGFromGoal"
@@ -83,7 +112,8 @@
           "signature": "getGFromStart() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGFromStart"
@@ -92,16 +122,17 @@
       "name": "getHeapHandle",
       "overloads": [
         {
-          "signature": "getHeapHandle(boolean) -> AddressableHeap$Handle",
+          "signature": "getHeapHandle(boolean) -> Handle",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "AddressableHeap$Handle"
+          "java_return_type": "Handle",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHeapHandle"
@@ -110,10 +141,11 @@
       "name": "getHeapHandleFromGoal",
       "overloads": [
         {
-          "signature": "getHeapHandleFromGoal() -> AddressableHeap$Handle",
+          "signature": "getHeapHandleFromGoal() -> Handle",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "AddressableHeap$Handle"
+          "java_return_type": "Handle",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHeapHandleFromGoal"
@@ -122,10 +154,11 @@
       "name": "getHeapHandleFromStart",
       "overloads": [
         {
-          "signature": "getHeapHandleFromStart() -> AddressableHeap$Handle",
+          "signature": "getHeapHandleFromStart() -> Handle",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "AddressableHeap$Handle"
+          "java_return_type": "Handle",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHeapHandleFromStart"
@@ -137,7 +170,8 @@
           "signature": "getPredecessorFromGoal() -> BiSearchNode",
           "params": [],
           "return_type": "BiSearchNode",
-          "java_return_type": "BiSearchNode"
+          "java_return_type": "BiSearchNode",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPredecessorFromGoal"
@@ -149,7 +183,8 @@
           "signature": "getPredecessorFromStart() -> BiSearchNode",
           "params": [],
           "return_type": "BiSearchNode",
-          "java_return_type": "BiSearchNode"
+          "java_return_type": "BiSearchNode",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPredecessorFromStart"
@@ -158,16 +193,17 @@
       "name": "getState",
       "overloads": [
         {
-          "signature": "getState(boolean) -> BiSearchNode$State",
+          "signature": "getState(boolean) -> State",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "BiSearchNode$State"
+          "java_return_type": "State",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getState"
@@ -176,10 +212,11 @@
       "name": "getStateFromGoal",
       "overloads": [
         {
-          "signature": "getStateFromGoal() -> BiSearchNode$State",
+          "signature": "getStateFromGoal() -> State",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BiSearchNode$State"
+          "java_return_type": "State",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getStateFromGoal"
@@ -188,10 +225,11 @@
       "name": "getStateFromStart",
       "overloads": [
         {
-          "signature": "getStateFromStart() -> BiSearchNode$State",
+          "signature": "getStateFromStart() -> State",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BiSearchNode$State"
+          "java_return_type": "State",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getStateFromStart"
@@ -203,7 +241,8 @@
           "signature": "getX() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getX"
@@ -215,7 +254,8 @@
           "signature": "getY() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getY"
@@ -227,10 +267,24 @@
           "signature": "getZ() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getZ"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
     },
     {
       "name": "heapDecreaseKey",
@@ -239,13 +293,14 @@
           "signature": "heapDecreaseKey(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: heapDecreaseKey"
@@ -257,18 +312,19 @@
           "signature": "heapInsert(AddressableHeap, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "heap",
               "type": "Any",
               "java_type": "AddressableHeap"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: heapInsert"
@@ -280,13 +336,14 @@
           "signature": "setFFromGoal(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fFromGoal",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setFFromGoal"
@@ -298,13 +355,14 @@
           "signature": "setFFromStart(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fFromStart",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setFFromStart"
@@ -316,28 +374,29 @@
           "signature": "setFrom(double, double, BiSearchNode, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "g",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "f",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "p",
               "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             },
             {
-              "name": "arg3",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setFrom"
@@ -349,23 +408,24 @@
           "signature": "setFromGoal(double, double, BiSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gFromGoal",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "fFromGoal",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "predecessorFromGoal",
               "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setFromGoal"
@@ -377,23 +437,24 @@
           "signature": "setFromStart(double, double, BiSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gFromStart",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "fFromStart",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "predecessorFromStart",
               "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setFromStart"
@@ -405,13 +466,14 @@
           "signature": "setGFromGoal(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gFromGoal",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setGFromGoal"
@@ -423,13 +485,14 @@
           "signature": "setGFromStart(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gFromStart",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setGFromStart"
@@ -438,21 +501,22 @@
       "name": "setHeapHandle",
       "overloads": [
         {
-          "signature": "setHeapHandle(AddressableHeap$Handle, boolean) -> void",
+          "signature": "setHeapHandle(Handle, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "handle",
               "type": "Any",
-              "java_type": "AddressableHeap$Handle"
+              "java_type": "Handle"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setHeapHandle"
@@ -461,16 +525,17 @@
       "name": "setHeapHandleFromGoal",
       "overloads": [
         {
-          "signature": "setHeapHandleFromGoal(AddressableHeap$Handle) -> void",
+          "signature": "setHeapHandleFromGoal(Handle) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "heapHandleFromGoal",
               "type": "Any",
-              "java_type": "AddressableHeap$Handle"
+              "java_type": "Handle"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setHeapHandleFromGoal"
@@ -479,16 +544,17 @@
       "name": "setHeapHandleFromStart",
       "overloads": [
         {
-          "signature": "setHeapHandleFromStart(AddressableHeap$Handle) -> void",
+          "signature": "setHeapHandleFromStart(Handle) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "heapHandleFromStart",
               "type": "Any",
-              "java_type": "AddressableHeap$Handle"
+              "java_type": "Handle"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setHeapHandleFromStart"
@@ -500,23 +566,24 @@
           "signature": "setPosition(int, int, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPosition"
@@ -528,13 +595,14 @@
           "signature": "setPredecessorFromGoal(BiSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "predecessorFromGoal",
               "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPredecessorFromGoal"
@@ -546,13 +614,14 @@
           "signature": "setPredecessorFromStart(BiSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "predecessorFromStart",
               "type": "BiSearchNode",
               "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPredecessorFromStart"
@@ -561,21 +630,22 @@
       "name": "setState",
       "overloads": [
         {
-          "signature": "setState(BiSearchNode$State, boolean) -> void",
+          "signature": "setState(State, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "state",
               "type": "Any",
-              "java_type": "BiSearchNode$State"
+              "java_type": "State"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setState"
@@ -584,16 +654,17 @@
       "name": "setStateFromGoal",
       "overloads": [
         {
-          "signature": "setStateFromGoal(BiSearchNode$State) -> void",
+          "signature": "setStateFromGoal(State) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "stateFromGoal",
               "type": "Any",
-              "java_type": "BiSearchNode$State"
+              "java_type": "State"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setStateFromGoal"
@@ -602,16 +673,17 @@
       "name": "setStateFromStart",
       "overloads": [
         {
-          "signature": "setStateFromStart(BiSearchNode$State) -> void",
+          "signature": "setStateFromStart(State) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "stateFromStart",
               "type": "Any",
-              "java_type": "BiSearchNode$State"
+              "java_type": "State"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setStateFromStart"
@@ -623,13 +695,14 @@
           "signature": "setX(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setX"
@@ -641,13 +714,14 @@
           "signature": "setY(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setY"
@@ -659,19 +733,19 @@
           "signature": "setZ(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setZ"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -683,81 +757,83 @@
           "java_return_type": "void"
         },
         {
-          "signature": "BiSearchNode(int, int, int, double, double, double, double, BiSearchNode, BiSearchNode)",
+          "signature": "BiSearchNode(int, int, int)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg4",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg5",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg6",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg7",
-              "type": "BiSearchNode",
-              "java_type": "BiSearchNode"
-            },
-            {
-              "name": "arg8",
-              "type": "BiSearchNode",
-              "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "BiSearchNode(int, int, int)",
+          "signature": "BiSearchNode(int, int, int, double, double, double, double, BiSearchNode, BiSearchNode)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
+            },
+            {
+              "name": "fFromStart",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "fFromGoal",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "gFromStart",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "gFromGoal",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "predecessorFromStart",
+              "type": "BiSearchNode",
+              "java_type": "BiSearchNode"
+            },
+            {
+              "name": "predecessorFromGoal",
+              "type": "BiSearchNode",
+              "java_type": "BiSearchNode"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for BiSearchNode"
+      "documentation": "Constructors of BiSearchNode"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

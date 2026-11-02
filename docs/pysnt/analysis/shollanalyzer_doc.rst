@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class to retrieve Sholl metrics from a Tree.
+Class to retrieve Sholl metrics from a ``Tree``.
 
 
 Methods
@@ -66,7 +66,7 @@ Getters Methods
 
 .. py:method:: getLinearStats()
 
-   Gets the LinearProfileStats associated with this analyzer. By default, it is set to determine the polynomial of 'best-fit' (2-20 degree range.)
+   Gets the ``LinearProfileStats`` associated with this analyzer. By default, it is set to determine the polynomial of 'best-fit' (2-20 degree range.)
 
 
 .. py:method:: getMaximaRadii()
@@ -74,14 +74,14 @@ Getters Methods
    
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMetrics()
 
    
 
 
 .. py:method:: getNormStats()
 
-   Gets the `NormalizedProfileStats` associated with this analyzer. By default it is set to determine the regression method of 'best-fit' (log-log or semi-log) using shell volume as normalizer (if Tree has a depth component) or shell area if Tree is 2D.
+   Gets the ``NormalizedProfileStats`` associated with this analyzer. By default it is set to determine the regression method of 'best-fit' (log-log or semi-log) using shell volume as normalizer (if Tree has a depth component) or shell area if Tree is 2D.
 
 
 .. py:method:: getSecondaryMaxima()
@@ -106,15 +106,6 @@ Setters Methods
 .. py:method:: setPolynomialFitRange(int, int)
 
    Sets the polynomial fit range for linear Sholl statistics.
-
-
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

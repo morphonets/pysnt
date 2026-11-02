@@ -111,39 +111,3 @@ def configure_gui_safety(enabled: bool = True) -> None:
     else:
         logger.warning("GUI safety mode disabled - GUI operations may cause crashes on macOS")
 
-
-def main_thread_wrapper(func: Callable) -> Callable:
-    """
-    Decorator to ensure a function runs in the main thread.
-    
-    This is useful for GUI functions that must run in the main thread.
-    Note: This is a simple implementation and may not work in all cases.
-    
-    Parameters
-    ----------
-    func : callable
-        Function to wrap
-        
-    Returns
-    -------
-    callable
-        Wrapped function
-        
-    Examples
-    --------
-    >>> @main_thread_wrapper
-    ... def show_gui():
-    ...     return pandasgui.show(df)
-    """
-    def wrapper(*args, **kwargs):
-        if is_main_thread():
-            return func(*args, **kwargs)
-        else:
-            logger.warning(f"Function {func.__name__} should run in main thread, but we're in a background thread")
-            logger.info("Consider restructuring your code to call GUI functions from the main thread")
-            # For now, just try to run it anyway
-            return func(*args, **kwargs)
-    
-    wrapper.__name__ = func.__name__
-    wrapper.__doc__ = func.__doc__
-    return wrapper

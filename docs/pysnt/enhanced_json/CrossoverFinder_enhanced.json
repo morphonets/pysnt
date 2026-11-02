@@ -1,28 +1,28 @@
 {
   "class_name": "CrossoverFinder",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.495199",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.300339",
+  "extracted_at": "2026-11-02T00:24:01.603891",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.266730",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static find",
+      "name": "find",
       "overloads": [
         {
-          "signature": "static find(Collection, CrossoverFinder$Config) -> List",
+          "signature": "find(Collection, Config) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of paths",
               "javadoc_name": "paths"
             },
             {
-              "name": "arg1",
+              "name": "cfg",
               "type": "Any",
-              "java_type": "CrossoverFinder$Config",
+              "java_type": "Config",
               "description": "",
               "javadoc_name": "param_1"
             }
@@ -33,9 +33,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static find",
+      "documentation": "Java method: find",
       "javadoc_description": "Entry point: detect crossover events for a collection of paths using the given config.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -54,10 +54,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for CrossoverFinder"
+      "documentation": "Constructors of CrossoverFinder"
     }
   ],
-  "javadoc_description": "Utility to detect crossover locations between paths: spatially close locations between paths that look like intersections in the image but are not topological joins in the traced graph.\n\nHere, a crossover is defined as a spatial location where two distinct paths approach within a distance threshold (in real units) for at least minRunNodes consecutive node pairs, but do not share an actual tracing node at that location. Optional geometric filtering by crossing angle is supported.\n\nUsage: \n```\nCrossoverFinder.Config cfg = new CrossoverFinder.Config()\n       .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)\n       .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)\n       .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate\n       .sameCTOnly(true)        // ignore pairs from different channel/time\n       .includeSelfCrossovers(false) // whether crossover events within the same path should be detected\n   List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);\n```\n",
+  "javadoc_description": "Utility to detect crossover locations between paths: spatially close locations between paths that look like intersections in the image but are not topological joins in the traced graph.\n\nHere, a crossover is defined as a spatial location where two distinct paths approach within a distance threshold (in real units) for at least `minRunNodes` consecutive node pairs, but do not share an actual tracing node at that location. Optional geometric filtering by crossing angle is supported.\n\nUsage: \n```\nCrossoverFinder.Config cfg = new CrossoverFinder.Config()\n       .proximity(2.0)          // spatial threshold in spatially calibrated units (e.g., microns)\n       .thetaMinDeg(25)         // optional minimum crossing angle (0 to disable)\n       .minRunNodes(2)          // consecutive near-node pairs to accept a crossover event candidate\n       .sameCTOnly(true)        // ignore pairs from different channel/time\n       .includeSelfCrossovers(false) // whether crossover events within the same path should be detected\n   List<CrossoverFinder.CrossoverEvent> events = CrossoverFinder.find(paths, cfg);\n```\n",
   "inheritance": {
     "extends": [
       "Object"

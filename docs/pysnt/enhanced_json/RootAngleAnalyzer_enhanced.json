@@ -1,9 +1,9 @@
 {
   "class_name": "RootAngleAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:06.129691",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.316707",
+  "extracted_at": "2026-11-02T00:24:01.690806",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.292733",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -19,7 +19,7 @@
         }
       ],
       "documentation": "Java method: balancingFactor",
-      "javadoc_description": "Returns the balancing factor, computed from centripetalBias().",
+      "javadoc_description": "Returns the balancing factor, computed from `centripetalBias()`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -107,39 +107,27 @@
       "examples": []
     },
     {
-      "name": "static getDensityPlot",
-      "overloads": [
-        {
-          "signature": "static getDensityPlot(List) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static getDensityPlot",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "getDensityPlot",
       "overloads": [
         {
           "signature": "getDensityPlot() -> SNTChart",
           "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getDensityPlot(List) -> SNTChart",
+          "params": [
+            {
+              "name": "analyzers",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "SNTChart",
           "java_return_type": "SNTChart",
           "return_description": "",
@@ -181,11 +169,34 @@
           "signature": "getHistogram(boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "polar",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
               "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getHistogram(List, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "analyzers",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "polar",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
             }
           ],
           "return_type": "SNTChart",
@@ -203,41 +214,6 @@
       "examples": []
     },
     {
-      "name": "static getHistogram",
-      "overloads": [
-        {
-          "signature": "static getHistogram(List, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static getHistogram",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "getTaggedGraph",
       "overloads": [
         {
@@ -245,7 +221,7 @@
           "params": [],
           "return_type": "DirectedWeightedGraph",
           "java_return_type": "DirectedWeightedGraph",
-          "return_description": "the graph of the tree being parsed. Vertices are tagged with the root angles (See: PointInImage.v).",
+          "return_description": "the graph of the tree being parsed. Vertices are tagged with the root angles (See: `PointInImage.v`).",
           "throws": {}
         }
       ],
@@ -261,66 +237,6 @@
       "name": "getTaggedTree",
       "overloads": [
         {
-          "signature": "getTaggedTree(String, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorTable",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getTaggedTree() -> Tree",
           "params": [],
           "return_type": "Tree",
@@ -332,7 +248,7 @@
           "signature": "getTaggedTree(ColorTable) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "- the LUT name specifying the color mapping. Null not allowed.",
@@ -343,39 +259,71 @@
           "java_return_type": "Tree",
           "return_description": "a copy of the tree with the root angles assigned to its nodes.",
           "throws": {}
+        },
+        {
+          "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTaggedTree(String, double, double) -> Tree",
+          "params": [
+            {
+              "name": "lutName",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
         }
       ],
       "documentation": "Java method: getTaggedTree",
       "javadoc_description": "Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.",
       "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -462,10 +410,10 @@
       "examples": []
     },
     {
-      "name": "static supportedMetrics",
+      "name": "supportedMetrics",
       "overloads": [
         {
-          "signature": "static supportedMetrics() -> List",
+          "signature": "supportedMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -473,7 +421,7 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static supportedMetrics",
+      "documentation": "Java method: supportedMetrics",
       "javadoc_description": "",
       "category": "Analysis",
       "deprecated": false,
@@ -491,7 +439,7 @@
           "signature": "RootAngleAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -500,10 +448,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for RootAngleAnalyzer"
+      "documentation": "Constructors of RootAngleAnalyzer"
     }
   ],
-  "javadoc_description": "Class to perform Root angle analysis on a Tree according to Bird and Cuntz 2019, PMID 31167149.",
+  "javadoc_description": "Class to perform Root angle analysis on a `Tree` according to Bird and Cuntz 2019, PMID 31167149.",
   "inheritance": {
     "extends": [
       "Object"
@@ -514,24 +462,24 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object",
-    "Constant Field Values"
+    "Constant Field Values",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 21,
-      "total_json_methods": 18,
-      "total_matches": 21,
-      "exact_matches": 21,
+      "total_json_methods": 15,
+      "total_matches": 20,
+      "exact_matches": 20,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
-      "unmatched_json": -3,
-      "match_percentage": 100.0
+      "unmatched_javadoc": 1,
+      "unmatched_json": -5,
+      "match_percentage": 95.2
     },
-    "unmatched_javadoc_methods": 0,
-    "unmatched_json_methods": 2,
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }
 }

@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in Viewer3D that can be used to highlight nodes in a Tree or locations in a mesh.
+An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in ``Viewer3D`` that can be used to highlight nodes in a ``Tree`` or locations in a ``mesh``.
 
 
 Methods
@@ -108,7 +108,7 @@ Setters Methods
    Determines whether the mesh bounding box should be displayed.
 
 
-.. py:method:: setColor(ColorRGB, double)
+.. py:method:: setColor(String)
 
    Script friendly method to assign a color to the annotation.
 
@@ -132,7 +132,7 @@ Visualization Methods
 ~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static meshToDrawable(Mesh)
+.. py:method:: meshToDrawable(Mesh)
 
    
 

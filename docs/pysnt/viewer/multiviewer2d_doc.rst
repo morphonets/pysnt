@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-Class for rendering montages of Trees as 2D plots that can be exported as SVG, PNG or PDF.
+Class for rendering montages of `Tree`s as 2D plots that can be exported as SVG, PNG or PDF.
 
 
 Methods
@@ -101,12 +101,12 @@ Setters Methods
 
 .. py:method:: setXrange(double, double)
 
-   Sets a manual range for the viewers' X-axis. Calling setXrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.
+   Sets a manual range for the viewers' X-axis. Calling ``setXrange(-1, -1)`` enables auto-range (the default). Must be called before Viewer is fully assembled.
 
 
 .. py:method:: setYrange(double, double)
 
-   Sets a manual range for the viewers' Y-axis. Calling setYrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.
+   Sets a manual range for the viewers' Y-axis. Calling ``setYrange(-1, -1)`` enables auto-range (the default). Must be called before Viewer is fully assembled.
 
 
 Visualization Methods
@@ -123,15 +123,6 @@ I/O Operations Methods
 
 
 .. py:method:: save(String)
-
-   
-
-
-Other Methods
-~~~~~~~~~~~~~
-
-
-.. py:method:: static main(String;)
 
    
 

@@ -1,0 +1,218 @@
+{
+  "class_name": "PlausibilityCalibrator",
+  "package": "sc.fiji.snt.analysis.curation",
+  "java_name": "sc.fiji.snt.analysis.curation.PlausibilityCalibrator",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.682418",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "calibrate",
+      "overloads": [
+        {
+          "signature": "calibrate() -> CalibrationResult",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "CalibrationResult",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: calibrate"
+    },
+    {
+      "name": "getCurationsDirectory",
+      "overloads": [
+        {
+          "signature": "getCurationsDirectory(File) -> File",
+          "params": [
+            {
+              "name": "workspaceDir",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getCurationsDirectory"
+    },
+    {
+      "name": "listCurationFiles",
+      "overloads": [
+        {
+          "signature": "listCurationFiles(File) -> File[]",
+          "params": [
+            {
+              "name": "workspaceDir",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "List[str]",
+          "java_return_type": "File[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: listCurationFiles"
+    },
+    {
+      "name": "load",
+      "overloads": [
+        {
+          "signature": "load(File, PlausibilityMonitor) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "monitor",
+              "type": "PlausibilityMonitor",
+              "java_type": "PlausibilityMonitor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: load"
+    },
+    {
+      "name": "loadBuiltIn",
+      "overloads": [
+        {
+          "signature": "loadBuiltIn(String, PlausibilityMonitor) -> void",
+          "params": [
+            {
+              "name": "presetName",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "monitor",
+              "type": "PlausibilityMonitor",
+              "java_type": "PlausibilityMonitor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: loadBuiltIn"
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(PlausibilityMonitor, File, String) -> void",
+          "params": [
+            {
+              "name": "monitor",
+              "type": "PlausibilityMonitor",
+              "java_type": "PlausibilityMonitor"
+            },
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "comment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: save"
+    },
+    {
+      "name": "setLowerPercentile",
+      "overloads": [
+        {
+          "signature": "setLowerPercentile(double) -> void",
+          "params": [
+            {
+              "name": "percentile",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setLowerPercentile"
+    },
+    {
+      "name": "setUpperPercentile",
+      "overloads": [
+        {
+          "signature": "setUpperPercentile(double) -> void",
+          "params": [
+            {
+              "name": "percentile",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUpperPercentile"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PlausibilityCalibrator(Collection)",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of PlausibilityCalibrator"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "BUILT_IN_PRESETS",
+      "type": "List[str]",
+      "java_type": "String[]",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field BUILT_IN_PRESETS of type String[]"
+    },
+    {
+      "name": "CURATION_EXTENSION",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field CURATION_EXTENSION of type String"
+    }
+  ]
+}

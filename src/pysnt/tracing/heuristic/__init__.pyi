@@ -1,39 +1,31 @@
 """Comprehensive type stubs for Java classes."""
 
-from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple, ClassVar
+from typing_extensions import deprecated
 
 class Dijkstra:
-    """
-    Dijkstra - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
-    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    """sc.fiji.snt.tracing.heuristic.Dijkstra  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
+    def __init__(self) -> None: ...
+    def estimateCostToGoal(self, current_x: int, current_y: int, current_z: int, goal_x: int, goal_y: int, goal_z: int, /) -> float: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class Euclidean:
-    """
-    Euclidean - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
-    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    """sc.fiji.snt.tracing.heuristic.Euclidean  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
+    @overload
+    def __init__(self, calibration: Any, /) -> None: ...
+    @overload
+    def __init__(self, dataset: Any, /) -> None: ...
+    def estimateCostToGoal(self, source_x: int, source_y: int, source_z: int, target_x: int, target_y: int, target_z: int, /) -> float: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class Heuristic:
-    """
-    Heuristic - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
+    """sc.fiji.snt.tracing.heuristic.Heuristic  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def estimateCostToGoal(self, current_x: int, current_y: int, current_z: int, goal_x: int, goal_y: int, goal_z: int, /) -> float: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 
 # Imported functions

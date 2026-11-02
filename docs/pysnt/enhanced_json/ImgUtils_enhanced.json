@@ -1,28 +1,147 @@
 {
   "class_name": "ImgUtils",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.534542",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.387133",
+  "extracted_at": "2026-11-02T00:24:01.635707",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.317914",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static createIntervals",
+      "name": "axisReport",
       "overloads": [
         {
-          "signature": "static createIntervals([J, [J) -> List",
+          "signature": "axisReport(ImgPlus) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
-              "java_type": "[J",
+              "java_type": "ImgPlus",
+              "description": "- the image to describe",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "a human-readable axis summary, e.g. `\"Axes: [X 512 (1.0µm)] [Y 512 (1.0µm)] [Z 60 (2.0µm)] [Channel 3 (1.0)]\"`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: axisReport",
+      "javadoc_description": "Builds a one-line diagnostic string listing all axes of an `ImgPlus` with their type, size, and scale. Used by `open(String)` to report the axis layout of freshly opened images.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeIntensityStats",
+      "overloads": [
+        {
+          "signature": "computeIntensityStats(RandomAccessibleInterval) -> double[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the input image",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "array of [min, max, mean]",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeIntensityStats",
+      "javadoc_description": "Computes basic intensity statistics of an image.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeMeanIntensity",
+      "overloads": [
+        {
+          "signature": "computeMeanIntensity(RandomAccessibleInterval) -> double",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the input image",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the mean intensity value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeMeanIntensity",
+      "javadoc_description": "Computes the mean intensity of an image.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computePercentile",
+      "overloads": [
+        {
+          "signature": "computePercentile(RandomAccessibleInterval, double) -> double",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the input image",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "percentile",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the approximate percentile value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computePercentile",
+      "javadoc_description": "Computes an approximate percentile by random sampling.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "createIntervals",
+      "overloads": [
+        {
+          "signature": "createIntervals(long[], long[]) -> List",
+          "params": [
+            {
+              "name": "sourceDimensions",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "- the source dimensions",
               "javadoc_name": "sourceDimensions"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "blockDimensions",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": "param_1"
             }
@@ -33,43 +152,43 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static createIntervals",
-      "javadoc_description": "Partition the source dimensions into a list of Intervals with given dimensions. If the block dimensions are not multiples of the image dimensions, some blocks will have slightly different dimensions.",
-      "category": "Static Methods",
+      "documentation": "Java method: createIntervals",
+      "javadoc_description": "Partition the source dimensions into a list of `Interval`s with given dimensions. If the block dimensions are not multiples of the image dimensions, some blocks will have slightly different dimensions.",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static crop",
+      "name": "crop",
       "overloads": [
         {
-          "signature": "static crop(ImgPlus, [J, [J, boolean) -> ImgPlus",
+          "signature": "crop(ImgPlus, long[], long[], boolean) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "materialize",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -82,31 +201,31 @@
           "throws": {}
         },
         {
-          "signature": "static crop(RandomAccessibleInterval, [J, [J, long) -> RandomAccessibleInterval",
+          "signature": "crop(RandomAccessibleInterval, long[], long[], long) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "rai",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the source RandomAccessibleInterval",
               "javadoc_name": "rai"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "padPixels",
               "type": "int",
               "java_type": "long",
               "description": "",
@@ -119,45 +238,38 @@
           "throws": {}
         },
         {
-          "signature": "static crop(ImgPlus, [J, [J, long, boolean, boolean) -> ImgPlus",
+          "signature": "crop(ImgPlus, long[], long[], long, boolean) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "padPixels",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg5",
+              "name": "materialize",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -170,38 +282,45 @@
           "throws": {}
         },
         {
-          "signature": "static crop(ImgPlus, [J, [J, long, boolean) -> ImgPlus",
+          "signature": "crop(ImgPlus, long[], long[], long, boolean, boolean) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "padPixels",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
+              "name": "materialize",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "dropSingletonDimensions",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -214,22 +333,159 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static crop",
-      "javadoc_description": "Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates.\n\nFor RAIs without axis metadata, assumes ZYX dimension order. Returns a view (no data copy) with the specified bounds, clamped to image bounds.\n\nImportant: This method assumes ZYX dimension order (dim0=Z, dim1=Y, dim2=X), which is common for OME-ZARR and N5 datasets. For images with different axis orders, wrap as ImgPlus with proper axis metadata and use `crop(ImgPlus, long[], long[], boolean)`.",
-      "category": "Static Methods",
+      "documentation": "Java method: crop",
+      "javadoc_description": "Crop a region from a RandomAccessibleInterval using (x, y, z) pixel coordinates.\n\nFor RAIs without axis metadata, assumes ZYX dimension order. Returns a view (no data copy) with the specified bounds, clamped to image bounds.\n\n**Important:** This method assumes ZYX dimension order (dim0=Z, dim1=Y, dim2=X), which is common for OME-ZARR and N5 datasets. For images with different axis orders, wrap as ImgPlus with proper axis metadata and use `crop(ImgPlus, long[], long[], boolean)`.",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static dropSingletonDimensions",
+      "name": "depthCodedProjection",
       "overloads": [
         {
-          "signature": "static dropSingletonDimensions(ImgPlus) -> ImgPlus",
+          "signature": "depthCodedProjection(RandomAccessibleInterval, int, long, long, ColorTable, double, double) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the 3D single-channel source",
+              "javadoc_name": "rai"
+            },
+            {
+              "name": "axis",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "min",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "max",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "lut",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "displayMin",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "displayMax",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_6"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "a 2D RGB image (uncalibrated)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: depthCodedProjection",
+      "javadoc_description": "Computes a depth color-coded slab max-intensity projection (analogous to ImageJ's \"Temporal-Color Code\" or \"Hyperstack Depth Color\" tools). Hue is determined by the depth of the maximum within the slab, and brightness by the intensity of the maximum.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "maxProjectionWithDepth(RandomAccessibleInterval, int, long, long)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "downsampleToFit",
+      "overloads": [
+        {
+          "signature": "downsampleToFit(ImgPlus, int) -> ImgPlus",
+          "params": [
+            {
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image to downsample",
+              "javadoc_name": "imgPlus"
+            },
+            {
+              "name": "maxDimSize",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "a (possibly lazy) downsampled ImgPlus, or the original if no limit is exceeded",
+          "throws": {}
+        },
+        {
+          "signature": "downsampleToFit(ImgPlus, int, long) -> ImgPlus",
+          "params": [
+            {
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "maxDimSize",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "maxVoxels",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: downsampleToFit",
+      "javadoc_description": "Same as `downsampleToFit(ImgPlus, int)`, but additionally caps the number of voxels of the spatial (X, Y, Z) volume, e.g., to fit BVV's single-texture capacity. After satisfying `maxDimSize`, the step of the axis with the finest physical voxel size is repeatedly increased until the cap is met, which keeps the resulting voxels as isotropic as possible",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dropSingletonDimensions",
+      "overloads": [
+        {
+          "signature": "dropSingletonDimensions(ImgPlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the source ImgPlus (e.g., 5D XYZCT with C=1, T=1)",
@@ -242,78 +498,148 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static dropSingletonDimensions",
+      "documentation": "Java method: dropSingletonDimensions",
       "javadoc_description": "Remove singleton dimensions from an ImgPlus, preserving axis metadata.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static findSpatialAxisIndices",
+      "name": "exceedsDimension",
       "overloads": [
         {
-          "signature": "static findSpatialAxisIndices(ImgPlus) -> [I",
+          "signature": "exceedsDimension(ImgPlus, int) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image to check",
+              "javadoc_name": "imgPlus"
+            },
+            {
+              "name": "maxDimSize",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "`true` if at least one spatial dimension exceeds the limit",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: exceedsDimension",
+      "javadoc_description": "Checks whether any spatial dimension of an `ImgPlus` exceeds the given limit. Only X, Y, and Z axes are considered.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "exceedsVoxelCount",
+      "overloads": [
+        {
+          "signature": "exceedsVoxelCount(ImgPlus, long) -> boolean",
+          "params": [
+            {
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image to check",
+              "javadoc_name": "imgPlus"
+            },
+            {
+              "name": "maxVoxels",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "`true` if the spatial volume exceeds the limit",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: exceedsVoxelCount",
+      "javadoc_description": "Checks whether the spatial (X, Y, Z) volume of an `ImgPlus` has more voxels than the given limit. Channel and Time axes are ignored.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findSpatialAxisIndices",
+      "overloads": [
+        {
+          "signature": "findSpatialAxisIndices(ImgPlus) -> int[]",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the ImgPlus",
               "javadoc_name": "img"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[I",
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
           "return_description": "int array {xIdx, yIdx, zIdx}, with -1 for missing axes",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static findSpatialAxisIndices",
+      "documentation": "Java method: findSpatialAxisIndices",
       "javadoc_description": "Find dimension indices for X, Y, Z axes in an ImgPlus.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static findSpatialAxisIndicesWithFallback",
+      "name": "findSpatialAxisIndicesWithFallback",
       "overloads": [
         {
-          "signature": "static findSpatialAxisIndicesWithFallback(ImgPlus) -> [I",
+          "signature": "findSpatialAxisIndicesWithFallback(ImgPlus) -> int[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the ImgPlus",
               "javadoc_name": "img"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[I",
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
           "return_description": "int array {xIdx, yIdx, zIdx}",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static findSpatialAxisIndicesWithFallback",
+      "documentation": "Java method: findSpatialAxisIndicesWithFallback",
       "javadoc_description": "Find dimension indices for X, Y, Z axes, with fallback to assumed ZYX order.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getCalibration",
+      "name": "getCalibration",
       "overloads": [
         {
-          "signature": "static getCalibration(ImgPlus) -> Calibration",
+          "signature": "getCalibration(ImgPlus) -> Calibration",
           "params": [
             {
-              "name": "arg0",
+              "name": "imgPlus",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the source ImgPlus",
@@ -326,98 +652,22 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getCalibration",
+      "documentation": "Java method: getCalibration",
       "javadoc_description": "Extracts ImageJ1 Calibration from ImgPlus axes, including origin offsets.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getCtSlice",
+      "name": "getCtSlice",
       "overloads": [
         {
-          "signature": "static getCtSlice(Dataset, int, int) -> RandomAccessibleInterval",
+          "signature": "getCtSlice(ImagePlus) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Dataset",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "RandomAccessibleInterval",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getCtSlice(ImgPlus) -> ImgUtils$SliceResult",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus",
-              "description": "- source image",
-              "javadoc_name": "imgPlus"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImgUtils$SliceResult",
-          "return_description": "result containing the squeezed image and indices of any removed singleton dimensions (0 if squeezed, -1 if axis didn't exist or wasn't squeezed)",
-          "throws": {}
-        },
-        {
-          "signature": "static getCtSlice(ImgPlus, int, int) -> ImgUtils$SliceResult",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImgUtils$SliceResult",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getCtSlice(ImagePlus) -> RandomAccessibleInterval",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
@@ -428,11 +678,87 @@
           "java_return_type": "RandomAccessibleInterval",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "getCtSlice(ImgPlus) -> SliceResult",
+          "params": [
+            {
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- source image",
+              "javadoc_name": "imgPlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SliceResult",
+          "return_description": "result containing the squeezed image and indices of any removed singleton dimensions (0 if squeezed, -1 if axis didn't exist or wasn't squeezed)",
+          "throws": {}
+        },
+        {
+          "signature": "getCtSlice(Dataset, int, int) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "dataset",
+              "type": "Any",
+              "java_type": "Dataset",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channelIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frameIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getCtSlice(ImgPlus, int, int) -> SliceResult",
+          "params": [
+            {
+              "name": "imgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "time",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SliceResult",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static getCtSlice",
+      "documentation": "Java method: getCtSlice",
       "javadoc_description": "Extracts a channel/time slice by squeezing singleton dimensions.\n\nConvenience overload that removes any singleton (size=1) channel or time dimensions from the image. Non-singleton C/T dimensions are preserved.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [
@@ -441,27 +767,27 @@
       "examples": []
     },
     {
-      "name": "static getCtSlice3d",
+      "name": "getCtSlice3d",
       "overloads": [
         {
-          "signature": "static getCtSlice3d(ImagePlus, int, int) -> RandomAccessibleInterval",
+          "signature": "getCtSlice3d(Dataset, int, int) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
-              "java_type": "ImagePlus",
+              "java_type": "Dataset",
               "description": "- the input ImagePlus",
               "javadoc_name": "imp"
             },
             {
-              "name": "arg1",
+              "name": "channelIndex",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "frameIndex",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -474,24 +800,24 @@
           "throws": {}
         },
         {
-          "signature": "static getCtSlice3d(Dataset, int, int) -> RandomAccessibleInterval",
+          "signature": "getCtSlice3d(ImagePlus, int, int) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
-              "java_type": "Dataset",
+              "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "channel",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "frame",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -504,29 +830,85 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getCtSlice3d",
-      "javadoc_description": "Get a view of the ImagePlus at the specified channel and frame.",
-      "category": "Static Methods",
+      "documentation": "Java method: getCtSlice3d",
+      "javadoc_description": "Get a view of the `ImagePlus` at the specified channel and frame.",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getOrigin",
+      "name": "getLocalOmeZarrDir",
       "overloads": [
         {
-          "signature": "static getOrigin(ImgPlus, AxisType) -> double",
+          "signature": "getLocalOmeZarrDir(String) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the path to check",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "the container directory, or null if `path` is not a local OME-Zarr v0.5 container",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLocalOmeZarrDir",
+      "javadoc_description": "Resolves a path to a local OME-Zarr (OME-NGFF v0.5) container directory. Accepts the directory itself or its `zarr.json` file (as returned by some file choosers)",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOmeZarrCalibration",
+      "overloads": [
+        {
+          "signature": "getOmeZarrCalibration(String) -> OmeZarrCalibration",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the container directory (or its",
+              "javadoc_name": "path"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "OmeZarrCalibration",
+          "return_description": "the calibration of the first multiscale image, or null if unavailable",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOmeZarrCalibration",
+      "javadoc_description": "Reads the spatial calibration from the root metadata of a local OME-Zarr (OME-NGFF v0.5) container",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOrigin",
+      "overloads": [
+        {
+          "signature": "getOrigin(ImgPlus, AxisType) -> double",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the ImgPlus",
               "javadoc_name": "img"
             },
             {
-              "name": "arg1",
+              "name": "axisType",
               "type": "Any",
               "java_type": "AxisType",
               "description": "",
@@ -539,50 +921,271 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getOrigin",
+      "documentation": "Java method: getOrigin",
       "javadoc_description": "Get the origin offset for a specific axis from an ImgPlus.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getOrigins",
+      "name": "getOrigins",
       "overloads": [
         {
-          "signature": "static getOrigins(ImgPlus) -> [D",
+          "signature": "getOrigins(ImgPlus) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "- the ImgPlus",
               "javadoc_name": "img"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "array of {xOrigin, yOrigin, zOrigin} in calibrated units",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getOrigins",
+      "documentation": "Java method: getOrigins",
       "javadoc_description": "Get the origin offsets as {xOrigin, yOrigin, zOrigin} from an ImgPlus.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static imgPlusToCalibration",
+      "name": "getSpacing",
       "overloads": [
         {
-          "signature": "static imgPlusToCalibration(ImgPlus) -> Calibration",
+          "signature": "getSpacing(ImgPlus) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getSpacing(ImgPlus, AxisType) -> double",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "axisType",
+              "type": "Any",
+              "java_type": "AxisType",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpacing",
+      "javadoc_description": "Returns the voxel spacing for a specific axis type, defaulting to 1.0 if the axis is absent or has zero scale. Unlike `getSpacing(ImgPlus)`, this is axis-order-independent.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSpacingUnits",
+      "overloads": [
+        {
+          "signature": "getSpacingUnits(ImgPlus) -> String",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the unit string (e.g., \"µm\"), or null if not calibrated",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpacingUnits",
+      "javadoc_description": "Extracts spacing units from an ImgPlus.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getXYZCImage",
+      "overloads": [
+        {
+          "signature": "getXYZCImage(ImagePlus) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the input ImagePlus (must have at least 2 channels)",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "4D RAI with axis order [X, Y, Z, C], or null if the image has fewer than 2 channels",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getXYZCImage",
+      "javadoc_description": "Gets a 4D (X, Y, Z, C) view of the `ImagePlus` at the current time frame, retaining all channels. This is useful for multichannel/spectral operations that need access to all channel data simultaneously.\n\nThe returned RAI has axis order [X, Y, Z, C], obtained from the canonical 5D [X, Y, C, Z, T] representation by fixing T and permuting C past Z.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasN5ZarrMetadata",
+      "overloads": [
+        {
+          "signature": "hasN5ZarrMetadata(File) -> boolean",
+          "params": [
+            {
+              "name": "dir",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the directory to check",
+              "javadoc_name": "dir"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if `dir` is a directory containing `zarr.json`, `.zgroup`, `.zarray`, `.zattrs` or `attributes.json`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasN5ZarrMetadata",
+      "javadoc_description": "Checks whether a local directory has the root metadata of an N5 or Zarr (v2/v3) container, i.e., whether it can be opened as one. An empty or incomplete directory (hidden files such as `.DS_Store` do not count) fails this check. Does not validate the metadata's content",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasXYZLeading",
+      "overloads": [
+        {
+          "signature": "hasXYZLeading(ImgPlus) -> boolean",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasXYZLeading",
+      "javadoc_description": "Returns whether the first three axes of an image are X, Y and Z (in that order)",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "haveSameSpatialDimensions",
+      "overloads": [
+        {
+          "signature": "haveSameSpatialDimensions(ImagePlus, RandomAccessibleInterval) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the ImagePlus",
+              "javadoc_name": "imp"
+            },
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "`true` if spatial dimensions match",
+          "throws": {}
+        },
+        {
+          "signature": "haveSameSpatialDimensions(RandomAccessibleInterval, RandomAccessibleInterval) -> boolean",
+          "params": [
+            {
+              "name": "img1",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "img2",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: haveSameSpatialDimensions",
+      "javadoc_description": "Checks whether an `ImagePlus` and a `RandomAccessibleInterval` have compatible spatial dimensions (width, height, and optionally depth).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "imgPlusToCalibration",
+      "overloads": [
+        {
+          "signature": "imgPlusToCalibration(ImgPlus) -> Calibration",
+          "params": [
+            {
+              "name": "imgPlus",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
@@ -595,22 +1198,22 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static imgPlusToCalibration",
+      "documentation": "Java method: imgPlusToCalibration",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": true,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static impToRealRai5d",
+      "name": "impToRealRai5d",
       "overloads": [
         {
-          "signature": "static impToRealRai5d(ImagePlus) -> RandomAccessibleInterval",
+          "signature": "impToRealRai5d(ImagePlus) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "-",
@@ -623,24 +1226,224 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static impToRealRai5d",
-      "javadoc_description": "Wrap an ImagePlus to a `RandomAccessibleInterval` such that the number of dimensions in the resulting rai is 5 and the axis order is XYCZT. Axes that are not present in the input imp have singleton dimensions in the rai.\n\nFor example, given a 2D, multichannel imp, the dimensions of the result rai are [ |X|, |Y|, |C|, 1, 1 ]",
-      "category": "Static Methods",
+      "documentation": "Java method: impToRealRai5d",
+      "javadoc_description": "Wrap an `ImagePlus` to a `RandomAccessibleInterval` such that the number of dimensions in the resulting rai is 5 and the axis order is XYCZT. Axes that are not present in the input imp have singleton dimensions in the rai.\n\nFor example, given a 2D, multichannel imp, the dimensions of the result rai are [ |X|, |Y|, |C|, 1, 1 ]",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static maxDimension",
+      "name": "isBinary",
       "overloads": [
         {
-          "signature": "static maxDimension([J) -> int",
+          "signature": "isBinary(RandomAccessibleInterval) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "rai",
               "type": "Any",
-              "java_type": "[J",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isBinary",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isLabelImage",
+      "overloads": [
+        {
+          "signature": "isLabelImage(RandomAccessibleInterval) -> boolean",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the image to check",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "`true` if the image passes label-image heuristics",
+          "throws": {}
+        },
+        {
+          "signature": "isLabelImage(RandomAccessibleInterval, int) -> boolean",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "maxClasses",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isLabelImage",
+      "javadoc_description": "Checks whether a `RandomAccessibleInterval` appears to be a label image, using a default maximum of 500 classes.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "isLabelImage(RandomAccessibleInterval, int)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "isMultiChannelRGB",
+      "overloads": [
+        {
+          "signature": "isMultiChannelRGB(ImgPlus) -> boolean",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isMultiChannelRGB",
+      "javadoc_description": "Checks if an ImgPlus appears to be a multi-channel RGB image (3 channels of 8-bit data, not packed ARGB).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isRGB",
+      "overloads": [
+        {
+          "signature": "isRGB(ImgPlus) -> boolean",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image to check",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the image uses ARGBType pixels",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isRGB",
+      "javadoc_description": "Checks if an ImgPlus contains packed RGB data (ARGBType).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "materialize",
+      "overloads": [
+        {
+          "signature": "materialize(RandomAccessibleInterval) -> Img",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the view to copy",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Img",
+          "return_description": "a local, fully-realized copy of `source`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: materialize",
+      "javadoc_description": "Copies a (possibly lazy/remote) view into a local, contiguous `ArrayImgFactory`-backed image. Use before repeated random-access operations on a view backed by something expensive to re-read, e.g. a remote N5/Zarr source.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "materializeTiled",
+      "overloads": [
+        {
+          "signature": "materializeTiled(RandomAccessibleInterval, int) -> Img",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the view to copy",
+              "javadoc_name": "source"
+            },
+            {
+              "name": "cellSize",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Img",
+          "return_description": "a local, zero-min, fully-realized, cell-based copy of `source`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: materializeTiled",
+      "javadoc_description": "Copies a (possibly lazy/remote) view into a local `CellImg`. Unlike `materialize(net.imglib2.RandomAccessibleInterval<T>)`, the result is an `AbstractCellImg`, which is what BVV requires to stream tiles through its GPU cache instead of uploading the whole volume as a single 3D texture. It also avoids the 2^31 elements limit of `ArrayImg`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "maxDimension",
+      "overloads": [
+        {
+          "signature": "maxDimension(long[]) -> int",
+          "params": [
+            {
+              "name": "dimensions",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "-",
               "javadoc_name": "dimensions"
             }
@@ -651,38 +1454,195 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static maxDimension",
+      "documentation": "Java method: maxDimension",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static outOfBounds",
+      "name": "maxIntensityProjection",
       "overloads": [
         {
-          "signature": "static outOfBounds([J, [J, [J) -> boolean",
+          "signature": "maxIntensityProjection(ImgPlus) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
-              "java_type": "[J",
-              "description": "- the position to check",
-              "javadoc_name": "pos"
+              "java_type": "ImgPlus",
+              "description": "- the input image",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "a 2D max-intensity projection preserving `T`, or the original source if it has no Z axis",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: maxIntensityProjection",
+      "javadoc_description": "Computes a type-preserving max-intensity projection along the Z axis of an `ImgPlus`.\n\nThe Z axis is located via `Axes.Z` metadata, falling back to dim 2 if no labeled Z axis is found. The input pixel type `T` is preserved in the output, and the non-Z axes' calibration is copied across.\n\nIf the source has no Z axis (e.g., a 2D image), the source is returned unchanged. If the Z axis exists but has depth 1, a 2D copy is returned.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "maxProjectionWithDepth",
+      "overloads": [
+        {
+          "signature": "maxProjectionWithDepth(RandomAccessibleInterval, int, long, long) -> MaxProjection",
+          "params": [
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the 3D source",
+              "javadoc_name": "rai"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "axis",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "min",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "max",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MaxProjection",
+          "return_description": "the projection and its depth map",
+          "throws": {
+            "IllegalArgumentException": "- if",
+            "rai": "is not 3D,",
+            "axis": "is invalid, or the slab does not overlap the source"
+          }
+        }
+      ],
+      "documentation": "Java method: maxProjectionWithDepth",
+      "javadoc_description": "Computes a slab max-intensity projection of a (possibly lazy, e.g., cell-cached) image along an arbitrary axis, also keeping track of the depth at which each maximum occurs. The source is read plane by plane and only the 2D results are held in memory, so this is suitable for slabs of large datasets (see `maxIntensityProjection(ImgPlus)` for the ImgPlus/Z-only counterpart). To project a multichannel image, slice the channel first, e.g., with `Views.hyperSlice(RandomAccessibleInterval, int, long)`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "normalizeToXYZ",
+      "overloads": [
+        {
+          "signature": "normalizeToXYZ(ImgPlus) -> ImgPlus",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
-              "java_type": "[J",
+              "java_type": "ImgPlus",
+              "description": "- the source image",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "the normalized image, or `img` if no change was needed",
+          "throws": {
+            "IllegalArgumentException": "- if the axis layout is ambiguous or unsupported"
+          }
+        }
+      ],
+      "documentation": "Java method: normalizeToXYZ",
+      "javadoc_description": "Normalizes the axes of an `ImgPlus` for volume viewers and tracing: singleton axes are dropped and the remaining ones are ordered X, Y, Z, [C], [T], with no pixel copy.\n\n- Unlabeled axes: if exactly 3 axes are present and none is labeled, they are assumed to be XYZ; if X and Y are labeled and a single third axis is unlabeled, it is assumed to be Z. Both cases are logged. Anything else unlabeled is rejected as ambiguous\n\n- Images without a Z axis after singleton removal (2D, or 2D plus C/T) are returned as is: callers are expected to reject them as non-volumetric\n\n- Images with Z but any other non-singleton axis than C or T (e.g., Position, Series) are rejected\n\nImages already in the normalized layout are returned unchanged (same instance).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "open",
+      "overloads": [
+        {
+          "signature": "open(File) -> ImgPlus",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the file to open",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "the opened image as ImgPlus, or null if opening fails",
+          "throws": {
+            "IllegalArgumentException": "- if file is null"
+          }
+        },
+        {
+          "signature": "open(String) -> ImgPlus",
+          "params": [
+            {
+              "name": "filePathOrUrl",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: open",
+      "javadoc_description": "Opens an image file as an ImgPlus.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "outOfBounds",
+      "overloads": [
+        {
+          "signature": "outOfBounds(long[], long[], long[]) -> boolean",
+          "params": [
+            {
+              "name": "pos",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "- the position to check",
+              "javadoc_name": "pos"
+            },
+            {
+              "name": "min",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "max",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": "param_2"
             }
@@ -693,29 +1653,57 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static outOfBounds",
+      "documentation": "Java method: outOfBounds",
       "javadoc_description": "Checks if pos is outside the bounds given by min and max",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static raiToImp",
+      "name": "permuteToXYZCT",
       "overloads": [
         {
-          "signature": "static raiToImp(RandomAccessibleInterval, String) -> ImagePlus",
+          "signature": "permuteToXYZCT(ImgPlus) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the source image; may have any axis order",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "a new ImgPlus reordered to XYZCT (axes already in canonical order are returned unchanged)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: permuteToXYZCT",
+      "javadoc_description": "Reorders the axes of an `ImgPlus` to the canonical XYZCT order expected by BVV and most ImageJ tools, applying swaps as needed. Axes not present in the image are left in place. No pixel data is copied.\n\nThis is useful when SCIFIO opens an image with axis order XYCZT (as ImageJ saves it) but BVV expects XYZCT, causing Z and C to be misinterpreted.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "raiToImp",
+      "overloads": [
+        {
+          "signature": "raiToImp(RandomAccessibleInterval, String) -> ImagePlus",
+          "params": [
+            {
+              "name": "rai",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the source rai",
               "javadoc_name": "rai"
             },
             {
-              "name": "arg1",
+              "name": "title",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -728,31 +1716,366 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static raiToImp",
-      "javadoc_description": "Convert a `RandomAccessibleInterval` to an ImagePlus. If the input has 3 dimensions, the 3rd dimension is treated as depth.",
-      "category": "Static Methods",
+      "documentation": "Java method: raiToImp",
+      "javadoc_description": "Convert a `RandomAccessibleInterval` to an `ImagePlus`. If the input has 3 dimensions, the 3rd dimension is treated as depth.",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static splitIntoBlocks",
+      "name": "raiToImpFast",
       "overloads": [
         {
-          "signature": "static splitIntoBlocks(RandomAccessibleInterval, [J) -> List",
+          "signature": "raiToImpFast(RandomAccessibleInterval, String) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- same contract as raiToImp(RandomAccessibleInterval, String)",
+              "javadoc_name": "rai"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "raiToImp(RandomAccessibleInterval, String)"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "an eagerly-populated, real (non-virtual) ImagePlus, built in a single copy pass",
+          "throws": {
+            "net.imglib2.exception.ImgLibException": "- if",
+            "rai": "'s pixel type has no",
+            "ImagePlus": "-backed",
+            "ImagePlusImg": "representation"
+          }
+        }
+      ],
+      "documentation": "Java method: raiToImpFast",
+      "javadoc_description": "Faster, single-copy alternative to `raiToImp(rai, title).duplicate()`. That combination routes through a lazy `ImageJVirtualStack` (which performs a full copy of every slice on first/every access) and then `ImagePlus.duplicate()` which performs a SECOND full, single-threaded copy of every stack slice. For large crops this double-copy, single-threaded path may be quite heavy.\n\nThis method instead copies `rai` directly into an `ImagePlusImg`-backed destination, in one pass, optionally multithreaded via `LoopBuilder`. `ImagePlusImg`'s own per-plane pixel arrays ARE the `ImagePlus`'s eventual `ImageStack` slice arrays (see `ByteImagePlus` and its siblings), so `ImagePlusImg.getImagePlus()` needs no further copy.\n\nOnly pixel types `ImagePlusImg` can back with a real `ImagePlus` are supported: in practice `byte`/`short`/`int`/`float` `NativeType`s, i.e. everything `raiToImp(RandomAccessibleInterval, String)` is normally called with here. Anything else throws `ImgLibException`; callers wanting a guaranteed-to-work fallback should catch it and fall back to `raiToImp(rai, title).duplicate()`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resolveSpacing",
+      "overloads": [
+        {
+          "signature": "resolveSpacing(RandomAccessibleInterval, double[]) -> double[]",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the image",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "explicit",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "pixel spacing array with one entry per image dimension",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resolveSpacing",
+      "javadoc_description": "Resolves pixel spacing for a `RandomAccessibleInterval`. If explicit spacing is provided and has enough dimensions, it is used directly. Otherwise, axis metadata is extracted from `ImgPlus` if available. Falls back to isotropic spacing of 1.0.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sampledStats",
+      "overloads": [
+        {
+          "signature": "sampledStats(Iterable, long) -> double[]",
+          "params": [
+            {
+              "name": "in",
+              "type": "List[Any]",
+              "java_type": "Iterable",
+              "description": "- the data",
+              "javadoc_name": "in"
+            },
+            {
+              "name": "maxSamples",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "{min, max, mean, stdDev, nSamples}",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sampledStats",
+      "javadoc_description": "Computes min, max, mean and (sample) standard deviation in a single pass. If the image holds more than `maxSamples` voxels, only a regular grid of voxels is visited (same stride along all dimensions), so the result is approximate. Exact otherwise.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(RandomAccessibleInterval, String) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the image to save; may be virtual or transformed",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "Exception": "- if the image cannot be serialized or written to disk"
+          }
+        },
+        {
+          "signature": "save(RandomAccessibleInterval, String, RealType) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "outType",
+              "type": "Any",
+              "java_type": "RealType",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: save",
+      "javadoc_description": "Saves an image to disk as a TIFF file, converting pixel values to the specified output type before writing. This is the save counterpart of `open(String)`.\n\nThe image is materialized into a concrete in-memory `Img` of the requested type, so the caller must ensure sufficient RAM is available. Conversion is done via `ComplexType.setReal(double)`, which clamps values to the target type's range automatically (e.g. 16-bit unsigned values are clamped to [0, 65535]).\n\nTypical usage: \n```\nImgUtils.save(rai, \"/path/to/out.tif\", new UnsignedShortType());\n   ImgUtils.save(rai, \"/path/to/out.tif\", new UnsignedByteType());\n   ImgUtils.save(rai, \"/path/to/out.tif\", new FloatType());\n```\n",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "ImgUtils.save(rai, \"/path/to/out.tif\", new UnsignedShortType());\n   ImgUtils.save(rai, \"/path/to/out.tif\", new UnsignedByteType());\n   ImgUtils.save(rai, \"/path/to/out.tif\", new FloatType());"
+      ]
+    },
+    {
+      "name": "saveAsOmeZarr",
+      "overloads": [
+        {
+          "signature": "saveAsOmeZarr(ImgPlus, File, int, Consumer) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- image with X, Y, Z leading, followed by an optional channel axis and an optional time axis (see normalizeToXYZ(net.imagej.ImgPlus<T>))",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "zarrDir",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "normalizeToXYZ(net.imagej.ImgPlus<T>)"
+            },
+            {
+              "name": "nThreads",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "progress",
+              "type": "Any",
+              "java_type": "Consumer",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if the axes layout is not XYZ[C][T]"
+          }
+        }
+      ],
+      "documentation": "Java method: saveAsOmeZarr",
+      "javadoc_description": "Writes an image as a multiscale OME-Zarr (OME-NGFF v0.5, Zarr v3) directory. Level 0 is streamed from `img` one slab of Z planes at a time (so every plane is read once), and each coarser level is computed from the previous one, one block at a time, by averaging 2x2x2 neighborhoods. Peak memory is therefore a single slab plus the blocks in flight, regardless of image size. Chunks are zstd-compressed and, for larger levels, grouped into shards (one file per shard)\n\nLevels are halved along X, Y and Z until a level fits a 3D texture (2048 voxels per side, and `BvvUtils.MAX_SINGLE_TEXTURE_VOXELS`), with a minimum of 3 levels",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOmeZarrCalibration",
+      "overloads": [
+        {
+          "signature": "setOmeZarrCalibration(String, double[], String) -> boolean",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the container directory (or its",
+              "javadoc_name": "path"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": ", see getLocalOmeZarrDir(java.lang.String))",
+              "javadoc_name": "zarr.json"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "getLocalOmeZarrDir(java.lang.String)"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the metadata was updated",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOmeZarrCalibration",
+      "javadoc_description": "Sets the spacing and/or unit in the root metadata of a local OME-Zarr (OME-NGFF v0.5) container. Spacing is the level 0 voxel size: the scale and translation of every pyramid level are rescaled by the ratio between the new and the stored spacing, so the pyramid stays consistent. Only the metadata file is rewritten",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setOmeZarrUnit",
+      "overloads": [
+        {
+          "signature": "setOmeZarrUnit(String, String) -> boolean",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the container directory (or its",
+              "javadoc_name": "path"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": ", see getLocalOmeZarrDir(java.lang.String))",
+              "javadoc_name": "zarr.json"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the metadata was updated",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setOmeZarrUnit",
+      "javadoc_description": "Sets the unit of the spatial axes in the root metadata of a local OME-Zarr (OME-NGFF v0.5) container. Only the metadata file is rewritten",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "spatialNgffUnit",
+      "overloads": [
+        {
+          "signature": "spatialNgffUnit(ImgPlus) -> String",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the image",
+              "javadoc_name": "img"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the OME-NGFF unit name (e.g., \"micrometer\"), or null if uncalibrated/unrecognized",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: spatialNgffUnit",
+      "javadoc_description": "Returns the first recognized spatial unit (as an OME-NGFF name) among the X, Y and Z axes of `img`, or null if none is recognized. Bio-Formats readers do not always set the unit on every axis (or spell it as expected), so all spatial axes are checked, not just the first",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "splitIntoBlocks",
+      "overloads": [
+        {
+          "signature": "splitIntoBlocks(RandomAccessibleInterval, long[]) -> List",
+          "params": [
+            {
+              "name": "source",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the source rai",
               "javadoc_name": "source"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
+              "name": "blockDimensions",
+              "type": "List[int]",
+              "java_type": "long[]",
               "description": "",
               "javadoc_name": "param_1"
             }
@@ -763,43 +2086,43 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static splitIntoBlocks",
-      "javadoc_description": "Partition the source rai into a list of IntervalView with given dimensions. If the block dimensions are not multiples of the image dimensions, some blocks will have truncated dimensions.",
-      "category": "Static Methods",
+      "documentation": "Java method: splitIntoBlocks",
+      "javadoc_description": "Partition the source rai into a list of `IntervalView` with given dimensions. If the block dimensions are not multiples of the image dimensions, some blocks will have truncated dimensions.",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static subInterval",
+      "name": "subInterval",
       "overloads": [
         {
-          "signature": "static subInterval(RandomAccessibleInterval, Localizable, Localizable, long) -> RandomAccessibleInterval",
+          "signature": "subInterval(RandomAccessibleInterval, Localizable, Localizable, long) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the source interval",
               "javadoc_name": "img"
             },
             {
-              "name": "arg1",
+              "name": "p1",
               "type": "Any",
               "java_type": "Localizable",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "p2",
               "type": "Any",
               "java_type": "Localizable",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "padPixels",
               "type": "int",
               "java_type": "long",
               "description": "",
@@ -812,71 +2135,71 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static subInterval",
+      "documentation": "Java method: subInterval",
       "javadoc_description": "Get an N-D sub-interval of an N-D image, given two corner points and specified padding.\n\nWorks in native dimension order (no XYZ remapping). The sub-interval is clamped to image bounds.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static subVolume",
+      "name": "subVolume",
       "overloads": [
         {
-          "signature": "static subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long) -> RandomAccessibleInterval",
+          "signature": "subVolume(RandomAccessibleInterval, long, long, long, long, long, long, long) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the source interval",
               "javadoc_name": "img"
             },
             {
-              "name": "arg1",
+              "name": "x1",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "y1",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "z1",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_3"
             },
             {
-              "name": "arg4",
+              "name": "x2",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_4"
             },
             {
-              "name": "arg5",
+              "name": "y2",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_5"
             },
             {
-              "name": "arg6",
+              "name": "z2",
               "type": "int",
               "java_type": "long",
               "description": "",
               "javadoc_name": "param_6"
             },
             {
-              "name": "arg7",
+              "name": "padPixels",
               "type": "int",
               "java_type": "long",
               "description": "",
@@ -889,9 +2212,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static subVolume",
+      "documentation": "Java method: subVolume",
       "javadoc_description": "Get a 3D sub-volume of an image, given two corner points and specified padding.\n\nCoordinates are in XYZ order. If the input is 2D, a singleton dimension is added. The sub-volume is clamped to image bounds.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [
@@ -900,13 +2223,60 @@
       "examples": []
     },
     {
-      "name": "static toImagePlus",
+      "name": "swapAxes",
       "overloads": [
         {
-          "signature": "static toImagePlus(ImgPlus) -> ImagePlus",
+          "signature": "swapAxes(ImgPlus, AxisType, AxisType) -> ImgPlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "- the source image",
+              "javadoc_name": "img"
+            },
+            {
+              "name": "axis1",
+              "type": "Any",
+              "java_type": "AxisType",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "axis2",
+              "type": "Any",
+              "java_type": "AxisType",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "a new ImgPlus with the two axes permuted",
+          "throws": {
+            "IllegalArgumentException": "- if either axis type is not found in the image"
+          }
+        }
+      ],
+      "documentation": "Java method: swapAxes",
+      "javadoc_description": "Returns a new `ImgPlus` with two axes swapped. The underlying data is a lazy permuted view (no pixel data is copied). Axis metadata (type, scale, unit) is reordered to match the new dimension order. Example: swap Z and Channel in an XYZCT image: \n```\nImgPlus<?> xyzct = ImgUtils.open(\"image.tif\");\n   ImgPlus<?> xyczT = ImgUtils.swapAxes(xyzct, Axes.Z, Axes.CHANNEL);\n```\n",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "ImgPlus<?> xyzct = ImgUtils.open(\"image.tif\");\n   ImgPlus<?> xyczT = ImgUtils.swapAxes(xyzct, Axes.Z, Axes.CHANNEL);",
+        "ImgPlus<?> xyzct = ImgUtils.open(\"image.tif\");\n   ImgPlus<?> xyczT = ImgUtils.swapAxes(xyzct, Axes.Z, Axes.CHANNEL);"
+      ]
+    },
+    {
+      "name": "toImagePlus",
+      "overloads": [
+        {
+          "signature": "toImagePlus(ImgPlus) -> ImagePlus",
+          "params": [
+            {
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
@@ -919,91 +2289,17 @@
           "throws": {}
         },
         {
-          "signature": "static toImagePlus(ImgPlus, [J, [J) -> ImagePlus",
+          "signature": "toImagePlus(ImgPlus, String) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static toImagePlus(ImgPlus, [J, [J, long, boolean) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[J",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "[J",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "long",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "ImagePlus",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static toImagePlus(ImgPlus, String) -> ImagePlus",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
+              "name": "name",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -1014,38 +2310,170 @@
           "java_return_type": "ImagePlus",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "toImagePlus(ImgPlus, long[], long[]) -> ImagePlus",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "toImagePlus(ImgPlus, long[], long[], long, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "bboxMin",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "bboxMax",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "padPixels",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "materialize",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static toImagePlus",
+      "documentation": "Java method: toImagePlus",
       "javadoc_description": "Convert an ImgPlus to an ImagePlus, cropping to a bounding box. Convenience overload without padding.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static wrapWithAxes",
+      "name": "toUnsignedShortIfFloat",
       "overloads": [
         {
-          "signature": "static wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
+          "signature": "toUnsignedShortIfFloat(RandomAccessibleInterval) -> RandomAccessibleInterval",
           "params": [
             {
-              "name": "arg0",
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the source image",
+              "javadoc_name": "rai"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "a 16-bit RAI, or the original RAI if not float",
+          "throws": {}
+        },
+        {
+          "signature": "toUnsignedShortIfFloat(RandomAccessibleInterval, double, double) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toUnsignedShortIfFloat",
+      "javadoc_description": "Returns a 16-bit view of the given RAI if its pixel type is `FloatType`, normalizing to the given min/max range.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "wrapWithAxes",
+      "overloads": [
+        {
+          "signature": "wrapWithAxes(RandomAccessibleInterval, ImgPlus, String) -> ImgPlus",
+          "params": [
+            {
+              "name": "rai",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the RAI to wrap",
               "javadoc_name": "rai"
             },
             {
-              "name": "arg1",
+              "name": "source",
               "type": "Any",
               "java_type": "ImgPlus",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "name",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -1060,12 +2488,81 @@
           }
         }
       ],
-      "documentation": "Java method: static wrapWithAxes",
+      "documentation": "Java method: wrapWithAxes",
       "javadoc_description": "Wrap a RandomAccessibleInterval with axis metadata from a source ImgPlus.\n\nUseful for wrapping op results with proper calibration.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "wrapWithSpacing",
+      "overloads": [
+        {
+          "signature": "wrapWithSpacing(RandomAccessibleInterval, double[]) -> ImgPlus",
+          "params": [
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the source image",
+              "javadoc_name": "rai"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "an ImgPlus with calibrated spatial axes",
+          "throws": {
+            "IllegalArgumentException": "- if rai is null or any spacing value is not positive"
+          }
+        },
+        {
+          "signature": "wrapWithSpacing(RandomAccessibleInterval, double[], String) -> ImgPlus",
+          "params": [
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: wrapWithSpacing",
+      "javadoc_description": "Wraps a RandomAccessibleInterval as an ImgPlus with calibrated axes (no unit).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "wrapWithSpacing(RandomAccessibleInterval, double[], String)"
+      ],
       "examples": []
     }
   ],
@@ -1079,32 +2576,35 @@
     "implements": []
   },
   "nested_classes": [
+    "ImgUtils.MaxProjection",
+    "ImgUtils.OmeZarrCalibration",
     "ImgUtils.SliceResult"
   ],
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "maxProjectionWithDepth(RandomAccessibleInterval, int, long, long)",
     "Object",
-    "crop(RandomAccessibleInterval, long[], long[], long)",
-    "for extracting specific C/T indices",
+    "wrapWithSpacing(RandomAccessibleInterval, double[], String)",
     "isLabelImage(RandomAccessibleInterval, int)",
-    "wrapWithSpacing(RandomAccessibleInterval, double[], String)"
+    "for extracting specific C/T indices",
+    "crop(RandomAccessibleInterval, long[], long[], long)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 61,
-      "total_json_methods": 20,
-      "total_matches": 30,
-      "exact_matches": 30,
+      "total_javadoc_methods": 76,
+      "total_json_methods": 58,
+      "total_matches": 76,
+      "exact_matches": 76,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 31,
-      "unmatched_json": -10,
-      "match_percentage": 49.2
+      "unmatched_javadoc": 0,
+      "unmatched_json": -18,
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 31,
+    "unmatched_javadoc_methods": 0,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.59
+    "enhancement_quality_score": 1.0
   }
 }

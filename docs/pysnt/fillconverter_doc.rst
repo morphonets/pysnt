@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt``
 
-Map filled nodes from a Collection of FillerThreads to and between RandomAccessibles.
+Map filled nodes from a ``Collection`` of `FillerThread`s to and between `RandomAccessible`s.
 
 
 Methods
@@ -66,7 +66,7 @@ Getters Methods
 
 .. py:method:: getFillerStack()
 
-   Merges the input FillerThreads into a single SearchImageStack. When a filled voxel position is present in multiple filler instances, the node with the lowest g-score is chosen for inclusion in the merged stack.
+   Merges the input `FillerThread`s into a single ``SearchImageStack``. When a filled voxel position is present in multiple filler instances, the node with the lowest g-score is chosen for inclusion in the merged stack.
 
 
 Other Methods
@@ -85,12 +85,12 @@ Other Methods
 
 .. py:method:: convertDistance(RandomAccessible)
 
-   Map the node distance measure to fill voxel positions. This corresponds to the g-score of a node assigned during the Dijkstra search. This value is stored as Double.
+   Map the node distance measure to fill voxel positions. This corresponds to the g-score of a node assigned during the Dijkstra search. This value is stored as ``Double``.
 
 
 .. py:method:: convertLabels(RandomAccessible)
 
-   Map the fill component label to fill voxel positions. The concrete IntegerType should be chosen based on the cardinality of the given Collection of FillerThreads. For example, if there are less than 256 FillerThreads, choose UnsignedByteType. If there are more than 255 but less than 65536, choose UnsignedShortType, etc. Fill components are assigned labels based on their order in the collection. If you want to ensure labels are assigned based on insertion order, make sure to use an ordered collection such as List or LinkedHashSet. The first component will have label == 1, the second label == 2, and so on. The label 0 is not assigned to any voxel positions. 0-valued voxels may already exist in the output image.
+   Map the fill component label to fill voxel positions. The concrete ``IntegerType`` should be chosen based on the cardinality of the given ``Collection`` of `FillerThread`s. For example, if there are less than 256 `FillerThread`s, choose ``UnsignedByteType``. If there are more than 255 but less than 65536, choose ``UnsignedShortType``, etc. Fill components are assigned labels based on their order in the collection. If you want to ensure labels are assigned based on insertion order, make sure to use an ordered collection such as ``List`` or ``LinkedHashSet``. The first component will have label == 1, the second label == 2, and so on. The label 0 is not assigned to any voxel positions. 0-valued voxels may already exist in the output image.
 
 
 See Also

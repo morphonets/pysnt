@@ -88,7 +88,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static download(String, File)
+.. py:method:: download(String, File)
 
    
 

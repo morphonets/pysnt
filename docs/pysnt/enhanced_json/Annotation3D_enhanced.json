@@ -1,9 +1,9 @@
 {
   "class_name": "Annotation3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:00:52.545372",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.432844",
+  "extracted_at": "2026-11-02T00:24:01.575785",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.390558",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,14 +13,14 @@
           "signature": "colorCode(String, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colormap",
               "type": "str",
               "java_type": "String",
               "description": "- one of COLORMAPS, i.e., \"grayscale\", \"hotcold\", \"rgb\", \"redgreen\", \"whiteblue\", etc.",
               "javadoc_name": "colormap"
             },
             {
-              "name": "arg1",
+              "name": "axis",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -129,7 +129,7 @@
           "params": [],
           "return_type": "str",
           "java_return_type": "String",
-          "return_description": "the annotation type. Either cloud (point cloud), surface, line, plane, or mixed (composite shape).",
+          "return_description": "the annotation type. Either `cloud` (point cloud), `surface`, `line`, `plane`, or `mixed` (composite shape).",
           "throws": {}
         }
       ],
@@ -182,13 +182,13 @@
       "examples": []
     },
     {
-      "name": "static meshToDrawable",
+      "name": "meshToDrawable",
       "overloads": [
         {
-          "signature": "static meshToDrawable(Mesh) -> Drawable",
+          "signature": "meshToDrawable(Mesh) -> Drawable",
           "params": [
             {
-              "name": "arg0",
+              "name": "mesh",
               "type": "Any",
               "java_type": "Mesh",
               "description": "",
@@ -201,9 +201,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static meshToDrawable",
+      "documentation": "Java method: meshToDrawable",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -216,7 +216,7 @@
           "signature": "setBoundingBoxColor(ColorRGB) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "boundingBoxColor",
               "type": "Any",
               "java_type": "ColorRGB",
               "description": "- the color of the mesh bounding box. If null, no bounding box is displayed",
@@ -241,21 +241,14 @@
       "name": "setColor",
       "overloads": [
         {
-          "signature": "setColor(ColorRGB, double) -> void",
+          "signature": "setColor(String) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorRGB",
+              "name": "color",
+              "type": "str",
+              "java_type": "String",
               "description": "- the color to render the imported file, either a 1) HTML color codes starting with hash (",
               "javadoc_name": "color"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double",
-              "description": "), a color preset (\"red\", \"blue\", etc.), or integer triples of the form",
-              "javadoc_name": "#"
             }
           ],
           "return_type": "None",
@@ -264,12 +257,19 @@
           "throws": {}
         },
         {
-          "signature": "setColor(String) -> void",
+          "signature": "setColor(ColorRGB, double) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "transparencyPercent",
+              "type": "float",
+              "java_type": "double",
               "description": "",
               "javadoc_name": null
             }
@@ -283,14 +283,14 @@
           "signature": "setColor(String, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -318,7 +318,7 @@
           "signature": "setSize(Number) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "floatSize",
               "type": "Union[int, float]",
               "java_type": "Number",
               "description": "- the new width. A negative value will set width to Viewer3D's default.",
@@ -346,7 +346,7 @@
           "signature": "setTransparency(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "- the color transparency (in percentage)",
@@ -374,7 +374,7 @@
           "signature": "setWireframeColor(ColorRGB) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB",
               "description": "- the wireframe color. Ignored if the annotation has no wireframe.",
@@ -390,7 +390,7 @@
           "signature": "setWireframeColor(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -418,59 +418,15 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Annotation3D(Polygon2D, ColorRGB, String)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Polygon2D"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "Annotation3D(Mesh, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "mesh",
               "type": "Any",
               "java_type": "Mesh"
             },
             {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "Annotation3D(Mesh, ColorRGB, String)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Mesh"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB"
-            },
-            {
-              "name": "arg2",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
@@ -482,17 +438,61 @@
           "signature": "Annotation3D(AbstractConvexHull, ColorRGB, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "hull",
               "type": "Any",
               "java_type": "AbstractConvexHull"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB"
             },
             {
-              "name": "arg2",
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(Mesh, ColorRGB, String)",
+          "params": [
+            {
+              "name": "mesh",
+              "type": "Any",
+              "java_type": "Mesh"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Annotation3D(Polygon2D, ColorRGB, String)",
+          "params": [
+            {
+              "name": "polygon",
+              "type": "Any",
+              "java_type": "Polygon2D"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
@@ -501,10 +501,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Annotation3D"
+      "documentation": "Constructors of Annotation3D"
     }
   ],
-  "javadoc_description": "An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in Viewer3D that can be used to highlight nodes in a Tree or locations in a mesh.",
+  "javadoc_description": "An Annotation3D is a triangulated surface or a cloud of points (scatter) rendered in `Viewer3D` that can be used to highlight nodes in a `Tree` or locations in a `mesh`.",
   "inheritance": {
     "extends": [
       "Object"
@@ -515,8 +515,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object",
-    "Constant Field Values"
+    "Constant Field Values",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

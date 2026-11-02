@@ -14,12 +14,12 @@ CURATED_CLASSES = [
     "LinearProfileStats",
     "NormalizedProfileStats",
     "PolarProfileStats",
-    "ShollStats"
+    "ShollStats",
 ]
 
 # Extended classes - available via get_class() after discovery
 EXTENDED_CLASSES = [
-    "CommonStats", "Comparator"
+    "Comparator",
 ]
 
 # Global registries

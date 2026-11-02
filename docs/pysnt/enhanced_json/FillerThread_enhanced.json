@@ -1,9 +1,9 @@
 {
   "class_name": "FillerThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-01-02T22:36:44.513801",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.368907",
+  "extracted_at": "2026-11-02T00:24:01.622986",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.307596",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,14 +13,14 @@
           "signature": "addNode(DefaultSearchNode, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "n",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -48,7 +48,7 @@
           "signature": "addProgressListener(SearchProgressCallback) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "callback",
               "type": "Any",
               "java_type": "SearchProgressCallback",
               "description": "",
@@ -76,56 +76,56 @@
           "signature": "createNewNode(int, int, int, double, double, DefaultSearchNode, byte) -> DefaultSearchNode",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "g",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
+              "name": "h",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg5",
-              "type": "Any",
+              "name": "predecessor",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg6",
+              "name": "searchStatus",
               "type": "int",
               "java_type": "byte",
               "description": "",
               "javadoc_name": null
             }
           ],
-          "return_type": "Any",
+          "return_type": "DefaultSearchNode",
           "java_return_type": "DefaultSearchNode",
           "return_description": "",
           "throws": {}
@@ -140,38 +140,31 @@
       "examples": []
     },
     {
-      "name": "static fromFill",
+      "name": "fromFill",
       "overloads": [
         {
-          "signature": "static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread",
+          "signature": "fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
-              "java_type": "RandomAccessibleInterval",
+              "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "stats",
               "type": "Any",
-              "java_type": "Calibration",
+              "java_type": "ImageStatistics",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImageStatistics",
-              "description": "",
-              "javadoc_name": "param_2"
-            },
-            {
-              "name": "arg3",
-              "type": "Any",
+              "name": "fill",
+              "type": "Fill",
               "java_type": "Fill",
               "description": "",
-              "javadoc_name": "param_3"
+              "javadoc_name": "param_2"
             }
           ],
           "return_type": "FillerThread",
@@ -180,25 +173,32 @@
           "throws": {}
         },
         {
-          "signature": "static fromFill(ImagePlus, ImageStatistics, Fill) -> FillerThread",
+          "signature": "fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill) -> FillerThread",
           "params": [
             {
-              "name": "arg0",
+              "name": "image",
               "type": "Any",
-              "java_type": "ImagePlus",
+              "java_type": "RandomAccessibleInterval",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "calibration",
+              "type": "Any",
+              "java_type": "Calibration",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "stats",
               "type": "Any",
               "java_type": "ImageStatistics",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
-              "type": "Any",
+              "name": "fill",
+              "type": "Fill",
               "java_type": "Fill",
               "description": "",
               "javadoc_name": null
@@ -210,9 +210,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static fromFill",
+      "documentation": "Java method: fromFill",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -225,21 +225,21 @@
           "signature": "getDistanceAtPoint(double, double, double) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "xd",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "yd",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "zd",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -286,7 +286,7 @@
         {
           "signature": "getFill() -> Fill",
           "params": [],
-          "return_type": "Any",
+          "return_type": "Fill",
           "java_return_type": "Fill",
           "return_description": "",
           "throws": {}
@@ -306,7 +306,7 @@
         {
           "signature": "getNodesAsImage() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "",
           "throws": {}
@@ -326,7 +326,7 @@
         {
           "signature": "getNodesAsImageFromGoal() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "",
           "throws": {}
@@ -346,7 +346,7 @@
         {
           "signature": "getNodesAsImageFromStart() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "",
           "throws": {}
@@ -374,6 +374,26 @@
       ],
       "documentation": "Java method: getResult",
       "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSourcePaths",
+      "overloads": [
+        {
+          "signature": "getSourcePaths() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "the source paths (empty if undefined)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSourcePaths",
+      "javadoc_description": "Returns the paths this fill originated from.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -447,7 +467,7 @@
           "signature": "reportFinished(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -495,7 +515,7 @@
           "signature": "setSourcePaths(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newSourcePaths",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -523,7 +543,7 @@
           "signature": "setStopAtThreshold(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "stopAtThreshold",
               "type": "bool",
               "java_type": "boolean",
               "description": "-",
@@ -551,7 +571,7 @@
           "signature": "setStoreExtraNodes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "storeExtraNodes",
               "type": "bool",
               "java_type": "boolean",
               "description": "-",
@@ -565,7 +585,7 @@
         }
       ],
       "documentation": "Java method: setStoreExtraNodes",
-      "javadoc_description": "Whether to store above-threshold nodes in the Fill object. The default is true.",
+      "javadoc_description": "Whether to store above-threshold nodes in the `Fill` object. The default is true.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -581,7 +601,7 @@
           "signature": "setThreshold(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "threshold",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -603,55 +623,26 @@
       "examples": []
     }
   ],
-  "fields": [
-    {
-      "name": "imgDepth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgDepth of type int"
-    },
-    {
-      "name": "imgHeight",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgHeight of type int"
-    },
-    {
-      "name": "imgWidth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgWidth of type int"
-    }
-  ],
+  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, long, Cost)",
+          "signature": "FillerThread(Dataset, double, Cost)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
-              "java_type": "RandomAccessibleInterval"
+              "java_type": "Dataset"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Calibration"
-            },
-            {
-              "name": "arg2",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "long"
-            },
-            {
-              "name": "arg4",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             }
@@ -663,22 +654,22 @@
           "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, Cost)",
           "params": [
             {
-              "name": "arg0",
+              "name": "image",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "calibration",
               "type": "Any",
               "java_type": "Calibration"
             },
             {
-              "name": "arg2",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             }
@@ -690,27 +681,27 @@
           "signature": "FillerThread(Dataset, double, int, long, Cost)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             },
             {
-              "name": "arg1",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "timeoutSeconds",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "reportEveryMilliseconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg4",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             }
@@ -719,101 +710,69 @@
           "java_return_type": "void"
         },
         {
-          "signature": "FillerThread(Dataset, double, Cost)",
+          "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, long, Cost)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Dataset"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "Cost"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, int, long, Cost, SNT$SearchImageType)",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "image",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "calibration",
               "type": "Any",
               "java_type": "Calibration"
             },
             {
-              "name": "arg2",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg4",
+              "name": "reportEveryMilliseconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg5",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
-            },
-            {
-              "name": "arg6",
-              "type": "Any",
-              "java_type": "SNT$SearchImageType"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "FillerThread(Dataset, double, int, long, Cost, SNT$SearchImageType)",
+          "signature": "FillerThread(Dataset, double, int, long, Cost, SearchImageType)",
           "params": [
             {
-              "name": "arg0",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             },
             {
-              "name": "arg1",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "timeoutSeconds",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "reportEveryMilliseconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg4",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg5",
+              "name": "searchImageType",
               "type": "Any",
-              "java_type": "SNT$SearchImageType"
+              "java_type": "SearchImageType"
             }
           ],
           "return_type": "None",
@@ -823,44 +782,86 @@
           "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, int, long, Cost)",
           "params": [
             {
-              "name": "arg0",
+              "name": "image",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "calibration",
               "type": "Any",
               "java_type": "Calibration"
             },
             {
-              "name": "arg2",
+              "name": "initialThreshold",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "timeoutSeconds",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "reportEveryMilliseconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg5",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "FillerThread(RandomAccessibleInterval, Calibration, double, int, long, Cost, SearchImageType)",
+          "params": [
+            {
+              "name": "image",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "calibration",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "initialThreshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "timeoutSeconds",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "reportEveryMilliseconds",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "costFunction",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for FillerThread"
+      "documentation": "Constructors of FillerThread"
     }
   ],
-  "javadoc_description": "Seeded-volume segmentation via single-source shortest paths. Path nodes are used as seed points in an open-ended variant of Dijkstra's algorithm. The threshold sets the maximum allowable distance for a node to be included in the Fill. This distance is represented in the g-score of a node, which is the length of the shortest path from a seed point to that node. The magnitudes of these distances are heavily dependent on the supplied cost function Cost, so the threshold should be set with a particular cost function in mind. It often helps to adjust the threshold interactively.",
+  "javadoc_description": "Seeded-volume segmentation via single-source shortest paths. Path nodes are used as seed points in an open-ended variant of Dijkstra's algorithm. The threshold sets the maximum allowable distance for a node to be included in the `Fill`. This distance is represented in the g-score of a node, which is the length of the shortest path from a seed point to that node. The magnitudes of these distances are heavily dependent on the supplied cost function `Cost`, so the threshold should be set with a particular cost function in mind. It often helps to adjust the threshold interactively.",
   "inheritance": {
     "extends": [
       "SearchThread"
@@ -871,15 +872,15 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "getFill()",
-    "SearchThread"
+    "SearchThread",
+    "getFill()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 15,
-      "total_json_methods": 20,
-      "total_matches": 15,
-      "exact_matches": 13,
+      "total_javadoc_methods": 16,
+      "total_json_methods": 21,
+      "total_matches": 16,
+      "exact_matches": 14,
       "signature_matches": 2,
       "fuzzy_matches": 0,
       "name_only_matches": 0,

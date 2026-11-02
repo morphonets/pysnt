@@ -1,9 +1,9 @@
 {
   "class_name": "DefaultSearchNode",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-09-27T23:00:55.801207",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.427895",
+  "extracted_at": "2026-11-02T00:24:01.604736",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.373899",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,28 +13,28 @@
           "signature": "asPath(double, double, double, String) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "spacing_units",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -62,28 +62,28 @@
           "signature": "asPathReversed(double, double, double, String) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "spacing_units",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -111,27 +111,11 @@
           "signature": "compareTo(DefaultSearchNode) -> int",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "o",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
             }
           ],
           "return_type": "int",
@@ -149,13 +133,41 @@
       "examples": []
     },
     {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getHandle",
       "overloads": [
         {
-          "signature": "getHandle() -> AddressableHeap$Handle",
+          "signature": "getHandle() -> Handle",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "AddressableHeap$Handle",
+          "java_return_type": "Handle",
           "return_description": "",
           "throws": {}
         }
@@ -174,7 +186,7 @@
         {
           "signature": "getPredecessor() -> DefaultSearchNode",
           "params": [],
-          "return_type": "Any",
+          "return_type": "DefaultSearchNode",
           "java_return_type": "DefaultSearchNode",
           "return_description": "",
           "throws": {}
@@ -249,14 +261,34 @@
       "examples": []
     },
     {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "setFrom",
       "overloads": [
         {
           "signature": "setFrom(DefaultSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "another",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": "param_0"
@@ -280,12 +312,12 @@
       "name": "setHandle",
       "overloads": [
         {
-          "signature": "setHandle(AddressableHeap$Handle) -> void",
+          "signature": "setHandle(Handle) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "handle",
               "type": "Any",
-              "java_type": "AddressableHeap$Handle",
+              "java_type": "Handle",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -311,8 +343,8 @@
           "signature": "setPredecessor(DefaultSearchNode) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "p",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": "param_0"
@@ -327,6 +359,26 @@
       "documentation": "Java method: setPredecessor",
       "javadoc_description": "",
       "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -355,12 +407,12 @@
     {
       "name": "heapHandle",
       "type": "Any",
-      "java_type": "AddressableHeap$Handle",
-      "documentation": "Field heapHandle of type AddressableHeap$Handle"
+      "java_type": "Handle",
+      "documentation": "Field heapHandle of type Handle"
     },
     {
       "name": "predecessor",
-      "type": "Any",
+      "type": "DefaultSearchNode",
       "java_type": "DefaultSearchNode",
       "documentation": "Field predecessor of type DefaultSearchNode"
     },
@@ -403,37 +455,37 @@
           "signature": "DefaultSearchNode(int, int, int, double, double, DefaultSearchNode, byte)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "g",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "h",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
-              "type": "Any",
+              "name": "predecessor",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode"
             },
             {
-              "name": "arg6",
+              "name": "searchStatus",
               "type": "int",
               "java_type": "byte"
             }
@@ -442,10 +494,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for DefaultSearchNode"
+      "documentation": "Constructors of DefaultSearchNode"
     }
   ],
-  "javadoc_description": "A SearchNode which can maintain both a from-start and from-goal search state.",
+  "javadoc_description": "A `SearchNode` which can maintain both a from-start and from-goal search state.",
   "inheritance": {
     "extends": [
       "Object",
@@ -471,18 +523,18 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 14,
-      "total_json_methods": 11,
-      "total_matches": 11,
-      "exact_matches": 11,
+      "total_json_methods": 14,
+      "total_matches": 14,
+      "exact_matches": 14,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 3,
+      "unmatched_javadoc": 0,
       "unmatched_json": 0,
-      "match_percentage": 78.6
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 3,
+    "unmatched_javadoc_methods": 0,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.943
+    "enhancement_quality_score": 1.0
   }
 }

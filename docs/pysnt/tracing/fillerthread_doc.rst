@@ -53,23 +53,7 @@
 
 **Package:** ``sc.fiji.snt.tracing``
 
-Seeded-volume segmentation via single-source shortest paths. Path nodes are used as seed points in an open-ended variant of Dijkstra's algorithm. The threshold sets the maximum allowable distance for a node to be included in the Fill. This distance is represented in the g-score of a node, which is the length of the shortest path from a seed point to that node. The magnitudes of these distances are heavily dependent on the supplied cost function Cost, so the threshold should be set with a particular cost function in mind. It often helps to adjust the threshold interactively.
-
-
-Fields
-------
-
-
-**imgDepth** : ``int``
-    No description available.
-
-
-**imgHeight** : ``int``
-    No description available.
-
-
-**imgWidth** : ``int``
-    No description available.
+Seeded-volume segmentation via single-source shortest paths. Path nodes are used as seed points in an open-ended variant of Dijkstra's algorithm. The threshold sets the maximum allowable distance for a node to be included in the ``Fill``. This distance is represented in the g-score of a node, which is the length of the shortest path from a seed point to that node. The magnitudes of these distances are heavily dependent on the supplied cost function ``Cost``, so the threshold should be set with a particular cost function in mind. It often helps to adjust the threshold interactively.
 
 
 Methods
@@ -115,6 +99,11 @@ Getters Methods
    
 
 
+.. py:method:: getSourcePaths()
+
+   Returns the paths this fill originated from.
+
+
 .. py:method:: getThreshold()
 
    
@@ -136,7 +125,7 @@ Setters Methods
 
 .. py:method:: setStoreExtraNodes(boolean)
 
-   Whether to store above-threshold nodes in the Fill object. The default is true.
+   Whether to store above-threshold nodes in the ``Fill`` object. The default is true.
 
 
 .. py:method:: setThreshold(double)
@@ -163,7 +152,7 @@ Other Methods
    
 
 
-.. py:method:: static fromFill(RandomAccessibleInterval, Calibration, ImageStatistics, Fill)
+.. py:method:: fromFill(ImagePlus, ImageStatistics, Fill)
 
    
 

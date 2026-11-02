@@ -632,6 +632,9 @@ class JavaDocHTMLParser:
         # Extract and preserve code examples before cleaning
         code_blocks = self._extract_and_preserve_code_blocks(soup)
         
+        # Keep lists, emphasis and paragraphs (otherwise get_text() flattens them)
+        self._preserve_html_structure(soup)
+
         # Handle special JavaDoc tags
         cleaned_text = self._process_javadoc_tags(soup)
         
@@ -662,6 +665,43 @@ class JavaDocHTMLParser:
         
         return code_blocks
     
+    def _preserve_html_structure(self, soup: BeautifulSoup) -> None:
+        """
+        Rewrite structural HTML into text markers that survive get_text():
+        <ul>/<ol> items -> '- ' / '#. ' list items, <b>/<strong> -> **x**, <i>/<em> -> *x*,
+        short <code> -> `x`, <p>/<br> -> paragraph/line breaks. Operates in place.
+        """
+        from bs4 import NavigableString
+
+        def compact(tag):
+            return re.sub(r'\s+', ' ', tag.get_text(' ')).strip()
+
+        # Innermost first, so nested markers are already text when the outer tag is read
+        for tag in reversed(soup.find_all(['b', 'strong', 'i', 'em', 'code'])):
+            text = compact(tag)
+            if not text or text.startswith('__CODE_BLOCK_'):
+                continue
+            if tag.name in ('b', 'strong'):
+                tag.replace_with(NavigableString(f'**{text}**'))
+            elif tag.name in ('i', 'em'):
+                tag.replace_with(NavigableString(f'*{text}*'))
+            else:
+                tag.replace_with(NavigableString(f'`{text}`'))
+
+        for li in reversed(soup.find_all('li')):
+            parent = li.find_parent(['ol', 'ul'])
+            marker = '#. ' if parent is not None and parent.name == 'ol' else '- '
+            li.replace_with(NavigableString(f'\n\n{marker}{compact(li)}'))
+        for lst in soup.find_all(['ul', 'ol']):
+            lst.insert_before(NavigableString('\n\n'))
+            lst.insert_after(NavigableString('\n\n'))
+
+        for br in soup.find_all('br'):
+            br.replace_with(NavigableString('\n\n'))
+        for p in soup.find_all('p'):
+            p.insert_before(NavigableString('\n\n'))
+            p.insert_after(NavigableString('\n\n'))
+
     def _process_javadoc_tags(self, soup: BeautifulSoup) -> str:
         """Process special JavaDoc tags (@param, @return, @deprecated, @since, etc.)."""
         text = soup.get_text()

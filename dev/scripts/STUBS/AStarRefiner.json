@@ -1,8 +1,13 @@
 {
   "class_name": "AStarRefiner",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:51.720022",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.AStarRefiner",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.571374",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "apply",
@@ -11,7 +16,8 @@
           "signature": "apply() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: apply"
@@ -23,13 +29,14 @@
           "signature": "applySettings(AStarRefiner) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "ref",
+              "type": "AStarRefiner",
               "java_type": "AStarRefiner"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: applySettings"
@@ -41,13 +48,8 @@
           "signature": "call() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: call"
@@ -59,7 +61,8 @@
           "signature": "getFailureReason() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFailureReason"
@@ -71,7 +74,8 @@
           "signature": "getPath() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPath"
@@ -83,7 +87,8 @@
           "signature": "readPreferences() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: readPreferences"
@@ -95,13 +100,13 @@
           "signature": "succeeded() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: succeeded"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -110,12 +115,12 @@
           "signature": "AStarRefiner(SNT, Path)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
@@ -124,29 +129,31 @@
           "java_return_type": "void"
         },
         {
-          "signature": "AStarRefiner(SNT, Path, SNT$SearchSettingsSnapshot)",
+          "signature": "AStarRefiner(SNT, Path, SearchSettingsSnapshot)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg2",
+              "name": "settings",
               "type": "Any",
-              "java_type": "SNT$SearchSettingsSnapshot"
+              "java_type": "SearchSettingsSnapshot"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for AStarRefiner"
+      "documentation": "Constructors of AStarRefiner"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

@@ -53,11 +53,19 @@
 
 **Package:** ``sc.fiji.snt``
 
-Stateless renderer that draws a SeedOverlay's seeds onto a TracerCanvas's Graphics2D. Invoked from `TracerCanvas.drawOverlay(Graphics2D)` after paths are drawn so seeds appear on top.
+Stateless renderer that draws a ``SeedOverlay``'s seeds onto a ``TracerCanvas``'s ``Graphics2D``. Invoked from ``TracerCanvas.drawOverlay(Graphics2D)`` after paths are drawn so seeds appear on top.
 
 Visual conventions:
 
-Color is looked up from the overlay's active ColorTable using the seed's confidence normalized to [low, high]. Seeds outside that range are not drawn. Radius on screen is the seed's physical radius converted to voxels (using the active image's in-plane spacing) and then to canvas pixels via the current magnification. A small floor is applied so high-zoom-out seeds remain clickable. Alpha falls off with distance from the current depth slice (per-plane); seeds outside the canvas's eitherSide band (when just_near_slices is on) are skipped. Seeds whose 2D projection falls outside the visible canvas rectangle are skipped (the dominant performance optimization when the user is zoomed in). When the visible post-cull set exceeds SUBSAMPLE_RENDER_CAP, only the top-K seeds by confidence are drawn (full set remains available for queries).
+- **Color** is looked up from the overlay's active ``ColorTable`` using the seed's confidence normalized to ``[low, high]`` . Seeds outside that range are not drawn.
+
+- **Radius** on screen is the seed's physical radius converted to voxels (using the active image's in-plane spacing) and then to canvas pixels via the current magnification. A small floor is applied so high-zoom-out seeds remain clickable.
+
+- **Alpha** falls off with distance from the current depth slice (per-plane); seeds outside the canvas's ``eitherSide`` band (when ``just_near_slices`` is on) are skipped.
+
+- Seeds whose 2D projection falls outside the visible canvas rectangle are skipped (the dominant performance optimization when the user is zoomed in).
+
+- When the visible post-cull set exceeds ``SUBSAMPLE_RENDER_CAP`` , only the top-K seeds by confidence are drawn (full set remains available for queries).
 
 
 Methods
@@ -68,11 +76,11 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static colorForSeed(ColorTable, Color, SeedOverlay$ColorMode, SeedPoint, double, double, double, Map, Map)
+.. py:method:: colorForSeed(ColorTable, Color, ColorMode, SeedPoint, double, double, double, Map, Map)
 
    Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on confidence); INDEX / TYPE / SOURCE use a categorical key and full opacity so every seed contributes equal visual weight.
 
-Public so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass depthFalloff = 1.0 when there's no slice-distance concept (table rows have no Z).
+   Public so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass ``depthFalloff = 1.0`` when there's no slice-distance concept (table rows have no Z).
 
 
 See Also

@@ -1,0 +1,430 @@
+{
+  "class_name": "PlausibilityMonitor",
+  "package": "sc.fiji.snt.analysis.curation",
+  "java_name": "sc.fiji.snt.analysis.curation.PlausibilityMonitor",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.683323",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "addWarningListener",
+      "overloads": [
+        {
+          "signature": "addWarningListener(WarningListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "WarningListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addWarningListener"
+    },
+    {
+      "name": "clearForkContext",
+      "overloads": [
+        {
+          "signature": "clearForkContext() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: clearForkContext"
+    },
+    {
+      "name": "getCurrentWarnings",
+      "overloads": [
+        {
+          "signature": "getCurrentWarnings() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCurrentWarnings"
+    },
+    {
+      "name": "getDeepCheck",
+      "overloads": [
+        {
+          "signature": "getDeepCheck(Class) -> DeepCheck",
+          "params": [
+            {
+              "name": "type",
+              "type": "type",
+              "java_type": "Class"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DeepCheck",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDeepCheck"
+    },
+    {
+      "name": "getDeepChecks",
+      "overloads": [
+        {
+          "signature": "getDeepChecks() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDeepChecks"
+    },
+    {
+      "name": "getLiveCheck",
+      "overloads": [
+        {
+          "signature": "getLiveCheck(Class) -> LiveCheck",
+          "params": [
+            {
+              "name": "type",
+              "type": "type",
+              "java_type": "Class"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "LiveCheck",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLiveCheck"
+    },
+    {
+      "name": "getLiveChecks",
+      "overloads": [
+        {
+          "signature": "getLiveChecks() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLiveChecks"
+    },
+    {
+      "name": "impactKindFor",
+      "overloads": [
+        {
+          "signature": "impactKindFor(String) -> ImpactKind",
+          "params": [
+            {
+              "name": "checkName",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImpactKind",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: impactKindFor"
+    },
+    {
+      "name": "isEnabled",
+      "overloads": [
+        {
+          "signature": "isEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isEnabled"
+    },
+    {
+      "name": "isLastUpdateFromLiveCheck",
+      "overloads": [
+        {
+          "signature": "isLastUpdateFromLiveCheck() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isLastUpdateFromLiveCheck"
+    },
+    {
+      "name": "measure",
+      "overloads": [
+        {
+          "signature": "measure(DeepCheck, Collection) -> Measurements",
+          "params": [
+            {
+              "name": "deepCheck",
+              "type": "Any",
+              "java_type": "DeepCheck"
+            },
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Measurements",
+          "is_static": false
+        },
+        {
+          "signature": "measure(LiveCheck, Collection) -> Measurements",
+          "params": [
+            {
+              "name": "liveCheck",
+              "type": "Any",
+              "java_type": "LiveCheck"
+            },
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Measurements",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: measure"
+    },
+    {
+      "name": "onForkInitiated",
+      "overloads": [
+        {
+          "signature": "onForkInitiated(Path, int) -> void",
+          "params": [
+            {
+              "name": "parent",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "branchIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: onForkInitiated"
+    },
+    {
+      "name": "onNodeEdited",
+      "overloads": [
+        {
+          "signature": "onNodeEdited(Path, int) -> List",
+          "params": [
+            {
+              "name": "editedPath",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: onNodeEdited"
+    },
+    {
+      "name": "onPathFinalized",
+      "overloads": [
+        {
+          "signature": "onPathFinalized(Path) -> List",
+          "params": [
+            {
+              "name": "completedChild",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: onPathFinalized"
+    },
+    {
+      "name": "onSegmentCompleted",
+      "overloads": [
+        {
+          "signature": "onSegmentCompleted(Path) -> List",
+          "params": [
+            {
+              "name": "candidateChild",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: onSegmentCompleted"
+    },
+    {
+      "name": "removeWarningListener",
+      "overloads": [
+        {
+          "signature": "removeWarningListener(WarningListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "WarningListener"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeWarningListener"
+    },
+    {
+      "name": "runDeepScan",
+      "overloads": [
+        {
+          "signature": "runDeepScan(Collection) -> List",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: runDeepScan"
+    },
+    {
+      "name": "runFullScan",
+      "overloads": [
+        {
+          "signature": "runFullScan(Collection) -> List",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: runFullScan"
+    },
+    {
+      "name": "setEnabled",
+      "overloads": [
+        {
+          "signature": "setEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setEnabled"
+    },
+    {
+      "name": "setImageData",
+      "overloads": [
+        {
+          "signature": "setImageData(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setImageData"
+    },
+    {
+      "name": "setImageStats",
+      "overloads": [
+        {
+          "signature": "setImageStats(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setImageStats"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PlausibilityMonitor()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of PlausibilityMonitor"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

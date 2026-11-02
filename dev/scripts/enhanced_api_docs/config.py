@@ -11,6 +11,17 @@ import yaml
 class Config:
     """Configuration manager for enhanced API documentation system."""
     
+    def _find_javadoc_jar(self) -> Path:
+        """
+        JavaDoc jar to document: $PYSNT_JAVADOC, else the newest SNT-*-javadoc.jar
+        in dev/scripts (e.g., copied from SNT/target after `mvn javadoc:jar`).
+        """
+        env = os.environ.get('PYSNT_JAVADOC')
+        if env:
+            return Path(env).expanduser()
+        jars = sorted(self.script_dir.glob('SNT-*-javadoc.jar'), key=lambda p: p.stat().st_mtime)
+        return jars[-1] if jars else self.script_dir / 'SNT-javadoc.jar'
+
     def __init__(self, config_file: Optional[Path] = None):
         """Initialize configuration with default values."""
         self.script_dir = Path(__file__).parent.parent
@@ -19,7 +30,7 @@ class Config:
         # Default configuration
         self.config = {
             'javadoc': {
-                'source_zip': self.script_dir / 'SNT-5.0.18-javadoc.jar',
+                'source_zip': self._find_javadoc_jar(),
                 'extract_dir': self.script_dir / 'javadoc_extracted',
                 'base_url': 'https://javadoc.scijava.org/SNT/'
             },

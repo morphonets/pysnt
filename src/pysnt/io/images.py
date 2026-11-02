@@ -627,11 +627,3 @@ def inspect_zarr(path: Union[str, Path], max_depth: int = 3) -> dict:
         }
     }
 
-
-def _inspect_zarr_n5(path_str: str, max_depth: int = 3) -> dict:
-    """
-    Inspect OME-ZARR using N5 readers for detailed structure analysis.
-
-    Deprecated: Use inspect_zarr() which now uses Python zarr directly.
-    """
-    return inspect_zarr(path_str, max_depth)

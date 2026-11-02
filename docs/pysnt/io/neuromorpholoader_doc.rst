@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static get(String)
+.. py:method:: get(String)
 
    Convenience method for retrieving SWC data,
 
@@ -96,11 +96,6 @@ Other Methods
 .. py:method:: enableSourceVersion(boolean)
 
    Enables or disables the use of source version URLs.
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

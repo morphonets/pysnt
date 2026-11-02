@@ -57,17 +57,19 @@ Computes a spectral similarity map from a multichannel (e.g., Brainbow) image. F
 
 The per-voxel score combines two terms:
 
-Cosine similarity: dot product of unit-normalized voxel and reference color vectors (1 = identical direction, 0 = orthogonal) Intensity factor: sigmoid falloff based on how much the voxel's total intensity deviates from the reference intensity. This prevents bright background or dim noise from producing high scores
+#. **Cosine similarity** : dot product of unit-normalized voxel and reference color vectors (1 = identical direction, 0 = orthogonal)
 
-The final output is `cosineSimilarity × intensityFactor`, scaled to [0, 1]. High values indicate voxels that match the target neuron's color and brightness.
+#. **Intensity factor** : sigmoid falloff based on how much the voxel's total intensity deviates from the reference intensity. This prevents bright background or dim noise from producing high scores
 
-The input image is a 4D (X, Y, Z, C) `RandomAccessibleInterval` where the last dimension is channels. The output is a 3D (X, Y, Z) scalar image.
+The final output is ``cosineSimilarity × intensityFactor``, scaled to [0, 1]. High values indicate voxels that match the target neuron's color and brightness.
 
-This filter is designed for integration with SNT's secondary layer tracing infrastructure, where any standard cost function (e.g., Reciprocal) applied to the output produces spectrally-aware path searches.
+The input image is a 4D (X, Y, Z, C) ``RandomAccessibleInterval`` where the last dimension is channels. The output is a 3D (X, Y, Z) scalar image.
+
+This filter is designed for integration with SNT's secondary layer tracing infrastructure, where any standard cost function (e.g., ``Reciprocal``) applied to the output produces spectrally-aware path searches.
 
 The color-vector approach to neurite identification in multichannel images is also validated in:
 
-Leiwe et al., "Automated neuronal reconstruction with super-multicolour Tetbow labelling and threshold-based clustering of colour hues", Nat Commun 15, 5279 (2024). doi:10.1038/s41467-024-49455-y
+Leiwe et al., "Automated neuronal reconstruction with super-multicolour Tetbow labelling and threshold-based clustering of colour hues", *Nat Commun* 15, 5279 (2024). doi:10.1038/s41467-024-49455-y
 
 
 Methods
@@ -78,38 +80,9 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getArity()
-
-   
-
-
-.. py:method:: getIndependentInstance()
-
-   
-
-
 .. py:method:: getReferenceColor()
 
    Returns the reference color vector used by this filter.
-
-
-Setters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: setEnvironment(OpEnvironment)
-
-   
-
-
-.. py:method:: setInput(Object)
-
-   
-
-
-.. py:method:: setOutput(Object)
-
-   
 
 
 Analysis Methods
@@ -125,67 +98,50 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: accept(Object)
+.. py:method:: accept(RandomAccessibleInterval)
 
    
 
 
-.. py:method:: andThen(Consumer)
+.. py:method:: averageColorAtPositions(ImageStack[], int[][])
 
-   
-
-
-.. py:method:: static averageColorAtPositions(RandomAccessibleInterval, [[I)
-
-   Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel ImageStacks.
+   Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel `ImageStack`s.
 
 
-.. py:method:: static averageColorFromPaths(RandomAccessibleInterval, List, double, double, double)
+.. py:method:: averageColorFromPaths(RandomAccessibleInterval, List, double, double, double)
 
    As 
-```
-averageColorFromPaths(RandomAccessibleInterval, java.util.List, double, double, double)
-```
-, but also adding a pixel-space offset after scaling (see 
-```
-nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double, double, double, double)
-```
-) - needed whenever input is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero `SNT#getWorldOriginOffset()`.
 
 
-.. py:method:: static channelSum([D)
+   ::
+
+       averageColorFromPaths(RandomAccessibleInterval, java.util.List, double, double, double)
+
+
+   , but also adding a pixel-space offset after scaling (see 
+
+
+   ::
+
+       nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double, double, double, double)
+
+
+   ) - needed whenever ``input`` is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero ``SNT#getWorldOriginOffset()``.
+
+
+.. py:method:: channelSum(double[])
 
    Sums all elements of a vector. Typically used to compute the total intensity across channels of a color vector.
 
 
-.. py:method:: in()
+.. py:method:: nodeToPixelCoords(PointInImage, double, double, double)
 
-   
-
-
-.. py:method:: initialize()
-
-   
+   As ``nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double)``, but also adding a pixel-space offset after scaling - typically ``SNT#getActiveCanvasPixelOffset()``, needed whenever the target image is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero ``SNT#getWorldOriginOffset()`` (see ``SNT#createSearch(double, double, double, double, double, double)`` for the same conversion, applied to A* search endpoints instead of Path nodes).
 
 
-.. py:method:: static nodeToPixelCoords(PointInImage, double, double, double, double, double, double)
-
-   As `nodeToPixelCoords(sc.fiji.snt.util.PointInImage, double, double, double)`, but also adding a pixel-space offset after scaling - typically `SNT#getActiveCanvasPixelOffset()`, needed whenever the target image is the crop-local grid of a materialized crop, or the raw streamed source's own voxel grid under a non-zero `SNT#getWorldOriginOffset()` (see `SNT#createSearch(double, double, double, double, double, double)` for the same conversion, applied to A* search endpoints instead of Path nodes).
-
-
-.. py:method:: static normalizeVector([D)
+.. py:method:: normalizeVector(double[])
 
    Normalizes a vector to unit length in place. If the vector has zero magnitude, it is left unchanged.
-
-
-.. py:method:: ops()
-
-   
-
-
-.. py:method:: out()
-
-   
 
 
 .. py:method:: run()

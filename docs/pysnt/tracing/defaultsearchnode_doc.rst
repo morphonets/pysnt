@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.tracing``
 
-A SearchNode which can maintain both a from-start and from-goal search state.
+A ``SearchNode`` which can maintain both a from-start and from-goal search state.
 
 
 Fields
@@ -76,7 +76,7 @@ Fields
     No description available.
 
 
-**predecessor** : ``Any``
+**predecessor** : ``DefaultSearchNode``
     No description available.
 
 
@@ -129,6 +129,11 @@ Getters Methods
    
 
 
+.. py:method:: hashCode()
+
+   
+
+
 Setters Methods
 ~~~~~~~~~~~~~~~
 
@@ -138,7 +143,7 @@ Setters Methods
    
 
 
-.. py:method:: setHandle(AddressableHeap$Handle)
+.. py:method:: setHandle(Handle)
 
    
 
@@ -163,6 +168,16 @@ Other Methods
 
 
 .. py:method:: compareTo(DefaultSearchNode)
+
+   
+
+
+.. py:method:: equals(Object)
+
+   
+
+
+.. py:method:: toString()
 
    
 

@@ -1,8 +1,13 @@
 {
   "class_name": "Path",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.680592",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.Path",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.663057",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "add",
@@ -11,13 +16,14 @@
           "signature": "add(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "other",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: add"
@@ -29,23 +35,26 @@
           "signature": "addAsLinesTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
               "java_type": "Color"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Content"
+          "java_return_type": "Content",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: addAsLinesTo3DViewer"
@@ -54,48 +63,54 @@
       "name": "addDiscsTo3DViewer",
       "overloads": [
         {
-          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color3f"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Content"
-        },
-        {
           "signature": "addDiscsTo3DViewer(Image3DUniverse, Color, ImagePlus) -> Content",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
               "java_type": "Color"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Content"
+          "java_return_type": "Content",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        },
+        {
+          "signature": "addDiscsTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> Content",
+          "params": [
+            {
+              "name": "univ",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "c",
+              "type": "Any",
+              "java_type": "Color3f"
+            },
+            {
+              "name": "colorImage",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Content",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: addDiscsTo3DViewer"
@@ -107,13 +122,14 @@
           "signature": "addNode(PointInImage) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addNode"
@@ -125,23 +141,24 @@
           "signature": "addPointDouble(double, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addPointDouble"
@@ -150,48 +167,54 @@
       "name": "addTo3DViewer",
       "overloads": [
         {
-          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image3DUniverse"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Color3f"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addTo3DViewer(Image3DUniverse, Color, ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "univ",
               "type": "Any",
               "java_type": "Image3DUniverse"
             },
             {
-              "name": "arg1",
+              "name": "c",
               "type": "Any",
               "java_type": "Color"
             },
             {
-              "name": "arg2",
+              "name": "colorImage",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        },
+        {
+          "signature": "addTo3DViewer(Image3DUniverse, Color3f, ImagePlus) -> void",
+          "params": [
+            {
+              "name": "univ",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            },
+            {
+              "name": "c",
+              "type": "Any",
+              "java_type": "Color3f"
+            },
+            {
+              "name": "colorImage",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: addTo3DViewer"
@@ -200,28 +223,24 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         },
         {
           "signature": "clone(boolean) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "includeImmediateChildren",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: clone"
@@ -230,28 +249,17 @@
       "name": "compareTo",
       "overloads": [
         {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int"
-        },
-        {
           "signature": "compareTo(Path) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "Path",
               "java_type": "Path"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: compareTo"
@@ -263,30 +271,32 @@
           "signature": "contains(PointInImage) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "pim",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         },
         {
           "signature": "contains(PointInImage, double) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage"
             },
             {
-              "name": "arg1",
+              "name": "tolerance",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: contains"
@@ -298,7 +308,10 @@
           "signature": "createCircles() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
       "documentation": "Java method: createCircles"
@@ -310,7 +323,8 @@
           "signature": "createPath() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: createPath"
@@ -322,7 +336,8 @@
           "signature": "detachFromParent() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: detachFromParent"
@@ -334,13 +349,14 @@
           "signature": "downsample(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "internodeSpacing",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: downsample"
@@ -349,83 +365,85 @@
       "name": "drawPathAsPoints",
       "overloads": [
         {
-          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "TracerCanvas"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Graphics2D"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "Color"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean"
-            },
-            {
-              "name": "arg5",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg6",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, int, boolean, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "canvas",
+              "type": "TracerCanvas",
               "java_type": "TracerCanvas"
             },
             {
-              "name": "arg1",
+              "name": "g",
               "type": "Any",
               "java_type": "Graphics2D"
             },
             {
-              "name": "arg2",
+              "name": "c",
               "type": "Any",
               "java_type": "Color"
             },
             {
-              "name": "arg3",
+              "name": "plane",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "highContrast",
               "type": "bool",
               "java_type": "boolean"
             },
             {
-              "name": "arg5",
+              "name": "drawDiameter",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "drawPathAsPoints(TracerCanvas, Graphics2D, Color, boolean, boolean, int, int) -> void",
+          "params": [
+            {
+              "name": "canvas",
+              "type": "TracerCanvas",
+              "java_type": "TracerCanvas"
+            },
+            {
+              "name": "g2",
+              "type": "Any",
+              "java_type": "Graphics2D"
+            },
+            {
+              "name": "c",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "highContrast",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "drawDiameter",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "slice",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "either_side",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: drawPathAsPoints"
@@ -437,7 +455,8 @@
           "signature": "findJunctionIndices() -> TreeSet",
           "params": [],
           "return_type": "Set[Any]",
-          "java_return_type": "TreeSet"
+          "java_return_type": "TreeSet",
+          "is_static": false
         }
       ],
       "documentation": "Java method: findJunctionIndices"
@@ -449,7 +468,8 @@
           "signature": "findJunctions() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: findJunctions"
@@ -461,10 +481,30 @@
           "signature": "firstNode() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: firstNode"
+    },
+    {
+      "name": "fitRadii",
+      "overloads": [
+        {
+          "signature": "fitRadii(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: fitRadii"
     },
     {
       "name": "getAngle",
@@ -473,13 +513,14 @@
           "signature": "getAngle(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "nodeIndex",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAngle"
@@ -491,7 +532,8 @@
           "signature": "getApproximatedSurface() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getApproximatedSurface"
@@ -503,7 +545,8 @@
           "signature": "getApproximatedVolume() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getApproximatedVolume"
@@ -515,7 +558,8 @@
           "signature": "getBranchPoint() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranchPoint"
@@ -527,7 +571,8 @@
           "signature": "getBranchPointIndex() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranchPointIndex"
@@ -539,7 +584,8 @@
           "signature": "getBranchPoints() -> Set",
           "params": [],
           "return_type": "Set[Any]",
-          "java_return_type": "Set"
+          "java_return_type": "Set",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBranchPoints"
@@ -551,7 +597,8 @@
           "signature": "getCalibration() -> Calibration",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Calibration"
+          "java_return_type": "Calibration",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCalibration"
@@ -563,7 +610,8 @@
           "signature": "getCanvasOffset() -> PointInCanvas",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "PointInCanvas"
+          "java_return_type": "PointInCanvas",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCanvasOffset"
@@ -575,7 +623,8 @@
           "signature": "getChannel() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getChannel"
@@ -587,7 +636,8 @@
           "signature": "getChildren() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getChildren"
@@ -599,7 +649,8 @@
           "signature": "getColor() -> Color",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Color"
+          "java_return_type": "Color",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getColor"
@@ -611,7 +662,8 @@
           "signature": "getColorRGB() -> ColorRGB",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ColorRGB"
+          "java_return_type": "ColorRGB",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getColorRGB"
@@ -623,7 +675,8 @@
           "signature": "getContraction() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getContraction"
@@ -635,7 +688,8 @@
           "signature": "getEditableNodeIndex() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getEditableNodeIndex"
@@ -644,28 +698,30 @@
       "name": "getExtensionAngle3D",
       "overloads": [
         {
-          "signature": "getExtensionAngle3D(boolean) -> double",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "float",
-          "java_return_type": "double"
-        },
-        {
           "signature": "getExtensionAngle3D(Vector3d) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "referenceVector",
               "type": "Any",
               "java_type": "Vector3d"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getExtensionAngle3D(boolean) -> double",
+          "params": [
+            {
+              "name": "relative",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngle3D"
@@ -677,7 +733,8 @@
           "signature": "getExtensionAngleFromHorizontal() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngleFromHorizontal"
@@ -689,7 +746,8 @@
           "signature": "getExtensionAngleFromVertical() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngleFromVertical"
@@ -701,7 +759,8 @@
           "signature": "getExtensionAngleXY() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngleXY"
@@ -713,7 +772,8 @@
           "signature": "getExtensionAngleXZ() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngleXZ"
@@ -725,7 +785,8 @@
           "signature": "getExtensionAngleZY() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngleZY"
@@ -734,10 +795,11 @@
       "name": "getExtensionAngles3D",
       "overloads": [
         {
-          "signature": "getExtensionAngles3D() -> [D",
+          "signature": "getExtensionAngles3D() -> double[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionAngles3D"
@@ -749,7 +811,8 @@
           "signature": "getExtensionDirection3D() -> Vector3d",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Vector3d"
+          "java_return_type": "Vector3d",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExtensionDirection3D"
@@ -761,7 +824,8 @@
           "signature": "getFitted() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFitted"
@@ -773,7 +837,8 @@
           "signature": "getFractalDimension() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFractalDimension"
@@ -785,13 +850,2076 @@
           "signature": "getFrame() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFrame"
+    },
+    {
+      "name": "getID",
+      "overloads": [
+        {
+          "signature": "getID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getID"
+    },
+    {
+      "name": "getInitialDirection",
+      "overloads": [
+        {
+          "signature": "getInitialDirection(int) -> double[]",
+          "params": [
+            {
+              "name": "maxNodes",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getInitialDirection"
+    },
+    {
+      "name": "getInterpolatedPath",
+      "overloads": [
+        {
+          "signature": "getInterpolatedPath(double) -> Path",
+          "params": [
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getInterpolatedPath"
+    },
+    {
+      "name": "getJunctionNodes",
+      "overloads": [
+        {
+          "signature": "getJunctionNodes() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: getJunctionNodes"
+    },
+    {
+      "name": "getLength",
+      "overloads": [
+        {
+          "signature": "getLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLength"
+    },
+    {
+      "name": "getMeanRadius",
+      "overloads": [
+        {
+          "signature": "getMeanRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeanRadius"
+    },
+    {
+      "name": "getMinimumSeparation",
+      "overloads": [
+        {
+          "signature": "getMinimumSeparation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMinimumSeparation"
+    },
+    {
+      "name": "getName",
+      "overloads": [
+        {
+          "signature": "getName() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getName"
+    },
+    {
+      "name": "getNode",
+      "overloads": [
+        {
+          "signature": "getNode(int) -> PathNode",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathNode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNode"
+    },
+    {
+      "name": "getNodeAnnotation",
+      "overloads": [
+        {
+          "signature": "getNodeAnnotation(int) -> BrainAnnotation",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BrainAnnotation",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeAnnotation"
+    },
+    {
+      "name": "getNodeColor",
+      "overloads": [
+        {
+          "signature": "getNodeColor(int) -> Color",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeColor"
+    },
+    {
+      "name": "getNodeColors",
+      "overloads": [
+        {
+          "signature": "getNodeColors() -> Color[]",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Color[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeColors"
+    },
+    {
+      "name": "getNodeHemisphereFlag",
+      "overloads": [
+        {
+          "signature": "getNodeHemisphereFlag(int) -> char",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "char",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeHemisphereFlag"
+    },
+    {
+      "name": "getNodeIndex",
+      "overloads": [
+        {
+          "signature": "getNodeIndex(PointInImage) -> int",
+          "params": [
+            {
+              "name": "pim",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeIndex"
+    },
+    {
+      "name": "getNodeRadius",
+      "overloads": [
+        {
+          "signature": "getNodeRadius(int) -> double",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeRadius"
+    },
+    {
+      "name": "getNodeTangent",
+      "overloads": [
+        {
+          "signature": "getNodeTangent(int) -> double[]",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeTangent"
+    },
+    {
+      "name": "getNodeValue",
+      "overloads": [
+        {
+          "signature": "getNodeValue(int) -> double",
+          "params": [
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeValue"
+    },
+    {
+      "name": "getNodes",
+      "overloads": [
+        {
+          "signature": "getNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodes"
+    },
+    {
+      "name": "getOrder",
+      "overloads": [
+        {
+          "signature": "getOrder() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getOrder"
+    },
+    {
+      "name": "getParentPath",
+      "overloads": [
+        {
+          "signature": "getParentPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getParentPath"
+    },
+    {
+      "name": "getPoint3fList",
+      "overloads": [
+        {
+          "signature": "getPoint3fList() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: getPoint3fList"
+    },
+    {
+      "name": "getPointInCanvas",
+      "overloads": [
+        {
+          "signature": "getPointInCanvas(int) -> PointInCanvas",
+          "params": [
+            {
+              "name": "node",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPointInCanvas"
+    },
+    {
+      "name": "getResampledPath",
+      "overloads": [
+        {
+          "signature": "getResampledPath(double) -> Path",
+          "params": [
+            {
+              "name": "targetSpacing",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getResampledPath"
+    },
+    {
+      "name": "getSWCType",
+      "overloads": [
+        {
+          "signature": "getSWCType() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSWCType"
+    },
+    {
+      "name": "getSWCcolor",
+      "overloads": [
+        {
+          "signature": "getSWCcolor(int) -> Color",
+          "params": [
+            {
+              "name": "swcType",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getSWCcolor"
+    },
+    {
+      "name": "getSWCtypeName",
+      "overloads": [
+        {
+          "signature": "getSWCtypeName(int, boolean) -> String",
+          "params": [
+            {
+              "name": "type",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "capitalized",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getSWCtypeName"
+    },
+    {
+      "name": "getSWCtypeNames",
+      "overloads": [
+        {
+          "signature": "getSWCtypeNames() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getSWCtypeNames"
+    },
+    {
+      "name": "getSWCtypes",
+      "overloads": [
+        {
+          "signature": "getSWCtypes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getSWCtypes"
+    },
+    {
+      "name": "getSection",
+      "overloads": [
+        {
+          "signature": "getSection(int, int) -> Path",
+          "params": [
+            {
+              "name": "startIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSection"
+    },
+    {
+      "name": "getSmoothedPath",
+      "overloads": [
+        {
+          "signature": "getSmoothedPath(int) -> Path",
+          "params": [
+            {
+              "name": "windowSize",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSmoothedPath"
+    },
+    {
+      "name": "getSpineOrVaricosityCount",
+      "overloads": [
+        {
+          "signature": "getSpineOrVaricosityCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSpineOrVaricosityCount"
+    },
+    {
+      "name": "getStartJoins",
+      "overloads": [
+        {
+          "signature": "getStartJoins() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: getStartJoins"
+    },
+    {
+      "name": "getStartJoinsPoint",
+      "overloads": [
+        {
+          "signature": "getStartJoinsPoint() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: getStartJoinsPoint"
+    },
+    {
+      "name": "getTangent",
+      "overloads": [
+        {
+          "signature": "getTangent(int, int, double[]) -> void",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "pointsEitherSide",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "result",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTangent"
+    },
+    {
+      "name": "getTreeID",
+      "overloads": [
+        {
+          "signature": "getTreeID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTreeID"
+    },
+    {
+      "name": "getTreeLabel",
+      "overloads": [
+        {
+          "signature": "getTreeLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTreeLabel"
+    },
+    {
+      "name": "getUnfitted",
+      "overloads": [
+        {
+          "signature": "getUnfitted() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUnfitted"
+    },
+    {
+      "name": "getUnscaledNodes",
+      "overloads": [
+        {
+          "signature": "getUnscaledNodes() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUnscaledNodes"
+    },
+    {
+      "name": "getUseFitted",
+      "overloads": [
+        {
+          "signature": "getUseFitted() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUseFitted"
+    },
+    {
+      "name": "getVersionInUse",
+      "overloads": [
+        {
+          "signature": "getVersionInUse() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getVersionInUse"
+    },
+    {
+      "name": "getXUnscaled",
+      "overloads": [
+        {
+          "signature": "getXUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getXUnscaled"
+    },
+    {
+      "name": "getXUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getXUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getXUnscaledDouble"
+    },
+    {
+      "name": "getYUnscaled",
+      "overloads": [
+        {
+          "signature": "getYUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getYUnscaled"
+    },
+    {
+      "name": "getYUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getYUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getYUnscaledDouble"
+    },
+    {
+      "name": "getZUnscaled",
+      "overloads": [
+        {
+          "signature": "getZUnscaled(int) -> int",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getZUnscaled"
+    },
+    {
+      "name": "getZUnscaledDouble",
+      "overloads": [
+        {
+          "signature": "getZUnscaledDouble(int) -> double",
+          "params": [
+            {
+              "name": "i",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getZUnscaledDouble"
+    },
+    {
+      "name": "hasCustomColor",
+      "overloads": [
+        {
+          "signature": "hasCustomColor() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasCustomColor"
+    },
+    {
+      "name": "hasNodeAnnotations",
+      "overloads": [
+        {
+          "signature": "hasNodeAnnotations() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasNodeAnnotations"
+    },
+    {
+      "name": "hasNodeColors",
+      "overloads": [
+        {
+          "signature": "hasNodeColors() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasNodeColors"
+    },
+    {
+      "name": "hasNodeHemisphereFlags",
+      "overloads": [
+        {
+          "signature": "hasNodeHemisphereFlags() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasNodeHemisphereFlags"
+    },
+    {
+      "name": "hasNodeValues",
+      "overloads": [
+        {
+          "signature": "hasNodeValues() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasNodeValues"
+    },
+    {
+      "name": "hasRadii",
+      "overloads": [
+        {
+          "signature": "hasRadii() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasRadii"
+    },
+    {
+      "name": "hasTangents",
+      "overloads": [
+        {
+          "signature": "hasTangents() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasTangents"
+    },
+    {
+      "name": "indexNearestTo",
+      "overloads": [
+        {
+          "signature": "indexNearestTo(double, double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: indexNearestTo"
+    },
+    {
+      "name": "indexNearestToUnscaled",
+      "overloads": [
+        {
+          "signature": "indexNearestToUnscaled(double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        },
+        {
+          "signature": "indexNearestToUnscaled(double, double, double, double) -> int",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: indexNearestToUnscaled"
+    },
+    {
+      "name": "insertNode",
+      "overloads": [
+        {
+          "signature": "insertNode(int, PointInImage) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "point",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "insertNode(int, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "point",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: insertNode"
+    },
+    {
+      "name": "interpolateMissingRadii",
+      "overloads": [
+        {
+          "signature": "interpolateMissingRadii(DoublePredicate, boolean) -> Map",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "DoublePredicate"
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: interpolateMissingRadii"
+    },
+    {
+      "name": "isActiveVersion",
+      "overloads": [
+        {
+          "signature": "isActiveVersion() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isActiveVersion"
+    },
+    {
+      "name": "isConnectedTo",
+      "overloads": [
+        {
+          "signature": "isConnectedTo(Path) -> boolean",
+          "params": [
+            {
+              "name": "other",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isConnectedTo"
+    },
+    {
+      "name": "isDeFactoPath",
+      "overloads": [
+        {
+          "signature": "isDeFactoPath(Collection) -> boolean",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isDeFactoPath"
+    },
+    {
+      "name": "isFittedVersionOfAnotherPath",
+      "overloads": [
+        {
+          "signature": "isFittedVersionOfAnotherPath() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isFittedVersionOfAnotherPath"
+    },
+    {
+      "name": "isPrimary",
+      "overloads": [
+        {
+          "signature": "isPrimary() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isPrimary"
+    },
+    {
+      "name": "isSelected",
+      "overloads": [
+        {
+          "signature": "isSelected() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isSelected"
+    },
+    {
+      "name": "lastNode",
+      "overloads": [
+        {
+          "signature": "lastNode() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: lastNode"
+    },
+    {
+      "name": "moveNode",
+      "overloads": [
+        {
+          "signature": "moveNode(int, PointInImage) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "destination",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "moveNode(int, double, double, double) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: moveNode"
+    },
+    {
+      "name": "nearestNodeTo",
+      "overloads": [
+        {
+          "signature": "nearestNodeTo(PointInImage, double) -> PathNode",
+          "params": [
+            {
+              "name": "node",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "within",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathNode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: nearestNodeTo"
+    },
+    {
+      "name": "removeFrom3DViewer",
+      "overloads": [
+        {
+          "signature": "removeFrom3DViewer(Image3DUniverse) -> void",
+          "params": [
+            {
+              "name": "univ",
+              "type": "Any",
+              "java_type": "Image3DUniverse"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: removeFrom3DViewer"
+    },
+    {
+      "name": "removeNode",
+      "overloads": [
+        {
+          "signature": "removeNode(int) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeNode"
+    },
+    {
+      "name": "replaceNodes",
+      "overloads": [
+        {
+          "signature": "replaceNodes(Path) -> void",
+          "params": [
+            {
+              "name": "replacementPath",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: replaceNodes"
+    },
+    {
+      "name": "resetColor",
+      "overloads": [
+        {
+          "signature": "resetColor() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: resetColor"
+    },
+    {
+      "name": "reverse",
+      "overloads": [
+        {
+          "signature": "reverse() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reverse"
+    },
+    {
+      "name": "reversed",
+      "overloads": [
+        {
+          "signature": "reversed() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reversed"
+    },
+    {
+      "name": "sanitizeRadii",
+      "overloads": [
+        {
+          "signature": "sanitizeRadii(boolean) -> Map",
+          "params": [
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        },
+        {
+          "signature": "sanitizeRadii(DoublePredicate, boolean) -> Map",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "DoublePredicate"
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        },
+        {
+          "signature": "sanitizeRadii(double, double, boolean) -> Map",
+          "params": [
+            {
+              "name": "minRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "apply",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: sanitizeRadii"
+    },
+    {
+      "name": "setBranchFrom",
+      "overloads": [
+        {
+          "signature": "setBranchFrom(Path, PointInImage) -> void",
+          "params": [
+            {
+              "name": "parentPath",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "branchPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setBranchFrom"
+    },
+    {
+      "name": "setCTposition",
+      "overloads": [
+        {
+          "signature": "setCTposition(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCTposition"
+    },
+    {
+      "name": "setCanvasOffset",
+      "overloads": [
+        {
+          "signature": "setCanvasOffset(PointInCanvas) -> void",
+          "params": [
+            {
+              "name": "canvasOffset",
+              "type": "Any",
+              "java_type": "PointInCanvas"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCanvasOffset"
+    },
+    {
+      "name": "setColor",
+      "overloads": [
+        {
+          "signature": "setColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setColor"
+    },
+    {
+      "name": "setEditableNode",
+      "overloads": [
+        {
+          "signature": "setEditableNode(int) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setEditableNode"
+    },
+    {
+      "name": "setGuessedTangents",
+      "overloads": [
+        {
+          "signature": "setGuessedTangents(int) -> void",
+          "params": [
+            {
+              "name": "pointsEitherSide",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setGuessedTangents"
+    },
+    {
+      "name": "setName",
+      "overloads": [
+        {
+          "signature": "setName(String) -> void",
+          "params": [
+            {
+              "name": "newName",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setName"
+    },
+    {
+      "name": "setNodeAnnotation",
+      "overloads": [
+        {
+          "signature": "setNodeAnnotation(BrainAnnotation, int) -> void",
+          "params": [
+            {
+              "name": "annotation",
+              "type": "Any",
+              "java_type": "BrainAnnotation"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeAnnotation"
+    },
+    {
+      "name": "setNodeColor",
+      "overloads": [
+        {
+          "signature": "setNodeColor(Color, int) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setNodeColor(ColorRGB, int) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeColor"
+    },
+    {
+      "name": "setNodeColors",
+      "overloads": [
+        {
+          "signature": "setNodeColors(Color[]) -> void",
+          "params": [
+            {
+              "name": "colors",
+              "type": "List[Any]",
+              "java_type": "Color[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeColors"
+    },
+    {
+      "name": "setNodeHemisphere",
+      "overloads": [
+        {
+          "signature": "setNodeHemisphere(char, int) -> void",
+          "params": [
+            {
+              "name": "hemisphereFlag",
+              "type": "str",
+              "java_type": "char"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeHemisphere"
+    },
+    {
+      "name": "setNodeRadius",
+      "overloads": [
+        {
+          "signature": "setNodeRadius(double, int) -> void",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeRadius"
+    },
+    {
+      "name": "setNodeTangent",
+      "overloads": [
+        {
+          "signature": "setNodeTangent(double[], int) -> void",
+          "params": [
+            {
+              "name": "tangent",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setNodeTangent(double, double, double, int) -> void",
+          "params": [
+            {
+              "name": "tx",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ty",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "tz",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeTangent"
+    },
+    {
+      "name": "setNodeValue",
+      "overloads": [
+        {
+          "signature": "setNodeValue(double, int) -> void",
+          "params": [
+            {
+              "name": "value",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "pos",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeValue"
+    },
+    {
+      "name": "setNodeValues",
+      "overloads": [
+        {
+          "signature": "setNodeValues(double[]) -> void",
+          "params": [
+            {
+              "name": "values",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setNodeValues"
+    },
+    {
+      "name": "setOrder",
+      "overloads": [
+        {
+          "signature": "setOrder(int) -> void",
+          "params": [
+            {
+              "name": "order",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setOrder"
+    },
+    {
+      "name": "setRadii",
+      "overloads": [
+        {
+          "signature": "setRadii(double[]) -> void",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadii"
+    },
+    {
+      "name": "setRadius",
+      "overloads": [
+        {
+          "signature": "setRadius(double) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setRadius(double, int) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadius"
+    },
+    {
+      "name": "setSWCType",
+      "overloads": [
+        {
+          "signature": "setSWCType(int) -> void",
+          "params": [
+            {
+              "name": "newSWCType",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSWCType"
+    },
+    {
+      "name": "setSelected",
+      "overloads": [
+        {
+          "signature": "setSelected(boolean) -> void",
+          "params": [
+            {
+              "name": "newSelectedStatus",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSelected"
+    },
+    {
+      "name": "setSpacing",
+      "overloads": [
+        {
+          "signature": "setSpacing(Calibration) -> void",
+          "params": [
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setSpacing(double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSpacing"
+    },
+    {
+      "name": "setSpineOrVaricosityCount",
+      "overloads": [
+        {
+          "signature": "setSpineOrVaricosityCount(int) -> void",
+          "params": [
+            {
+              "name": "newCount",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSpineOrVaricosityCount"
+    },
+    {
+      "name": "setStartJoin",
+      "overloads": [
+        {
+          "signature": "setStartJoin(Path, PointInImage) -> void",
+          "params": [
+            {
+              "name": "parentPath",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "branchPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: setStartJoin"
+    },
+    {
+      "name": "setUseFitted",
+      "overloads": [
+        {
+          "signature": "setUseFitted(boolean) -> void",
+          "params": [
+            {
+              "name": "useFitted",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUseFitted"
+    },
+    {
+      "name": "size",
+      "overloads": [
+        {
+          "signature": "size() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: size"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
+    },
+    {
+      "name": "transform",
+      "overloads": [
+        {
+          "signature": "transform(PathTransformer, ImagePlus, ImagePlus) -> Path",
+          "params": [
+            {
+              "name": "transformation",
+              "type": "Any",
+              "java_type": "PathTransformer"
+            },
+            {
+              "name": "template",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "model",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: transform"
+    },
+    {
+      "name": "unsetStartJoin",
+      "overloads": [
+        {
+          "signature": "unsetStartJoin() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: unsetStartJoin"
+    },
+    {
+      "name": "upsample",
+      "overloads": [
+        {
+          "signature": "upsample(double) -> void",
+          "params": [
+            {
+              "name": "internodeSpacing",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: upsample"
+    },
+    {
+      "name": "versionInUse",
+      "overloads": [
+        {
+          "signature": "versionInUse() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: versionInUse"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -806,22 +2934,22 @@
           "signature": "Path(double, double, double, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "spacing_units",
               "type": "str",
               "java_type": "String"
             }
@@ -830,169 +2958,172 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Path"
+      "documentation": "Constructors of Path"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "SWC_APICAL_DENDRITE",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_APICAL_DENDRITE of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_APICAL_DENDRITE of type int"
     },
     {
       "name": "SWC_APICAL_DENDRITE_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_APICAL_DENDRITE_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_APICAL_DENDRITE_LABEL of type String"
     },
     {
       "name": "SWC_AXON",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_AXON of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_AXON of type int"
     },
     {
       "name": "SWC_AXON_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_AXON_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_AXON_LABEL of type String"
     },
     {
       "name": "SWC_CUSTOM",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_CUSTOM of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_CUSTOM of type int"
     },
     {
       "name": "SWC_CUSTOM2",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_CUSTOM2 of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_CUSTOM2 of type int"
     },
     {
       "name": "SWC_CUSTOM2_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_CUSTOM2_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_CUSTOM2_LABEL of type String"
     },
     {
       "name": "SWC_CUSTOM_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_CUSTOM_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_CUSTOM_LABEL of type String"
     },
     {
       "name": "SWC_DENDRITE",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_DENDRITE of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_DENDRITE of type int"
     },
     {
       "name": "SWC_DENDRITE_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_DENDRITE_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_DENDRITE_LABEL of type String"
     },
     {
       "name": "SWC_END_POINT",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_END_POINT of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_END_POINT of type int",
+      "deprecated": true
     },
     {
       "name": "SWC_FORK_POINT",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_FORK_POINT of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_FORK_POINT of type int",
+      "deprecated": true
     },
     {
       "name": "SWC_GLIA_PROCESS",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_GLIA_PROCESS of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_GLIA_PROCESS of type int"
     },
     {
       "name": "SWC_GLIA_PROCESS_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_GLIA_PROCESS_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_GLIA_PROCESS_LABEL of type String"
     },
     {
       "name": "SWC_SOMA",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_SOMA of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_SOMA of type int"
     },
     {
       "name": "SWC_SOMA_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_SOMA_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_SOMA_LABEL of type String"
     },
     {
       "name": "SWC_UNDEFINED",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_UNDEFINED of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_UNDEFINED of type int"
     },
     {
       "name": "SWC_UNDEFINED_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_UNDEFINED_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_UNDEFINED_LABEL of type String"
     },
     {
       "name": "SWC_UNSPECIFIED",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SWC_UNSPECIFIED of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_UNSPECIFIED of type int"
     },
     {
       "name": "SWC_UNSPECIFIED_LABEL",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SWC_UNSPECIFIED_LABEL of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SWC_UNSPECIFIED_LABEL of type String"
     }
   ]
 }

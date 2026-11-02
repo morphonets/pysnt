@@ -53,73 +53,117 @@
 
 **Package:** ``sc.fiji.snt.util``
 
-Static utilities for handling and manipulation of ImagePluss
+Static utilities for handling and manipulation of `ImagePlus`s
 
 
 Methods
 -------
 
 
+Utilities Methods
+~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: clearAllTags()
+
+   Clears both tag registries entirely. Intended as a session-teardown safety net, not for routine use: individual images are already forgotten via ``forgetTags(ImagePlus)`` as they close.
+
+
 Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getCT(ImagePlus, int, int)
+.. py:method:: getCT(ImagePlus, int, int)
 
    
 
 
-.. py:method:: static getChannel(ImagePlus, int)
+.. py:method:: getChannel(ImagePlus, int)
 
    
 
 
-.. py:method:: static getCurrentImage()
+.. py:method:: getChannelStack(ImagePlus, int)
+
+   Returns a lightweight read-only view of a single channel as an ImageStack. Unlike ``getChannel(ImagePlus, int)``, the returned stack shares the underlying pixel arrays with the source image (no data copy), making it suitable for read-only access on large multichannel images.
+
+
+.. py:method:: getCurrentImage()
 
    
 
 
-.. py:method:: static getForegroundRect(ImagePlus, Number)
+.. py:method:: getFilePath(ImagePlus)
+
+   Returns the file path of an image.
+
+
+.. py:method:: getForegroundRect(ImagePlus, Number)
 
    Returns the cropping rectangle around non-background values, considering all slices of the stack.
 
 
-.. py:method:: static getFrame(ImagePlus, int)
+.. py:method:: getFrame(ImagePlus, int)
 
    
 
 
-.. py:method:: static getMIP(Collection)
+.. py:method:: getMIP(Collection)
 
    
 
 
-.. py:method:: static getMinMax(ImagePlus)
+.. py:method:: getMagnification(ImagePlus)
 
    
 
 
-.. py:method:: static getSliceLabels(ImageStack)
+.. py:method:: getMinMax(ImagePlus)
 
    
 
 
-.. py:method:: static getSystemClipboard(boolean)
+.. py:method:: getNonSNTOpenImages()
+
+   Returns all currently open images in ImageJ that were not created by SNT.
+
+
+.. py:method:: getOpenImages()
+
+   Returns all currently open images in ImageJ's ``WindowManager``.
+
+
+.. py:method:: getSliceLabels(ImageStack)
+
+   
+
+
+.. py:method:: getSystemClipboard(boolean)
 
    Retrieves an ImagePlus from the system clipboard
 
 
-.. py:method:: static isBinary(ImagePlus)
+.. py:method:: isBinary(ImagePlus)
 
    
 
 
-.. py:method:: static isPointVisible(ImagePlus, int, int)
+.. py:method:: isDisplayCanvas(ImagePlus)
+
+   Checks whether an image is a placeholder canvas
+
+
+.. py:method:: isMaterializedCrop(ImagePlus)
+
+   Checks whether an image is a materialized crop of a streamed volume.
+
+
+.. py:method:: isPointVisible(ImagePlus, int, int)
 
    Checks if a given point (in image coordinates) is currently visible in an image
 
 
-.. py:method:: static isVirtualStack(ImagePlus)
+.. py:method:: isVirtualStack(ImagePlus)
 
    
 
@@ -128,7 +172,22 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static setLut(ImagePlus, String)
+.. py:method:: setIsDisplayCanvas(ImagePlus)
+
+   Used by SNT to tag an image as a Display Canvas (typically a blank placeholder image).
+
+
+.. py:method:: setIsMaterializedCrop(ImagePlus)
+
+   Used by SNT to tag an eagerly-materialized pixel crop of a streamed volume as such.
+
+
+.. py:method:: setLut(ImagePlus, String)
+
+   
+
+
+.. py:method:: setSliceLabels(ImageStack, String)
 
    
 
@@ -137,7 +196,7 @@ I/O Operations Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static save(ImagePlus, String)
+.. py:method:: save(ImagePlus, String)
 
    Saves the specified image.
 
@@ -146,146 +205,166 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static applyColorTable(ImagePlus, ColorTable)
+.. py:method:: applyColorTable(ImagePlus, ColorTable)
 
    
 
 
-.. py:method:: static ascii(ImagePlus, boolean, int, int)
+.. py:method:: ascii(ImagePlus, boolean, int, int)
 
    Converts the specified image into ascii art.
 
 
-.. py:method:: static binarize(ImagePlus, double, double)
+.. py:method:: binarize(ImagePlus, double, double)
 
    Binarize an ImagePlus using lower and upper thresholds. Pixels within [lower, upper] become 255 (white), others become 0 (black).
 
 
-.. py:method:: static calibrationToAxes(Calibration, int)
+.. py:method:: calibrationToAxes(Calibration, int)
 
    Creates ImgPlus axes from IJ1 Calibration
 
 
-.. py:method:: static combineSkeletons(Collection, boolean)
+.. py:method:: combineSkeletons(Collection)
 
    
 
 
-.. py:method:: static convertRGBtoComposite(ImagePlus)
+.. py:method:: convertRGBtoComposite(ImagePlus)
 
    
 
 
-.. py:method:: static convertTo32bit(ImagePlus)
+.. py:method:: convertTo16bit(ImagePlus)
 
    
 
 
-.. py:method:: static convertTo8bit(ImagePlus)
+.. py:method:: convertTo32bit(ImagePlus)
 
    
 
 
-.. py:method:: static convertToSimple2D(ImagePlus, int)
+.. py:method:: convertTo8bit(ImagePlus)
+
+   
+
+
+.. py:method:: convertToSimple2D(ImagePlus, int)
 
    Converts the specified image into an easy displayable form, i.e., a non-composite 2D image If the image is a timelapse, only the first frame is considered; if 3D, a MIP is retrieved; if multichannel, an RGB version is obtained. The image is flattened if its Overlay has ROIs.
 
 
-.. py:method:: static create(String, int, int, int, int)
+.. py:method:: create(String, int, int, int, int)
 
    
 
 
-.. py:method:: static crop(ImagePlus, Number)
+.. py:method:: crop(ImagePlus, Number)
 
    Crops the image around non-background values. Does nothing if the image does not have non-background values.
 
 
-.. py:method:: static demo(String)
+.. py:method:: demo(String)
 
    Returns one of the demo images bundled with SNT image associated with the demo (fractal) tree.
 
 
-.. py:method:: static imageTypeToString(int)
+.. py:method:: forgetTags(ImagePlus)
+
+   Removes ``imp`` from both the materialized-crop and display-canvas tag registries. Call once an image is known to be closed/discarded, for deterministic (rather than GC-timed) cleanup; harmless if ``imp`` was never tagged.
+
+
+.. py:method:: fromBufferedImage(String, BufferedImage)
 
    
 
 
-.. py:method:: static invertLut(ImagePlus)
+.. py:method:: imageTypeToString(int)
 
    
 
 
-.. py:method:: static nextZoomLevel(double)
+.. py:method:: invertLut(ImagePlus)
 
    
 
 
-.. py:method:: static open(String, String)
+.. py:method:: mergeChannels(Object[])
+
+   Script-friendly method for merging separate channels into a multichannel composite image.
+
+
+.. py:method:: nextZoomLevel(double)
 
    
 
 
-.. py:method:: static previousZoomLevel(double)
+.. py:method:: open(File)
 
    
 
 
-.. py:method:: static removeIsolatedPixels(ImagePlus)
+.. py:method:: previousZoomLevel(double)
 
    
 
 
-.. py:method:: static removeSlices(ImageStack, Collection)
+.. py:method:: removeIsolatedPixels(ImagePlus)
 
    
 
 
-.. py:method:: static rotate90(ImagePlus, String)
+.. py:method:: removeSlices(ImageStack, Collection)
+
+   
+
+
+.. py:method:: rotate90(ImagePlus, String)
 
    Rotates an image 90 degrees.
 
 
-.. py:method:: static sameCTDimensions(ImagePlus, ImagePlus)
+.. py:method:: sameCTDimensions(ImagePlus, ImagePlus)
 
    
 
 
-.. py:method:: static sameCalibration(ImagePlus, ImagePlus)
+.. py:method:: sameCalibration(ImagePlus, ImagePlus)
 
    
 
 
-.. py:method:: static sameXYZDimensions(ImagePlus, ImagePlus)
+.. py:method:: sameXYZDimensions(ImagePlus, ImagePlus)
 
    
 
 
-.. py:method:: static toDataset(ImagePlus)
+.. py:method:: toDataset(ImagePlus)
 
    
 
 
-.. py:method:: static toImgPlus(ImagePlus)
+.. py:method:: toImgPlus(ImagePlus)
 
    Convert an ImagePlus to an ImgPlus with calibration and origin metadata.
 
-Creates an ImgPlus with proper axis types (X, Y, Z, Channel, Time) and transfers calibration including pixel sizes, units, and origin offsets.
+   Creates an ImgPlus with proper axis types (X, Y, Z, Channel, Time) and transfers calibration including pixel sizes, units, and origin offsets.
 
 
-.. py:method:: static toImgPlus3D(ImagePlus, int, int)
+.. py:method:: toImgPlus3D(ImagePlus, int, int)
 
    Convert an ImagePlus to a 3D (XYZ) ImgPlus, extracting a single channel/frame if needed.
 
-Useful for analysis that expects simple 3D images without channel/time dimensions.
+   Useful for analysis that expects simple 3D images without channel/time dimensions.
 
 
-.. py:method:: static toStack(Collection)
+.. py:method:: toStack(Collection)
 
    
 
 
-.. py:method:: static zoomTo(ImagePlus, Collection)
+.. py:method:: zoomTo(ImagePlus, Collection)
 
    Zooms the image canvas to the specified magnification level, centered on the bounding box of the given paths.
 

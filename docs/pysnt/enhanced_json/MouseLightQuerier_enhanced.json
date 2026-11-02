@@ -1,16 +1,16 @@
 {
   "class_name": "MouseLightQuerier",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:01:01.228534",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.415726",
+  "extracted_at": "2026-11-02T00:24:01.647975",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.365715",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static getAllIDs",
+      "name": "getAllIDs",
       "overloads": [
         {
-          "signature": "static getAllIDs() -> List",
+          "signature": "getAllIDs() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -18,24 +18,24 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getAllIDs",
+      "documentation": "Java method: getAllIDs",
       "javadoc_description": "Gets all available neuron IDs from the database.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getIDs",
+      "name": "getIDs",
       "overloads": [
         {
-          "signature": "static getIDs(Collection) -> List",
+          "signature": "getIDs(AllenCompartment) -> List",
           "params": [
             {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "name": "compartment",
+              "type": "AllenCompartment",
+              "java_type": "AllenCompartment",
               "description": "- the collection of IDs or DOIs to search for",
               "javadoc_name": "idsOrDOIs"
             }
@@ -46,12 +46,12 @@
           "throws": {}
         },
         {
-          "signature": "static getIDs(AllenCompartment) -> List",
+          "signature": "getIDs(Collection) -> List",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AllenCompartment",
+              "name": "compartments",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             }
@@ -62,17 +62,17 @@
           "throws": {}
         },
         {
-          "signature": "static getIDs(String, boolean) -> List",
+          "signature": "getIDs(Collection, boolean) -> List",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "name": "idsOrDOIs",
+              "type": "List[Any]",
+              "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "exactMatch",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -85,17 +85,17 @@
           "throws": {}
         },
         {
-          "signature": "static getIDs(Collection, boolean) -> List",
+          "signature": "getIDs(String, boolean) -> List",
           "params": [
             {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "name": "idOrDOI",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "exactMatch",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -108,19 +108,19 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getIDs",
+      "documentation": "Java method: getIDs",
       "javadoc_description": "Gets neuron IDs matching the specified collection of IDs or DOIs.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getNeuronCount",
+      "name": "getNeuronCount",
       "overloads": [
         {
-          "signature": "static getNeuronCount() -> int",
+          "signature": "getNeuronCount() -> int",
           "params": [],
           "return_type": "int",
           "java_return_type": "int",
@@ -128,7 +128,7 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getNeuronCount",
+      "documentation": "Java method: getNeuronCount",
       "javadoc_description": "Gets the number of cells publicly available in the MouseLight database.",
       "category": "Getters",
       "deprecated": false,
@@ -137,10 +137,10 @@
       "examples": []
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
@@ -148,50 +148,22 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable",
+      "documentation": "Java method: isDatabaseAvailable",
       "javadoc_description": "Checks whether a connection to the MouseLight database can be established.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "setCCFVersion",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "setCCFVersion(String) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "",
-              "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static setCCFVersion",
-      "overloads": [
-        {
-          "signature": "static setCCFVersion(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "version",
               "type": "str",
               "java_type": "String",
               "description": "- Either \"3\" (the default), or \"2.5\" (MouseLight legacy)",
@@ -204,9 +176,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static setCCFVersion",
+      "documentation": "Java method: setCCFVersion",
       "javadoc_description": "Sets the version of the Common Coordinate Framework to be used by the Querier.",
-      "category": "Static Methods",
+      "category": "Setters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -231,17 +203,17 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 9,
-      "total_json_methods": 6,
-      "total_matches": 9,
-      "exact_matches": 9,
+      "total_json_methods": 5,
+      "total_matches": 8,
+      "exact_matches": 8,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 0,
+      "unmatched_javadoc": 1,
       "unmatched_json": -3,
-      "match_percentage": 100.0
+      "match_percentage": 88.9
     },
-    "unmatched_javadoc_methods": 0,
+    "unmatched_javadoc_methods": 1,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

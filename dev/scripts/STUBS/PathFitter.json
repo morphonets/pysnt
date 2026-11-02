@@ -1,8 +1,13 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.697485",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.PathFitter",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.671306",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "applyFit",
@@ -11,7 +16,8 @@
           "signature": "applyFit() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: applyFit"
@@ -23,13 +29,14 @@
           "signature": "applySettings(PathFitter) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "pf",
+              "type": "PathFitter",
               "java_type": "PathFitter"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: applySettings"
@@ -38,16 +45,11 @@
       "name": "call",
       "overloads": [
         {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "call() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: call"
@@ -59,7 +61,8 @@
           "signature": "getPath() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPath"
@@ -71,7 +74,8 @@
           "signature": "getSucceeded() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSucceeded"
@@ -83,7 +87,8 @@
           "signature": "readPreferences() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: readPreferences"
@@ -95,13 +100,14 @@
           "signature": "setCrossSectionRadius(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "crossSectionRadius",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setCrossSectionRadius"
@@ -113,13 +119,14 @@
           "signature": "setImage(RandomAccessibleInterval) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setImage"
@@ -131,13 +138,14 @@
           "signature": "setNodeRadiusFallback(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fallback",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setNodeRadiusFallback"
@@ -149,18 +157,19 @@
           "signature": "setProgressCallback(int, MultiTaskProgress) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fitterIndex",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "progress",
               "type": "Any",
               "java_type": "MultiTaskProgress"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setProgressCallback"
@@ -172,13 +181,14 @@
           "signature": "setReplaceNodes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "replaceNodes",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setReplaceNodes"
@@ -190,13 +200,14 @@
           "signature": "setScope(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "scope",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setScope"
@@ -208,33 +219,67 @@
           "signature": "setShowAnnotatedView(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "showAnnotatedView",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setShowAnnotatedView"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
+          "signature": "PathFitter(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "PathFitter(SNT, Path)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "plugin",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
@@ -246,133 +291,100 @@
           "signature": "PathFitter(RandomAccessibleInterval, Path, double, double, double, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg2",
+              "name": "xSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "ySpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "zSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
+              "name": "unit",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "PathFitter(ImgPlus, Path)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus"
-            },
-            {
-              "name": "arg1",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "PathFitter(ImagePlus, Path)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PathFitter"
+      "documentation": "Constructors of PathFitter"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "DEFAULT_MIN_ANGLE",
       "type": "float",
       "java_type": "double",
-      "documentation": "Field DEFAULT_MIN_ANGLE of type double",
       "is_static": true,
-      "is_final": false
+      "is_final": true,
+      "documentation": "Field DEFAULT_MIN_ANGLE of type double"
     },
     {
       "name": "FALLBACK_MIN_SEP",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field FALLBACK_MIN_SEP of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field FALLBACK_MIN_SEP of type int"
     },
     {
       "name": "FALLBACK_MODE",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field FALLBACK_MODE of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field FALLBACK_MODE of type int"
     },
     {
       "name": "FALLBACK_NAN",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field FALLBACK_NAN of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field FALLBACK_NAN of type int"
     },
     {
       "name": "MIDPOINTS",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field MIDPOINTS of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MIDPOINTS of type int"
     },
     {
       "name": "RADII",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field RADII of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field RADII of type int"
     },
     {
       "name": "RADII_AND_MIDPOINTS",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field RADII_AND_MIDPOINTS of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field RADII_AND_MIDPOINTS of type int"
     }
   ]
 }

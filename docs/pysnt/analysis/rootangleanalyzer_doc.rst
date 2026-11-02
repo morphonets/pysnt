@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class to perform Root angle analysis on a Tree according to Bird and Cuntz 2019, PMID 31167149.
+Class to perform Root angle analysis on a ``Tree`` according to Bird and Cuntz 2019, PMID 31167149.
 
 
 Methods
@@ -79,11 +79,6 @@ Getters Methods
    Computes the Cramér-von Mises statistic between computed root angles and fitted von Mises distribution. A value of 0 indicates a perfect fit between the empirical distribution and the theoretical distribution, and larger values indicate a greater discrepancy between the two distributions.
 
 
-.. py:method:: static getDensityPlot(List)
-
-   
-
-
 .. py:method:: getDensityPlot()
 
    
@@ -99,17 +94,12 @@ Getters Methods
    
 
 
-.. py:method:: static getHistogram(List, boolean)
-
-   
-
-
 .. py:method:: getTaggedGraph()
 
    
 
 
-.. py:method:: getTaggedTree(String, double, double)
+.. py:method:: getTaggedTree()
 
    Returns a recolored copy of the analyzed tree with the root angles assigned to its node values.
 
@@ -120,17 +110,12 @@ Other Methods
 
 .. py:method:: balancingFactor()
 
-   Returns the balancing factor, computed from centripetalBias().
+   Returns the balancing factor, computed from ``centripetalBias()``.
 
 
 .. py:method:: centripetalBias()
 
    Returns the strength of the centripetal bias, also known as κ. κ is defined as the concentration of the von Mises fit of the root angle distribution. κ= 0 indicate no bias (root angles are distributed uniformly). K->∞ indicate that all neurites point directly toward the root of the tree
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 .. py:method:: max()
@@ -153,7 +138,7 @@ Other Methods
    
 
 
-.. py:method:: static supportedMetrics()
+.. py:method:: supportedMetrics()
 
    
 

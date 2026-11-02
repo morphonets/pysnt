@@ -1,8 +1,13 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.802339",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.SNT",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.692034",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "accessToValidImageData",
@@ -11,7 +16,8 @@
           "signature": "accessToValidImageData() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: accessToValidImageData"
@@ -23,13 +29,14 @@
           "signature": "addFillerThread(FillerThread) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "filler",
               "type": "FillerThread",
               "java_type": "FillerThread"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addFillerThread"
@@ -41,13 +48,14 @@
           "signature": "addListener(SNTListener) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "listener",
               "type": "Any",
               "java_type": "SNTListener"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addListener"
@@ -56,95 +64,216 @@
       "name": "autoTrace",
       "overloads": [
         {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg2",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
           "signature": "autoTrace(List, PointInImage) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "pointList",
               "type": "List[Any]",
               "java_type": "List"
             },
             {
-              "name": "arg1",
+              "name": "forkPoint",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "Path",
-          "java_return_type": "Path"
-        },
-        {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            },
-            {
-              "name": "arg2",
-              "type": "PointInImage",
-              "java_type": "PointInImage"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         },
         {
           "signature": "autoTrace(List, PointInImage, boolean) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "pointList",
               "type": "List[Any]",
               "java_type": "List"
             },
             {
-              "name": "arg1",
+              "name": "forkPoint",
               "type": "PointInImage",
               "java_type": "PointInImage"
             },
             {
-              "name": "arg2",
+              "name": "headless",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "headless",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, SearchProgressCallback, Consumer) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "progressCallback",
+              "type": "Any",
+              "java_type": "SearchProgressCallback"
+            },
+            {
+              "name": "onSubmit",
+              "type": "Any",
+              "java_type": "Consumer"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: autoTrace"
+    },
+    {
+      "name": "autoTraceSync",
+      "overloads": [
+        {
+          "signature": "autoTraceSync(List, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "pointList",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        },
+        {
+          "signature": "autoTraceSync(List, PointInImage, SearchSettingsSnapshot) -> Path",
+          "params": [
+            {
+              "name": "pointList",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            },
+            {
+              "name": "settings",
+              "type": "Any",
+              "java_type": "SearchSettingsSnapshot"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: autoTraceSync"
+    },
+    {
+      "name": "buildMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "buildMaterializedCrop(BoundingBox) -> MaterializedCrop",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MaterializedCrop",
+          "is_static": false
+        },
+        {
+          "signature": "buildMaterializedCrop(BoundingBox, boolean) -> MaterializedCrop",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MaterializedCrop",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: buildMaterializedCrop"
     },
     {
       "name": "cancelPath",
@@ -153,7 +282,8 @@
           "signature": "cancelPath() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: cancelPath"
@@ -165,13 +295,14 @@
           "signature": "cancelSearch(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cancelFillToo",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: cancelSearch"
@@ -183,7 +314,8 @@
           "signature": "cancelTemporary() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: cancelTemporary"
@@ -195,35 +327,37 @@
           "signature": "captureView(String, ColorRGB) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "backgroundColor",
               "type": "Any",
               "java_type": "ColorRGB"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         },
         {
           "signature": "captureView(String, boolean) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "project",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: captureView"
@@ -235,16 +369,30 @@
           "signature": "changeUIState(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newState",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: changeUIState"
+    },
+    {
+      "name": "clearIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "clearIsolatedTreeID() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: clearIsolatedTreeID"
     },
     {
       "name": "closeAndResetAllPanes",
@@ -253,10 +401,40 @@
           "signature": "closeAndResetAllPanes() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: closeAndResetAllPanes"
+    },
+    {
+      "name": "computeImgStats",
+      "overloads": [
+        {
+          "signature": "computeImgStats(Iterable, ImageStatistics, CostType) -> ImageStatistics",
+          "params": [
+            {
+              "name": "in",
+              "type": "List[Any]",
+              "java_type": "Iterable"
+            },
+            {
+              "name": "imgStats",
+              "type": "Any",
+              "java_type": "ImageStatistics"
+            },
+            {
+              "name": "costType",
+              "type": "Any",
+              "java_type": "CostType"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: computeImgStats"
     },
     {
       "name": "confirmTemporary",
@@ -265,13 +443,14 @@
           "signature": "confirmTemporary(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "updateTracingViewers",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: confirmTemporary"
@@ -283,38 +462,35 @@
           "signature": "createCanvas(ImagePlus, int) -> InteractiveTracerCanvas",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
               "java_type": "ImagePlus"
             },
             {
-              "name": "arg1",
+              "name": "plane",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "InteractiveTracerCanvas"
-        },
-        {
-          "signature": "createCanvas(ImagePlus, int) -> MultiDThreePanesCanvas",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MultiDThreePanesCanvas"
+          "java_return_type": "InteractiveTracerCanvas",
+          "is_static": false
         }
       ],
       "documentation": "Java method: createCanvas"
+    },
+    {
+      "name": "deselectLastPath",
+      "overloads": [
+        {
+          "signature": "deselectLastPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: deselectLastPath"
     },
     {
       "name": "disableEventsAllPanes",
@@ -323,13 +499,15 @@
           "signature": "disableEventsAllPanes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "disable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
         }
       ],
       "documentation": "Java method: disableEventsAllPanes"
@@ -341,13 +519,15 @@
           "signature": "disableZoomAllPanes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "disable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
         }
       ],
       "documentation": "Java method: disableZoomAllPanes"
@@ -359,7 +539,8 @@
           "signature": "editModeAllowed() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: editModeAllowed"
@@ -371,52 +552,17 @@
           "signature": "enableAstar(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: enableAstar"
-    },
-    {
-      "name": "enableAutoActivation",
-      "overloads": [
-        {
-          "signature": "enableAutoActivation(boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: enableAutoActivation"
-    },
-    {
-      "name": "enableAutoSelectionOfFinishedPath",
-      "overloads": [
-        {
-          "signature": "enableAutoSelectionOfFinishedPath(boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: enableAutoSelectionOfFinishedPath"
     },
     {
       "name": "enableSecondaryLayerTracing",
@@ -425,13 +571,14 @@
           "signature": "enableSecondaryLayerTracing(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: enableSecondaryLayerTracing"
@@ -443,46 +590,110 @@
           "signature": "enableSnapCursor(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: enableSnapCursor"
     },
     {
+      "name": "enterEditMode",
+      "overloads": [
+        {
+          "signature": "enterEditMode(Path) -> boolean",
+          "params": [
+            {
+              "name": "pathToEdit",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: enterEditMode"
+    },
+    {
+      "name": "estimateMaterializationBytes",
+      "overloads": [
+        {
+          "signature": "estimateMaterializationBytes(long, long, long) -> long",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: estimateMaterializationBytes"
+    },
+    {
+      "name": "exitEditMode",
+      "overloads": [
+        {
+          "signature": "exitEditMode() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: exitEditMode"
+    },
+    {
       "name": "findPointInStack",
       "overloads": [
         {
-          "signature": "findPointInStack(int, int, int, [I) -> void",
+          "signature": "findPointInStack(int, int, int, int[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_in_pane",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y_in_pane",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "plane",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "[I"
+              "name": "point",
+              "type": "List[int]",
+              "java_type": "int[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
         }
       ],
       "documentation": "Java method: findPointInStack"
@@ -491,31 +702,33 @@
       "name": "findPointInStackPrecise",
       "overloads": [
         {
-          "signature": "findPointInStackPrecise(double, double, int, [D) -> void",
+          "signature": "findPointInStackPrecise(double, double, int, double[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_in_pane",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y_in_pane",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "plane",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "[D"
+              "name": "point",
+              "type": "List[float]",
+              "java_type": "double[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
         }
       ],
       "documentation": "Java method: findPointInStackPrecise"
@@ -527,18 +740,19 @@
           "signature": "finished(SearchInterface, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
               "java_type": "SearchInterface"
             },
             {
-              "name": "arg1",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: finished"
@@ -550,10 +764,24 @@
           "signature": "flushSecondaryData() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: flushSecondaryData"
+    },
+    {
+      "name": "getActiveCanvasPixelOffset",
+      "overloads": [
+        {
+          "signature": "getActiveCanvasPixelOffset() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getActiveCanvasPixelOffset"
     },
     {
       "name": "getAverageSeparation",
@@ -562,10 +790,56 @@
           "signature": "getAverageSeparation() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAverageSeparation"
+    },
+    {
+      "name": "getBatchRetraceChannelFrame",
+      "overloads": [
+        {
+          "signature": "getBatchRetraceChannelFrame() -> int[]",
+          "params": [],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBatchRetraceChannelFrame"
+    },
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> Calibration",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCalibration"
+    },
+    {
+      "name": "getCanvas",
+      "overloads": [
+        {
+          "signature": "getCanvas(int) -> TracerCanvas",
+          "params": [
+            {
+              "name": "pane",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "TracerCanvas",
+          "java_return_type": "TracerCanvas",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCanvas"
     },
     {
       "name": "getChannel",
@@ -574,7 +848,8 @@
           "signature": "getChannel() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getChannel"
@@ -586,7 +861,8 @@
           "signature": "getContext() -> Context",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Context"
+          "java_return_type": "Context",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getContext"
@@ -595,10 +871,11 @@
       "name": "getCostType",
       "overloads": [
         {
-          "signature": "getCostType() -> SNT$CostType",
+          "signature": "getCostType() -> CostType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$CostType"
+          "java_return_type": "CostType",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCostType"
@@ -610,7 +887,8 @@
           "signature": "getCurrentPath() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCurrentPath"
@@ -622,10 +900,24 @@
           "signature": "getDataset() -> Dataset",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Dataset"
+          "java_return_type": "Dataset",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDataset"
+    },
+    {
+      "name": "getDefaultCanvasPixelOffset",
+      "overloads": [
+        {
+          "signature": "getDefaultCanvasPixelOffset() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDefaultCanvasPixelOffset"
     },
     {
       "name": "getDepth",
@@ -634,7 +926,8 @@
           "signature": "getDepth() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDepth"
@@ -646,10 +939,50 @@
           "signature": "getDrawDiameters() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDrawDiameters"
+    },
+    {
+      "name": "getEditModeBlocker",
+      "overloads": [
+        {
+          "signature": "getEditModeBlocker() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        },
+        {
+          "signature": "getEditModeBlocker(boolean) -> String",
+          "params": [
+            {
+              "name": "autoSelect",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getEditModeBlocker"
+    },
+    {
+      "name": "getFillThreshold",
+      "overloads": [
+        {
+          "signature": "getFillThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFillThreshold"
     },
     {
       "name": "getFilledBinaryImp",
@@ -658,7 +991,8 @@
           "signature": "getFilledBinaryImp() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFilledBinaryImp"
@@ -670,7 +1004,8 @@
           "signature": "getFilledDistanceImp() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFilledDistanceImp"
@@ -682,7 +1017,8 @@
           "signature": "getFilledImp() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFilledImp"
@@ -694,19 +1030,40 @@
           "signature": "getFilledLabelImp() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFilledLabelImp"
     },
     {
+      "name": "getFilledMeshes",
+      "overloads": [
+        {
+          "signature": "getFilledMeshes(double) -> Map",
+          "params": [
+            {
+              "name": "smoothing",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFilledMeshes"
+    },
+    {
       "name": "getFilterType",
       "overloads": [
         {
-          "signature": "getFilterType() -> SNT$FilterType",
+          "signature": "getFilterType() -> FilterType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$FilterType"
+          "java_return_type": "FilterType",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFilterType"
@@ -718,10 +1075,50 @@
           "signature": "getFrame() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFrame"
+    },
+    {
+      "name": "getFullImageDimensions",
+      "overloads": [
+        {
+          "signature": "getFullImageDimensions() -> int[]",
+          "params": [],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFullImageDimensions"
+    },
+    {
+      "name": "getFullSourceData",
+      "overloads": [
+        {
+          "signature": "getFullSourceData() -> RandomAccessibleInterval",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFullSourceData"
+    },
+    {
+      "name": "getFullSourceDataAsImp",
+      "overloads": [
+        {
+          "signature": "getFullSourceDataAsImp() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFullSourceDataAsImp"
     },
     {
       "name": "getHeight",
@@ -730,7 +1127,8 @@
           "signature": "getHeight() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHeight"
@@ -739,13 +1137,27 @@
       "name": "getHeuristicType",
       "overloads": [
         {
-          "signature": "getHeuristicType() -> SNT$HeuristicType",
+          "signature": "getHeuristicType() -> HeuristicType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$HeuristicType"
+          "java_return_type": "HeuristicType",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHeuristicType"
+    },
+    {
+      "name": "getImageFilenamePrefix",
+      "overloads": [
+        {
+          "signature": "getImageFilenamePrefix() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getImageFilenamePrefix"
     },
     {
       "name": "getImagePlus",
@@ -754,22 +1166,50 @@
           "signature": "getImagePlus() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         },
         {
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "pane",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getImagePlus"
+    },
+    {
+      "name": "getIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "getIsolatedTreeID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getIsolatedTreeID"
+    },
+    {
+      "name": "getLastTracedPath",
+      "overloads": [
+        {
+          "signature": "getLastTracedPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLastTracedPath"
     },
     {
       "name": "getLoadedData",
@@ -778,10 +1218,30 @@
           "signature": "getLoadedData() -> RandomAccessibleInterval",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "RandomAccessibleInterval"
+          "java_return_type": "RandomAccessibleInterval",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLoadedData"
+    },
+    {
+      "name": "getLoadedDataAsImg",
+      "overloads": [
+        {
+          "signature": "getLoadedDataAsImg(boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "secondaryLayer",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLoadedDataAsImg"
     },
     {
       "name": "getLoadedDataAsImp",
@@ -790,7 +1250,8 @@
           "signature": "getLoadedDataAsImp() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLoadedDataAsImp"
@@ -802,63 +1263,2405 @@
           "signature": "getLoadedIterable() -> IterableInterval",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "IterableInterval"
+          "java_return_type": "IterableInterval",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLoadedIterable"
-    }
-  ],
-  "fields": [],
-  "constructors": [
+    },
     {
-      "name": "__init__",
+      "name": "getMaterializationMemoryBudget",
       "overloads": [
         {
-          "signature": "SNT(Context, PathAndFillManager)",
+          "signature": "getMaterializationMemoryBudget() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaterializationMemoryBudget"
+    },
+    {
+      "name": "getMaterializedCropChannel",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropChannel() -> Integer",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "Integer",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropChannel"
+    },
+    {
+      "name": "getMaterializedCropFrame",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropFrame() -> Integer",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "Integer",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropFrame"
+    },
+    {
+      "name": "getMaterializedCropWorldBounds",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropWorldBounds() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropWorldBounds"
+    },
+    {
+      "name": "getMinimumSeparation",
+      "overloads": [
+        {
+          "signature": "getMinimumSeparation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMinimumSeparation"
+    },
+    {
+      "name": "getNodeEditor",
+      "overloads": [
+        {
+          "signature": "getNodeEditor() -> PathNodeEditor",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PathNodeEditor",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeEditor"
+    },
+    {
+      "name": "getPathAndFillManager",
+      "overloads": [
+        {
+          "signature": "getPathAndFillManager() -> PathAndFillManager",
+          "params": [],
+          "return_type": "PathAndFillManager",
+          "java_return_type": "PathAndFillManager",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPathAndFillManager"
+    },
+    {
+      "name": "getPixelDepth",
+      "overloads": [
+        {
+          "signature": "getPixelDepth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPixelDepth"
+    },
+    {
+      "name": "getPixelHeight",
+      "overloads": [
+        {
+          "signature": "getPixelHeight() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPixelHeight"
+    },
+    {
+      "name": "getPixelWidth",
+      "overloads": [
+        {
+          "signature": "getPixelWidth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPixelWidth"
+    },
+    {
+      "name": "getPrefs",
+      "overloads": [
+        {
+          "signature": "getPrefs() -> SNTPrefs",
+          "params": [],
+          "return_type": "SNTPrefs",
+          "java_return_type": "SNTPrefs",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPrefs"
+    },
+    {
+      "name": "getSearchImageType",
+      "overloads": [
+        {
+          "signature": "getSearchImageType() -> SearchImageType",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageType",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSearchImageType"
+    },
+    {
+      "name": "getSearchType",
+      "overloads": [
+        {
+          "signature": "getSearchType() -> SearchType",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchType",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSearchType"
+    },
+    {
+      "name": "getSecondaryData",
+      "overloads": [
+        {
+          "signature": "getSecondaryData() -> RandomAccessibleInterval",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSecondaryData"
+    },
+    {
+      "name": "getSecondaryDataAsImp",
+      "overloads": [
+        {
+          "signature": "getSecondaryDataAsImp() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSecondaryDataAsImp"
+    },
+    {
+      "name": "getSecondaryImageMinMax",
+      "overloads": [
+        {
+          "signature": "getSecondaryImageMinMax() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSecondaryImageMinMax"
+    },
+    {
+      "name": "getSeedOverlay",
+      "overloads": [
+        {
+          "signature": "getSeedOverlay() -> SeedOverlay",
+          "params": [],
+          "return_type": "SeedOverlay",
+          "java_return_type": "SeedOverlay",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSeedOverlay"
+    },
+    {
+      "name": "getSelectedPaths",
+      "overloads": [
+        {
+          "signature": "getSelectedPaths() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSelectedPaths"
+    },
+    {
+      "name": "getSinglePane",
+      "overloads": [
+        {
+          "signature": "getSinglePane() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: getSinglePane"
+    },
+    {
+      "name": "getSingleSelectedPath",
+      "overloads": [
+        {
+          "signature": "getSingleSelectedPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSingleSelectedPath"
+    },
+    {
+      "name": "getSpacingUnits",
+      "overloads": [
+        {
+          "signature": "getSpacingUnits() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSpacingUnits"
+    },
+    {
+      "name": "getStats",
+      "overloads": [
+        {
+          "signature": "getStats() -> ImageStatistics",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getStats"
+    },
+    {
+      "name": "getStatsSecondary",
+      "overloads": [
+        {
+          "signature": "getStatsSecondary() -> ImageStatistics",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getStatsSecondary"
+    },
+    {
+      "name": "getUI",
+      "overloads": [
+        {
+          "signature": "getUI() -> SNTUI",
+          "params": [],
+          "return_type": "SNTUI",
+          "java_return_type": "SNTUI",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUI"
+    },
+    {
+      "name": "getUseSubVolumeStats",
+      "overloads": [
+        {
+          "signature": "getUseSubVolumeStats() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getUseSubVolumeStats"
+    },
+    {
+      "name": "getWidth",
+      "overloads": [
+        {
+          "signature": "getWidth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getWidth"
+    },
+    {
+      "name": "getWorldOriginOffset",
+      "overloads": [
+        {
+          "signature": "getWorldOriginOffset() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getWorldOriginOffset"
+    },
+    {
+      "name": "getZYXZ",
+      "overloads": [
+        {
+          "signature": "getZYXZ(ImagePlus, int) -> ImagePlus[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "xy",
               "type": "Any",
-              "java_type": "Context"
+              "java_type": "ImagePlus"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "PathAndFillManager"
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "ImagePlus[]",
+          "is_static": true,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: getZYXZ"
+    },
+    {
+      "name": "initPathsToFill",
+      "overloads": [
+        {
+          "signature": "initPathsToFill(Set, boolean) -> void",
+          "params": [
+            {
+              "name": "fromPaths",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            },
+            {
+              "name": "splitFillerThreads",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: initPathsToFill"
+    },
+    {
+      "name": "initialize",
+      "overloads": [
         {
-          "signature": "SNT(ImagePlus)",
+          "signature": "initialize(ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
-          "signature": "SNT(ImgPlus, int, int)",
+          "signature": "initialize(ImagePlus, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
-              "java_type": "ImgPlus"
+              "java_type": "ImagePlus"
             },
             {
-              "name": "arg1",
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        },
+        {
+          "signature": "initialize(boolean, int, int) -> void",
+          "params": [
+            {
+              "name": "singlePane",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "channel",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "frame",
               "type": "int",
               "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "initialize(boolean, int, int, boolean) -> void",
+          "params": [
+            {
+              "name": "singlePane",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "computeStackStats",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: initialize"
+    },
+    {
+      "name": "installMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "installMaterializedCrop(MaterializedCrop) -> void",
+          "params": [
+            {
+              "name": "crop",
+              "type": "Any",
+              "java_type": "MaterializedCrop"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: installMaterializedCrop"
+    },
+    {
+      "name": "is2D",
+      "overloads": [
+        {
+          "signature": "is2D() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: is2D"
+    },
+    {
+      "name": "isAstarEnabled",
+      "overloads": [
+        {
+          "signature": "isAstarEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isAstarEnabled"
+    },
+    {
+      "name": "isEditModeEnabled",
+      "overloads": [
+        {
+          "signature": "isEditModeEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isEditModeEnabled"
+    },
+    {
+      "name": "isMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "isMaterializedCrop() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isMaterializedCrop"
+    },
+    {
+      "name": "isOnlySelectedPathsVisible",
+      "overloads": [
+        {
+          "signature": "isOnlySelectedPathsVisible() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isOnlySelectedPathsVisible"
+    },
+    {
+      "name": "isSecondaryDataAvailable",
+      "overloads": [
+        {
+          "signature": "isSecondaryDataAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isSecondaryDataAvailable"
+    },
+    {
+      "name": "isShowOnlyActiveCTposPaths",
+      "overloads": [
+        {
+          "signature": "isShowOnlyActiveCTposPaths() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isShowOnlyActiveCTposPaths"
+    },
+    {
+      "name": "isSpacingKnownFromSource",
+      "overloads": [
+        {
+          "signature": "isSpacingKnownFromSource() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isSpacingKnownFromSource"
+    },
+    {
+      "name": "isStreamMode",
+      "overloads": [
+        {
+          "signature": "isStreamMode() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isStreamMode"
+    },
+    {
+      "name": "isTracingActive",
+      "overloads": [
+        {
+          "signature": "isTracingActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isTracingActive"
+    },
+    {
+      "name": "isTracingOnSecondaryImageActive",
+      "overloads": [
+        {
+          "signature": "isTracingOnSecondaryImageActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isTracingOnSecondaryImageActive"
+    },
+    {
+      "name": "isTracingPaused",
+      "overloads": [
+        {
+          "signature": "isTracingPaused() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isTracingPaused"
+    },
+    {
+      "name": "isTreeIsolationActive",
+      "overloads": [
+        {
+          "signature": "isTreeIsolationActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isTreeIsolationActive"
+    },
+    {
+      "name": "isZoomAllPanesDisabled",
+      "overloads": [
+        {
+          "signature": "isZoomAllPanesDisabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: isZoomAllPanesDisabled"
+    },
+    {
+      "name": "loadLabelsFile",
+      "overloads": [
+        {
+          "signature": "loadLabelsFile(String) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: loadLabelsFile"
+    },
+    {
+      "name": "loadSecondaryImage",
+      "overloads": [
+        {
+          "signature": "loadSecondaryImage(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "loadSecondaryImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "loadSecondaryImage(RandomAccessibleInterval, boolean) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "computeStatistics",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: loadSecondaryImage"
+    },
+    {
+      "name": "loadTracings",
+      "overloads": [
+        {
+          "signature": "loadTracings(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: loadTracings"
+    },
+    {
+      "name": "makePathVolume",
+      "overloads": [
+        {
+          "signature": "makePathVolume(Collection, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "labelsImage",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: makePathVolume"
+    },
+    {
+      "name": "manualTrace",
+      "overloads": [
+        {
+          "signature": "manualTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: manualTrace"
+    },
+    {
+      "name": "materializeDisplayCanvas",
+      "overloads": [
+        {
+          "signature": "materializeDisplayCanvas(BoundingBox) -> void",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "materializeDisplayCanvas(BoundingBox, boolean) -> void",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: materializeDisplayCanvas"
+    },
+    {
+      "name": "mouseMovedTo",
+      "overloads": [
+        {
+          "signature": "mouseMovedTo(double, double, int, boolean) -> void",
+          "params": [
+            {
+              "name": "off_screen_x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "off_screen_y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "shift_down",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        },
+        {
+          "signature": "mouseMovedTo(double, double, int, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "x_in_pane",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y_in_pane",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "sync_panes_modifier_down",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "join_modifier_down",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: mouseMovedTo"
+    },
+    {
+      "name": "notifyActiveNodeChanged",
+      "overloads": [
+        {
+          "signature": "notifyActiveNodeChanged(AbstractBigViewer) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "AbstractBigViewer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: notifyActiveNodeChanged"
+    },
+    {
+      "name": "notifyEditingPathChanged",
+      "overloads": [
+        {
+          "signature": "notifyEditingPathChanged() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: notifyEditingPathChanged"
+    },
+    {
+      "name": "notifyListeners",
+      "overloads": [
+        {
+          "signature": "notifyListeners(SNTEvent) -> void",
+          "params": [
+            {
+              "name": "event",
+              "type": "Any",
+              "java_type": "SNTEvent"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: notifyListeners"
+    },
+    {
+      "name": "panEventOccurred",
+      "overloads": [
+        {
+          "signature": "panEventOccurred(int, int, int) -> void",
+          "params": [
+            {
+              "name": "off_screen_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "off_screen_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: panEventOccurred"
+    },
+    {
+      "name": "pointsInSearch",
+      "overloads": [
+        {
+          "signature": "pointsInSearch(SearchInterface, long, long) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "SearchInterface"
+            },
+            {
+              "name": "inOpen",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "inClosed",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: pointsInSearch"
+    },
+    {
+      "name": "proportionDone",
+      "overloads": [
+        {
+          "signature": "proportionDone(double) -> void",
+          "params": [
+            {
+              "name": "proportion",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: proportionDone"
+    },
+    {
+      "name": "rebuildDisplayCanvases",
+      "overloads": [
+        {
+          "signature": "rebuildDisplayCanvases() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: rebuildDisplayCanvases"
+    },
+    {
+      "name": "rebuildZYXZpanes",
+      "overloads": [
+        {
+          "signature": "rebuildZYXZpanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: rebuildZYXZpanes"
+    },
+    {
+      "name": "reloadImage",
+      "overloads": [
+        {
+          "signature": "reloadImage(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reloadImage"
+    },
+    {
+      "name": "reloadZYXZpanes",
+      "overloads": [
+        {
+          "signature": "reloadZYXZpanes(int) -> void",
+          "params": [
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: reloadZYXZpanes"
+    },
+    {
+      "name": "removeMIPOverlayAllPanes",
+      "overloads": [
+        {
+          "signature": "removeMIPOverlayAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: removeMIPOverlayAllPanes"
+    },
+    {
+      "name": "repaintAllPanes",
+      "overloads": [
+        {
+          "signature": "repaintAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: repaintAllPanes"
+    },
+    {
+      "name": "resolveVoxelBounds",
+      "overloads": [
+        {
+          "signature": "resolveVoxelBounds(BoundingBox, Calibration) -> VoxelBounds",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            },
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VoxelBounds",
+          "is_static": false
+        },
+        {
+          "signature": "resolveVoxelBounds(BoundingBox, Calibration, boolean) -> VoxelBounds",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox"
+            },
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VoxelBounds",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: resolveVoxelBounds"
+    },
+    {
+      "name": "sameXYZDimensionsAsTracingData",
+      "overloads": [
+        {
+          "signature": "sameXYZDimensionsAsTracingData(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "sameXYZDimensionsAsTracingData(RandomAccessibleInterval) -> boolean",
+          "params": [
+            {
+              "name": "data",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: sameXYZDimensionsAsTracingData"
+    },
+    {
+      "name": "seedStatsFromSubVolume",
+      "overloads": [
+        {
+          "signature": "seedStatsFromSubVolume(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: seedStatsFromSubVolume"
+    },
+    {
+      "name": "selectNone",
+      "overloads": [
+        {
+          "signature": "selectNone() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: selectNone"
+    },
+    {
+      "name": "selectPath",
+      "overloads": [
+        {
+          "signature": "selectPath(Path, boolean) -> void",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "addToExistingSelection",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: selectPath"
+    },
+    {
+      "name": "setAnnotationsColorAllPanes",
+      "overloads": [
+        {
+          "signature": "setAnnotationsColorAllPanes(Color) -> void",
+          "params": [
+            {
+              "name": "newColor",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setAnnotationsColorAllPanes"
+    },
+    {
+      "name": "setAnnotationsVisible",
+      "overloads": [
+        {
+          "signature": "setAnnotationsVisible(boolean) -> void",
+          "params": [
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnnotationsVisible"
+    },
+    {
+      "name": "setBatchRetraceChannelFrame",
+      "overloads": [
+        {
+          "signature": "setBatchRetraceChannelFrame(Integer, Integer) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "Integer"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "Integer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setBatchRetraceChannelFrame"
+    },
+    {
+      "name": "setCanvasLabelAllPanes",
+      "overloads": [
+        {
+          "signature": "setCanvasLabelAllPanes(String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setCanvasLabelAllPanes"
+    },
+    {
+      "name": "setChannelAndFrame",
+      "overloads": [
+        {
+          "signature": "setChannelAndFrame(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setChannelAndFrame"
+    },
+    {
+      "name": "setCostType",
+      "overloads": [
+        {
+          "signature": "setCostType(CostType) -> void",
+          "params": [
+            {
+              "name": "costType",
+              "type": "Any",
+              "java_type": "CostType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCostType"
+    },
+    {
+      "name": "setCurrentPath",
+      "overloads": [
+        {
+          "signature": "setCurrentPath(Path) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCurrentPath"
+    },
+    {
+      "name": "setCursorTextAllPanes",
+      "overloads": [
+        {
+          "signature": "setCursorTextAllPanes(String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setCursorTextAllPanes"
+    },
+    {
+      "name": "setDrawCrosshairsAllPanes",
+      "overloads": [
+        {
+          "signature": "setDrawCrosshairsAllPanes(boolean) -> void",
+          "params": [
+            {
+              "name": "drawCrosshairs",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setDrawCrosshairsAllPanes"
+    },
+    {
+      "name": "setDrawDiameters",
+      "overloads": [
+        {
+          "signature": "setDrawDiameters(boolean) -> void",
+          "params": [
+            {
+              "name": "draw",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDrawDiameters"
+    },
+    {
+      "name": "setFillList",
+      "overloads": [
+        {
+          "signature": "setFillList(List) -> void",
+          "params": [
+            {
+              "name": "fillList",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFillList"
+    },
+    {
+      "name": "setFillThreshold",
+      "overloads": [
+        {
+          "signature": "setFillThreshold(double) -> void",
+          "params": [
+            {
+              "name": "distance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFillThreshold"
+    },
+    {
+      "name": "setFillThresholdFrom",
+      "overloads": [
+        {
+          "signature": "setFillThresholdFrom(double, double, double) -> void",
+          "params": [
+            {
+              "name": "world_x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "world_y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "world_z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFillThresholdFrom"
+    },
+    {
+      "name": "setFilterType",
+      "overloads": [
+        {
+          "signature": "setFilterType(FilterType) -> void",
+          "params": [
+            {
+              "name": "filterType",
+              "type": "Any",
+              "java_type": "FilterType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFilterType"
+    },
+    {
+      "name": "setHeuristicType",
+      "overloads": [
+        {
+          "signature": "setHeuristicType(HeuristicType) -> void",
+          "params": [
+            {
+              "name": "heuristicType",
+              "type": "Any",
+              "java_type": "HeuristicType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setHeuristicType"
+    },
+    {
+      "name": "setImageData",
+      "overloads": [
+        {
+          "signature": "setImageData(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "data",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setImageData"
+    },
+    {
+      "name": "setImageMetadata",
+      "overloads": [
+        {
+          "signature": "setImageMetadata(int, int, int, double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "units",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setImageMetadata"
+    },
+    {
+      "name": "setIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "setIsolatedTreeID(int) -> void",
+          "params": [
+            {
+              "name": "treeID",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIsolatedTreeID"
+    },
+    {
+      "name": "setPathList",
+      "overloads": [
+        {
+          "signature": "setPathList(Path, boolean) -> void",
+          "params": [
+            {
+              "name": "justAdded",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "expandAll",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPathList"
+    },
+    {
+      "name": "setSearchImageType",
+      "overloads": [
+        {
+          "signature": "setSearchImageType(SearchImageType) -> void",
+          "params": [
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSearchImageType"
+    },
+    {
+      "name": "setSearchType",
+      "overloads": [
+        {
+          "signature": "setSearchType(SearchType) -> void",
+          "params": [
+            {
+              "name": "searchType",
+              "type": "Any",
+              "java_type": "SearchType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSearchType"
+    },
+    {
+      "name": "setSecondaryImage",
+      "overloads": [
+        {
+          "signature": "setSecondaryImage(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSecondaryImage"
+    },
+    {
+      "name": "setSecondaryImageMinMax",
+      "overloads": [
+        {
+          "signature": "setSecondaryImageMinMax(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSecondaryImageMinMax"
+    },
+    {
+      "name": "setSelectedPaths",
+      "overloads": [
+        {
+          "signature": "setSelectedPaths(Collection, Object) -> void",
+          "params": [
+            {
+              "name": "selectedPathsSet",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSelectedPaths"
+    },
+    {
+      "name": "setShowOnlySelectedPaths",
+      "overloads": [
+        {
+          "signature": "setShowOnlySelectedPaths(boolean) -> void",
+          "params": [
+            {
+              "name": "showOnlySelectedPaths",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setShowOnlySelectedPaths"
+    },
+    {
+      "name": "setSinglePane",
+      "overloads": [
+        {
+          "signature": "setSinglePane(boolean) -> void",
+          "params": [
+            {
+              "name": "single_pane",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setSinglePane"
+    },
+    {
+      "name": "setStopFillAtThreshold",
+      "overloads": [
+        {
+          "signature": "setStopFillAtThreshold(boolean) -> void",
+          "params": [
+            {
+              "name": "stopFillAtThreshold",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setStopFillAtThreshold"
+    },
+    {
+      "name": "setStoreExtraFillNodes",
+      "overloads": [
+        {
+          "signature": "setStoreExtraFillNodes(boolean) -> void",
+          "params": [
+            {
+              "name": "storeExtraFillNodes",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setStoreExtraFillNodes"
+    },
+    {
+      "name": "setTemporaryPath",
+      "overloads": [
+        {
+          "signature": "setTemporaryPath(Path) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTemporaryPath"
+    },
+    {
+      "name": "setUseSubVolumeStats",
+      "overloads": [
+        {
+          "signature": "setUseSubVolumeStats(boolean) -> void",
+          "params": [
+            {
+              "name": "useSubVolumeStatistics",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUseSubVolumeStats"
+    },
+    {
+      "name": "setWorldOriginOffset",
+      "overloads": [
+        {
+          "signature": "setWorldOriginOffset(double, double, double) -> void",
+          "params": [
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setWorldOriginOffset"
+    },
+    {
+      "name": "setZPositionAllPanes",
+      "overloads": [
+        {
+          "signature": "setZPositionAllPanes(int, int, int) -> void",
+          "params": [
+            {
+              "name": "new_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "new_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "new_z",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: setZPositionAllPanes"
+    },
+    {
+      "name": "showCorrespondencesTo",
+      "overloads": [
+        {
+          "signature": "showCorrespondencesTo(File, Color, double) -> void",
+          "params": [
+            {
+              "name": "tracesFile",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "c",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        }
+      ],
+      "documentation": "Java method: showCorrespondencesTo"
+    },
+    {
+      "name": "showMIPOverlays",
+      "overloads": [
+        {
+          "signature": "showMIPOverlays(double) -> void",
+          "params": [
+            {
+              "name": "opacity",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: showMIPOverlays"
+    },
+    {
+      "name": "showStatus",
+      "overloads": [
+        {
+          "signature": "showStatus(int, int, String) -> void",
+          "params": [
+            {
+              "name": "progress",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "maximum",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "status",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: showStatus"
+    },
+    {
+      "name": "snapshotSearchSettings",
+      "overloads": [
+        {
+          "signature": "snapshotSearchSettings() -> SearchSettingsSnapshot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchSettingsSnapshot",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: snapshotSearchSettings"
+    },
+    {
+      "name": "startHessian",
+      "overloads": [
+        {
+          "signature": "startHessian(String, double, double, boolean) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "sigma",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "wait",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
+        },
+        {
+          "signature": "startHessian(String, String, double[], String, int) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "strategy",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "nThreads",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "startHessian(String, String, double[], double, double, String, int) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "strategy",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "nThreads",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: startHessian"
+    },
+    {
+      "name": "startSholl",
+      "overloads": [
+        {
+          "signature": "startSholl(PointInImage) -> void",
+          "params": [
+            {
+              "name": "centerScaled",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: startSholl"
+    },
+    {
+      "name": "startUI",
+      "overloads": [
+        {
+          "signature": "startUI() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "startUI(boolean) -> void",
+          "params": [
+            {
+              "name": "bigDataMode",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: startUI"
+    },
+    {
+      "name": "threadStatus",
+      "overloads": [
+        {
+          "signature": "threadStatus(SearchInterface, int) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "SearchInterface"
+            },
+            {
+              "name": "status",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: threadStatus"
+    },
+    {
+      "name": "unzoomAllPanes",
+      "overloads": [
+        {
+          "signature": "unzoomAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: unzoomAllPanes"
+    },
+    {
+      "name": "updateAllViewers",
+      "overloads": [
+        {
+          "signature": "updateAllViewers() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateAllViewers"
+    },
+    {
+      "name": "updateDisplayCanvases",
+      "overloads": [
+        {
+          "signature": "updateDisplayCanvases() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateDisplayCanvases"
+    },
+    {
+      "name": "zoom100PercentAllPanes",
+      "overloads": [
+        {
+          "signature": "zoom100PercentAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: zoom100PercentAllPanes"
+    },
+    {
+      "name": "zoomAllPanes",
+      "overloads": [
+        {
+          "signature": "zoomAllPanes(double) -> void",
+          "params": [
+            {
+              "name": "zoomFactor",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: zoomAllPanes"
+    },
+    {
+      "name": "zoomEventOccurred",
+      "overloads": [
+        {
+          "signature": "zoomEventOccurred(boolean, int, int, int) -> void",
+          "params": [
+            {
+              "name": "in",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "off_screen_x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "off_screen_y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "MultiDThreePanes"
+        }
+      ],
+      "documentation": "Java method: zoomEventOccurred"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNT(ImagePlus)",
+          "params": [
+            {
+              "name": "sourceImage",
+              "type": "Any",
+              "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
@@ -868,7 +3671,7 @@
           "signature": "SNT(ImgPlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "sourceImage",
               "type": "Any",
               "java_type": "ImgPlus"
             }
@@ -880,47 +3683,71 @@
           "signature": "SNT(Context, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             },
             {
-              "name": "arg1",
+              "name": "sourceImage",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(Context, PathAndFillManager)",
+          "params": [
+            {
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "pathAndFillManager",
+              "type": "PathAndFillManager",
+              "java_type": "PathAndFillManager"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus, int, int)",
+          "params": [
+            {
+              "name": "sourceImage",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "timePoint",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SNT"
+      "documentation": "Constructors of SNT"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
-      "name": "XY_PLANE",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field XY_PLANE of type int",
+      "name": "SCROLL_DIAMETER_DISABLED",
+      "type": "float",
+      "java_type": "double",
       "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "XZ_PLANE",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field XZ_PLANE of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "ZY_PLANE",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field ZY_PLANE of type int",
-      "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SCROLL_DIAMETER_DISABLED of type double"
     }
   ]
 }

@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt``
 
-Allows standardized metadata to be associated to a Tree.
+Allows standardized metadata to be associated to a ``Tree``.
 
 
 Methods
@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getStandardizedCompartment(String)
+.. py:method:: getStandardizedCompartment(String)
 
    
 

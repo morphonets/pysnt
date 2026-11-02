@@ -84,7 +84,7 @@ Getters Methods
    Gets the collection of Paths for the specified cell ID
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: isDatabaseAvailable()
 
    Checks whether a connection to the Insect Brain Database can be established.
 
@@ -96,11 +96,6 @@ Other Methods
 .. py:method:: idExists()
 
    Checks whether the neuron to be loaded was found in the database.
-
-
-.. py:method:: static main(String;)
-
-   
 
 
 See Also

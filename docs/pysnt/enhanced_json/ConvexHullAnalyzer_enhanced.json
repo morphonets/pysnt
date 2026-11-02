@@ -1,39 +1,11 @@
 {
   "class_name": "ConvexHullAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:00:55.199366",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.309792",
+  "extracted_at": "2026-11-02T00:24:01.602039",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.281615",
   "enhancement_version": "1.0.0",
   "methods": [
-    {
-      "name": "cancel",
-      "overloads": [
-        {
-          "signature": "cancel(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: cancel",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
     {
       "name": "context",
       "overloads": [
@@ -61,7 +33,7 @@
           "signature": "dump(SNTTable) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "table",
               "type": "SNTTable",
               "java_type": "SNTTable",
               "description": "",
@@ -89,7 +61,7 @@
           "signature": "get(String) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the name of the metric to retrieve",
@@ -103,7 +75,7 @@
         }
       ],
       "documentation": "Java method: get",
-      "javadoc_description": "Gets the value of a specific convex hull metric.\n\nRetrieves the computed value for the specified metric name. The metric must be one of the supported metrics returned by supportedMetrics().",
+      "javadoc_description": "Gets the value of a specific convex hull metric.\n\nRetrieves the computed value for the specified metric name. The metric must be one of the supported metrics returned by `supportedMetrics()`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -166,26 +138,6 @@
       ],
       "documentation": "Java method: getBoxivity",
       "javadoc_description": "Gets the boxivity of the convex hull, which measures how box-like the convex hull is. Values closer to 1 indicate a more box-like shape.",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getCancelReason",
-      "overloads": [
-        {
-          "signature": "getCancelReason() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getCancelReason",
-      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -379,7 +331,7 @@
           "signature": "getUnit(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the supported metric to be queried (case-sensitive)",
@@ -403,56 +355,6 @@
       "examples": []
     },
     {
-      "name": "isCanceled",
-      "overloads": [
-        {
-          "signature": "isCanceled() -> boolean",
-          "params": [],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: isCanceled",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
-              "description": "- command line arguments (not used)",
-              "javadoc_name": "args"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {
-            "InterruptedException": "- if the execution is interrupted"
-          }
-        }
-      ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "run",
       "overloads": [
         {
@@ -473,41 +375,13 @@
       "examples": []
     },
     {
-      "name": "setContext",
-      "overloads": [
-        {
-          "signature": "setContext(Context) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setContext",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "setLabel",
       "overloads": [
         {
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "analysisLabel",
               "type": "str",
               "java_type": "String",
               "description": "- a string describing the analysis",
@@ -529,10 +403,10 @@
       "examples": []
     },
     {
-      "name": "static supportedMetrics",
+      "name": "supportedMetrics",
       "overloads": [
         {
-          "signature": "static supportedMetrics() -> List",
+          "signature": "supportedMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -540,7 +414,7 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static supportedMetrics",
+      "documentation": "Java method: supportedMetrics",
       "javadoc_description": "Gets the list of metrics supported by ConvexHullAnalyzer.",
       "category": "Analysis",
       "deprecated": false,
@@ -555,34 +429,34 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ConvexHullAnalyzer(Tree)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "ConvexHullAnalyzer(AbstractConvexHull)",
           "params": [
             {
-              "name": "arg0",
+              "name": "convexHull",
               "type": "Any",
               "java_type": "AbstractConvexHull"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "ConvexHullAnalyzer(Tree)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ConvexHullAnalyzer"
+      "documentation": "Constructors of ConvexHullAnalyzer"
     }
   ],
-  "javadoc_description": "Class for Convex Hull measurements of a Tree.",
+  "javadoc_description": "Class for Convex Hull measurements of a `Tree`.",
   "inheritance": {
     "extends": [],
     "implements": []
@@ -591,25 +465,25 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "supportedMetrics()",
     "Constant Field Values",
-    "ConvexHullCmd"
+    "ConvexHullCmd",
+    "supportedMetrics()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 25,
-      "total_json_methods": 24,
-      "total_matches": 20,
-      "exact_matches": 20,
+      "total_json_methods": 19,
+      "total_matches": 19,
+      "exact_matches": 19,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 5,
-      "unmatched_json": 4,
-      "match_percentage": 80.0
+      "unmatched_javadoc": 6,
+      "unmatched_json": 0,
+      "match_percentage": 76.0
     },
-    "unmatched_javadoc_methods": 5,
-    "unmatched_json_methods": 4,
-    "enhancement_quality_score": 0.96
+    "unmatched_javadoc_methods": 6,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.912
   }
 }

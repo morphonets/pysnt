@@ -1,0 +1,276 @@
+{
+  "class_name": "Detection",
+  "package": "sc.fiji.snt.analysis.detection",
+  "java_name": "sc.fiji.snt.analysis.detection.Detection",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.606336",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "toSNTPoint",
+      "overloads": [
+        {
+          "signature": "toSNTPoint() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toSNTPoint"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
+    },
+    {
+      "name": "xyzct",
+      "overloads": [
+        {
+          "signature": "xyzct() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: xyzct"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Detection(double, double, double, double, Path, int, double)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "intensity",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "distanceFromSkeleton",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Detection(double, double, double, double, Path, int, double, int)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "intensity",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "distanceFromSkeleton",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "labelValue",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Detection(double, double, double, double, Path, int, double, int, double)",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "intensity",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "distanceFromSkeleton",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "labelValue",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "score",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of Detection"
+    }
+  ],
+  "fields": [
+    {
+      "name": "distanceFromSkeleton",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field distanceFromSkeleton of type double"
+    },
+    {
+      "name": "intensity",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field intensity of type double"
+    },
+    {
+      "name": "labelValue",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field labelValue of type int"
+    },
+    {
+      "name": "nodeIndex",
+      "type": "int",
+      "java_type": "int",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field nodeIndex of type int"
+    },
+    {
+      "name": "path",
+      "type": "Path",
+      "java_type": "Path",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field path of type Path"
+    },
+    {
+      "name": "score",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field score of type double"
+    },
+    {
+      "name": "x",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field x of type double"
+    },
+    {
+      "name": "y",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field y of type double"
+    },
+    {
+      "name": "z",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": true,
+      "documentation": "Field z of type double"
+    }
+  ],
+  "static_fields": []
+}

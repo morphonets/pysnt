@@ -1,27 +1,14 @@
 {
   "class_name": "PathStraightener",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.770170",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.PathStraightener",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.680384",
+  "extractor_version": "2.0.0",
   "methods": [
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static main"
-    },
     {
       "name": "setWidth",
       "overloads": [
@@ -29,13 +16,14 @@
           "signature": "setWidth(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "width",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setWidth"
@@ -47,65 +35,68 @@
           "signature": "straighten() -> ImagePlus",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "ImagePlus"
+          "java_return_type": "ImagePlus",
+          "is_static": false
         },
         {
           "signature": "straighten(int) -> ImageProcessor",
           "params": [
             {
-              "name": "arg0",
+              "name": "channel",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ImageProcessor"
+          "java_return_type": "ImageProcessor",
+          "is_static": false
         }
       ],
       "documentation": "Java method: straighten"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "PathStraightener(Path, SNT)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "SNT"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "PathStraightener(Path, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "PathStraightener(Path, SNT)",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PathStraightener"
+      "documentation": "Constructors of PathStraightener"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

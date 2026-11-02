@@ -1,0 +1,782 @@
+{
+  "class_name": "MultiSpectralRefiner",
+  "package": "sc.fiji.snt.analysis",
+  "java_name": "sc.fiji.snt.analysis.MultiSpectralRefiner",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.648430",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "apply",
+      "overloads": [
+        {
+          "signature": "apply() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: apply"
+    },
+    {
+      "name": "applySettings",
+      "overloads": [
+        {
+          "signature": "applySettings(MultiSpectralRefiner) -> void",
+          "params": [
+            {
+              "name": "ref",
+              "type": "MultiSpectralRefiner",
+              "java_type": "MultiSpectralRefiner"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: applySettings"
+    },
+    {
+      "name": "call",
+      "overloads": [
+        {
+          "signature": "call() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: call"
+    },
+    {
+      "name": "computeNodeCosts",
+      "overloads": [
+        {
+          "signature": "computeNodeCosts(ImagePlus, Path) -> double[]",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        },
+        {
+          "signature": "computeNodeCosts(ImgPlus, Path) -> double[]",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        },
+        {
+          "signature": "computeNodeCosts(ImagePlus, Path, double, double, double) -> double[]",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        },
+        {
+          "signature": "computeNodeCosts(ImgPlus, Path, double, double, double) -> double[]",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeNodeCosts"
+    },
+    {
+      "name": "getFinalNodeCosts",
+      "overloads": [
+        {
+          "signature": "getFinalNodeCosts() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFinalNodeCosts"
+    },
+    {
+      "name": "getFinalPenalty",
+      "overloads": [
+        {
+          "signature": "getFinalPenalty() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFinalPenalty"
+    },
+    {
+      "name": "getInitialNodeCosts",
+      "overloads": [
+        {
+          "signature": "getInitialNodeCosts() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getInitialNodeCosts"
+    },
+    {
+      "name": "getInitialPenalty",
+      "overloads": [
+        {
+          "signature": "getInitialPenalty() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getInitialPenalty"
+    },
+    {
+      "name": "readPreferences",
+      "overloads": [
+        {
+          "signature": "readPreferences() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: readPreferences"
+    },
+    {
+      "name": "refineTree",
+      "overloads": [
+        {
+          "signature": "refineTree(ImagePlus, Tree) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, Parameters) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree, Parameters) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, double, double, double) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree, double, double, double) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, Parameters, double, double, double) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: refineTree"
+    },
+    {
+      "name": "setAutoTune",
+      "overloads": [
+        {
+          "signature": "setAutoTune(boolean) -> void",
+          "params": [
+            {
+              "name": "autoTune",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAutoTune"
+    },
+    {
+      "name": "setBackgroundThreshold",
+      "overloads": [
+        {
+          "signature": "setBackgroundThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setBackgroundThreshold"
+    },
+    {
+      "name": "setColorWeight",
+      "overloads": [
+        {
+          "signature": "setColorWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setColorWeight"
+    },
+    {
+      "name": "setConvergenceThreshold",
+      "overloads": [
+        {
+          "signature": "setConvergenceThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setConvergenceThreshold"
+    },
+    {
+      "name": "setCosSimilarityThreshold",
+      "overloads": [
+        {
+          "signature": "setCosSimilarityThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCosSimilarityThreshold"
+    },
+    {
+      "name": "setIntensityRange",
+      "overloads": [
+        {
+          "signature": "setIntensityRange(double, double) -> void",
+          "params": [
+            {
+              "name": "minIntensity",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxIntensity",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIntensityRange"
+    },
+    {
+      "name": "setIntensityWeight",
+      "overloads": [
+        {
+          "signature": "setIntensityWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIntensityWeight"
+    },
+    {
+      "name": "setMaxIterations",
+      "overloads": [
+        {
+          "signature": "setMaxIterations(int) -> void",
+          "params": [
+            {
+              "name": "maxIterations",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMaxIterations"
+    },
+    {
+      "name": "setMaxRadius",
+      "overloads": [
+        {
+          "signature": "setMaxRadius(int) -> void",
+          "params": [
+            {
+              "name": "maxRadius",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMaxRadius"
+    },
+    {
+      "name": "setPercentCRange",
+      "overloads": [
+        {
+          "signature": "setPercentCRange(double, double) -> void",
+          "params": [
+            {
+              "name": "minPercent",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxPercent",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPercentCRange"
+    },
+    {
+      "name": "setRadiusWeight",
+      "overloads": [
+        {
+          "signature": "setRadiusWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadiusWeight"
+    },
+    {
+      "name": "setReferenceWindowRadius",
+      "overloads": [
+        {
+          "signature": "setReferenceWindowRadius(int) -> void",
+          "params": [
+            {
+              "name": "windowRadius",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setReferenceWindowRadius"
+    },
+    {
+      "name": "succeeded",
+      "overloads": [
+        {
+          "signature": "succeeded() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: succeeded"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "MultiSpectralRefiner(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImagePlus, Path, double, double, double)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImgPlus, Path, double, double, double)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of MultiSpectralRefiner"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

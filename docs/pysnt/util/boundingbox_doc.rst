@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.util``
 
-A BoundingBox contains information (including spatial calibration) of a tracing canvas bounding box, i.e., the minimum bounding cuboid containing all nodes (SNTPoints) of a reconstructed structure.
+A BoundingBox contains information (including spatial calibration) of a tracing canvas bounding box, i.e., the minimum bounding cuboid containing all nodes (`SNTPoint`s) of a reconstructed structure.
 
 
 Fields
@@ -123,6 +123,11 @@ Getters Methods
    
 
 
+.. py:method:: hashCode()
+
+   
+
+
 .. py:method:: isScaled()
 
    Checks whether this BoundingBox is spatially calibrated, i.e., if voxel spacing has been specified
@@ -180,7 +185,7 @@ Other Methods
    Combines this bounding box with another one. It is assumed both boxes share the same voxel spacing/Calibration.
 
 
-.. py:method:: contains(SNTPoint)
+.. py:method:: contains(BoundingBox)
 
    
 
@@ -195,6 +200,16 @@ Other Methods
    
 
 
+.. py:method:: equals(Object)
+
+   
+
+
+.. py:method:: expand(double, double, double)
+
+   Grows this box outward on every side by the specified calibrated (world-unit) amounts, keeping its centroid fixed. Unlike a fixed pixel-count margin, this scales sensibly with anisotropic spacing (e.g., a large Z spacing common in light-sheet/expansion data would make a fixed pixel margin either negligible or huge depending on the axis).
+
+
 .. py:method:: height()
 
    
@@ -202,7 +217,7 @@ Other Methods
 
 .. py:method:: inferSpacing(Collection)
 
-   Infers the voxel spacing of this box from the inter-node distances of a Collection of SWCPoints.
+   Infers the voxel spacing of this box from the inter-node distances of a Collection of `SWCPoint`s.
 
 
 .. py:method:: intersection(BoundingBox)
@@ -220,17 +235,27 @@ Other Methods
    Retrieves the origin opposite of this box.
 
 
-.. py:method:: scale([D)
+.. py:method:: sanitizedUnit(String)
 
    
 
 
-.. py:method:: shift([D)
+.. py:method:: scale(double[])
+
+   
+
+
+.. py:method:: shift(double[])
 
    
 
 
 .. py:method:: toBoundingBox3d()
+
+   
+
+
+.. py:method:: toString()
 
    
 

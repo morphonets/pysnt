@@ -53,40 +53,49 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Computes summary and descriptive statistics from univariate properties of Tree groups. For analysis of individual Trees use TreeStatistics.
+Computes summary and descriptive statistics from univariate properties of ``Tree`` groups. For analysis of individual Trees use ``TreeStatistics``.
 
 
 Methods
 -------
 
 
+Utilities Methods
+~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: resetRestrictions()
+
+   Description copied from class: ``TreeStatistics``
+
+
 Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAllMetrics()
+.. py:method:: getAllMetrics()
 
-   Description copied from class: TreeStatistics
+   
 
 
 .. py:method:: getAnnotatedLength(int)
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
-.. py:method:: getAnnotatedLengthHistogram(int)
+.. py:method:: getAnnotatedLengthHistogram()
 
    
 
 
 .. py:method:: getAnnotatedLengthsByHemisphere(int)
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
-.. py:method:: getAnnotations(int)
+.. py:method:: getAnnotations()
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getAvgBranchLength()
@@ -126,30 +135,20 @@ Getters Methods
 
 .. py:method:: getBranchPoints()
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getBranches()
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getCableLength()
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
-.. py:method:: getCableLengthNorm(BrainAnnotation, boolean)
-
-   
-
-
-.. py:method:: getCancelReason()
-
-   
-
-
-.. py:method:: getContext()
+.. py:method:: getCableLengthNorm(BrainAnnotation)
 
    
 
@@ -171,12 +170,12 @@ Getters Methods
 
 .. py:method:: getDescriptiveStats(String)
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
-.. py:method:: getFlowPlot(String, int, double, boolean)
+.. py:method:: getFlowPlot(String, Collection)
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getFractalDimension()
@@ -201,12 +200,12 @@ Getters Methods
 
 .. py:method:: getHistogram(String)
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getInnerBranches()
 
-   Description copied from class: TreeStatistics
+   Description copied from class: ``TreeStatistics``
 
 
 .. py:method:: getInnerLength()
@@ -219,35 +218,242 @@ Getters Methods
    
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMetrics()
 
    Gets the list of metrics supported by MultiTreeStatistics.
 
-Returns all the metrics that can be computed for groups of trees, including aggregate measures and group-specific statistics.
+   Returns all the metrics that can be computed for groups of trees, including aggregate measures and group-specific statistics.
+
+
+.. py:method:: getNBranchPoints(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNBranchPointsNorm(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNBranches()
+
+   
+
+
+.. py:method:: getNNodes()
+
+   
+
+
+.. py:method:: getNPaths()
+
+   
+
+
+.. py:method:: getNTips(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNTipsNorm(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNoSpinesOrVaricosities()
+
+   
+
+
+.. py:method:: getNodeStatistics()
+
+   
+
+
+.. py:method:: getParsedTree()
+
+   
+
+
+.. py:method:: getPartitionAsymmetry()
+
+   
+
+
+.. py:method:: getPolarHistogram(String)
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getPrimaryBranches()
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getPrimaryLength()
+
+   
+
+
+.. py:method:: getPrimaryPaths()
+
+   
+
+
+.. py:method:: getRawValues(String)
+
+   
+
+
+.. py:method:: getRemoteBifAngles()
+
+   
+
+
+.. py:method:: getRootAngleAnalyzer()
+
+   
+
+
+.. py:method:: getRootAngleMetric(String)
+
+   
+
+
+.. py:method:: getShollAnalyzer()
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getSpineOrVaricosityDensity()
+
+   
+
+
+.. py:method:: getStrahlerAnalyzer()
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getStrahlerBifurcationRatio()
+
+   
+
+
+.. py:method:: getStrahlerNumber()
+
+   
+
+
+.. py:method:: getSummaryStats(String)
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getTable()
+
+   
+
+
+.. py:method:: getTerminalBranches()
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getTerminalLength()
+
+   
+
+
+.. py:method:: getTips()
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getUnit(String)
+
+   
+
+
+.. py:method:: getWidth()
+
+   
+
+
+.. py:method:: isExactMetricMatch()
+
+   The group is 3D if any of its (non-empty) trees is
+
+
+.. py:method:: isValid()
+
+   
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setExactMetricMatch(boolean)
+
+   Main method for testing and demonstration purposes.
+
+   Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
+
+
+.. py:method:: setLabel(String)
+
+   Sets an identifying label for the group of Trees being analyzed.
+
+
+.. py:method:: setTable(GenericTable)
+
+   
+
+
+Analysis Methods
+~~~~~~~~~~~~~~~~
+
+
+.. py:method:: measure(Collection, boolean)
+
+   
+
+
+Visualization Methods
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: updateAndDisplayTable()
+
+   
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: cancel(String)
-
-   Main method for testing and demonstration purposes.
-
-Creates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.
-
-
-.. py:method:: context()
+.. py:method:: dispose()
 
    
 
 
-.. py:method:: dispose()
+.. py:method:: fromCollection(Collection, String)
 
-   Description copied from class: TreeStatistics
+   
 
 
-.. py:method:: static fromCollection(Collection, String)
+.. py:method:: restrictToSWCType(int[])
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: run()
+
+   
+
+
+.. py:method:: summarize(boolean)
 
    
 

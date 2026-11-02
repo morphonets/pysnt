@@ -1,0 +1,1102 @@
+{
+  "class_name": "MultiSpectralRefiner",
+  "package": "sc.fiji.snt.analysis",
+  "extracted_at": "2026-11-02T00:24:01.648430",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T08:38:08.286953",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "apply",
+      "overloads": [
+        {
+          "signature": "apply() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalStateException": "- if call() has not been run or failed",
+            "call()": ""
+          }
+        }
+      ],
+      "documentation": "Java method: apply",
+      "javadoc_description": "Applies the refinement result to the original path by replacing all its nodes with the refined geometry. This preserves hierarchical relationships (parent, children, connections) via `Path.replaceNodes(Path)`. Must be called sequentially (not thread-safe).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "applySettings",
+      "overloads": [
+        {
+          "signature": "applySettings(MultiSpectralRefiner) -> void",
+          "params": [
+            {
+              "name": "ref",
+              "type": "MultiSpectralRefiner",
+              "java_type": "MultiSpectralRefiner",
+              "description": "- the reference refiner to copy settings from",
+              "javadoc_name": "ref"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: applySettings",
+      "javadoc_description": "Applies all settings from another refiner to this one. Useful for batch operations where a reference refiner holds the user-configured parameters.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "call",
+      "overloads": [
+        {
+          "signature": "call() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the refined path, or null if refinement failed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: call",
+      "javadoc_description": "Runs the multispectral refinement on this path. Thread-safe: does not modify the original path. Call `apply()` afterward (sequentially) to commit results.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeNodeCosts",
+      "overloads": [
+        {
+          "signature": "computeNodeCosts(ImagePlus, Path) -> double[]",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the multichannel image",
+              "javadoc_name": "imp"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "per-node cost values (same length as path.size())",
+          "throws": {}
+        },
+        {
+          "signature": "computeNodeCosts(ImgPlus, Path) -> double[]",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "computeNodeCosts(ImagePlus, Path, double, double, double) -> double[]",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "computeNodeCosts(ImgPlus, Path, double, double, double) -> double[]",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeNodeCosts",
+      "javadoc_description": "Computes the cost at each node of a path without modifying it, where the path's node coordinates and imp's own pixel grid are related by a fixed offset. See `MultiSpectralRefiner(ImagePlus, Path, double, double, double)`.",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFinalNodeCosts",
+      "overloads": [
+        {
+          "signature": "getFinalNodeCosts() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "array of per-node costs (same length as the path), or null if call() hasn't run",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFinalNodeCosts",
+      "javadoc_description": "Returns the per-node cost values after refinement. Only valid after `call()` has been invoked.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFinalPenalty",
+      "overloads": [
+        {
+          "signature": "getFinalPenalty() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFinalPenalty",
+      "javadoc_description": "Returns the total penalty of the path after refinement. Only valid after `call()` has been invoked.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInitialNodeCosts",
+      "overloads": [
+        {
+          "signature": "getInitialNodeCosts() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "array of per-node costs (same length as the path), or null if call() hasn't run",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInitialNodeCosts",
+      "javadoc_description": "Returns the per-node cost values before refinement. Only valid after `call()` has been invoked.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInitialPenalty",
+      "overloads": [
+        {
+          "signature": "getInitialPenalty() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInitialPenalty",
+      "javadoc_description": "Returns the total penalty of the path before refinement. Only valid after `call()` has been invoked.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "readPreferences",
+      "overloads": [
+        {
+          "signature": "readPreferences() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: readPreferences",
+      "javadoc_description": "Reads stored preferences from `MultiSpectralRefinerCmd` and applies them to this refiner. If auto-intensity is enabled in the preferences, the auto-calibrated values from the constructor are preserved.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "refineTree",
+      "overloads": [
+        {
+          "signature": "refineTree(ImagePlus, Tree) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the multichannel image",
+              "javadoc_name": "imp"
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of paths successfully refined",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, Parameters) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree, Parameters) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, double, double, double) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImgPlus, Tree, double, double, double) -> int",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "refineTree(ImagePlus, Tree, Parameters, double, double, double) -> int",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "params",
+              "type": "Any",
+              "java_type": "Parameters",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: refineTree",
+      "javadoc_description": "Refines all paths in a tree with custom parameters, where the tree's node coordinates and imp's own pixel grid are related by a fixed offset. See `MultiSpectralRefiner(ImagePlus, Path, double, double, double)`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAutoTune",
+      "overloads": [
+        {
+          "signature": "setAutoTune(boolean) -> void",
+          "params": [
+            {
+              "name": "autoTune",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable (default false)",
+              "javadoc_name": "autoTune"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAutoTune",
+      "javadoc_description": "Enables automatic parameter tuning from path and image statistics. When enabled, `call()` will adjust `maxRadius`, `cosSimilarityThreshold`, and intensity thresholds based on the actual data before running the optimization loop.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBackgroundThreshold",
+      "overloads": [
+        {
+          "signature": "setBackgroundThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the threshold (default 0.47)",
+              "javadoc_name": "threshold"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBackgroundThreshold",
+      "javadoc_description": "Sets the background fraction threshold. If more than this fraction of voxels in a node's sphere fail the intensity test, the node is considered to be in the background.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setColorWeight",
+      "overloads": [
+        {
+          "signature": "setColorWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the weight (default 0.85)",
+              "javadoc_name": "weight"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setColorWeight",
+      "javadoc_description": "Sets the weight for the color (cosine similarity) penalty term.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setConvergenceThreshold",
+      "overloads": [
+        {
+          "signature": "setConvergenceThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the relative improvement threshold (default 0.001)",
+              "javadoc_name": "threshold"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setConvergenceThreshold",
+      "javadoc_description": "Sets the convergence threshold for the refinement loop. The loop stops when the relative improvement per iteration falls below this fraction (e.g., 0.001 = stop when improvement is less than 0.1% of total penalty).",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCosSimilarityThreshold",
+      "overloads": [
+        {
+          "signature": "setCosSimilarityThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the threshold (default 0.90)",
+              "javadoc_name": "threshold"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCosSimilarityThreshold",
+      "javadoc_description": "Sets the cosine similarity threshold below which a voxel is considered spectrally dissimilar to the reference color.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setIntensityRange",
+      "overloads": [
+        {
+          "signature": "setIntensityRange(double, double) -> void",
+          "params": [
+            {
+              "name": "minIntensity",
+              "type": "float",
+              "java_type": "double",
+              "description": "- lower bound (total channel sum); default 10000",
+              "javadoc_name": "minIntensity"
+            },
+            {
+              "name": "maxIntensity",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setIntensityRange",
+      "javadoc_description": "Sets the intensity range for adaptive percent-C computation.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setIntensityWeight",
+      "overloads": [
+        {
+          "signature": "setIntensityWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the weight (default 1.00)",
+              "javadoc_name": "weight"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setIntensityWeight",
+      "javadoc_description": "Sets the weight for the intensity background penalty term.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMaxIterations",
+      "overloads": [
+        {
+          "signature": "setMaxIterations(int) -> void",
+          "params": [
+            {
+              "name": "maxIterations",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the iteration cap (default 50)",
+              "javadoc_name": "maxIterations"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMaxIterations",
+      "javadoc_description": "Sets the maximum number of iterations for the refinement loop. The loop also stops early if convergence is reached.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMaxRadius",
+      "overloads": [
+        {
+          "signature": "setMaxRadius(int) -> void",
+          "params": [
+            {
+              "name": "maxRadius",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the max radius (default 12)",
+              "javadoc_name": "maxRadius"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMaxRadius",
+      "javadoc_description": "Sets the maximum radius (in pixels) to test during radius optimization.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setPercentCRange",
+      "overloads": [
+        {
+          "signature": "setPercentCRange(double, double) -> void",
+          "params": [
+            {
+              "name": "minPercent",
+              "type": "float",
+              "java_type": "double",
+              "description": "- tolerance at high intensities (default 0.05)",
+              "javadoc_name": "minPercent"
+            },
+            {
+              "name": "maxPercent",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setPercentCRange",
+      "javadoc_description": "Sets the percent-C range for adaptive intensity tolerance.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRadiusWeight",
+      "overloads": [
+        {
+          "signature": "setRadiusWeight(double) -> void",
+          "params": [
+            {
+              "name": "weight",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the weight (default 3.75)",
+              "javadoc_name": "weight"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRadiusWeight",
+      "javadoc_description": "Sets the weight for the radius expansion penalty term.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setReferenceWindowRadius",
+      "overloads": [
+        {
+          "signature": "setReferenceWindowRadius(int) -> void",
+          "params": [
+            {
+              "name": "windowRadius",
+              "type": "int",
+              "java_type": "int",
+              "description": "- number of nodes on each side to include. Use -1 (default) for a single global reference, or a positive value (e.g., 10–30) for sliding window.",
+              "javadoc_name": "windowRadius"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setReferenceWindowRadius",
+      "javadoc_description": "Sets the sliding-window radius for per-node reference color computation. When enabled, each node's reference color is the average of the ±N neighboring nodes along the path, rather than a single global average. This handles color drift along long axons in Brainbow images.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "succeeded",
+      "overloads": [
+        {
+          "signature": "succeeded() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: succeeded",
+      "javadoc_description": "Whether the refinement succeeded (penalty decreased or path was already optimal).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "MultiSpectralRefiner(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImagePlus, Path, double, double, double)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "MultiSpectralRefiner(ImgPlus, Path, double, double, double)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of MultiSpectralRefiner"
+    }
+  ],
+  "javadoc_description": "Post-hoc refinement of traced paths in multispectral (e.g., Brainbow) images.\n\nFor each path, the algorithm computes a reference color vector (the average intensity across all channels at each node), then iteratively adjusts node positions and radii to minimize a cost function combining:\n\n#. **Intensity penalty** fraction of voxels in the node's sphere whose total intensity falls outside the expected range\n\n#. **Color penalty** fraction of voxels whose spectral angle (cosine similarity) to the reference color vector is below threshold\n\n#. **Radius penalty** `1/r²` , favoring compact cross-sections\n\nThis is an SNT-native re-implementation of the nCorrect algorithm described in:\n\nAzzouz, S et al., \"Optimized Neuron Tracing Using Post Hoc Reanalysis.\" doi:10.1101/2022.10.10.511642\n\nThe minimum path-length quality gate is informed by:\n\nLeiwe et al., \"Automated neuronal reconstruction with super-multicolour Tetbow labelling and threshold-based clustering of colour hues\", *Nat Commun* 15, 5279 (2024). doi:10.1038/s41467-024-49455-y\n\nLike `PathFitter`, each instance operates on a single `Path`. `call()` is thread-safe for parallel execution; `apply()` must be called sequentially to commit results back to the original path.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "Callable",
+      "Path"
+    ],
+    "implements": [
+      "Callable",
+      "Path"
+    ]
+  },
+  "nested_classes": [
+    "MultiSpectralRefiner.Parameters"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Callable",
+    "Object",
+    "PathFitter",
+    "ImgUtils.toImagePlus(ImgPlus)",
+    "Path"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 32,
+      "total_json_methods": 23,
+      "total_matches": 32,
+      "exact_matches": 32,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -9,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

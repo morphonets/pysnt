@@ -64,57 +64,17 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getCancelReason()
+.. py:method:: getPlot(Path)
 
    
 
 
-.. py:method:: getContext()
+.. py:method:: getTable(Path)
 
    
 
 
-.. py:method:: getDelegateObject()
-
-   
-
-
-.. py:method:: getInfo()
-
-   
-
-
-.. py:method:: getInput(String)
-
-   
-
-
-.. py:method:: getInputs()
-
-   
-
-
-.. py:method:: getOutput(String)
-
-   
-
-
-.. py:method:: getOutputs()
-
-   
-
-
-.. py:method:: getPlot(Path, int)
-
-   
-
-
-.. py:method:: getTable(Path, int)
-
-   
-
-
-.. py:method:: getValues(Path, int, int)
+.. py:method:: getValues(Path)
 
    Gets the profile for the specified path as a map of lists of pixel intensities (profile indices as keys)
 
@@ -124,51 +84,11 @@ Getters Methods
    
 
 
-.. py:method:: isInputResolved(String)
-
-   
-
-
-.. py:method:: isOutputResolved(String)
-
-   
-
-
-.. py:method:: isResolved(String)
-
-   
-
-
 Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setContext(Context)
-
-   
-
-
-.. py:method:: setInput(String, Object)
-
-   
-
-
-.. py:method:: setInputs(Map)
-
-   
-
-
 .. py:method:: setNodeStep(int)
-
-   
-
-
-.. py:method:: setOutput(String, Object)
-
-   
-
-
-.. py:method:: setOutputs(Map)
 
    
 
@@ -178,95 +98,21 @@ Setters Methods
    
 
 
-.. py:method:: setResolved(String, boolean)
-
-   
-
-
-.. py:method:: setShape(ProfileProcessor$Shape)
+.. py:method:: setShape(Shape)
 
    Sets the shape of the iterating cursor.
-
-
-Visualization Methods
-~~~~~~~~~~~~~~~~~~~~~
-
-
-.. py:method:: preview()
-
-   
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: addInput(String, Class)
-
-   
-
-
-.. py:method:: addOutput(ModuleItem)
-
-   
-
-
-.. py:method:: cancel(String)
-
-   
-
-
-.. py:method:: context()
-
-   
-
-
-.. py:method:: initialize()
-
-   
-
-
-.. py:method:: static main(String;)
-
-   
-
-
-.. py:method:: removeInput(ModuleItem)
-
-   
-
-
-.. py:method:: removeOutput(ModuleItem)
-
-   
-
-
-.. py:method:: resolveInput(String)
-
-   
-
-
-.. py:method:: resolveOutput(String)
+.. py:method:: cancel()
 
    
 
 
 .. py:method:: run()
-
-   
-
-
-.. py:method:: uncancel()
-
-   
-
-
-.. py:method:: unresolveInput(String)
-
-   
-
-
-.. py:method:: unresolveOutput(String)
 
    
 

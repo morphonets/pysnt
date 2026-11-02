@@ -1,0 +1,431 @@
+{
+  "class_name": "SparseStorageBackend",
+  "package": "sc.fiji.snt.tracing.auto.gwdt",
+  "java_name": "sc.fiji.snt.tracing.auto.gwdt.SparseStorageBackend",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.741460",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "buildGraph",
+      "overloads": [
+        {
+          "signature": "buildGraph(long[], double[], double) -> DirectedWeightedGraph",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: buildGraph"
+    },
+    {
+      "name": "computeGWDT",
+      "overloads": [
+        {
+          "signature": "computeGWDT(RandomAccessibleInterval, double, double[], double, double) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "minIntensity",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxIntensity",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: computeGWDT"
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: dispose"
+    },
+    {
+      "name": "estimateMemoryUsage",
+      "overloads": [
+        {
+          "signature": "estimateMemoryUsage() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: estimateMemoryUsage"
+    },
+    {
+      "name": "getAliveIndices",
+      "overloads": [
+        {
+          "signature": "getAliveIndices() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAliveIndices"
+    },
+    {
+      "name": "getBackendType",
+      "overloads": [
+        {
+          "signature": "getBackendType() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBackendType"
+    },
+    {
+      "name": "getDistance",
+      "overloads": [
+        {
+          "signature": "getDistance(long) -> double",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDistance"
+    },
+    {
+      "name": "getGWDT",
+      "overloads": [
+        {
+          "signature": "getGWDT(long) -> double",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getGWDT"
+    },
+    {
+      "name": "getMaxGWDT",
+      "overloads": [
+        {
+          "signature": "getMaxGWDT() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaxGWDT"
+    },
+    {
+      "name": "getParent",
+      "overloads": [
+        {
+          "signature": "getParent(long) -> long",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getParent"
+    },
+    {
+      "name": "getState",
+      "overloads": [
+        {
+          "signature": "getState(long) -> byte",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "byte",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getState"
+    },
+    {
+      "name": "initializeFastMarching",
+      "overloads": [
+        {
+          "signature": "initializeFastMarching(long[], long) -> void",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            },
+            {
+              "name": "seedIndex",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: initializeFastMarching"
+    },
+    {
+      "name": "reinitializeFastMarching",
+      "overloads": [
+        {
+          "signature": "reinitializeFastMarching(long[], long, Set) -> void",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            },
+            {
+              "name": "seedIndex",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "excludedIndices",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reinitializeFastMarching"
+    },
+    {
+      "name": "setConnectivityType",
+      "overloads": [
+        {
+          "signature": "setConnectivityType(int) -> void",
+          "params": [
+            {
+              "name": "type",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setConnectivityType"
+    },
+    {
+      "name": "setDistance",
+      "overloads": [
+        {
+          "signature": "setDistance(long, double) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "distance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDistance"
+    },
+    {
+      "name": "setGWDT",
+      "overloads": [
+        {
+          "signature": "setGWDT(long, double) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "value",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setGWDT"
+    },
+    {
+      "name": "setParent",
+      "overloads": [
+        {
+          "signature": "setParent(long, long) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "parentIndex",
+              "type": "int",
+              "java_type": "long"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setParent"
+    },
+    {
+      "name": "setState",
+      "overloads": [
+        {
+          "signature": "setState(long, byte) -> void",
+          "params": [
+            {
+              "name": "index",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "stateValue",
+              "type": "int",
+              "java_type": "byte"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setState"
+    },
+    {
+      "name": "setTrackAliveIndices",
+      "overloads": [
+        {
+          "signature": "setTrackAliveIndices(boolean) -> void",
+          "params": [
+            {
+              "name": "track",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTrackAliveIndices"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SparseStorageBackend(long[])",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of SparseStorageBackend"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

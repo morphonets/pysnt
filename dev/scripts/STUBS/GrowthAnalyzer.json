@@ -1,0 +1,463 @@
+{
+  "class_name": "GrowthAnalyzer",
+  "package": "sc.fiji.snt.analysis.growth",
+  "java_name": "sc.fiji.snt.analysis.growth.GrowthAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.630806",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "analyze",
+      "overloads": [
+        {
+          "signature": "analyze(Collection, double, String) -> GrowthAnalysisResults",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "frameInterval",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "timeUnits",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "GrowthAnalysisResults",
+          "java_return_type": "GrowthAnalysisResults",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: analyze"
+    },
+    {
+      "name": "getAbsoluteWindowSize",
+      "overloads": [
+        {
+          "signature": "getAbsoluteWindowSize() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAbsoluteWindowSize"
+    },
+    {
+      "name": "getBaseThresholdFraction",
+      "overloads": [
+        {
+          "signature": "getBaseThresholdFraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBaseThresholdFraction"
+    },
+    {
+      "name": "getPhaseSensitivity",
+      "overloads": [
+        {
+          "signature": "getPhaseSensitivity() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPhaseSensitivity"
+    },
+    {
+      "name": "getRapidThresholdMultiple",
+      "overloads": [
+        {
+          "signature": "getRapidThresholdMultiple() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRapidThresholdMultiple"
+    },
+    {
+      "name": "getRetractionThreshold",
+      "overloads": [
+        {
+          "signature": "getRetractionThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRetractionThreshold"
+    },
+    {
+      "name": "getWindowSizeFraction",
+      "overloads": [
+        {
+          "signature": "getWindowSizeFraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getWindowSizeFraction"
+    },
+    {
+      "name": "isUseAbsoluteWindowSize",
+      "overloads": [
+        {
+          "signature": "isUseAbsoluteWindowSize() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isUseAbsoluteWindowSize"
+    },
+    {
+      "name": "isUseGlobalThresholds",
+      "overloads": [
+        {
+          "signature": "isUseGlobalThresholds() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isUseGlobalThresholds"
+    },
+    {
+      "name": "setAbsoluteWindowSize",
+      "overloads": [
+        {
+          "signature": "setAbsoluteWindowSize(int) -> void",
+          "params": [
+            {
+              "name": "absoluteWindowSize",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAbsoluteWindowSize"
+    },
+    {
+      "name": "setMinPathLength",
+      "overloads": [
+        {
+          "signature": "setMinPathLength(double) -> void",
+          "params": [
+            {
+              "name": "minPathLength",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMinPathLength"
+    },
+    {
+      "name": "setMinTimePoints",
+      "overloads": [
+        {
+          "signature": "setMinTimePoints(int) -> void",
+          "params": [
+            {
+              "name": "minTimePoints",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMinTimePoints"
+    },
+    {
+      "name": "setPhaseSensitivity",
+      "overloads": [
+        {
+          "signature": "setPhaseSensitivity(double) -> void",
+          "params": [
+            {
+              "name": "phaseSensitivity",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPhaseSensitivity"
+    },
+    {
+      "name": "setPlateauThreshold",
+      "overloads": [
+        {
+          "signature": "setPlateauThreshold(double) -> void",
+          "params": [
+            {
+              "name": "plateauThresholdFraction",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPlateauThreshold"
+    },
+    {
+      "name": "setRapidThreshold",
+      "overloads": [
+        {
+          "signature": "setRapidThreshold(double) -> void",
+          "params": [
+            {
+              "name": "rapidThresholdMultiple",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRapidThreshold"
+    },
+    {
+      "name": "setRetractionThreshold",
+      "overloads": [
+        {
+          "signature": "setRetractionThreshold(double) -> void",
+          "params": [
+            {
+              "name": "retractionThreshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRetractionThreshold"
+    },
+    {
+      "name": "setUseAbsoluteWindowSize",
+      "overloads": [
+        {
+          "signature": "setUseAbsoluteWindowSize(boolean) -> void",
+          "params": [
+            {
+              "name": "useAbsoluteWindowSize",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUseAbsoluteWindowSize"
+    },
+    {
+      "name": "setUseGlobalThresholds",
+      "overloads": [
+        {
+          "signature": "setUseGlobalThresholds(boolean) -> void",
+          "params": [
+            {
+              "name": "useGlobalThresholds",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUseGlobalThresholds"
+    },
+    {
+      "name": "setWindowSizeFraction",
+      "overloads": [
+        {
+          "signature": "setWindowSizeFraction(double) -> void",
+          "params": [
+            {
+              "name": "windowSizeFraction",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setWindowSizeFraction"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "GrowthAnalyzer()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "GrowthAnalyzer(double, double, double)",
+          "params": [
+            {
+              "name": "plateauThresholdFraction",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "rapidThresholdMultiple",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "phaseSensitivity",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of GrowthAnalyzer"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "DEFAULT_ABSOLUTE_WINDOW_SIZE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_ABSOLUTE_WINDOW_SIZE of type int"
+    },
+    {
+      "name": "DEFAULT_BASE_THRESHOLD_FRACTION",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_BASE_THRESHOLD_FRACTION of type double"
+    },
+    {
+      "name": "DEFAULT_MIN_PATH_LENGTH",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_MIN_PATH_LENGTH of type double"
+    },
+    {
+      "name": "DEFAULT_MIN_TIME_POINTS",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_MIN_TIME_POINTS of type int"
+    },
+    {
+      "name": "DEFAULT_PHASE_SENSITIVITY",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_PHASE_SENSITIVITY of type double"
+    },
+    {
+      "name": "DEFAULT_RAPID_THRESHOLD_MULTIPLE",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_RAPID_THRESHOLD_MULTIPLE of type double"
+    },
+    {
+      "name": "DEFAULT_RETRACTION_THRESHOLD",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_RETRACTION_THRESHOLD of type double"
+    },
+    {
+      "name": "DEFAULT_USE_ABSOLUTE_WINDOW_SIZE",
+      "type": "bool",
+      "java_type": "boolean",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_USE_ABSOLUTE_WINDOW_SIZE of type boolean"
+    },
+    {
+      "name": "DEFAULT_USE_GLOBAL_THRESHOLDS",
+      "type": "bool",
+      "java_type": "boolean",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_USE_GLOBAL_THRESHOLDS of type boolean"
+    },
+    {
+      "name": "DEFAULT_WINDOW_SIZE_FRACTION",
+      "type": "float",
+      "java_type": "double",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field DEFAULT_WINDOW_SIZE_FRACTION of type double"
+    },
+    {
+      "name": "TAG_REGEX_PATTERN",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field TAG_REGEX_PATTERN of type String"
+    }
+  ]
+}

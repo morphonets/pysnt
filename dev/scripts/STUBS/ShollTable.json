@@ -1,0 +1,999 @@
+{
+  "class_name": "ShollTable",
+  "package": "sc.fiji.snt.analysis.sholl.gui",
+  "java_name": "sc.fiji.snt.analysis.sholl.gui.ShollTable",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.734227",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "addColumn",
+      "overloads": [
+        {
+          "signature": "addColumn(String, Collection) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "array",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "addColumn(String, double[]) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "array",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: addColumn"
+    },
+    {
+      "name": "addGenericColumn",
+      "overloads": [
+        {
+          "signature": "addGenericColumn(String, Collection) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "collection",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: addGenericColumn"
+    },
+    {
+      "name": "appendToLastRow",
+      "overloads": [
+        {
+          "signature": "appendToLastRow(String, Object) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: appendToLastRow"
+    },
+    {
+      "name": "asDouble",
+      "overloads": [
+        {
+          "signature": "asDouble(Object) -> double",
+          "params": [
+            {
+              "name": "cell",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: asDouble"
+    },
+    {
+      "name": "asInt",
+      "overloads": [
+        {
+          "signature": "asInt(Object, int) -> int",
+          "params": [
+            {
+              "name": "cell",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "fallback",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: asInt"
+    },
+    {
+      "name": "asString",
+      "overloads": [
+        {
+          "signature": "asString(Object, String) -> String",
+          "params": [
+            {
+              "name": "cell",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "fallback",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: asString"
+    },
+    {
+      "name": "clear",
+      "overloads": [
+        {
+          "signature": "clear() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: clear"
+    },
+    {
+      "name": "createOrUpdateDisplay",
+      "overloads": [
+        {
+          "signature": "createOrUpdateDisplay() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: createOrUpdateDisplay"
+    },
+    {
+      "name": "fillEmptyCells",
+      "overloads": [
+        {
+          "signature": "fillEmptyCells(Object) -> void",
+          "params": [
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: fillEmptyCells"
+    },
+    {
+      "name": "findColumnIndex",
+      "overloads": [
+        {
+          "signature": "findColumnIndex(String) -> int",
+          "params": [
+            {
+              "name": "columnHeader",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: findColumnIndex"
+    },
+    {
+      "name": "fromFile",
+      "overloads": [
+        {
+          "signature": "fromFile(String) -> SNTTable",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "fromFile(String, String) -> SNTTable",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "delimiter",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: fromFile"
+    },
+    {
+      "name": "fromGenericTable",
+      "overloads": [
+        {
+          "signature": "fromGenericTable(GenericTable) -> SNTTable",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "GenericTable"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: fromGenericTable"
+    },
+    {
+      "name": "geColumnStats",
+      "overloads": [
+        {
+          "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "startRowIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endRowIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "columnIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "startRowIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endRowIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: geColumnStats"
+    },
+    {
+      "name": "geRowStats",
+      "overloads": [
+        {
+          "signature": "geRowStats(String, int, int) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "rowHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "startColumnIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endColumnIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "geRowStats(int, int, int) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "rowIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "startColumnIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endColumnIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: geRowStats"
+    },
+    {
+      "name": "getColumnHeaders",
+      "overloads": [
+        {
+          "signature": "getColumnHeaders() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "getColumnHeaders(String) -> List",
+          "params": [
+            {
+              "name": "pattern",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: getColumnHeaders"
+    },
+    {
+      "name": "getSummaryRow",
+      "overloads": [
+        {
+          "signature": "getSummaryRow() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: getSummaryRow"
+    },
+    {
+      "name": "getTitle",
+      "overloads": [
+        {
+          "signature": "getTitle() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTitle"
+    },
+    {
+      "name": "hasContext",
+      "overloads": [
+        {
+          "signature": "hasContext() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasContext"
+    },
+    {
+      "name": "hasUnsavedData",
+      "overloads": [
+        {
+          "signature": "hasUnsavedData() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: hasUnsavedData"
+    },
+    {
+      "name": "insertRow",
+      "overloads": [
+        {
+          "signature": "insertRow(String) -> int",
+          "params": [
+            {
+              "name": "header",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: insertRow"
+    },
+    {
+      "name": "isSummarized",
+      "overloads": [
+        {
+          "signature": "isSummarized() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: isSummarized"
+    },
+    {
+      "name": "listProfileEntries",
+      "overloads": [
+        {
+          "signature": "listProfileEntries() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: listProfileEntries"
+    },
+    {
+      "name": "removeColumn",
+      "overloads": [
+        {
+          "signature": "removeColumn(String) -> Column",
+          "params": [
+            {
+              "name": "header",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Column",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: removeColumn"
+    },
+    {
+      "name": "removeSummary",
+      "overloads": [
+        {
+          "signature": "removeSummary() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: removeSummary"
+    },
+    {
+      "name": "replace",
+      "overloads": [
+        {
+          "signature": "replace(String, double, double) -> void",
+          "params": [
+            {
+              "name": "columnHeadersPattern",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "originalValue",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "replacementValue",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: replace"
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(File) -> void",
+          "params": [
+            {
+              "name": "outputFile",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "save(Table, char, boolean, boolean, File) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "Table"
+            },
+            {
+              "name": "columnSep",
+              "type": "str",
+              "java_type": "char"
+            },
+            {
+              "name": "saveColHeaders",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "saveRowHeaders",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "outputFile",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: save"
+    },
+    {
+      "name": "saveSilently",
+      "overloads": [
+        {
+          "signature": "saveSilently(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: saveSilently"
+    },
+    {
+      "name": "set",
+      "overloads": [
+        {
+          "signature": "set(String, String, Object) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "rowHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "set(String, int, Object) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "row",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "set(int, int, Object) -> void",
+          "params": [
+            {
+              "name": "col",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "row",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: set"
+    },
+    {
+      "name": "setContext",
+      "overloads": [
+        {
+          "signature": "setContext(Context) -> void",
+          "params": [
+            {
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setContext"
+    },
+    {
+      "name": "setDetailedSummary",
+      "overloads": [
+        {
+          "signature": "setDetailedSummary(boolean) -> void",
+          "params": [
+            {
+              "name": "detailed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDetailedSummary"
+    },
+    {
+      "name": "setTitle",
+      "overloads": [
+        {
+          "signature": "setTitle(String) -> void",
+          "params": [
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTitle"
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "show(String) -> void",
+          "params": [
+            {
+              "name": "windowTitle",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: show"
+    },
+    {
+      "name": "summarize",
+      "overloads": [
+        {
+          "signature": "summarize() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "summarize(String) -> void",
+          "params": [
+            {
+              "name": "header",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "summarize(ShollTable, String) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "ShollTable",
+              "java_type": "ShollTable"
+            },
+            {
+              "name": "header",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: summarize"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString(GenericTable) -> String",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        },
+        {
+          "signature": "toString(GenericTable, int, int) -> String",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable"
+            },
+            {
+              "name": "firstRow",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "lastRow",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: toString"
+    },
+    {
+      "name": "updateDisplay",
+      "overloads": [
+        {
+          "signature": "updateDisplay() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTTable"
+        }
+      ],
+      "documentation": "Java method: updateDisplay"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "ShollTable()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ShollTable(Profile)",
+          "params": [
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ShollTable(ShollStats[])",
+          "params": [
+            {
+              "name": "stats",
+              "type": "List[ShollStats]",
+              "java_type": "ShollStats[]",
+              "varargs": true
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of ShollTable"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

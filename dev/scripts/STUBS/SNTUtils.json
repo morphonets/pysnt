@@ -1,882 +1,1013 @@
 {
   "class_name": "SNTUtils",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:01:07.893176",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.SNTUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.715844",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static addViewer",
+      "name": "addViewer",
       "overloads": [
         {
-          "signature": "static addViewer(Viewer3D) -> void",
+          "signature": "addViewer(Viewer3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "viewer",
               "type": "Viewer3D",
               "java_type": "Viewer3D"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static addViewer"
+      "documentation": "Java method: addViewer"
     },
     {
-      "name": "static csvQuoteAndPrint",
+      "name": "csvQuoteAndPrint",
       "overloads": [
         {
-          "signature": "static csvQuoteAndPrint(PrintWriter, Object) -> void",
+          "signature": "csvQuoteAndPrint(PrintWriter, Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter"
             },
             {
-              "name": "arg1",
+              "name": "o",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static csvQuoteAndPrint"
+      "documentation": "Java method: csvQuoteAndPrint"
     },
     {
-      "name": "static downloadAndExtractZip",
+      "name": "downloadAndExtractZip",
       "overloads": [
         {
-          "signature": "static downloadAndExtractZip(String) -> File",
+          "signature": "downloadAndExtractZip(String) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "zipUrl",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static downloadAndExtractZip"
+      "documentation": "Java method: downloadAndExtractZip"
     },
     {
-      "name": "static downloadToTempFile",
+      "name": "downloadToTempFile",
       "overloads": [
         {
-          "signature": "static downloadToTempFile(String) -> File",
+          "signature": "downloadToTempFile(String) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "fileUrl",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static downloadToTempFile"
+      "documentation": "Java method: downloadToTempFile"
     },
     {
-      "name": "static error",
+      "name": "error",
       "overloads": [
         {
-          "signature": "static error(String, Throwable) -> void",
+          "signature": "error(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "string",
               "type": "str",
               "java_type": "String"
-            },
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "error(Throwable) -> void",
+          "params": [
             {
-              "name": "arg1",
+              "name": "t",
               "type": "Any",
               "java_type": "Throwable"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         },
         {
-          "signature": "static error(String, Throwable, boolean) -> void",
+          "signature": "error(String, Throwable) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "string",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "t",
+              "type": "Any",
+              "java_type": "Throwable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "error(String, boolean) -> void",
+          "params": [
+            {
+              "name": "string",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "queueNotice",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "error(String, Throwable, boolean) -> void",
+          "params": [
+            {
+              "name": "string",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "t",
               "type": "Any",
               "java_type": "Throwable"
             },
             {
-              "name": "arg2",
+              "name": "queueNotice",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static error(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static error(String, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static error"
+      "documentation": "Java method: error"
     },
     {
-      "name": "static extractReadableTimeStamp",
+      "name": "extractReadableTimeStamp",
       "overloads": [
         {
-          "signature": "static extractReadableTimeStamp(File) -> String",
+          "signature": "extractReadableTimeStamp(File) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static extractReadableTimeStamp"
+      "documentation": "Java method: extractReadableTimeStamp"
     },
     {
-      "name": "static fileAvailable",
+      "name": "fileAvailable",
       "overloads": [
         {
-          "signature": "static fileAvailable(File) -> boolean",
+          "signature": "fileAvailable(File) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static fileAvailable"
+      "documentation": "Java method: fileAvailable"
     },
     {
-      "name": "static findClosestPair",
+      "name": "findClosestPair",
       "overloads": [
         {
-          "signature": "static findClosestPair(File, String) -> File",
+          "signature": "findClosestPair(File, String) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             },
             {
-              "name": "arg1",
+              "name": "pairExt",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         },
         {
-          "signature": "static findClosestPair(File, String;) -> File",
+          "signature": "findClosestPair(File, String[]) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "pairExts",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static findClosestPair"
+      "documentation": "Java method: findClosestPair"
     },
     {
-      "name": "static formatBytes",
+      "name": "formatBytes",
       "overloads": [
         {
-          "signature": "static formatBytes(long) -> String",
+          "signature": "formatBytes(long) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "bytes",
               "type": "int",
               "java_type": "long"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static formatBytes"
+      "documentation": "Java method: formatBytes"
     },
     {
-      "name": "static formatDouble",
+      "name": "formatDouble",
       "overloads": [
         {
-          "signature": "static formatDouble(double, int) -> String",
+          "signature": "formatDouble(double, int) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "value",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "digits",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static formatDouble"
+      "documentation": "Java method: formatDouble"
     },
     {
-      "name": "static getBackupCopies",
+      "name": "getBackupCopies",
       "overloads": [
         {
-          "signature": "static getBackupCopies(File, String) -> List",
+          "signature": "getBackupCopies(File) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "location",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        },
+        {
+          "signature": "getBackupCopies(File, String) -> List",
+          "params": [
+            {
+              "name": "location",
               "type": "str",
               "java_type": "File"
             },
             {
-              "name": "arg1",
+              "name": "baseName",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "static getBackupCopies(File) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getBackupCopies"
+      "documentation": "Java method: getBackupCopies"
     },
     {
-      "name": "static getCacheDir",
+      "name": "getCacheDir",
       "overloads": [
         {
-          "signature": "static getCacheDir() -> File",
+          "signature": "getCacheDir() -> File",
           "params": [],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getCacheDir"
+      "documentation": "Java method: getCacheDir"
     },
     {
-      "name": "static getCacheDirSize",
+      "name": "getCacheDirSize",
       "overloads": [
         {
-          "signature": "static getCacheDirSize() -> long",
+          "signature": "getCacheDirSize() -> long",
           "params": [],
           "return_type": "int",
-          "java_return_type": "long"
+          "java_return_type": "long",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getCacheDirSize"
+      "documentation": "Java method: getCacheDirSize"
     },
     {
-      "name": "static getContext",
+      "name": "getContext",
       "overloads": [
         {
-          "signature": "static getContext() -> Context",
+          "signature": "getContext() -> Context",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Context"
+          "java_return_type": "Context",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getContext"
+      "documentation": "Java method: getContext"
     },
     {
-      "name": "static getDecimalFormat",
+      "name": "getDecimalFormat",
       "overloads": [
         {
-          "signature": "static getDecimalFormat(double, int) -> DecimalFormat",
+          "signature": "getDecimalFormat(double, int) -> DecimalFormat",
           "params": [
             {
-              "name": "arg0",
+              "name": "value",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "digits",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "DecimalFormat"
+          "java_return_type": "DecimalFormat",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getDecimalFormat"
+      "documentation": "Java method: getDecimalFormat"
     },
     {
-      "name": "static getElapsedTime",
+      "name": "getElapsedTime",
       "overloads": [
         {
-          "signature": "static getElapsedTime(long) -> String",
+          "signature": "getElapsedTime(long) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromStart",
               "type": "int",
               "java_type": "long"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getElapsedTime"
+      "documentation": "Java method: getElapsedTime"
     },
     {
-      "name": "static getHeapInfo",
+      "name": "getHeapInfo",
       "overloads": [
         {
-          "signature": "static getHeapInfo() -> SNTUtils$HeapInfo",
+          "signature": "getHeapInfo() -> HeapInfo",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNTUtils$HeapInfo"
+          "java_return_type": "HeapInfo",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getHeapInfo"
+      "documentation": "Java method: getHeapInfo"
     },
     {
-      "name": "static getInstance",
+      "name": "getInstance",
       "overloads": [
         {
-          "signature": "static getInstance() -> SNT",
+          "signature": "getInstance() -> SNT",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SNT"
+          "return_type": "SNT",
+          "java_return_type": "SNT",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getInstance"
+      "documentation": "Java method: getInstance"
     },
     {
-      "name": "static getLastElement",
+      "name": "getLastElement",
       "overloads": [
         {
-          "signature": "static getLastElement(String) -> String",
+          "signature": "getLastElement(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePathOrUrlOrCloudLink",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getLastElement"
+      "documentation": "Java method: getLastElement"
     },
     {
-      "name": "static getPluginInstance",
+      "name": "getPluginInstance",
       "overloads": [
         {
-          "signature": "static getPluginInstance() -> SNT",
+          "signature": "getPluginInstance() -> SNT",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SNT"
+          "return_type": "SNT",
+          "java_return_type": "SNT",
+          "is_static": true,
+          "deprecated": true,
+          "for_removal": false
         }
       ],
-      "documentation": "Java method: static getPluginInstance"
+      "documentation": "Java method: getPluginInstance"
     },
     {
-      "name": "static getReadableVersion",
+      "name": "getReadableVersion",
       "overloads": [
         {
-          "signature": "static getReadableVersion() -> String",
+          "signature": "getReadableVersion() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getReadableVersion"
+      "documentation": "Java method: getReadableVersion"
     },
     {
-      "name": "static getReconstructionFiles",
+      "name": "getReconstructionFiles",
       "overloads": [
         {
-          "signature": "static getReconstructionFiles(File, String) -> File;",
+          "signature": "getReconstructionFiles(File, String) -> File[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "dir",
               "type": "str",
               "java_type": "File"
             },
             {
-              "name": "arg1",
+              "name": "pattern",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "File;"
+          "return_type": "List[str]",
+          "java_return_type": "File[]",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getReconstructionFiles"
+      "documentation": "Java method: getReconstructionFiles"
     },
     {
-      "name": "static getSanitizedUnit",
+      "name": "getSanitizedUnit",
       "overloads": [
         {
-          "signature": "static getSanitizedUnit(String) -> String",
+          "signature": "getSanitizedUnit(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "unit",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getSanitizedUnit"
+      "documentation": "Java method: getSanitizedUnit"
     },
     {
-      "name": "static getTimeStamp",
+      "name": "getTimeStamp",
       "overloads": [
         {
-          "signature": "static getTimeStamp() -> String",
+          "signature": "getTimeStamp() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getTimeStamp"
+      "documentation": "Java method: getTimeStamp"
     },
     {
-      "name": "static getUniquelySuffixedFile",
+      "name": "getUniquelySuffixedFile",
       "overloads": [
         {
-          "signature": "static getUniquelySuffixedFile(File, String) -> File",
+          "signature": "getUniquelySuffixedFile(File) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "referenceFile",
               "type": "str",
               "java_type": "File"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         },
         {
-          "signature": "static getUniquelySuffixedFile(File) -> File",
+          "signature": "getUniquelySuffixedFile(File, String) -> File",
           "params": [
             {
-              "name": "arg0",
+              "name": "referenceFile",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "forcedExtension",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "File",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getUniquelySuffixedFile"
+    },
+    {
+      "name": "getUniquelySuffixedTifFile",
+      "overloads": [
+        {
+          "signature": "getUniquelySuffixedTifFile(File) -> File",
+          "params": [
+            {
+              "name": "referenceFile",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "str",
-          "java_return_type": "File"
+          "java_return_type": "File",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getUniquelySuffixedFile"
+      "documentation": "Java method: getUniquelySuffixedTifFile"
     },
     {
-      "name": "static getUniquelySuffixedTifFile",
+      "name": "isContextSet",
       "overloads": [
         {
-          "signature": "static getUniquelySuffixedTifFile(File) -> File",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
-            }
-          ],
-          "return_type": "str",
-          "java_return_type": "File"
-        }
-      ],
-      "documentation": "Java method: static getUniquelySuffixedTifFile"
-    },
-    {
-      "name": "static isContextSet",
-      "overloads": [
-        {
-          "signature": "static isContextSet() -> boolean",
+          "signature": "isContextSet() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isContextSet"
+      "documentation": "Java method: isContextSet"
     },
     {
-      "name": "static isDebugMode",
+      "name": "isDebugMode",
       "overloads": [
         {
-          "signature": "static isDebugMode() -> boolean",
+          "signature": "isDebugMode() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isDebugMode"
+      "documentation": "Java method: isDebugMode"
     },
     {
-      "name": "static isReachable",
+      "name": "isReachable",
       "overloads": [
         {
-          "signature": "static isReachable(String, int) -> boolean",
+          "signature": "isReachable(String, int) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "url",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "timeoutMs",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isReachable"
+      "documentation": "Java method: isReachable"
     },
     {
-      "name": "static isReconstructionFile",
+      "name": "isReconstructionFile",
       "overloads": [
         {
-          "signature": "static isReconstructionFile(File) -> boolean",
+          "signature": "isReconstructionFile(File) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: static isReconstructionFile"
-    },
-    {
-      "name": "static isStandaloneContext",
-      "overloads": [
+          "java_return_type": "boolean",
+          "is_static": true
+        },
         {
-          "signature": "static isStandaloneContext() -> boolean",
-          "params": [],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: static isStandaloneContext"
-    },
-    {
-      "name": "static log",
-      "overloads": [
-        {
-          "signature": "static log(String) -> void",
+          "signature": "isReconstructionFile(File, boolean) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "sniffXml",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: isReconstructionFile"
+    },
+    {
+      "name": "isStandaloneContext",
+      "overloads": [
+        {
+          "signature": "isStandaloneContext() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: isStandaloneContext"
+    },
+    {
+      "name": "log",
+      "overloads": [
+        {
+          "signature": "log(String) -> void",
+          "params": [
+            {
+              "name": "string",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static log"
+      "documentation": "Java method: log"
     },
     {
-      "name": "static nowTruncatedToSeconds",
+      "name": "nowTruncatedToSeconds",
       "overloads": [
         {
-          "signature": "static nowTruncatedToSeconds() -> LocalDateTime",
+          "signature": "nowTruncatedToSeconds() -> LocalDateTime",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "LocalDateTime"
+          "java_return_type": "LocalDateTime",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static nowTruncatedToSeconds"
+      "documentation": "Java method: nowTruncatedToSeconds"
     },
     {
-      "name": "static openRemoteStream",
+      "name": "openRemoteStream",
       "overloads": [
         {
-          "signature": "static openRemoteStream(String) -> InputStream",
+          "signature": "openRemoteStream(String) -> InputStream",
           "params": [
             {
-              "name": "arg0",
+              "name": "url",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "InputStream"
+          "java_return_type": "InputStream",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static openRemoteStream"
+      "documentation": "Java method: openRemoteStream"
     },
     {
-      "name": "static randomPaths",
+      "name": "randomPaths",
       "overloads": [
         {
-          "signature": "static randomPaths() -> List",
+          "signature": "randomPaths() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static randomPaths"
+      "documentation": "Java method: randomPaths"
     },
     {
-      "name": "static removeViewer",
+      "name": "removeViewer",
       "overloads": [
         {
-          "signature": "static removeViewer(Viewer3D) -> void",
+          "signature": "removeViewer(Viewer3D) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "viewer",
               "type": "Viewer3D",
               "java_type": "Viewer3D"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static removeViewer"
+      "documentation": "Java method: removeViewer"
     },
     {
-      "name": "static runWithTimeout",
+      "name": "runWithTimeout",
       "overloads": [
         {
-          "signature": "static runWithTimeout(Callable, long, String) -> Object",
+          "signature": "runWithTimeout(Callable, long, String) -> Object",
           "params": [
             {
-              "name": "arg0",
+              "name": "task",
               "type": "Any",
               "java_type": "Callable"
             },
             {
-              "name": "arg1",
+              "name": "timeoutSeconds",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg2",
+              "name": "description",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Object"
+          "java_return_type": "Object",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static runWithTimeout"
+      "documentation": "Java method: runWithTimeout"
     },
     {
-      "name": "static sanitizeFilename",
+      "name": "sanitizeFilename",
       "overloads": [
         {
-          "signature": "static sanitizeFilename(String) -> String",
+          "signature": "sanitizeFilename(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "filename",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static sanitizeFilename"
+      "documentation": "Java method: sanitizeFilename"
     },
     {
-      "name": "static setContext",
+      "name": "setContext",
       "overloads": [
         {
-          "signature": "static setContext(Context) -> void",
+          "signature": "setContext(Context) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static setContext"
+      "documentation": "Java method: setContext"
     },
     {
-      "name": "static setDebugMode",
+      "name": "setDebugMode",
       "overloads": [
         {
-          "signature": "static setDebugMode(boolean) -> void",
+          "signature": "setDebugMode(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "b",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static setDebugMode"
+      "documentation": "Java method: setDebugMode"
     },
     {
-      "name": "static setIsLoading",
+      "name": "setIsLoading",
       "overloads": [
         {
-          "signature": "static setIsLoading(boolean, boolean) -> void",
+          "signature": "setIsLoading(boolean, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "isLoading",
               "type": "bool",
               "java_type": "boolean"
             },
             {
-              "name": "arg1",
+              "name": "streamMode",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static setIsLoading"
+      "documentation": "Java method: setIsLoading"
     },
     {
-      "name": "static startApp",
+      "name": "startApp",
       "overloads": [
         {
-          "signature": "static startApp(boolean) -> SNT",
+          "signature": "startApp() -> SNT",
+          "params": [],
+          "return_type": "SNT",
+          "java_return_type": "SNT",
+          "is_static": true
+        },
+        {
+          "signature": "startApp(boolean) -> SNT",
           "params": [
             {
-              "name": "arg0",
+              "name": "streamMode",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "SNT"
-        },
-        {
-          "signature": "static startApp() -> SNT",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "SNT"
+          "return_type": "SNT",
+          "java_return_type": "SNT",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static startApp"
+      "documentation": "Java method: startApp"
     },
     {
-      "name": "static stripExtension",
+      "name": "stripExtension",
       "overloads": [
         {
-          "signature": "static stripExtension(String) -> String",
+          "signature": "stripExtension(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "filename",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static stripExtension"
+      "documentation": "Java method: stripExtension"
+    },
+    {
+      "name": "submitBackground",
+      "overloads": [
+        {
+          "signature": "submitBackground(Callable, String) -> BackgroundTask",
+          "params": [
+            {
+              "name": "task",
+              "type": "Any",
+              "java_type": "Callable"
+            },
+            {
+              "name": "threadName",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BackgroundTask",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: submitBackground"
+    },
+    {
+      "name": "warn",
+      "overloads": [
+        {
+          "signature": "warn(String) -> void",
+          "params": [
+            {
+              "name": "string",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: warn"
     }
   ],
-  "fields": [],
   "constructors": [],
+  "fields": [],
   "static_fields": [
     {
       "name": "TIMESTAMP_REGEX",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field TIMESTAMP_REGEX of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field TIMESTAMP_REGEX of type String"
     },
     {
       "name": "VERSION",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field VERSION of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field VERSION of type String"
     }
   ]
 }
