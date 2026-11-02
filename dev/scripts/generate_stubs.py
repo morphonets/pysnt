@@ -719,37 +719,7 @@ class CleanStubGenerator:
 
             print(f"    ✅ Generated: {stub_file}")
 
-        # Generate Python stubs
-        print(f"\n🐍 Generating Python stubs...")
-        python_files = list(self.source_dir.rglob("*.py"))
-        exclude_patterns = ['test_*', '__pycache__', '.*']
-
-        for py_file in python_files:
-            if any(py_file.match(pattern) for pattern in exclude_patterns):
-                continue
-
-            stub_file = py_file.with_suffix('.pyi')
-
-            # Skip if Java stub exists (preserve Java stubs)
-            if stub_file.exists():
-                with open(stub_file, 'r') as f:
-                    content = f.read()
-                    if any(indicator in content for indicator in [
-                        'Java class', 'Dynamic attribute access', 'SNT.*class'
-                    ]):
-                        if self.verbose:
-                            print(f"    ⏭️  Preserving Java stub: {stub_file}")
-                        continue
-
-            if stub_file.exists() and not overwrite:
-                continue
-
-            if self.generate_python_stub(py_file, stub_file):
-                results['python_stubs'] += 1
-                if self.verbose:
-                    print(f"    ✅ Generated Python stub: {stub_file}")
-            else:
-                results['errors'] += 1
+        # Pure-Python modules are intentionally not stubbed (inline annotations suffice)
 
         return results
 
