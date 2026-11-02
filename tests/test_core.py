@@ -66,7 +66,7 @@ class TestInitialize:
     
     def test_initialize_convenience_syntax(self):
         """Test convenience syntax for mode specification."""
-        with patch('pysnt.core._find_fiji', return_value='/fake/fiji'):
+        with patch('pysnt.core._find_configured_fiji', return_value='/fake/fiji'):
             with patch('pysnt.core._validate_fiji_path', return_value=True):
                 with patch('pysnt.core.Path.exists', return_value=True):
                     with patch('pysnt.core.imagej.init') as mock_init:
@@ -77,35 +77,79 @@ class TestInitialize:
                                 mock_init.assert_called_with('/fake/fiji', mode="gui")
     
     def test_initialize_invalid_fiji_path(self):
-        """Test initialization with invalid Fiji path."""
-        with pytest.raises(RuntimeError) as exc_info:
+        """An explicit but nonexistent Fiji path is an error (no silent fallback)."""
+        with pytest.raises(FijiNotFoundError):
             initialize(fiji_path="/nonexistent/path")
-        assert "SNT initialization failed" in str(exc_info.value)
-    
-    def test_initialize_no_fiji_found_interactive(self):
-        """Test initialization when no Fiji is found in interactive mode."""
-        with patch('pysnt.core._find_fiji', return_value=None):
-            with patch('pysnt.setup_utils.find_fiji_installations', return_value=[]):
-                with pytest.raises(FijiNotFoundError) as exc_info:
-                    initialize(interactive=True)
-                
-                # Check that error message contains helpful information
-                error_msg = str(exc_info.value)
-                assert "Fiji installation not found!" in error_msg
-                assert "python -m pysnt.setup_utils" in error_msg
-    
-    def test_initialize_no_fiji_found_non_interactive(self):
-        """Test initialization when no Fiji is found in non-interactive mode."""
-        with patch('pysnt.core._find_fiji', return_value=None):
-            with patch('pysnt.setup_utils.find_fiji_installations', return_value=[]):
-                with pytest.raises(FijiNotFoundError) as exc_info:
-                    initialize(interactive=False)
-                
-                # Check that error message contains non-interactive instructions
-                error_msg = str(exc_info.value)
-                assert "Fiji installation not found!" in error_msg
-                assert "--auto-detect" in error_msg
-    
+
+    def test_initialize_defaults_to_maven(self):
+        """With no Fiji configured, SNT is resolved from Maven endpoints."""
+        from pysnt._endpoints import build_endpoints
+        with patch('pysnt.core._find_configured_fiji', return_value=None):
+            with patch('pysnt.core.imagej.init') as mock_init:
+                with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+                    initialize()
+                    mock_init.assert_called_once_with(build_endpoints(), mode="headless")
+
+    def test_initialize_maven_version_and_extras(self):
+        """snt_version and extras shape the Maven endpoint list."""
+        with patch('pysnt.core._find_configured_fiji', return_value=None):
+            with patch('pysnt.core.imagej.init') as mock_init:
+                with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+                    initialize(snt_version="5.1.0", extras=[])
+                    mock_init.assert_called_once_with(["org.morphonets:SNT:5.1.0"], mode="headless")
+
+    def test_initialize_source_maven_ignores_fiji(self):
+        """source='maven' skips a configured Fiji."""
+        with patch('pysnt.core._find_configured_fiji', return_value='/fake/fiji') as mock_find:
+            with patch('pysnt.core.imagej.init') as mock_init:
+                with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+                    initialize(source="maven", extras=[])
+                    mock_find.assert_not_called()
+                    assert isinstance(mock_init.call_args[0][0], list)
+
+    def test_initialize_source_fiji_scans_when_unconfigured(self):
+        """source='fiji' falls back to scanning/prompting via _find_fiji."""
+        with patch('pysnt.core._find_configured_fiji', return_value=None):
+            with patch('pysnt.core._find_fiji', return_value='/fake/fiji') as mock_find:
+                with patch('pysnt.core._validate_fiji_path', return_value=True):
+                    with patch('pysnt.core.Path.exists', return_value=True):
+                        with patch('pysnt.core.imagej.init') as mock_init:
+                            with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+                                initialize(source="fiji", interactive=False)
+                                mock_find.assert_called_once_with(interactive=False)
+                                mock_init.assert_called_once_with('/fake/fiji', mode="headless")
+
+    def test_initialize_source_fiji_not_found(self):
+        """source='fiji' with nothing found raises FijiNotFoundError."""
+        with patch('pysnt.core._find_configured_fiji', return_value=None):
+            with patch('pysnt.core._find_fiji', return_value=None):
+                with pytest.raises(FijiNotFoundError):
+                    initialize(source="fiji", interactive=False)
+
+    def test_initialize_source_aliases(self):
+        """'remote'/'online' mean Maven; 'local' means Fiji."""
+        with patch('pysnt.core._find_configured_fiji', return_value='/fake/fiji'):
+            with patch('pysnt.core.imagej.init') as mock_init:
+                with patch('pysnt.core.scyjava.jvm_started', return_value=True):
+                    for alias in ("remote", "online"):
+                        pysnt_core = __import__('pysnt.core', fromlist=['x'])
+                        pysnt_core._jvm_started = False
+                        initialize(source=alias, extras=[])
+                        assert isinstance(mock_init.call_args[0][0], list)
+
+    def test_initialize_invalid_source(self):
+        with pytest.raises(RuntimeError):
+            initialize(source="bogus")
+
+    def test_snt_version_precedence(self):
+        """Argument > SNT_VERSION env var > default."""
+        from pysnt._endpoints import resolve_snt_version, DEFAULT_SNT_VERSION
+        with patch.dict(os.environ, {"SNT_VERSION": "9.9.9"}):
+            assert resolve_snt_version("1.2.3") == "1.2.3"
+            assert resolve_snt_version() == "9.9.9"
+        with patch.dict(os.environ, {}, clear=True):
+            assert resolve_snt_version() == DEFAULT_SNT_VERSION
+
     @patch('pysnt.core.scyjava.jvm_started', return_value=False)
     @patch('pysnt.core.scyjava.start_jvm')
     @patch('pysnt.core.imagej.init')

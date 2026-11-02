@@ -121,18 +121,29 @@ def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = Non
 
 
 def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless", 
-               max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None) -> None:
+               max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None,
+               snt_version: Optional[str] = None, extras: Optional[List[str]] = None,
+               source: Optional[str] = None) -> None:
     """
-    Initialize the SNT environment with ImageJ/Fiji.
-    
+    Initialize the SNT environment (ImageJ2 + SNT), from Maven or from Fiji.
+
+    By default SNT is resolved from Maven (``org.morphonets:SNT``), so no Fiji
+    installation is required. A local Fiji is used instead when one is
+    requested. Source precedence (``source=None``):
+
+    1. ``fiji_path`` argument
+    2. ``FIJI_PATH`` environment variable
+    3. Fiji path saved with ``pysnt.set_fiji_path()``
+    4. Maven (default)
+
     Parameters
     ----------
     fiji_path : str, optional
-        Path to Fiji installation. If None, will try to auto-detect.
-        Can also be a mode string for convenience (e.g., "gui", "interactive").
+        Path to a Fiji installation. Can also be a mode string for
+        convenience (e.g., "gui", "interactive").
     interactive : bool, default True
-        Whether to prompt user for Fiji path if not found automatically.
-        Set to False for non-interactive environments (CI, scripts, etc.).
+        Whether Java may be installed interactively if missing. Fiji is never
+        prompted for: if none is configured, Maven is used.
     ensure_java : bool, default True
         Whether to check and ensure Java is available. If True, will attempt
         to install OpenJDK if Java is not found or version is too old.
@@ -148,7 +159,19 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     jvm_args : List[str], optional
         Additional JVM arguments to pass (e.g., ["-XX:+UseG1GC", "-Xss2m"]).
         For advanced users who need full control over JVM configuration.
-        
+    snt_version : str, optional
+        SNT version to resolve from Maven (Maven source only). Defaults to the
+        SNT_VERSION environment variable, then to the version PySNT targets.
+    extras : List[str], optional
+        Additional Maven endpoints (Maven source only). None adds PySNT's
+        defaults (BigVolumeViewer, needed by Bvv); [] adds nothing.
+    source : {"maven", "fiji"}, optional
+        Force the source instead of following the precedence above.
+        "maven" (aliases "remote", "online") downloads SNT, no Fiji needed.
+        "fiji" (alias "local") uses a local Fiji.app: if none is configured,
+        common install locations are scanned and, when ``interactive`` is
+        True, you are prompted for the path (the result is saved).
+
     Examples
     --------
     >>> # Standard usage
@@ -210,82 +233,19 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             fetch="auto", version=f"{REQUIRED_JAVA_VERSION}+"
         )
 
-        # Auto-detect Fiji if not provided
-        if fiji_path is None:
-            fiji_path = _find_fiji(interactive=interactive)
-            
+        # Decide where SNT comes from: a Fiji install, or Maven
+        fiji_path = _select_source(fiji_path, source, interactive)
         if fiji_path:
             if not Path(fiji_path).exists():
-                raise FileNotFoundError(f"Fiji not found at: {fiji_path}")
+                raise FijiNotFoundError(f"Fiji not found at: {fiji_path}")
             elif not _validate_fiji_path(fiji_path):
                 logger.warning(f"Path may not be a valid Fiji installation: {fiji_path}")
+            ij_source = fiji_path
         else:
-            # Create an error message with helpful instructions
-            from . import setup_utils
-            
-            error_msg = [
-                "❌ Fiji installation not found!",
-                "",
-                "PySNT requires Fiji to function. Here's how to fix this:",
-                "",
-                "🔧 Quick Solutions:",
-            ]
-            
-            # Check if we're in interactive mode
-            if interactive:
-                error_msg.extend([
-                    "  1. Run the interactive setup:",
-                    "     python -m pysnt.setup_utils",
-                    "",
-                    "  2. Auto-detect Fiji installation:",
-                    "     python -m pysnt.setup_utils --auto-detect",
-                ])
-            else:
-                error_msg.extend([
-                    "  1. Auto-detect Fiji installation:",
-                    "     python -m pysnt.setup_utils --auto-detect",
-                    "",
-                    "  2. Set Fiji path manually:",
-                    "     python -m pysnt.setup_utils --set /path/to/Fiji.app",
-                ])
-            
-            error_msg.extend([
-                "",
-                "📋 Alternative Methods:",
-                "  • Set environment variable: export FIJI_PATH='/path/to/Fiji.app'",
-                "  • Pass path directly: pysnt.initialize(fiji_path='/path/to/Fiji.app')",
-                "  • Use pysnt.set_fiji_path('/path/to/Fiji.app')",
-                "",
-            ])
-            
-            # Add platform-specific common locations
-            try:
-                common_paths = setup_utils.find_fiji_installations()
-                if common_paths:
-                    error_msg.extend([
-                        "🔍 We checked these common locations:",
-                        *[f"  ✗ {path}" for path in common_paths[:5]],  # Show first 5
-                    ])
-                    if len(common_paths) > 5:
-                        error_msg.append(f"  ... and {len(common_paths) - 5} more locations")
-                else:
-                    error_msg.extend([
-                        "🔍 No Fiji installations found in common locations for your platform.",
-                    ])
-            except Exception:
-                # Don't let setup_utils errors break the main error message
-                pass
-            
-            error_msg.extend([
-                "",
-                "💡 Need help? Check configuration status:",
-                "   python -m pysnt.setup_utils --status",
-                "",
-                "For more information, see: https://github.com/morphonets/pysnt"
-            ])
-            
-            raise FijiNotFoundError("\n".join(error_msg))
-            
+            from ._endpoints import build_endpoints
+            ij_source = build_endpoints(snt_version, extras)
+            logger.info(f"No Fiji configured: resolving SNT from Maven: {ij_source}")
+
         # Configure JVM BEFORE it starts
         if not scyjava.jvm_started():
             _configure_jvm(max_heap, min_heap, jvm_args)
@@ -300,9 +260,9 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             except Exception as e:
                 logger.warning(f"Failed to register SNT converters: {e}")
         
-        # Initialize PyImageJ from local Fiji
-        logger.info(f"Initializing ImageJ with Fiji at: {fiji_path}")
-        _ij = imagej.init(fiji_path, mode=mode)
+        # Initialize PyImageJ (Fiji install or Maven endpoints)
+        logger.info(f"Initializing ImageJ from: {ij_source}")
+        _ij = imagej.init(ij_source, mode=mode)
         
         # Store the mode for later retrieval
         _mode = mode
@@ -333,6 +293,59 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
     except Exception as e:
         logger.error(f"Failed to initialize SNT: {e}")
         raise RuntimeError(f"SNT initialization failed: {e}") from e
+
+
+_SOURCE_ALIASES = {
+    "maven": "maven", "remote": "maven", "online": "maven",
+    "fiji": "fiji", "local": "fiji",
+}
+
+
+def _select_source(fiji_path: Optional[str], source: Optional[str], interactive: bool = False) -> Optional[str]:
+    """
+    Return the Fiji path to use, or None to resolve SNT from Maven.
+
+    Precedence: explicit fiji_path > FIJI_PATH > saved config > Maven.
+    source="maven" (aliases: "remote", "online") forces Maven.
+    source="fiji" (alias: "local") requires a local Fiji: when none is
+    configured, common install locations are scanned and, if interactive,
+    the user is prompted.
+    """
+    if source is not None:
+        canonical = _SOURCE_ALIASES.get(str(source).lower())
+        if canonical is None:
+            raise ValueError(
+                f"source must be 'maven' (or 'remote'/'online') or 'fiji' (or 'local'), not {source!r}")
+        source = canonical
+    if source == "maven":
+        return None
+    if fiji_path:
+        return str(fiji_path)
+    found = _find_configured_fiji()
+    if found is None and source == "fiji":
+        found = _find_fiji(interactive=interactive)
+        if found is None:
+            raise FijiNotFoundError(
+                "source='fiji' requested but no Fiji was found. Pass fiji_path, set "
+                "FIJI_PATH, or run: python -m pysnt.setup_utils --auto-detect")
+    return found
+
+
+def _find_configured_fiji() -> Optional[str]:
+    """Fiji from FIJI_PATH or the saved config; no scanning, no prompting."""
+    from . import setup_utils
+
+    fiji_env = os.environ.get("FIJI_PATH")
+    if fiji_env and Path(fiji_env).exists():
+        logger.info(f"Using Fiji from FIJI_PATH: {fiji_env}")
+        return fiji_env
+    fiji_config = setup_utils.load_config().get("fiji_path")
+    if fiji_config and Path(fiji_config).exists():
+        logger.info(f"Using Fiji from saved config: {fiji_config}")
+        return fiji_config
+    elif fiji_config:
+        logger.warning(f"Saved Fiji path no longer exists: {fiji_config}")
+    return None
 
 
 def _find_fiji(interactive: bool = True) -> Optional[str]:
