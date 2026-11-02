@@ -34,8 +34,6 @@ api_auto/pysnt.display.core
 api_auto/pysnt.display.data_display
 api_auto/pysnt.display.utils
 api_auto/pysnt.display.visual_display
-api_auto/pysnt.gui
-api_auto/pysnt.gui.cmds
 api_auto/pysnt.io
 api_auto/pysnt.tracing
 api_auto/pysnt.tracing.artist
@@ -89,8 +87,6 @@ PySNT modules map directly into SNT's [Java API](https://javadoc.scijava.org/SNT
 | {doc}`api_auto/pysnt.analysis.sholl.parsers`  | parsers that compute Sholl profiles from images or reconstructions   | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/analysis/sholl/parsers/package-summary.html)   |
 | {doc}`api_auto/pysnt.annotation`              | handling of neuropil annotations and atlases metadata                 | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/annotation/package-summary.html)               |
 | {doc}`api_auto/pysnt.filter`                  | image filters for enhancing neurite-like structures                  | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/filter/package-summary.html)                   |
-| {doc}`api_auto/pysnt.gui`                     | SNT's graphical user interface components                            | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/gui/package-summary.html)                      |
-| {doc}`api_auto/pysnt.gui.cmds`                | GUI command classes                                                   | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/gui/cmds/package-summary.html)                 |
 | {doc}`api_auto/pysnt.io`                      | import of neuronal reconstructions from multiple sources              | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/io/package-summary.html)                       |
 | {doc}`api_auto/pysnt.seed`                    | seed point management for (semi-)automated tracing                    | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/seed/package-summary.html)                     |
 | {doc}`api_auto/pysnt.tracing`                 | tracing tools                                                         | [<i class="fa-brands fa-java"></i>](https://javadoc.scijava.org/SNT/index.html?sc/fiji/snt/tracing/package-summary.html)                  |
