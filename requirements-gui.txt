@@ -1,26 +1,27 @@
-# Optional dependencies for interactive GUI features
+# Optional dependencies for display, GUI, Java auto-install and OME-Zarr support
 # Install with: pip install -r requirements-gui.txt
+# (source of truth: pyproject.toml)
 
 # Include core dependencies
 -r requirements.txt
 
 # Enhanced display and conversion features
-pandas>=2.3.3
 networkx>=3.0
-cairosvg>=2.8.2
-PyMuPDF>=1.26.3
+cairosvg>=2.7
+PyMuPDF>=1.23
 
 # Interactive GUI features
 pandasgui>=0.2.15
-pyobjc-core>=11.1; sys_platform == "darwin"
-pyobjc-framework-cocoa>=11.1; sys_platform == "darwin"
-
-# IPython notebooks
-ipykernel>=7.1.0
+ipykernel>=6.0
+pyobjc-core>=10.0; sys_platform == "darwin"
+pyobjc-framework-cocoa>=10.0; sys_platform == "darwin"
 
 # Optional Java auto-install support
-install-jdk>=1.1.0
+install-jdk>=1.0
 
 # Optional OME-Zarr support
-zarr>=2.10.0
+zarr>=2.16
 fsspec>=2023.1.0
+
+# System info in pysnt.version(detailed=True)
+psutil>=5.9
