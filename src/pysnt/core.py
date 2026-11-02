@@ -223,6 +223,16 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
             if not ensure_java_available(auto_install=interactive):
                 logger.warning("Java requirements not met, but continuing initialization")
 
+        # Make JAVA_HOME explicit. Without it, JPype's macOS discovery returns bytes and
+        # scyjava.start_jvm() crashes ("a bytes-like object is required, not 'str'")
+        # https://github.com/scijava/scyjava/issues/95
+        if not os.environ.get("JAVA_HOME"):
+            from .java_utils import resolve_java_home
+            java_home = resolve_java_home()
+            if java_home:
+                os.environ["JAVA_HOME"] = java_home
+                logger.info(f"JAVA_HOME not set: using {java_home}")
+
         # Tell scyjava to prefer an existing system JDK meeting SNT's actual
         # requirement, instead of silently downloading/using its own cached
         # JDK. scyjava's own defaults (fetch="always", version="11") ignore

@@ -88,6 +88,42 @@ def check_java_installation() -> Dict[str, Any]:
     return result
 
 
+def resolve_java_home() -> Optional[str]:
+    """
+    Locate the home directory of the Java installation that would be used.
+
+    Returns JAVA_HOME if it points to a valid installation. Otherwise, asks the
+    ``java`` executable found on the PATH for its ``java.home`` (this follows the
+    macOS ``/usr/bin/java`` launcher to the actual JDK). Returns None if nothing
+    usable is found.
+
+    Why this exists: when JAVA_HOME is unset, JPype's macOS discovery falls back
+    to ``/usr/libexec/java_home`` and returns its output as ``bytes``, which makes
+    ``scyjava.start_jvm()`` fail with "a bytes-like object is required, not 'str'".
+    Exporting JAVA_HOME beforehand avoids that code path altogether, see
+    https://github.com/scijava/scyjava/issues/95.
+    """
+    exe_name = "java.exe" if os.name == "nt" else "java"
+    home = os.environ.get("JAVA_HOME")
+    if home and (Path(home) / "bin" / exe_name).is_file():
+        return home
+
+    java = _find_java_executable()
+    if not java:
+        return None
+    try:
+        out = subprocess.run([java, "-XshowSettings:properties", "-version"],
+                             capture_output=True, text=True, timeout=15).stderr
+        for line in out.splitlines():
+            key, sep, value = line.strip().partition(" = ")
+            if sep and key == "java.home":
+                if (Path(value) / "bin" / exe_name).is_file():
+                    return value
+    except Exception as e:
+        logger.debug(f"Could not determine java.home from {java}: {e}")
+    return None
+
+
 def _find_java_executable() -> Optional[str]:
     """
     Find Java executable in system.

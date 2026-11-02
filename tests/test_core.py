@@ -54,6 +54,7 @@ class TestInitialize:
         poisons later real initialize() calls in the same session."""
         with patch('pysnt.java_utils.configure_java_logging', return_value=True), \
                 patch('pysnt.core.snt_version', return_value=None), \
+                patch('pysnt.java_utils.resolve_java_home', return_value=None), \
                 patch('pysnt.core._resolve_fiji_path', side_effect=lambda p: str(p)):
             yield
 
@@ -707,3 +708,36 @@ class TestResolveFijiPath:
         with pytest.raises(FijiNotFoundError) as exc:
             _resolve_fiji_path(str(tmp_path / "somewhere"))
         assert "jars" in str(exc.value)
+
+
+class TestResolveJavaHome:
+    """JAVA_HOME discovery (works around JPype returning bytes on macOS when unset)
+       see https://github.com/scijava/scyjava/issues/95
+    """
+
+    def test_valid_java_home_is_kept(self, tmp_path, monkeypatch):
+        from pysnt.java_utils import resolve_java_home
+        exe = "java.exe" if __import__("os").name == "nt" else "java"
+        (tmp_path / "bin").mkdir()
+        (tmp_path / "bin" / exe).write_text("")
+        monkeypatch.setenv("JAVA_HOME", str(tmp_path))
+        assert resolve_java_home() == str(tmp_path)
+
+    def test_uses_java_home_reported_by_executable(self, tmp_path, monkeypatch):
+        import subprocess
+        from unittest.mock import MagicMock
+        from pysnt import java_utils
+        exe = "java.exe" if __import__("os").name == "nt" else "java"
+        (tmp_path / "bin").mkdir()
+        (tmp_path / "bin" / exe).write_text("")
+        monkeypatch.delenv("JAVA_HOME", raising=False)
+        out = MagicMock(stderr=f"Property settings:\n    java.home = {tmp_path}\n")
+        with patch.object(java_utils, "_find_java_executable", return_value="/usr/bin/java"), \
+                patch.object(subprocess, "run", return_value=out):
+            assert java_utils.resolve_java_home() == str(tmp_path)
+
+    def test_none_without_java(self, monkeypatch):
+        from pysnt import java_utils
+        monkeypatch.delenv("JAVA_HOME", raising=False)
+        with patch.object(java_utils, "_find_java_executable", return_value=None):
+            assert java_utils.resolve_java_home() is None
