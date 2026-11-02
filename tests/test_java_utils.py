@@ -114,54 +114,31 @@ class TestCheckJavaInstallation:
 class TestFindJavaExecutable:
     """Test the _find_java_executable function."""
 
-    def test_find_java_via_java_home(self):
-        """Test finding Java via JAVA_HOME."""
-        with patch.dict(os.environ, {"JAVA_HOME": "/opt/java"}):
-            with patch("pathlib.Path.exists", return_value=True):
-                result = _find_java_executable()
-                assert result == "/opt/java/bin/java"
+    def test_find_java_via_java_home(self, tmp_path):
+        """JAVA_HOME/bin/java(.exe) is preferred when it exists."""
+        exe = "java.exe" if os.name == "nt" else "java"
+        (tmp_path / "bin").mkdir()
+        (tmp_path / "bin" / exe).write_text("")
+        with patch.dict(os.environ, {"JAVA_HOME": str(tmp_path)}):
+            assert _find_java_executable() == str(tmp_path / "bin" / exe)
 
-    def test_find_java_via_which(self):
-        """Test finding Java via 'which' command."""
-        mock_result = Mock()
-        mock_result.returncode = 0
-        mock_result.stdout = "/usr/bin/java\n"
-
+    def test_find_java_via_path(self):
+        """Falls back to the PATH (shutil.which handles .exe/PATHEXT on Windows)."""
         with patch.dict(os.environ, {}, clear=True):  # Clear JAVA_HOME
-            with patch("subprocess.run", return_value=mock_result):
-                result = _find_java_executable()
-                assert result == "/usr/bin/java"
+            with patch("shutil.which", return_value="/usr/bin/java"):
+                assert _find_java_executable() == "/usr/bin/java"
 
-    def test_find_java_via_where_windows(self):
-        """Test finding Java via 'where' command on Windows."""
-        mock_result = Mock()
-        mock_result.returncode = 0
-        mock_result.stdout = (
-            "C:\\Program Files\\Java\\bin\\java.exe\nC:\\other\\java.exe"
-        )
-
-        with patch.dict(os.environ, {}, clear=True):
-            with patch("sys.platform", "win32"):
-                with patch("subprocess.run") as mock_run:
-                    # First call (which) fails, second call (where) succeeds
-                    mock_run.side_effect = [
-                        subprocess.CalledProcessError(1, "which"),
-                        mock_result,
-                    ]
-
-                    result = _find_java_executable()
-                    assert result == "C:\\Program Files\\Java\\bin\\java.exe"
+    def test_invalid_java_home_falls_back_to_path(self, tmp_path):
+        """A JAVA_HOME without a java executable is ignored."""
+        with patch.dict(os.environ, {"JAVA_HOME": str(tmp_path)}):
+            with patch("shutil.which", return_value="/usr/bin/java"):
+                assert _find_java_executable() == "/usr/bin/java"
 
     def test_find_java_not_found(self):
         """Test when Java is not found anywhere."""
         with patch.dict(os.environ, {}, clear=True):
-            with patch("pathlib.Path.exists", return_value=False):
-                with patch(
-                    "subprocess.run",
-                    side_effect=subprocess.CalledProcessError(1, "which"),
-                ):
-                    result = _find_java_executable()
-                    assert result is None
+            with patch("shutil.which", return_value=None):
+                assert _find_java_executable() is None
 
 
 class TestParseJavaVersion:

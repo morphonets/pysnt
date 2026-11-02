@@ -17,12 +17,25 @@ env:
 
 jobs:
   tests:
-    name: Tests (Python ${{ matrix.python }})
-    runs-on: ubuntu-latest
+    name: Tests (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    # Platforms and interpreters flagged "experimental" report failures without failing the workflow
+    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest]
         python: ["3.11", "3.12", "3.13"]
+        include:
+          - os: ubuntu-latest
+            python: "3.14"
+            experimental: true
+          - os: macos-latest
+            python: "3.12"
+            experimental: true
+          - os: windows-latest
+            python: "3.12"
+            experimental: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
