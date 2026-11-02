@@ -27,7 +27,7 @@ classifiers = [
 # Floors are the oldest versions PySNT is expected to work with; the CI "minimum" job
 # (installing exactly these) keeps them honest. Upper bounds only where something breaks.
 dependencies = [
-    "scyjava>=1.12.1",
+    "scyjava>=1.12.3",  # 1.12.1/2 import a jgo name removed in jgo 2.x
     "pyimagej>=1.7.0",
     "JPype1>=1.5.0",
     "numpy>=1.26",
