@@ -32,3 +32,28 @@ def _restore_core_state():
         pysnt.__all__ = pysnt_all
 
 
+
+
+# JPype can segfault while the interpreter tears down a running JVM (exit code 139), which fails
+# in CI. Once pytest has finished and printed its summary, leave right away with pytest's own
+# exit status if a JVM was started
+_EXIT_STATUS = {"code": 0}
+
+
+def pytest_sessionfinish(session, exitstatus):
+    _EXIT_STATUS["code"] = int(exitstatus)
+
+
+@pytest.hookimpl(trylast=True)
+def pytest_unconfigure(config):
+    try:
+        import scyjava
+        started = scyjava.jvm_started()
+    except Exception:
+        return
+    if started:
+        import os
+        import sys
+        sys.stdout.flush()
+        sys.stderr.flush()
+        os._exit(_EXIT_STATUS["code"])
