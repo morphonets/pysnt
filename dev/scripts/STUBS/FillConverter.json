@@ -1,8 +1,13 @@
 {
   "class_name": "FillConverter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:57.708489",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.FillConverter",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.619160",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "convert",
@@ -11,18 +16,19 @@
           "signature": "convert(RandomAccessible, RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "in",
               "type": "Any",
               "java_type": "RandomAccessible"
             },
             {
-              "name": "arg1",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: convert"
@@ -34,13 +40,14 @@
           "signature": "convertBinary(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: convertBinary"
@@ -52,13 +59,14 @@
           "signature": "convertDistance(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: convertDistance"
@@ -70,13 +78,14 @@
           "signature": "convertLabels(RandomAccessible) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "out",
               "type": "Any",
               "java_type": "RandomAccessible"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: convertLabels"
@@ -87,14 +96,14 @@
         {
           "signature": "getFillerStack() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFillerStack"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -103,7 +112,7 @@
           "signature": "FillConverter(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "fillers",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -112,7 +121,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for FillConverter"
+      "documentation": "Constructors of FillConverter"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

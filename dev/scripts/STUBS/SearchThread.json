@@ -1,8 +1,13 @@
 {
   "class_name": "SearchThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-01-02T22:36:44.948207",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.tracing.SearchThread",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.719859",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "addNode",
@@ -11,18 +16,19 @@
           "signature": "addNode(DefaultSearchNode, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "n",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addNode"
@@ -34,13 +40,14 @@
           "signature": "addProgressListener(SearchProgressCallback) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "callback",
               "type": "Any",
               "java_type": "SearchProgressCallback"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addProgressListener"
@@ -52,43 +59,44 @@
           "signature": "createNewNode(int, int, int, double, double, DefaultSearchNode, byte) -> DefaultSearchNode",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "g",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "h",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
-              "type": "Any",
+              "name": "predecessor",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode"
             },
             {
-              "name": "arg6",
+              "name": "searchStatus",
               "type": "int",
               "java_type": "byte"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "DefaultSearchNode"
+          "return_type": "DefaultSearchNode",
+          "java_return_type": "DefaultSearchNode",
+          "is_static": false
         }
       ],
       "documentation": "Java method: createNewNode"
@@ -100,7 +108,8 @@
           "signature": "getExitReason() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getExitReason"
@@ -111,8 +120,9 @@
         {
           "signature": "getNodesAsImageFromGoal() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNodesAsImageFromGoal"
@@ -123,8 +133,9 @@
         {
           "signature": "getNodesAsImageFromStart() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNodesAsImageFromStart"
@@ -136,7 +147,9 @@
           "signature": "getResult() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false,
+          "inherited_from": "SearchInterface"
         }
       ],
       "documentation": "Java method: getResult"
@@ -148,7 +161,8 @@
           "signature": "pointsConsideredInSearch() -> long",
           "params": [],
           "return_type": "int",
-          "java_return_type": "long"
+          "java_return_type": "long",
+          "is_static": false
         }
       ],
       "documentation": "Java method: pointsConsideredInSearch"
@@ -160,7 +174,8 @@
           "signature": "printStatus() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: printStatus"
@@ -172,13 +187,14 @@
           "signature": "reportFinished(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: reportFinished"
@@ -190,127 +206,103 @@
           "signature": "run() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: run"
     }
   ],
-  "fields": [
-    {
-      "name": "imgDepth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgDepth of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgHeight",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgHeight of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgWidth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgWidth of type int",
-      "is_static": false,
-      "is_final": true
-    }
-  ],
   "constructors": [],
+  "fields": [],
   "static_fields": [
     {
       "name": "CANCELLED",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field CANCELLED of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field CANCELLED of type int"
     },
     {
       "name": "CLOSED_FROM_GOAL",
       "type": "int",
       "java_type": "byte",
-      "documentation": "Field CLOSED_FROM_GOAL of type byte",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field CLOSED_FROM_GOAL of type byte"
     },
     {
       "name": "CLOSED_FROM_START",
       "type": "int",
       "java_type": "byte",
-      "documentation": "Field CLOSED_FROM_START of type byte",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field CLOSED_FROM_START of type byte"
     },
     {
       "name": "EXIT_REASONS_STRINGS",
-      "type": "Any",
-      "java_type": "String;",
-      "documentation": "Field EXIT_REASONS_STRINGS of type String;",
+      "type": "List[str]",
+      "java_type": "String[]",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field EXIT_REASONS_STRINGS of type String[]"
     },
     {
       "name": "FREE",
       "type": "int",
       "java_type": "byte",
-      "documentation": "Field FREE of type byte",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field FREE of type byte"
     },
     {
       "name": "OPEN_FROM_GOAL",
       "type": "int",
       "java_type": "byte",
-      "documentation": "Field OPEN_FROM_GOAL of type byte",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field OPEN_FROM_GOAL of type byte"
     },
     {
       "name": "OPEN_FROM_START",
       "type": "int",
       "java_type": "byte",
-      "documentation": "Field OPEN_FROM_START of type byte",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field OPEN_FROM_START of type byte"
     },
     {
       "name": "OUT_OF_MEMORY",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field OUT_OF_MEMORY of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field OUT_OF_MEMORY of type int"
     },
     {
       "name": "POINTS_EXHAUSTED",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field POINTS_EXHAUSTED of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field POINTS_EXHAUSTED of type int"
     },
     {
       "name": "SUCCESS",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SUCCESS of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SUCCESS of type int"
     },
     {
       "name": "TIMED_OUT",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field TIMED_OUT of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field TIMED_OUT of type int"
     }
   ]
 }

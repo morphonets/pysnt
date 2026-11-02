@@ -1,8 +1,13 @@
 {
-  "class_name": "SkeletonConverter",
-  "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.958809",
-  "extractor_version": "1.0.0",
+  "class_name": "BinaryTracer",
+  "package": "sc.fiji.snt.tracing.auto",
+  "java_name": "sc.fiji.snt.tracing.auto.BinaryTracer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.590548",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "getGraphs",
@@ -11,7 +16,8 @@
           "signature": "getGraphs() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGraphs"
@@ -23,7 +29,8 @@
           "signature": "getPruneMode() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPruneMode"
@@ -35,7 +42,8 @@
           "signature": "getRootRoiStrategy() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRootRoiStrategy"
@@ -47,7 +55,8 @@
           "signature": "getSingleGraph() -> DirectedWeightedGraph",
           "params": [],
           "return_type": "DirectedWeightedGraph",
-          "java_return_type": "DirectedWeightedGraph"
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSingleGraph"
@@ -59,7 +68,8 @@
           "signature": "getSingleTree() -> Tree",
           "params": [],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSingleTree"
@@ -71,28 +81,43 @@
           "signature": "getTrees() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTrees"
     },
     {
-      "name": "static main",
+      "name": "honoredSeedRoles",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "honoredSeedRoles() -> EnumSet",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "EnumSet",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: honoredSeedRoles"
+    },
+    {
+      "name": "main",
+      "overloads": [
+        {
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "setConnectComponents",
@@ -101,13 +126,14 @@
           "signature": "setConnectComponents(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "connectComponents",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setConnectComponents"
@@ -119,13 +145,14 @@
           "signature": "setLengthThreshold(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lengthThreshold",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLengthThreshold"
@@ -137,13 +164,14 @@
           "signature": "setMaxConnectDist(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "maxConnectDist",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setMaxConnectDist"
@@ -155,13 +183,14 @@
           "signature": "setOrigIP(ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "origIP",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setOrigIP"
@@ -173,13 +202,14 @@
           "signature": "setPruneByLength(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pruneByLength",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPruneByLength"
@@ -191,13 +221,14 @@
           "signature": "setPruneEnds(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pruneEnds",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPruneEnds"
@@ -209,13 +240,14 @@
           "signature": "setPruneMode(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pruneMode",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPruneMode"
@@ -227,21 +259,41 @@
           "signature": "setRootRoi(Roi, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "roi",
               "type": "Any",
               "java_type": "Roi"
             },
             {
-              "name": "arg1",
+              "name": "strategy",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setRootRoi"
+    },
+    {
+      "name": "setRoots",
+      "overloads": [
+        {
+          "signature": "setRoots(Collection) -> void",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRoots"
     },
     {
       "name": "setShortestPath",
@@ -250,13 +302,14 @@
           "signature": "setShortestPath(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "shortestPath",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setShortestPath"
@@ -268,16 +321,37 @@
           "signature": "setSilent(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "silent",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSilent"
+    },
+    {
+      "name": "setTips",
+      "overloads": [
+        {
+          "signature": "setTips(Collection) -> void",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AutoTracer"
+        }
+      ],
+      "documentation": "Java method: setTips"
     },
     {
       "name": "setVerbose",
@@ -286,101 +360,151 @@
           "signature": "setVerbose(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "verbose",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setVerbose"
     },
     {
-      "name": "static skeletonize",
+      "name": "setWaypoints",
       "overloads": [
         {
-          "signature": "static skeletonize(ImagePlus, boolean) -> void",
+          "signature": "setWaypoints(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean"
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "static skeletonize(ImagePlus, double, double, boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AutoTracer"
         }
       ],
-      "documentation": "Java method: static skeletonize"
+      "documentation": "Java method: setWaypoints"
     },
     {
-      "name": "static skeletonizeTimeLapse",
+      "name": "skeletonize",
       "overloads": [
         {
-          "signature": "static skeletonizeTimeLapse(ImagePlus, boolean) -> void",
+          "signature": "skeletonize(ImagePlus, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             },
             {
-              "name": "arg1",
+              "name": "erodeIsolatedPixels",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "skeletonize(ImagePlus, double, double, boolean) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "lowerThreshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "upperThreshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "erodeIsolatedPixels",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static skeletonizeTimeLapse"
+      "documentation": "Java method: skeletonize"
+    },
+    {
+      "name": "skeletonizeTimeLapse",
+      "overloads": [
+        {
+          "signature": "skeletonizeTimeLapse(ImagePlus, boolean) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "erodeIsolatedPixels",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: skeletonizeTimeLapse"
+    },
+    {
+      "name": "trace",
+      "overloads": [
+        {
+          "signature": "trace() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false,
+          "inherited_from": "AutoTracer"
+        }
+      ],
+      "documentation": "Java method: trace"
+    },
+    {
+      "name": "traceTrees",
+      "overloads": [
+        {
+          "signature": "traceTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: traceTrees"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "SkeletonConverter(ImagePlus)",
+          "signature": "BinaryTracer(ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
               "java_type": "ImagePlus"
             }
@@ -389,27 +513,10 @@
           "java_return_type": "void"
         },
         {
-          "signature": "SkeletonConverter(ImagePlus, int)",
+          "signature": "BinaryTracer(ImgPlus)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "SkeletonConverter(ImgPlus)",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "imgPlus",
               "type": "Any",
               "java_type": "ImgPlus"
             }
@@ -418,90 +525,92 @@
           "java_return_type": "void"
         },
         {
-          "signature": "SkeletonConverter(ImagePlus, boolean)",
+          "signature": "BinaryTracer(ImagePlus, boolean)",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
               "java_type": "ImagePlus"
             },
             {
-              "name": "arg1",
+              "name": "skeletonize",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "BinaryTracer(ImagePlus, int)",
+          "params": [
+            {
+              "name": "imagePlus",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SkeletonConverter"
+      "documentation": "Constructors of BinaryTracer"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "LOWEST_INTENSITY_BRANCH",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field LOWEST_INTENSITY_BRANCH of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field LOWEST_INTENSITY_BRANCH of type int"
     },
     {
       "name": "LOWEST_INTENSITY_VOXEL",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field LOWEST_INTENSITY_VOXEL of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field LOWEST_INTENSITY_VOXEL of type int"
     },
     {
-      "name": "ROI_CENTROID",
+      "name": "MOST_DISTAL",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field ROI_CENTROID of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MOST_DISTAL of type int"
     },
     {
-      "name": "ROI_CENTROID_WEIGHTED",
+      "name": "PERIPHERAL_SEGMENTS",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field ROI_CENTROID_WEIGHTED of type int",
       "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "ROI_CONTAINED",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field ROI_CONTAINED of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "ROI_EDGE",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field ROI_EDGE of type int",
-      "is_static": true,
-      "is_final": true
-    },
-    {
-      "name": "ROI_UNSET",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field ROI_UNSET of type int",
-      "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field PERIPHERAL_SEGMENTS of type int"
     },
     {
       "name": "SHORTEST_BRANCH",
       "type": "int",
       "java_type": "int",
-      "documentation": "Field SHORTEST_BRANCH of type int",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SHORTEST_BRANCH of type int"
+    },
+    {
+      "name": "SHORTEST_EDGE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field SHORTEST_EDGE of type int"
     }
   ]
 }

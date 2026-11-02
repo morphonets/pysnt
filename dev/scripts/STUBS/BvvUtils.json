@@ -1,125 +1,643 @@
 {
   "class_name": "BvvUtils",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:00:54.679057",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.BvvUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.599385",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static preferMultiResolutionIfSafe",
+      "name": "buildTiledPyramid",
       "overloads": [
         {
-          "signature": "static preferMultiResolutionIfSafe(Source, int) -> void",
+          "signature": "buildTiledPyramid(ImgPlus, int) -> N5Sources",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
-              "java_type": "Source"
+              "java_type": "ImgPlus"
             },
             {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static preferMultiResolutionIfSafe"
-    },
-    {
-      "name": "static prefetchForShow",
-      "overloads": [
-        {
-          "signature": "static prefetchForShow(Source, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Source"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: static prefetchForShow"
-    },
-    {
-      "name": "static synthesizeMipmapPyramid",
-      "overloads": [
-        {
-          "signature": "static synthesizeMipmapPyramid(Source, int) -> Source",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Source"
-            },
-            {
-              "name": "arg1",
+              "name": "nLevels",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Source"
+          "java_return_type": "N5Sources",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static synthesizeMipmapPyramid"
+      "documentation": "Java method: buildTiledPyramid"
     },
     {
-      "name": "static warnIfLikelyRemoteImgPlus",
+      "name": "clearCaches",
       "overloads": [
         {
-          "signature": "static warnIfLikelyRemoteImgPlus(ImgPlus, String) -> void",
+          "signature": "clearCaches() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: clearCaches"
+    },
+    {
+      "name": "effectiveCacheMB",
+      "overloads": [
+        {
+          "signature": "effectiveCacheMB(int, boolean) -> int",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus"
+              "name": "nChannels",
+              "type": "int",
+              "java_type": "int"
             },
             {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
+              "name": "streaming",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static warnIfLikelyRemoteImgPlus"
+      "documentation": "Java method: effectiveCacheMB"
     },
     {
-      "name": "static warnIfLikelySimpleStack",
+      "name": "ensureCellBacked",
       "overloads": [
         {
-          "signature": "static warnIfLikelySimpleStack(Source, int) -> void",
+          "signature": "ensureCellBacked(SourceAndConverter) -> SourceAndConverter",
           "params": [
             {
-              "name": "arg0",
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "is_static": true
+        },
+        {
+          "signature": "ensureCellBacked(SourceAndConverter, int[]) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter"
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "is_static": true
+        },
+        {
+          "signature": "ensureCellBacked(SourceAndConverter, int[], boolean) -> SourceAndConverter",
+          "params": [
+            {
+              "name": "soc",
+              "type": "Any",
+              "java_type": "SourceAndConverter"
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]"
+            },
+            {
+              "name": "remote",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SourceAndConverter",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: ensureCellBacked"
+    },
+    {
+      "name": "estimateLocalCopyBytes",
+      "overloads": [
+        {
+          "signature": "estimateLocalCopyBytes(Source) -> long",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: estimateLocalCopyBytes"
+    },
+    {
+      "name": "estimateTiledPyramidBytes",
+      "overloads": [
+        {
+          "signature": "estimateTiledPyramidBytes(ImgPlus) -> long",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: estimateTiledPyramidBytes"
+    },
+    {
+      "name": "fetcherThreads",
+      "overloads": [
+        {
+          "signature": "fetcherThreads(boolean) -> int",
+          "params": [
+            {
+              "name": "remote",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: fetcherThreads"
+    },
+    {
+      "name": "getCachePrefMB",
+      "overloads": [
+        {
+          "signature": "getCachePrefMB() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getCachePrefMB"
+    },
+    {
+      "name": "getFetchersPref",
+      "overloads": [
+        {
+          "signature": "getFetchersPref() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getFetchersPref"
+    },
+    {
+      "name": "getRenderQuality",
+      "overloads": [
+        {
+          "signature": "getRenderQuality() -> RenderQuality",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RenderQuality",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getRenderQuality"
+    },
+    {
+      "name": "isCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "isCachePromptSuppressed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: isCachePromptSuppressed"
+    },
+    {
+      "name": "maxCacheMB",
+      "overloads": [
+        {
+          "signature": "maxCacheMB() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: maxCacheMB"
+    },
+    {
+      "name": "preferMultiResolutionIfSafe",
+      "overloads": [
+        {
+          "signature": "preferMultiResolutionIfSafe(Source, int) -> void",
+          "params": [
+            {
+              "name": "source",
               "type": "Any",
               "java_type": "Source"
             },
             {
-              "name": "arg1",
+              "name": "timepoint",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static warnIfLikelySimpleStack"
+      "documentation": "Java method: preferMultiResolutionIfSafe"
+    },
+    {
+      "name": "prefetchForShow",
+      "overloads": [
+        {
+          "signature": "prefetchForShow(Source, int) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source"
+            },
+            {
+              "name": "timepoint",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        },
+        {
+          "signature": "prefetchForShow(Source, int, DoubleConsumer) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source"
+            },
+            {
+              "name": "timepoint",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "progress",
+              "type": "Any",
+              "java_type": "DoubleConsumer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: prefetchForShow"
+    },
+    {
+      "name": "recommendedCacheMB",
+      "overloads": [
+        {
+          "signature": "recommendedCacheMB(int) -> int",
+          "params": [
+            {
+              "name": "nChannels",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: recommendedCacheMB"
+    },
+    {
+      "name": "releaseSources",
+      "overloads": [
+        {
+          "signature": "releaseSources(Collection) -> void",
+          "params": [
+            {
+              "name": "sources",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: releaseSources"
+    },
+    {
+      "name": "reportChunking",
+      "overloads": [
+        {
+          "signature": "reportChunking(String, int[]) -> void",
+          "params": [
+            {
+              "name": "name",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "chunkShape",
+              "type": "List[int]",
+              "java_type": "int[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: reportChunking"
+    },
+    {
+      "name": "setCachePrefMB",
+      "overloads": [
+        {
+          "signature": "setCachePrefMB(int) -> void",
+          "params": [
+            {
+              "name": "mb",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: setCachePrefMB"
+    },
+    {
+      "name": "setCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "setCachePromptSuppressed(boolean) -> void",
+          "params": [
+            {
+              "name": "suppress",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: setCachePromptSuppressed"
+    },
+    {
+      "name": "setFetchersPref",
+      "overloads": [
+        {
+          "signature": "setFetchersPref(int) -> void",
+          "params": [
+            {
+              "name": "n",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: setFetchersPref"
+    },
+    {
+      "name": "setRenderQuality",
+      "overloads": [
+        {
+          "signature": "setRenderQuality(RenderQuality) -> void",
+          "params": [
+            {
+              "name": "quality",
+              "type": "Any",
+              "java_type": "RenderQuality"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: setRenderQuality"
+    },
+    {
+      "name": "setSessionCacheMB",
+      "overloads": [
+        {
+          "signature": "setSessionCacheMB(int) -> void",
+          "params": [
+            {
+              "name": "mb",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: setSessionCacheMB"
+    },
+    {
+      "name": "syncQueuesWithViewer",
+      "overloads": [
+        {
+          "signature": "syncQueuesWithViewer(BvvHandle) -> void",
+          "params": [
+            {
+              "name": "handle",
+              "type": "Any",
+              "java_type": "BvvHandle"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: syncQueuesWithViewer"
+    },
+    {
+      "name": "synthesizeMipmapPyramid",
+      "overloads": [
+        {
+          "signature": "synthesizeMipmapPyramid(Source, int, boolean) -> Source",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source"
+            },
+            {
+              "name": "nLevels",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "copyLocally",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Source",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: synthesizeMipmapPyramid"
+    },
+    {
+      "name": "trackQueue",
+      "overloads": [
+        {
+          "signature": "trackQueue(CacheControl) -> void",
+          "params": [
+            {
+              "name": "queue",
+              "type": "Any",
+              "java_type": "CacheControl"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: trackQueue"
+    },
+    {
+      "name": "warnIfLikelyRemoteImgPlus",
+      "overloads": [
+        {
+          "signature": "warnIfLikelyRemoteImgPlus(ImgPlus, String) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "pathOrUrl",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: warnIfLikelyRemoteImgPlus"
+    },
+    {
+      "name": "warnIfLikelySimpleStack",
+      "overloads": [
+        {
+          "signature": "warnIfLikelySimpleStack(Source, int) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Source"
+            },
+            {
+              "name": "timepoint",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: warnIfLikelySimpleStack"
     }
   ],
+  "constructors": [],
   "fields": [],
-  "constructors": []
+  "static_fields": [
+    {
+      "name": "CACHE_MB_PER_CHANNEL",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field CACHE_MB_PER_CHANNEL of type int"
+    },
+    {
+      "name": "CELL_SIZE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field CELL_SIZE of type int"
+    },
+    {
+      "name": "GPU_BLOCK_SIZE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field GPU_BLOCK_SIZE of type int"
+    },
+    {
+      "name": "MAX_CACHE_SIZE_MB",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MAX_CACHE_SIZE_MB of type int"
+    },
+    {
+      "name": "MAX_SINGLE_TEXTURE_VOXELS",
+      "type": "int",
+      "java_type": "long",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MAX_SINGLE_TEXTURE_VOXELS of type long"
+    }
+  ]
 }

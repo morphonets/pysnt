@@ -1,8 +1,13 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:02.496307",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.NodeStatistics",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.659285",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "assignBranches",
@@ -11,34 +16,36 @@
           "signature": "assignBranches(Tree) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: assignBranches"
     },
     {
-      "name": "static computeNearestNeighborDistances",
+      "name": "computeNearestNeighborDistances",
       "overloads": [
         {
-          "signature": "static computeNearestNeighborDistances(List) -> void",
+          "signature": "computeNearestNeighborDistances(List) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "List"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static computeNearestNeighborDistances"
+      "documentation": "Java method: computeNearestNeighborDistances"
     },
     {
       "name": "filter",
@@ -47,23 +54,24 @@
           "signature": "filter(String, double, double) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "lowerBound",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "upperBound",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: filter"
@@ -75,30 +83,32 @@
           "signature": "get(BrainAnnotation) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         },
         {
           "signature": "get(BrainAnnotation, boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation"
             },
             {
-              "name": "arg1",
+              "name": "includeChildren",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: get"
@@ -107,39 +117,42 @@
       "name": "getAnnotatedFrequencies",
       "overloads": [
         {
-          "signature": "getAnnotatedFrequencies(int, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
+          "signature": "getAnnotatedFrequencies() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         },
         {
           "signature": "getAnnotatedFrequencies(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         },
         {
-          "signature": "getAnnotatedFrequencies() -> Map",
-          "params": [],
+          "signature": "getAnnotatedFrequencies(int, String) -> Map",
+          "params": [
+            {
+              "name": "level",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "hemisphere",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotatedFrequencies"
@@ -151,18 +164,19 @@
           "signature": "getAnnotatedFrequenciesByHemisphere(int, Tree) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotatedFrequenciesByHemisphere"
@@ -174,23 +188,24 @@
           "signature": "getAnnotatedFrequencyHistogram(int, String, Tree) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "hemisphere",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotatedFrequencyHistogram"
@@ -202,19 +217,21 @@
           "signature": "getAnnotatedHistogram() -> SNTChart",
           "params": [],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         },
         {
           "signature": "getAnnotatedHistogram(int) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotatedHistogram"
@@ -226,19 +243,21 @@
           "signature": "getAnnotatedNodes() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         },
         {
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotatedNodes"
@@ -250,13 +269,14 @@
           "signature": "getDescriptiveStatistics(String) -> DescriptiveStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "DescriptiveStatistics"
+          "java_return_type": "DescriptiveStatistics",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDescriptiveStatistics"
@@ -268,46 +288,49 @@
           "signature": "getHistogram(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHistogram"
     },
     {
-      "name": "static getMetrics",
+      "name": "getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getMetrics"
+      "documentation": "Java method: getMetrics"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "setLabel",
@@ -316,19 +339,19 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLabel"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -337,7 +360,7 @@
           "signature": "NodeStatistics(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -349,12 +372,12 @@
           "signature": "NodeStatistics(Collection, Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -363,73 +386,74 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for NodeStatistics"
+      "documentation": "Constructors of NodeStatistics"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "BRANCH_LENGTH",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field BRANCH_LENGTH of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field BRANCH_LENGTH of type String"
     },
     {
       "name": "BRANCH_ORDER",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field BRANCH_ORDER of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field BRANCH_ORDER of type String"
     },
     {
       "name": "NEAREST_NEIGHBOR_DISTANCE",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field NEAREST_NEIGHBOR_DISTANCE of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field NEAREST_NEIGHBOR_DISTANCE of type String"
     },
     {
       "name": "RADIUS",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field RADIUS of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field RADIUS of type String"
     },
     {
       "name": "VALUES",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field VALUES of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field VALUES of type String"
     },
     {
       "name": "X_COORDINATES",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field X_COORDINATES of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field X_COORDINATES of type String"
     },
     {
       "name": "Y_COORDINATES",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field Y_COORDINATES of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field Y_COORDINATES of type String"
     },
     {
       "name": "Z_COORDINATES",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field Z_COORDINATES of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field Z_COORDINATES of type String"
     }
   ]
 }

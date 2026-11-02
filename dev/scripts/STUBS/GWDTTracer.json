@@ -1,0 +1,1480 @@
+{
+  "class_name": "GWDTTracer",
+  "package": "sc.fiji.snt.tracing.auto",
+  "java_name": "sc.fiji.snt.tracing.auto.GWDTTracer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.626062",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "create",
+      "overloads": [
+        {
+          "signature": "create(ImagePlus) -> GWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "GWDTTracer",
+          "java_return_type": "GWDTTracer",
+          "is_static": true
+        },
+        {
+          "signature": "create(ImgPlus) -> GWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "GWDTTracer",
+          "java_return_type": "GWDTTracer",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: create"
+    },
+    {
+      "name": "findRoot",
+      "overloads": [
+        {
+          "signature": "findRoot(RandomAccessibleInterval, double[]) -> long[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "long[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        },
+        {
+          "signature": "findRoot(RandomAccessibleInterval, double, double[]) -> long[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "long[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: findRoot"
+    },
+    {
+      "name": "findRootPhysical",
+      "overloads": [
+        {
+          "signature": "findRootPhysical(RandomAccessibleInterval, double[]) -> double[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        },
+        {
+          "signature": "findRootPhysical(RandomAccessibleInterval, double, double[]) -> double[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: findRootPhysical"
+    },
+    {
+      "name": "findThickestPoint",
+      "overloads": [
+        {
+          "signature": "findThickestPoint(RandomAccessibleInterval, double, double[]) -> long[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "long[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: findThickestPoint"
+    },
+    {
+      "name": "findThickestPointPhysical",
+      "overloads": [
+        {
+          "signature": "findThickestPointPhysical(RandomAccessibleInterval, double, double[]) -> double[]",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: findThickestPointPhysical"
+    },
+    {
+      "name": "getCaliperFraction",
+      "overloads": [
+        {
+          "signature": "getCaliperFraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getCaliperFraction"
+    },
+    {
+      "name": "getMaxGapVoxels",
+      "overloads": [
+        {
+          "signature": "getMaxGapVoxels() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getMaxGapVoxels"
+    },
+    {
+      "name": "getMinSomaDistance",
+      "overloads": [
+        {
+          "signature": "getMinSomaDistance() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getMinSomaDistance"
+    },
+    {
+      "name": "getNSomas",
+      "overloads": [
+        {
+          "signature": "getNSomas() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getNSomas"
+    },
+    {
+      "name": "getRootStrategy",
+      "overloads": [
+        {
+          "signature": "getRootStrategy() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: getRootStrategy"
+    },
+    {
+      "name": "getScoreMap",
+      "overloads": [
+        {
+          "signature": "getScoreMap() -> RandomAccessibleInterval",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getScoreMap"
+    },
+    {
+      "name": "getSomaRoi",
+      "overloads": [
+        {
+          "signature": "getSomaRoi() -> Roi",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Roi",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: getSomaRoi"
+    },
+    {
+      "name": "getTipExtensionDistance",
+      "overloads": [
+        {
+          "signature": "getTipExtensionDistance() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getTipExtensionDistance"
+    },
+    {
+      "name": "getTracedRegionBuffer",
+      "overloads": [
+        {
+          "signature": "getTracedRegionBuffer() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: getTracedRegionBuffer"
+    },
+    {
+      "name": "honoredSeedRoles",
+      "overloads": [
+        {
+          "signature": "honoredSeedRoles() -> EnumSet",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "EnumSet",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: honoredSeedRoles"
+    },
+    {
+      "name": "isAllowVoxelGap",
+      "overloads": [
+        {
+          "signature": "isAllowVoxelGap() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: isAllowVoxelGap"
+    },
+    {
+      "name": "isAutoFilter",
+      "overloads": [
+        {
+          "signature": "isAutoFilter() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: isAutoFilter"
+    },
+    {
+      "name": "isParallelBranchPruneEnabled",
+      "overloads": [
+        {
+          "signature": "isParallelBranchPruneEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: isParallelBranchPruneEnabled"
+    },
+    {
+      "name": "isPathFittingEnabled",
+      "overloads": [
+        {
+          "signature": "isPathFittingEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: isPathFittingEnabled"
+    },
+    {
+      "name": "isVerbose",
+      "overloads": [
+        {
+          "signature": "isVerbose() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: isVerbose"
+    },
+    {
+      "name": "iterateNeighbors",
+      "overloads": [
+        {
+          "signature": "iterateNeighbors(int[], int, int, Runnable) -> void",
+          "params": [
+            {
+              "name": "delta",
+              "type": "List[int]",
+              "java_type": "int[]"
+            },
+            {
+              "name": "dim",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "nDims",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "action",
+              "type": "Any",
+              "java_type": "Runnable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: iterateNeighbors"
+    },
+    {
+      "name": "main",
+      "overloads": [
+        {
+          "signature": "main(String[]) -> void",
+          "params": [
+            {
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: main"
+    },
+    {
+      "name": "posToIndex",
+      "overloads": [
+        {
+          "signature": "posToIndex(long[], long[]) -> long",
+          "params": [
+            {
+              "name": "pos",
+              "type": "List[int]",
+              "java_type": "long[]"
+            },
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "is_static": true,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: posToIndex"
+    },
+    {
+      "name": "setAllowVoxelGap",
+      "overloads": [
+        {
+          "signature": "setAllowVoxelGap(boolean) -> void",
+          "params": [
+            {
+              "name": "allow",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setAllowVoxelGap"
+    },
+    {
+      "name": "setAutoFilter",
+      "overloads": [
+        {
+          "signature": "setAutoFilter(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setAutoFilter"
+    },
+    {
+      "name": "setBackgroundThreshold",
+      "overloads": [
+        {
+          "signature": "setBackgroundThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setBackgroundThreshold"
+    },
+    {
+      "name": "setBranchTuneMaxAngle",
+      "overloads": [
+        {
+          "signature": "setBranchTuneMaxAngle(double) -> void",
+          "params": [
+            {
+              "name": "maxAngleDeg",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setBranchTuneMaxAngle"
+    },
+    {
+      "name": "setCaliperFraction",
+      "overloads": [
+        {
+          "signature": "setCaliperFraction(double) -> void",
+          "params": [
+            {
+              "name": "fraction",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setCaliperFraction"
+    },
+    {
+      "name": "setConnectivityType",
+      "overloads": [
+        {
+          "signature": "setConnectivityType(int) -> void",
+          "params": [
+            {
+              "name": "type",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setConnectivityType"
+    },
+    {
+      "name": "setJointLeafPruneEnabled",
+      "overloads": [
+        {
+          "signature": "setJointLeafPruneEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setJointLeafPruneEnabled"
+    },
+    {
+      "name": "setLeafPruneOverlap",
+      "overloads": [
+        {
+          "signature": "setLeafPruneOverlap(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setLeafPruneOverlap"
+    },
+    {
+      "name": "setMaxGapVoxels",
+      "overloads": [
+        {
+          "signature": "setMaxGapVoxels(int) -> void",
+          "params": [
+            {
+              "name": "maxVoxels",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setMaxGapVoxels"
+    },
+    {
+      "name": "setMinBranchIntensityLength",
+      "overloads": [
+        {
+          "signature": "setMinBranchIntensityLength(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setMinBranchIntensityLength"
+    },
+    {
+      "name": "setMinSegmentLength",
+      "overloads": [
+        {
+          "signature": "setMinSegmentLength(double) -> void",
+          "params": [
+            {
+              "name": "lengthInPhysicalUnits",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setMinSegmentLength"
+    },
+    {
+      "name": "setMinSegmentLengthVoxels",
+      "overloads": [
+        {
+          "signature": "setMinSegmentLengthVoxels(double) -> void",
+          "params": [
+            {
+              "name": "lengthInVoxels",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setMinSegmentLengthVoxels"
+    },
+    {
+      "name": "setMinSomaDistance",
+      "overloads": [
+        {
+          "signature": "setMinSomaDistance(double) -> void",
+          "params": [
+            {
+              "name": "distance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setMinSomaDistance"
+    },
+    {
+      "name": "setNSomas",
+      "overloads": [
+        {
+          "signature": "setNSomas(int) -> void",
+          "params": [
+            {
+              "name": "nSomas",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setNSomas"
+    },
+    {
+      "name": "setOvershootRemovalEnabled",
+      "overloads": [
+        {
+          "signature": "setOvershootRemovalEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setOvershootRemovalEnabled"
+    },
+    {
+      "name": "setParallelBranchPruneEnabled",
+      "overloads": [
+        {
+          "signature": "setParallelBranchPruneEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setParallelBranchPruneEnabled"
+    },
+    {
+      "name": "setPathFittingEnabled",
+      "overloads": [
+        {
+          "signature": "setPathFittingEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setPathFittingEnabled"
+    },
+    {
+      "name": "setResampleStep",
+      "overloads": [
+        {
+          "signature": "setResampleStep(double) -> void",
+          "params": [
+            {
+              "name": "step",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setResampleStep"
+    },
+    {
+      "name": "setRoots",
+      "overloads": [
+        {
+          "signature": "setRoots(Collection) -> void",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setRoots"
+    },
+    {
+      "name": "setScoreMap",
+      "overloads": [
+        {
+          "signature": "setScoreMap(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "map",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setScoreMap"
+    },
+    {
+      "name": "setScoreMapEnabled",
+      "overloads": [
+        {
+          "signature": "setScoreMapEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setScoreMapEnabled"
+    },
+    {
+      "name": "setScoreMapFilterType",
+      "overloads": [
+        {
+          "signature": "setScoreMapFilterType(FilterType) -> void",
+          "params": [
+            {
+              "name": "type",
+              "type": "Any",
+              "java_type": "FilterType"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setScoreMapFilterType"
+    },
+    {
+      "name": "setScoreMapPruneThreshold",
+      "overloads": [
+        {
+          "signature": "setScoreMapPruneThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setScoreMapPruneThreshold"
+    },
+    {
+      "name": "setScoreMapScales",
+      "overloads": [
+        {
+          "signature": "setScoreMapScales(double[]) -> void",
+          "params": [
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setScoreMapScales"
+    },
+    {
+      "name": "setSeed",
+      "overloads": [
+        {
+          "signature": "setSeed(long[]) -> void",
+          "params": [
+            {
+              "name": "voxelCoords",
+              "type": "List[int]",
+              "java_type": "long[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setSeed"
+    },
+    {
+      "name": "setSeedPhysical",
+      "overloads": [
+        {
+          "signature": "setSeedPhysical(double[]) -> void",
+          "params": [
+            {
+              "name": "physicalCoords",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setSeedPhysical"
+    },
+    {
+      "name": "setSmoothWindowSize",
+      "overloads": [
+        {
+          "signature": "setSmoothWindowSize(int) -> void",
+          "params": [
+            {
+              "name": "windowSize",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setSmoothWindowSize"
+    },
+    {
+      "name": "setSomaRoi",
+      "overloads": [
+        {
+          "signature": "setSomaRoi(Roi) -> void",
+          "params": [
+            {
+              "name": "roi",
+              "type": "Any",
+              "java_type": "Roi"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        },
+        {
+          "signature": "setSomaRoi(Roi, int) -> void",
+          "params": [
+            {
+              "name": "roi",
+              "type": "Any",
+              "java_type": "Roi"
+            },
+            {
+              "name": "strategy",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: setSomaRoi"
+    },
+    {
+      "name": "setSomaRoiZPosition",
+      "overloads": [
+        {
+          "signature": "setSomaRoiZPosition(int) -> void",
+          "params": [
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: setSomaRoiZPosition"
+    },
+    {
+      "name": "setSphereOverlapThreshold",
+      "overloads": [
+        {
+          "signature": "setSphereOverlapThreshold(double) -> void",
+          "params": [
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setSphereOverlapThreshold"
+    },
+    {
+      "name": "setSrRatio",
+      "overloads": [
+        {
+          "signature": "setSrRatio(double) -> void",
+          "params": [
+            {
+              "name": "ratio",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setSrRatio"
+    },
+    {
+      "name": "setStatusListener",
+      "overloads": [
+        {
+          "signature": "setStatusListener(Consumer) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "Consumer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: setStatusListener"
+    },
+    {
+      "name": "setTipExtensionDistance",
+      "overloads": [
+        {
+          "signature": "setTipExtensionDistance(double) -> void",
+          "params": [
+            {
+              "name": "distance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setTipExtensionDistance"
+    },
+    {
+      "name": "setTips",
+      "overloads": [
+        {
+          "signature": "setTips(Collection) -> void",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setTips"
+    },
+    {
+      "name": "setTracedRegionBuffer",
+      "overloads": [
+        {
+          "signature": "setTracedRegionBuffer(int) -> void",
+          "params": [
+            {
+              "name": "buffer",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setTracedRegionBuffer"
+    },
+    {
+      "name": "setVerbose",
+      "overloads": [
+        {
+          "signature": "setVerbose(boolean) -> void",
+          "params": [
+            {
+              "name": "verbose",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractAutoTracer"
+        }
+      ],
+      "documentation": "Java method: setVerbose"
+    },
+    {
+      "name": "setWaypointBiasFixedFactor",
+      "overloads": [
+        {
+          "signature": "setWaypointBiasFixedFactor(double) -> void",
+          "params": [
+            {
+              "name": "factor",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setWaypointBiasFixedFactor"
+    },
+    {
+      "name": "setWaypointBiasRadiusVoxels",
+      "overloads": [
+        {
+          "signature": "setWaypointBiasRadiusVoxels(double) -> void",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setWaypointBiasRadiusVoxels"
+    },
+    {
+      "name": "setWaypointBiasSource",
+      "overloads": [
+        {
+          "signature": "setWaypointBiasSource(WaypointBiasSource) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "WaypointBiasSource"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setWaypointBiasSource"
+    },
+    {
+      "name": "setWaypointBiasStrength",
+      "overloads": [
+        {
+          "signature": "setWaypointBiasStrength(double) -> void",
+          "params": [
+            {
+              "name": "strength",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setWaypointBiasStrength"
+    },
+    {
+      "name": "setWaypoints",
+      "overloads": [
+        {
+          "signature": "setWaypoints(Collection) -> void",
+          "params": [
+            {
+              "name": "seeds",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setWaypoints"
+    },
+    {
+      "name": "setZigzagRemovalEnabled",
+      "overloads": [
+        {
+          "signature": "setZigzagRemovalEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: setZigzagRemovalEnabled"
+    },
+    {
+      "name": "trace",
+      "overloads": [
+        {
+          "signature": "trace() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: trace"
+    },
+    {
+      "name": "traceMultiSoma",
+      "overloads": [
+        {
+          "signature": "traceMultiSoma(List) -> List",
+          "params": [
+            {
+              "name": "somas",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: traceMultiSoma"
+    },
+    {
+      "name": "traceToGraph",
+      "overloads": [
+        {
+          "signature": "traceToGraph() -> DirectedWeightedGraph",
+          "params": [],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: traceToGraph"
+    },
+    {
+      "name": "traceTrees",
+      "overloads": [
+        {
+          "signature": "traceTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false,
+          "inherited_from": "AbstractGWDTTracer"
+        }
+      ],
+      "documentation": "Java method: traceTrees"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "GWDTTracer(ImagePlus)",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "GWDTTracer(ImgPlus)",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "GWDTTracer(RandomAccessibleInterval)",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "GWDTTracer(RandomAccessibleInterval, double[])",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of GWDTTracer"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

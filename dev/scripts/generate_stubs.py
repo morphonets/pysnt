@@ -159,29 +159,25 @@ class CleanStubGenerator:
                 result['reason'] = 'No timestamp in cache'
                 return result
             
-            # Parse cache timestamp
+            # Cache validity is tied to the SNT version, not to its age
             cache_time = datetime.fromisoformat(cache_time_str.replace('Z', '+00:00'))
-            cache_age = (datetime.now() - cache_time).days
-            result['cache_age_days'] = cache_age
-            
-            # Check stub file timestamp if it exists
+            result['cache_age_days'] = (datetime.now() - cache_time).days
             if stub_file.exists():
                 stub_mtime = datetime.fromtimestamp(stub_file.stat().st_mtime)
-                stub_age = (datetime.now() - stub_mtime).days
-                result['stub_age_days'] = stub_age
+                result['stub_age_days'] = (datetime.now() - stub_mtime).days
                 result['cache_newer'] = cache_time > stub_mtime
-            
-            # Cache is fresh if less than 7 days old and has valid version
-            if cache_age < 7 and cache_version and cache_version != 'unknown':
-                result['needs_update'] = False
-                result['reason'] = f'Cache is fresh ({cache_age} days old)'
-            elif cache_age >= 7:
-                result['reason'] = f'Cache is old ({cache_age} days)'
+
+            snt_version = cache_data.get('snt_version')
+            if not snt_version or not str(cache_version).startswith('2.'):
+                result['reason'] = 'Cache predates version stamping: re-run extract_class_signatures.py'
+            elif result['cache_newer'] or not stub_file.exists():
+                result['reason'] = f'Cache (SNT {snt_version}) is newer than the stub'
             else:
-                result['reason'] = 'Invalid cache version'
-            
+                result['needs_update'] = False
+                result['reason'] = f'Stub is current with cache (SNT {snt_version})'
+
             return result
-            
+
         except Exception as e:
             result['reason'] = f'Error reading cache: {e}'
             return result
@@ -201,88 +197,95 @@ class CleanStubGenerator:
         
         return False, cache_status['reason']
 
+    _PY_KEYWORDS = {
+        "False", "None", "True", "and", "as", "assert", "async", "await", "break", "class",
+        "continue", "def", "del", "elif", "else", "except", "finally", "for", "from",
+        "global", "if", "import", "in", "is", "lambda", "nonlocal", "not", "or", "pass",
+        "raise", "return", "try", "while", "with", "yield", "self",
+    }
+
+    def _stub_params(self, params):
+        """Render Java parameters: positional-only (JPype calls are positional), varargs as *name"""
+        out = []
+        used = set()
+        for i, param in enumerate(params):
+            name = param.get('name') or f'arg{i}'
+            if name in self._PY_KEYWORDS or not name.isidentifier():
+                name = f'{name}_' if name.isidentifier() else f'arg{i}'
+            while name in used:
+                name += '_'
+            used.add(name)
+            ptype = param.get('type', 'Any')
+            if param.get('varargs'):
+                inner = ptype[5:-1] if ptype.startswith('List[') and ptype.endswith(']') else 'Any'
+                out.append(f'*{name}: {inner}')
+            else:
+                out.append(f'{name}: {ptype}')
+        # Positional-only marker (cannot follow *args)
+        if out and not any(p.startswith('*') for p in out):
+            out.append('/')
+        return out
+
+    @staticmethod
+    def _deprecation_decorator(overload):
+        if not overload.get('deprecated'):
+            return None
+        msg = "Deprecated; scheduled for removal" if overload.get('for_removal') else "Deprecated"
+        return f'@deprecated("{msg}")'
+
+    def _emit_overloads(self, lines, name, overloads, is_constructor=False):
+        """Append stub lines for one method name (all its overloads)"""
+        statics = {bool(o.get('is_static')) for o in overloads}
+        # Python cannot mix static and instance overloads under one name: fall back to instance
+        static = (statics == {True}) and not is_constructor
+        multi = len(overloads) > 1
+        for ov in overloads:
+            if multi:
+                lines.append('    @overload')
+            dec = self._deprecation_decorator(ov)
+            if dec:
+                lines.append(f'    {dec}')
+            if static:
+                lines.append('    @staticmethod')
+            params = self._stub_params(ov.get('params', []))
+            first = [] if static else ['self']
+            ret = 'None' if is_constructor else ov.get('return_type', 'Any')
+            lines.append(f"    def {name}({', '.join(first + params)}) -> {ret}: ...")
+
     def generate_class_stub_from_cache(self, class_name: str, signatures: Dict[str, Any]) -> str:
         """Generate a class stub from cached signatures."""
         package = signatures.get('package', 'sc.fiji.snt')
-        extracted_at = signatures.get('extracted_at', 'unknown')
-        
-        lines = [
-            f'class {class_name}:',
-            f'    """',
-            f'    {package}.{class_name}',
-            f'    ',
-            f'    Generated from cached signatures.',
-            f'    Extracted: {extracted_at}',
-            f'    """',
-            f'    def __init__(self, *args: Any, **kwargs: Any) -> None: ...',
-            f'    '
-        ]
-        
-        # Add methods
-        methods = signatures.get('methods', [])
-        for method_info in methods:
-            method_name = self._clean_method_name(method_info['name'])
+        snt_version = signatures.get('snt_version', 'unknown')
+        py_name = class_name.replace('.', '_')
+
+        lines = [f'class {py_name}:']
+        doc = f'{package}.{class_name}  (SNT {snt_version})'
+        if signatures.get('deprecated'):
+            doc += '  [deprecated]'
+        lines.append(f'    """{doc}"""')
+
+        # Constants / static fields
+        for field in signatures.get('static_fields', []):
+            lines.append(f"    {field['name']}: ClassVar[{field.get('type', 'Any')}]")
+        for field in signatures.get('fields', []):
+            lines.append(f"    {field['name']}: {field.get('type', 'Any')}")
+
+        # Constructors
+        ctors = signatures.get('constructors', [])
+        if ctors and ctors[0].get('overloads'):
+            self._emit_overloads(lines, '__init__', ctors[0]['overloads'], is_constructor=True)
+        else:
+            lines.append('    def __init__(self, *args: Any, **kwargs: Any) -> None: ...')
+
+        # Methods
+        for method_info in signatures.get('methods', []):
+            name = self._clean_method_name(method_info['name'])
             overloads = method_info.get('overloads', [])
-            
-            if len(overloads) == 1:
-                # Single method
-                overload = overloads[0]
-                params = overload.get('params', [])
-                return_type = overload.get('return_type', 'Any')
-                
-                # Build parameter string
-                param_strs = []
-                for param in params:
-                    param_name = param.get('name', 'arg')
-                    param_type = param.get('type', 'Any')
-                    param_strs.append(f"{param_name}: {param_type}")
-                
-                param_str = ', '.join(param_strs)
-                if param_str:
-                    param_str = ', ' + param_str
-                
-                lines.append(f'    def {method_name}(self{param_str}) -> {return_type}: ...')
-                
-            else:
-                # Multiple overloads
-                lines.append(f'    # Multiple overloads for {method_name}')
-                for i, overload in enumerate(overloads):
-                    params = overload.get('params', [])
-                    return_type = overload.get('return_type', 'Any')
-                    
-                    param_strs = []
-                    for param in params:
-                        param_name = param.get('name', 'arg')
-                        param_type = param.get('type', 'Any')
-                        param_strs.append(f"{param_name}: {param_type}")
-                    
-                    param_str = ', '.join(param_strs)
-                    if param_str:
-                        param_str = ', ' + param_str
-                    
-                    if i == 0:
-                        lines.append(f'    def {method_name}(self{param_str}) -> {return_type}: ...')
-                    else:
-                        lines.append(f'    # def {method_name}(self{param_str}) -> {return_type}: ...')
-            
-            lines.append(f'    ')
-        
-        # Add fields if any
-        fields = signatures.get('fields', [])
-        if fields:
-            lines.append(f'    # Fields')
-            for field in fields:
-                field_name = field.get('name', 'field')
-                field_type = field.get('type', 'Any')
-                lines.append(f'    {field_name}: {field_type}')
-            lines.append(f'    ')
-        
-        # Add fallback __getattr__
-        lines.extend([
-            f'    def __getattr__(self, name: str) -> Any: ...',
-            f''
-        ])
-        
+            if overloads:
+                self._emit_overloads(lines, name, overloads)
+
+        lines.append('    def __getattr__(self, name: str) -> Any: ...')
+        lines.append('')
         return '\n'.join(lines)
 
     def _clean_method_name(self, method_name: str) -> str:
@@ -674,7 +677,8 @@ class CleanStubGenerator:
             stub_lines = [
                 '"""Comprehensive type stubs for Java classes."""',
                 '',
-                'from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple',
+                'from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple, ClassVar',
+                'from typing_extensions import deprecated',
                 '',
             ]
 

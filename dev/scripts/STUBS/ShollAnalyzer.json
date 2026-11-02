@@ -1,8 +1,13 @@
 {
   "class_name": "ShollAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.952375",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.ShollAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.726962",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "getLinearStats",
@@ -10,8 +15,9 @@
         {
           "signature": "getLinearStats() -> LinearProfileStats",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "LinearProfileStats"
+          "return_type": "LinearProfileStats",
+          "java_return_type": "LinearProfileStats",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getLinearStats"
@@ -23,22 +29,24 @@
           "signature": "getMaximaRadii() -> ArrayList",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "ArrayList"
+          "java_return_type": "ArrayList",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMaximaRadii"
     },
     {
-      "name": "static getMetrics",
+      "name": "getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getMetrics"
+      "documentation": "Java method: getMetrics"
     },
     {
       "name": "getNormStats",
@@ -46,8 +54,9 @@
         {
           "signature": "getNormStats() -> NormalizedProfileStats",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "NormalizedProfileStats"
+          "return_type": "NormalizedProfileStats",
+          "java_return_type": "NormalizedProfileStats",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNormStats"
@@ -59,7 +68,8 @@
           "signature": "getSecondaryMaxima() -> ArrayList",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "ArrayList"
+          "java_return_type": "ArrayList",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSecondaryMaxima"
@@ -71,28 +81,30 @@
           "signature": "getSingleValueMetrics() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSingleValueMetrics"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "setEnableCurveFitting",
@@ -101,13 +113,14 @@
           "signature": "setEnableCurveFitting(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setEnableCurveFitting"
@@ -119,141 +132,142 @@
           "signature": "setPolynomialFitRange(int, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromDegree",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "toDegree",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setPolynomialFitRange"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ShollAnalyzer(Tree, TreeStatistics)",
+          "signature": "ShollAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "TreeStatistics",
-              "java_type": "TreeStatistics"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "ShollAnalyzer(Tree)",
+          "signature": "ShollAnalyzer(Tree, TreeStatistics)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
+            },
+            {
+              "name": "statistics",
+              "type": "TreeStatistics",
+              "java_type": "TreeStatistics"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ShollAnalyzer"
+      "documentation": "Constructors of ShollAnalyzer"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "DECAY",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field DECAY of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field DECAY of type String"
     },
     {
       "name": "MAX",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field MAX of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MAX of type String"
     },
     {
       "name": "MAX_FITTED",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field MAX_FITTED of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MAX_FITTED of type String"
     },
     {
       "name": "MAX_FITTED_RADIUS",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field MAX_FITTED_RADIUS of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MAX_FITTED_RADIUS of type String"
     },
     {
       "name": "MEAN",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field MEAN of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MEAN of type String"
     },
     {
       "name": "N_MAX",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field N_MAX of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field N_MAX of type String"
     },
     {
       "name": "N_SECONDARY_MAX",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field N_SECONDARY_MAX of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field N_SECONDARY_MAX of type String"
     },
     {
       "name": "POLY_FIT_DEGREE",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field POLY_FIT_DEGREE of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field POLY_FIT_DEGREE of type String"
     },
     {
       "name": "RAMIFICATION_INDEX",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field RAMIFICATION_INDEX of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field RAMIFICATION_INDEX of type String"
     },
     {
       "name": "SUM",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SUM of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SUM of type String"
     }
   ]
 }

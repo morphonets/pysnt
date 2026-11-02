@@ -1,50 +1,58 @@
 {
   "class_name": "GroupedTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:00:58.760532",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.GroupedTreeStatistics",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.629417",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "addGroup",
       "overloads": [
         {
-          "signature": "addGroup(Collection, String, String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addGroup(Collection, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "group",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "groupLabel",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addGroup(Collection, String, String[]) -> void",
+          "params": [
+            {
+              "name": "group",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "groupLabel",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "swcTypes",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addGroup"
@@ -56,13 +64,14 @@
           "signature": "anovaPValue(String) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: anovaPValue"
@@ -74,84 +83,88 @@
           "signature": "getBoxPlot(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         },
         {
           "signature": "getBoxPlot(String, Collection) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         },
         {
           "signature": "getBoxPlot(String, Collection, double, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg2",
+              "name": "cutoff",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "normalize",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
+        {
+          "signature": "getBoxPlot(String, int, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "feature",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "normalize",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getBoxPlot"
@@ -160,102 +173,106 @@
       "name": "getFlowPlot",
       "overloads": [
         {
-          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, int) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg3",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg4",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        },
-        {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
+              "name": "depth",
               "type": "int",
               "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         },
         {
           "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg2",
+              "name": "normalize",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         },
         {
-          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "depth",
               "type": "int",
               "java_type": "int"
+            },
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "normalize",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
+        {
+          "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
+          "params": [
+            {
+              "name": "feature",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "annotations",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "statistic",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "normalize",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFlowPlot"
@@ -267,13 +284,14 @@
           "signature": "getGroupStats(String) -> MultiTreeStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "groupLabel",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "MultiTreeStatistics",
-          "java_return_type": "MultiTreeStatistics"
+          "java_return_type": "MultiTreeStatistics",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGroupStats"
@@ -285,7 +303,8 @@
           "signature": "getGroups() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getGroups"
@@ -297,13 +316,14 @@
           "signature": "getHistogram(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getHistogram"
@@ -315,13 +335,14 @@
           "signature": "getN(String) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "groupLabel",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getN"
@@ -333,34 +354,36 @@
           "signature": "getPolarHistogram(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getPolarHistogram"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "setMinNBins",
@@ -369,13 +392,14 @@
           "signature": "setMinNBins(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "minNoOfBins",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setMinNBins"
@@ -387,29 +411,29 @@
           "signature": "tTest(String, String, String) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "group1Label",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "group2Label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: tTest"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -421,7 +445,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for GroupedTreeStatistics"
+      "documentation": "Constructors of GroupedTreeStatistics"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

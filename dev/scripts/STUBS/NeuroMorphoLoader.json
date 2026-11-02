@@ -1,8 +1,13 @@
 {
   "class_name": "NeuroMorphoLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:01:02.009236",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.io.NeuroMorphoLoader",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.656393",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "enableSourceVersion",
@@ -11,34 +16,36 @@
           "signature": "enableSourceVersion(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: enableSourceVersion"
     },
     {
-      "name": "static get",
+      "name": "get",
       "overloads": [
         {
-          "signature": "static get(String) -> Tree",
+          "signature": "get(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static get"
+      "documentation": "Java method: get"
     },
     {
       "name": "getReader",
@@ -47,13 +54,14 @@
           "signature": "getReader(String) -> BufferedReader",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "BufferedReader"
+          "java_return_type": "BufferedReader",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getReader"
@@ -65,13 +73,14 @@
           "signature": "getReconstructionURL(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getReconstructionURL"
@@ -83,13 +92,14 @@
           "signature": "getTree(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTree"
@@ -101,31 +111,33 @@
           "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isDatabaseAvailable"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -137,7 +149,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for NeuroMorphoLoader"
+      "documentation": "Constructors of NeuroMorphoLoader"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

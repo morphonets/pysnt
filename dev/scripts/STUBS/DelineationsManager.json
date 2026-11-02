@@ -1,0 +1,162 @@
+{
+  "class_name": "DelineationsManager",
+  "package": "sc.fiji.snt",
+  "java_name": "sc.fiji.snt.DelineationsManager",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.605705",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "getDelineationROIs",
+      "overloads": [
+        {
+          "signature": "getDelineationROIs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDelineationROIs"
+    },
+    {
+      "name": "hasDelineationLabels",
+      "overloads": [
+        {
+          "signature": "hasDelineationLabels(Collection) -> boolean",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        },
+        {
+          "signature": "hasDelineationLabels(Tree) -> boolean",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: hasDelineationLabels"
+    },
+    {
+      "name": "importFromLabelImage",
+      "overloads": [
+        {
+          "signature": "importFromLabelImage(ImagePlus) -> int",
+          "params": [
+            {
+              "name": "labelImp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        },
+        {
+          "signature": "importFromLabelImage(RandomAccessibleInterval) -> int",
+          "params": [
+            {
+              "name": "labelImg",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        },
+        {
+          "signature": "importFromLabelImage(RandomAccessibleInterval, double[]) -> int",
+          "params": [
+            {
+              "name": "labelImg",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: importFromLabelImage"
+    },
+    {
+      "name": "load",
+      "overloads": [
+        {
+          "signature": "load(List) -> int",
+          "params": [
+            {
+              "name": "delineationROIs",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: load"
+    },
+    {
+      "name": "reset",
+      "overloads": [
+        {
+          "signature": "reset() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: reset"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "DelineationsManager(SNTUI)",
+          "params": [
+            {
+              "name": "sntui",
+              "type": "SNTUI",
+              "java_type": "SNTUI"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of DelineationsManager"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

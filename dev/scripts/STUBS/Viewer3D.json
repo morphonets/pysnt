@@ -1,40 +1,47 @@
 {
   "class_name": "Viewer3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-01-02T22:36:45.083274",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.Viewer3D",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.765226",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "add",
       "overloads": [
         {
-          "signature": "add(File;, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "File;"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "add(Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "object",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "add(File[], String) -> void",
+          "params": [
+            {
+              "name": "files",
+              "type": "List[str]",
+              "java_type": "File[]"
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: add"
@@ -46,99 +53,192 @@
           "signature": "addColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper, String) -> void",
+          "params": [
+            {
+              "name": "colorMapper",
+              "type": "Any",
+              "java_type": "ColorMapper"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "addColorBarLegend(ColorTable, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, String) -> void",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "addColorBarLegend(ColorTable, double, double, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "replaceExisting",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "font",
               "type": "Any",
               "java_type": "Font"
             },
             {
-              "name": "arg4",
+              "name": "steps",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "precision",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addColorBarLegend(ColorTable, double, double, Font, int, int, String) -> void",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "font",
+              "type": "Any",
+              "java_type": "Font"
+            },
+            {
+              "name": "steps",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "precision",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addColorBarLegend"
@@ -150,13 +250,14 @@
           "signature": "addLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addLabel"
@@ -168,13 +269,14 @@
           "signature": "addMesh(OBJMesh) -> boolean",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "objMesh",
+              "type": "OBJMesh",
               "java_type": "OBJMesh"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addMesh"
@@ -186,13 +288,14 @@
           "signature": "addTree(Tree) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addTree"
@@ -201,82 +304,89 @@
       "name": "addTrees",
       "overloads": [
         {
-          "signature": "addTrees(Collection, String, String;) -> void",
+          "signature": "addTrees(Collection, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "str",
               "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "String;"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "addTrees(Collection, String, double) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "addTrees(Collection, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "assignUniqueColors",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false,
+          "deprecated": true,
+          "for_removal": false
         },
         {
-          "signature": "addTrees(Collection, String) -> void",
+          "signature": "addTrees(Collection, String, String[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "str",
               "java_type": "String"
+            },
+            {
+              "name": "commonTags",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addTrees(Collection, String, double) -> void",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "transparencyPercent",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addTrees"
@@ -288,18 +398,19 @@
           "signature": "annotateLine(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotateLine"
@@ -311,23 +422,24 @@
           "signature": "annotateMidPlane(BoundingBox, int, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "boundingBox",
               "type": "BoundingBox",
               "java_type": "BoundingBox"
             },
             {
-              "name": "arg1",
+              "name": "axis",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotateMidPlane"
@@ -339,23 +451,24 @@
           "signature": "annotatePlane(SNTPoint, SNTPoint, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "origin",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg1",
+              "name": "originOpposite",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg2",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotatePlane"
@@ -367,45 +480,47 @@
           "signature": "annotatePoint(SNTPoint, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         },
         {
           "signature": "annotatePoint(SNTPoint, String, String, float) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "node",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "color",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg3",
+              "name": "size",
               "type": "float",
               "java_type": "float"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotatePoint"
@@ -417,18 +532,19 @@
           "signature": "annotatePoints(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotatePoints"
@@ -437,43 +553,45 @@
       "name": "annotateSurface",
       "overloads": [
         {
-          "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
+          "signature": "annotateSurface(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
+        },
+        {
+          "signature": "annotateSurface(Collection, String, boolean) -> Annotation3D",
+          "params": [
+            {
+              "name": "points",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "label",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "computeVolume",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
-        },
-        {
-          "signature": "annotateSurface(Collection, String) -> Annotation3D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: annotateSurface"
@@ -485,13 +603,14 @@
           "signature": "assignUniqueColors(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabels",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: assignUniqueColors"
@@ -500,48 +619,50 @@
       "name": "colorCode",
       "overloads": [
         {
-          "signature": "colorCode(Collection, String, ColorTable) -> [D",
+          "signature": "colorCode(Collection, String, ColorTable) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabels",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         },
         {
-          "signature": "colorCode(String, String, ColorTable) -> [D",
+          "signature": "colorCode(String, String, ColorTable) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "treeLabel",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "measurement",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg2",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: colorCode"
@@ -553,7 +674,8 @@
           "signature": "dispose() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: dispose"
@@ -565,10 +687,30 @@
           "signature": "duplicate() -> Viewer3D",
           "params": [],
           "return_type": "Viewer3D",
-          "java_return_type": "Viewer3D"
+          "java_return_type": "Viewer3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: duplicate"
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "obj",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
     },
     {
       "name": "freeze",
@@ -577,10 +719,37 @@
           "signature": "freeze() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: freeze"
+    },
+    {
+      "name": "getAnimationAxis",
+      "overloads": [
+        {
+          "signature": "getAnimationAxis() -> RotationAxis",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RotationAxis",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAnimationAxis"
+    },
+    {
+      "name": "getAnimationMode",
+      "overloads": [
+        {
+          "signature": "getAnimationMode() -> AnimationMode",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AnimationMode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getAnimationMode"
     },
     {
       "name": "getAnnotation",
@@ -589,13 +758,14 @@
           "signature": "getAnnotation(String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotation"
@@ -607,10 +777,24 @@
           "signature": "getAnnotations() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnnotations"
+    },
+    {
+      "name": "getColorCodeLabel",
+      "overloads": [
+        {
+          "signature": "getColorCodeLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getColorCodeLabel"
     },
     {
       "name": "getFrame",
@@ -619,19 +803,21 @@
           "signature": "getFrame() -> Frame",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Frame"
+          "java_return_type": "Frame",
+          "is_static": false
         },
         {
           "signature": "getFrame(boolean) -> Frame",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "Frame"
+          "java_return_type": "Frame",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getFrame"
@@ -643,7 +829,8 @@
           "signature": "getID() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getID"
@@ -652,10 +839,11 @@
       "name": "getManagerPanel",
       "overloads": [
         {
-          "signature": "getManagerPanel() -> Viewer3D$ManagerPanel",
+          "signature": "getManagerPanel() -> ManagerPanel",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Viewer3D$ManagerPanel"
+          "java_return_type": "ManagerPanel",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getManagerPanel"
@@ -667,16 +855,30 @@
           "signature": "getMesh(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh"
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMesh"
+    },
+    {
+      "name": "getMeshShadingMode",
+      "overloads": [
+        {
+          "signature": "getMeshShadingMode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeshShadingMode"
     },
     {
       "name": "getMeshes",
@@ -685,19 +887,21 @@
           "signature": "getMeshes() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         },
         {
           "signature": "getMeshes(boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "visibleOnly",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMeshes"
@@ -709,13 +913,14 @@
           "signature": "getRecorder(boolean) -> ScriptRecorder",
           "params": [
             {
-              "name": "arg0",
+              "name": "createIfNeeded",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "ScriptRecorder"
+          "java_return_type": "ScriptRecorder",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getRecorder"
@@ -727,13 +932,14 @@
           "signature": "getTree(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTree"
@@ -745,22 +951,37 @@
           "signature": "getTrees() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         },
         {
           "signature": "getTrees(boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "visibleOnly",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTrees"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
     },
     {
       "name": "isActive",
@@ -769,10 +990,24 @@
           "signature": "isActive() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isActive"
+    },
+    {
+      "name": "isAutoDetectAnimationAxis",
+      "overloads": [
+        {
+          "signature": "isAutoDetectAnimationAxis() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isAutoDetectAnimationAxis"
     },
     {
       "name": "isDarkModeOn",
@@ -781,10 +1016,24 @@
           "signature": "isDarkModeOn() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isDarkModeOn"
+    },
+    {
+      "name": "isMeshBackfaceCull",
+      "overloads": [
+        {
+          "signature": "isMeshBackfaceCull() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isMeshBackfaceCull"
     },
     {
       "name": "isSNTInstance",
@@ -793,10 +1042,24 @@
           "signature": "isSNTInstance() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isSNTInstance"
+    },
+    {
+      "name": "isScaleBarDisplayed",
+      "overloads": [
+        {
+          "signature": "isScaleBarDisplayed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isScaleBarDisplayed"
     },
     {
       "name": "isSplitDendritesFromAxons",
@@ -805,7 +1068,8 @@
           "signature": "isSplitDendritesFromAxons() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isSplitDendritesFromAxons"
@@ -817,23 +1081,24 @@
           "signature": "loadMesh(String, ColorRGB, double) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB"
             },
             {
-              "name": "arg2",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh"
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "is_static": false
         }
       ],
       "documentation": "Java method: loadMesh"
@@ -845,13 +1110,14 @@
           "signature": "loadRefBrain(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "template",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh"
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "is_static": false
         }
       ],
       "documentation": "Java method: loadRefBrain"
@@ -863,7 +1129,8 @@
           "signature": "logSceneControls() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: logSceneControls"
@@ -875,18 +1142,19 @@
           "signature": "mergeAnnotations(Collection, String) -> Annotation3D",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "label",
               "type": "str",
               "java_type": "String"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Annotation3D"
+          "return_type": "Annotation3D",
+          "java_return_type": "Annotation3D",
+          "is_static": false
         }
       ],
       "documentation": "Java method: mergeAnnotations"
@@ -898,13 +1166,14 @@
           "signature": "rebuild(Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "obj",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: rebuild"
@@ -916,42 +1185,1574 @@
           "signature": "recordRotation(float, int, File) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "angle",
               "type": "float",
               "java_type": "float"
             },
             {
-              "name": "arg1",
+              "name": "frames",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "destinationDirectory",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "recordRotation(float, int, File, RotationAxis) -> void",
+          "params": [
+            {
+              "name": "angle",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "frames",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "destinationDirectory",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "axis",
+              "type": "Any",
+              "java_type": "RotationAxis"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: recordRotation"
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(Object) -> void",
+          "params": [
+            {
+              "name": "object",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: remove"
+    },
+    {
+      "name": "removeAllMeshes",
+      "overloads": [
+        {
+          "signature": "removeAllMeshes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeAllMeshes"
+    },
+    {
+      "name": "removeAllTrees",
+      "overloads": [
+        {
+          "signature": "removeAllTrees() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeAllTrees"
+    },
+    {
+      "name": "removeAnnotation",
+      "overloads": [
+        {
+          "signature": "removeAnnotation(Annotation3D) -> boolean",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Annotation3D",
+              "java_type": "Annotation3D"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "removeAnnotation(String) -> boolean",
+          "params": [
+            {
+              "name": "annotLabel",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeAnnotation"
+    },
+    {
+      "name": "removeMesh",
+      "overloads": [
+        {
+          "signature": "removeMesh(OBJMesh) -> boolean",
+          "params": [
+            {
+              "name": "mesh",
+              "type": "OBJMesh",
+              "java_type": "OBJMesh"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "removeMesh(String) -> boolean",
+          "params": [
+            {
+              "name": "meshLabel",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeMesh"
+    },
+    {
+      "name": "removeTree",
+      "overloads": [
+        {
+          "signature": "removeTree(String) -> boolean",
+          "params": [
+            {
+              "name": "treeLabel",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "removeTree(Tree) -> boolean",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeTree"
+    },
+    {
+      "name": "resetView",
+      "overloads": [
+        {
+          "signature": "resetView() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: resetView"
+    },
+    {
+      "name": "rotate",
+      "overloads": [
+        {
+          "signature": "rotate(float) -> void",
+          "params": [
+            {
+              "name": "degrees",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: rotate"
+    },
+    {
+      "name": "runCommand",
+      "overloads": [
+        {
+          "signature": "runCommand(String) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: runCommand"
+    },
+    {
+      "name": "saveScene",
+      "overloads": [
+        {
+          "signature": "saveScene(File, boolean) -> int",
+          "params": [
+            {
+              "name": "directory",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "visibleOnly",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: saveScene"
+    },
+    {
+      "name": "saveSnapshot",
+      "overloads": [
+        {
+          "signature": "saveSnapshot() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "saveSnapshot(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: saveSnapshot"
+    },
+    {
+      "name": "setAnatomicalMapping",
+      "overloads": [
+        {
+          "signature": "setAnatomicalMapping(String) -> void",
+          "params": [
+            {
+              "name": "template",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setAnatomicalMapping(String[], String) -> void",
+          "params": [
+            {
+              "name": "axisLabels",
+              "type": "List[str]",
+              "java_type": "String[]"
+            },
+            {
+              "name": "dorsalAxis",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnatomicalMapping"
+    },
+    {
+      "name": "setAnimationAxis",
+      "overloads": [
+        {
+          "signature": "setAnimationAxis(RotationAxis) -> void",
+          "params": [
+            {
+              "name": "axis",
+              "type": "Any",
+              "java_type": "RotationAxis"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnimationAxis"
+    },
+    {
+      "name": "setAnimationEnabled",
+      "overloads": [
+        {
+          "signature": "setAnimationEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnimationEnabled"
+    },
+    {
+      "name": "setAnimationMode",
+      "overloads": [
+        {
+          "signature": "setAnimationMode(AnimationMode) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "Any",
+              "java_type": "AnimationMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAnimationMode"
+    },
+    {
+      "name": "setAutoDetectAnimationAxis",
+      "overloads": [
+        {
+          "signature": "setAutoDetectAnimationAxis(boolean) -> void",
+          "params": [
+            {
+              "name": "auto",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAutoDetectAnimationAxis"
+    },
+    {
+      "name": "setAxesLabels",
+      "overloads": [
+        {
+          "signature": "setAxesLabels(String[]) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAxesLabels"
+    },
+    {
+      "name": "setBounds",
+      "overloads": [
+        {
+          "signature": "setBounds(float, float, float, float, float, float) -> void",
+          "params": [
+            {
+              "name": "xMin",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "xMax",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "yMin",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "yMax",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "zMin",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "zMax",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setBounds"
+    },
+    {
+      "name": "setDefaultColor",
+      "overloads": [
+        {
+          "signature": "setDefaultColor(ColorRGB) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDefaultColor"
+    },
+    {
+      "name": "setDefaultThickness",
+      "overloads": [
+        {
+          "signature": "setDefaultThickness(float) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDefaultThickness"
+    },
+    {
+      "name": "setDepthFog",
+      "overloads": [
+        {
+          "signature": "setDepthFog(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setDepthFog"
+    },
+    {
+      "name": "setEnableAxes",
+      "overloads": [
+        {
+          "signature": "setEnableAxes(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setEnableAxes"
+    },
+    {
+      "name": "setEnableDarkMode",
+      "overloads": [
+        {
+          "signature": "setEnableDarkMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setEnableDarkMode"
+    },
+    {
+      "name": "setEnableDebugMode",
+      "overloads": [
+        {
+          "signature": "setEnableDebugMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setEnableDebugMode"
+    },
+    {
+      "name": "setFogIntensity",
+      "overloads": [
+        {
+          "signature": "setFogIntensity(float) -> void",
+          "params": [
+            {
+              "name": "intensity",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFogIntensity"
+    },
+    {
+      "name": "setFont",
+      "overloads": [
+        {
+          "signature": "setFont(Font, float, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "font",
+              "type": "Any",
+              "java_type": "Font"
+            },
+            {
+              "name": "angle",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFont"
+    },
+    {
+      "name": "setFrameSize",
+      "overloads": [
+        {
+          "signature": "setFrameSize(int, int) -> void",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setFrameSize"
+    },
+    {
+      "name": "setLabelLocation",
+      "overloads": [
+        {
+          "signature": "setLabelLocation(float, float) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setLabelLocation"
+    },
+    {
+      "name": "setLookAndFeel",
+      "overloads": [
+        {
+          "signature": "setLookAndFeel(String) -> void",
+          "params": [
+            {
+              "name": "lookAndFeelName",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setLookAndFeel"
+    },
+    {
+      "name": "setMeshBackfaceCull",
+      "overloads": [
+        {
+          "signature": "setMeshBackfaceCull(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMeshBackfaceCull"
+    },
+    {
+      "name": "setMeshShadingMode",
+      "overloads": [
+        {
+          "signature": "setMeshShadingMode(int) -> void",
+          "params": [
+            {
+              "name": "mode",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMeshShadingMode"
+    },
+    {
+      "name": "setPseudoLighting",
+      "overloads": [
+        {
+          "signature": "setPseudoLighting(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPseudoLighting"
+    },
+    {
+      "name": "setRadiusScale",
+      "overloads": [
+        {
+          "signature": "setRadiusScale(float) -> void",
+          "params": [
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setRadiusScale(Collection, float) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadiusScale"
+    },
+    {
+      "name": "setScaleBarDisplayed",
+      "overloads": [
+        {
+          "signature": "setScaleBarDisplayed(boolean) -> void",
+          "params": [
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setScaleBarDisplayed"
+    },
+    {
+      "name": "setScaleBarUnit",
+      "overloads": [
+        {
+          "signature": "setScaleBarUnit(String) -> void",
+          "params": [
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setScaleBarUnit"
+    },
+    {
+      "name": "setSceneUpdatesEnabled",
+      "overloads": [
+        {
+          "signature": "setSceneUpdatesEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSceneUpdatesEnabled"
+    },
+    {
+      "name": "setSnapshotDir",
+      "overloads": [
+        {
+          "signature": "setSnapshotDir(String) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSnapshotDir"
+    },
+    {
+      "name": "setSomaRadius",
+      "overloads": [
+        {
+          "signature": "setSomaRadius(float) -> void",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setSomaRadius(Collection, float) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSomaRadius"
+    },
+    {
+      "name": "setSomasDisplayed",
+      "overloads": [
+        {
+          "signature": "setSomasDisplayed(boolean) -> void",
+          "params": [
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setSomasDisplayed(Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "displayed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSomasDisplayed"
+    },
+    {
+      "name": "setSplitDendritesFromAxons",
+      "overloads": [
+        {
+          "signature": "setSplitDendritesFromAxons(boolean) -> void",
+          "params": [
+            {
+              "name": "split",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSplitDendritesFromAxons"
+    },
+    {
+      "name": "setTitle",
+      "overloads": [
+        {
+          "signature": "setTitle(String) -> void",
+          "params": [
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTitle"
+    },
+    {
+      "name": "setTreeColor",
+      "overloads": [
+        {
+          "signature": "setTreeColor(Collection, ColorRGB, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setTreeColor(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTreeColor"
+    },
+    {
+      "name": "setTreeThickness",
+      "overloads": [
+        {
+          "signature": "setTreeThickness(float) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setTreeThickness(float, String) -> void",
+          "params": [
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setTreeThickness(Collection, float, String) -> void",
+          "params": [
+            {
+              "name": "labels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "thickness",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTreeThickness"
+    },
+    {
+      "name": "setTubeMode",
+      "overloads": [
+        {
+          "signature": "setTubeMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTubeMode"
+    },
+    {
+      "name": "setTubeSides",
+      "overloads": [
+        {
+          "signature": "setTubeSides(int) -> void",
+          "params": [
+            {
+              "name": "sides",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTubeSides"
+    },
+    {
+      "name": "setTubeWireframe",
+      "overloads": [
+        {
+          "signature": "setTubeWireframe(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTubeWireframe"
+    },
+    {
+      "name": "setUpsamplingFactor",
+      "overloads": [
+        {
+          "signature": "setUpsamplingFactor(int) -> void",
+          "params": [
+            {
+              "name": "factor",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setUpsamplingFactor"
+    },
+    {
+      "name": "setViewMode",
+      "overloads": [
+        {
+          "signature": "setViewMode(String) -> void",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setViewMode(ViewMode) -> void",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "Any",
+              "java_type": "ViewMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setViewMode"
+    },
+    {
+      "name": "setViewPoint",
+      "overloads": [
+        {
+          "signature": "setViewPoint(double, double) -> void",
+          "params": [
+            {
+              "name": "r",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "t",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setViewPoint"
+    },
+    {
+      "name": "setViewPointCC",
+      "overloads": [
+        {
+          "signature": "setViewPointCC(double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setViewPointCC"
+    },
+    {
+      "name": "setVisible",
+      "overloads": [
+        {
+          "signature": "setVisible(String, boolean) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setVisible"
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show() -> Frame",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Frame",
+          "is_static": false
+        },
+        {
+          "signature": "show(Object) -> Viewer3D",
+          "params": [
+            {
+              "name": "object",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "is_static": true
+        },
+        {
+          "signature": "show(int, int) -> Frame",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Frame",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: show"
+    },
+    {
+      "name": "showMessage",
+      "overloads": [
+        {
+          "signature": "showMessage(String, boolean) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "asBanner",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: showMessage"
+    },
+    {
+      "name": "snapshot",
+      "overloads": [
+        {
+          "signature": "snapshot() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        },
+        {
+          "signature": "snapshot(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: snapshot"
+    },
+    {
+      "name": "snapshotWYSIWYG",
+      "overloads": [
+        {
+          "signature": "snapshotWYSIWYG() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: snapshotWYSIWYG"
+    },
+    {
+      "name": "syncPathManagerList",
+      "overloads": [
+        {
+          "signature": "syncPathManagerList() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: syncPathManagerList"
+    },
+    {
+      "name": "translate",
+      "overloads": [
+        {
+          "signature": "translate(Collection, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "treeLabels",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "offset",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "translate(Tree, SNTPoint) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "offset",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: translate"
+    },
+    {
+      "name": "unfreeze",
+      "overloads": [
+        {
+          "signature": "unfreeze() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: unfreeze"
+    },
+    {
+      "name": "updateColorBarLegend",
+      "overloads": [
+        {
+          "signature": "updateColorBarLegend(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "updateColorBarLegend(double, double, float, int, int, boolean, String) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "fontSize",
+              "type": "float",
+              "java_type": "float"
+            },
+            {
+              "name": "steps",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "decimals",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "scientific",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateColorBarLegend"
+    },
+    {
+      "name": "updateView",
+      "overloads": [
+        {
+          "signature": "updateView() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateView"
+    },
+    {
+      "name": "validate",
+      "overloads": [
+        {
+          "signature": "validate() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: validate"
+    },
+    {
+      "name": "zoomTo",
+      "overloads": [
+        {
+          "signature": "zoomTo(Object[]) -> void",
+          "params": [
+            {
+              "name": "objects",
+              "type": "List[Any]",
+              "java_type": "Object[]",
+              "varargs": true
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: zoomTo"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "Viewer3D(boolean)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean"
-            }
-          ],
+          "signature": "Viewer3D()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -959,7 +2760,7 @@
           "signature": "Viewer3D(Context)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             }
@@ -968,8 +2769,14 @@
           "java_return_type": "void"
         },
         {
-          "signature": "Viewer3D()",
-          "params": [],
+          "signature": "Viewer3D(boolean)",
+          "params": [
+            {
+              "name": "interactive",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         },
@@ -977,12 +2784,12 @@
           "signature": "Viewer3D(boolean, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "interactive",
               "type": "bool",
               "java_type": "boolean"
             },
             {
-              "name": "arg1",
+              "name": "engine",
               "type": "str",
               "java_type": "String"
             }
@@ -991,7 +2798,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Viewer3D"
+      "documentation": "Constructors of Viewer3D"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

@@ -1,8 +1,13 @@
 {
   "class_name": "BoundingBox",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.477749",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.BoundingBox",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.593423",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "append",
@@ -11,13 +16,14 @@
           "signature": "append(Iterator) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "iterator",
               "type": "Any",
               "java_type": "Iterator"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: append"
@@ -26,16 +32,11 @@
       "name": "clone",
       "overloads": [
         {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
           "signature": "clone() -> BoundingBox",
           "params": [],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false
         }
       ],
       "documentation": "Java method: clone"
@@ -47,13 +48,14 @@
           "signature": "combine(BoundingBox) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "other",
               "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: combine"
@@ -65,13 +67,14 @@
           "signature": "compute(Iterator) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "iterator",
               "type": "Any",
               "java_type": "Iterator"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: compute"
@@ -80,28 +83,30 @@
       "name": "contains",
       "overloads": [
         {
-          "signature": "contains(SNTPoint) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "contains(BoundingBox) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "boundingBox",
               "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "contains(SNTPoint) -> boolean",
+          "params": [
+            {
+              "name": "point",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: contains"
@@ -113,13 +118,14 @@
           "signature": "contains2D(SNTPoint) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: contains2D"
@@ -131,10 +137,59 @@
           "signature": "depth() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: depth"
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "obj",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: equals"
+    },
+    {
+      "name": "expand",
+      "overloads": [
+        {
+          "signature": "expand(double, double, double) -> void",
+          "params": [
+            {
+              "name": "xPad",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yPad",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zPad",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: expand"
     },
     {
       "name": "getCalibration",
@@ -143,7 +198,8 @@
           "signature": "getCalibration() -> Calibration",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "Calibration"
+          "java_return_type": "Calibration",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCalibration"
@@ -155,7 +211,8 @@
           "signature": "getCentroid() -> SNTPoint",
           "params": [],
           "return_type": "SNTPoint",
-          "java_return_type": "SNTPoint"
+          "java_return_type": "SNTPoint",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCentroid"
@@ -167,7 +224,8 @@
           "signature": "getDiagonal() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDiagonal"
@@ -176,22 +234,24 @@
       "name": "getDimensions",
       "overloads": [
         {
-          "signature": "getDimensions() -> [D",
+          "signature": "getDimensions() -> double[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         },
         {
-          "signature": "getDimensions(boolean) -> [D",
+          "signature": "getDimensions(boolean) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "scaled",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDimensions"
@@ -203,7 +263,8 @@
           "signature": "getUnit() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getUnit"
@@ -215,10 +276,24 @@
           "signature": "hasDimensions() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: hasDimensions"
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hashCode"
     },
     {
       "name": "height",
@@ -227,7 +302,8 @@
           "signature": "height() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: height"
@@ -239,13 +315,14 @@
           "signature": "inferSpacing(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: inferSpacing"
@@ -257,13 +334,14 @@
           "signature": "intersection(BoundingBox) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
+              "name": "other",
               "type": "BoundingBox",
               "java_type": "BoundingBox"
             }
           ],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false
         }
       ],
       "documentation": "Java method: intersection"
@@ -275,7 +353,8 @@
           "signature": "isScaled() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: isScaled"
@@ -287,7 +366,8 @@
           "signature": "origin() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: origin"
@@ -299,25 +379,46 @@
           "signature": "originOpposite() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: originOpposite"
     },
     {
+      "name": "sanitizedUnit",
+      "overloads": [
+        {
+          "signature": "sanitizedUnit(String) -> String",
+          "params": [
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: sanitizedUnit"
+    },
+    {
       "name": "scale",
       "overloads": [
         {
-          "signature": "scale([D) -> BoundingBox",
+          "signature": "scale(double[]) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "[D"
+              "name": "scale",
+              "type": "List[float]",
+              "java_type": "double[]"
             }
           ],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false
         }
       ],
       "documentation": "Java method: scale"
@@ -329,23 +430,24 @@
           "signature": "setDimensions(long, long, long) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "uncalibratedWidth",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg1",
+              "name": "uncalibratedHeight",
               "type": "int",
               "java_type": "long"
             },
             {
-              "name": "arg2",
+              "name": "uncalibratedDepth",
               "type": "int",
               "java_type": "long"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setDimensions"
@@ -357,13 +459,14 @@
           "signature": "setOrigin(PointInImage) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "origin",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setOrigin"
@@ -375,13 +478,14 @@
           "signature": "setOriginOpposite(PointInImage) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "originOpposite",
               "type": "PointInImage",
               "java_type": "PointInImage"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setOriginOpposite"
@@ -393,28 +497,29 @@
           "signature": "setSpacing(double, double, double, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "ySpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "zSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "spacingUnit",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSpacing"
@@ -426,13 +531,14 @@
           "signature": "setUnit(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "unit",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setUnit"
@@ -441,16 +547,17 @@
       "name": "shift",
       "overloads": [
         {
-          "signature": "shift([D) -> BoundingBox",
+          "signature": "shift(double[]) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "[D"
+              "name": "offset",
+              "type": "List[float]",
+              "java_type": "double[]"
             }
           ],
           "return_type": "BoundingBox",
-          "java_return_type": "BoundingBox"
+          "java_return_type": "BoundingBox",
+          "is_static": false
         }
       ],
       "documentation": "Java method: shift"
@@ -462,10 +569,24 @@
           "signature": "toBoundingBox3d() -> BoundingBox3d",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "BoundingBox3d"
+          "java_return_type": "BoundingBox3d",
+          "is_static": false
         }
       ],
       "documentation": "Java method: toBoundingBox3d"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
     },
     {
       "name": "unscaledOrigin",
@@ -474,7 +595,8 @@
           "signature": "unscaledOrigin() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: unscaledOrigin"
@@ -486,7 +608,8 @@
           "signature": "unscaledOriginOpposite() -> PointInImage",
           "params": [],
           "return_type": "PointInImage",
-          "java_return_type": "PointInImage"
+          "java_return_type": "PointInImage",
+          "is_static": false
         }
       ],
       "documentation": "Java method: unscaledOriginOpposite"
@@ -498,44 +621,11 @@
           "signature": "width() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: width"
-    }
-  ],
-  "fields": [
-    {
-      "name": "info",
-      "type": "str",
-      "java_type": "String",
-      "documentation": "Field info of type String",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "xSpacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field xSpacing of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "ySpacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field ySpacing of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "zSpacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field zSpacing of type double",
-      "is_static": false,
-      "is_final": false
     }
   ],
   "constructors": [
@@ -543,25 +633,69 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "BoundingBox()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "BoundingBox(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "BoundingBox()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for BoundingBox"
+      "documentation": "Constructors of BoundingBox"
+    }
+  ],
+  "fields": [
+    {
+      "name": "info",
+      "type": "str",
+      "java_type": "String",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field info of type String"
+    },
+    {
+      "name": "xSpacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field xSpacing of type double"
+    },
+    {
+      "name": "ySpacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field ySpacing of type double"
+    },
+    {
+      "name": "zSpacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field zSpacing of type double"
+    }
+  ],
+  "static_fields": [
+    {
+      "name": "UNSET_SPACING_UNIT",
+      "type": "str",
+      "java_type": "String",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field UNSET_SPACING_UNIT of type String"
     }
   ]
 }

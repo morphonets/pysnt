@@ -1,165 +1,55 @@
 {
   "class_name": "SNTTable",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:07.652093",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.SNTTable",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.710083",
+  "extractor_version": "2.0.0",
   "methods": [
-    {
-      "name": "add",
-      "overloads": [
-        {
-          "signature": "add(Column) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Column"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "add(int, Column) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Column"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(int, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "add(Object) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: add"
-    },
-    {
-      "name": "addAll",
-      "overloads": [
-        {
-          "signature": "addAll(int, Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
-          "signature": "addAll(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: addAll"
-    },
     {
       "name": "addColumn",
       "overloads": [
         {
-          "signature": "addColumn(String, [D) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[D"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "addColumn(String, Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colHeader",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "array",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: addColumn"
-    },
-    {
-      "name": "addFirst",
-      "overloads": [
+          "java_return_type": "void",
+          "is_static": false
+        },
         {
-          "signature": "addFirst(Object) -> void",
+          "signature": "addColumn(String, double[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "array",
+              "type": "List[float]",
+              "java_type": "double[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
-      "documentation": "Java method: addFirst"
+      "documentation": "Java method: addColumn"
     },
     {
       "name": "addGenericColumn",
@@ -168,147 +58,22 @@
           "signature": "addGenericColumn(String, Collection) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colHeader",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "collection",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addGenericColumn"
-    },
-    {
-      "name": "addLast",
-      "overloads": [
-        {
-          "signature": "addLast(Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: addLast"
-    },
-    {
-      "name": "appendColumn",
-      "overloads": [
-        {
-          "signature": "appendColumn() -> Column",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Column"
-        },
-        {
-          "signature": "appendColumn(String) -> Column",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Column"
-        }
-      ],
-      "documentation": "Java method: appendColumn"
-    },
-    {
-      "name": "appendColumns",
-      "overloads": [
-        {
-          "signature": "appendColumns(String;) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
-        {
-          "signature": "appendColumns(int) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        }
-      ],
-      "documentation": "Java method: appendColumns"
-    },
-    {
-      "name": "appendRow",
-      "overloads": [
-        {
-          "signature": "appendRow(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "appendRow() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: appendRow"
-    },
-    {
-      "name": "appendRows",
-      "overloads": [
-        {
-          "signature": "appendRows(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "appendRows(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: appendRows"
     },
     {
       "name": "appendToLastRow",
@@ -317,85 +82,89 @@
           "signature": "appendToLastRow(String, Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colHeader",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "value",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: appendToLastRow"
     },
     {
-      "name": "static asDouble",
+      "name": "asDouble",
       "overloads": [
         {
-          "signature": "static asDouble(Object) -> double",
+          "signature": "asDouble(Object) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "cell",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static asDouble"
+      "documentation": "Java method: asDouble"
     },
     {
-      "name": "static asInt",
+      "name": "asInt",
       "overloads": [
         {
-          "signature": "static asInt(Object, int) -> int",
+          "signature": "asInt(Object, int) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "cell",
               "type": "Any",
               "java_type": "Object"
             },
             {
-              "name": "arg1",
+              "name": "fallback",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static asInt"
+      "documentation": "Java method: asInt"
     },
     {
-      "name": "static asString",
+      "name": "asString",
       "overloads": [
         {
-          "signature": "static asString(Object, String) -> String",
+          "signature": "asString(Object, String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "cell",
               "type": "Any",
               "java_type": "Object"
             },
             {
-              "name": "arg1",
+              "name": "fallback",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static asString"
+      "documentation": "Java method: asString"
     },
     {
       "name": "clear",
@@ -404,58 +173,11 @@
           "signature": "clear() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: clear"
-    },
-    {
-      "name": "clone",
-      "overloads": [
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        }
-      ],
-      "documentation": "Java method: clone"
-    },
-    {
-      "name": "contains",
-      "overloads": [
-        {
-          "signature": "contains(Object) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: contains"
-    },
-    {
-      "name": "containsAll",
-      "overloads": [
-        {
-          "signature": "containsAll(Collection) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        }
-      ],
-      "documentation": "Java method: containsAll"
     },
     {
       "name": "createOrUpdateDisplay",
@@ -464,28 +186,11 @@
           "signature": "createOrUpdateDisplay() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: createOrUpdateDisplay"
-    },
-    {
-      "name": "ensureCapacity",
-      "overloads": [
-        {
-          "signature": "ensureCapacity(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: ensureCapacity"
     },
     {
       "name": "fillEmptyCells",
@@ -494,13 +199,14 @@
           "signature": "fillEmptyCells(Object) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "value",
               "type": "Any",
               "java_type": "Object"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: fillEmptyCells"
@@ -512,134 +218,122 @@
           "signature": "findColumnIndex(String) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "columnHeader",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
       "documentation": "Java method: findColumnIndex"
     },
     {
-      "name": "forEach",
+      "name": "fromFile",
       "overloads": [
         {
-          "signature": "forEach(Consumer) -> void",
+          "signature": "fromFile(String) -> SNTTable",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Consumer"
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
             }
           ],
-          "return_type": "None",
-          "java_return_type": "void"
-        }
-      ],
-      "documentation": "Java method: forEach"
-    },
-    {
-      "name": "static fromFile",
-      "overloads": [
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "is_static": true
+        },
         {
-          "signature": "static fromFile(String, String) -> SNTTable",
+          "signature": "fromFile(String, String) -> SNTTable",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePathOrURL",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "delimiter",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
-        },
-        {
-          "signature": "static fromFile(String) -> SNTTable",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
+          "java_return_type": "SNTTable",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static fromFile"
+      "documentation": "Java method: fromFile"
     },
     {
-      "name": "static fromGenericTable",
+      "name": "fromGenericTable",
       "overloads": [
         {
-          "signature": "static fromGenericTable(GenericTable) -> SNTTable",
+          "signature": "fromGenericTable(GenericTable) -> SNTTable",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
               "java_type": "GenericTable"
             }
           ],
           "return_type": "SNTTable",
-          "java_return_type": "SNTTable"
+          "java_return_type": "SNTTable",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static fromGenericTable"
+      "documentation": "Java method: fromGenericTable"
     },
     {
       "name": "geColumnStats",
       "overloads": [
         {
-          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "SummaryStatistics"
-        },
-        {
           "signature": "geColumnStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "colHeader",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "startRowIndex",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "endRowIndex",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "SummaryStatistics"
+          "java_return_type": "SummaryStatistics",
+          "is_static": false
+        },
+        {
+          "signature": "geColumnStats(int, int, int) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "columnIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "startRowIndex",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "endRowIndex",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "is_static": false
         }
       ],
       "documentation": "Java method: geColumnStats"
@@ -651,227 +345,499 @@
           "signature": "geRowStats(String, int, int) -> SummaryStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "rowHeader",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "startColumnIndex",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "endColumnIndex",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "SummaryStatistics"
+          "java_return_type": "SummaryStatistics",
+          "is_static": false
         },
         {
           "signature": "geRowStats(int, int, int) -> SummaryStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "rowIndex",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "startColumnIndex",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "endColumnIndex",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "Any",
-          "java_return_type": "SummaryStatistics"
+          "java_return_type": "SummaryStatistics",
+          "is_static": false
         }
       ],
       "documentation": "Java method: geRowStats"
     },
     {
-      "name": "get",
-      "overloads": [
-        {
-          "signature": "get(int) -> Column",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Column"
-        },
-        {
-          "signature": "get(int) -> Object",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
-          "signature": "get(String) -> Column",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Column"
-        },
-        {
-          "signature": "get(int, int) -> Object",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        },
-        {
-          "signature": "get(String, int) -> Object",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object"
-        }
-      ],
-      "documentation": "Java method: get"
-    },
-    {
-      "name": "getColumnCount",
-      "overloads": [
-        {
-          "signature": "getColumnCount() -> int",
-          "params": [],
-          "return_type": "int",
-          "java_return_type": "int"
-        }
-      ],
-      "documentation": "Java method: getColumnCount"
-    },
-    {
-      "name": "getColumnHeader",
-      "overloads": [
-        {
-          "signature": "getColumnHeader(int) -> String",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "str",
-          "java_return_type": "String"
-        }
-      ],
-      "documentation": "Java method: getColumnHeader"
-    },
-    {
       "name": "getColumnHeaders",
       "overloads": [
-        {
-          "signature": "getColumnHeaders(String) -> List",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
-        },
         {
           "signature": "getColumnHeaders() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
+        },
+        {
+          "signature": "getColumnHeaders(String) -> List",
+          "params": [
+            {
+              "name": "pattern",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getColumnHeaders"
     },
     {
-      "name": "getColumnIndex",
+      "name": "getSummaryRow",
       "overloads": [
         {
-          "signature": "getColumnIndex(String) -> int",
+          "signature": "getSummaryRow() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSummaryRow"
+    },
+    {
+      "name": "getTitle",
+      "overloads": [
+        {
+          "signature": "getTitle() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTitle"
+    },
+    {
+      "name": "hasUnsavedData",
+      "overloads": [
+        {
+          "signature": "hasUnsavedData() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: hasUnsavedData"
+    },
+    {
+      "name": "insertRow",
+      "overloads": [
+        {
+          "signature": "insertRow(String) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "header",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": false
         }
       ],
-      "documentation": "Java method: getColumnIndex"
+      "documentation": "Java method: insertRow"
     },
     {
-      "name": "getFirst",
+      "name": "isSummarized",
       "overloads": [
         {
-          "signature": "getFirst() -> Object",
+          "signature": "isSummarized() -> boolean",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object"
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
-      "documentation": "Java method: getFirst"
+      "documentation": "Java method: isSummarized"
+    },
+    {
+      "name": "removeColumn",
+      "overloads": [
+        {
+          "signature": "removeColumn(String) -> Column",
+          "params": [
+            {
+              "name": "header",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Column",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeColumn"
+    },
+    {
+      "name": "removeSummary",
+      "overloads": [
+        {
+          "signature": "removeSummary() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removeSummary"
+    },
+    {
+      "name": "replace",
+      "overloads": [
+        {
+          "signature": "replace(String, double, double) -> void",
+          "params": [
+            {
+              "name": "columnHeadersPattern",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "originalValue",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "replacementValue",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: replace"
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(File) -> void",
+          "params": [
+            {
+              "name": "outputFile",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "save(Table, char, boolean, boolean, File) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "Table"
+            },
+            {
+              "name": "columnSep",
+              "type": "str",
+              "java_type": "char"
+            },
+            {
+              "name": "saveColHeaders",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "saveRowHeaders",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "outputFile",
+              "type": "str",
+              "java_type": "File"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: save"
+    },
+    {
+      "name": "set",
+      "overloads": [
+        {
+          "signature": "set(String, String, Object) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "rowHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "set(String, int, Object) -> void",
+          "params": [
+            {
+              "name": "colHeader",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "row",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "set(int, int, Object) -> void",
+          "params": [
+            {
+              "name": "col",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "row",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "value",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: set"
+    },
+    {
+      "name": "setContext",
+      "overloads": [
+        {
+          "signature": "setContext(Context) -> void",
+          "params": [
+            {
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setContext"
+    },
+    {
+      "name": "setTitle",
+      "overloads": [
+        {
+          "signature": "setTitle(String) -> void",
+          "params": [
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setTitle"
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "show(String) -> void",
+          "params": [
+            {
+              "name": "windowTitle",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: show"
+    },
+    {
+      "name": "summarize",
+      "overloads": [
+        {
+          "signature": "summarize() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: summarize"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString(GenericTable) -> String",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true
+        },
+        {
+          "signature": "toString(GenericTable, int, int) -> String",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable"
+            },
+            {
+              "name": "firstRow",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "lastRow",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: toString"
+    },
+    {
+      "name": "updateDisplay",
+      "overloads": [
+        {
+          "signature": "updateDisplay() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateDisplay"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "SNTTable(String, char)",
+          "signature": "SNTTable()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTTable(Map)",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "char"
+              "name": "values",
+              "type": "Dict[str, Any]",
+              "java_type": "Map"
             }
           ],
           "return_type": "None",
@@ -881,7 +847,7 @@
           "signature": "SNTTable(String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             }
@@ -890,25 +856,26 @@
           "java_return_type": "void"
         },
         {
-          "signature": "SNTTable(Map)",
+          "signature": "SNTTable(String, char)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map"
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "columDelimiter",
+              "type": "str",
+              "java_type": "char"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "SNTTable()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SNTTable"
+      "documentation": "Constructors of SNTTable"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

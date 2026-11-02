@@ -1,0 +1,574 @@
+{
+  "class_name": "CrossSectionUtils",
+  "package": "sc.fiji.snt.tracing",
+  "java_name": "sc.fiji.snt.tracing.CrossSectionUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.602883",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "applyAnnularMask",
+      "overloads": [
+        {
+          "signature": "applyAnnularMask(FloatProcessor, double, double) -> void",
+          "params": [
+            {
+              "name": "fp",
+              "type": "Any",
+              "java_type": "FloatProcessor"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: applyAnnularMask"
+    },
+    {
+      "name": "applyAnnularMask1D",
+      "overloads": [
+        {
+          "signature": "applyAnnularMask1D(float[], double, double) -> void",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: applyAnnularMask1D"
+    },
+    {
+      "name": "backProject",
+      "overloads": [
+        {
+          "signature": "backProject(int, int, int, double, double, double, double, double[], double[]) -> double[]",
+          "params": [
+            {
+              "name": "gridX",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "gridY",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "scaleIso",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: backProject"
+    },
+    {
+      "name": "computeGridSize",
+      "overloads": [
+        {
+          "signature": "computeGridSize(double, double, int) -> int",
+          "params": [
+            {
+              "name": "physicalRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "maxSide",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeGridSize"
+    },
+    {
+      "name": "computeIsotropicScale",
+      "overloads": [
+        {
+          "signature": "computeIsotropicScale(double[], double[], double, double, double) -> double",
+          "params": [
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeIsotropicScale"
+    },
+    {
+      "name": "computeScaleAlongVector",
+      "overloads": [
+        {
+          "signature": "computeScaleAlongVector(double, double, double, double, double, double) -> double",
+          "params": [
+            {
+              "name": "vx",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "vy",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "vz",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeScaleAlongVector"
+    },
+    {
+      "name": "computeTangentPlaneBasis",
+      "overloads": [
+        {
+          "signature": "computeTangentPlaneBasis(double, double, double) -> double[][]",
+          "params": [
+            {
+              "name": "nx",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ny",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "nz",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeTangentPlaneBasis"
+    },
+    {
+      "name": "findMaxima1D",
+      "overloads": [
+        {
+          "signature": "findMaxima1D(float[], double) -> int[]",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]"
+            },
+            {
+              "name": "prominence",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: findMaxima1D"
+    },
+    {
+      "name": "findMinima1D",
+      "overloads": [
+        {
+          "signature": "findMinima1D(float[], double) -> int[]",
+          "params": [
+            {
+              "name": "profile",
+              "type": "List[float]",
+              "java_type": "float[]"
+            },
+            {
+              "name": "prominence",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: findMinima1D"
+    },
+    {
+      "name": "paintAnnulus",
+      "overloads": [
+        {
+          "signature": "paintAnnulus(RandomAccessibleInterval, int, double, double, double, double, double[], double[], double, double, double, double, double, double, double, double, double) -> void",
+          "params": [
+            {
+              "name": "output",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "scaleIso",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetZ",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "innerRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "outerRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "fillValue",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: paintAnnulus"
+    },
+    {
+      "name": "sampleCrossSection",
+      "overloads": [
+        {
+          "signature": "sampleCrossSection(int, double, double, double, double, double, double[], double[], double, double, double, double, double, double, RealRandomAccess) -> FloatProcessor",
+          "params": [
+            {
+              "name": "side",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "scaleA",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "scaleB",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oz",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "aBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "bBasis",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetZ",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "realAccess",
+              "type": "Any",
+              "java_type": "RealRandomAccess"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "FloatProcessor",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: sampleCrossSection"
+    },
+    {
+      "name": "sampleProfile",
+      "overloads": [
+        {
+          "signature": "sampleProfile(int, double, double, double, double[], double, double, double, double, RealRandomAccess) -> float[]",
+          "params": [
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ox",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "oy",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "direction",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "realAccess",
+              "type": "Any",
+              "java_type": "RealRandomAccess"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "float[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: sampleProfile"
+    }
+  ],
+  "constructors": [],
+  "fields": [],
+  "static_fields": []
+}

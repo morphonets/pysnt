@@ -1,0 +1,824 @@
+{
+  "class_name": "DirectedWeightedGraph",
+  "package": "sc.fiji.snt.analysis.graph",
+  "java_name": "sc.fiji.snt.analysis.graph.DirectedWeightedGraph",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.608764",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "addVertex",
+      "overloads": [
+        {
+          "signature": "addVertex(double, double, double) -> SWCPoint",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "SWCPoint",
+          "java_return_type": "SWCPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addVertex"
+    },
+    {
+      "name": "applyEdges",
+      "overloads": [
+        {
+          "signature": "applyEdges(UnaryOperator) -> void",
+          "params": [
+            {
+              "name": "operator",
+              "type": "Any",
+              "java_type": "UnaryOperator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: applyEdges"
+    },
+    {
+      "name": "applyVertices",
+      "overloads": [
+        {
+          "signature": "applyVertices(UnaryOperator) -> void",
+          "params": [
+            {
+              "name": "operator",
+              "type": "Any",
+              "java_type": "UnaryOperator"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: applyVertices"
+    },
+    {
+      "name": "assignEdgeWeightsEuclidean",
+      "overloads": [
+        {
+          "signature": "assignEdgeWeightsEuclidean() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: assignEdgeWeightsEuclidean"
+    },
+    {
+      "name": "filterEdges",
+      "overloads": [
+        {
+          "signature": "filterEdges(Predicate) -> void",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "Predicate"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: filterEdges"
+    },
+    {
+      "name": "filterVertices",
+      "overloads": [
+        {
+          "signature": "filterVertices(Predicate) -> void",
+          "params": [
+            {
+              "name": "predicate",
+              "type": "Any",
+              "java_type": "Predicate"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: filterVertices"
+    },
+    {
+      "name": "getBPs",
+      "overloads": [
+        {
+          "signature": "getBPs() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBPs"
+    },
+    {
+      "name": "getBreadthFirstIterator",
+      "overloads": [
+        {
+          "signature": "getBreadthFirstIterator() -> BreadthFirstIterator",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BreadthFirstIterator",
+          "is_static": false
+        },
+        {
+          "signature": "getBreadthFirstIterator(SWCPoint) -> BreadthFirstIterator",
+          "params": [
+            {
+              "name": "startVertex",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BreadthFirstIterator",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBreadthFirstIterator"
+    },
+    {
+      "name": "getComponents",
+      "overloads": [
+        {
+          "signature": "getComponents() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getComponents"
+    },
+    {
+      "name": "getDepthFirstIterator",
+      "overloads": [
+        {
+          "signature": "getDepthFirstIterator() -> DepthFirstIterator",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DepthFirstIterator",
+          "is_static": false
+        },
+        {
+          "signature": "getDepthFirstIterator(SWCPoint) -> DepthFirstIterator",
+          "params": [
+            {
+              "name": "startVertex",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DepthFirstIterator",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getDepthFirstIterator"
+    },
+    {
+      "name": "getEdgeColor",
+      "overloads": [
+        {
+          "signature": "getEdgeColor(DefaultWeightedEdge) -> ColorRGB",
+          "params": [
+            {
+              "name": "edge",
+              "type": "Any",
+              "java_type": "DefaultWeightedEdge"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getEdgeColor"
+    },
+    {
+      "name": "getEdgeColorRGBMap",
+      "overloads": [
+        {
+          "signature": "getEdgeColorRGBMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getEdgeColorRGBMap"
+    },
+    {
+      "name": "getLongestPath",
+      "overloads": [
+        {
+          "signature": "getLongestPath(boolean) -> Path",
+          "params": [
+            {
+              "name": "useDirected",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLongestPath"
+    },
+    {
+      "name": "getLongestPathVertices",
+      "overloads": [
+        {
+          "signature": "getLongestPathVertices(boolean) -> Deque",
+          "params": [
+            {
+              "name": "useDirected",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Deque",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLongestPathVertices"
+    },
+    {
+      "name": "getNodeStatistics",
+      "overloads": [
+        {
+          "signature": "getNodeStatistics() -> NodeStatistics",
+          "params": [],
+          "return_type": "NodeStatistics",
+          "java_return_type": "NodeStatistics",
+          "is_static": false
+        },
+        {
+          "signature": "getNodeStatistics(String) -> NodeStatistics",
+          "params": [
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "NodeStatistics",
+          "java_return_type": "NodeStatistics",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeStatistics"
+    },
+    {
+      "name": "getNodesFromLeavesToRoot",
+      "overloads": [
+        {
+          "signature": "getNodesFromLeavesToRoot() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodesFromLeavesToRoot"
+    },
+    {
+      "name": "getNodesFromRootToLeaves",
+      "overloads": [
+        {
+          "signature": "getNodesFromRootToLeaves() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodesFromRootToLeaves"
+    },
+    {
+      "name": "getRoot",
+      "overloads": [
+        {
+          "signature": "getRoot() -> SWCPoint",
+          "params": [],
+          "return_type": "SWCPoint",
+          "java_return_type": "SWCPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRoot"
+    },
+    {
+      "name": "getShortestPath",
+      "overloads": [
+        {
+          "signature": "getShortestPath(SWCPoint, SWCPoint) -> Path",
+          "params": [
+            {
+              "name": "v1",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            },
+            {
+              "name": "v2",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getShortestPath"
+    },
+    {
+      "name": "getShortestPathVertices",
+      "overloads": [
+        {
+          "signature": "getShortestPathVertices(SWCPoint, SWCPoint) -> Deque",
+          "params": [
+            {
+              "name": "v1",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            },
+            {
+              "name": "v2",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Deque",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getShortestPathVertices"
+    },
+    {
+      "name": "getSimplifiedGraph",
+      "overloads": [
+        {
+          "signature": "getSimplifiedGraph() -> DirectedWeightedGraph",
+          "params": [],
+          "return_type": "DirectedWeightedGraph",
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSimplifiedGraph"
+    },
+    {
+      "name": "getSubgraph",
+      "overloads": [
+        {
+          "signature": "getSubgraph(Set) -> DirectedWeightedSubgraph",
+          "params": [
+            {
+              "name": "nodeSubset",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "DirectedWeightedSubgraph",
+          "java_return_type": "DirectedWeightedSubgraph",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSubgraph"
+    },
+    {
+      "name": "getTips",
+      "overloads": [
+        {
+          "signature": "getTips() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTips"
+    },
+    {
+      "name": "getTopologicalOrderIterator",
+      "overloads": [
+        {
+          "signature": "getTopologicalOrderIterator() -> TopologicalOrderIterator",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "TopologicalOrderIterator",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTopologicalOrderIterator"
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        },
+        {
+          "signature": "getTree(boolean) -> Tree",
+          "params": [
+            {
+              "name": "createNewTree",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTree"
+    },
+    {
+      "name": "getTreeWithSamePathStructure",
+      "overloads": [
+        {
+          "signature": "getTreeWithSamePathStructure() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTreeWithSamePathStructure"
+    },
+    {
+      "name": "getTrees",
+      "overloads": [
+        {
+          "signature": "getTrees() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTrees"
+    },
+    {
+      "name": "getVertexColor",
+      "overloads": [
+        {
+          "signature": "getVertexColor(Object) -> ColorRGB",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ColorRGB",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexColor"
+    },
+    {
+      "name": "getVertexColorRGBMap",
+      "overloads": [
+        {
+          "signature": "getVertexColorRGBMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexColorRGBMap"
+    },
+    {
+      "name": "getVertexValue",
+      "overloads": [
+        {
+          "signature": "getVertexValue(Object) -> double",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexValue"
+    },
+    {
+      "name": "getVertexValueMap",
+      "overloads": [
+        {
+          "signature": "getVertexValueMap() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: getVertexValueMap"
+    },
+    {
+      "name": "scale",
+      "overloads": [
+        {
+          "signature": "scale(double, double, double, boolean) -> void",
+          "params": [
+            {
+              "name": "xScale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "yScale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "zScale",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "updateEdgeWeightsEuclidean",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: scale"
+    },
+    {
+      "name": "setEdgeColor",
+      "overloads": [
+        {
+          "signature": "setEdgeColor(DefaultWeightedEdge, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "edge",
+              "type": "Any",
+              "java_type": "DefaultWeightedEdge"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setEdgeColor"
+    },
+    {
+      "name": "setRoot",
+      "overloads": [
+        {
+          "signature": "setRoot(SWCPoint) -> void",
+          "params": [
+            {
+              "name": "newRoot",
+              "type": "SWCPoint",
+              "java_type": "SWCPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRoot"
+    },
+    {
+      "name": "setVertexColor",
+      "overloads": [
+        {
+          "signature": "setVertexColor(Object, ColorRGB) -> void",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setVertexColor"
+    },
+    {
+      "name": "setVertexValue",
+      "overloads": [
+        {
+          "signature": "setVertexValue(Object, double) -> void",
+          "params": [
+            {
+              "name": "vertex",
+              "type": "Any",
+              "java_type": "Object"
+            },
+            {
+              "name": "value",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "SNTGraph"
+        }
+      ],
+      "documentation": "Java method: setVertexValue"
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show() -> Window",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Window",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: show"
+    },
+    {
+      "name": "sumEdgeWeights",
+      "overloads": [
+        {
+          "signature": "sumEdgeWeights() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: sumEdgeWeights"
+    },
+    {
+      "name": "updateVertexProperties",
+      "overloads": [
+        {
+          "signature": "updateVertexProperties() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: updateVertexProperties"
+    },
+    {
+      "name": "vertexSet",
+      "overloads": [
+        {
+          "signature": "vertexSet(char) -> Set",
+          "params": [
+            {
+              "name": "lr",
+              "type": "str",
+              "java_type": "char"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: vertexSet"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "DirectedWeightedGraph()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "DirectedWeightedGraph(Tree)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "DirectedWeightedGraph(Collection, boolean)",
+          "params": [
+            {
+              "name": "nodes",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "assignDistancesToWeight",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "DirectedWeightedGraph(Tree, boolean)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "assignDistancesToWeight",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of DirectedWeightedGraph"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

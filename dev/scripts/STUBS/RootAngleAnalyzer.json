@@ -1,8 +1,13 @@
 {
   "class_name": "RootAngleAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:06.129691",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.RootAngleAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.690806",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "balancingFactor",
@@ -11,7 +16,8 @@
           "signature": "balancingFactor() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: balancingFactor"
@@ -23,7 +29,8 @@
           "signature": "centripetalBias() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: centripetalBias"
@@ -35,7 +42,8 @@
           "signature": "getAnalysis() -> Map",
           "params": [],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAnalysis"
@@ -47,7 +55,8 @@
           "signature": "getAngles() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getAngles"
@@ -59,28 +68,11 @@
           "signature": "getCramerVonMisesStatistic() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCramerVonMisesStatistic"
-    },
-    {
-      "name": "static getDensityPlot",
-      "overloads": [
-        {
-          "signature": "static getDensityPlot(List) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: static getDensityPlot"
     },
     {
       "name": "getDensityPlot",
@@ -89,7 +81,21 @@
           "signature": "getDensityPlot() -> SNTChart",
           "params": [],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
+        {
+          "signature": "getDensityPlot(List) -> SNTChart",
+          "params": [
+            {
+              "name": "analyzers",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "is_static": true
         }
       ],
       "documentation": "Java method: getDensityPlot"
@@ -101,7 +107,8 @@
           "signature": "getDescriptiveStatistics() -> DescriptiveStatistics",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "DescriptiveStatistics"
+          "java_return_type": "DescriptiveStatistics",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDescriptiveStatistics"
@@ -113,39 +120,35 @@
           "signature": "getHistogram(boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "polar",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
-        }
-      ],
-      "documentation": "Java method: getHistogram"
-    },
-    {
-      "name": "static getHistogram",
-      "overloads": [
+          "java_return_type": "SNTChart",
+          "is_static": false
+        },
         {
-          "signature": "static getHistogram(List, boolean) -> SNTChart",
+          "signature": "getHistogram(List, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "analyzers",
               "type": "List[Any]",
               "java_type": "List"
             },
             {
-              "name": "arg1",
+              "name": "polar",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "SNTChart",
-          "java_return_type": "SNTChart"
+          "java_return_type": "SNTChart",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getHistogram"
+      "documentation": "Java method: getHistogram"
     },
     {
       "name": "getTaggedGraph",
@@ -154,7 +157,8 @@
           "signature": "getTaggedGraph() -> DirectedWeightedGraph",
           "params": [],
           "return_type": "DirectedWeightedGraph",
-          "java_return_type": "DirectedWeightedGraph"
+          "java_return_type": "DirectedWeightedGraph",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTaggedGraph"
@@ -163,87 +167,92 @@
       "name": "getTaggedTree",
       "overloads": [
         {
-          "signature": "getTaggedTree(String, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
-          "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorTable"
-            },
-            {
-              "name": "arg1",
-              "type": "float",
-              "java_type": "double"
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double"
-            }
-          ],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
           "signature": "getTaggedTree() -> Tree",
           "params": [],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         },
         {
           "signature": "getTaggedTree(ColorTable) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
+        },
+        {
+          "signature": "getTaggedTree(ColorTable, double, double) -> Tree",
+          "params": [
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        },
+        {
+          "signature": "getTaggedTree(String, double, double) -> Tree",
+          "params": [
+            {
+              "name": "lutName",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTaggedTree"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "max",
@@ -252,7 +261,8 @@
           "signature": "max() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: max"
@@ -264,7 +274,8 @@
           "signature": "mean() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: mean"
@@ -276,7 +287,8 @@
           "signature": "meanDirection() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: meanDirection"
@@ -288,25 +300,26 @@
           "signature": "min() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: min"
     },
     {
-      "name": "static supportedMetrics",
+      "name": "supportedMetrics",
       "overloads": [
         {
-          "signature": "static supportedMetrics() -> List",
+          "signature": "supportedMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static supportedMetrics"
+      "documentation": "Java method: supportedMetrics"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -315,7 +328,7 @@
           "signature": "RootAngleAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -324,33 +337,34 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for RootAngleAnalyzer"
+      "documentation": "Constructors of RootAngleAnalyzer"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "BALANCING_FACTOR",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field BALANCING_FACTOR of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field BALANCING_FACTOR of type String"
     },
     {
       "name": "CENTRIPETAL_BIAS",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field CENTRIPETAL_BIAS of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field CENTRIPETAL_BIAS of type String"
     },
     {
       "name": "MEAN_DIRECTION",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field MEAN_DIRECTION of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field MEAN_DIRECTION of type String"
     }
   ]
 }

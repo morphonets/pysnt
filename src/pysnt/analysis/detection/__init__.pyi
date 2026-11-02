@@ -1,61 +1,84 @@
 """Comprehensive type stubs for Java classes."""
 
-from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple
+from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple, ClassVar
+from typing_extensions import deprecated
 
 class AlongPathDetector:
-    """
-    AlongPathDetector - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
+    """sc.fiji.snt.analysis.detection.AlongPathDetector  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    @overload
+    @staticmethod
+    def detect(paths: List[Any], cfg: Any, /) -> List[Any]: ...
+    @overload
+    @staticmethod
+    def detect(paths: List[Any], img: Any, cfg: Any, /) -> List[Any]: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class Detection:
-    """
-    Detection - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
-    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    """sc.fiji.snt.analysis.detection.Detection  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
+    distanceFromSkeleton: float
+    intensity: float
+    labelValue: int
+    nodeIndex: int
+    path: Path
+    score: float
+    x: float
+    y: float
+    z: float
+    @overload
+    def __init__(self, x: float, y: float, z: float, intensity: float, path: Path, nodeIndex: int, distanceFromSkeleton: float, /) -> None: ...
+    @overload
+    def __init__(self, x: float, y: float, z: float, intensity: float, path: Path, nodeIndex: int, distanceFromSkeleton: float, labelValue: int, /) -> None: ...
+    @overload
+    def __init__(self, x: float, y: float, z: float, intensity: float, path: Path, nodeIndex: int, distanceFromSkeleton: float, labelValue: int, score: float, /) -> None: ...
+    def toSNTPoint(self) -> PointInImage: ...
+    def toString(self) -> str: ...
+    def xyzct(self) -> List[float]: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class DetectorUtils:
-    """
-    DetectorUtils - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
+    """sc.fiji.snt.analysis.detection.DetectorUtils  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    @staticmethod
+    def assignToNearestPaths(detections: List[Any], allPaths: List[Any], /) -> List[Any]: ...
+    @staticmethod
+    def computeEDT(labelRAI: Any, labelVal: int, spacing: List[float], /) -> Any: ...
+    @staticmethod
+    def deduplicate(detections: List[Any], mergingDistance: float, /) -> List[Any]: ...
+    @staticmethod
+    def interpolateRadius(radii: List[float], idx: int, fallback: float, /) -> float: ...
+    @staticmethod
+    def prepareRadii(path: Path, /) -> List[float]: ...
+    @staticmethod
+    def sampleDistances(paths: List[Any], edt: Any, /) -> List[float]: ...
+    @staticmethod
+    def sampleDistancesWithIndices(path: Path, edt: Any, /) -> List[Any]: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class LabelProximityDetector:
-    """
-    LabelProximityDetector - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
+    """sc.fiji.snt.analysis.detection.LabelProximityDetector  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    @staticmethod
+    def detect(paths: List[Any], labelImg: Any, config: Any, /) -> List[Any]: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 class PeripathDetector:
-    """
-    PeripathDetector - No cached signatures available.
-    
-    Run: python dev/scripts/extract_class_signatures.py --all-classes
-    """
-    
+    """sc.fiji.snt.analysis.detection.PeripathDetector  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    @overload
+    @staticmethod
+    def createTorusMask(paths: List[Any], output: Any, cfg: Any, fillValue: float, /) -> None: ...
+    @overload
+    @staticmethod
+    def createTorusMask(paths: List[Any], output: Any, cfg: Any, fillValue: float, /) -> None: ...
+    @staticmethod
+    def detect(paths: List[Any], img: Any, cfg: Any, /) -> List[Any]: ...
     def __getattr__(self, name: str) -> Any: ...
-    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 
 
 # Imported functions

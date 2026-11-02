@@ -1,8 +1,13 @@
 {
   "class_name": "Fill",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:57.600548",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.Fill",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.618264",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "add",
@@ -11,38 +16,39 @@
           "signature": "add(int, int, int, double, int, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "distance",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "previous",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "open",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: add"
@@ -54,7 +60,8 @@
           "signature": "getEstimatedMeanRadius() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getEstimatedMeanRadius"
@@ -63,10 +70,11 @@
       "name": "getMetric",
       "overloads": [
         {
-          "signature": "getMetric() -> SNT$CostType",
+          "signature": "getMetric() -> CostType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$CostType"
+          "java_return_type": "CostType",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMetric"
@@ -78,7 +86,8 @@
           "signature": "getNodeList() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNodeList"
@@ -90,7 +99,8 @@
           "signature": "getSourcePaths() -> Set",
           "params": [],
           "return_type": "Set[Any]",
-          "java_return_type": "Set"
+          "java_return_type": "Set",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSourcePaths"
@@ -102,7 +112,8 @@
           "signature": "getSourcePathsStringHuman() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSourcePathsStringHuman"
@@ -114,7 +125,8 @@
           "signature": "getSourcePathsStringMachine() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSourcePathsStringMachine"
@@ -126,7 +138,8 @@
           "signature": "getThreshold() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getThreshold"
@@ -138,7 +151,8 @@
           "signature": "getVolume() -> double",
           "params": [],
           "return_type": "float",
-          "java_return_type": "double"
+          "java_return_type": "double",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getVolume"
@@ -147,16 +161,17 @@
       "name": "setMetric",
       "overloads": [
         {
-          "signature": "setMetric(SNT$CostType) -> void",
+          "signature": "setMetric(CostType) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cost",
               "type": "Any",
-              "java_type": "SNT$CostType"
+              "java_type": "CostType"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setMetric"
@@ -165,28 +180,30 @@
       "name": "setSourcePaths",
       "overloads": [
         {
-          "signature": "setSourcePaths(Path;) -> void",
+          "signature": "setSourcePaths(Path[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Path;"
+              "name": "newSourcePaths",
+              "type": "List[Path]",
+              "java_type": "Path[]"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         },
         {
           "signature": "setSourcePaths(Set) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newSourcePaths",
               "type": "Set[Any]",
               "java_type": "Set"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSourcePaths"
@@ -198,28 +215,29 @@
           "signature": "setSpacing(double, double, double, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "units",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setSpacing"
@@ -231,16 +249,30 @@
           "signature": "setThreshold(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "threshold",
               "type": "float",
               "java_type": "double"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setThreshold"
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: toString"
     },
     {
       "name": "writeNodesXML",
@@ -249,13 +281,14 @@
           "signature": "writeNodesXML(PrintWriter) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: writeNodesXML"
@@ -267,71 +300,22 @@
           "signature": "writeXML(PrintWriter, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter"
             },
             {
-              "name": "arg1",
+              "name": "fillIndex",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: writeXML"
-    }
-  ],
-  "fields": [
-    {
-      "name": "distanceThreshold",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field distanceThreshold of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "metric",
-      "type": "Any",
-      "java_type": "SNT$CostType",
-      "documentation": "Field metric of type SNT$CostType",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "spacing_units",
-      "type": "str",
-      "java_type": "String",
-      "documentation": "Field spacing_units of type String",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "x_spacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field x_spacing of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "y_spacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field y_spacing of type double",
-      "is_static": false,
-      "is_final": false
-    },
-    {
-      "name": "z_spacing",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field z_spacing of type double",
-      "is_static": false,
-      "is_final": false
     }
   ],
   "constructors": [
@@ -345,7 +329,58 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Fill"
+      "documentation": "Constructors of Fill"
     }
-  ]
+  ],
+  "fields": [
+    {
+      "name": "distanceThreshold",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field distanceThreshold of type double"
+    },
+    {
+      "name": "metric",
+      "type": "Any",
+      "java_type": "CostType",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field metric of type CostType"
+    },
+    {
+      "name": "spacing_units",
+      "type": "str",
+      "java_type": "String",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field spacing_units of type String"
+    },
+    {
+      "name": "x_spacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field x_spacing of type double"
+    },
+    {
+      "name": "y_spacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field y_spacing of type double"
+    },
+    {
+      "name": "z_spacing",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field z_spacing of type double"
+    }
+  ],
+  "static_fields": []
 }

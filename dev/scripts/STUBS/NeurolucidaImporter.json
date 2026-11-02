@@ -1,17 +1,23 @@
 {
   "class_name": "NeurolucidaImporter",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:01:02.140082",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.io.NeurolucidaImporter",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.656779",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "getCalibration",
       "overloads": [
         {
-          "signature": "getCalibration() -> [D",
+          "signature": "getCalibration() -> double[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D"
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getCalibration"
@@ -23,7 +29,8 @@
           "signature": "getMarkerColors() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMarkerColors"
@@ -35,7 +42,8 @@
           "signature": "getMarkerLabels() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMarkerLabels"
@@ -47,7 +55,8 @@
           "signature": "getMarkerPoints() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getMarkerPoints"
@@ -59,7 +68,8 @@
           "signature": "getSpacingUnits() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSpacingUnits"
@@ -71,54 +81,55 @@
           "signature": "getTrees() -> Collection",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "Collection"
+          "java_return_type": "Collection",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTrees"
     },
     {
-      "name": "static isNeurolucidaXML",
+      "name": "isNeurolucidaXML",
       "overloads": [
         {
-          "signature": "static isNeurolucidaXML(InputStream) -> boolean",
+          "signature": "isNeurolucidaXML(InputStream) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "is",
               "type": "Any",
               "java_type": "InputStream"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isNeurolucidaXML"
+      "documentation": "Java method: isNeurolucidaXML"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "NeurolucidaImporter(InputStream)",
+          "signature": "NeurolucidaImporter(File)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
+              "name": "file",
+              "type": "str",
+              "java_type": "File"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "NeurolucidaImporter(File)",
+          "signature": "NeurolucidaImporter(InputStream)",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
+              "name": "is",
+              "type": "Any",
+              "java_type": "InputStream"
             }
           ],
           "return_type": "None",
@@ -128,7 +139,7 @@
           "signature": "NeurolucidaImporter(String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             }
@@ -137,7 +148,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for NeurolucidaImporter"
+      "documentation": "Constructors of NeurolucidaImporter"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

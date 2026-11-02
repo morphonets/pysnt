@@ -1,0 +1,183 @@
+{
+  "class_name": "FillerThreadArtist",
+  "package": "sc.fiji.snt.tracing.artist",
+  "java_name": "sc.fiji.snt.tracing.artist.FillerThreadArtist",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.624356",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "anyNodeUnderThreshold",
+      "overloads": [
+        {
+          "signature": "anyNodeUnderThreshold(int, int, int, double) -> DefaultSearchNode",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "DefaultSearchNode",
+          "java_return_type": "DefaultSearchNode",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: anyNodeUnderThreshold"
+    },
+    {
+      "name": "drawProgressOnSlice",
+      "overloads": [
+        {
+          "signature": "drawProgressOnSlice(int, int, TracerCanvas, Graphics) -> void",
+          "params": [
+            {
+              "name": "plane",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "currentSliceInPlane",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "canvas",
+              "type": "TracerCanvas",
+              "java_type": "TracerCanvas"
+            },
+            {
+              "name": "g",
+              "type": "Any",
+              "java_type": "Graphics"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: drawProgressOnSlice"
+    },
+    {
+      "name": "getSearch",
+      "overloads": [
+        {
+          "signature": "getSearch() -> SearchInterface",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchInterface",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSearch"
+    },
+    {
+      "name": "setClosedColor",
+      "overloads": [
+        {
+          "signature": "setClosedColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setClosedColor"
+    },
+    {
+      "name": "setOpacity",
+      "overloads": [
+        {
+          "signature": "setOpacity(double) -> void",
+          "params": [
+            {
+              "name": "percent",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setOpacity"
+    },
+    {
+      "name": "setOpenColor",
+      "overloads": [
+        {
+          "signature": "setOpenColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setOpenColor"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "FillerThreadArtist(FillerThread, Color, Color)",
+          "params": [
+            {
+              "name": "search",
+              "type": "FillerThread",
+              "java_type": "FillerThread"
+            },
+            {
+              "name": "openColor",
+              "type": "Any",
+              "java_type": "Color"
+            },
+            {
+              "name": "closedColor",
+              "type": "Any",
+              "java_type": "Color"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of FillerThreadArtist"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

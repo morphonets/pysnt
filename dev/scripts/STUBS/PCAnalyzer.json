@@ -1,146 +1,158 @@
 {
   "class_name": "PCAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:03.165539",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.analysis.PCAnalyzer",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.662605",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static getPrincipalAxes",
+      "name": "getPrincipalAxes",
       "overloads": [
         {
-          "signature": "static getPrincipalAxes(Path) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "getPrincipalAxes(Collection) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        },
-        {
-          "signature": "static getPrincipalAxes(Vertices) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Vertices"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        },
-        {
-          "signature": "static getPrincipalAxes(Collection) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
         },
         {
-          "signature": "static getPrincipalAxes(Tree, boolean) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "getPrincipalAxes(Path) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
+        },
+        {
+          "signature": "getPrincipalAxes(Tree) -> PrincipalAxis[]",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
+        },
+        {
+          "signature": "getPrincipalAxes(Vertices) -> PrincipalAxis[]",
+          "params": [
+            {
+              "name": "vertices",
+              "type": "Any",
+              "java_type": "Vertices"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
+        },
+        {
+          "signature": "getPrincipalAxes(Tree, boolean) -> PrincipalAxis[]",
+          "params": [
+            {
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             },
             {
-              "name": "arg1",
+              "name": "excludeRoot",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        },
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getPrincipalAxes"
+    },
+    {
+      "name": "getVariancePercentages",
+      "overloads": [
         {
-          "signature": "static getPrincipalAxes(Tree) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "getVariancePercentages(PrincipalAxis[]) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "axes",
+              "type": "List[Any]",
+              "java_type": "PrincipalAxis[]"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getVariancePercentages"
+    },
+    {
+      "name": "orientTowardDirection",
+      "overloads": [
+        {
+          "signature": "orientTowardDirection(PrincipalAxis[], double[]) -> PrincipalAxis[]",
+          "params": [
+            {
+              "name": "axes",
+              "type": "List[Any]",
+              "java_type": "PrincipalAxis[]"
+            },
+            {
+              "name": "referenceDirection",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: orientTowardDirection"
+    },
+    {
+      "name": "orientTowardTips",
+      "overloads": [
+        {
+          "signature": "orientTowardTips(PrincipalAxis[], Tree) -> PrincipalAxis[]",
+          "params": [
+            {
+              "name": "axes",
+              "type": "List[Any]",
+              "java_type": "PrincipalAxis[]"
+            },
+            {
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getPrincipalAxes"
-    },
-    {
-      "name": "static getVariancePercentages",
-      "overloads": [
-        {
-          "signature": "static getVariancePercentages(PCAnalyzer$PrincipalAxis;) -> [D",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PCAnalyzer$PrincipalAxis;"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "[D"
-        }
-      ],
-      "documentation": "Java method: static getVariancePercentages"
-    },
-    {
-      "name": "static orientTowardDirection",
-      "overloads": [
-        {
-          "signature": "static orientTowardDirection(PCAnalyzer$PrincipalAxis;, [D) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PCAnalyzer$PrincipalAxis;"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[D"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        }
-      ],
-      "documentation": "Java method: static orientTowardDirection"
-    },
-    {
-      "name": "static orientTowardTips",
-      "overloads": [
-        {
-          "signature": "static orientTowardTips(PCAnalyzer$PrincipalAxis;, Tree) -> PCAnalyzer$PrincipalAxis;",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PCAnalyzer$PrincipalAxis;"
-            },
-            {
-              "name": "arg1",
-              "type": "Tree",
-              "java_type": "Tree"
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;"
-        }
-      ],
-      "documentation": "Java method: static orientTowardTips"
+      "documentation": "Java method: orientTowardTips"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -152,7 +164,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PCAnalyzer"
+      "documentation": "Constructors of PCAnalyzer"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

@@ -1,0 +1,258 @@
+{
+  "class_name": "ProfileEntry",
+  "package": "sc.fiji.snt.analysis.sholl",
+  "java_name": "sc.fiji.snt.analysis.sholl.ProfileEntry",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.689048",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "addPoint",
+      "overloads": [
+        {
+          "signature": "addPoint(ShollPoint) -> void",
+          "params": [
+            {
+              "name": "point",
+              "type": "Any",
+              "java_type": "ShollPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addPoint"
+    },
+    {
+      "name": "assignPoints",
+      "overloads": [
+        {
+          "signature": "assignPoints(Set) -> void",
+          "params": [
+            {
+              "name": "points",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: assignPoints"
+    },
+    {
+      "name": "compareTo",
+      "overloads": [
+        {
+          "signature": "compareTo(ProfileEntry) -> int",
+          "params": [
+            {
+              "name": "other",
+              "type": "ProfileEntry",
+              "java_type": "ProfileEntry"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: compareTo"
+    },
+    {
+      "name": "radiusSquared",
+      "overloads": [
+        {
+          "signature": "radiusSquared() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: radiusSquared"
+    },
+    {
+      "name": "removePoint",
+      "overloads": [
+        {
+          "signature": "removePoint(ShollPoint) -> void",
+          "params": [
+            {
+              "name": "point",
+              "type": "Any",
+              "java_type": "ShollPoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: removePoint"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "ProfileEntry(Number, Number)",
+          "params": [
+            {
+              "name": "r",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "count",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ProfileEntry(Number, Set)",
+          "params": [
+            {
+              "name": "r",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "points",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ProfileEntry(Number, Number, Number)",
+          "params": [
+            {
+              "name": "r",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "count",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "length",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ProfileEntry(Number, Number, Set)",
+          "params": [
+            {
+              "name": "r",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "count",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "points",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ProfileEntry(Number, Number, Number, Set)",
+          "params": [
+            {
+              "name": "r",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "count",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "length",
+              "type": "Union[int, float]",
+              "java_type": "Number"
+            },
+            {
+              "name": "points",
+              "type": "Set[Any]",
+              "java_type": "Set"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of ProfileEntry"
+    }
+  ],
+  "fields": [
+    {
+      "name": "count",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field count of type double"
+    },
+    {
+      "name": "extra",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field extra of type double"
+    },
+    {
+      "name": "length",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field length of type double"
+    },
+    {
+      "name": "points",
+      "type": "Set[Any]",
+      "java_type": "Set",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field points of type Set"
+    },
+    {
+      "name": "radius",
+      "type": "float",
+      "java_type": "double",
+      "is_static": false,
+      "is_final": false,
+      "documentation": "Field radius of type double"
+    }
+  ],
+  "static_fields": []
+}

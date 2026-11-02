@@ -1,0 +1,394 @@
+{
+  "class_name": "AutoTraceConfig",
+  "package": "sc.fiji.snt.tracing.auto",
+  "java_name": "sc.fiji.snt.tracing.auto.AutoTraceConfig",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.581404",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "addWarning",
+      "overloads": [
+        {
+          "signature": "addWarning(String) -> void",
+          "params": [
+            {
+              "name": "warning",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: addWarning"
+    },
+    {
+      "name": "applyTo",
+      "overloads": [
+        {
+          "signature": "applyTo(AbstractGWDTTracer) -> void",
+          "params": [
+            {
+              "name": "tracer",
+              "type": "Any",
+              "java_type": "AbstractGWDTTracer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: applyTo"
+    },
+    {
+      "name": "fractionInBounds",
+      "overloads": [
+        {
+          "signature": "fractionInBounds(List, RandomAccessibleInterval, double[]) -> double",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true
+        },
+        {
+          "signature": "fractionInBounds(List, RandomAccessibleInterval, double[], double[]) -> double",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "voxelOffset",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: fractionInBounds"
+    },
+    {
+      "name": "fromPaths",
+      "overloads": [
+        {
+          "signature": "fromPaths(List, RandomAccessibleInterval, double[]) -> AutoTraceConfig",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "AutoTraceConfig",
+          "java_return_type": "AutoTraceConfig",
+          "is_static": true
+        },
+        {
+          "signature": "fromPaths(List, RandomAccessibleInterval, double[], double[], boolean) -> AutoTraceConfig",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "voxelOffset",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "streamed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "AutoTraceConfig",
+          "java_return_type": "AutoTraceConfig",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: fromPaths"
+    },
+    {
+      "name": "getBackgroundThreshold",
+      "overloads": [
+        {
+          "signature": "getBackgroundThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBackgroundThreshold"
+    },
+    {
+      "name": "getBranchTuneMaxAngle",
+      "overloads": [
+        {
+          "signature": "getBranchTuneMaxAngle() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBranchTuneMaxAngle"
+    },
+    {
+      "name": "getMeanContraction",
+      "overloads": [
+        {
+          "signature": "getMeanContraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeanContraction"
+    },
+    {
+      "name": "getMeanIntensity",
+      "overloads": [
+        {
+          "signature": "getMeanIntensity() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeanIntensity"
+    },
+    {
+      "name": "getMeanRadius",
+      "overloads": [
+        {
+          "signature": "getMeanRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeanRadius"
+    },
+    {
+      "name": "getMinBranchIntensityLength",
+      "overloads": [
+        {
+          "signature": "getMinBranchIntensityLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMinBranchIntensityLength"
+    },
+    {
+      "name": "getNodeCount",
+      "overloads": [
+        {
+          "signature": "getNodeCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getNodeCount"
+    },
+    {
+      "name": "getPathCount",
+      "overloads": [
+        {
+          "signature": "getPathCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPathCount"
+    },
+    {
+      "name": "getRecommendations",
+      "overloads": [
+        {
+          "signature": "getRecommendations() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRecommendations"
+    },
+    {
+      "name": "getReconnectMaxAngleDeg",
+      "overloads": [
+        {
+          "signature": "getReconnectMaxAngleDeg() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getReconnectMaxAngleDeg"
+    },
+    {
+      "name": "getReconnectMaxBridgeDist",
+      "overloads": [
+        {
+          "signature": "getReconnectMaxBridgeDist() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getReconnectMaxBridgeDist"
+    },
+    {
+      "name": "getReconnectMinContraction",
+      "overloads": [
+        {
+          "signature": "getReconnectMinContraction() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getReconnectMinContraction"
+    },
+    {
+      "name": "getResampleStep",
+      "overloads": [
+        {
+          "signature": "getResampleStep() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getResampleStep"
+    },
+    {
+      "name": "getScoreMapScales",
+      "overloads": [
+        {
+          "signature": "getScoreMapScales() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getScoreMapScales"
+    },
+    {
+      "name": "getSphereOverlapThreshold",
+      "overloads": [
+        {
+          "signature": "getSphereOverlapThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSphereOverlapThreshold"
+    },
+    {
+      "name": "getSummary",
+      "overloads": [
+        {
+          "signature": "getSummary() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSummary"
+    },
+    {
+      "name": "getWarnings",
+      "overloads": [
+        {
+          "signature": "getWarnings() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getWarnings"
+    }
+  ],
+  "constructors": [],
+  "fields": [],
+  "static_fields": []
+}

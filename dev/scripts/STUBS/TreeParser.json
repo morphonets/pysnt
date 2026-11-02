@@ -1,0 +1,337 @@
+{
+  "class_name": "TreeParser",
+  "package": "sc.fiji.snt.analysis.sholl.parsers",
+  "java_name": "sc.fiji.snt.analysis.sholl.parsers.TreeParser",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.752856",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "getCenter",
+      "overloads": [
+        {
+          "signature": "getCenter() -> PointInImage",
+          "params": [],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCenter"
+    },
+    {
+      "name": "getLabelsImage",
+      "overloads": [
+        {
+          "signature": "getLabelsImage(ImagePlus, ColorTable) -> ImagePlus",
+          "params": [
+            {
+              "name": "templateImg",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "cTable",
+              "type": "Any",
+              "java_type": "ColorTable"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getLabelsImage"
+    },
+    {
+      "name": "getProfile",
+      "overloads": [
+        {
+          "signature": "getProfile() -> Profile",
+          "params": [],
+          "return_type": "Profile",
+          "java_return_type": "Profile",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getProfile"
+    },
+    {
+      "name": "getTree",
+      "overloads": [
+        {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getTree"
+    },
+    {
+      "name": "isSkipSomaticSegments",
+      "overloads": [
+        {
+          "signature": "isSkipSomaticSegments() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isSkipSomaticSegments"
+    },
+    {
+      "name": "main",
+      "overloads": [
+        {
+          "signature": "main(String[]) -> void",
+          "params": [
+            {
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: main"
+    },
+    {
+      "name": "parse",
+      "overloads": [
+        {
+          "signature": "parse() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: parse"
+    },
+    {
+      "name": "setCenter",
+      "overloads": [
+        {
+          "signature": "setCenter(PointInImage) -> void",
+          "params": [
+            {
+              "name": "center",
+              "type": "PointInImage",
+              "java_type": "PointInImage"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setCenter(double[]) -> void",
+          "params": [
+            {
+              "name": "coordinates",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setCenter(int) -> void",
+          "params": [
+            {
+              "name": "choice",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setCenter"
+    },
+    {
+      "name": "setIntersectedVolumeAsExtraMeasurement",
+      "overloads": [
+        {
+          "signature": "setIntersectedVolumeAsExtraMeasurement(boolean) -> void",
+          "params": [
+            {
+              "name": "b",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setIntersectedVolumeAsExtraMeasurement"
+    },
+    {
+      "name": "setSkipSomaticSegments",
+      "overloads": [
+        {
+          "signature": "setSkipSomaticSegments(boolean) -> void",
+          "params": [
+            {
+              "name": "skipSomaticSegments",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setSkipSomaticSegments"
+    },
+    {
+      "name": "setStepSize",
+      "overloads": [
+        {
+          "signature": "setStepSize(double) -> void",
+          "params": [
+            {
+              "name": "stepSize",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setStepSize"
+    },
+    {
+      "name": "successful",
+      "overloads": [
+        {
+          "signature": "successful() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: successful"
+    },
+    {
+      "name": "terminate",
+      "overloads": [
+        {
+          "signature": "terminate() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: terminate"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "TreeParser(Tree)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of TreeParser"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "ROOT_NODES_ANY",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_ANY of type int"
+    },
+    {
+      "name": "ROOT_NODES_APICAL_DENDRITE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_APICAL_DENDRITE of type int"
+    },
+    {
+      "name": "ROOT_NODES_AXON",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_AXON of type int"
+    },
+    {
+      "name": "ROOT_NODES_CUSTOM",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_CUSTOM of type int"
+    },
+    {
+      "name": "ROOT_NODES_DENDRITE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_DENDRITE of type int"
+    },
+    {
+      "name": "ROOT_NODES_SOMA",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_SOMA of type int"
+    },
+    {
+      "name": "ROOT_NODES_SOMA_ANY",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_SOMA_ANY of type int"
+    },
+    {
+      "name": "ROOT_NODES_UNDEFINED",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field ROOT_NODES_UNDEFINED of type int"
+    }
+  ]
+}

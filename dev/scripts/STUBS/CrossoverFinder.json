@@ -1,34 +1,39 @@
 {
   "class_name": "CrossoverFinder",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.495199",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.util.CrossoverFinder",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.603891",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static find",
+      "name": "find",
       "overloads": [
         {
-          "signature": "static find(Collection, CrossoverFinder$Config) -> List",
+          "signature": "find(Collection, Config) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "cfg",
               "type": "Any",
-              "java_type": "CrossoverFinder$Config"
+              "java_type": "Config"
             }
           ],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static find"
+      "documentation": "Java method: find"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -40,7 +45,9 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for CrossoverFinder"
+      "documentation": "Constructors of CrossoverFinder"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

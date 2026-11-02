@@ -1,0 +1,912 @@
+{
+  "class_name": "LinearProfileStats",
+  "package": "sc.fiji.snt.analysis.sholl.math",
+  "java_name": "sc.fiji.snt.analysis.sholl.math.LinearProfileStats",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.643418",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "findBestFit",
+      "overloads": [
+        {
+          "signature": "findBestFit(int, int, PrefService) -> int",
+          "params": [
+            {
+              "name": "fromDegree",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "toDegree",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "prefService",
+              "type": "Any",
+              "java_type": "PrefService"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        },
+        {
+          "signature": "findBestFit(int, int, double, double) -> int",
+          "params": [
+            {
+              "name": "fromDegree",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "toDegree",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "minRSquared",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "pvalue",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: findBestFit"
+    },
+    {
+      "name": "fitPolynomial",
+      "overloads": [
+        {
+          "signature": "fitPolynomial(int) -> void",
+          "params": [
+            {
+              "name": "degree",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: fitPolynomial"
+    },
+    {
+      "name": "getBranchingIndex",
+      "overloads": [
+        {
+          "signature": "getBranchingIndex(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getBranchingIndex"
+    },
+    {
+      "name": "getCenteredMaximum",
+      "overloads": [
+        {
+          "signature": "getCenteredMaximum() -> ShollPoint",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        },
+        {
+          "signature": "getCenteredMaximum(boolean) -> ShollPoint",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCenteredMaximum"
+    },
+    {
+      "name": "getCentroid",
+      "overloads": [
+        {
+          "signature": "getCentroid() -> ShollPoint",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        },
+        {
+          "signature": "getCentroid(boolean) -> ShollPoint",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getCentroid"
+    },
+    {
+      "name": "getEnclosingRadius",
+      "overloads": [
+        {
+          "signature": "getEnclosingRadius(double) -> double",
+          "params": [
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getEnclosingRadius(boolean, double) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getEnclosingRadius"
+    },
+    {
+      "name": "getFitYValues",
+      "overloads": [
+        {
+          "signature": "getFitYValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getFitYValues"
+    },
+    {
+      "name": "getIndexOfInters",
+      "overloads": [
+        {
+          "signature": "getIndexOfInters(boolean, double) -> int",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "inters",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getIndexOfInters"
+    },
+    {
+      "name": "getIndexOfRadius",
+      "overloads": [
+        {
+          "signature": "getIndexOfRadius(double) -> int",
+          "params": [
+            {
+              "name": "radius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getIndexOfRadius"
+    },
+    {
+      "name": "getIntersectingRadii",
+      "overloads": [
+        {
+          "signature": "getIntersectingRadii() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        },
+        {
+          "signature": "getIntersectingRadii(boolean) -> int",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getIntersectingRadii"
+    },
+    {
+      "name": "getKurtosis",
+      "overloads": [
+        {
+          "signature": "getKurtosis() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getKurtosis(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getKurtosis"
+    },
+    {
+      "name": "getMax",
+      "overloads": [
+        {
+          "signature": "getMax() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getMax(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMax"
+    },
+    {
+      "name": "getMaxEvaluations",
+      "overloads": [
+        {
+          "signature": "getMaxEvaluations() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaxEvaluations"
+    },
+    {
+      "name": "getMaxima",
+      "overloads": [
+        {
+          "signature": "getMaxima() -> ArrayList",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList",
+          "is_static": false
+        },
+        {
+          "signature": "getMaxima(boolean) -> ArrayList",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "ArrayList",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMaxima"
+    },
+    {
+      "name": "getMean",
+      "overloads": [
+        {
+          "signature": "getMean() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getMean(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMean"
+    },
+    {
+      "name": "getMeanValueOfPolynomialFit",
+      "overloads": [
+        {
+          "signature": "getMeanValueOfPolynomialFit(double, double) -> double",
+          "params": [
+            {
+              "name": "lowerBound",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "upperBound",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getMeanValueOfPolynomialFit(String, double, double) -> double",
+          "params": [
+            {
+              "name": "integrator",
+              "type": "str",
+              "java_type": "String"
+            },
+            {
+              "name": "lowerBound",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "upperBound",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMeanValueOfPolynomialFit"
+    },
+    {
+      "name": "getMedian",
+      "overloads": [
+        {
+          "signature": "getMedian() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getMedian(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMedian"
+    },
+    {
+      "name": "getMin",
+      "overloads": [
+        {
+          "signature": "getMin() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getMin(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getMin"
+    },
+    {
+      "name": "getPolygonCentroid",
+      "overloads": [
+        {
+          "signature": "getPolygonCentroid() -> ShollPoint",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        },
+        {
+          "signature": "getPolygonCentroid(boolean) -> ShollPoint",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ShollPoint",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPolygonCentroid"
+    },
+    {
+      "name": "getPolynomial",
+      "overloads": [
+        {
+          "signature": "getPolynomial() -> PolynomialFunction",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PolynomialFunction",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPolynomial"
+    },
+    {
+      "name": "getPolynomialAsString",
+      "overloads": [
+        {
+          "signature": "getPolynomialAsString(boolean) -> String",
+          "params": [
+            {
+              "name": "detailed",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPolynomialAsString"
+    },
+    {
+      "name": "getPolynomialDegree",
+      "overloads": [
+        {
+          "signature": "getPolynomialDegree() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPolynomialDegree"
+    },
+    {
+      "name": "getPolynomialMaxima",
+      "overloads": [
+        {
+          "signature": "getPolynomialMaxima(double, double, double) -> Set",
+          "params": [
+            {
+              "name": "lowerBound",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "upperBound",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "initialGuess",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPolynomialMaxima"
+    },
+    {
+      "name": "getPrimaryBranches",
+      "overloads": [
+        {
+          "signature": "getPrimaryBranches() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getPrimaryBranches(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getPrimaryBranches"
+    },
+    {
+      "name": "getRSquaredOfFit",
+      "overloads": [
+        {
+          "signature": "getRSquaredOfFit(boolean) -> double",
+          "params": [
+            {
+              "name": "adjusted",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRSquaredOfFit"
+    },
+    {
+      "name": "getRamificationIndex",
+      "overloads": [
+        {
+          "signature": "getRamificationIndex() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getRamificationIndex(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getRamificationIndex"
+    },
+    {
+      "name": "getSkewness",
+      "overloads": [
+        {
+          "signature": "getSkewness() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getSkewness(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSkewness"
+    },
+    {
+      "name": "getSum",
+      "overloads": [
+        {
+          "signature": "getSum() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getSum(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSum"
+    },
+    {
+      "name": "getSumSq",
+      "overloads": [
+        {
+          "signature": "getSumSq() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getSumSq(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getSumSq"
+    },
+    {
+      "name": "getVariance",
+      "overloads": [
+        {
+          "signature": "getVariance() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        },
+        {
+          "signature": "getVariance(boolean) -> double",
+          "params": [
+            {
+              "name": "fittedData",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getVariance"
+    },
+    {
+      "name": "getXValues",
+      "overloads": [
+        {
+          "signature": "getXValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getXValues"
+    },
+    {
+      "name": "getYValues",
+      "overloads": [
+        {
+          "signature": "getYValues() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getYValues"
+    },
+    {
+      "name": "isPrimaryBranchesInferred",
+      "overloads": [
+        {
+          "signature": "isPrimaryBranchesInferred() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: isPrimaryBranchesInferred"
+    },
+    {
+      "name": "plot",
+      "overloads": [
+        {
+          "signature": "plot() -> ShollPlot",
+          "params": [],
+          "return_type": "ShollPlot",
+          "java_return_type": "ShollPlot",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: plot"
+    },
+    {
+      "name": "setMaxEvaluations",
+      "overloads": [
+        {
+          "signature": "setMaxEvaluations(int) -> void",
+          "params": [
+            {
+              "name": "maxEval",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setMaxEvaluations"
+    },
+    {
+      "name": "setPrimaryBranches",
+      "overloads": [
+        {
+          "signature": "setPrimaryBranches(int) -> void",
+          "params": [
+            {
+              "name": "nBranches",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPrimaryBranches"
+    },
+    {
+      "name": "validFit",
+      "overloads": [
+        {
+          "signature": "validFit() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: validFit"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "LinearProfileStats(Profile)",
+          "params": [
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "LinearProfileStats(Profile, DataMode)",
+          "params": [
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile"
+            },
+            {
+              "name": "dataMode",
+              "type": "Any",
+              "java_type": "DataMode"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of LinearProfileStats"
+    }
+  ],
+  "fields": [],
+  "static_fields": []
+}

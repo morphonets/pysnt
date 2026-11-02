@@ -1,112 +1,123 @@
 {
   "class_name": "MouseLightLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:01:01.103558",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.io.MouseLightLoader",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.647065",
+  "extractor_version": "2.0.0",
   "methods": [
     {
-      "name": "static demoTrees",
+      "name": "demoTrees",
       "overloads": [
         {
-          "signature": "static demoTrees() -> List",
+          "signature": "demoTrees() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static demoTrees"
+      "documentation": "Java method: demoTrees"
     },
     {
-      "name": "static extractNodes",
+      "name": "extractNodes",
       "overloads": [
         {
-          "signature": "static extractNodes(InputStream, String) -> Map",
+          "signature": "extractNodes(File, String) -> Map",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "InputStream"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        },
-        {
-          "signature": "static extractNodes(File, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "jsonFile",
               "type": "str",
               "java_type": "File"
             },
             {
-              "name": "arg1",
+              "name": "compartment",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
-        }
-      ],
-      "documentation": "Java method: static extractNodes"
-    },
-    {
-      "name": "static extractTrees",
-      "overloads": [
-        {
-          "signature": "static extractTrees(File, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "File"
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": true
         },
         {
-          "signature": "static extractTrees(InputStream, String) -> Map",
+          "signature": "extractNodes(InputStream, String) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "stream",
               "type": "Any",
               "java_type": "InputStream"
             },
             {
-              "name": "arg1",
+              "name": "compartment",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Dict[str, Any]",
-          "java_return_type": "Map"
+          "java_return_type": "Map",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static extractTrees"
+      "documentation": "Java method: extractNodes"
     },
     {
-      "name": "static getAllLoaders",
+      "name": "extractTrees",
       "overloads": [
         {
-          "signature": "static getAllLoaders() -> List",
-          "params": [],
-          "return_type": "List[Any]",
-          "java_return_type": "List"
+          "signature": "extractTrees(File, String) -> Map",
+          "params": [
+            {
+              "name": "jsonFile",
+              "type": "str",
+              "java_type": "File"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": true
+        },
+        {
+          "signature": "extractTrees(InputStream, String) -> Map",
+          "params": [
+            {
+              "name": "stream",
+              "type": "Any",
+              "java_type": "InputStream"
+            },
+            {
+              "name": "compartment",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getAllLoaders"
+      "documentation": "Java method: extractTrees"
+    },
+    {
+      "name": "getAllLoaders",
+      "overloads": [
+        {
+          "signature": "getAllLoaders() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: getAllLoaders"
     },
     {
       "name": "getDOI",
@@ -115,7 +126,8 @@
           "signature": "getDOI() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getDOI"
@@ -127,7 +139,8 @@
           "signature": "getID() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getID"
@@ -139,43 +152,47 @@
           "signature": "getJSON() -> JSONObject",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "JSONObject"
+          "java_return_type": "JSONObject",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getJSON"
     },
     {
-      "name": "static getNeuronCount",
+      "name": "getNeuronCount",
       "overloads": [
         {
-          "signature": "static getNeuronCount() -> int",
+          "signature": "getNeuronCount() -> int",
           "params": [],
           "return_type": "int",
-          "java_return_type": "int"
+          "java_return_type": "int",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static getNeuronCount"
+      "documentation": "Java method: getNeuronCount"
     },
     {
       "name": "getNodes",
       "overloads": [
         {
+          "signature": "getNodes() -> TreeSet",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "TreeSet",
+          "is_static": false
+        },
+        {
           "signature": "getNodes(String) -> TreeSet",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Set[Any]",
-          "java_return_type": "TreeSet"
-        },
-        {
-          "signature": "getNodes() -> TreeSet",
-          "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "TreeSet"
+          "java_return_type": "TreeSet",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNodes"
@@ -187,7 +204,8 @@
           "signature": "getSWC() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSWC"
@@ -199,7 +217,8 @@
           "signature": "getSampleInfo() -> String",
           "params": [],
           "return_type": "str",
-          "java_return_type": "String"
+          "java_return_type": "String",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSampleInfo"
@@ -210,8 +229,9 @@
         {
           "signature": "getSomaCompartment() -> AllenCompartment",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "AllenCompartment"
+          "return_type": "AllenCompartment",
+          "java_return_type": "AllenCompartment",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSomaCompartment"
@@ -223,7 +243,8 @@
           "signature": "getSomaLocation() -> SWCPoint",
           "params": [],
           "return_type": "SWCPoint",
-          "java_return_type": "SWCPoint"
+          "java_return_type": "SWCPoint",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getSomaLocation"
@@ -232,39 +253,42 @@
       "name": "getTree",
       "overloads": [
         {
+          "signature": "getTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "is_static": false
+        },
+        {
           "signature": "getTree(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
-        },
-        {
-          "signature": "getTree() -> Tree",
-          "params": [],
-          "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         },
         {
           "signature": "getTree(String, ColorRGB) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "str",
               "java_type": "String"
             },
             {
-              "name": "arg1",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB"
             }
           ],
           "return_type": "Tree",
-          "java_return_type": "Tree"
+          "java_return_type": "Tree",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getTree"
@@ -276,67 +300,73 @@
           "signature": "idExists() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: idExists"
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable"
+      "documentation": "Java method: isDatabaseAvailable"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "save",
       "overloads": [
         {
-          "signature": "save(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String"
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean"
-        },
-        {
           "signature": "save(File) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "file",
               "type": "str",
               "java_type": "File"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: save"
@@ -348,13 +378,14 @@
           "signature": "saveAsJSON(String) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "outputDirectory",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: saveAsJSON"
@@ -366,19 +397,19 @@
           "signature": "saveAsSWC(String) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "outputDirectory",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "bool",
-          "java_return_type": "boolean"
+          "java_return_type": "boolean",
+          "is_static": false
         }
       ],
       "documentation": "Java method: saveAsSWC"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
@@ -387,7 +418,7 @@
           "signature": "MouseLightLoader(String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "id",
               "type": "str",
               "java_type": "String"
             }
@@ -396,33 +427,34 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MouseLightLoader"
+      "documentation": "Constructors of MouseLightLoader"
     }
   ],
+  "fields": [],
   "static_fields": [
     {
       "name": "AXON",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field AXON of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field AXON of type String"
     },
     {
       "name": "DENDRITE",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field DENDRITE of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field DENDRITE of type String"
     },
     {
       "name": "SOMA",
       "type": "str",
       "java_type": "String",
-      "documentation": "Field SOMA of type String",
       "is_static": true,
-      "is_final": true
+      "is_final": true,
+      "documentation": "Field SOMA of type String"
     }
   ]
 }

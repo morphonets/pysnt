@@ -1,8 +1,13 @@
 {
   "class_name": "MultiViewer3D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:01.869762",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.viewer.MultiViewer3D",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.655854",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "addColorBarLegend",
@@ -11,34 +16,55 @@
           "signature": "addColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "addColorBarLegend(ColorMapper, String) -> void",
+          "params": [
+            {
+              "name": "colorMapper",
+              "type": "Any",
+              "java_type": "ColorMapper"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addColorBarLegend"
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;"
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "varargs": true
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": true
         }
       ],
-      "documentation": "Java method: static main"
+      "documentation": "Java method: main"
     },
     {
       "name": "setAnimationEnabled",
@@ -47,13 +73,14 @@
           "signature": "setAnimationEnabled(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enabled",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setAnimationEnabled"
@@ -65,13 +92,14 @@
           "signature": "setGap(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "gap",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setGap"
@@ -83,13 +111,14 @@
           "signature": "setLabels(List) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "labels",
               "type": "List[Any]",
               "java_type": "List"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLabels"
@@ -101,13 +130,14 @@
           "signature": "setLayoutColumns(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cols",
               "type": "int",
               "java_type": "int"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setLayoutColumns"
@@ -119,13 +149,14 @@
           "signature": "setTitle(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "title",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setTitle"
@@ -134,16 +165,17 @@
       "name": "setViewMode",
       "overloads": [
         {
-          "signature": "setViewMode(Viewer3D$ViewMode) -> void",
+          "signature": "setViewMode(ViewMode) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "Any",
-              "java_type": "Viewer3D$ViewMode"
+              "java_type": "ViewMode"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: setViewMode"
@@ -155,7 +187,8 @@
           "signature": "show() -> JFrame",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "JFrame"
+          "java_return_type": "JFrame",
+          "is_static": false
         }
       ],
       "documentation": "Java method: show"
@@ -167,43 +200,45 @@
           "signature": "viewers() -> List",
           "params": [],
           "return_type": "List[Any]",
-          "java_return_type": "List"
+          "java_return_type": "List",
+          "is_static": false
         }
       ],
       "documentation": "Java method: viewers"
     }
   ],
-  "fields": [],
   "constructors": [
     {
       "name": "__init__",
       "overloads": [
         {
-          "signature": "MultiViewer3D(List)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "MultiViewer3D(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "MultiViewer3D(List)",
+          "params": [
+            {
+              "name": "viewers",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MultiViewer3D"
+      "documentation": "Constructors of MultiViewer3D"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

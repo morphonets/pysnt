@@ -1,0 +1,615 @@
+{
+  "class_name": "ImageParser2D",
+  "package": "sc.fiji.snt.analysis.sholl.parsers",
+  "java_name": "sc.fiji.snt.analysis.sholl.parsers.ImageParser2D",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.632755",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "getCircumferencePoints",
+      "overloads": [
+        {
+          "signature": "getCircumferencePoints(int, int, int) -> int[][]",
+          "params": [
+            {
+              "name": "cx",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "cy",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "radius",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "List[List[int]]",
+          "java_return_type": "int[][]",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: getCircumferencePoints"
+    },
+    {
+      "name": "getIsotropicVoxelSize",
+      "overloads": [
+        {
+          "signature": "getIsotropicVoxelSize() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: getIsotropicVoxelSize"
+    },
+    {
+      "name": "getMask",
+      "overloads": [
+        {
+          "signature": "getMask() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: getMask"
+    },
+    {
+      "name": "getMaskProcessor",
+      "overloads": [
+        {
+          "signature": "getMaskProcessor(boolean, double[]) -> ImageProcessor",
+          "params": [
+            {
+              "name": "floatProcessor",
+              "type": "bool",
+              "java_type": "boolean"
+            },
+            {
+              "name": "maskValues",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImageProcessor",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: getMaskProcessor"
+    },
+    {
+      "name": "getProfile",
+      "overloads": [
+        {
+          "signature": "getProfile() -> Profile",
+          "params": [],
+          "return_type": "Profile",
+          "java_return_type": "Profile",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: getProfile"
+    },
+    {
+      "name": "isRetrieveIntDensitiesSet",
+      "overloads": [
+        {
+          "signature": "isRetrieveIntDensitiesSet() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: isRetrieveIntDensitiesSet"
+    },
+    {
+      "name": "maxPossibleRadius",
+      "overloads": [
+        {
+          "signature": "maxPossibleRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: maxPossibleRadius"
+    },
+    {
+      "name": "parse",
+      "overloads": [
+        {
+          "signature": "parse() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: parse"
+    },
+    {
+      "name": "reset",
+      "overloads": [
+        {
+          "signature": "reset() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: reset"
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: run"
+    },
+    {
+      "name": "setAggressiveSpikeSuppression",
+      "overloads": [
+        {
+          "signature": "setAggressiveSpikeSuppression(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setAggressiveSpikeSuppression"
+    },
+    {
+      "name": "setCenter",
+      "overloads": [
+        {
+          "signature": "setCenter(double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setCenter(double, double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setCenter"
+    },
+    {
+      "name": "setCenterFromROI",
+      "overloads": [
+        {
+          "signature": "setCenterFromROI() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        },
+        {
+          "signature": "setCenterFromROI(Roi) -> void",
+          "params": [
+            {
+              "name": "roi",
+              "type": "Any",
+              "java_type": "Roi"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setCenterFromROI"
+    },
+    {
+      "name": "setCenterPx",
+      "overloads": [
+        {
+          "signature": "setCenterPx(int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setCenterPx(int, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setCenterPx"
+    },
+    {
+      "name": "setHemiShells",
+      "overloads": [
+        {
+          "signature": "setHemiShells(String) -> void",
+          "params": [
+            {
+              "name": "flag",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setHemiShells"
+    },
+    {
+      "name": "setPosition",
+      "overloads": [
+        {
+          "signature": "setPosition(int, int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "slice",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setPosition"
+    },
+    {
+      "name": "setRadii",
+      "overloads": [
+        {
+          "signature": "setRadii(double[]) -> void",
+          "params": [
+            {
+              "name": "radiiArray",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        },
+        {
+          "signature": "setRadii(double, double, double) -> void",
+          "params": [
+            {
+              "name": "startRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "step",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "endRadius",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        },
+        {
+          "signature": "setRadii(double, double, double, int, int) -> void",
+          "params": [
+            {
+              "name": "startRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "step",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "endRadius",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "span",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "integrationFlag",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadii"
+    },
+    {
+      "name": "setRadiiSpan",
+      "overloads": [
+        {
+          "signature": "setRadiiSpan(int, int) -> void",
+          "params": [
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "integrationFlag",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false
+        }
+      ],
+      "documentation": "Java method: setRadiiSpan"
+    },
+    {
+      "name": "setRetrieveIntDensities",
+      "overloads": [
+        {
+          "signature": "setRetrieveIntDensities(boolean) -> void",
+          "params": [
+            {
+              "name": "retrieveIntDensities",
+              "type": "bool",
+              "java_type": "boolean"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setRetrieveIntDensities"
+    },
+    {
+      "name": "setThreshold",
+      "overloads": [
+        {
+          "signature": "setThreshold(double, double) -> void",
+          "params": [
+            {
+              "name": "lower",
+              "type": "float",
+              "java_type": "double"
+            },
+            {
+              "name": "upper",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: setThreshold"
+    },
+    {
+      "name": "successful",
+      "overloads": [
+        {
+          "signature": "successful() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: successful"
+    },
+    {
+      "name": "terminate",
+      "overloads": [
+        {
+          "signature": "terminate() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "is_static": false,
+          "inherited_from": "ImageParser"
+        }
+      ],
+      "documentation": "Java method: terminate"
+    }
+  ],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "ImageParser2D(ImagePlus)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "ImageParser2D(ImagePlus, Context)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of ImageParser2D"
+    }
+  ],
+  "fields": [],
+  "static_fields": [
+    {
+      "name": "MAX_N_SPANS",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MAX_N_SPANS of type int"
+    },
+    {
+      "name": "MEAN",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MEAN of type int"
+    },
+    {
+      "name": "MEDIAN",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MEDIAN of type int"
+    },
+    {
+      "name": "MODE",
+      "type": "int",
+      "java_type": "int",
+      "is_static": true,
+      "is_final": true,
+      "documentation": "Field MODE of type int"
+    }
+  ]
+}

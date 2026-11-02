@@ -1,8 +1,13 @@
 {
   "class_name": "BiSearch",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-01-02T22:36:44.464551",
-  "extractor_version": "1.0.0",
+  "java_name": "sc.fiji.snt.tracing.BiSearch",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.587255",
+  "extractor_version": "2.0.0",
   "methods": [
     {
       "name": "addProgressListener",
@@ -11,13 +16,14 @@
           "signature": "addProgressListener(SearchProgressCallback) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "callback",
               "type": "Any",
               "java_type": "SearchProgressCallback"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: addProgressListener"
@@ -28,8 +34,9 @@
         {
           "signature": "getNodesAsImage() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "SearchImageStack"
+          "return_type": "SearchImageStack",
+          "java_return_type": "SearchImageStack",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getNodesAsImage"
@@ -41,7 +48,8 @@
           "signature": "getResult() -> Path",
           "params": [],
           "return_type": "Path",
-          "java_return_type": "Path"
+          "java_return_type": "Path",
+          "is_static": false
         }
       ],
       "documentation": "Java method: getResult"
@@ -53,7 +61,8 @@
           "signature": "pointsConsideredInSearch() -> long",
           "params": [],
           "return_type": "int",
-          "java_return_type": "long"
+          "java_return_type": "long",
+          "is_static": false
         }
       ],
       "documentation": "Java method: pointsConsideredInSearch"
@@ -65,7 +74,8 @@
           "signature": "printStatus() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: printStatus"
@@ -77,13 +87,14 @@
           "signature": "reportFinished(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean"
             }
           ],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: reportFinished"
@@ -95,36 +106,11 @@
           "signature": "run() -> void",
           "params": [],
           "return_type": "None",
-          "java_return_type": "void"
+          "java_return_type": "void",
+          "is_static": false
         }
       ],
       "documentation": "Java method: run"
-    }
-  ],
-  "fields": [
-    {
-      "name": "imgDepth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgDepth of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgHeight",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgHeight of type int",
-      "is_static": false,
-      "is_final": true
-    },
-    {
-      "name": "imgWidth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgWidth of type int",
-      "is_static": false,
-      "is_final": true
     }
   ],
   "constructors": [
@@ -132,72 +118,42 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "BiSearch(RandomAccessibleInterval, Calibration, int, int, int, int, int, int, int, long, SNT$SearchImageType, Cost, Heuristic)",
+          "signature": "BiSearch(SNT, int, int, int, int, int, int)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "RandomAccessibleInterval"
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Calibration"
-            },
-            {
-              "name": "arg2",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
-            },
-            {
-              "name": "arg8",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg9",
-              "type": "int",
-              "java_type": "long"
-            },
-            {
-              "name": "arg10",
-              "type": "Any",
-              "java_type": "SNT$SearchImageType"
-            },
-            {
-              "name": "arg11",
-              "type": "Any",
-              "java_type": "Cost"
-            },
-            {
-              "name": "arg12",
-              "type": "Any",
-              "java_type": "Heuristic"
             }
           ],
           "return_type": "None",
@@ -207,48 +163,48 @@
           "signature": "BiSearch(SNT, int, int, int, int, int, int, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg8",
-              "type": "Any",
+              "name": "heuristic",
+              "type": "Heuristic",
               "java_type": "Heuristic"
             }
           ],
@@ -259,53 +215,53 @@
           "signature": "BiSearch(SNT, RandomAccessibleInterval, int, int, int, int, int, int, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "image",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg2",
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg7",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg8",
+              "name": "costFunction",
               "type": "Any",
               "java_type": "Cost"
             },
             {
-              "name": "arg9",
-              "type": "Any",
+              "name": "heuristic",
+              "type": "Heuristic",
               "java_type": "Heuristic"
             }
           ],
@@ -313,49 +269,81 @@
           "java_return_type": "void"
         },
         {
-          "signature": "BiSearch(SNT, int, int, int, int, int, int)",
+          "signature": "BiSearch(RandomAccessibleInterval, Calibration, int, int, int, int, int, int, int, long, SearchImageType, Cost, Heuristic)",
           "params": [
             {
-              "name": "arg0",
+              "name": "image",
               "type": "Any",
-              "java_type": "SNT"
+              "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "calibration",
+              "type": "Any",
+              "java_type": "Calibration"
+            },
+            {
+              "name": "start_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "start_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg3",
+              "name": "start_z",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg4",
+              "name": "goal_x",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg5",
+              "name": "goal_y",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg6",
+              "name": "goal_z",
               "type": "int",
               "java_type": "int"
+            },
+            {
+              "name": "timeoutSeconds",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "reportEveryMilliseconds",
+              "type": "int",
+              "java_type": "long"
+            },
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType"
+            },
+            {
+              "name": "costFunction",
+              "type": "Any",
+              "java_type": "Cost"
+            },
+            {
+              "name": "heuristic",
+              "type": "Heuristic",
+              "java_type": "Heuristic"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for BiSearch"
+      "documentation": "Constructors of BiSearch"
     }
-  ]
+  ],
+  "fields": [],
+  "static_fields": []
 }

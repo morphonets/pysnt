@@ -1,0 +1,189 @@
+{
+  "class_name": "DetectorUtils",
+  "package": "sc.fiji.snt.analysis.detection",
+  "java_name": "sc.fiji.snt.analysis.detection.DetectorUtils",
+  "kind": "class",
+  "deprecated": false,
+  "for_removal": false,
+  "snt_version": "5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3",
+  "extracted_at": "2026-11-02T00:24:01.607185",
+  "extractor_version": "2.0.0",
+  "methods": [
+    {
+      "name": "assignToNearestPaths",
+      "overloads": [
+        {
+          "signature": "assignToNearestPaths(List, Collection) -> List",
+          "params": [
+            {
+              "name": "detections",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "allPaths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: assignToNearestPaths"
+    },
+    {
+      "name": "computeEDT",
+      "overloads": [
+        {
+          "signature": "computeEDT(RandomAccessibleInterval, int, double[]) -> Img",
+          "params": [
+            {
+              "name": "labelRAI",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "labelVal",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Img",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: computeEDT"
+    },
+    {
+      "name": "deduplicate",
+      "overloads": [
+        {
+          "signature": "deduplicate(List, double) -> List",
+          "params": [
+            {
+              "name": "detections",
+              "type": "List[Any]",
+              "java_type": "List"
+            },
+            {
+              "name": "mergingDistance",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: deduplicate"
+    },
+    {
+      "name": "interpolateRadius",
+      "overloads": [
+        {
+          "signature": "interpolateRadius(double[], int, double) -> double",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "idx",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "fallback",
+              "type": "float",
+              "java_type": "double"
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: interpolateRadius"
+    },
+    {
+      "name": "prepareRadii",
+      "overloads": [
+        {
+          "signature": "prepareRadii(Path) -> double[]",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: prepareRadii"
+    },
+    {
+      "name": "sampleDistances",
+      "overloads": [
+        {
+          "signature": "sampleDistances(Collection, Img) -> double[]",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection"
+            },
+            {
+              "name": "edt",
+              "type": "Any",
+              "java_type": "Img"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: sampleDistances"
+    },
+    {
+      "name": "sampleDistancesWithIndices",
+      "overloads": [
+        {
+          "signature": "sampleDistancesWithIndices(Path, Img) -> List",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "edt",
+              "type": "Any",
+              "java_type": "Img"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "is_static": true
+        }
+      ],
+      "documentation": "Java method: sampleDistancesWithIndices"
+    }
+  ],
+  "constructors": [],
+  "fields": [],
+  "static_fields": []
+}
