@@ -53,48 +53,65 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-A specialized version of TreeStatistics for analyzing individual paths without considering their connectivity relationships.
+A specialized version of ``TreeStatistics`` for analyzing individual paths without considering their connectivity relationships.
 
 PathStatistics provides morphometric analysis of neuronal paths while treating each path as an independent entity, rather than as part of a connected tree structure.
 
 Key differences from TreeStatistics:
 
-No graph conversion - paths are analyzed independently Branch-related metrics are redefined to work with individual paths Supports path-specific measurements like Path ID and number of children Provides individual path measurement capabilities
+- No graph conversion - paths are analyzed independently
+
+- Branch-related metrics are redefined to work with individual paths
+
+- Supports path-specific measurements like Path ID and number of children
+
+- Provides individual path measurement capabilities
 
 Example usage: 
-```
-// Analyze a single path
- PathStatistics stats = new PathStatistics(path);
- double length = stats.getMetric("Path length").doubleValue();
- 
- // Analyze multiple paths independently
- Collection<Path> paths = getPaths();
- PathStatistics multiStats = new PathStatistics(paths, "My Analysis");
- multiStats.measureIndividualPaths(Arrays.asList("Path length", "N. nodes"), true);
-```
+
+
+::
+
+    // Analyze a single path
+    PathStatistics stats = new PathStatistics(path);
+    double length = stats.getMetric("Path length").doubleValue();
+
+    // Analyze multiple paths independently
+    Collection<Path> paths = getPaths();
+    PathStatistics multiStats = new PathStatistics(paths, "My Analysis");
+    multiStats.measureIndividualPaths(Arrays.asList("Path length", "N. nodes"), true);
+
+
 
 
 Methods
 -------
 
 
-Getters Methods
-~~~~~~~~~~~~~~~
+Utilities Methods
+~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAllMetrics()
-
-   Gets the terminal branches from the analyzed paths.
-
-Returns paths that have children, representing non-terminal segments. Note: This implementation differs from typical terminal branch definition as it returns paths with children rather than leaf paths.
-
-
-.. py:method:: getAnnotatedLength(int, String, boolean)
+.. py:method:: resetRestrictions()
 
    
 
 
-.. py:method:: getAnnotatedLengthHistogram(int)
+Getters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: getAllMetrics()
+
+   
+
+
+.. py:method:: getAnnotatedLength(int)
+
+   
+
+
+.. py:method:: getAnnotatedLengthHistogram()
 
    
 
@@ -104,16 +121,14 @@ Returns paths that have children, representing non-terminal segments. Note: This
    
 
 
-.. py:method:: getAnnotations(int)
+.. py:method:: getAnnotations()
 
    
 
 
 .. py:method:: getAvgBranchLength()
 
-   Gets the total length of terminal branches.
-
-Calculates the sum of lengths of all terminal branches as defined by `getTerminalBranches()`.
+   
 
 
 .. py:method:: getAvgContraction()
@@ -141,7 +156,7 @@ Calculates the sum of lengths of all terminal branches as defined by `getTermina
    
 
 
-.. py:method:: getBranchPoints(BrainAnnotation)
+.. py:method:: getBranchPoints()
 
    
 
@@ -150,25 +165,15 @@ Calculates the sum of lengths of all terminal branches as defined by `getTermina
 
    Gets all the paths being analyzed as branches.
 
-In PathStatistics, all paths are considered as branches since each path represents a distinct structural element.
+   In PathStatistics, all paths are considered as branches since each path represents a distinct structural element.
 
 
-.. py:method:: getCableLength(BrainAnnotation, boolean)
-
-   
-
-
-.. py:method:: getCableLengthNorm(BrainAnnotation, boolean)
+.. py:method:: getCableLength()
 
    
 
 
-.. py:method:: getCancelReason()
-
-   
-
-
-.. py:method:: getContext()
+.. py:method:: getCableLengthNorm(BrainAnnotation)
 
    
 
@@ -193,7 +198,7 @@ In PathStatistics, all paths are considered as branches since each path represen
    
 
 
-.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
+.. py:method:: getFlowPlot(String, Collection)
 
    
 
@@ -222,28 +227,253 @@ In PathStatistics, all paths are considered as branches since each path represen
 
    Gets the inner branches from the analyzed paths.
 
-In PathStatistics, inner branches are equivalent to primary branches.
+   In PathStatistics, inner branches are equivalent to primary branches.
 
 
 .. py:method:: getInnerLength()
 
    Gets the total length of inner branches.
 
-In PathStatistics, this returns the same value as getPrimaryLength().
+   In PathStatistics, this returns the same value as ``getPrimaryLength()``.
 
 
 .. py:method:: getMetric(String)
 
    Gets a specific metric value for an individual path.
 
-This method provides direct access to morphometric properties of individual paths, including geometric measurements, connectivity information, and structural characteristics. It supports all standard path metrics plus PathStatistics-specific measurements.
+   This method provides direct access to morphometric properties of individual paths, including geometric measurements, connectivity information, and structural characteristics. It supports all standard path metrics plus PathStatistics-specific measurements.
 
-Supported metrics include:
+   Supported metrics include:
 
-Geometric: length, volume, surface area, mean radius Structural: number of nodes, branch points, children Angular: extension angles in XY, XZ, ZY planes Morphological: contraction, fractal dimension, spine density Metadata: path ID, channel, frame, order
+   - Geometric: length, volume, surface area, mean radius
+
+   - Structural: number of nodes, branch points, children
+
+   - Angular: extension angles in XY, XZ, ZY planes
+
+   - Morphological: contraction, fractal dimension, spine density
+
+   - Metadata: path ID, channel, frame, order
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMetrics()
+
+   
+
+
+.. py:method:: getNBranchPoints(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNBranchPointsNorm(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNBranches()
+
+   Gets the number of branches (paths) being analyzed.
+
+   Returns the total count of paths in this PathStatistics instance.
+
+
+.. py:method:: getNNodes()
+
+   
+
+
+.. py:method:: getNPaths()
+
+   
+
+
+.. py:method:: getNTips(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNTipsNorm(BrainAnnotation)
+
+   
+
+
+.. py:method:: getNoSpinesOrVaricosities()
+
+   
+
+
+.. py:method:: getNodeStatistics()
+
+   
+
+
+.. py:method:: getParsedTree()
+
+   
+
+
+.. py:method:: getPartitionAsymmetry()
+
+   
+
+
+.. py:method:: getPolarHistogram(String)
+
+   
+
+
+.. py:method:: getPrimaryBranches()
+
+   Gets the primary branches from the analyzed paths.
+
+   Returns only those paths that are marked as primary branches, typically those that originate directly from the root or soma.
+
+
+.. py:method:: getPrimaryLength()
+
+   Gets the total length of primary branches.
+
+   Calculates the sum of lengths of all paths marked as primary branches.
+
+
+.. py:method:: getPrimaryPaths()
+
+   
+
+
+.. py:method:: getRemoteBifAngles()
+
+   
+
+
+.. py:method:: getRootAngleAnalyzer()
+
+   
+
+
+.. py:method:: getRootAngleMetric(String)
+
+   
+
+
+.. py:method:: getShollAnalyzer()
+
+   
+
+
+.. py:method:: getSpineOrVaricosityDensity()
+
+   
+
+
+.. py:method:: getStrahlerAnalyzer()
+
+   
+
+
+.. py:method:: getStrahlerBifurcationRatio()
+
+   
+
+
+.. py:method:: getStrahlerNumber()
+
+   
+
+
+.. py:method:: getSummaryStats(String)
+
+   Description copied from class: ``TreeStatistics``
+
+
+.. py:method:: getTable()
+
+   
+
+
+.. py:method:: getTerminalBranches()
+
+   Gets the terminal branches from the analyzed paths.
+
+   Returns paths that have children, representing non-terminal segments. Note: This implementation differs from typical terminal branch definition as it returns paths with children rather than leaf paths.
+
+
+.. py:method:: getTerminalLength()
+
+   Gets the total length of terminal branches.
+
+   Calculates the sum of lengths of all terminal branches as defined by ``getTerminalBranches()``.
+
+
+.. py:method:: getTips()
+
+   
+
+
+.. py:method:: getUnit(String)
+
+   
+
+
+.. py:method:: getWidth()
+
+   
+
+
+.. py:method:: isExactMetricMatch()
+
+   
+
+
+.. py:method:: isValid()
+
+   
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setExactMetricMatch(boolean)
+
+   
+
+
+.. py:method:: setTable(GenericTable)
+
+   
+
+
+Analysis Methods
+~~~~~~~~~~~~~~~~
+
+
+.. py:method:: measure(Collection, boolean)
+
+   
+
+
+.. py:method:: measureIndividualPaths(Collection, boolean)
+
+   Measures specified metrics for each individual path and creates a detailed table.
+
+   This method generates a comprehensive measurement table where each row represents an individual path and columns contain the requested morphometric measurements. This is particularly useful for comparative analysis of path properties or for exporting detailed morphometric data.
+
+   The generated table includes:
+
+   - Path identification information (name, SWC type)
+
+   - All requested morphometric measurements
+
+   - Optional summary statistics (if summarize is true)
+
+
+Visualization Methods
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: updateAndDisplayTable()
 
    
 
@@ -252,28 +482,32 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: cancel(String)
-
-   Measures specified metrics for each individual path and creates a detailed table.
-
-This method generates a comprehensive measurement table where each row represents an individual path and columns contain the requested morphometric measurements. This is particularly useful for comparative analysis of path properties or for exporting detailed morphometric data.
-
-The generated table includes:
-
-Path identification information (name, SWC type) All requested morphometric measurements Optional summary statistics (if summarize is true)
-
-
-.. py:method:: context()
-
-   
-
-
 .. py:method:: dispose()
 
    
 
 
-.. py:method:: static fromCollection(Collection, String)
+.. py:method:: fromCollection(Collection, String)
+
+   
+
+
+.. py:method:: main(String[])
+
+   
+
+
+.. py:method:: restrictToSWCType(int[])
+
+   
+
+
+.. py:method:: run()
+
+   
+
+
+.. py:method:: summarize(boolean)
 
    
 

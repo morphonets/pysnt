@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class for color coding Trees.
+Class for color coding `Tree`s.
 
 
 Methods
@@ -64,9 +64,14 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: getAvailableHeatmapLuts()
+
+   
+
+
 .. py:method:: getAvailableLuts()
 
-   Gets the available LUTs.
+   
 
 
 .. py:method:: getColor(double)
@@ -79,12 +84,22 @@ Getters Methods
    
 
 
-.. py:method:: getColorTable(String)
+.. py:method:: getColorTable()
 
    
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMeasurement()
+
+   Description copied from class: ``ColorMapper``
+
+
+.. py:method:: getMeasurementLabel()
+
+   
+
+
+.. py:method:: getMetrics()
 
    Gets the list of supported mapping metrics.
 
@@ -96,7 +111,7 @@ Getters Methods
 
 .. py:method:: getMultiViewer()
 
-   Assembles a Multi-pane viewer using all the Trees mapped so far.
+   Assembles a ``Multi-pane viewer`` using all the Trees mapped so far.
 
 
 .. py:method:: getNaNColor()
@@ -118,7 +133,22 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: setMaxPercentileClipped(double[], double)
+
+   
+
+
 .. py:method:: setMinMax(double, double)
+
+   
+
+
+.. py:method:: setMinMaxPercentileClipped(double[], double)
+
+   
+
+
+.. py:method:: setMinPercentileClipped(double[], double)
 
    
 
@@ -132,12 +162,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 
 
-.. py:method:: map(Tree, Profile, ColorTable)
+.. py:method:: map(String, ColorTable)
 
    Colorizes a tree after the specified measurement. Mapping bounds are automatically determined.
 
@@ -147,7 +177,7 @@ Other Methods
    Colorizes a list of trees, with each tree being assigned a LUT index.
 
 
-.. py:method:: static unMap(Tree)
+.. py:method:: unMap(Collection)
 
    
 

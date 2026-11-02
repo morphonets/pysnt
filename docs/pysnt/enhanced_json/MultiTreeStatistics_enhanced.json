@@ -1,59 +1,11 @@
 {
   "class_name": "MultiTreeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:01.587768",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.311234",
+  "extracted_at": "2026-11-02T00:24:01.651205",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.289434",
   "enhancement_version": "1.0.0",
   "methods": [
-    {
-      "name": "cancel",
-      "overloads": [
-        {
-          "signature": "cancel(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- command line arguments (not used)",
-              "javadoc_name": "args"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: cancel",
-      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "context",
-      "overloads": [
-        {
-          "signature": "context() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: context",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
     {
       "name": "dispose",
       "overloads": [
@@ -63,11 +15,13 @@
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
-          "throws": {}
+          "throws": {
+            "UnknownMetricException": ""
+          }
         }
       ],
       "documentation": "Java method: dispose",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -75,20 +29,20 @@
       "examples": []
     },
     {
-      "name": "static fromCollection",
+      "name": "fromCollection",
       "overloads": [
         {
-          "signature": "static fromCollection(Collection, String) -> TreeStatistics",
+          "signature": "fromCollection(Collection, String) -> TreeStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -101,34 +55,32 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static fromCollection",
+      "documentation": "Java method: fromCollection",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getAllMetrics",
+      "name": "getAllMetrics",
       "overloads": [
         {
-          "signature": "static getAllMetrics() -> List",
+          "signature": "getAllMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
-          "return_description": "the terminal branches. Note that as per `Path.getSection(int, int)`, these branches will not carry any connectivity information.",
+          "return_description": "",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getAllMetrics",
-      "javadoc_description": "Description copied from class: TreeStatistics",
-      "category": "Analysis",
+      "documentation": "Java method: getAllMetrics",
+      "javadoc_description": "",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
-      "see_also": [
-        "TreeStatistics.getPrimaryBranches()"
-      ],
+      "see_also": [],
       "examples": []
     },
     {
@@ -138,7 +90,7 @@
           "signature": "getAnnotatedLength(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
@@ -154,14 +106,14 @@
           "signature": "getAnnotatedLength(int, String) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "hemisphere",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -177,21 +129,21 @@
           "signature": "getAnnotatedLength(int, String, boolean) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "hemisphere",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "norm",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -205,7 +157,7 @@
         }
       ],
       "documentation": "Java method: getAnnotatedLength",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -218,10 +170,18 @@
       "name": "getAnnotatedLengthHistogram",
       "overloads": [
         {
+          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
+          "params": [],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getAnnotatedLengthHistogram(int) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -234,25 +194,17 @@
           "throws": {}
         },
         {
-          "signature": "getAnnotatedLengthHistogram() -> SNTChart",
-          "params": [],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "getAnnotatedLengthHistogram(int, String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "hemisphere",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -280,7 +232,7 @@
           "signature": "getAnnotatedLengthsByHemisphere(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
@@ -294,7 +246,7 @@
         }
       ],
       "documentation": "Java method: getAnnotatedLengthsByHemisphere",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -307,10 +259,18 @@
       "name": "getAnnotations",
       "overloads": [
         {
+          "signature": "getAnnotations() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getAnnotations(int) -> Set",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the max. ontological depth of the compartments to be retrieved",
@@ -319,20 +279,12 @@
           ],
           "return_type": "Set[Any]",
           "java_return_type": "Set",
-          "return_description": "the set of brain compartments (BrainAnnotations)",
-          "throws": {}
-        },
-        {
-          "signature": "getAnnotations() -> Set",
-          "params": [],
-          "return_type": "Set[Any]",
-          "java_return_type": "Set",
-          "return_description": "",
+          "return_description": "the set of brain compartments (`BrainAnnotation`s)",
           "throws": {}
         }
       ],
       "documentation": "Java method: getAnnotations",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -468,7 +420,7 @@
           "signature": "getBoxPlot(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "measurement",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (N_NODES, NODE_RADIUS, etc.)",
@@ -507,7 +459,7 @@
           "signature": "getBranchPoints(BrainAnnotation) -> Set",
           "params": [
             {
-              "name": "arg0",
+              "name": "annot",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
@@ -523,14 +475,14 @@
           "signature": "getBranchPoints(BrainAnnotation, boolean) -> Set",
           "params": [
             {
-              "name": "arg0",
+              "name": "annot",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "includeChildren",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -544,7 +496,7 @@
         }
       ],
       "documentation": "Java method: getBranchPoints",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -566,7 +518,7 @@
         }
       ],
       "documentation": "Java method: getBranches",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -590,7 +542,7 @@
           "signature": "getCableLength(BrainAnnotation) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the query compartment (null not allowed). All of its children will be considered",
@@ -606,14 +558,14 @@
           "signature": "getCableLength(BrainAnnotation, boolean) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "includeChildren",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -627,7 +579,7 @@
         }
       ],
       "documentation": "Java method: getCableLength",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -638,19 +590,12 @@
       "name": "getCableLengthNorm",
       "overloads": [
         {
-          "signature": "getCableLengthNorm(BrainAnnotation, boolean) -> double",
+          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "bool",
-              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -661,12 +606,19 @@
           "throws": {}
         },
         {
-          "signature": "getCableLengthNorm(BrainAnnotation) -> double",
+          "signature": "getCableLengthNorm(BrainAnnotation, boolean) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -686,52 +638,12 @@
       "examples": []
     },
     {
-      "name": "getCancelReason",
-      "overloads": [
-        {
-          "signature": "getCancelReason() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getCancelReason",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getContext",
-      "overloads": [
-        {
-          "signature": "getContext() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getContext",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "getConvexAnalyzer",
       "overloads": [
         {
           "signature": "getConvexAnalyzer() -> ConvexHullAnalyzer",
           "params": [],
-          "return_type": "Any",
+          "return_type": "ConvexHullAnalyzer",
           "java_return_type": "ConvexHullAnalyzer",
           "return_description": "",
           "throws": {}
@@ -752,7 +664,7 @@
           "signature": "getConvexHullMetric(String) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -800,7 +712,7 @@
           "signature": "getDescriptiveStats(String) -> DescriptiveStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (TreeStatistics.N_NODES, TreeStatistics.NODE_RADIUS, etc.)",
@@ -814,7 +726,7 @@
         }
       ],
       "documentation": "Java method: getDescriptiveStats",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -825,33 +737,42 @@
       "name": "getFlowPlot",
       "overloads": [
         {
-          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
+          "signature": "getFlowPlot(String, Collection) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
+              "javadoc_name": "feature"
+            },
+            {
+              "name": "annotations",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "TreeStatistics.getAllMetrics()"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the SNTChart holding the flow plot",
+          "throws": {}
+        },
+        {
+          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "params": [
+            {
+              "name": "feature",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "depth",
               "type": "int",
               "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "float",
-              "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "bool",
-              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -865,21 +786,21 @@
           "signature": "getFlowPlot(String, Collection, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "normalize",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -892,42 +813,33 @@
           "throws": {}
         },
         {
-          "signature": "getFlowPlot(String, int) -> SNTChart",
+          "signature": "getFlowPlot(String, int, double, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the feature (\"Cable length\", \"No. of branch points\", \"No. of tips\", etc.). Note that the majority of TreeStatistics.getAllMetrics() metrics are currently not supported.",
-              "javadoc_name": "feature"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": "TreeStatistics.getAllMetrics()"
-            }
-          ],
-          "return_type": "SNTChart",
-          "java_return_type": "SNTChart",
-          "return_description": "the SNTChart holding the flow plot",
-          "throws": {}
-        },
-        {
-          "signature": "getFlowPlot(String, Collection) -> SNTChart",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "List[Any]",
-              "java_type": "Collection",
+              "name": "depth",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "cutoff",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "normalize",
+              "type": "bool",
+              "java_type": "boolean",
               "description": "",
               "javadoc_name": null
             }
@@ -941,35 +853,35 @@
           "signature": "getFlowPlot(String, Collection, String, double, boolean) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "feature",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "annotations",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "statistic",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "cutoff",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg4",
+              "name": "normalize",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -983,7 +895,7 @@
         }
       ],
       "documentation": "Java method: getFlowPlot",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1077,7 +989,7 @@
           "signature": "getHistogram(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (TreeStatistics.N_NODES, TreeStatistics.NODE_RADIUS, etc.)",
@@ -1091,7 +1003,7 @@
         }
       ],
       "documentation": "Java method: getHistogram",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1111,7 +1023,7 @@
         }
       ],
       "documentation": "Java method: getInnerBranches",
-      "javadoc_description": "Description copied from class: TreeStatistics",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1149,7 +1061,7 @@
           "signature": "getMetric(String) -> Number",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -1171,20 +1083,1332 @@
       "examples": []
     },
     {
-      "name": "static getMetrics",
+      "name": "getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
           "return_description": "the list of supported metric names",
           "throws": {}
+        },
+        {
+          "signature": "getMetrics(String) -> List",
+          "params": [
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static getMetrics",
+      "documentation": "Java method: getMetrics",
       "javadoc_description": "Gets the list of metrics supported by MultiTreeStatistics.\n\nReturns all the metrics that can be computed for groups of trees, including aggregate measures and group-specific statistics.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNBranchPoints",
+      "overloads": [
+        {
+          "signature": "getNBranchPoints(BrainAnnotation) -> int",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNBranchPoints(BrainAnnotation, boolean) -> int",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNBranchPoints",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNBranchPointsNorm",
+      "overloads": [
+        {
+          "signature": "getNBranchPointsNorm(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNBranchPointsNorm(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNBranchPointsNorm",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNBranches",
+      "overloads": [
+        {
+          "signature": "getNBranches() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNBranches",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNNodes",
+      "overloads": [
+        {
+          "signature": "getNNodes() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNNodes",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNPaths",
+      "overloads": [
+        {
+          "signature": "getNPaths() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNPaths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNTips",
+      "overloads": [
+        {
+          "signature": "getNTips(BrainAnnotation) -> int",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNTips(BrainAnnotation, boolean) -> int",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNTips",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNTipsNorm",
+      "overloads": [
+        {
+          "signature": "getNTipsNorm(BrainAnnotation) -> double",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNTipsNorm(BrainAnnotation, boolean) -> double",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNTipsNorm",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNoSpinesOrVaricosities",
+      "overloads": [
+        {
+          "signature": "getNoSpinesOrVaricosities() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNoSpinesOrVaricosities",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeStatistics",
+      "overloads": [
+        {
+          "signature": "getNodeStatistics() -> NodeStatistics",
+          "params": [],
+          "return_type": "NodeStatistics",
+          "java_return_type": "NodeStatistics",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getNodeStatistics(String) -> NodeStatistics",
+          "params": [
+            {
+              "name": "type",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "NodeStatistics",
+          "java_return_type": "NodeStatistics",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeStatistics",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getParsedTree",
+      "overloads": [
+        {
+          "signature": "getParsedTree() -> Tree",
+          "params": [],
+          "return_type": "Tree",
+          "java_return_type": "Tree",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getParsedTree",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPartitionAsymmetry",
+      "overloads": [
+        {
+          "signature": "getPartitionAsymmetry() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPartitionAsymmetry",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPolarHistogram",
+      "overloads": [
+        {
+          "signature": "getPolarHistogram(String) -> SNTChart",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the metric to be plotted (e.g., TreeStatistics.BRANCH_EXTENSION_ANGLE_XY, TreeStatistics.PATH_EXT_ANGLE_XY, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "SNTChart",
+          "java_return_type": "SNTChart",
+          "return_description": "the polar histogram chart",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPolarHistogram",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "TreeStatistics.getHistogram(String)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPrimaryBranches",
+      "overloads": [
+        {
+          "signature": "getPrimaryBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the primary branches. Note that these branches (Path segments) will not carry any connectivity information.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrimaryBranches",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "TreeStatistics.getPrimaryPaths()",
+        "StrahlerAnalyzer.getRootAssociatedBranches()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getPrimaryLength",
+      "overloads": [
+        {
+          "signature": "getPrimaryLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrimaryLength",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPrimaryPaths",
+      "overloads": [
+        {
+          "signature": "getPrimaryPaths() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrimaryPaths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRawValues",
+      "overloads": [
+        {
+          "signature": "getRawValues(String) -> SNTTable",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRawValues",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRemoteBifAngles",
+      "overloads": [
+        {
+          "signature": "getRemoteBifAngles() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRemoteBifAngles",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRootAngleAnalyzer",
+      "overloads": [
+        {
+          "signature": "getRootAngleAnalyzer() -> RootAngleAnalyzer",
+          "params": [],
+          "return_type": "RootAngleAnalyzer",
+          "java_return_type": "RootAngleAnalyzer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRootAngleAnalyzer",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRootAngleMetric",
+      "overloads": [
+        {
+          "signature": "getRootAngleMetric(String) -> double",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRootAngleMetric",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getShollAnalyzer",
+      "overloads": [
+        {
+          "signature": "getShollAnalyzer() -> ShollAnalyzer",
+          "params": [],
+          "return_type": "ShollAnalyzer",
+          "java_return_type": "ShollAnalyzer",
+          "return_description": "the ShollAnalyzer instance associated with this TreeStatistics instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getShollAnalyzer",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSpineOrVaricosityDensity",
+      "overloads": [
+        {
+          "signature": "getSpineOrVaricosityDensity() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpineOrVaricosityDensity",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStrahlerAnalyzer",
+      "overloads": [
+        {
+          "signature": "getStrahlerAnalyzer() -> StrahlerAnalyzer",
+          "params": [],
+          "return_type": "StrahlerAnalyzer",
+          "java_return_type": "StrahlerAnalyzer",
+          "return_description": "the StrahlerAnalyzer instance associated with this TreeStatistics instance",
+          "throws": {
+            "IllegalArgumentException": "- if tree contains multiple roots or loops"
+          }
+        }
+      ],
+      "documentation": "Java method: getStrahlerAnalyzer",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStrahlerBifurcationRatio",
+      "overloads": [
+        {
+          "signature": "getStrahlerBifurcationRatio() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStrahlerBifurcationRatio",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStrahlerNumber",
+      "overloads": [
+        {
+          "signature": "getStrahlerNumber() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStrahlerNumber",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSummaryStats",
+      "overloads": [
+        {
+          "signature": "getSummaryStats(String) -> SummaryStatistics",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the measurement (TreeStatistics.N_NODES, TreeStatistics.NODE_RADIUS, etc.)",
+              "javadoc_name": "metric"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SummaryStatistics",
+          "return_description": "the SummaryStatistics object.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSummaryStats",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTable",
+      "overloads": [
+        {
+          "signature": "getTable() -> DefaultGenericTable",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "DefaultGenericTable",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTable",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTerminalBranches",
+      "overloads": [
+        {
+          "signature": "getTerminalBranches() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the terminal branches. Note that as per `Path.getSection(int, int)`, these branches will not carry any connectivity information.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTerminalBranches",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "TreeStatistics.getPrimaryBranches()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getTerminalLength",
+      "overloads": [
+        {
+          "signature": "getTerminalLength() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTerminalLength",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTips",
+      "overloads": [
+        {
+          "signature": "getTips() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "the set of terminal points",
+          "throws": {}
+        },
+        {
+          "signature": "getTips(BrainAnnotation) -> Set",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTips(double) -> Set",
+          "params": [
+            {
+              "name": "minDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTips(BrainAnnotation, boolean) -> Set",
+          "params": [
+            {
+              "name": "annot",
+              "type": "Any",
+              "java_type": "BrainAnnotation",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "includeChildren",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getTips(double, double) -> Set",
+          "params": [
+            {
+              "name": "minDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTips",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUnit",
+      "overloads": [
+        {
+          "signature": "getUnit(String) -> String",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getUnit(String, String, boolean) -> String",
+          "params": [
+            {
+              "name": "metric",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spatialUnit",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "is3D",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUnit",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getWidth",
+      "overloads": [
+        {
+          "signature": "getWidth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getWidth",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isExactMetricMatch",
+      "overloads": [
+        {
+          "signature": "isExactMetricMatch() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isExactMetricMatch",
+      "javadoc_description": "The group is 3D if any of its (non-empty) trees is",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isValid",
+      "overloads": [
+        {
+          "signature": "isValid() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isValid",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "main",
+      "overloads": [
+        {
+          "signature": "main(String[]) -> void",
+          "params": [
+            {
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "- command line arguments (not used)",
+              "javadoc_name": "args"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: main",
+      "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a MultiTreeStatistics instance using demo data and displays various analysis plots including histograms and flow plots. This method is primarily used for development and debugging.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "measure",
+      "overloads": [
+        {
+          "signature": "measure(Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "metrics",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "groupByType",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "measure(String, Collection, boolean) -> void",
+          "params": [
+            {
+              "name": "rowHeader",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "metrics",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "groupByType",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: measure",
+      "javadoc_description": "",
       "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resetRestrictions",
+      "overloads": [
+        {
+          "signature": "resetRestrictions() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resetRestrictions",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "restrictToSWCType",
+      "overloads": [
+        {
+          "signature": "restrictToSWCType(int[]) -> void",
+          "params": [
+            {
+              "name": "types",
+              "type": "List[int]",
+              "java_type": "int[]",
+              "description": "- the allowed SWC flags (e.g., Path.SWC_AXON, etc.)",
+              "javadoc_name": "types"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: restrictToSWCType",
+      "javadoc_description": "Description copied from class: `TreeStatistics`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "run",
+      "overloads": [
+        {
+          "signature": "run() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: run",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setExactMetricMatch",
+      "overloads": [
+        {
+          "signature": "setExactMetricMatch(boolean) -> void",
+          "params": [
+            {
+              "name": "exactMetricMatch",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setExactMetricMatch",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLabel",
+      "overloads": [
+        {
+          "signature": "setLabel(String) -> void",
+          "params": [
+            {
+              "name": "groupLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the identifying string for the group.",
+              "javadoc_name": "groupLabel"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLabel",
+      "javadoc_description": "Sets an identifying label for the group of Trees being analyzed.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTable",
+      "overloads": [
+        {
+          "signature": "setTable(GenericTable) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setTable(GenericTable, String) -> void",
+          "params": [
+            {
+              "name": "table",
+              "type": "Any",
+              "java_type": "GenericTable",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTable",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "summarize",
+      "overloads": [
+        {
+          "signature": "summarize(boolean) -> void",
+          "params": [
+            {
+              "name": "groupByType",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "summarize(String, boolean) -> void",
+          "params": [
+            {
+              "name": "rowHeader",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "groupByType",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: summarize",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateAndDisplayTable",
+      "overloads": [
+        {
+          "signature": "updateAndDisplayTable() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateAndDisplayTable",
+      "javadoc_description": "",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -1200,7 +2424,7 @@
           "signature": "MultiTreeStatistics(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "group",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -1209,27 +2433,27 @@
           "java_return_type": "void"
         },
         {
-          "signature": "MultiTreeStatistics(Collection, String)",
+          "signature": "MultiTreeStatistics(Collection, String[])",
           "params": [
             {
-              "name": "arg0",
+              "name": "group",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String"
+              "name": "swcTypes",
+              "type": "List[str]",
+              "java_type": "String[]"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MultiTreeStatistics"
+      "documentation": "Constructors of MultiTreeStatistics"
     }
   ],
-  "javadoc_description": "Computes summary and descriptive statistics from univariate properties of Tree groups. For analysis of individual Trees use TreeStatistics.",
+  "javadoc_description": "Computes summary and descriptive statistics from univariate properties of `Tree` groups. For analysis of individual Trees use `TreeStatistics`.",
   "inheritance": {
     "extends": [
       "TreeStatistics"
@@ -1240,35 +2464,35 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
+    "StrahlerAnalyzer.getBranches()",
+    "TreeStatistics.getPrimaryBranches()",
+    "getMetrics()",
+    "AllenCompartment.getOntologyDepth()",
+    "TreeStatistics.getPrimaryPaths()",
+    "TreeStatistics.getMetric(String)",
+    "StrahlerAnalyzer.getRootAssociatedBranches()",
+    "TreeStatistics.getHistogram(String)",
+    "AllenCompartment",
     "StrahlerAnalyzer.getHighestBranchOrder()",
     "TreeStatistics",
-    "AllenCompartment",
-    "StrahlerAnalyzer.getBranches()",
-    "Constant Field Values",
-    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)",
-    "TreeStatistics.getPrimaryPaths()",
-    "getMetrics()",
-    "TreeStatistics.getPrimaryBranches()",
-    "TreeStatistics.getMetric(String)",
-    "TreeStatistics.getHistogram(String)",
-    "StrahlerAnalyzer.getRootAssociatedBranches()",
-    "AllenCompartment.getOntologyDepth()"
+    "TreeStatistics.getFlowPlot(String, Collection, String, double, boolean)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 35,
-      "total_json_methods": 36,
-      "total_matches": 28,
-      "exact_matches": 21,
-      "signature_matches": 7,
+      "total_javadoc_methods": 36,
+      "total_json_methods": 75,
+      "total_matches": 35,
+      "exact_matches": 33,
+      "signature_matches": 2,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 7,
-      "unmatched_json": 8,
-      "match_percentage": 80.0
+      "unmatched_javadoc": 1,
+      "unmatched_json": 40,
+      "match_percentage": 97.2
     },
-    "unmatched_javadoc_methods": 7,
-    "unmatched_json_methods": 19,
-    "enhancement_quality_score": 0.82
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 48,
+    "enhancement_quality_score": 1.0
   }
 }

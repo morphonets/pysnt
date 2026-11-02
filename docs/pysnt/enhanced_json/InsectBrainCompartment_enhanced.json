@@ -1,9 +1,9 @@
 {
   "class_name": "InsectBrainCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-09-27T23:00:59.876365",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.368641",
+  "extracted_at": "2026-11-02T00:24:01.641276",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.308790",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -19,7 +19,7 @@
         }
       ],
       "documentation": "Java method: acronym",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -30,16 +30,16 @@
       "name": "aliases",
       "overloads": [
         {
-          "signature": "aliases() -> String;",
+          "signature": "aliases() -> String[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "String;",
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: aliases",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -59,8 +59,36 @@
         }
       ],
       "documentation": "Java method: color",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -73,7 +101,7 @@
           "signature": "getAncestor(int) -> BrainAnnotation",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ancestor level as negative 1-based index. E.g.,",
@@ -87,7 +115,7 @@
         }
       ],
       "documentation": "Java method: getAncestor",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -100,14 +128,14 @@
         {
           "signature": "getMesh() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getMesh",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -127,7 +155,7 @@
         }
       ],
       "documentation": "Java method: getOntologyDepth",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -147,7 +175,27 @@
         }
       ],
       "documentation": "Java method: getParent",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -167,7 +215,7 @@
         }
       ],
       "documentation": "Java method: id",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -181,7 +229,7 @@
           "signature": "isChildOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
@@ -195,7 +243,7 @@
         }
       ],
       "documentation": "Java method: isChildOf",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -215,7 +263,7 @@
         }
       ],
       "documentation": "Java method: isMeshAvailable",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -229,7 +277,7 @@
           "signature": "isParentOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "parentCompartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
@@ -243,7 +291,7 @@
         }
       ],
       "documentation": "Java method: isParentOf",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -263,7 +311,7 @@
         }
       ],
       "documentation": "Java method: name",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -293,18 +341,18 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 27,
-      "total_json_methods": 12,
-      "total_matches": 12,
-      "exact_matches": 12,
+      "total_json_methods": 14,
+      "total_matches": 14,
+      "exact_matches": 14,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 15,
+      "unmatched_javadoc": 13,
       "unmatched_json": 0,
-      "match_percentage": 44.4
+      "match_percentage": 51.9
     },
-    "unmatched_javadoc_methods": 15,
+    "unmatched_javadoc_methods": 13,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.533
+    "enhancement_quality_score": 0.623
   }
 }

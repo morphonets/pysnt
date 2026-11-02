@@ -1,134 +1,17 @@
 {
   "class_name": "PathProfiler",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.743336",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.410862",
+  "extracted_at": "2026-11-02T00:24:01.675131",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.365747",
   "enhancement_version": "1.0.0",
   "methods": [
-    {
-      "name": "addInput",
-      "overloads": [
-        {
-          "signature": "addInput(String, Class) -> MutableModuleItem",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "type",
-              "java_type": "Class",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleItem",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "addInput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addInput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addOutput",
-      "overloads": [
-        {
-          "signature": "addOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "addOutput(String, Class) -> MutableModuleItem",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "type",
-              "java_type": "Class",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleItem",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addOutput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
     {
       "name": "assignValues",
       "overloads": [
         {
-          "signature": "assignValues(Path, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "assignValues() -> void",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
@@ -138,7 +21,7 @@
           "signature": "assignValues(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "p",
               "type": "Path",
               "java_type": "Path",
               "description": "- the Path to be profiled",
@@ -153,18 +36,63 @@
           }
         },
         {
-          "signature": "assignValues() -> void",
-          "params": [],
+          "signature": "assignValues(int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
         },
         {
-          "signature": "assignValues(int) -> void",
+          "signature": "assignValues(Path, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "assignValues(Path, int, int) -> void",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -178,7 +106,7 @@
         }
       ],
       "documentation": "Java method: assignValues",
-      "javadoc_description": "Retrieves pixel intensities at each node of the Path storing them as Path values",
+      "javadoc_description": "Retrieves pixel intensities at each node of the Path storing them as Path `values`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -191,24 +119,24 @@
       "name": "cancel",
       "overloads": [
         {
-          "signature": "cancel(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "cancel() -> void",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
         },
         {
-          "signature": "cancel() -> void",
-          "params": [],
+          "signature": "cancel(String) -> void",
+          "params": [
+            {
+              "name": "reason",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void",
           "return_description": "",
@@ -224,48 +152,28 @@
       "examples": []
     },
     {
-      "name": "context",
-      "overloads": [
-        {
-          "signature": "context() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: context",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "findMaxima",
       "overloads": [
         {
-          "signature": "findMaxima(Path, int) -> [I",
+          "signature": "findMaxima(Path, int) -> int[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path",
               "description": "- the channel to be parsed (base-0 index)",
               "javadoc_name": "channel"
             },
             {
-              "name": "arg1",
+              "name": "channel",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[I",
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
           "return_description": "the indices of the maxima",
           "throws": {}
         }
@@ -282,25 +190,25 @@
       "name": "findMinima",
       "overloads": [
         {
-          "signature": "findMinima(Path, int) -> [I",
+          "signature": "findMinima(Path, int) -> int[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path",
               "description": "- the channel to be parsed (base-0 index)",
               "javadoc_name": "channel"
             },
             {
-              "name": "arg1",
+              "name": "channel",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[I",
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
           "return_description": "the indices of the minima",
           "throws": {}
         }
@@ -314,191 +222,48 @@
       "examples": []
     },
     {
-      "name": "getCancelReason",
+      "name": "getMultiFrameProfile",
       "overloads": [
         {
-          "signature": "getCancelReason() -> String",
-          "params": [],
-          "return_type": "str",
-          "java_return_type": "String",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getCancelReason",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getContext",
-      "overloads": [
-        {
-          "signature": "getContext() -> Context",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Context",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getContext",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getDelegateObject",
-      "overloads": [
-        {
-          "signature": "getDelegateObject() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getDelegateObject",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getInfo",
-      "overloads": [
-        {
-          "signature": "getInfo() -> DynamicCommandInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "DynamicCommandInfo",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getInfo() -> MutableModuleInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "MutableModuleInfo",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "getInfo() -> ModuleInfo",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "ModuleInfo",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getInfo",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getInput",
-      "overloads": [
-        {
-          "signature": "getInput(String) -> Object",
+          "signature": "getMultiFrameProfile(List, int, int, boolean) -> double[][]",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getInput",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getInputs",
-      "overloads": [
-        {
-          "signature": "getInputs() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getInputs",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getOutput",
-      "overloads": [
-        {
-          "signature": "getOutput(String) -> Object",
-          "params": [
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- ordered list of paths, one per time frame",
+              "javadoc_name": "paths"
+            },
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
               "description": "",
-              "javadoc_name": null
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "normalizeDistance",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_3"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "return_description": "a 2D array [nPaths][nSamples] of intensity values",
           "throws": {}
         }
       ],
-      "documentation": "Java method: getOutput",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "getOutputs",
-      "overloads": [
-        {
-          "signature": "getOutputs() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: getOutputs",
-      "javadoc_description": "",
+      "documentation": "Java method: getMultiFrameProfile",
+      "javadoc_description": "Builds a multi-frame intensity profile matrix from a list of matched paths (one per time frame, ordered by frame number), suitable for kymograph-style visualization via \n```\nSNTChart.showHeatmap(double[][], net.imglib2.display.ColorTable, java.lang.String...)\n```\n.\n\nThe returned matrix has dimensions [nPaths][nSamples], where `matrix[i][j]` is the interpolated intensity at distance sample j for the i-th path. Entries beyond a path's actual length are `Double.NaN`.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -517,12 +282,12 @@
           "throws": {}
         },
         {
-          "signature": "getPlot(int) -> Plot",
+          "signature": "getPlot(Path) -> Plot",
           "params": [
             {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
               "description": "",
               "javadoc_name": null
             }
@@ -533,12 +298,12 @@
           "throws": {}
         },
         {
-          "signature": "getPlot(Path) -> Plot",
+          "signature": "getPlot(int) -> Plot",
           "params": [
             {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path",
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -558,13 +323,141 @@
       "examples": []
     },
     {
+      "name": "getResampledValues",
+      "overloads": [
+        {
+          "signature": "getResampledValues(Path, int, int, double) -> double[]",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to profile (values are assigned if not yet set)",
+              "javadoc_name": "p"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "gridMax",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "array of length `nSamples` with interpolated intensities",
+          "throws": {}
+        },
+        {
+          "signature": "getResampledValues(Path, int, int, int, double) -> double[]",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nSamples",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "gridMax",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getResampledValues",
+      "javadoc_description": "Resamples the intensity profile of a path onto a uniform distance grid via linear interpolation. Entries beyond the path's actual length are set to `Double.NaN`, which allows variable-length paths to be compared in the same matrix without padding with zeros.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTimeProfile",
+      "overloads": [
+        {
+          "signature": "getTimeProfile(Path, int) -> List",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to be profiled",
+              "javadoc_name": "path"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of profile values (one entry per frame)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTimeProfile",
+      "javadoc_description": "Gets the time profile for the specified path as a list of `getValues(Path, int, int)` profiles, with one entry per frame of the dataset.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getValues",
       "overloads": [
         {
           "signature": "getValues(Path) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "p",
               "type": "Path",
               "java_type": "Path",
               "description": "- the path to be profiled",
@@ -580,14 +473,44 @@
           "signature": "getValues(Path, int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "p",
               "type": "Path",
               "java_type": "Path",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getValues(Path, int, int) -> Map",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -601,7 +524,7 @@
         }
       ],
       "documentation": "Java method: getValues",
-      "javadoc_description": "Gets the profile for the specified path as a map of lists, with distances (or indices) stored under X_VALUES (\"x-values\") and intensities under Y_VALUES (\"y-values\").",
+      "javadoc_description": "Gets the profile for the specified path as a map of lists, with distances (or indices) stored under `X_VALUES` (\"x-values\") and intensities under `Y_VALUES` (\"y-values\").",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -612,10 +535,18 @@
       "name": "getXYPlot",
       "overloads": [
         {
+          "signature": "getXYPlot() -> XYPlot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "XYPlot",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getXYPlot(int) -> XYPlot",
           "params": [
             {
-              "name": "arg0",
+              "name": "channel",
               "type": "int",
               "java_type": "int",
               "description": "- the channel to be parsed (base-0 index)",
@@ -628,39 +559,11 @@
           "throws": {
             "IllegalArgumentException": ""
           }
-        },
-        {
-          "signature": "getXYPlot() -> XYPlot",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "XYPlot",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: getXYPlot",
-      "javadoc_description": "Gets the plot profile as an PlotService plot. It is recommended to call `DynamicCommand.setContext(org.scijava.Context)` beforehand.",
+      "javadoc_description": "Gets the plot profile as an `PlotService` plot. It is recommended to call `DynamicCommand.setContext(org.scijava.Context)` beforehand.",
       "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "initialize",
-      "overloads": [
-        {
-          "signature": "initialize() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: initialize",
-      "javadoc_description": "",
-      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -687,99 +590,15 @@
       "examples": []
     },
     {
-      "name": "isInputResolved",
+      "name": "main",
       "overloads": [
         {
-          "signature": "isInputResolved(String) -> boolean",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: isInputResolved",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "isOutputResolved",
-      "overloads": [
-        {
-          "signature": "isOutputResolved(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: isOutputResolved",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "isResolved",
-      "overloads": [
-        {
-          "signature": "isResolved(String) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: isResolved",
-      "javadoc_description": "",
-      "category": "Getters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "static main",
-      "overloads": [
-        {
-          "signature": "static main(String;) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -790,139 +609,7 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
-      "javadoc_description": "",
-      "category": "Static Methods",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "preview",
-      "overloads": [
-        {
-          "signature": "preview() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: preview",
-      "javadoc_description": "",
-      "category": "Visualization",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "removeInput",
-      "overloads": [
-        {
-          "signature": "removeInput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: removeInput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "removeOutput",
-      "overloads": [
-        {
-          "signature": "removeOutput(ModuleItem) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ModuleItem",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: removeOutput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "resolveInput",
-      "overloads": [
-        {
-          "signature": "resolveInput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: resolveInput",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "resolveOutput",
-      "overloads": [
-        {
-          "signature": "resolveOutput(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: resolveOutput",
+      "documentation": "Java method: main",
       "javadoc_description": "",
       "category": "Utilities",
       "deprecated": false,
@@ -951,106 +638,15 @@
       "examples": []
     },
     {
-      "name": "setContext",
-      "overloads": [
-        {
-          "signature": "setContext(Context) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setContext",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "setInput",
-      "overloads": [
-        {
-          "signature": "setInput(String, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- Either ProfileProcessor.Shape",
-              "javadoc_name": "shape"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": "ProfileProcessor.Shape"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setInput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "setInputs",
-      "overloads": [
-        {
-          "signature": "setInputs(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setInputs",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "setMetric",
       "overloads": [
         {
-          "signature": "setMetric(ProfileProcessor$Metric) -> void",
+          "signature": "setMetric(Metric) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "Any",
-              "java_type": "ProfileProcessor$Metric",
+              "java_type": "Metric",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -1076,7 +672,7 @@
           "signature": "setNodeIndicesAsDistances(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "nodeIndices",
               "type": "bool",
               "java_type": "boolean",
               "description": "- If true, distances will be reported as indices.",
@@ -1090,70 +686,7 @@
         }
       ],
       "documentation": "Java method: setNodeIndicesAsDistances",
-      "javadoc_description": "Sets whether the profile abscissae should be reported in real-word units (the default) or node indices (zero-based). Must be called before calling getValues(Path), getPlot() or getXYPlot().",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "setOutput",
-      "overloads": [
-        {
-          "signature": "setOutput(String, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setOutput",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "setOutputs",
-      "overloads": [
-        {
-          "signature": "setOutputs(Map) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Dict[str, Any]",
-              "java_type": "Map",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: setOutputs",
-      "javadoc_description": "",
+      "javadoc_description": "Sets whether the profile abscissae should be reported in real-word units (the default) or node indices (zero-based). Must be called before calling `getValues(Path)`, `getPlot()` or `getXYPlot()`.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -1167,7 +700,7 @@
           "signature": "setRadius(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "radius",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -1187,6 +720,34 @@
       "since_version": null,
       "see_also": [],
       "examples": []
+    },
+    {
+      "name": "setShape",
+      "overloads": [
+        {
+          "signature": "setShape(Shape) -> void",
+          "params": [
+            {
+              "name": "shape",
+              "type": "Any",
+              "java_type": "Shape",
+              "description": "- Either ProfileProcessor.Shape",
+              "javadoc_name": "shape"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setShape",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
     }
   ],
   "fields": [],
@@ -1195,32 +756,21 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "PathProfiler(Path, Dataset)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Dataset"
-            }
-          ],
+          "signature": "PathProfiler()",
+          "params": [],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "PathProfiler(Tree, Dataset)",
+          "signature": "PathProfiler(Path, Dataset)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree"
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "dataset",
               "type": "Any",
               "java_type": "Dataset"
             }
@@ -1232,14 +782,31 @@
           "signature": "PathProfiler(Path, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathProfiler(Tree, Dataset)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "dataset",
+              "type": "Any",
+              "java_type": "Dataset"
             }
           ],
           "return_type": "None",
@@ -1249,12 +816,12 @@
           "signature": "PathProfiler(Tree, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             },
             {
-              "name": "arg1",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             }
@@ -1263,13 +830,34 @@
           "java_return_type": "void"
         },
         {
-          "signature": "PathProfiler()",
-          "params": [],
+          "signature": "PathProfiler(Tree, RandomAccessibleInterval, double[], String)",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree"
+            },
+            {
+              "name": "rai",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval"
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String"
+            }
+          ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PathProfiler"
+      "documentation": "Constructors of PathProfiler"
     }
   ],
   "javadoc_description": "Command to retrieve Path profiles (plots of voxel intensities values along a Path)",
@@ -1285,25 +873,25 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
     "Path.setNodeValues(double[])",
-    "CommonDynamicCmd",
-    "Constant Field Values"
+    "CommonDynamicCmd"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 30,
-      "total_json_methods": 38,
-      "total_matches": 25,
-      "exact_matches": 20,
-      "signature_matches": 5,
+      "total_json_methods": 17,
+      "total_matches": 27,
+      "exact_matches": 25,
+      "signature_matches": 2,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 5,
-      "unmatched_json": 13,
-      "match_percentage": 83.3
+      "unmatched_javadoc": 3,
+      "unmatched_json": -10,
+      "match_percentage": 90.0
     },
-    "unmatched_javadoc_methods": 5,
-    "unmatched_json_methods": 24,
-    "enhancement_quality_score": 0.916
+    "unmatched_javadoc_methods": 3,
+    "unmatched_json_methods": 1,
+    "enhancement_quality_score": 1.0
   }
 }

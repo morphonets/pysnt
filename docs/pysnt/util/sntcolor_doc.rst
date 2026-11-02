@@ -64,29 +64,34 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getDistinctColors(int)
+.. py:method:: getDistinctColors(int)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion
 
 
-.. py:method:: static getDistinctColorsAWT(int)
+.. py:method:: getDistinctColorsAWT(int)
 
    
 
 
-.. py:method:: static getDistinctColorsColorblindSafe(int)
+.. py:method:: getDistinctColorsColorblindSafe(int)
 
-   Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once nColors exceeds that count
-
-
-.. py:method:: static getDistinctColorsColorblindSafeAWT(int)
-
-   AWT variant of `getDistinctColorsColorblindSafe(int)`
+   Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once ``nColors`` exceeds that count
 
 
-.. py:method:: static getDistinctColorsHex(int)
+.. py:method:: getDistinctColorsColorblindSafeAWT(int)
+
+   AWT variant of ``getDistinctColorsColorblindSafe(int)``
+
+
+.. py:method:: getDistinctColorsHex(int)
 
    Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion
+
+
+.. py:method:: hashCode()
+
+   
 
 
 .. py:method:: isTypeDefined()
@@ -112,12 +117,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static alphaColor(Color, double)
+.. py:method:: alphaColor(Color, double)
 
    Adds an alpha component to an AWT color.
 
 
-.. py:method:: static average(Collection)
+.. py:method:: average(Collection)
 
    Averages a collection of colors
 
@@ -127,64 +132,74 @@ Other Methods
    Retrieves the AWT color
 
 
-.. py:method:: static colorBlindSafeBlue()
+.. py:method:: colorBlindSafeBlue()
 
    Returns the blue of the Okabe-Ito palette, safe against the most common forms of color blindness
 
 
-.. py:method:: static colorBlindSafeYellow()
+.. py:method:: colorBlindSafeYellow()
 
    Returns the yellow of the Okabe-Ito palette, safe against the most common forms of color blindness
 
 
-.. py:method:: static colorToString(Object)
+.. py:method:: colorToString(Object)
 
    Returns the color encoded as hex string with the format #rrggbbaa.
 
 
-.. py:method:: static contrastColor(Color)
+.. py:method:: contrastColor(Color)
 
    Returns a BW 'contrast' color
 
 
-.. py:method:: static contrastHueColor(Color, Color)
+.. py:method:: contrastHueColor(Color)
 
    Returns a 'contrasting' color using warm/cool contrast adjustments relatively to a second color reference.
 
 
-.. py:method:: static fromHex(String)
+.. py:method:: equals(Object)
+
+   
+
+
+.. py:method:: fromHex(String)
 
    Returns an AWT Color from a (#)RRGGBB(AA) hex string.
 
 
-.. py:method:: static fromString(String)
+.. py:method:: fromString(String)
 
    Returns an AWT Color from any css-valid co
 
 
-.. py:method:: static interpolateNullEntries(Color;)
+.. py:method:: interpolateNullEntries(Color[])
 
    Replaces null colors in an array with the average of flanking non-null colors.
 
 
-.. py:method:: static mix(Color, Color, double)
+.. py:method:: mix(Color, Color, double)
 
    Linearly mixes two colors together based on a specified weight, using a gamma-corrected linear blend by squaring the individual color channels before mixing
 
 
-.. py:method:: static okabeIto4Colors()
+.. py:method:: okabeIto4Colors()
 
    Returns a 4-color subset of the Okabe-Ito colorblind-safe palette
 
 
-.. py:method:: static okabeIto6Colors()
+.. py:method:: okabeIto6Colors()
 
    Returns the 6-color Okabe-Ito colorblind-safe palette
 
 
-.. py:method:: static oppositeColor(Color)
+.. py:method:: oppositeColor(Color)
 
    Returns a suitable 'opposite' color.
+
+
+.. py:method:: toString()
+
+   
 
 
 .. py:method:: type()
@@ -192,11 +207,11 @@ Other Methods
    Retrieves the SWC type
 
 
-.. py:method:: static valueOf(String)
+.. py:method:: valueOf(String)
 
    Parses a color from the given string.
 
-The following formats are supported: Hex format [HTML color codes starting with hash (#)], Color presets (e.g., 'blue', 'pink', 'silver', etc.), and integer triples of the form r,g,b, with each element in the range [0, 255].
+   The following formats are supported: Hex format [HTML color codes starting with hash (#)], Color presets (e.g., 'blue', 'pink', 'silver', etc.), and integer triples of the form r,g,b, with each element in the range [0, 255].
 
 
 See Also

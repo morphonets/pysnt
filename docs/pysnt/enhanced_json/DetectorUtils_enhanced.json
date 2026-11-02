@@ -1,0 +1,277 @@
+{
+  "class_name": "DetectorUtils",
+  "package": "sc.fiji.snt.analysis.detection",
+  "extracted_at": "2026-11-02T00:24:01.607185",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.312647",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "assignToNearestPaths",
+      "overloads": [
+        {
+          "signature": "assignToNearestPaths(List, Collection) -> List",
+          "params": [
+            {
+              "name": "detections",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "allPaths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: assignToNearestPaths",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "computeEDT",
+      "overloads": [
+        {
+          "signature": "computeEDT(RandomAccessibleInterval, int, double[]) -> Img",
+          "params": [
+            {
+              "name": "labelRAI",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "labelVal",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Img",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeEDT",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "deduplicate",
+      "overloads": [
+        {
+          "signature": "deduplicate(List, double) -> List",
+          "params": [
+            {
+              "name": "detections",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "mergingDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: deduplicate",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "interpolateRadius",
+      "overloads": [
+        {
+          "signature": "interpolateRadius(double[], int, double) -> double",
+          "params": [
+            {
+              "name": "radii",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "idx",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "fallback",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: interpolateRadius",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "prepareRadii",
+      "overloads": [
+        {
+          "signature": "prepareRadii(Path) -> double[]",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: prepareRadii",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sampleDistances",
+      "overloads": [
+        {
+          "signature": "sampleDistances(Collection, Img) -> double[]",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "edt",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sampleDistances",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sampleDistancesWithIndices",
+      "overloads": [
+        {
+          "signature": "sampleDistancesWithIndices(Path, Img) -> List",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "edt",
+              "type": "Any",
+              "java_type": "Img",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sampleDistancesWithIndices",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [],
+  "enhancement_metadata": {
+    "javadoc_available": false,
+    "categorization_only": true
+  }
+}

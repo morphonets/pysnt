@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Class for Convex Hull measurements of a Tree.
+Class for Convex Hull measurements of a ``Tree``.
 
 
 Methods
@@ -68,14 +68,14 @@ Getters Methods
 
    Gets the value of a specific convex hull metric.
 
-Retrieves the computed value for the specified metric name. The metric must be one of the supported metrics returned by supportedMetrics().
+   Retrieves the computed value for the specified metric name. The metric must be one of the supported metrics returned by ``supportedMetrics()``.
 
 
 .. py:method:: getAnalysis()
 
    Gets all computed convex hull analysis metrics.
 
-Returns a map containing all the computed convex hull metrics and their values. The metrics are computed lazily and cached for subsequent calls. If the hull cannot be computed, all metrics return NaN.
+   Returns a map containing all the computed convex hull metrics and their values. The metrics are computed lazily and cached for subsequent calls. If the hull cannot be computed, all metrics return NaN.
 
 
 .. py:method:: getBoundarySize()
@@ -86,11 +86,6 @@ Returns a map containing all the computed convex hull metrics and their values. 
 .. py:method:: getBoxivity()
 
    Gets the boxivity of the convex hull, which measures how box-like the convex hull is. Values closer to 1 indicate a more box-like shape.
-
-
-.. py:method:: getCancelReason()
-
-   
 
 
 .. py:method:: getCentroid()
@@ -143,18 +138,8 @@ Returns a map containing all the computed convex hull metrics and their values. 
    Returns the physical unit associated with the specified metric.
 
 
-.. py:method:: isCanceled()
-
-   
-
-
 Setters Methods
 ~~~~~~~~~~~~~~~
-
-
-.. py:method:: setContext(Context)
-
-   
 
 
 .. py:method:: setLabel(String)
@@ -164,11 +149,6 @@ Setters Methods
 
 Other Methods
 ~~~~~~~~~~~~~
-
-
-.. py:method:: cancel(String)
-
-   
 
 
 .. py:method:: context()
@@ -181,11 +161,11 @@ Other Methods
    
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    Main method for testing and demonstration purposes.
 
-Creates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.
+   Creates a ConvexHullAnalyzer instance using demo data and runs the analysis. This method is primarily used for development and debugging.
 
 
 .. py:method:: run()
@@ -193,7 +173,7 @@ Creates a ConvexHullAnalyzer instance using demo data and runs the analysis. Thi
    
 
 
-.. py:method:: static supportedMetrics()
+.. py:method:: supportedMetrics()
 
    Gets the list of metrics supported by ConvexHullAnalyzer.
 

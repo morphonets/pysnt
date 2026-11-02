@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Computes statistics from Tree groups.
+Computes statistics from ``Tree`` groups.
 
 
 Methods
@@ -69,7 +69,7 @@ Getters Methods
    Assembles a Box and Whisker Plot for the specified feature.
 
 
-.. py:method:: getFlowPlot(String, Collection, String, double, boolean)
+.. py:method:: getFlowPlot(String, int)
 
    Assembles a Flow plot (aka Sankey diagram) for the specified feature.
 
@@ -112,7 +112,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: addGroup(Collection, String, String;)
+.. py:method:: addGroup(Collection, String)
 
    Adds a comparison group to the analysis queue.
 
@@ -122,7 +122,7 @@ Other Methods
    Computes the one-way ANOVA P-value for all the groups being analyzed. It is assumed that data fulfills basic assumptions on normality, variance homogeneity, sample size, etc.
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 

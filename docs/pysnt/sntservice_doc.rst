@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt``
 
-Service for accessing and scripting the active instance of SNT.
+Service for accessing and scripting the active instance of ``SNT``.
 
 
 Methods
@@ -74,24 +74,9 @@ Getters Methods
    
 
 
-.. py:method:: getIdentifier()
-
-   
-
-
-.. py:method:: getInfo()
-
-   
-
-
 .. py:method:: getInstance()
 
-   Returns a reference to the active SNT instance.
-
-
-.. py:method:: getLocation()
-
-   
+   Returns a reference to the active ``SNT`` instance.
 
 
 .. py:method:: getOrCreateSciViewSNT()
@@ -101,7 +86,7 @@ Getters Methods
 
 .. py:method:: getPathAndFillManager()
 
-   Returns the PathAndFillManager associated with the current SNT instance.
+   Returns the ``PathAndFillManager`` associated with the current SNT instance.
 
 
 .. py:method:: getPaths()
@@ -114,12 +99,7 @@ Getters Methods
    
 
 
-.. py:method:: getPriority()
-
-   
-
-
-.. py:method:: getRecViewer(int)
+.. py:method:: getRecViewer()
 
    Returns a reference to an opened Reconstruction Viewer (standalone instance). *
 
@@ -136,7 +116,7 @@ Getters Methods
 
 .. py:method:: getStatistics(boolean)
 
-   Returns a TreeStatistics instance constructed from current Paths.
+   Returns a ``TreeStatistics`` instance constructed from current Paths.
 
 
 .. py:method:: getTable()
@@ -146,12 +126,12 @@ Getters Methods
 
 .. py:method:: getTree()
 
-   Gets the collection of paths listed in the Path Manager as a Tree object.
+   Gets the collection of paths listed in the Path Manager as a ``Tree`` object.
 
 
 .. py:method:: getTrees()
 
-   Gets the collection of paths listed in the Path Manager as a Tree object.
+   Gets the collection of paths listed in the Path Manager as a ``Tree`` object.
 
 
 .. py:method:: getUI()
@@ -159,9 +139,9 @@ Getters Methods
    Returns a reference to SNT's UI.
 
 
-.. py:method:: getVersion()
+.. py:method:: hasUnsavedPaths()
 
-   
+   Checks whether SNT holds paths that have not been saved.
 
 
 .. py:method:: isActive()
@@ -169,23 +149,9 @@ Getters Methods
    Gets whether SNT is running.
 
 
-Setters Methods
-~~~~~~~~~~~~~~~
+.. py:method:: isStreamMode()
 
-
-.. py:method:: setContext(Context)
-
-   
-
-
-.. py:method:: setInfo(PluginInfo)
-
-   
-
-
-.. py:method:: setPriority(double)
-
-   
+   Gets whether SNT is currently running in Stream mode ("SNT Stream"), i.e., tethered to a streamed dataset (N5/OME-Zarr/IMS/BDV-XML) via the Big Data Loader, with no in-core ``ImagePlus``/classic canvas available. Several script-facing APIs (ImagePlus-based snapshots, ROI-based inputs, ``SNT#rebuildDisplayCanvases()``, etc.) are not available in this mode. Scripts can use this method to detect that and abort/adapt early.
 
 
 Visualization Methods
@@ -218,7 +184,12 @@ I/O Operations Methods
 
 .. py:method:: loadTree(Tree)
 
-   Loads the specified tree. Note that if SNT has not been properly initialized, spatial calibration mismatches may occur. In that case, assign the spatial calibration of the image to {#@code Tree} using `Tree.assignImage(ImagePlus)`, before loading it.
+   Loads the specified tree. Note that if SNT has not been properly initialized, spatial calibration mismatches may occur. In that case, assign the spatial calibration of the image to {#@code Tree} using ``Tree.assignImage(ImagePlus)``, before loading it.
+
+
+.. py:method:: loadTrees(Collection)
+
+   Loads the specified collection of trees.
 
 
 .. py:method:: save(String)
@@ -235,22 +206,17 @@ Other Methods
    Assigns pixel intensities at each Path node, storing them as Path values. Assigned intensities are those of the channel and time point currently being traced. Assumes SNT has been initialized with a valid image.
 
 
-.. py:method:: compareTo(Object)
-
-   
-
-
-.. py:method:: context()
-
-   
-
-
 .. py:method:: demoImage(String)
 
    Returns one of the demo images bundled with SNT image associated with the demo (fractal) tree.
 
 
-.. py:method:: demoTree(String)
+.. py:method:: demoImgPlus(String)
+
+   Returns one of the demo images bundled with SNT as an ``ImgPlus``. This is the imglib2 counterpart of ``demoImage(String)``.
+
+
+.. py:method:: demoTree()
 
    Returns a demo tree.
 
@@ -270,19 +236,14 @@ Other Methods
    Quits SNT. Does nothing if SNT is currently not running.
 
 
-.. py:method:: initialize(ImagePlus, boolean)
+.. py:method:: initialize(boolean)
 
-   Initializes SNT from an ImgPlus image. This is the imglib2 counterpart of `initialize(ImagePlus, boolean)`.
-
-
-.. py:method:: log()
-
-   
+   Initializes SNT from an ``ImgPlus`` image. This is the imglib2 counterpart of ``initialize(ImagePlus, boolean)``.
 
 
-.. py:method:: registerEventHandlers()
+.. py:method:: requireVersion(String)
 
-   
+   Ensures the running SNT version meets a minimum requirement. This is analogous to IJ's ``requires()`` macro function.
 
 
 See Also

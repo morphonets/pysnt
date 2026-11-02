@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAllLoaders()
+.. py:method:: getAllLoaders()
 
    Gets the loaders for all the cells publicly available in the MouseLight database.
 
@@ -84,12 +84,12 @@ Getters Methods
    Gets all the data associated with this reconstruction as a JSON object.
 
 
-.. py:method:: static getNeuronCount()
+.. py:method:: getNeuronCount()
 
    Gets the number of cells publicly available in the MouseLight database.
 
 
-.. py:method:: getNodes(String)
+.. py:method:: getNodes()
 
    Script-friendly method to extract the nodes of a cellular compartment.
 
@@ -114,12 +114,12 @@ Getters Methods
    Gets the soma location for this neuron.
 
 
-.. py:method:: getTree(String)
+.. py:method:: getTree()
 
    Script-friendly method to extract the entire neuron as a collection of Paths.
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: isDatabaseAvailable()
 
    Checks whether a connection to the MouseLight database can be established.
 
@@ -128,7 +128,7 @@ I/O Operations Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: save(String)
+.. py:method:: save(File)
 
    Convenience method to save JSON data.
 
@@ -147,17 +147,17 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static demoTrees()
+.. py:method:: demoTrees()
 
    Returns a collection of four demo reconstructions NB: Data is cached locally. No internet connection required.
 
 
-.. py:method:: static extractNodes(InputStream, String)
+.. py:method:: extractNodes(File, String)
 
    
 
 
-.. py:method:: static extractTrees(File, String)
+.. py:method:: extractTrees(File, String)
 
    
 
@@ -167,7 +167,7 @@ Other Methods
    Checks if the neuron ID exists in the database.
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 

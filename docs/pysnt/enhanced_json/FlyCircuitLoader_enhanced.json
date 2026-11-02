@@ -1,9 +1,9 @@
 {
   "class_name": "FlyCircuitLoader",
   "package": "sc.fiji.snt.io",
-  "extracted_at": "2026-09-27T23:00:58.287670",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.330373",
+  "extracted_at": "2026-11-02T00:24:01.624811",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.297807",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "getReader(String) -> BufferedReader",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String",
               "description": "- the ID of the cell to be retrieved",
@@ -41,7 +41,7 @@
           "signature": "getReconstructionURL(String) -> String",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String",
               "description": "- the ID of the cell to be retrieved",
@@ -69,7 +69,7 @@
           "signature": "getTree(String) -> Tree",
           "params": [
             {
-              "name": "arg0",
+              "name": "cellId",
               "type": "str",
               "java_type": "String",
               "description": "- the ID of the cell to be retrieved",
@@ -78,7 +78,7 @@
           ],
           "return_type": "Tree",
           "java_return_type": "Tree",
-          "return_description": "the data for the specified cell as a Tree, or null if data could not be retrieved",
+          "return_description": "the data for the specified cell as a `Tree`, or null if data could not be retrieved",
           "throws": {}
         }
       ],
@@ -111,15 +111,15 @@
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -130,9 +130,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -151,7 +151,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for FlyCircuitLoader"
+      "documentation": "Constructors of FlyCircuitLoader"
     }
   ],
   "javadoc_description": "Absurdly simple importer for retrieving SWC data from FlyCircuit.",
@@ -168,8 +168,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "RemoteSWCLoader",
-    "Object"
+    "Object",
+    "RemoteSWCLoader"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

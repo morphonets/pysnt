@@ -64,105 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getCancelReason()
-
-   
-
-
-.. py:method:: getContext()
-
-   
-
-
-.. py:method:: getDelegateObject()
-
-   
-
-
-.. py:method:: getInfo()
-
-   
-
-
-.. py:method:: getInput(String)
-
-   
-
-
-.. py:method:: getInputs()
-
-   
-
-
-.. py:method:: getOutput(String)
-
-   
-
-
-.. py:method:: getOutputs()
-
-   
-
-
 .. py:method:: isCanceled()
-
-   
-
-
-.. py:method:: isInputResolved(String)
-
-   
-
-
-.. py:method:: isOutputResolved(String)
-
-   
-
-
-.. py:method:: isResolved(String)
-
-   
-
-
-Setters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: setContext(Context)
-
-   
-
-
-.. py:method:: setInput(String, Object)
-
-   
-
-
-.. py:method:: setInputs(Map)
-
-   
-
-
-.. py:method:: setOutput(String, Object)
-
-   
-
-
-.. py:method:: setOutputs(Map)
-
-   
-
-
-.. py:method:: setResolved(String, boolean)
-
-   
-
-
-Visualization Methods
-~~~~~~~~~~~~~~~~~~~~~
-
-
-.. py:method:: preview()
 
    
 
@@ -171,67 +73,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: addInput(String, Class)
-
-   
-
-
-.. py:method:: addOutput(ModuleItem)
-
-   
-
-
-.. py:method:: cancel(String)
-
-   
-
-
-.. py:method:: context()
-
-   
-
-
-.. py:method:: initialize()
-
-   
-
-
-.. py:method:: removeInput(ModuleItem)
-
-   
-
-
-.. py:method:: removeOutput(ModuleItem)
-
-   
-
-
-.. py:method:: resolveInput(String)
-
-   
-
-
-.. py:method:: resolveOutput(String)
+.. py:method:: cancel()
 
    
 
 
 .. py:method:: run()
-
-   
-
-
-.. py:method:: uncancel()
-
-   
-
-
-.. py:method:: unresolveInput(String)
-
-   
-
-
-.. py:method:: unresolveOutput(String)
 
    
 

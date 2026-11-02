@@ -53,11 +53,11 @@
 
 **Package:** ``sc.fiji.snt.util``
 
-Detects regions where two paths run parallel to each other for a sustained distance, complementary to CrossoverFinder (which catches brief perpendicular near-crossings). Common use case: identifying axons bundled along the same nerve, or a path that was inadvertently hijacked by signal from a neighboring neurite running side-by-side.
+Detects regions where two paths run *parallel* to each other for a sustained distance, complementary to ``CrossoverFinder`` (which catches brief perpendicular near-crossings). Common use case: identifying axons bundled along the same nerve, or a path that was inadvertently hijacked by signal from a neighboring neurite running side-by-side.
 
-This is a thin wrapper over CrossoverFinder: it reuses the entire grid/proximity/run-extraction pipeline and only inverts the angle filter. Where CrossoverFinder (with thetaMinDeg > 0) keeps only high-angle approaches (X-shaped crossings), BundleDetector uses thetaMaxDeg > 0 to keep only low-angle approaches (||-shaped sustained proximity). Defaults are also tuned for sustained runs: higher minRunNodes, similar proximity.
+This is a thin wrapper over ``CrossoverFinder``: it reuses the entire grid/proximity/run-extraction pipeline and only inverts the angle filter. Where ``CrossoverFinder`` (with ``thetaMinDeg > 0``) keeps only *high-angle* approaches (X-shaped crossings), ``BundleDetector`` uses ``thetaMaxDeg > 0`` to keep only *low-angle* approaches (||-shaped sustained proximity). Defaults are also tuned for sustained runs: higher ``minRunNodes``, similar ``proximity``.
 
-The output type is `CrossoverFinder.CrossoverEvent`: Callers should interpret the events as "bundled run" regions rather than crossings; the medianAngleDeg field will be small (parallel), and the index-window span will be wide (sustained).
+The output type is ``CrossoverFinder.CrossoverEvent``: Callers should interpret the events as "bundled run" regions rather than crossings; the ``medianAngleDeg`` field will be small (parallel), and the index-window span will be wide (sustained).
 
 
 Methods
@@ -68,13 +68,17 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static find(Collection, BundleDetector$Config)
+.. py:method:: find(Collection, Config)
 
-   Entry point: detect bundle events for a collection of paths using the given config. Internally constructs a `CrossoverFinder.Config` ith the inverted angle filter (`CrossoverFinder.Config.thetaMaxDeg` set, `CrossoverFinder.Config.thetaMinDeg` disabled) and delegates to 
-```
-CrossoverFinder.find(java.util.Collection<sc.fiji.snt.Path>, sc.fiji.snt.util.CrossoverFinder.Config)
-```
-.
+   Entry point: detect bundle events for a collection of paths using the given config. Internally constructs a ``CrossoverFinder.Config`` ith the inverted angle filter (``CrossoverFinder.Config.thetaMaxDeg`` set, ``CrossoverFinder.Config.thetaMinDeg`` disabled) and delegates to 
+
+
+   ::
+
+       CrossoverFinder.find(java.util.Collection<sc.fiji.snt.Path>, sc.fiji.snt.util.CrossoverFinder.Config)
+
+
+   .
 
 
 See Also

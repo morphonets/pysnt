@@ -1,9 +1,9 @@
 {
   "class_name": "SearchThread",
   "package": "sc.fiji.snt.tracing",
-  "extracted_at": "2026-01-02T22:36:44.948207",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.413852",
+  "extracted_at": "2026-11-02T00:24:01.719859",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.366284",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,14 +13,14 @@
           "signature": "addNode(DefaultSearchNode, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "n",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "fromStart",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -48,7 +48,7 @@
           "signature": "addProgressListener(SearchProgressCallback) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "callback",
               "type": "Any",
               "java_type": "SearchProgressCallback",
               "description": "- the callback to register",
@@ -62,7 +62,7 @@
         }
       ],
       "documentation": "Java method: addProgressListener",
-      "javadoc_description": "Description copied from class: AbstractSearch",
+      "javadoc_description": "Description copied from class: `AbstractSearch`",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -76,56 +76,56 @@
           "signature": "createNewNode(int, int, int, double, double, DefaultSearchNode, byte) -> DefaultSearchNode",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "g",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_3"
             },
             {
-              "name": "arg4",
+              "name": "h",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_4"
             },
             {
-              "name": "arg5",
-              "type": "Any",
+              "name": "predecessor",
+              "type": "DefaultSearchNode",
               "java_type": "DefaultSearchNode",
               "description": "",
               "javadoc_name": "param_5"
             },
             {
-              "name": "arg6",
+              "name": "searchStatus",
               "type": "int",
               "java_type": "byte",
               "description": "",
               "javadoc_name": "param_6"
             }
           ],
-          "return_type": "Any",
+          "return_type": "DefaultSearchNode",
           "java_return_type": "DefaultSearchNode",
           "return_description": "",
           "throws": {}
@@ -165,7 +165,7 @@
         {
           "signature": "getNodesAsImageFromGoal() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "",
           "throws": {}
@@ -185,7 +185,7 @@
         {
           "signature": "getNodesAsImageFromStart() -> SearchImageStack",
           "params": [],
-          "return_type": "Any",
+          "return_type": "SearchImageStack",
           "java_return_type": "SearchImageStack",
           "return_description": "",
           "throws": {}
@@ -232,7 +232,7 @@
         }
       ],
       "documentation": "Java method: pointsConsideredInSearch",
-      "javadoc_description": "Description copied from class: AbstractSearch",
+      "javadoc_description": "Description copied from class: `AbstractSearch`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -252,7 +252,7 @@
         }
       ],
       "documentation": "Java method: printStatus",
-      "javadoc_description": "Description copied from class: AbstractSearch",
+      "javadoc_description": "Description copied from class: `AbstractSearch`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -266,7 +266,7 @@
           "signature": "reportFinished(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -308,26 +308,7 @@
       "examples": []
     }
   ],
-  "fields": [
-    {
-      "name": "imgDepth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgDepth of type int"
-    },
-    {
-      "name": "imgHeight",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgHeight of type int"
-    },
-    {
-      "name": "imgWidth",
-      "type": "int",
-      "java_type": "int",
-      "documentation": "Field imgWidth of type int"
-    }
-  ],
+  "fields": [],
   "constructors": [],
   "javadoc_description": "Implements a common thread that explores the image using a variety of strategies, e.g., to trace tubular structures or surfaces.",
   "inheritance": {
@@ -340,8 +321,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "AbstractSearch",
-    "Constant Field Values"
+    "Constant Field Values",
+    "AbstractSearch"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

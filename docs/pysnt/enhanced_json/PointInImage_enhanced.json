@@ -1,9 +1,9 @@
 {
   "class_name": "PointInImage",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.777468",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.392139",
+  "extracted_at": "2026-11-02T00:24:01.684299",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.337168",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "chebyshevDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -41,7 +41,7 @@
           "signature": "chebyshevXYdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -69,7 +69,7 @@
           "signature": "chebyshevZdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -100,14 +100,6 @@
           "java_return_type": "PointInImage",
           "return_description": "a new PointInImage that is a copy of this point",
           "throws": {}
-        },
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: clone",
@@ -125,7 +117,7 @@
           "signature": "distanceSquaredTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -141,21 +133,21 @@
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "ox",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "oy",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "oz",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -183,7 +175,7 @@
           "signature": "distanceTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -205,13 +197,41 @@
       "examples": []
     },
     {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "euclideanDxTo",
       "overloads": [
         {
           "signature": "euclideanDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -259,7 +279,7 @@
           "signature": "getCoordinateOnAxis(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int",
               "description": "- the axis. Either Tree.X_AXIS, Tree.Y_AXIS, or Tree.Z_AXIS",
@@ -308,7 +328,7 @@
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path",
-          "return_description": "the path associated with this node or null if setPath(Path) has not been called.",
+          "return_description": "the path associated with this node or null if `setPath(Path)` has not been called.",
           "throws": {}
         }
       ],
@@ -324,10 +344,18 @@
       "name": "getUnscaledPoint",
       "overloads": [
         {
+          "signature": "getUnscaledPoint() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getUnscaledPoint(int) -> PointInCanvas",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "int",
               "java_type": "int",
               "description": "- MultiDThreePanes.XY_PLANE, MultiDThreePanes.ZY_PLANE, etc.",
@@ -340,14 +368,6 @@
           "throws": {
             "IllegalArgumentException": "- if this point is not associated with a Path, or view was not recognized"
           }
-        },
-        {
-          "signature": "getUnscaledPoint() -> PointInCanvas",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "PointInCanvas",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: getUnscaledPoint",
@@ -419,6 +439,26 @@
       "examples": []
     },
     {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "isReal",
       "overloads": [
         {
@@ -445,7 +485,7 @@
           "signature": "isSameLocation(PointInImage) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "pim",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -473,21 +513,21 @@
           "signature": "scale(double, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xScale",
               "type": "float",
               "java_type": "double",
               "description": "- the scaling factor for x coordinates",
               "javadoc_name": "xScale"
             },
             {
-              "name": "arg1",
+              "name": "yScale",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "zScale",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -515,7 +555,7 @@
           "signature": "setAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the annotation to be assigned to this point",
@@ -529,7 +569,7 @@
         }
       ],
       "documentation": "Java method: setAnnotation",
-      "javadoc_description": "Description copied from interface: SNTPoint",
+      "javadoc_description": "Description copied from interface: `SNTPoint`",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -543,7 +583,7 @@
           "signature": "setHemisphere(char) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lr",
               "type": "str",
               "java_type": "char",
               "description": "",
@@ -571,7 +611,7 @@
           "signature": "setPath(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "onPath",
               "type": "Path",
               "java_type": "Path",
               "description": "- the Path to be associated with this node",
@@ -593,13 +633,33 @@
       "examples": []
     },
     {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "transform",
       "overloads": [
         {
           "signature": "transform(PathTransformer) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "transformer",
               "type": "Any",
               "java_type": "PathTransformer",
               "description": "",
@@ -673,17 +733,17 @@
           "signature": "PointInImage(double, double, double)",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "float",
               "java_type": "double"
             }
@@ -692,10 +752,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PointInImage"
+      "documentation": "Constructors of PointInImage"
     }
   ],
-  "javadoc_description": "Defines a Point in an image, a node of a traced Path. Coordinates are always expressed in real-world coordinates.",
+  "javadoc_description": "Defines a Point in an image, a node of a traced `Path`. Coordinates are always expressed in real-world coordinates.",
   "inheritance": {
     "extends": [
       "Object",
@@ -718,17 +778,17 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 27,
-      "total_json_methods": 22,
-      "total_matches": 24,
-      "exact_matches": 24,
+      "total_json_methods": 25,
+      "total_matches": 27,
+      "exact_matches": 27,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 3,
+      "unmatched_javadoc": 0,
       "unmatched_json": -2,
-      "match_percentage": 88.9
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 3,
+    "unmatched_javadoc_methods": 0,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

@@ -9,12 +9,49 @@ This module implements the structured approach where:
 
 import json
 import re
+import textwrap
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 from .config import config
 from .logging_setup import get_logger
 
 logger = get_logger('structured_integration')
+
+
+
+def javadoc_to_rst(text: str, indent: int = 0) -> str:
+    """
+    Convert the Markdown-ish javadoc text produced by the parser into valid RST.
+
+    - fenced code blocks become literal blocks ('::' + indented code)
+    - inline `code` becomes ``code`` (single backticks are interpreted text in RST)
+    - continuation lines are indented by `indent` spaces so that multi-line text stays
+      inside the enclosing directive/definition (the first line is left untouched since
+      the caller already placed it after its own indentation)
+    """
+    if not text:
+        return text
+
+    def fence(m):
+        code = m.group(1).strip('\n')
+        # Javadoc ' * ' prefixes leave the first line flush and the others indented by 1+:
+        # dedent the continuation lines by their own common indent, then the whole block
+        parts = code.split('\n')
+        if len(parts) > 1 and parts[0] == parts[0].lstrip():
+            rest = textwrap.dedent('\n'.join(parts[1:]))
+            if rest and rest == rest.lstrip() or not rest:
+                code = '\n'.join([parts[0], rest])
+        code = textwrap.dedent(code)
+        return '\n\n::\n\n' + textwrap.indent(code, '    ') + '\n\n'
+
+    text = re.sub(r'```[^\n]*\n(.*?)\n[ \t]*```', fence, text, flags=re.S)
+    # `x` -> ``x``, leaving RST links (`text <url>`_), roles (:role:`x`) and ``x`` alone
+    text = re.sub(r'(?<![`:\w])`([^`\n]+)`(?![`_\w])', r'``\1``', text)
+    if indent:
+        lines = text.split('\n')
+        pad = ' ' * indent
+        text = '\n'.join([lines[0]] + [pad + l if l.strip() else '' for l in lines[1:]])
+    return text
 
 
 class StructuredIntegrationManager:
@@ -602,7 +639,7 @@ enhance_class_docstrings()
 {toctree_content}
 **Package:** ``{package_info['package']}``
 
-{javadoc_desc}
+{javadoc_to_rst(javadoc_desc)}
 
 """
         
@@ -643,7 +680,7 @@ Fields
                 
                 content += f"""
 **{field_name}** : ``{field_type}``
-    {field_desc}
+    {javadoc_to_rst(field_desc, 4)}
 
 """
         
@@ -679,7 +716,7 @@ Methods
                     content += f"""
 .. py:method:: {signature}
 
-   {method_desc}
+   {javadoc_to_rst(method_desc, 3)}
 
 """
         

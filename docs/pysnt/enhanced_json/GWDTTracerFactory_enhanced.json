@@ -1,0 +1,343 @@
+{
+  "class_name": "GWDTTracerFactory",
+  "package": "sc.fiji.snt.tracing.auto",
+  "extracted_at": "2026-11-02T00:24:01.628734",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.375731",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "create",
+      "overloads": [
+        {
+          "signature": "create(ImagePlus) -> AbstractGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "create(ImgPlus) -> AbstractGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "create(RandomAccessibleInterval, double[]) -> AbstractGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "create(RandomAccessibleInterval, double[], long, long) -> AbstractGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "sparseThresholdMB",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "diskThresholdMB",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "AbstractGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: create",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "estimateWorkingMemoryMB",
+      "overloads": [
+        {
+          "signature": "estimateWorkingMemoryMB(long[]) -> long",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: estimateWorkingMemoryMB",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "forceArray",
+      "overloads": [
+        {
+          "signature": "forceArray(RandomAccessibleInterval, double[]) -> GWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "GWDTTracer",
+          "java_return_type": "GWDTTracer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: forceArray",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "forceDisk",
+      "overloads": [
+        {
+          "signature": "forceDisk(RandomAccessibleInterval, double[]) -> DiskBackedGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "DiskBackedGWDTTracer",
+          "java_return_type": "DiskBackedGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: forceDisk",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "forceSparse",
+      "overloads": [
+        {
+          "signature": "forceSparse(RandomAccessibleInterval, double[]) -> SparseGWDTTracer",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "SparseGWDTTracer",
+          "java_return_type": "SparseGWDTTracer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: forceSparse",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCurrentThresholds",
+      "overloads": [
+        {
+          "signature": "getCurrentThresholds() -> long[]",
+          "params": [],
+          "return_type": "List[int]",
+          "java_return_type": "long[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCurrentThresholds",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "printMemoryStatus",
+      "overloads": [
+        {
+          "signature": "printMemoryStatus() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: printMemoryStatus",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "recommendBackend",
+      "overloads": [
+        {
+          "signature": "recommendBackend(long[]) -> String",
+          "params": [
+            {
+              "name": "dims",
+              "type": "List[int]",
+              "java_type": "long[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: recommendBackend",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "GWDTTracerFactory()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of GWDTTracerFactory"
+    }
+  ],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [],
+  "enhancement_metadata": {
+    "javadoc_available": false,
+    "categorization_only": true
+  }
+}

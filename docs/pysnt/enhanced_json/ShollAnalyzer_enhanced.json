@@ -1,9 +1,9 @@
 {
   "class_name": "ShollAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.952375",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.353508",
+  "extracted_at": "2026-11-02T00:24:01.726962",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.301075",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -12,14 +12,14 @@
         {
           "signature": "getLinearStats() -> LinearProfileStats",
           "params": [],
-          "return_type": "Any",
+          "return_type": "LinearProfileStats",
           "java_return_type": "LinearProfileStats",
           "return_description": "the LinearProfileStats instance",
           "throws": {}
         }
       ],
       "documentation": "Java method: getLinearStats",
-      "javadoc_description": "Gets the LinearProfileStats associated with this analyzer. By default, it is set to determine the polynomial of 'best-fit' (2-20 degree range.)",
+      "javadoc_description": "Gets the `LinearProfileStats` associated with this analyzer. By default, it is set to determine the polynomial of 'best-fit' (2-20 degree range.)",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -47,10 +47,10 @@
       "examples": []
     },
     {
-      "name": "static getMetrics",
+      "name": "getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -58,9 +58,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getMetrics",
+      "documentation": "Java method: getMetrics",
       "javadoc_description": "",
-      "category": "Analysis",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -72,7 +72,7 @@
         {
           "signature": "getNormStats() -> NormalizedProfileStats",
           "params": [],
-          "return_type": "Any",
+          "return_type": "NormalizedProfileStats",
           "java_return_type": "NormalizedProfileStats",
           "return_description": "the LinearProfileStats instance",
           "throws": {}
@@ -127,15 +127,15 @@
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -148,9 +148,9 @@
           }
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -163,7 +163,7 @@
           "signature": "setEnableCurveFitting(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean",
               "description": "- if",
@@ -191,14 +191,14 @@
           "signature": "setPolynomialFitRange(int, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fromDegree",
               "type": "int",
               "java_type": "int",
               "description": "- the lowest degree to be considered. Set it to -1 to skip polynomial fit",
               "javadoc_name": "fromDegree"
             },
             {
-              "name": "arg1",
+              "name": "toDegree",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -226,39 +226,39 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "ShollAnalyzer(Tree, TreeStatistics)",
+          "signature": "ShollAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
-            },
-            {
-              "name": "arg1",
-              "type": "TreeStatistics",
-              "java_type": "TreeStatistics"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         },
         {
-          "signature": "ShollAnalyzer(Tree)",
+          "signature": "ShollAnalyzer(Tree, TreeStatistics)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
+            },
+            {
+              "name": "statistics",
+              "type": "TreeStatistics",
+              "java_type": "TreeStatistics"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ShollAnalyzer"
+      "documentation": "Constructors of ShollAnalyzer"
     }
   ],
-  "javadoc_description": "Class to retrieve Sholl metrics from a Tree.",
+  "javadoc_description": "Class to retrieve Sholl metrics from a `Tree`.",
   "inheritance": {
     "extends": [
       "Object"
@@ -269,8 +269,8 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "Object",
-    "Constant Field Values"
+    "Constant Field Values",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

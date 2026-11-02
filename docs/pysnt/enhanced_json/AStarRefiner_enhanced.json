@@ -1,9 +1,9 @@
 {
   "class_name": "AStarRefiner",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:51.720022",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.428067",
+  "extracted_at": "2026-11-02T00:24:01.571374",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.376041",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -22,7 +22,7 @@
         }
       ],
       "documentation": "Java method: apply",
-      "javadoc_description": "Applies the re-traced geometry to the original path via `Path.replaceNodes(Path)`. Must be called sequentially (not thread-safe), typically on the EDT after all parallel call() invocations have completed.",
+      "javadoc_description": "Applies the re-traced geometry to the original path via `Path.replaceNodes(Path)`. Must be called sequentially (not thread-safe), typically on the EDT after all parallel `call()` invocations have completed.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -36,8 +36,8 @@
           "signature": "applySettings(AStarRefiner) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "ref",
+              "type": "AStarRefiner",
               "java_type": "AStarRefiner",
               "description": "- the reference refiner (unused)",
               "javadoc_name": "ref"
@@ -50,7 +50,7 @@
         }
       ],
       "documentation": "Java method: applySettings",
-      "javadoc_description": "No-op: kept for consistency with the other AbstractRefineHelper workers; there are no per-worker settings to propagate here (see readPreferences()).",
+      "javadoc_description": "No-op: kept for consistency with the other `AbstractRefineHelper` workers; there are no per-worker settings to propagate here (see `readPreferences()`).",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -67,18 +67,10 @@
           "java_return_type": "Path",
           "return_description": "the re-traced path, or null if re-tracing failed",
           "throws": {}
-        },
-        {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: call",
-      "javadoc_description": "Runs the A* re-trace on this path's current waypoints. Thread-safe: does not modify the original path. Call apply() afterward (sequentially) to commit results.",
+      "javadoc_description": "Runs the A* re-trace on this path's current waypoints. Thread-safe: does not modify the original path. Call `apply()` afterward (sequentially) to commit results.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -98,7 +90,7 @@
         }
       ],
       "documentation": "Java method: getFailureReason",
-      "javadoc_description": "Human-readable reason call() failed, or null if it succeeded (or hasn't run yet).",
+      "javadoc_description": "Human-readable reason `call()` failed, or null if it succeeded (or hasn't run yet).",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -138,7 +130,7 @@
         }
       ],
       "documentation": "Java method: readPreferences",
-      "javadoc_description": "No-op: kept for consistency with PathFitter/MultiSpectralRefiner, which read persisted preferences here. A* re-tracing simply reuses whichever search parameters are already configured on the live SNT instance.",
+      "javadoc_description": "No-op: kept for consistency with `PathFitter`/`MultiSpectralRefiner`, which read persisted preferences here. A* re-tracing simply reuses whichever search parameters are already configured on the live `SNT` instance.",
       "category": "I/O Operations",
       "deprecated": false,
       "since_version": null,
@@ -158,7 +150,7 @@
         }
       ],
       "documentation": "Java method: succeeded",
-      "javadoc_description": "Whether the re-trace succeeded. Only meaningful after call().",
+      "javadoc_description": "Whether the re-trace succeeded. Only meaningful after `call()`.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -175,12 +167,12 @@
           "signature": "AStarRefiner(SNT, Path)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
@@ -189,32 +181,32 @@
           "java_return_type": "void"
         },
         {
-          "signature": "AStarRefiner(SNT, Path, SNT$SearchSettingsSnapshot)",
+          "signature": "AStarRefiner(SNT, Path, SearchSettingsSnapshot)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "snt",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg2",
+              "name": "settings",
               "type": "Any",
-              "java_type": "SNT$SearchSettingsSnapshot"
+              "java_type": "SearchSettingsSnapshot"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for AStarRefiner"
+      "documentation": "Constructors of AStarRefiner"
     }
   ],
-  "javadoc_description": "Post-hoc A* re-tracing of a single, already-existing Path: treats the path's current nodes as waypoints and re-derives the geometry between them via \n```\nSNT.autoTraceSync(List, sc.fiji.snt.util.PointInImage, SNT.SearchSettingsSnapshot)\n```\n, using either the cost function/search parameters currently configured on the active SNT instance, or a frozen `SNT.SearchSettingsSnapshot` shared across a whole batch (see `AStarRefiner(SNT, Path, SNT.SearchSettingsSnapshot)`).\n\nIntended for manually-traced paths against data streamed from disk/network, where running A* interactively may be too slow to be practical. See PathManagerUI's \"Refine\" menu (\"Re-trace with A*...\").\n\ncall() is thread-safe for parallel execution across paths (it does not modify the original path, and calls \n```\nSNT.autoTraceSync(java.util.List<sc.fiji.snt.util.SNTPoint>, sc.fiji.snt.util.PointInImage)\n```\n rather than the interactive tracing entry points, so concurrent workers do not serialize behind the single-threaded pool used by interactive tracing). apply() must be called sequentially afterward to commit the result via `Path.replaceNodes(Path)`, which also reconciles this path's own branch point (if it has a parent) and any of its children's branch points against the new geometry.",
+  "javadoc_description": "Post-hoc A* re-tracing of a single, already-existing `Path`: treats the path's current nodes as waypoints and re-derives the geometry between them via \n```\nSNT.autoTraceSync(List, sc.fiji.snt.util.PointInImage, SNT.SearchSettingsSnapshot)\n```\n, using either the cost function/search parameters currently configured on the active `SNT` instance, or a frozen `SNT.SearchSettingsSnapshot` shared across a whole batch (see `AStarRefiner(SNT, Path, SNT.SearchSettingsSnapshot)`).\n\nIntended for manually-traced paths against data streamed from disk/network, where running A* interactively may be too slow to be practical. See `PathManagerUI`'s \"Refine\" menu (\"Re-trace with A*...\").\n\n`call()` is thread-safe for parallel execution across paths (it does not modify the original path, and calls \n```\nSNT.autoTraceSync(java.util.List<sc.fiji.snt.util.SNTPoint>, sc.fiji.snt.util.PointInImage)\n```\n rather than the interactive tracing entry points, so concurrent workers do not serialize behind the single-threaded pool used by interactive tracing). `apply()` must be called sequentially afterward to commit the result via `Path.replaceNodes(Path)`, which also reconciles this path's own branch point (if it has a parent) and any of its children's branch points against the new geometry.",
   "inheritance": {
     "extends": [
       "Object",
@@ -231,10 +223,10 @@
   "since_version": null,
   "see_also": [
     "Path",
-    "MultiSpectralRefiner",
     "Object",
-    "Callable",
-    "PathFitter"
+    "MultiSpectralRefiner",
+    "PathFitter",
+    "Callable"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

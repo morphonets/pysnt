@@ -1,9 +1,9 @@
 {
   "class_name": "PathFitter",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.697485",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.392582",
+  "extracted_at": "2026-11-02T00:24:01.671306",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.337689",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -33,8 +33,8 @@
           "signature": "applySettings(PathFitter) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "pf",
+              "type": "PathFitter",
               "java_type": "PathFitter",
               "description": "",
               "javadoc_name": "param_0"
@@ -58,19 +58,11 @@
       "name": "call",
       "overloads": [
         {
-          "signature": "call() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "call() -> Path",
           "params": [],
           "return_type": "Path",
           "java_return_type": "Path",
-          "return_description": "the reference to the computed result. Note that this Path is *not* automatically set as the fitted version of input Path. That only happens when applyFit() is called.",
+          "return_description": "the reference to the computed result. Note that this Path is *not* automatically set as the fitted version of input Path. That only happens when `applyFit()` is called.",
           "throws": {
             "IllegalArgumentException": ""
           }
@@ -154,7 +146,7 @@
           "signature": "setCrossSectionRadius(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "crossSectionRadius",
               "type": "float",
               "java_type": "double",
               "description": "- the physical search radius (in physical units)",
@@ -182,7 +174,7 @@
           "signature": "setImage(RandomAccessibleInterval) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval",
               "description": "- the Image containing the signal to which the fit will be performed",
@@ -210,7 +202,7 @@
           "signature": "setNodeRadiusFallback(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fallback",
               "type": "int",
               "java_type": "int",
               "description": "- the fallback strategy: FALLBACK_MODE, FALLBACK_MIN_SEP, or FALLBACK_NAN",
@@ -238,14 +230,14 @@
           "signature": "setProgressCallback(int, MultiTaskProgress) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "fitterIndex",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "progress",
               "type": "Any",
               "java_type": "MultiTaskProgress",
               "description": "",
@@ -273,7 +265,7 @@
           "signature": "setReplaceNodes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "replaceNodes",
               "type": "bool",
               "java_type": "boolean",
               "description": "- If true, the nodes of the input Path will be replaced by those of the fitted result. If false, the fitted result is kept as a separated Path linked to the input as per Path.getFitted(). Note that in the latter case, some topological operations (e.g., forking) performed on the fitted result may not percolate to the non-fitted Path.",
@@ -301,7 +293,7 @@
           "signature": "setScope(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "scope",
               "type": "int",
               "java_type": "int",
               "description": "- Either RADII, MIDPOINTS, or RADII_AND_MIDPOINTS",
@@ -329,7 +321,7 @@
           "signature": "setShowAnnotatedView(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "showAnnotatedView",
               "type": "bool",
               "java_type": "boolean",
               "description": "- If true, an interactive stack (cross-section view) of the fit is displayed. Note that this is probably only useful if SNT's UI is visible and functional.",
@@ -357,15 +349,49 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "PathFitter(ImagePlus, Path)",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "PathFitter(ImgPlus, Path)",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "PathFitter(SNT, Path)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "plugin",
+              "type": "SNT",
               "java_type": "SNT"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             }
@@ -377,78 +403,44 @@
           "signature": "PathFitter(RandomAccessibleInterval, Path, double, double, double, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "img",
               "type": "Any",
               "java_type": "RandomAccessibleInterval"
             },
             {
-              "name": "arg1",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg2",
+              "name": "xSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "ySpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "zSpacing",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
+              "name": "unit",
               "type": "str",
               "java_type": "String"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "PathFitter(ImgPlus, Path)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus"
-            },
-            {
-              "name": "arg1",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "PathFitter(ImagePlus, Path)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus"
-            },
-            {
-              "name": "arg1",
-              "type": "Path",
-              "java_type": "Path"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PathFitter"
+      "documentation": "Constructors of PathFitter"
     }
   ],
-  "javadoc_description": "Class for fitting circular cross-sections around existing nodes of a Path in order to compute radii (node thickness) and midpoint refinement of existing coordinates. Thread Safety: When fitting multiple paths in parallel: 1. Call call() in parallel (thread-safe) 2. Call applyFit() sequentially (modifies path hierarchy)\n\nExample: \n```\nList<PathFitter> fitters = paths.stream()\n     .map(p -> new PathFitter(img, p))\n     .collect(Collectors.toList());\n <p>\n // Parallel fitting\n fitters.parallelStream().forEach(PathFitter::call);\n <p>\n // Sequential application\n fitters.forEach(PathFitter::applyFit);\n```\n",
+  "javadoc_description": "Class for fitting circular cross-sections around existing nodes of a `Path` in order to compute radii (node thickness) and midpoint refinement of existing coordinates. Thread Safety: When fitting multiple paths in parallel: 1. Call call() in parallel (thread-safe) 2. Call applyFit() sequentially (modifies path hierarchy)\n\nExample: \n```\nList<PathFitter> fitters = paths.stream()\n     .map(p -> new PathFitter(img, p))\n     .collect(Collectors.toList());\n <p>\n // Parallel fitting\n fitters.parallelStream().forEach(PathFitter::call);\n <p>\n // Sequential application\n fitters.forEach(PathFitter::applyFit);\n```\n",
   "inheritance": {
     "extends": [
       "Object",
@@ -464,12 +456,12 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
+    "setScope(int)",
     "Path",
     "Object",
-    "Constant Field Values",
-    "Callable",
     "applyFit()",
-    "setScope(int)"
+    "Callable"
   ],
   "enhancement_metadata": {
     "matching_statistics": {

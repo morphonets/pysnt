@@ -1,27 +1,27 @@
 {
   "class_name": "OBJMesh",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:02.734106",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.306229",
+  "extracted_at": "2026-11-02T00:24:01.661199",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.280062",
   "enhancement_version": "1.0.0",
   "methods": [
     {
       "name": "computePrincipalAxes",
       "overloads": [
         {
-          "signature": "computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "computePrincipalAxes(String) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh",
               "javadoc_name": "hemiHalf"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
           "return_description": "array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails",
           "throws": {}
         }
@@ -40,7 +40,7 @@
         {
           "signature": "duplicate() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "",
           "throws": {}
@@ -58,31 +58,31 @@
       "name": "getAngleWithLocalDirection",
       "overloads": [
         {
-          "signature": "getAngleWithLocalDirection(SNTPoint, [D, String, int) -> double",
+          "signature": "getAngleWithLocalDirection(SNTPoint, double[], String, int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "- the point at which to compute the local mesh direction",
               "javadoc_name": "point"
             },
             {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "[D",
+              "name": "direction",
+              "type": "List[float]",
+              "java_type": "double[]",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "neighborCount",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -110,7 +110,7 @@
           "signature": "getBoundingBox(String) -> BoundingBox",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "- either \"left\", \"l\", \"right\", \"r\" otherwise bounding box is retrieved for both hemi-halves, i.e., the full mesh. It is ignored if a hemisphere was already specified in the constructor.",
@@ -138,7 +138,7 @@
           "signature": "getCentroid(String) -> SNTPoint",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemihalf",
               "type": "str",
               "java_type": "String",
               "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise centroid is retrieved for both hemi-halves, i.e., the full mesh",
@@ -192,7 +192,7 @@
         }
       ],
       "documentation": "Java method: getDrawable",
-      "javadoc_description": "Returns the DrawableVBO associated with this mesh",
+      "javadoc_description": "Returns the `DrawableVBO` associated with this mesh",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -223,32 +223,32 @@
       "name": "getLocalDirection",
       "overloads": [
         {
-          "signature": "getLocalDirection(SNTPoint, String, int) -> [D",
+          "signature": "getLocalDirection(SNTPoint, String, int) -> double[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "- the point at which to compute the local mesh direction",
               "javadoc_name": "point"
             },
             {
-              "name": "arg1",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "neighborCount",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_2"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "the local mesh direction as a normalized vector, or null if computation fails",
           "throws": {}
         }
@@ -274,7 +274,7 @@
         }
       ],
       "documentation": "Java method: getObj",
-      "javadoc_description": "Returns the OBJFile associated with this mesh",
+      "javadoc_description": "Returns the `OBJFile` associated with this mesh",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -285,18 +285,18 @@
       "name": "getPrincipalAxes",
       "overloads": [
         {
-          "signature": "getPrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;",
+          "signature": "getPrincipalAxes(String) -> PrincipalAxis[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "- either \"left\", \"l\", \"right\", \"r\", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh",
               "javadoc_name": "hemiHalf"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "PCAnalyzer$PrincipalAxis;",
+          "return_type": "List[Any]",
+          "java_return_type": "PrincipalAxis[]",
           "return_description": "array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails",
           "throws": {}
         }
@@ -322,7 +322,7 @@
         }
       ],
       "documentation": "Java method: getSourceAnnotation",
-      "javadoc_description": "Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.",
+      "javadoc_description": "Returns the `BrainAnnotation` (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -364,7 +364,7 @@
           "signature": "getVertices(String) -> Collection",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemihalf",
               "type": "str",
               "java_type": "String",
               "description": "- either \"left\", \"l\", \"right\", \"r\" otherwise centroid is retrieved for both hemi-halves, i.e., the full mesh",
@@ -373,7 +373,7 @@
           ],
           "return_type": "List[Any]",
           "java_return_type": "Collection",
-          "return_description": "the mesh vertices as SNTPoints",
+          "return_description": "the mesh vertices as `SNTPoint`s",
           "throws": {}
         }
       ],
@@ -406,6 +406,26 @@
       "examples": []
     },
     {
+      "name": "hasFileColor",
+      "overloads": [
+        {
+          "signature": "hasFileColor() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if the mesh color was read from the file",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasFileColor",
+      "javadoc_description": "Returns whether the color of this mesh was defined in the material (.mtl) file associated with the imported .obj file.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "label",
       "overloads": [
         {
@@ -429,12 +449,12 @@
       "name": "setBoundingBoxColor",
       "overloads": [
         {
-          "signature": "setBoundingBoxColor(String) -> void",
+          "signature": "setBoundingBoxColor(ColorRGB) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "name": "boundingBoxColor",
+              "type": "Any",
+              "java_type": "ColorRGB",
               "description": "- the color of the mesh bounding box, either a 1) HTML color codes starting with hash (",
               "javadoc_name": "boundingBoxColor"
             }
@@ -445,12 +465,12 @@
           "throws": {}
         },
         {
-          "signature": "setBoundingBoxColor(ColorRGB) -> void",
+          "signature": "setBoundingBoxColor(String) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorRGB",
+              "name": "boundingBoxColor",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -476,14 +496,14 @@
           "signature": "setColor(ColorRGB, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "ColorRGB",
               "description": "- the color to render the imported file",
               "javadoc_name": "color"
             },
             {
-              "name": "arg1",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -499,14 +519,14 @@
           "signature": "setColor(String, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -534,7 +554,7 @@
           "signature": "setDisplayedHemisphere(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "hemiHalf",
               "type": "str",
               "java_type": "String",
               "description": "- \"left\" (or \"l\", \"1\"), \"right\" (or \"r\", \"2\"), or anything else for both hemispheres",
@@ -562,7 +582,7 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the label to set",
@@ -590,7 +610,7 @@
           "signature": "setSourceAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the source annotation",
@@ -604,7 +624,7 @@
         }
       ],
       "documentation": "Java method: setSourceAnnotation",
-      "javadoc_description": "Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.",
+      "javadoc_description": "Associates this mesh with the `BrainAnnotation` (atlas compartment) it was retrieved from.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -618,7 +638,7 @@
           "signature": "setSymmetryAxis(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -646,7 +666,7 @@
           "signature": "setTransparency(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "transparencyPercent",
               "type": "float",
               "java_type": "double",
               "description": "- the mesh transparency (in percentage).",
@@ -674,7 +694,7 @@
           "signature": "setVolume(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "volume",
               "type": "float",
               "java_type": "double",
               "description": "- the volume to set",
@@ -696,13 +716,33 @@
       "examples": []
     },
     {
+      "name": "toMesh",
+      "overloads": [
+        {
+          "signature": "toMesh() -> Mesh",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Mesh",
+          "return_description": "the mesh (empty if this mesh has no triangles)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toMesh",
+      "javadoc_description": "Returns a copy of this mesh as an imglib2-mesh `Mesh` (vertices and triangles only, in the coordinates of this mesh).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "translate",
       "overloads": [
         {
           "signature": "translate(SNTPoint) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "offset",
               "type": "SNTPoint",
               "java_type": "SNTPoint",
               "description": "- the translation offset",
@@ -733,7 +773,7 @@
           "signature": "OBJMesh(String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String"
             }
@@ -745,12 +785,12 @@
           "signature": "OBJMesh(URL, String)",
           "params": [
             {
-              "name": "arg0",
+              "name": "url",
               "type": "str",
               "java_type": "URL"
             },
             {
-              "name": "arg1",
+              "name": "meshUnit",
               "type": "str",
               "java_type": "String"
             }
@@ -759,10 +799,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for OBJMesh"
+      "documentation": "Constructors of OBJMesh"
     }
   ],
-  "javadoc_description": "An OBJMesh stores information about a Wavefront .obj mesh loaded into Viewer3D, with access points to its OBJFile and DrawableVBO",
+  "javadoc_description": "An OBJMesh stores information about a Wavefront .obj mesh loaded into `Viewer3D`, with access points to its `OBJFile` and `DrawableVBO`",
   "inheritance": {
     "extends": [
       "Object"
@@ -773,15 +813,15 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Object",
-    "Constant Field Values"
+    "Constant Field Values",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 28,
-      "total_json_methods": 25,
-      "total_matches": 28,
-      "exact_matches": 28,
+      "total_javadoc_methods": 30,
+      "total_json_methods": 27,
+      "total_matches": 30,
+      "exact_matches": 30,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,

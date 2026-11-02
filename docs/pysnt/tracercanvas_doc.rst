@@ -60,32 +60,8 @@ Methods
 -------
 
 
-Utilities Methods
-~~~~~~~~~~~~~~~~~
-
-
-.. py:method:: checkImage(Image, ImageObserver)
-
-   
-
-
 Getters Methods
 ~~~~~~~~~~~~~~~
-
-
-.. py:method:: getAccessibleContext()
-
-   
-
-
-.. py:method:: getAlignmentX()
-
-   
-
-
-.. py:method:: getAlignmentY()
-
-   
 
 
 .. py:method:: getAnnotationsColor()
@@ -93,12 +69,81 @@ Getters Methods
    
 
 
-.. py:method:: getBackground()
+.. py:method:: getCanvasLabel()
 
    
 
 
-.. py:method:: getBaseline(int, int)
+.. py:method:: getCursorPos()
+
+   
+
+
+.. py:method:: getEitherSide()
+
+   
+
+
+.. py:method:: getGraphics2D(Graphics)
+
+   
+
+
+.. py:method:: getLabelForegroundColor()
+
+   
+
+
+.. py:method:: getPlane()
+
+   Returns the MultiDThreePanes plane associated with this canvas.
+
+
+.. py:method:: getViewPort()
+
+   
+
+
+.. py:method:: isEventsDisabled()
+
+   
+
+
+.. py:method:: isJustNearSlices()
+
+   
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setAnnotationsColor(Color)
+
+   
+
+
+.. py:method:: setCanvasLabel(String)
+
+   
+
+
+.. py:method:: setCrosshairs(double, double, double, boolean)
+
+   
+
+
+.. py:method:: setCursorText(String)
+
+   
+
+
+.. py:method:: setDrawCrosshairs(boolean)
+
+   
+
+
+.. py:method:: setLabelForegroundColor(Color)
 
    
 
@@ -107,152 +152,97 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: action(Event, Object)
-
-   
-
-
-.. py:method:: add(PopupMenu)
+.. py:method:: disableEvents(boolean)
 
    Sets the baseline for rendering diameter of path nodes
 
 
-.. py:method:: addComponentListener(ComponentListener)
+.. py:method:: mouseDragged(MouseEvent)
 
    
 
 
-.. py:method:: addFocusListener(FocusListener)
+.. py:method:: myOffScreenX(int)
 
    
 
 
-.. py:method:: addHierarchyBoundsListener(HierarchyBoundsListener)
+.. py:method:: myOffScreenXD(int)
 
    
 
 
-.. py:method:: addHierarchyListener(HierarchyListener)
+.. py:method:: myOffScreenY(int)
 
    
 
 
-.. py:method:: addInputMethodListener(InputMethodListener)
+.. py:method:: myOffScreenYD(int)
 
    
 
 
-.. py:method:: addKeyListener(KeyListener)
+.. py:method:: myScreenX(int)
 
    
 
 
-.. py:method:: addMouseListener(MouseListener)
+.. py:method:: myScreenXD(double)
 
    
 
 
-.. py:method:: addMouseMotionListener(MouseMotionListener)
+.. py:method:: myScreenXDprecise(double)
 
    
 
 
-.. py:method:: addMouseWheelListener(MouseWheelListener)
+.. py:method:: myScreenY(int)
 
    
 
 
-.. py:method:: addNotify()
+.. py:method:: myScreenYD(double)
 
    
 
 
-.. py:method:: addPropertyChangeListener(PropertyChangeListener)
+.. py:method:: myScreenYDprecise(double)
 
    
 
 
-.. py:method:: applyComponentOrientation(ComponentOrientation)
+.. py:method:: paint(Graphics)
 
    
 
 
-.. py:method:: areFocusTraversalKeysSet(int)
+.. py:method:: restoreDefaultCursor()
 
    
 
 
-.. py:method:: bounds()
+.. py:method:: scrollTo(int, int)
 
    
 
 
-.. py:method:: contains(int, int)
+.. py:method:: updateCursor(double, double, double)
 
    
 
 
-.. py:method:: createBufferStrategy(int, BufferCapabilities)
+.. py:method:: updatePosition(double, double, double)
 
    
 
 
-.. py:method:: createImage(int, int)
+.. py:method:: zoomIn(int, int)
 
    
 
 
-.. py:method:: createVolatileImage(int, int, ImageCapabilities)
-
-   
-
-
-.. py:method:: cursorOverImage()
-
-   
-
-
-.. py:method:: deliverEvent(Event)
-
-   
-
-
-.. py:method:: disable()
-
-   
-
-
-.. py:method:: disableEvents(boolean)
-
-   
-
-
-.. py:method:: disablePopupMenu(boolean)
-
-   
-
-
-.. py:method:: dispatchEvent(AWTEvent)
-
-   
-
-
-.. py:method:: doLayout()
-
-   
-
-
-.. py:method:: enable()
-
-   
-
-
-.. py:method:: firePropertyChange(String, byte, byte)
-
-   
-
-
-.. py:method:: fitToWindow()
+.. py:method:: zoomOut(int, int)
 
    
 

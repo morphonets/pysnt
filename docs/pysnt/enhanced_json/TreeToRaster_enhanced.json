@@ -1,9 +1,9 @@
 {
   "class_name": "TreeToRaster",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-09-27T23:01:12.057382",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.422845",
+  "extracted_at": "2026-11-02T00:24:01.758994",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.370726",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -14,7 +14,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the axial (z) voxel size in the tree's spatial units (typically µm), or 0 when rasterizing in 2D mode",
+          "return_description": "the axial (z) voxel size in the tree's spatial units (typically µm), or `0` when rasterizing in 2D mode",
           "throws": {}
         }
       ],
@@ -67,6 +67,46 @@
       "examples": []
     },
     {
+      "name": "getRasterOrigin",
+      "overloads": [
+        {
+          "signature": "getRasterOrigin() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "the {x, y, z} position of the center of the first voxel",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRasterOrigin",
+      "javadoc_description": "Gets the position, in the tree's coordinate system, of the center of voxel (0, 0, 0) of the image returned by `rasterize()`. The rasterized image is not calibrated with an origin, so this is needed to place it (e.g., a mesh extracted from it) back on the tree. The result depends on the current resolution and reference bounds settings, which should be set before calling this method.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRasterVoxelCount",
+      "overloads": [
+        {
+          "signature": "getRasterVoxelCount() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the voxel count",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRasterVoxelCount",
+      "javadoc_description": "Gets the number of voxels of the image `rasterize()` would allocate with the current settings, so that callers can avoid oversized requests.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "rasterize",
       "overloads": [
         {
@@ -74,7 +114,7 @@
           "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "the rasterized ImagePlus",
+          "return_description": "the rasterized `ImagePlus`",
           "throws": {}
         }
       ],
@@ -94,12 +134,12 @@
           "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "a 16-bit ImagePlus of path labels",
+          "return_description": "a 16-bit `ImagePlus` of path labels",
           "throws": {}
         }
       ],
       "documentation": "Java method: rasterizeLabels",
-      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it (as ordered by Tree.list()). Background voxels are 0.",
+      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the `Path` that owns it (as ordered by `Tree.list()`). Background voxels are 0.",
       "category": "Utilities",
       "deprecated": true,
       "since_version": null,
@@ -114,12 +154,12 @@
           "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "a 16-bit ImagePlus of node-value labels",
+          "return_description": "a 16-bit `ImagePlus` of node-value labels",
           "throws": {}
         }
       ],
       "documentation": "Java method: rasterizeNodeValueLabels",
-      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the node value of the nearest path node (as stored via `Path.setNodeValue(double, int)`). This enables per-node labeling, e.g., from delineation assignments, atlas annotations, or other node-level classifications.\n\nNode values are expected to be negative integers (as used by DelineationsManager); they are negated to produce positive labels in the output image. Nodes with NaN or non-negative values are treated as background (0).\n\nEach frustum (segment between consecutive nodes) inherits the label of its start node. At intersection sites, the frustum with the largest local radius wins (thickest-wins), consistent with `rasterizePathLabels()`.\n\nNote: The output is 16-bit unsigned (short), so label values above 65535 will overflow. In practice this is not a concern when the source is a label/segmentation image with a bounded class count, but callers should be aware of this limit.",
+      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the *node value* of the nearest path node (as stored via `Path.setNodeValue(double, int)`). This enables per-node labeling, e.g., from delineation assignments, atlas annotations, or other node-level classifications.\n\nNode values are expected to be negative integers (as used by `DelineationsManager`); they are negated to produce positive labels in the output image. Nodes with `NaN` or non-negative values are treated as background (0).\n\nEach frustum (segment between consecutive nodes) inherits the label of its start node. At intersection sites, the frustum with the largest local radius wins (thickest-wins), consistent with `rasterizePathLabels()`.\n\n**Note:** The output is 16-bit unsigned (`short`), so label values above 65535 will overflow. In practice this is not a concern when the source is a label/segmentation image with a bounded class count, but callers should be aware of this limit.",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -136,12 +176,12 @@
           "params": [],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "a 16-bit ImagePlus of path labels",
+          "return_description": "a 16-bit `ImagePlus` of path labels",
           "throws": {}
         }
       ],
       "documentation": "Java method: rasterizePathLabels",
-      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it (as ordered by Tree.list()). Background voxels are 0.\n\nAt intersection sites where multiple paths overlap, the path with the largest local radius wins (thickest-wins priority), ensuring that thin branches crossing a thick trunk do not overwrite it.\n\nThe returned image has the same dimensions and calibration as the density image produced by rasterize(), so the two can be used as overlays. Noise and blur settings are ignored for label images.",
+      "javadoc_description": "Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the `Path` that owns it (as ordered by `Tree.list()`). Background voxels are 0.\n\nAt intersection sites where multiple paths overlap, the path with the largest local radius wins (thickest-wins priority), ensuring that thin branches crossing a thick trunk do not overwrite it.\n\nThe returned image has the same dimensions and calibration as the density image produced by `rasterize()`, so the two can be used as overlays. Noise and blur settings are ignored for label images.",
       "category": "I/O Operations",
       "deprecated": false,
       "since_version": null,
@@ -157,21 +197,21 @@
           "signature": "setAxialRes(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "axialRes",
               "type": "float",
               "java_type": "double",
               "description": "- voxel size in the tree's spatial units (typically µm), or",
               "javadoc_name": "axialRes"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
         }
       ],
       "documentation": "Java method: setAxialRes",
-      "javadoc_description": "Sets the axial (z) voxel size.\n\nA value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree are ignored (every node is projected onto the z = 0 plane) and the output image is a single slice. In-plane (x, y) thickness from node radii is preserved.",
+      "javadoc_description": "Sets the axial (z) voxel size.\n\nA value of `0` switches the rasterizer to 2D mode: the z coordinates of the tree are ignored (every node is projected onto the `z = 0` plane) and the output image is a single slice. In-plane (x, y) thickness from node radii is preserved.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -185,14 +225,14 @@
           "signature": "setDefaultRadius(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "radius",
               "type": "float",
               "java_type": "double",
               "description": "- the default radius in the tree's spatial units",
               "javadoc_name": "radius"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -213,14 +253,14 @@
           "signature": "setGaussianBlur(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "sigma",
               "type": "float",
               "java_type": "double",
               "description": "- the Gaussian sigma in the tree's spatial units (typically µm). Must be positive.",
               "javadoc_name": "sigma"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -241,14 +281,14 @@
           "signature": "setLateralRes(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "lateralRes",
               "type": "float",
               "java_type": "double",
               "description": "- voxel size in the tree's spatial units (typically µm)",
               "javadoc_name": "lateralRes"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -269,21 +309,21 @@
           "signature": "setPoissonNoise(double, double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "snr",
               "type": "float",
               "java_type": "double",
               "description": "- the signal-to-noise ratio (peak-to-noise). Must be positive.",
               "javadoc_name": "snr"
             },
             {
-              "name": "arg1",
+              "name": "background",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -304,14 +344,14 @@
           "signature": "setRadiusScale(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "scale",
               "type": "float",
               "java_type": "double",
               "description": "- the radius multiplier (default 1.0). Must be positive.",
               "javadoc_name": "scale"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -329,49 +369,49 @@
       "name": "setReferenceBounds",
       "overloads": [
         {
-          "signature": "setReferenceBounds(int, int, int) -> TreeToRaster",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "TreeToRaster",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "setReferenceBounds(ImagePlus) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "- the reference width in pixels",
               "javadoc_name": "width"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
+          "throws": {}
+        },
+        {
+          "signature": "setReferenceBounds(int, int, int) -> TreeToRaster",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "TreeToRaster",
+          "java_return_type": "TreeToRaster",
+          "return_description": "",
           "throws": {}
         }
       ],
@@ -390,14 +430,14 @@
           "signature": "setThicknessModulation(double) -> TreeToRaster",
           "params": [
             {
-              "name": "arg0",
+              "name": "factor",
               "type": "float",
               "java_type": "double",
               "description": "- the modulation depth in [0, 1]. 0 disables modulation (default). Must be non-negative and at most 1.",
               "javadoc_name": "factor"
             }
           ],
-          "return_type": "Any",
+          "return_type": "TreeToRaster",
           "java_return_type": "TreeToRaster",
           "return_description": "this instance for chaining",
           "throws": {}
@@ -421,7 +461,7 @@
           "signature": "TreeToRaster(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -430,10 +470,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for TreeToRaster"
+      "documentation": "Constructors of TreeToRaster"
     }
   ],
-  "javadoc_description": "Rasterizes a Tree into a 3D image using frustum (truncated-cone) geometry with partial-volume supersampling. Each segment between consecutive nodes is modeled as a frustum whose radii are linearly interpolated from the node radii. This produces a volumetric rendering that respects the thickness of each neurite, unlike the skeleton-based rasterization in Tree.getSkeleton().\n\nOptionally, Poisson shot noise and Gaussian blur (to simulate spatially correlated noise) can be applied, producing realistic synthetic fluorescence microscopy images.\n\nOptionally, voxel intensities can be modulated by local neurite thickness via `setThicknessModulation(double)`, producing brighter thick neurites and dimmer thin ones.\n\nPass 2 (partial-volume supersampling) and subsequent passes are parallelized across z-slices for improved performance. A spatial grid is used for frustum lookups to reduce computation costs.\n\nInspired by SWC2IMG (E. Meijering, imagescience.org).",
+  "javadoc_description": "Rasterizes a `Tree` into a 3D image using frustum (truncated-cone) geometry with partial-volume supersampling. Each segment between consecutive nodes is modeled as a frustum whose radii are linearly interpolated from the node radii. This produces a volumetric rendering that respects the thickness of each neurite, unlike the skeleton-based rasterization in `Tree.getSkeleton()`.\n\nOptionally, Poisson shot noise and Gaussian blur (to simulate spatially correlated noise) can be applied, producing realistic synthetic fluorescence microscopy images.\n\nOptionally, voxel intensities can be modulated by local neurite thickness via `setThicknessModulation(double)`, producing brighter thick neurites and dimmer thin ones.\n\nPass 2 (partial-volume supersampling) and subsequent passes are parallelized across z-slices for improved performance. A spatial grid is used for frustum lookups to reduce computation costs.\n\nInspired by SWC2IMG (E. Meijering, imagescience.org).",
   "inheritance": {
     "extends": [
       "Object"
@@ -444,18 +484,18 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "Object",
-    "TreeUtils.rasterize(Tree)",
     "rasterizePathLabels()",
+    "Object",
     "Tree.getSkeleton()",
+    "TreeUtils.rasterize(Tree)",
     "rasterizeNodeValueLabels()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 16,
-      "total_json_methods": 15,
-      "total_matches": 16,
-      "exact_matches": 16,
+      "total_javadoc_methods": 18,
+      "total_json_methods": 17,
+      "total_matches": 18,
+      "exact_matches": 18,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,

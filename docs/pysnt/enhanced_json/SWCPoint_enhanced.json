@@ -1,9 +1,9 @@
 {
   "class_name": "SWCPoint",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.939652",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.352294",
+  "extracted_at": "2026-11-02T00:24:01.717658",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.300243",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "chebyshevDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -41,7 +41,7 @@
           "signature": "chebyshevXYdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -69,7 +69,7 @@
           "signature": "chebyshevZdxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -100,14 +100,6 @@
           "java_return_type": "PointInImage",
           "return_description": "",
           "throws": {}
-        },
-        {
-          "signature": "clone() -> Object",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Object",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: clone",
@@ -119,13 +111,13 @@
       "examples": []
     },
     {
-      "name": "static collectionAsReader",
+      "name": "collectionAsReader",
       "overloads": [
         {
-          "signature": "static collectionAsReader(Collection) -> StringReader",
+          "signature": "collectionAsReader(Collection) -> StringReader",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of SWC points to be converted into a space separated String. Points should be sorted by sample number to ensure valid connectivity.",
@@ -138,9 +130,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static collectionAsReader",
+      "documentation": "Java method: collectionAsReader",
       "javadoc_description": "Converts a collection of SWC points into a Reader.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -153,27 +145,11 @@
           "signature": "compareTo(SWCPoint) -> int",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "SWCPoint",
               "java_type": "SWCPoint",
               "description": "",
               "javadoc_name": "param_0"
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "compareTo(Object) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
             }
           ],
           "return_type": "int",
@@ -197,7 +173,7 @@
           "signature": "distanceSquaredTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -213,21 +189,21 @@
           "signature": "distanceSquaredTo(double, double, double) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "ox",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "oy",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "oz",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -255,7 +231,7 @@
           "signature": "distanceTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "o",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -277,13 +253,41 @@
       "examples": []
     },
     {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "o",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "euclideanDxTo",
       "overloads": [
         {
           "signature": "euclideanDxTo(PointInImage) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "point",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -305,20 +309,20 @@
       "examples": []
     },
     {
-      "name": "static flush",
+      "name": "flush",
       "overloads": [
         {
-          "signature": "static flush(Collection, PrintWriter) -> void",
+          "signature": "flush(Collection, PrintWriter) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collections of SWC points to be printed.",
               "javadoc_name": "points"
             },
             {
-              "name": "arg1",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter",
               "description": "",
@@ -331,9 +335,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static flush",
+      "documentation": "Java method: flush",
       "javadoc_description": "Prints a list of points as space-separated values.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [
@@ -388,7 +392,7 @@
           "signature": "getCoordinateOnAxis(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -493,24 +497,24 @@
       "name": "getUnscaledPoint",
       "overloads": [
         {
-          "signature": "getUnscaledPoint(int) -> PointInCanvas",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "getUnscaledPoint() -> PointInCanvas",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "PointInCanvas",
           "return_description": "",
           "throws": {}
         },
         {
-          "signature": "getUnscaledPoint() -> PointInCanvas",
-          "params": [],
+          "signature": "getUnscaledPoint(int) -> PointInCanvas",
+          "params": [
+            {
+              "name": "view",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "Any",
           "java_return_type": "PointInCanvas",
           "return_description": "",
@@ -586,6 +590,26 @@
       "examples": []
     },
     {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "isReal",
       "overloads": [
         {
@@ -612,7 +636,7 @@
           "signature": "isSameLocation(PointInImage) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "pim",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -660,21 +684,21 @@
           "signature": "scale(double, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xScale",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "yScale",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "zScale",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -702,7 +726,7 @@
           "signature": "setAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the annotation to be assigned to this point",
@@ -716,7 +740,7 @@
         }
       ],
       "documentation": "Java method: setAnnotation",
-      "javadoc_description": "Description copied from interface: SNTPoint",
+      "javadoc_description": "Description copied from interface: `SNTPoint`",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -730,7 +754,7 @@
           "signature": "setColor(Color) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "color",
               "type": "Any",
               "java_type": "Color",
               "description": "- the color to set",
@@ -758,7 +782,7 @@
           "signature": "setHemisphere(char) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lr",
               "type": "str",
               "java_type": "char",
               "description": "",
@@ -786,7 +810,7 @@
           "signature": "setPath(Path) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "onPath",
               "type": "Path",
               "java_type": "Path",
               "description": "",
@@ -814,7 +838,7 @@
           "signature": "setPrevious(SWCPoint) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "previousNode",
               "type": "SWCPoint",
               "java_type": "SWCPoint",
               "description": "- the previous node preceding this one",
@@ -842,7 +866,7 @@
           "signature": "setTags(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tags",
               "type": "str",
               "java_type": "String",
               "description": "- the tags string",
@@ -864,13 +888,33 @@
       "examples": []
     },
     {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "transform",
       "overloads": [
         {
           "signature": "transform(PathTransformer) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "transformer",
               "type": "Any",
               "java_type": "PathTransformer",
               "description": "",
@@ -899,7 +943,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the X-distance from previous point or Double.NaN if no previousPoint exists.",
+          "return_description": "the X-distance from previous point or `Double.NaN` if no previousPoint exists.",
           "throws": {}
         }
       ],
@@ -919,7 +963,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the Y-distance from previous point or Double.NaN if no previousPoint exists.",
+          "return_description": "the Y-distance from previous point or `Double.NaN` if no previousPoint exists.",
           "throws": {}
         }
       ],
@@ -939,7 +983,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the Z-distance from previous point or Double.NaN if no previousPoint exists.",
+          "return_description": "the Z-distance from previous point or `Double.NaN` if no previousPoint exists.",
           "throws": {}
         }
       ],
@@ -960,52 +1004,16 @@
       "documentation": "Field id of type int"
     },
     {
-      "name": "onPath",
-      "type": "Path",
-      "java_type": "Path",
-      "documentation": "Field onPath of type Path"
-    },
-    {
       "name": "parent",
       "type": "int",
       "java_type": "int",
       "documentation": "Field parent of type int"
     },
     {
-      "name": "radius",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field radius of type double"
-    },
-    {
       "name": "type",
       "type": "int",
       "java_type": "int",
       "documentation": "Field type of type int"
-    },
-    {
-      "name": "v",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field v of type double"
-    },
-    {
-      "name": "x",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field x of type double"
-    },
-    {
-      "name": "y",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field y of type double"
-    },
-    {
-      "name": "z",
-      "type": "float",
-      "java_type": "double",
-      "documentation": "Field z of type double"
     }
   ],
   "constructors": [
@@ -1016,37 +1024,37 @@
           "signature": "SWCPoint(int, int, double, double, double, double, int)",
           "params": [
             {
-              "name": "arg0",
+              "name": "id",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg1",
+              "name": "type",
               "type": "int",
               "java_type": "int"
             },
             {
-              "name": "arg2",
+              "name": "x",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg3",
+              "name": "y",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg4",
+              "name": "z",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg5",
+              "name": "radius",
               "type": "float",
               "java_type": "double"
             },
             {
-              "name": "arg6",
+              "name": "parent",
               "type": "int",
               "java_type": "int"
             }
@@ -1055,7 +1063,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SWCPoint"
+      "documentation": "Constructors of SWCPoint"
     }
   ],
   "javadoc_description": "Defines a node in an SWC reconstruction. The SWC file format is detailed here.",
@@ -1076,24 +1084,24 @@
   "see_also": [
     "PointInImage",
     "Comparable",
-    "collectionAsReader(Collection)",
-    "SWCPoint"
+    "SWCPoint",
+    "collectionAsReader(Collection)"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 21,
-      "total_json_methods": 35,
-      "total_matches": 19,
-      "exact_matches": 18,
-      "signature_matches": 1,
+      "total_json_methods": 38,
+      "total_matches": 21,
+      "exact_matches": 21,
+      "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 2,
-      "unmatched_json": 16,
-      "match_percentage": 90.5
+      "unmatched_javadoc": 0,
+      "unmatched_json": 17,
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 2,
-    "unmatched_json_methods": 16,
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 17,
     "enhancement_quality_score": 1.0
   }
 }

@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-Class for rendering Trees as 2D plots that can be exported as SVG, PNG or PDF.
+Class for rendering `Tree`s as 2D plots that can be exported as SVG, PNG or PDF.
 
 
 Methods
@@ -64,6 +64,11 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
+.. py:method:: getAvailableHeatmapLuts()
+
+   
+
+
 .. py:method:: getAvailableLuts()
 
    
@@ -71,7 +76,7 @@ Getters Methods
 
 .. py:method:: getChart()
 
-   Gets the current viewer as a SNTChart object
+   Gets the current viewer as a ``SNTChart`` object
 
 
 .. py:method:: getColor(double)
@@ -84,17 +89,27 @@ Getters Methods
    
 
 
-.. py:method:: getColorTable(String)
+.. py:method:: getColorTable()
 
    
 
 
 .. py:method:: getJFreeChart()
 
-   Gets the current viewer as a JFreeChart object
+   Gets the current viewer as a ``JFreeChart`` object
 
 
-.. py:method:: static getMetrics()
+.. py:method:: getMeasurement()
+
+   
+
+
+.. py:method:: getMeasurementLabel()
+
+   
+
+
+.. py:method:: getMetrics()
 
    
 
@@ -116,7 +131,7 @@ Getters Methods
 
 .. py:method:: getPlot()
 
-   Gets the current plot as a XYPlot object
+   Gets the current plot as a ``XYPlot`` object
 
 
 .. py:method:: getTitle()
@@ -152,7 +167,7 @@ Setters Methods
 
    /** Sets whether the axes should be equalized (same scale).
 
-When enabled, both X and Y axes will use the same scale to maintain equal aspect ratio. When disabled, each axis maximizes its range.
+   When enabled, both X and Y axes will use the same scale to maintain equal aspect ratio. When disabled, each axis maximizes its range.
 
 
 .. py:method:: setGridlinesVisible(boolean)
@@ -160,7 +175,22 @@ When enabled, both X and Y axes will use the same scale to maintain equal aspect
    
 
 
+.. py:method:: setMaxPercentileClipped(double[], double)
+
+   
+
+
 .. py:method:: setMinMax(double, double)
+
+   
+
+
+.. py:method:: setMinMaxPercentileClipped(double[], double)
+
+   
+
+
+.. py:method:: setMinPercentileClipped(double[], double)
 
    
 
@@ -187,33 +217,38 @@ When enabled, both X and Y axes will use the same scale to maintain equal aspect
 
 .. py:method:: setXrange(double, double)
 
-   Sets a manual range for the viewers' X-axis. Calling setXrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.
+   Sets a manual range for the viewers' X-axis. Calling ``setXrange(-1, -1)`` enables auto-range (the default). Must be called before Viewer is fully assembled.
 
 
 .. py:method:: setYrange(double, double)
 
-   Sets a manual range for the viewers' Y-axis. Calling setYrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.
+   Sets a manual range for the viewers' Y-axis. Calling ``setYrange(-1, -1)`` enables auto-range (the default). Must be called before Viewer is fully assembled.
 
 
 Visualization Methods
 ~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: show(int, int)
+.. py:method:: show()
 
    Displays the current plot on a dedicated frame *
+
+
+.. py:method:: showPlot()
+
+   
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Tree, String)
+.. py:method:: add(Object)
 
    Appends a tree to the viewer rendered after the specified measurement.
 
 
-.. py:method:: addColorBarLegend(ColorMapper)
+.. py:method:: addColorBarLegend()
 
    Adds a color bar legend (LUT ramp) to the viewer. Does nothing if no measurement mapping occurred successfully. Note that when performing mapping to different measurements, the legend reflects only the last mapped measurement.
 
@@ -238,17 +273,22 @@ Other Methods
    Adds a collection of trees. Each tree will be rendered using a unique color.
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 
 
-.. py:method:: map(Tree, Profile, ColorTable)
+.. py:method:: map(String, ColorTable)
 
    
 
 
 .. py:method:: mapTrees(List, String)
+
+   
+
+
+.. py:method:: unMap(Collection)
 
    
 

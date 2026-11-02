@@ -1,9 +1,9 @@
 {
   "class_name": "AllenCompartment",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-09-27T23:00:52.086252",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.389056",
+  "extracted_at": "2026-11-02T00:24:01.572675",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.333546",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -19,7 +19,7 @@
         }
       ],
       "documentation": "Java method: acronym",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -30,16 +30,16 @@
       "name": "aliases",
       "overloads": [
         {
-          "signature": "aliases() -> String;",
+          "signature": "aliases() -> String[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "String;",
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: aliases",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -59,8 +59,36 @@
         }
       ],
       "documentation": "Java method: color",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "equals",
+      "overloads": [
+        {
+          "signature": "equals(Object) -> boolean",
+          "params": [
+            {
+              "name": "obj",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: equals",
+      "javadoc_description": "",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -73,32 +101,16 @@
           "signature": "getAncestor(int) -> AllenCompartment",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ancestor level as negative 1-based index. E.g.,",
               "javadoc_name": "level"
             }
           ],
-          "return_type": "Any",
+          "return_type": "AllenCompartment",
           "java_return_type": "AllenCompartment",
           "return_description": "the nth ancestor",
-          "throws": {}
-        },
-        {
-          "signature": "getAncestor(int) -> BrainAnnotation",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "BrainAnnotation",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -147,7 +159,7 @@
           "signature": "getChildren(int) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- maximum depth that should be considered.",
@@ -174,14 +186,14 @@
         {
           "signature": "getMesh() -> OBJMesh",
           "params": [],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getMesh",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -196,7 +208,7 @@
           "params": [],
           "return_type": "int",
           "java_return_type": "int",
-          "return_description": "the ontological depth of this compartment, i.e., its ontological distance relative to the root (e.g., a compartment of hierarchical level 9, has a depth of 8).",
+          "return_description": "the ontological depth of this compartment, i.e., its ontological distance relative to the root (e.g., a compartment of hierarchical level `9`, has a depth of `8`).",
           "throws": {}
         }
       ],
@@ -214,17 +226,9 @@
         {
           "signature": "getParent() -> AllenCompartment",
           "params": [],
-          "return_type": "Any",
+          "return_type": "AllenCompartment",
           "java_return_type": "AllenCompartment",
           "return_description": "the parent of this compartment, of null if this compartment is root.",
-          "throws": {}
-        },
-        {
-          "signature": "getParent() -> BrainAnnotation",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "BrainAnnotation",
-          "return_description": "",
           "throws": {}
         }
       ],
@@ -249,7 +253,7 @@
         }
       ],
       "documentation": "Java method: getTreePath",
-      "javadoc_description": "Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this compartment in the ontologies hierarchical tree. The elements of the list are ordered with the root ('Whole Brain') as the first element of the list. In practice, this is equivalent to appending this compartment to the list returned by getAncestors().",
+      "javadoc_description": "Gets the tree path of this compartment. The TreePath is the list of parent compartments that uniquely identify this compartment in the ontologies hierarchical tree. The elements of the list are ordered with the root ('Whole Brain') as the first element of the list. In practice, this is equivalent to appending this compartment to the list returned by `getAncestors()`.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -277,6 +281,26 @@
       "examples": []
     },
     {
+      "name": "hashCode",
+      "overloads": [
+        {
+          "signature": "hashCode() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hashCode",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "id",
       "overloads": [
         {
@@ -289,7 +313,7 @@
         }
       ],
       "documentation": "Java method: id",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -303,7 +327,7 @@
           "signature": "includes(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "other",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
@@ -331,7 +355,7 @@
           "signature": "isChildOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "parentCompartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the compartment to be tested",
@@ -340,7 +364,7 @@
           ],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "true, if successful, i.e., parentCompartment is not this compartment and getTreePath() contains parentCompartment",
+          "return_description": "true, if successful, i.e., `parentCompartment` is not this compartment and `getTreePath()` contains `parentCompartment`",
           "throws": {}
         }
       ],
@@ -379,7 +403,7 @@
           "signature": "isParentOf(BrainAnnotation) -> boolean",
           "params": [
             {
-              "name": "arg0",
+              "name": "childCompartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the compartment to be tested",
@@ -388,7 +412,7 @@
           ],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "true, if successful, i.e., childCompartment is not this compartment and is present in getChildren()",
+          "return_description": "true, if successful, i.e., `childCompartment` is not this compartment and is present in `getChildren()`",
           "throws": {}
         }
       ],
@@ -401,15 +425,15 @@
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -420,9 +444,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -441,7 +465,27 @@
         }
       ],
       "documentation": "Java method: name",
-      "javadoc_description": "Description copied from interface: BrainAnnotation",
+      "javadoc_description": "Description copied from interface: `BrainAnnotation`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -455,31 +499,31 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "AllenCompartment(int)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "AllenCompartment(UUID)",
           "params": [
             {
-              "name": "arg0",
+              "name": "uuid",
               "type": "Any",
               "java_type": "UUID"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "AllenCompartment(int)",
+          "params": [
+            {
+              "name": "id",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for AllenCompartment"
+      "documentation": "Constructors of AllenCompartment"
     }
   ],
   "javadoc_description": "Defines an Allen Reference Atlas (ARA) [Allen Mouse Common Coordinate Framework] annotation. A Compartment is defined by either a UUID (as per MouseLight's database) or its unique integer identifier. To improve performance, a compartment's metadata (reference to its mesh, its aliases, etc.) are not loaded at initialization, but retrieved only when such getters are called.",
@@ -497,24 +541,24 @@
   "since_version": null,
   "see_also": [
     "getTreePath()",
-    "Object",
-    "BrainAnnotation"
+    "BrainAnnotation",
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 26,
-      "total_json_methods": 18,
-      "total_matches": 19,
-      "exact_matches": 19,
+      "total_json_methods": 21,
+      "total_matches": 22,
+      "exact_matches": 22,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 7,
+      "unmatched_javadoc": 4,
       "unmatched_json": -1,
-      "match_percentage": 73.1
+      "match_percentage": 84.6
     },
-    "unmatched_javadoc_methods": 7,
+    "unmatched_javadoc_methods": 4,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.877
+    "enhancement_quality_score": 1.0
   }
 }

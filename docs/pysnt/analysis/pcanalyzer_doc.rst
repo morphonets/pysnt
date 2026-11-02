@@ -66,12 +66,12 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getPrincipalAxes(Path)
+.. py:method:: getPrincipalAxes(Collection)
 
    Computes the principal axes for a collection of SNTPoints.
 
 
-.. py:method:: static getVariancePercentages(PCAnalyzer$PrincipalAxis;)
+.. py:method:: getVariancePercentages(PrincipalAxis[])
 
    Computes the variance percentages for an array of principal axes. This is a convenience method that returns the percentage of total variance explained by each principal axis.
 
@@ -80,12 +80,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static orientTowardDirection(PCAnalyzer$PrincipalAxis;, [D)
+.. py:method:: orientTowardDirection(PrincipalAxis[], double[])
 
    Orients principal axes so the primary axis points toward a reference direction, i.e., the primary axis is oriented to minimize the angle with the reference direction. If the primary axis points away from the reference (dot product < 0), it's flipped.\
 
 
-.. py:method:: static orientTowardTips(PCAnalyzer$PrincipalAxis;, Tree)
+.. py:method:: orientTowardTips(PrincipalAxis[], Tree)
 
    Convenience method to orient existing principal axes toward a tree's tips centroid. For several topologies, this orients the primary axis is so it aligns with the general growth direction of the arbor.
 

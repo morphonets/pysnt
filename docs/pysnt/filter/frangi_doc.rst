@@ -60,44 +60,11 @@ Methods
 -------
 
 
-Getters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: getArity()
-
-   
-
-
-.. py:method:: getIndependentInstance()
-
-   
-
-
-Setters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: setEnvironment(OpEnvironment)
-
-   
-
-
-.. py:method:: setInput(Object)
-
-   
-
-
-.. py:method:: setOutput(Object)
-
-   
-
-
 Analysis Methods
 ~~~~~~~~~~~~~~~~
 
 
-.. py:method:: compute(Object, Object)
+.. py:method:: compute(RandomAccessibleInterval, RandomAccessibleInterval)
 
    
 
@@ -106,42 +73,17 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: accept(Object)
+.. py:method:: accept(RandomAccessibleInterval)
 
    
 
 
-.. py:method:: andThen(Consumer)
-
-   
-
-
-.. py:method:: static apply(ImgPlus, [D, double, int)
+.. py:method:: apply(ImgPlus, double[])
 
    Apply multiscale Frangi vesselness filter to an ImgPlus.
 
 
-.. py:method:: in()
-
-   
-
-
-.. py:method:: initialize()
-
-   
-
-
-.. py:method:: ops()
-
-   
-
-
-.. py:method:: out()
-
-   
-
-
-.. py:method:: run(RandomAccessibleInterval)
+.. py:method:: run()
 
    
 

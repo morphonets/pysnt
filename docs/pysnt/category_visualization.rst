@@ -3,7 +3,7 @@ Visualization Methods
 
 Methods that create visual representations, plots, or graphical displays.
 
-Total methods in this category: **37**
+Total methods in this category: **62**
 
 .. contents:: Classes in this Category
    :local:
@@ -13,7 +13,7 @@ AllenCompartment
 
 .. method:: color()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: `BrainAnnotation`
 
    **Signature:** ``color() -> ColorRGB``
 
@@ -23,14 +23,201 @@ AllenCompartment
 Annotation3D
 ------------
 
-.. method:: colorCode(arg0, arg1)
+.. method:: colorCode(colormap, axis)
 
    **Signature:** ``colorCode(String, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``str``): - one of COLORMAPS, i.e., "grayscale", "hotcold", "rgb", "redgreen", "whiteblue", etc.
-   * **arg1** (``str``)
+   * **colormap** (``str``): - one of COLORMAPS, i.e., "grayscale", "hotcold", "rgb", "redgreen", "whiteblue", etc.
+   * **axis** (``str``)
+
+   **Returns:** ``None``
+
+
+Bdv
+---
+
+.. method:: renderFrames(keyframes, outputDir)
+
+   **Signature:** ``renderFrames(List, String) -> void``
+
+   **Parameters:**
+
+   * **keyframes** (``List[Any]``)
+   * **outputDir** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: resetView()
+
+   Description copied from class: `AbstractBigViewer`
+
+   **Signature:** ``resetView() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showCalibrationDialog(parent)
+
+   **Signature:** ``showCalibrationDialog(Component) -> void``
+
+   **Parameters:**
+
+   * **parent** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: showLoadedData()
+
+   Displays the main tracing data from the associated SNT instance. This method is only available for BDV instances that are tethered to an SNT instance.
+
+   **Signature:** ``showLoadedData() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showSecondaryData()
+
+   Displays the secondary tracing data from the associated SNT instance. This method is only available for BDV instances that are tethered to an SNT instance.
+
+   **Signature:** ``showSecondaryData() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showViewerBanner(msg)
+
+   **Signature:** ``showViewerBanner(String) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: showViewerMessage(msg)
+
+   Description copied from class: `AbstractBigViewer`
+
+   **Signature:** ``showViewerMessage(String) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``): - the message to show
+
+   **Returns:** ``None``
+
+
+BiSearchArtist
+--------------
+
+.. method:: drawProgressOnSlice(plane, currentSliceInPlane, canvas, g)
+
+   **Signature:** ``drawProgressOnSlice(int, int, TracerCanvas, Graphics) -> void``
+
+   **Parameters:**
+
+   * **plane** (``int``)
+   * **currentSliceInPlane** (``int``)
+   * **canvas** (``TracerCanvas``)
+   * **g** (``Any``)
+
+   **Returns:** ``None``
+
+
+BookmarkManager
+---------------
+
+.. method:: showPanel()
+
+   Shows the marker panel, bringing it to front if already visible.
+
+   **Signature:** ``showPanel() -> void``
+
+   **Returns:** ``None``
+
+
+Bvv
+---
+
+.. method:: renderFrames(keyframes, outputDir)
+
+   **Signature:** ``renderFrames(List, String) -> void``
+
+   **Parameters:**
+
+   * **keyframes** (``List[Any]``)
+   * **outputDir** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: resetView()
+
+   Resets the viewer to a fit-to-viewport transform, centering the loaded volume in the canvas. Equivalent to the Reset button in Camera Controls. Does nothing if no volume has been loaded.
+
+   **Signature:** ``resetView() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showCalibrationDialog(parent)
+
+   **Signature:** ``showCalibrationDialog(Component) -> void``
+
+   **Parameters:**
+
+   * **parent** (``Any``)
+
+   **Returns:** ``None``
+
+.. method:: showLoadedData()
+
+   Displays the main tracing data from the associated SNT instance. This method is only available for BVV instances that are tethered to an SNT instance.
+
+   **Signature:** ``showLoadedData() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showSecondaryData()
+
+   Displays the secondary tracing data from the associated SNT instance. This method is only available for BVV instances that are tethered to an SNT instance.
+
+   **Signature:** ``showSecondaryData() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showViewerBanner(msg)
+
+   **Signature:** ``showViewerBanner(String) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: showViewerMessage(msg)
+
+   Description copied from class: `AbstractBigViewer`
+
+   **Signature:** ``showViewerMessage(String) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``): - the message to show
+
+   **Returns:** ``None``
+
+
+BvvUtils
+--------
+
+.. method:: syncQueuesWithViewer(handle)
+
+   Registers all tracked fetch queues with the cache controls of `handle`, so that BVV advances them on every new frame (see `CacheControl.prepareNextFrame()`). Idempotent. Opt out with `-Dsnt.bvv.noQueueSync=true`
+
+   **Signature:** ``syncQueuesWithViewer(BvvHandle) -> void``
+
+   **Parameters:**
+
+   * **handle** (``Any``)
 
    **Returns:** ``None``
 
@@ -38,50 +225,113 @@ Annotation3D
 ColorMaps
 ---------
 
-.. method:: static discreteColors(arg0, arg1)
+.. method:: discreteColors(colorTable, n)
 
-   **Signature:** ``static discreteColors(ColorTable, int) -> ColorRGB;``
-
-   **Parameters:**
-
-   * **arg0** (``Any``)
-   * **arg1** (``int``)
-
-   **Returns:** ``Any``
-
-.. method:: static discreteColorsAWT(arg0, arg1)
-
-   **Signature:** ``static discreteColorsAWT(ColorTable, int) -> Color;``
+   **Signature:** ``discreteColors(ColorTable, int) -> ColorRGB[]``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``int``)
+   * **colorTable** (``Any``)
+   * **n** (``int``)
 
-   **Returns:** ``Any``
+   **Returns:** ``List[Any]``
 
-.. method:: static glasbeyColorsAWT(arg0)
+.. method:: discreteColorsAWT(colorTable, n)
 
-   **Signature:** ``static glasbeyColorsAWT(int) -> Color;``
+   **Signature:** ``discreteColorsAWT(ColorTable, int) -> Color[]``
 
    **Parameters:**
 
-   * **arg0** (``int``)
+   * **colorTable** (``Any``)
+   * **n** (``int``)
 
-   **Returns:** ``Any``
+   **Returns:** ``List[Any]``
+
+.. method:: glasbeyColorsAWT(n)
+
+   **Signature:** ``glasbeyColorsAWT(int) -> Color[]``
+
+   **Parameters:**
+
+   * **n** (``int``)
+
+   **Returns:** ``List[Any]``
+
+
+CrossSectionUtils
+-----------------
+
+.. method:: paintAnnulus(output, side, scaleIso, ox, oy, oz, aBasis, bBasis, xSpacing, ySpacing, zSpacing, offsetX, offsetY, offsetZ, innerRadius, outerRadius, fillValue)
+
+   Paints an annular cross-section into a 3D output image. For each pixel in the annulus (between `innerRadius` and `outerRadius` in grid space), the corresponding voxel in the output image is set to `fillValue`. Existing non-zero voxels are preserved (logical OR).
+
+   **Signature:** ``paintAnnulus(RandomAccessibleInterval, int, double, double, double, double, double[], double[], double, double, double, double, double, double, double, double, double) -> void``
+
+   **Parameters:**
+
+   * **output** (``Any``): - the 3D output image (modified in place); dimensions correspond to pixel coordinates
+   * **side** (``int``)
+   * **scaleIso** (``float``)
+   * **ox** (``float``)
+   * **oy** (``float``)
+   * **oz** (``float``)
+   * **aBasis** (``List[float]``)
+   * **bBasis** (``List[float]``)
+   * **xSpacing** (``float``)
+   * **ySpacing** (``float``)
+   * **zSpacing** (``float``)
+   * **offsetX** (``float``)
+   * **offsetY** (``float``)
+   * **offsetZ** (``float``)
+   * **innerRadius** (``float``)
+   * **outerRadius** (``float``)
+   * **fillValue** (``float``)
+
+   **Returns:** ``None``
+
+
+CurationManager
+---------------
+
+.. method:: severityColor(severity)
+
+   **Signature:** ``severityColor(Severity) -> Color``
+
+   **Parameters:**
+
+   * **severity** (``Any``)
+
+   **Returns:** (``Any``) the per-severity accent color used in the Assistant tab's table, filter menu, and severity icons.
+
+
+FillerThreadArtist
+------------------
+
+.. method:: drawProgressOnSlice(plane, currentSliceInPlane, canvas, g)
+
+   **Signature:** ``drawProgressOnSlice(int, int, TracerCanvas, Graphics) -> void``
+
+   **Parameters:**
+
+   * **plane** (``int``)
+   * **currentSliceInPlane** (``int``)
+   * **canvas** (``TracerCanvas``)
+   * **g** (``Any``)
+
+   **Returns:** ``None``
 
 
 ImpUtils
 --------
 
-.. method:: static applyColorTable(arg0, arg1)
+.. method:: applyColorTable(imp, cTable)
 
-   **Signature:** ``static applyColorTable(ImagePlus, ColorTable) -> void``
+   **Signature:** ``applyColorTable(ImagePlus, ColorTable) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
+   * **imp** (``Any``)
+   * **cTable** (``Any``)
 
    **Returns:** ``None``
 
@@ -91,7 +341,7 @@ InsectBrainCompartment
 
 .. method:: color()
 
-   Description copied from interface: BrainAnnotation
+   Description copied from interface: `BrainAnnotation`
 
    **Signature:** ``color() -> ColorRGB``
 
@@ -108,22 +358,14 @@ MultiViewer3D
    **Returns:** ``List[Any]``
 
 
-NodeProfiler
-------------
+Path
+----
 
-.. method:: preview()
+.. method:: resetColor()
 
-   **Signature:** ``preview() -> void``
+   Resets this path color, forcing SNT to render it under default settings.
 
-   **Returns:** ``None``
-
-
-PathProfiler
-------------
-
-.. method:: preview()
-
-   **Signature:** ``preview() -> void``
+   **Signature:** ``resetColor() -> void``
 
    **Returns:** ``None``
 
@@ -131,7 +373,7 @@ PathProfiler
 SNT
 ---
 
-.. method:: captureView(arg0, arg1)
+.. method:: captureView(view, backgroundColor)
 
    Retrieves a WYSIWYG 'snapshot' of a tracing canvas without voxel data.
 
@@ -139,14 +381,90 @@ SNT
 
    **Parameters:**
 
-   * **arg0** (``str``): - A case-insensitive string specifying the canvas to be captured. Either "xy" (or "main"), "xz", "zy" or "3d" (for legacy's 3D Viewer).
-   * **arg1** (``Any``)
+   * **view** (``str``): - A case-insensitive string specifying the canvas to be captured. Either "xy" (or "main"), "xz", "zy" or "3d" (for legacy's 3D Viewer).
+   * **backgroundColor** (``Any``)
 
    **Returns:** (``Any``) the snapshot capture of the canvas as an RGB image
+
+.. method:: showMIPOverlays(opacity)
+
+   **Signature:** ``showMIPOverlays(double) -> void``
+
+   **Parameters:**
+
+   * **opacity** (``float``)
+
+   **Returns:** ``None``
+
+.. method:: showStatus(progress, maximum, status)
+
+   Description copied from interface: `PaneOwner`
+
+   **Signature:** ``showStatus(int, int, String) -> void``
+
+   **Parameters:**
+
+   * **progress** (``int``): - the current progress value
+   * **maximum** (``int``)
+   * **status** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: updateAllViewers()
+
+   **Signature:** ``updateAllViewers() -> void``
+
+   **Returns:** ``None``
+
+
+SNTChart
+--------
+
+.. method:: showHeatmap(data, colorTable, axisLabels)
+
+   Shows a two-dimensional heatmap from a two-dimensional data matrix, with rows/columns labeled categorically (e.g. class/check names) instead of by numeric coordinate. Cannot be called from event dispatcher thread.
+
+   **Signature:** ``showHeatmap(double[][], ColorTable, String[]) -> JFrame``
+
+   **Parameters:**
+
+   * **data** (``List[List[float]]``): - the heatmap title (null allowed)
+   * **colorTable** (``Any``)
+   * **axisLabels** (``List[str]``)
+
+   **Returns:** (``Any``) the frame holding the heatmap
+
+.. method:: showHistogram3D(values1, values2, colorTable, axisLabels)
+
+   Shows a bivariate histogram (two-dimensional histogram) from two DescriptiveStatistics objects. The number of bins is automatically determined using the Freedman-Diaconis rule.
+
+   **Signature:** ``showHistogram3D(Collection, Collection, ColorTable, String[]) -> JFrame``
+
+   **Parameters:**
+
+   * **values1** (``List[Any]``): - DescriptiveStatistics for the first distribution
+   * **values2** (``List[Any]``)
+   * **colorTable** (``Any``)
+   * **axisLabels** (``List[str]``)
+
+   **Returns:** (``Any``) the frame holding the histogram
 
 
 SNTColor
 --------
+
+.. method:: alphaColor(c, percent)
+
+   Adds an alpha component to an AWT color.
+
+   **Signature:** ``alphaColor(Color, double) -> Color``
+
+   **Parameters:**
+
+   * **c** (``Any``): - the input color
+   * **percent** (``float``)
+
+   **Returns:** (``Any``) the color with an alpha component
 
 .. method:: color()
 
@@ -156,155 +474,83 @@ SNTColor
 
    **Returns:** (``Any``) the AWT color
 
-.. method:: static alphaColor(arg0, arg1)
-
-   Adds an alpha component to an AWT color.
-
-   **Signature:** ``static alphaColor(Color, double) -> Color``
-
-   **Parameters:**
-
-   * **arg0** (``Any``): - the input color
-   * **arg1** (``float``)
-
-   **Returns:** (``Any``) the color with an alpha component
-
-.. method:: static colorBlindSafeBlue()
+.. method:: colorBlindSafeBlue()
 
    Returns the blue of the Okabe-Ito palette, safe against the most common forms of color blindness
 
-   **Signature:** ``static colorBlindSafeBlue() -> Color``
+   **Signature:** ``colorBlindSafeBlue() -> Color``
 
    **Returns:** (``Any``) the colorblind-safe blue
 
-.. method:: static colorBlindSafeYellow()
+.. method:: colorBlindSafeYellow()
 
    Returns the yellow of the Okabe-Ito palette, safe against the most common forms of color blindness
 
-   **Signature:** ``static colorBlindSafeYellow() -> Color``
+   **Signature:** ``colorBlindSafeYellow() -> Color``
 
    **Returns:** (``Any``) the colorblind-safe yellow
 
-.. method:: static colorToString(arg0)
+.. method:: colorToString(color)
 
    Returns the color encoded as hex string with the format #rrggbbaa.
 
-   **Signature:** ``static colorToString(Object) -> String``
+   **Signature:** ``colorToString(Object) -> String``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the input AWT color
+   * **color** (``Any``): - the input AWT color
 
    **Returns:** (``str``) the converted string
 
-.. method:: static contrastColor(arg0)
+.. method:: contrastColor(c)
 
    Returns a BW 'contrast' color
 
-   **Signature:** ``static contrastColor(Color) -> Color``
+   **Signature:** ``contrastColor(Color) -> Color``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the input color
+   * **c** (``Any``): - the input color
 
    **Returns:** (``Any``) Either white or black, as per hue of input color.
 
-.. method:: static contrastHueColor(arg0, arg1)
+.. method:: contrastHueColor(c)
 
    Returns a 'contrasting' color using warm/cool contrast adjustments relatively to a second color reference.
 
-   **Signature:** ``static contrastHueColor(Color, Color) -> Color``
+   **Signature:** ``contrastHueColor(Color) -> Color``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
+   * **c** (``Any``): - the input color
 
-   **Returns:** ``Any``
+   **Returns:** (``Any``) The contrasting color
 
-.. method:: static getDistinctColors(arg0)
-
-   Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded). More details on this SO discussion
-
-   **Signature:** ``static getDistinctColors(int) -> ColorRGB;``
-
-   **Parameters:**
-
-   * **arg0** (``int``): - the number of colors to be retrieved
-
-   **Returns:** (``Any``) the maximum contrast colors
-
-.. method:: static getDistinctColorsAWT(arg0)
-
-   **Signature:** ``static getDistinctColorsAWT(int) -> Color;``
-
-   **Parameters:**
-
-   * **arg0** (``int``)
-
-   **Returns:** ``Any``
-
-.. method:: static getDistinctColorsColorblindSafe(arg0)
-
-   Returns distinct colors from the Okabe-Ito colorblind-safe palette, cycling through its 6 hues once nColors exceeds that count
-
-   **Signature:** ``static getDistinctColorsColorblindSafe(int) -> ColorRGB;``
-
-   **Parameters:**
-
-   * **arg0** (``int``): - the number of colors to be retrieved
-
-   **Returns:** (``Any``) the colorblind-safe colors
-
-.. method:: static getDistinctColorsColorblindSafeAWT(arg0)
-
-   AWT variant of `getDistinctColorsColorblindSafe(int)`
-
-   **Signature:** ``static getDistinctColorsColorblindSafeAWT(int) -> Color;``
-
-   **Parameters:**
-
-   * **arg0** (``int``): - the number of colors to be retrieved
-
-   **Returns:** (``Any``) the colorblind-safe colors, as AWT colors
-
-.. method:: static getDistinctColorsHex(arg0)
-
-   Returns distinct colors based on Kenneth Kelly's 22 colors of maximum contrast (black and white excluded) as Hex values. More details on this SO discussion
-
-   **Signature:** ``static getDistinctColorsHex(int) -> String;``
-
-   **Parameters:**
-
-   * **arg0** (``int``): - the number of colors to be retrieved
-
-   **Returns:** (``Any``) the maximum contrast colors as hex color strings
-
-.. method:: static okabeIto4Colors()
+.. method:: okabeIto4Colors()
 
    Returns a 4-color subset of the Okabe-Ito colorblind-safe palette
 
-   **Signature:** ``static okabeIto4Colors() -> List``
+   **Signature:** ``okabeIto4Colors() -> List``
 
    **Returns:** (``List[Any]``) the 4 Okabe-Ito colors
 
-.. method:: static okabeIto6Colors()
+.. method:: okabeIto6Colors()
 
    Returns the 6-color Okabe-Ito colorblind-safe palette
 
-   **Signature:** ``static okabeIto6Colors() -> List``
+   **Signature:** ``okabeIto6Colors() -> List``
 
    **Returns:** (``List[Any]``) the 6 Okabe-Ito colors
 
-.. method:: static oppositeColor(arg0)
+.. method:: oppositeColor(c)
 
    Returns a suitable 'opposite' color.
 
-   **Signature:** ``static oppositeColor(Color) -> Color``
+   **Signature:** ``oppositeColor(Color) -> Color``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the input color
+   * **c** (``Any``): - the input color
 
    **Returns:** (``Any``) The opposite color
 
@@ -312,7 +558,7 @@ SNTColor
 SNTService
 ----------
 
-.. method:: newRecViewer(arg0)
+.. method:: newRecViewer(guiControls)
 
    Instantiates a new standalone Reconstruction Viewer.
 
@@ -320,9 +566,9 @@ SNTService
 
    **Parameters:**
 
-   * **arg0** (``bool``)
+   * **guiControls** (``bool``)
 
-   **Returns:** (``Viewer3D``) The standalone Viewer3D instance
+   **Returns:** (``Viewer3D``) The standalone `Viewer3D` instance
 
 .. method:: updateViewers()
 
@@ -333,26 +579,55 @@ SNTService
    **Returns:** ``None``
 
 
-SNTUtils
---------
+SNTUI
+-----
 
-.. method:: static addViewer(arg0)
+.. method:: closeBigViewers()
 
-   **Signature:** ``static addViewer(Viewer3D) -> void``
+   Closes any tethered `Bvv`/`Bdv` viewer(s), if open. Unlike `resetUI()`, this does not touch the loaded image or paths: closing a big-viewer *window* isn't data loss the way clearing paths is (the underlying `PathAndFillManager` is untouched), so this needs no confirmation and is safe to call unconditionally - e.g. from `DemoRunner` before loading a new demo, so a viewer left over from a previous one is never silently orphaned (see `AbstractBigViewer`/`setBvvOnEDT`'s `windowClosing` handler for what "orphaned" means here).
 
-   **Parameters:**
-
-   * **arg0** (``Viewer3D``)
+   **Signature:** ``closeBigViewers() -> void``
 
    **Returns:** ``None``
 
-.. method:: static removeViewer(arg0)
+.. method:: showMessage(msg, title)
 
-   **Signature:** ``static removeViewer(Viewer3D) -> void``
+   **Signature:** ``showMessage(String, String) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Viewer3D``)
+   * **msg** (``str``)
+   * **title** (``str``)
+
+   **Returns:** ``None``
+
+.. method:: showStatus(msg, temporary)
+
+   Updates the status bar.
+
+   **Signature:** ``showStatus(String, boolean) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``): - the text to displayed. Set it to null (or empty String) to reset the status bar.
+   * **temporary** (``bool``)
+
+   **Returns:** ``None``
+
+
+SearchThreadArtist
+------------------
+
+.. method:: drawProgressOnSlice(plane, currentSliceInPlane, canvas, g)
+
+   **Signature:** ``drawProgressOnSlice(int, int, TracerCanvas, Graphics) -> void``
+
+   **Parameters:**
+
+   * **plane** (``int``)
+   * **currentSliceInPlane** (``int``)
+   * **canvas** (``TracerCanvas``)
+   * **g** (``Any``)
 
    **Returns:** ``None``
 
@@ -360,71 +635,85 @@ SNTUtils
 SeedOverlayRenderer
 -------------------
 
-.. method:: static colorForSeed(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+.. method:: colorForSeed(table, unknownConfidenceColor, mode, s, low, high, depthFalloff, seedIndexMap, categoryOrdinals)
 
    Dispatches to the per-mode color computation. CONFIDENCE keeps the legacy confidence-position behaviour (alpha rides on confidence); INDEX / TYPE / SOURCE use a categorical key and full opacity so every seed contributes equal visual weight.
 
-Public so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass depthFalloff = 1.0 when there's no slice-distance concept (table rows have no Z).
+Public so that non-canvas consumers (e.g. the Seeds table's swatch column) can compute the exact same color a seed would receive on the canvas, ensuring row⇄canvas correspondence is visually identical. Stateless: pass `depthFalloff = 1.0` when there's no slice-distance concept (table rows have no Z).
 
-   **Signature:** ``static colorForSeed(ColorTable, Color, SeedOverlay$ColorMode, SeedPoint, double, double, double, Map, Map) -> Color``
+   **Signature:** ``colorForSeed(ColorTable, Color, ColorMode, SeedPoint, double, double, double, Map, Map) -> Color``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
-   * **arg2** (``Any``)
-   * **arg3** (``Any``)
-   * **arg4** (``float``)
-   * **arg5** (``float``)
-   * **arg6** (``float``)
-   * **arg7** (``Dict[str, Any]``)
-   * **arg8** (``Dict[str, Any]``)
+   * **table** (``Any``)
+   * **unknownConfidenceColor** (``Any``)
+   * **mode** (``Any``)
+   * **s** (``SeedPoint``)
+   * **low** (``float``)
+   * **high** (``float``)
+   * **depthFalloff** (``float``)
+   * **seedIndexMap** (``Dict[str, Any]``)
+   * **categoryOrdinals** (``Dict[str, Any]``)
 
    **Returns:** ``Any``
+
+
+ShollPlot
+---------
+
+.. method:: drawLabel(label, color)
+
+   **Signature:** ``drawLabel(String, Color) -> void``
+
+   **Parameters:**
+
+   * **label** (``str``)
+   * **color** (``Any``)
+
+   **Returns:** ``None``
 
 
 SpectralSimilarity
 ------------------
 
-.. method:: static averageColorAtPositions(arg0, arg1)
+.. method:: averageColorAtPositions(channelStacks, positions)
 
-   Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel ImageStacks.
+   Computes the average color vector from a set of 3D positions in a multichannel image represented as per-channel `ImageStack`s.
 
-   **Signature:** ``static averageColorAtPositions(RandomAccessibleInterval, [[I) -> [D``
+   **Signature:** ``averageColorAtPositions(ImageStack[], int[][]) -> double[]``
 
    **Parameters:**
 
-   * **arg0** (``Any``): - one ImageStack per channel
-   * **arg1** (``Any``)
+   * **channelStacks** (``List[Any]``): - one ImageStack per channel
+   * **positions** (``List[List[int]]``)
 
-   **Returns:** (``Any``) the average color vector (one value per channel)
+   **Returns:** (``List[float]``) the average color vector (one value per channel)
 
 
 TreeUtils
 ---------
 
-.. method:: static assignUniqueColors(arg0)
+.. method:: assignUniqueColors(trees)
 
    Assigns distinct colors to a collection of Trees.
 
-   **Signature:** ``static assignUniqueColors(Tree) -> void``
+   **Signature:** ``assignUniqueColors(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Tree``): - an optional string defining a hue to be excluded. Either 'red', 'green', 'blue', or 'dim'.
+   * **trees** (``List[Any]``): - an optional string defining a hue to be excluded. Either 'red', 'green', 'blue', or 'dim'.
 
    **Returns:** ``None``
 
-.. method:: static assignUniqueColorsIfUncolored(arg0, arg1)
+.. method:: assignUniqueColorsIfUncolored(trees)
 
    Assigns distinct colors to trees that have no pre-existing color information, leaving trees with custom path/node colors untouched. Useful when importing files that may already carry authored colors (e.g., a traces file with per-path color attributes), where forcing a single flat color per tree would discard that information.
 
-   **Signature:** ``static assignUniqueColorsIfUncolored(Collection, String) -> void``
+   **Signature:** ``assignUniqueColorsIfUncolored(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
-   * **arg1** (``str``)
+   * **trees** (``List[Any]``): - the trees to (conditionally) color
 
    **Returns:** ``None``
 
@@ -432,41 +721,75 @@ TreeUtils
 Viewer3D
 --------
 
-.. method:: assignUniqueColors(arg0)
+.. method:: assignUniqueColors(treeLabels)
 
    **Signature:** ``assignUniqueColors(Collection) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``)
+   * **treeLabels** (``List[Any]``)
 
    **Returns:** ``None``
 
-.. method:: colorCode(arg0, arg1, arg2)
+.. method:: colorCode(treeLabels, measurement, colorTable)
 
-   Runs TreeColorMapper on the specified Tree.
+   Runs `TreeColorMapper` on the specified `Tree`.
 
-   **Signature:** ``colorCode(Collection, String, ColorTable) -> [D``
+   **Signature:** ``colorCode(Collection, String, ColorTable) -> double[]``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the identifier of the Tree (as per addTree(Tree))to be color mapped
-   * **arg1** (``str``)
-   * **arg2** (``Any``)
+   * **treeLabels** (``List[Any]``): - the identifier of the Tree (as per addTree(Tree))to be color mapped
+   * **measurement** (``str``)
+   * **colorTable** (``Any``)
 
-   **Returns:** (``Any``) the double[] the limits (min and max) of the mapped values
+   **Returns:** (``List[float]``) the double[] the limits (min and max) of the mapped values
 
+.. method:: resetView()
 
-WekaModelLoader
----------------
+   Resets the view to its default position and orientation.
 
-.. method:: preview()
+This method restores the camera to its initial position, orientation, and zoom level, providing a consistent starting point for viewing the scene.
 
-   **Signature:** ``preview() -> void``
+   **Signature:** ``resetView() -> void``
+
+   **Returns:** ``None``
+
+.. method:: showMessage(msg, asBanner)
+
+   Displays a short message in the viewer's canvas.
+
+   **Signature:** ``showMessage(String, boolean) -> void``
+
+   **Parameters:**
+
+   * **msg** (``str``): - the message to show
+   * **asBanner** (``bool``)
+
+   **Returns:** ``None``
+
+.. method:: updateColorBarLegend(min, max)
+
+   Updates all the properties of the existing color bar legend. Does nothing if no legend exists.
+
+   **Signature:** ``updateColorBarLegend(double, double) -> void``
+
+   **Parameters:**
+
+   * **min** (``float``): - the minimum value in the color table
+   * **max** (``float``)
+
+   **Returns:** ``None``
+
+.. method:: updateView()
+
+   Updates the scene bounds to ensure all visible objects are displayed.
+
+   **Signature:** ``updateView() -> void``
 
    **Returns:** ``None``
 
 
 ----
 
-*Category index generated on 2026-09-27 23:02:20*
+*Category index generated on 2026-11-02 07:57:40*

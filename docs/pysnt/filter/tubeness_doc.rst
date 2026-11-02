@@ -55,44 +55,11 @@
 
 Computes a tubeness (vesselness) filter on a multi-dimensional image using multi-scale eigenvalue analysis of the Hessian matrix. This is useful for enhancing and segmenting curvilinear structures such as neurites and blood vessels.
 
-Based on: Y. Sato, S. Nakajima, N. Shiraga, H. Atsumi, S. Yoshida, T. Koller, G. Gerig, and R. Kikinis, "Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images," Med. Image Anal., vol. 2, no. 2, pp. 143–168, June 1998.
+Based on: Y. Sato, S. Nakajima, N. Shiraga, H. Atsumi, S. Yoshida, T. Koller, G. Gerig, and R. Kikinis, "Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images," *Med. Image Anal.*, vol. 2, no. 2, pp. 143–168, June 1998.
 
 
 Methods
 -------
-
-
-Getters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: getArity()
-
-   
-
-
-.. py:method:: getIndependentInstance()
-
-   
-
-
-Setters Methods
-~~~~~~~~~~~~~~~
-
-
-.. py:method:: setEnvironment(OpEnvironment)
-
-   
-
-
-.. py:method:: setInput(Object)
-
-   
-
-
-.. py:method:: setOutput(Object)
-
-   
 
 
 Analysis Methods
@@ -113,37 +80,12 @@ Other Methods
    
 
 
-.. py:method:: andThen(Consumer)
-
-   
-
-
-.. py:method:: static apply(ImgPlus, [D)
+.. py:method:: apply(ImgPlus, double)
 
    Apply single-scale tubeness filter to an ImgPlus.
 
 
-.. py:method:: in()
-
-   
-
-
-.. py:method:: initialize()
-
-   
-
-
-.. py:method:: ops()
-
-   
-
-
-.. py:method:: out()
-
-   
-
-
-.. py:method:: run(Object)
+.. py:method:: run()
 
    
 

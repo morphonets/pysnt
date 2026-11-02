@@ -53,197 +53,24 @@
 
 **Package:** ``sc.fiji.snt``
 
-Reusable JPanel that controls a SeedOverlay: visibility, LUT, confidence range, transparency, counters, CSV import/export/clear, plus an inline JTable for browsing and editing individual seeds. Used as the content of SNTUI's "Seeds" tab. Multiple instances can coexist on the same SeedOverlay; each registers its own listener and synchronizes via the overlay (the data model is the source of truth).
+Reusable JPanel that controls a ``SeedOverlay``: visibility, LUT, confidence range, transparency, counters, CSV import/export/clear, plus an inline JTable for browsing and editing individual seeds. Used as the content of SNTUI's "Seeds" tab. Multiple instances can coexist on the same ``SeedOverlay``; each registers its own listener and synchronizes via the overlay (the data model is the source of truth).
 
-Caller must invoke dispose() when the panel is removed from its parent so the overlay and table-model listeners are unregistered.
+Caller must invoke ``dispose()`` when the panel is removed from its parent so the overlay and table-model listeners are unregistered.
 
 
 Methods
 -------
 
 
-Utilities Methods
-~~~~~~~~~~~~~~~~~
-
-
-.. py:method:: checkImage(Image, ImageObserver)
-
-   
-
-
-Analysis Methods
-~~~~~~~~~~~~~~~~
-
-
-.. py:method:: computeVisibleRect(Rectangle)
-
-   
-
-
 Other Methods
 ~~~~~~~~~~~~~
-
-
-.. py:method:: action(Event, Object)
-
-   
-
-
-.. py:method:: add(Component, Object, int)
-
-   
-
-
-.. py:method:: addAncestorListener(AncestorListener)
-
-   
-
-
-.. py:method:: addComponentListener(ComponentListener)
-
-   
-
-
-.. py:method:: addContainerListener(ContainerListener)
-
-   
-
-
-.. py:method:: addFocusListener(FocusListener)
-
-   
-
-
-.. py:method:: addHierarchyBoundsListener(HierarchyBoundsListener)
-
-   
-
-
-.. py:method:: addHierarchyListener(HierarchyListener)
-
-   
-
-
-.. py:method:: addInputMethodListener(InputMethodListener)
-
-   
-
-
-.. py:method:: addKeyListener(KeyListener)
-
-   
-
-
-.. py:method:: addMouseListener(MouseListener)
-
-   
-
-
-.. py:method:: addMouseMotionListener(MouseMotionListener)
-
-   
-
-
-.. py:method:: addMouseWheelListener(MouseWheelListener)
-
-   
-
-
-.. py:method:: addNotify()
-
-   
-
-
-.. py:method:: addPropertyChangeListener(String, PropertyChangeListener)
-
-   
-
-
-.. py:method:: addVetoableChangeListener(VetoableChangeListener)
-
-   
-
-
-.. py:method:: applyComponentOrientation(ComponentOrientation)
-
-   
-
-
-.. py:method:: areFocusTraversalKeysSet(int)
-
-   
-
-
-.. py:method:: bounds()
-
-   
-
-
-.. py:method:: contains(int, int)
-
-   
-
-
-.. py:method:: countComponents()
-
-   
-
-
-.. py:method:: createImage(int, int)
-
-   
-
-
-.. py:method:: createToolTip()
-
-   
-
-
-.. py:method:: createVolatileImage(int, int, ImageCapabilities)
-
-   
-
-
-.. py:method:: deliverEvent(Event)
-
-   
-
-
-.. py:method:: disable()
-
-   
-
-
-.. py:method:: dispatchEvent(AWTEvent)
-
-   
 
 
 .. py:method:: dispose()
 
    Unregisters the overlay listener and the table-model listener, and closes the detached-table dialog if it's open. Idempotent.
 
-Must be called when this panel is removed from its parent: `overlay.addListener(overlayListener)` pins this panel to the overlay's lifetime, so skipping dispose() leaks the panel and its table model until SNT shuts down.
-
-
-.. py:method:: doLayout()
-
-   
-
-
-.. py:method:: enable()
-
-   
-
-
-.. py:method:: findComponentAt(int, int)
-
-   
-
-
-.. py:method:: firePropertyChange(String, char, char)
-
-   
+   Must be called when this panel is removed from its parent: ``overlay.addListener(overlayListener)`` pins this panel to the overlay's lifetime, so skipping ``dispose()`` leaks the panel and its table model until SNT shuts down.
 
 
 See Also

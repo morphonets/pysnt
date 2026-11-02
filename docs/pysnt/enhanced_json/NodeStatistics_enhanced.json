@@ -1,9 +1,9 @@
 {
   "class_name": "NodeStatistics",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:02.496307",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.307255",
+  "extracted_at": "2026-11-02T00:24:01.659285",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.281607",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,7 +13,7 @@
           "signature": "assignBranches(Tree) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "- the association tree",
@@ -35,13 +35,13 @@
       "examples": []
     },
     {
-      "name": "static computeNearestNeighborDistances",
+      "name": "computeNearestNeighborDistances",
       "overloads": [
         {
-          "signature": "static computeNearestNeighborDistances(List) -> void",
+          "signature": "computeNearestNeighborDistances(List) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "List",
               "description": "- the list of points",
@@ -54,8 +54,8 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static computeNearestNeighborDistances",
-      "javadoc_description": "Computes nearest neighbor distances. Assigns the computed value to the v value of each point",
+      "documentation": "Java method: computeNearestNeighborDistances",
+      "javadoc_description": "Computes nearest neighbor distances. Assigns the computed value to the `v` value of each point",
       "category": "Analysis",
       "deprecated": false,
       "since_version": null,
@@ -69,21 +69,21 @@
           "signature": "filter(String, double, double) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (X_COORDINATES, Y_COORDINATES, BRANCH_ORDER, etc.)",
               "javadoc_name": "metric"
             },
             {
-              "name": "arg1",
+              "name": "lowerBound",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "X_COORDINATES"
             },
             {
-              "name": "arg2",
+              "name": "upperBound",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -113,7 +113,7 @@
           "signature": "get(BrainAnnotation) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the query compartment (null not allowed)",
@@ -129,14 +129,14 @@
           "signature": "get(BrainAnnotation, boolean) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "compartment",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "includeChildren",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -161,23 +161,8 @@
       "name": "getAnnotatedFrequencies",
       "overloads": [
         {
-          "signature": "getAnnotatedFrequencies(int, String) -> Map",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "getAnnotatedFrequencies() -> Map",
+          "params": [],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map",
           "return_description": "",
@@ -187,7 +172,7 @@
           "signature": "getAnnotatedFrequencies(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
@@ -200,8 +185,23 @@
           "throws": {}
         },
         {
-          "signature": "getAnnotatedFrequencies() -> Map",
-          "params": [],
+          "signature": "getAnnotatedFrequencies(int, String) -> Map",
+          "params": [
+            {
+              "name": "level",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "hemisphere",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "Dict[str, Any]",
           "java_return_type": "Map",
           "return_description": "",
@@ -225,14 +225,14 @@
           "signature": "getAnnotatedFrequenciesByHemisphere(int, Tree) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "",
@@ -260,21 +260,21 @@
           "signature": "getAnnotatedFrequencyHistogram(int, String, Tree) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
               "javadoc_name": "depth"
             },
             {
-              "name": "arg1",
+              "name": "hemisphere",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "",
@@ -312,7 +312,7 @@
           "signature": "getAnnotatedHistogram(int) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "depth",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
@@ -350,7 +350,7 @@
           "signature": "getAnnotatedNodes(int) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "level",
               "type": "int",
               "java_type": "int",
               "description": "- the ontological depth of the compartments to be considered",
@@ -378,7 +378,7 @@
           "signature": "getDescriptiveStatistics(String) -> DescriptiveStatistics",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (X_COORDINATES, Y_COORDINATES, etc.)",
@@ -408,7 +408,7 @@
           "signature": "getHistogram(String) -> SNTChart",
           "params": [
             {
-              "name": "arg0",
+              "name": "metric",
               "type": "str",
               "java_type": "String",
               "description": "- the measurement (X_COORDINATES, RADIUS, etc.)",
@@ -430,10 +430,10 @@
       "examples": []
     },
     {
-      "name": "static getMetrics",
+      "name": "getMetrics",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -441,24 +441,24 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getMetrics",
+      "documentation": "Java method: getMetrics",
       "javadoc_description": "Gets the list of supported metrics.",
-      "category": "Analysis",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -469,9 +469,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -484,7 +484,7 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "- the descriptive label",
@@ -515,7 +515,7 @@
           "signature": "NodeStatistics(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             }
@@ -527,12 +527,12 @@
           "signature": "NodeStatistics(Collection, Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection"
             },
             {
-              "name": "arg1",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -541,7 +541,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for NodeStatistics"
+      "documentation": "Constructors of NodeStatistics"
     }
   ],
   "javadoc_description": "Computes summary and descriptive statistics from a Collection of nodes, including convenience methods to plot distributions of such data.",
@@ -555,25 +555,25 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
+    "Constant Field Values",
     "AllenCompartment.getOntologyDepth()",
-    "Object",
-    "Constant Field Values"
+    "Object"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 23,
+      "total_javadoc_methods": 22,
       "total_json_methods": 14,
       "total_matches": 19,
       "exact_matches": 19,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 4,
+      "unmatched_javadoc": 3,
       "unmatched_json": -5,
-      "match_percentage": 82.6
+      "match_percentage": 86.4
     },
-    "unmatched_javadoc_methods": 4,
+    "unmatched_javadoc_methods": 3,
     "unmatched_json_methods": 0,
-    "enhancement_quality_score": 0.991
+    "enhancement_quality_score": 1.0
   }
 }

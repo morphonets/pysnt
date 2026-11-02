@@ -64,178 +64,190 @@ Utilities Methods
 ~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: checkImage(Image, ImageObserver)
+.. py:method:: resetUI()
+
+   Full reset: closes any tethered ``Bvv``/``Bdv`` viewer (via ``closeBigViewers()``) and the current image, and clears all paths, restoring the UI to its initial, blank-canvas state. Intended for callers that need a guaranteed-fresh session regardless of whatever was open before.
+
+
+Getters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: getActiveBigViewer()
+
+   Returns the ``AbstractBigViewer`` (BVV or BDV) currently tethered to this UI, in particular, Stream mode's own viewer or ``null`` if neither is open.
+
+
+.. py:method:: getBookmarkManager()
+
+   Gets the Bookmark Manager pane.
+
+
+.. py:method:: getCommandFinder()
+
+   Returns the command palette instance, so that other components can register their own entries into it.
+
+
+.. py:method:: getCurationManager()
+
+   Returns the Curation Manager (Curation Assistant).
+
+
+.. py:method:: getDelineationsManager()
+
+   Gets the Delineations Manager pane.
+
+
+.. py:method:: getFillManager()
+
+   Gets the Fill Manager dialog.
+
+
+.. py:method:: getNotesPane()
+
+   Gets the Bookmark Manager pane.
+
+
+.. py:method:: getOpenBigViewers()
 
    
+
+
+.. py:method:: getOrPromptForWorkspace()
+
+   Returns the workspace directory, prompting user to create it if it doesn't exist.
+
+
+.. py:method:: getPathManager()
+
+   Gets the Path Manager dialog.
+
+
+.. py:method:: getPlausibilityMonitor()
+
+   Returns the plausibility monitor used by the Curation Manager (Curation Assistant).
+
+
+.. py:method:: getPrefs()
+
+   
+
+
+.. py:method:: getReconstructionViewer(boolean)
+
+   Gets the Reconstruction Viewer.
+
+
+.. py:method:: getRecorder(boolean)
+
+   
+
+
+.. py:method:: getSciViewSNT(boolean)
+
+   Gets the SciViewSNT instance.
+
+
+.. py:method:: getState()
+
+   Gets the current UI state.
+
+
+.. py:method:: getTable()
+
+   
+
+
+.. py:method:: getTracingCanvas()
+
+   
+
+
+.. py:method:: getTracingCanvasPopupMenu()
+
+   
+
+
+.. py:method:: isOtherBigViewerEditing(AbstractBigViewer)
+
+   
+
+
+.. py:method:: isReady()
+
+   Assesses whether the UI is blocked.
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: setBdv(Bdv)
+
+   Registers (or clears, if ``bdv`` is null) the ``Bdv`` instance tethered to this UI.
+
+
+.. py:method:: setBvv(Bvv)
+
+   Registers (or clears, if ``bvv`` is null) the ``Bvv`` instance tethered to this UI.
+
+
+.. py:method:: setEnableDebugMode(boolean)
+
+   Enables/disables debug mode
+
+
+.. py:method:: setLookAndFeel(String)
+
+   
+
+
+.. py:method:: setRenderingScale(double)
+
+   Sets rendering scale of Paths as per respective widget in dialog.
+
+
+.. py:method:: setSigmaPaletteListener(SigmaPaletteListener)
+
+   
+
+
+.. py:method:: setVisibilityFilter(String, boolean)
+
+   Sets filters for visibility of paths, as per respective widget in dialog.
+
+
+Visualization Methods
+~~~~~~~~~~~~~~~~~~~~~
+
+
+.. py:method:: closeBigViewers()
+
+   Closes any tethered ``Bvv``/``Bdv`` viewer(s), if open. Unlike ``resetUI()``, this does not touch the loaded image or paths: closing a big-viewer *window* isn't data loss the way clearing paths is (the underlying ``PathAndFillManager`` is untouched), so this needs no confirmation and is safe to call unconditionally - e.g. from ``DemoRunner`` before loading a new demo, so a viewer left over from a previous one is never silently orphaned (see ``AbstractBigViewer``/``setBvvOnEDT``'s ``windowClosing`` handler for what "orphaned" means here).
+
+
+.. py:method:: showMessage(String, String)
+
+   
+
+
+.. py:method:: showStatus(String, boolean)
+
+   Updates the status bar.
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: action(Event, Object)
-
-   
-
-
-.. py:method:: add(String, Component)
-
-   Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of SNT.getLoadedData(), so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.
-
-
-.. py:method:: addComponentListener(ComponentListener)
-
-   
-
-
-.. py:method:: addContainerListener(ContainerListener)
-
-   
-
-
-.. py:method:: addFocusListener(FocusListener)
-
-   
-
-
-.. py:method:: addHierarchyBoundsListener(HierarchyBoundsListener)
-
-   
-
-
-.. py:method:: addHierarchyListener(HierarchyListener)
-
-   
-
-
-.. py:method:: addInputMethodListener(InputMethodListener)
-
-   
-
-
-.. py:method:: addKeyListener(KeyListener)
-
-   
-
-
-.. py:method:: addMouseListener(MouseListener)
-
-   
-
-
-.. py:method:: addMouseMotionListener(MouseMotionListener)
-
-   
-
-
-.. py:method:: addMouseWheelListener(MouseWheelListener)
-
-   
-
-
-.. py:method:: addNotify()
-
-   
-
-
-.. py:method:: addPropertyChangeListener(PropertyChangeListener)
-
-   
-
-
-.. py:method:: addWindowFocusListener(WindowFocusListener)
-
-   
-
-
-.. py:method:: addWindowListener(WindowListener)
-
-   
-
-
-.. py:method:: addWindowStateListener(WindowStateListener)
-
-   
-
-
-.. py:method:: applyComponentOrientation(ComponentOrientation)
-
-   
-
-
-.. py:method:: applyResourceBundle(String)
-
-   
-
-
-.. py:method:: areFocusTraversalKeysSet(int)
-
-   
-
-
-.. py:method:: bounds()
-
-   
-
-
 .. py:method:: changeState(int)
 
-   Changes this UI to a new state. Does nothing if newState is the current UI state
+   Changes this UI to a new state. Does nothing if ``newState`` is the current UI state
 
 
-.. py:method:: contains(int, int)
+.. py:method:: close()
 
-   
-
-
-.. py:method:: countComponents()
-
-   Gets the current UI state.
-
-
-.. py:method:: createBufferStrategy(int, BufferCapabilities)
-
-   
-
-
-.. py:method:: createImage(int, int)
-
-   
-
-
-.. py:method:: createVolatileImage(int, int, ImageCapabilities)
-
-   
-
-
-.. py:method:: deliverEvent(Event)
-
-   
-
-
-.. py:method:: disable()
-
-   
-
-
-.. py:method:: dispatchEvent(AWTEvent)
-
-   
-
-
-.. py:method:: dispose()
-
-   
-
-
-.. py:method:: doLayout()
-
-   
-
-
-.. py:method:: enable()
-
-   
+   Closes this SNT session, asking for confirmation only if there are unsaved paths or measurements
 
 
 .. py:method:: error(String)
@@ -243,9 +255,60 @@ Other Methods
    Displays an error message.
 
 
-.. py:method:: findComponentAt(Point)
+.. py:method:: launchSigmaPaletteAround(int, int, int)
 
-   
+   Crops a small region around the given point and launches the ``SigmaPalette`` preview grid, exactly as if the user had clicked at that position on the classic-mode tracing canvas (see ``InteractiveTracerCanvas#startSigmaWizard``). Public (rather than the previous ``protected``) so it can also be triggered from a Bdv/Bvv viewer action, since there is no classic canvas to click on in Stream mode (see ``AbstractBigViewer.Actions#pickSigmaPointAction()``).
+
+
+.. py:method:: launchSigmaPaletteAroundStreamed(int, int, int)
+
+   Crop-independent counterpart of ``launchSigmaPaletteAround(int, int, int)``: sources its bounds from ``SNT.getFullSourceData()`` instead of ``SNT.getLoadedData()``, so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See ``AbstractBigViewer.Actions#pickSigmaPointAction()``, which pairs this with ``SNT.getDefaultCanvasPixelOffset()`` to convert the click.
+
+
+.. py:method:: pause(boolean)
+
+   Pauses/Resume SNT (equivalent to command in image contextual menu).
+
+
+.. py:method:: pauseTracing(boolean)
+
+   Pauses/Resume tracing functions (equivalent to command in image contextual menu).
+
+
+.. py:method:: refresh()
+
+   Updates the dialog, including status bar and 'computation settings' widget.
+
+
+.. py:method:: registerActiveCmdWorker(SwingWorker)
+
+   Registers (or clears, if ``worker`` is ``null``) the ``SwingWorker`` currently executing a long-running ``CommonDynamicCmd``. Unlike commands launched via ``DynamicCmdRunner``, these keep running on their own background thread long after the initiating dialog has closed and ``currentState`` has reverted to whatever it was before the dialog opened, so they cannot rely on the switch inside ``abortCurrentOperation()``. Cancellation is not forcible: the running code must itself poll ``Thread.isInterrupted()`` (see ``AbstractGWDTTracer``'s hot loops) for this to have any effect.
+
+
+.. py:method:: runAutotracingWizard()
+
+   Launches the autotracing wizard for the active image.
+
+   The tracer implementation is selected based on image type:
+
+   - **Binary images** : ``BinaryTracerCmd`` (topology-based skeletonization)
+
+   - **Grayscale images** : ``GWDTTracerCmd`` (intensity-weighted distance transform)
+
+
+.. py:method:: runCommand(String)
+
+   Runs a Scijava command associated with SNT.
+
+
+.. py:method:: runSecondaryLayerWizard()
+
+   Runs the 'secondary layer wizard' in the background, without displaying prompt.
+
+
+.. py:method:: selectTab(String)
+
+   Activates the specified tab.
 
 
 See Also

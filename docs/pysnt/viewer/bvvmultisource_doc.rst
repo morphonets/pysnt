@@ -53,13 +53,15 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-A group of BvvSource objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the leader source are propagated to all follower sources.
+A group of ``BvvSource`` objects that are treated as a logical unit: display properties (color, range, active state) and manual transforms applied to the *leader* source are propagated to all *follower* sources.
 
 This is particularly useful for:
 
-Multichannel images where each channel is a separate BVV source but should move together during manual registration (press T in BVV to enter manual transform mode). Multi-image workflows where multiple volumes must be grouped and manipulated as one.
+- Multichannel images where each channel is a separate BVV source but should move together during manual registration (press ``T`` in BVV to enter manual transform mode).
 
-Transform synchronization is achieved by making all follower TransformedSources share the leader's fixedTransform and incrementalTransform field objects via reflection. This means any transform applied to the leader, including live T-mode (press T) dragging: It is immediately visible on all followers with no listener overhead. If reflection fails, a `renderTransformListeners` fallback is used.
+- Multi-image workflows where multiple volumes must be grouped and manipulated as one.
+
+**Transform synchronization** is achieved by making all follower `TransformedSource`s share the leader's ``fixedTransform`` and ``incrementalTransform`` field objects via reflection. This means any transform applied to the leader, including live T-mode (press ``T``) dragging: It is immediately visible on all followers with no listener overhead. If reflection fails, a ``renderTransformListeners`` fallback is used.
 
 
 Methods
@@ -116,7 +118,7 @@ Setters Methods
 
 .. py:method:: setLiveSync(boolean)
 
-   Sets whether transforms are propagated to followers on every render frame (true) or only on explicit syncTransforms() calls (false).
+   Sets whether transforms are propagated to followers on every render frame (``true``) or only on explicit ``syncTransforms()`` calls (``false``).
 
 
 Other Methods
@@ -126,6 +128,16 @@ Other Methods
 .. py:method:: applyTransform(AffineTransform3D)
 
    Applies the given transform as the fixed transform to the leader and all followers. This is the primary entry point for loading a saved transform.
+
+
+.. py:method:: channelSetup(int)
+
+   
+
+
+.. py:method:: channelSource(int)
+
+   
 
 
 .. py:method:: removeFromBvv()

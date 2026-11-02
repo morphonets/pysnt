@@ -1,0 +1,196 @@
+{
+  "class_name": "IOUtils",
+  "package": "sc.fiji.snt.util",
+  "extracted_at": "2026-11-02T00:24:01.631874",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.394820",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "detectFormat",
+      "overloads": [
+        {
+          "signature": "detectFormat(File) -> ReconstructionFormat",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the file to be inspected",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ReconstructionFormat",
+          "return_description": "the detected format",
+          "throws": {
+            "IOException": "- if the file could not be read"
+          }
+        },
+        {
+          "signature": "detectFormat(InputStream, boolean) -> ReconstructionFormat",
+          "params": [
+            {
+              "name": "is",
+              "type": "Any",
+              "java_type": "InputStream",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "closeStreamAfterGuess",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ReconstructionFormat",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: detectFormat",
+      "javadoc_description": "Guesses the format of a reconstruction file from its first bytes. See `detectFormat(InputStream, boolean)`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getReconstructionExtensions",
+      "overloads": [
+        {
+          "signature": "getReconstructionExtensions() -> String[]",
+          "params": [],
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
+          "return_description": "a new array of extensions, e.g., \"swc\", \"traces\", etc.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getReconstructionExtensions",
+      "javadoc_description": "Returns the extensions (lower case, without the leading period) of the supported reconstruction formats that can be identified by name alone, i.e., not including Neurolucida .xml files",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isReconstructionFile",
+      "overloads": [
+        {
+          "signature": "isReconstructionFile(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the file to be tested",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the file is a supported reconstruction file",
+          "throws": {}
+        },
+        {
+          "signature": "isReconstructionFile(File, boolean) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "sniffXml",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isReconstructionFile",
+      "javadoc_description": "Checks if a file is a reconstruction file. Apart from the extension-only check, XML files are recognized as Neurolucida reconstructions if `sniffXml` is true and their header is that of a Neurolucida file. Only the first few KB of XML files are read.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSWCFile",
+      "overloads": [
+        {
+          "signature": "isSWCFile(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "- the file to be tested",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the file name ends with \".swc\" or \".eswc\"",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSWCFile",
+      "javadoc_description": "Checks if a file has an SWC extension, i.e., .swc or .eswc (extended SWC, which holds extra columns that are ignored on import). Case-insensitive.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [],
+  "javadoc_description": "Static utilities for file I/O, namely the detection of reconstruction file formats.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "IOUtils.ReconstructionFormat"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 6,
+      "total_json_methods": 4,
+      "total_matches": 6,
+      "exact_matches": 6,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 0,
+      "unmatched_json": -2,
+      "match_percentage": 100.0
+    },
+    "unmatched_javadoc_methods": 0,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

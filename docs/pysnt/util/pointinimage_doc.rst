@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.util``
 
-Defines a Point in an image, a node of a traced Path. Coordinates are always expressed in real-world coordinates.
+Defines a Point in an image, a node of a traced ``Path``. Coordinates are always expressed in real-world coordinates.
 
 
 Fields
@@ -96,7 +96,7 @@ Utilities Methods
 
    Creates a copy of this PointInImage.
 
-This method creates a copy of the point including all properties such as coordinates, value, annotation, and hemisphere information.
+   This method creates a copy of the point including all properties such as coordinates, value, annotation, and hemisphere information.
 
 
 Getters Methods
@@ -123,7 +123,7 @@ Getters Methods
    Returns the Path associated with this node (if any)
 
 
-.. py:method:: getUnscaledPoint(int)
+.. py:method:: getUnscaledPoint()
 
    Converts the coordinates of this point into pixel units if this point is associated with a Path.
 
@@ -139,6 +139,11 @@ Getters Methods
 
 
 .. py:method:: getZ()
+
+   
+
+
+.. py:method:: hashCode()
 
    
 
@@ -159,7 +164,7 @@ Setters Methods
 
 .. py:method:: setAnnotation(BrainAnnotation)
 
-   Description copied from interface: SNTPoint
+   Description copied from interface: ``SNTPoint``
 
 
 .. py:method:: setHemisphere(char)
@@ -201,6 +206,11 @@ Other Methods
    
 
 
+.. py:method:: equals(Object)
+
+   
+
+
 .. py:method:: euclideanDxTo(PointInImage)
 
    
@@ -209,6 +219,11 @@ Other Methods
 .. py:method:: scale(double, double, double)
 
    Scales this point coordinates.
+
+
+.. py:method:: toString()
+
+   
 
 
 .. py:method:: transform(PathTransformer)

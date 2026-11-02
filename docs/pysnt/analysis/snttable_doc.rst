@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.analysis``
 
-Extension of DefaultGenericTable with (minor) scripting conveniences.
+Extension of ``DefaultGenericTable`` with (minor) scripting conveniences.
 
 
 Methods
@@ -69,43 +69,58 @@ Utilities Methods
    
 
 
-.. py:method:: clone()
-
-   
-
-
 Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: get(int)
+.. py:method:: getColumnHeaders()
 
    
 
 
-.. py:method:: getColumnCount()
+.. py:method:: getSummaryRow()
 
    
 
 
-.. py:method:: getColumnHeader(int)
+.. py:method:: getTitle()
+
+   Gets the title of the table.
+
+   Returns the table's title, or "SNT Measurements" if no title has been set.
+
+
+.. py:method:: hasUnsavedData()
+
+   Checks if the table has unsaved data.
+
+   Returns true if the table contains data and has been modified since the last save operation.
+
+
+.. py:method:: isSummarized()
+
+   Checks if the table contains summary statistics.
+
+   Returns true if the table has been summarized with statistical measures like mean, standard deviation, etc. This is determined by looking for specific row headers in the expected positions.
+
+
+Setters Methods
+~~~~~~~~~~~~~~~
+
+
+.. py:method:: set(String, String, Object)
 
    
 
 
-.. py:method:: getColumnHeaders(String)
+.. py:method:: setContext(Context)
 
-   
-
-
-.. py:method:: getColumnIndex(String)
-
-   
+   Sets a SciJava context to this table.
 
 
-.. py:method:: getFirst()
+.. py:method:: setTitle(String)
 
-   
+   Sets the title of the table.
 
 
 Visualization Methods
@@ -116,68 +131,45 @@ Visualization Methods
 
    Creates a new display or updates an existing one.
 
-If no display exists, creates a new table display window. If a display already exists, updates it with the current table contents.
+   If no display exists, creates a new table display window. If a display already exists, updates it with the current table contents.
+
+
+.. py:method:: show()
+
+   
+
+
+.. py:method:: updateDisplay()
+
+   Updates the existing table display.
+
+   Refreshes the table display with the current table contents without creating a new display window.
 
 
 I/O Operations Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. py:method:: static fromFile(String, String)
+.. py:method:: fromFile(String)
 
    Script-friendly method for loading tabular data from a file/URL.
+
+
+.. py:method:: save(File)
+
+   
 
 
 Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: add(Column)
+.. py:method:: addColumn(String, Collection)
 
    
-
-
-.. py:method:: addAll(int, Collection)
-
-   
-
-
-.. py:method:: addColumn(String, [D)
-
-   
-
-
-.. py:method:: addFirst(Object)
-
-   Sets the title of the table.
 
 
 .. py:method:: addGenericColumn(String, Collection)
-
-   
-
-
-.. py:method:: addLast(Object)
-
-   
-
-
-.. py:method:: appendColumn()
-
-   
-
-
-.. py:method:: appendColumns(String;)
-
-   
-
-
-.. py:method:: appendRow(String)
-
-   
-
-
-.. py:method:: appendRows(String;)
 
    
 
@@ -186,44 +178,29 @@ Other Methods
 
    Appends a value to the last row in the specified column.
 
-If the table is empty, a new row is created first. The value is then set in the specified column of the last row.
+   If the table is empty, a new row is created first. The value is then set in the specified column of the last row.
 
 
-.. py:method:: static asDouble(Object)
+.. py:method:: asDouble(Object)
 
-   Coerces a table cell to a double. Cells may be typed Double, Long, or String depending on how the table was parsed (e.g. CSV column-type inference); this accepts any of those, with a String parse fallback for a numeric-looking value stored in a non-numeric column
-
-
-.. py:method:: static asInt(Object, int)
-
-   Coerces a table cell to an int. Tolerates a Double-shaped integer string (e.g. "1.0" -> 1)
+   Coerces a table cell to a ``double``. Cells may be typed ``Double``, ``Long``, or ``String`` depending on how the table was parsed (e.g. CSV column-type inference); this accepts any of those, with a String parse fallback for a numeric-looking value stored in a non-numeric column
 
 
-.. py:method:: static asString(Object, String)
+.. py:method:: asInt(Object, int)
 
-   Coerces a table cell to a trimmed String
-
-
-.. py:method:: contains(Object)
-
-   
+   Coerces a table cell to an ``int``. Tolerates a Double-shaped integer string (e.g. ``"1.0"`` -> ``1``)
 
 
-.. py:method:: containsAll(Collection)
+.. py:method:: asString(Object, String)
 
-   
-
-
-.. py:method:: ensureCapacity(int)
-
-   
+   Coerces a table cell to a trimmed ``String``
 
 
 .. py:method:: fillEmptyCells(Object)
 
    Fills all empty cells in the table with the specified value.
 
-Iterates through all cells in the table and replaces null values with the provided replacement value.
+   Iterates through all cells in the table and replaces null values with the provided replacement value.
 
 
 .. py:method:: findColumnIndex(String)
@@ -231,22 +208,49 @@ Iterates through all cells in the table and replaces null values with the provid
    Case-/whitespace-insensitive column lookup.
 
 
-.. py:method:: forEach(Consumer)
+.. py:method:: fromGenericTable(GenericTable)
 
    
 
 
-.. py:method:: static fromGenericTable(GenericTable)
-
-   
-
-
-.. py:method:: geColumnStats(int, int, int)
+.. py:method:: geColumnStats(String, int, int)
 
    
 
 
 .. py:method:: geRowStats(String, int, int)
+
+   
+
+
+.. py:method:: insertRow(String)
+
+   
+
+
+.. py:method:: removeColumn(String)
+
+   
+
+
+.. py:method:: removeSummary()
+
+   Removes summary statistics from the table.
+
+   If the table contains summary statistics, this method removes the summary rows to return the table to its raw data state.
+
+
+.. py:method:: replace(String, double, double)
+
+   
+
+
+.. py:method:: summarize()
+
+   
+
+
+.. py:method:: toString(GenericTable)
 
    
 

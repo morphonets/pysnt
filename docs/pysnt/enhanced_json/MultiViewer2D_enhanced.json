@@ -1,21 +1,21 @@
 {
   "class_name": "MultiViewer2D",
   "package": "sc.fiji.snt.viewer",
-  "extracted_at": "2026-09-27T23:01:01.703045",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.306024",
+  "extracted_at": "2026-11-02T00:24:01.655129",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.279856",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -26,9 +26,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -41,7 +41,7 @@
           "signature": "save(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "filePath",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -69,7 +69,7 @@
           "signature": "setAxesVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -97,7 +97,7 @@
           "signature": "setColorBarLegend(ColorMapper) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorMapper",
               "type": "Any",
               "java_type": "ColorMapper",
               "description": "",
@@ -110,33 +110,26 @@
           "throws": {}
         },
         {
-          "signature": "setColorBarLegend(ColorTable, double, double, int) -> void",
+          "signature": "setColorBarLegend(String, double, double) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ColorTable",
+              "name": "lut",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "int",
-              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -147,26 +140,33 @@
           "throws": {}
         },
         {
-          "signature": "setColorBarLegend(String, double, double) -> void",
+          "signature": "setColorBarLegend(ColorTable, double, double, int) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "max",
               "type": "float",
               "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nDecimalPlaces",
+              "type": "int",
+              "java_type": "int",
               "description": "",
               "javadoc_name": null
             }
@@ -192,7 +192,7 @@
           "signature": "setGridlinesVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -220,7 +220,7 @@
           "signature": "setLabel(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "label",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -248,7 +248,7 @@
           "signature": "setLayoutColumns(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cols",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -276,7 +276,7 @@
           "signature": "setOutlineVisible(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "visible",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -304,7 +304,7 @@
           "signature": "setTitle(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "title",
               "type": "str",
               "java_type": "String",
               "description": "- the viewer's title.",
@@ -332,14 +332,14 @@
           "signature": "setXrange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "xMin",
               "type": "float",
               "java_type": "double",
               "description": "- the lower-limit for the X-axis",
               "javadoc_name": "xMin"
             },
             {
-              "name": "arg1",
+              "name": "xMax",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -353,7 +353,7 @@
         }
       ],
       "documentation": "Java method: setXrange",
-      "javadoc_description": "Sets a manual range for the viewers' X-axis. Calling setXrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.",
+      "javadoc_description": "Sets a manual range for the viewers' X-axis. Calling `setXrange(-1, -1)` enables auto-range (the default). Must be called before Viewer is fully assembled.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -367,14 +367,14 @@
           "signature": "setYrange(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "yMin",
               "type": "float",
               "java_type": "double",
               "description": "- the lower-limit for the Y-axis",
               "javadoc_name": "yMin"
             },
             {
-              "name": "arg1",
+              "name": "yMax",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -388,7 +388,7 @@
         }
       ],
       "documentation": "Java method: setYrange",
-      "javadoc_description": "Sets a manual range for the viewers' Y-axis. Calling setYrange(-1, -1) enables auto-range (the default). Must be called before Viewer is fully assembled.",
+      "javadoc_description": "Sets a manual range for the viewers' Y-axis. Calling `setYrange(-1, -1)` enables auto-range (the default). Must be called before Viewer is fully assembled.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -422,34 +422,34 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "MultiViewer2D(List)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "MultiViewer2D(Collection)",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "Collection"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "MultiViewer2D(List)",
+          "params": [
+            {
+              "name": "viewers",
+              "type": "List[Any]",
+              "java_type": "List"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for MultiViewer2D"
+      "documentation": "Constructors of MultiViewer2D"
     }
   ],
-  "javadoc_description": "Class for rendering montages of Trees as 2D plots that can be exported as SVG, PNG or PDF.",
+  "javadoc_description": "Class for rendering montages of `Tree`s as 2D plots that can be exported as SVG, PNG or PDF.",
   "inheritance": {
     "extends": [
       "Object"

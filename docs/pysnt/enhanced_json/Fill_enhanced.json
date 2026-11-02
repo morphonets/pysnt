@@ -1,9 +1,9 @@
 {
   "class_name": "Fill",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-09-27T23:00:57.600548",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.431853",
+  "extracted_at": "2026-11-02T00:24:01.618264",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.378632",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -13,42 +13,42 @@
           "signature": "add(int, int, int, double, int, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x",
               "type": "int",
               "java_type": "int",
               "description": "- the x-coordinate of the node",
               "javadoc_name": "x"
             },
             {
-              "name": "arg1",
+              "name": "y",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "distance",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_3"
             },
             {
-              "name": "arg4",
+              "name": "previous",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_4"
             },
             {
-              "name": "arg5",
+              "name": "open",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -93,10 +93,10 @@
       "name": "getMetric",
       "overloads": [
         {
-          "signature": "getMetric() -> SNT$CostType",
+          "signature": "getMetric() -> CostType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$CostType",
+          "java_return_type": "CostType",
           "return_description": "",
           "throws": {}
         }
@@ -233,12 +233,12 @@
       "name": "setMetric",
       "overloads": [
         {
-          "signature": "setMetric(SNT$CostType) -> void",
+          "signature": "setMetric(CostType) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cost",
               "type": "Any",
-              "java_type": "SNT$CostType",
+              "java_type": "CostType",
               "description": "- the cost type to set",
               "javadoc_name": "cost"
             }
@@ -261,12 +261,12 @@
       "name": "setSourcePaths",
       "overloads": [
         {
-          "signature": "setSourcePaths(Path;) -> void",
+          "signature": "setSourcePaths(Path[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Path;",
+              "name": "newSourcePaths",
+              "type": "List[Path]",
+              "java_type": "Path[]",
               "description": "- the set of new source paths",
               "javadoc_name": "newSourcePaths"
             }
@@ -280,7 +280,7 @@
           "signature": "setSourcePaths(Set) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newSourcePaths",
               "type": "Set[Any]",
               "java_type": "Set",
               "description": "",
@@ -308,28 +308,28 @@
           "signature": "setSpacing(double, double, double, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "y_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_1"
             },
             {
-              "name": "arg2",
+              "name": "z_spacing",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": "param_2"
             },
             {
-              "name": "arg3",
+              "name": "units",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -357,7 +357,7 @@
           "signature": "setThreshold(double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "threshold",
               "type": "float",
               "java_type": "double",
               "description": "- the threshold value to set",
@@ -379,13 +379,33 @@
       "examples": []
     },
     {
+      "name": "toString",
+      "overloads": [
+        {
+          "signature": "toString() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toString",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "writeNodesXML",
       "overloads": [
         {
           "signature": "writeNodesXML(PrintWriter) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter",
               "description": "",
@@ -413,14 +433,14 @@
           "signature": "writeXML(PrintWriter, int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "pw",
               "type": "Any",
               "java_type": "PrintWriter",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "fillIndex",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -452,8 +472,8 @@
     {
       "name": "metric",
       "type": "Any",
-      "java_type": "SNT$CostType",
-      "documentation": "Field metric of type SNT$CostType"
+      "java_type": "CostType",
+      "documentation": "Field metric of type CostType"
     },
     {
       "name": "spacing_units",
@@ -491,7 +511,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for Fill"
+      "documentation": "Constructors of Fill"
     }
   ],
   "javadoc_description": "Defines a filled structure.",
@@ -512,17 +532,17 @@
   "enhancement_metadata": {
     "matching_statistics": {
       "total_javadoc_methods": 17,
-      "total_json_methods": 15,
-      "total_matches": 16,
-      "exact_matches": 16,
+      "total_json_methods": 16,
+      "total_matches": 17,
+      "exact_matches": 17,
       "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 1,
+      "unmatched_javadoc": 0,
       "unmatched_json": -1,
-      "match_percentage": 94.1
+      "match_percentage": 100.0
     },
-    "unmatched_javadoc_methods": 1,
+    "unmatched_javadoc_methods": 0,
     "unmatched_json_methods": 0,
     "enhancement_quality_score": 1.0
   }

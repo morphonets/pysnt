@@ -1,744 +1,11 @@
 {
   "class_name": "SNTUI",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.927194",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.330430",
+  "extracted_at": "2026-11-02T00:24:01.712265",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.297855",
   "enhancement_version": "1.0.0",
   "methods": [
-    {
-      "name": "action",
-      "overloads": [
-        {
-          "signature": "action(Event, Object) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Event",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: action",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "add",
-      "overloads": [
-        {
-          "signature": "add(String, Component) -> Component",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Component",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component, int) -> Component",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Component",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component) -> Component",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Component",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component, Object) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "- pixel X position (0-based), in SNT.getFullSourceData()'s own grid",
-              "javadoc_name": "x"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": "SNT.getFullSourceData()"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(Component, Object, int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Component",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "Object",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "add(PopupMenu) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PopupMenu",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: add",
-      "javadoc_description": "Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of SNT.getLoadedData(), so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addComponentListener",
-      "overloads": [
-        {
-          "signature": "addComponentListener(ComponentListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ComponentListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addComponentListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addContainerListener",
-      "overloads": [
-        {
-          "signature": "addContainerListener(ContainerListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ContainerListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addContainerListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addFocusListener",
-      "overloads": [
-        {
-          "signature": "addFocusListener(FocusListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "FocusListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addFocusListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addHierarchyBoundsListener",
-      "overloads": [
-        {
-          "signature": "addHierarchyBoundsListener(HierarchyBoundsListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "HierarchyBoundsListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addHierarchyBoundsListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addHierarchyListener",
-      "overloads": [
-        {
-          "signature": "addHierarchyListener(HierarchyListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "HierarchyListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addHierarchyListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addInputMethodListener",
-      "overloads": [
-        {
-          "signature": "addInputMethodListener(InputMethodListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "InputMethodListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addInputMethodListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addKeyListener",
-      "overloads": [
-        {
-          "signature": "addKeyListener(KeyListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "KeyListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addKeyListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addMouseListener",
-      "overloads": [
-        {
-          "signature": "addMouseListener(MouseListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "MouseListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addMouseListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addMouseMotionListener",
-      "overloads": [
-        {
-          "signature": "addMouseMotionListener(MouseMotionListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "MouseMotionListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addMouseMotionListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addMouseWheelListener",
-      "overloads": [
-        {
-          "signature": "addMouseWheelListener(MouseWheelListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "MouseWheelListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addMouseWheelListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addNotify",
-      "overloads": [
-        {
-          "signature": "addNotify() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addNotify",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addPropertyChangeListener",
-      "overloads": [
-        {
-          "signature": "addPropertyChangeListener(PropertyChangeListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "PropertyChangeListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "addPropertyChangeListener(String, PropertyChangeListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "PropertyChangeListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addPropertyChangeListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addWindowFocusListener",
-      "overloads": [
-        {
-          "signature": "addWindowFocusListener(WindowFocusListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "WindowFocusListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addWindowFocusListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addWindowListener",
-      "overloads": [
-        {
-          "signature": "addWindowListener(WindowListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "WindowListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addWindowListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "addWindowStateListener",
-      "overloads": [
-        {
-          "signature": "addWindowStateListener(WindowStateListener) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "WindowStateListener",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: addWindowStateListener",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "applyComponentOrientation",
-      "overloads": [
-        {
-          "signature": "applyComponentOrientation(ComponentOrientation) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ComponentOrientation",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: applyComponentOrientation",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "applyResourceBundle",
-      "overloads": [
-        {
-          "signature": "applyResourceBundle(String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "applyResourceBundle(ResourceBundle) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ResourceBundle",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: applyResourceBundle",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "areFocusTraversalKeysSet",
-      "overloads": [
-        {
-          "signature": "areFocusTraversalKeysSet(int) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: areFocusTraversalKeysSet",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "bounds",
-      "overloads": [
-        {
-          "signature": "bounds() -> Rectangle",
-          "params": [],
-          "return_type": "Any",
-          "java_return_type": "Rectangle",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: bounds",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
     {
       "name": "changeState",
       "overloads": [
@@ -746,7 +13,7 @@
           "signature": "changeState(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newState",
               "type": "int",
               "java_type": "int",
               "description": "- the new state, e.g., READY, TRACING_PAUSED, etc.",
@@ -760,7 +27,7 @@
         }
       ],
       "documentation": "Java method: changeState",
-      "javadoc_description": "Changes this UI to a new state. Does nothing if newState is the current UI state",
+      "javadoc_description": "Changes this UI to a new state. Does nothing if `newState` is the current UI state",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -768,122 +35,19 @@
       "examples": []
     },
     {
-      "name": "checkImage",
+      "name": "close",
       "overloads": [
         {
-          "signature": "checkImage(Image, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ImageObserver",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "checkImage(Image, int, int, ImageObserver) -> int",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Image",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "ImageObserver",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: checkImage",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "contains",
-      "overloads": [
-        {
-          "signature": "contains(int, int) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "close() -> boolean",
+          "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "contains(Point) -> boolean",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "bool",
-          "java_return_type": "boolean",
-          "return_description": "",
+          "return_description": "true if the session was closed, false if the user canceled",
           "throws": {}
         }
       ],
-      "documentation": "Java method: contains",
-      "javadoc_description": "",
+      "documentation": "Java method: close",
+      "javadoc_description": "Closes this SNT session, asking for confirmation only if there are unsaved paths or measurements",
       "category": "Utilities",
       "deprecated": false,
       "since_version": null,
@@ -891,225 +55,10 @@
       "examples": []
     },
     {
-      "name": "countComponents",
+      "name": "closeBigViewers",
       "overloads": [
         {
-          "signature": "countComponents() -> int",
-          "params": [],
-          "return_type": "int",
-          "java_return_type": "int",
-          "return_description": "the current UI state, e.g., READY, RUNNING_CMD, etc.",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: countComponents",
-      "javadoc_description": "Gets the current UI state.",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "createBufferStrategy",
-      "overloads": [
-        {
-          "signature": "createBufferStrategy(int, BufferCapabilities) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "BufferCapabilities",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "createBufferStrategy(int) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: createBufferStrategy",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "createImage",
-      "overloads": [
-        {
-          "signature": "createImage(int, int) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "createImage(ImageProducer) -> Image",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImageProducer",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "Image",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: createImage",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "createVolatileImage",
-      "overloads": [
-        {
-          "signature": "createVolatileImage(int, int, ImageCapabilities) -> VolatileImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ImageCapabilities",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "VolatileImage",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "createVolatileImage(int, int) -> VolatileImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "VolatileImage",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: createVolatileImage",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "deliverEvent",
-      "overloads": [
-        {
-          "signature": "deliverEvent(Event) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Event",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: deliverEvent",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "disable",
-      "overloads": [
-        {
-          "signature": "disable() -> void",
+          "signature": "closeBigViewers() -> void",
           "params": [],
           "return_type": "None",
           "java_return_type": "void",
@@ -1117,113 +66,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: disable",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "dispatchEvent",
-      "overloads": [
-        {
-          "signature": "dispatchEvent(AWTEvent) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "AWTEvent",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: dispatchEvent",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "dispose",
-      "overloads": [
-        {
-          "signature": "dispose() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: dispose",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "doLayout",
-      "overloads": [
-        {
-          "signature": "doLayout() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: doLayout",
-      "javadoc_description": "",
-      "category": "Utilities",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "enable",
-      "overloads": [
-        {
-          "signature": "enable() -> void",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "enable(boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: enable",
-      "javadoc_description": "",
-      "category": "Utilities",
+      "documentation": "Java method: closeBigViewers",
+      "javadoc_description": "Closes any tethered `Bvv`/`Bdv` viewer(s), if open. Unlike `resetUI()`, this does not touch the loaded image or paths: closing a big-viewer *window* isn't data loss the way clearing paths is (the underlying `PathAndFillManager` is untouched), so this needs no confirmation and is safe to call unconditionally - e.g. from `DemoRunner` before loading a new demo, so a viewer left over from a previous one is never silently orphaned (see `AbstractBigViewer`/`setBvvOnEDT`'s `windowClosing` handler for what \"orphaned\" means here).",
+      "category": "Visualization",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -1236,7 +81,7 @@
           "signature": "error(String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "msg",
               "type": "str",
               "java_type": "String",
               "description": "- the error message",
@@ -1258,28 +103,1103 @@
       "examples": []
     },
     {
-      "name": "findComponentAt",
+      "name": "getActiveBigViewer",
       "overloads": [
         {
-          "signature": "findComponentAt(Point) -> Component",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Point",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "getActiveBigViewer() -> AbstractBigViewer",
+          "params": [],
           "return_type": "Any",
-          "java_return_type": "Component",
+          "java_return_type": "AbstractBigViewer",
           "return_description": "",
           "throws": {}
         }
       ],
-      "documentation": "Java method: findComponentAt",
+      "documentation": "Java method: getActiveBigViewer",
+      "javadoc_description": "Returns the `AbstractBigViewer` (BVV or BDV) currently tethered to this UI, in particular, Stream mode's own viewer or `null` if neither is open.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBookmarkManager",
+      "overloads": [
+        {
+          "signature": "getBookmarkManager() -> BookmarkManager",
+          "params": [],
+          "return_type": "BookmarkManager",
+          "java_return_type": "BookmarkManager",
+          "return_description": "the `BookmarkManager` associated with this UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBookmarkManager",
+      "javadoc_description": "Gets the Bookmark Manager pane.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCommandFinder",
+      "overloads": [
+        {
+          "signature": "getCommandFinder() -> SNTCommandFinder",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SNTCommandFinder",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCommandFinder",
+      "javadoc_description": "Returns the command palette instance, so that other components can register their own entries into it.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCurationManager",
+      "overloads": [
+        {
+          "signature": "getCurationManager() -> CurationManager",
+          "params": [],
+          "return_type": "CurationManager",
+          "java_return_type": "CurationManager",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCurationManager",
+      "javadoc_description": "Returns the Curation Manager (Curation Assistant).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDelineationsManager",
+      "overloads": [
+        {
+          "signature": "getDelineationsManager() -> DelineationsManager",
+          "params": [],
+          "return_type": "DelineationsManager",
+          "java_return_type": "DelineationsManager",
+          "return_description": "the `DelineationsManager` associated with this UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDelineationsManager",
+      "javadoc_description": "Gets the Delineations Manager pane.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFillManager",
+      "overloads": [
+        {
+          "signature": "getFillManager() -> FillManagerUI",
+          "params": [],
+          "return_type": "FillManagerUI",
+          "java_return_type": "FillManagerUI",
+          "return_description": "the `FillManagerUI` associated with this UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFillManager",
+      "javadoc_description": "Gets the Fill Manager dialog.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNotesPane",
+      "overloads": [
+        {
+          "signature": "getNotesPane() -> NotesUI",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "NotesUI",
+          "return_description": "the `BookmarkManager` associated with this UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNotesPane",
+      "javadoc_description": "Gets the Bookmark Manager pane.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOpenBigViewers",
+      "overloads": [
+        {
+          "signature": "getOpenBigViewers() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "all tethered Bvv/Bdv viewers (zero, one or two), for operations that must reach every open viewer",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOpenBigViewers",
       "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOrPromptForWorkspace",
+      "overloads": [
+        {
+          "signature": "getOrPromptForWorkspace() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "workspace directory, or null if user declined creation",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOrPromptForWorkspace",
+      "javadoc_description": "Returns the workspace directory, prompting user to create it if it doesn't exist.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathManager",
+      "overloads": [
+        {
+          "signature": "getPathManager() -> PathManagerUI",
+          "params": [],
+          "return_type": "PathManagerUI",
+          "java_return_type": "PathManagerUI",
+          "return_description": "the `PathManagerUI` associated with this UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathManager",
+      "javadoc_description": "Gets the Path Manager dialog.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPlausibilityMonitor",
+      "overloads": [
+        {
+          "signature": "getPlausibilityMonitor() -> PlausibilityMonitor",
+          "params": [],
+          "return_type": "PlausibilityMonitor",
+          "java_return_type": "PlausibilityMonitor",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPlausibilityMonitor",
+      "javadoc_description": "Returns the plausibility monitor used by the Curation Manager (Curation Assistant).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPrefs",
+      "overloads": [
+        {
+          "signature": "getPrefs() -> SNTPrefs",
+          "params": [],
+          "return_type": "SNTPrefs",
+          "java_return_type": "SNTPrefs",
+          "return_description": "the preferences associated with this instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrefs",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getReconstructionViewer",
+      "overloads": [
+        {
+          "signature": "getReconstructionViewer(boolean) -> Viewer3D",
+          "params": [
+            {
+              "name": "initializeIfNull",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- it true, initializes the Viewer if it has not yet been initialized",
+              "javadoc_name": "initializeIfNull"
+            }
+          ],
+          "return_type": "Viewer3D",
+          "java_return_type": "Viewer3D",
+          "return_description": "the reconstruction viewer",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getReconstructionViewer",
+      "javadoc_description": "Gets the Reconstruction Viewer.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRecorder",
+      "overloads": [
+        {
+          "signature": "getRecorder(boolean) -> ScriptRecorder",
+          "params": [
+            {
+              "name": "createIfNeeded",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ScriptRecorder",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRecorder",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSciViewSNT",
+      "overloads": [
+        {
+          "signature": "getSciViewSNT(boolean) -> SciViewSNT",
+          "params": [
+            {
+              "name": "initializeIfNull",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether a new instance should be created if one hasn't been initialized",
+              "javadoc_name": "initializeIfNull"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "SciViewSNT",
+          "return_description": "the SciViewSNT instance",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSciViewSNT",
+      "javadoc_description": "Gets the SciViewSNT instance.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getState",
+      "overloads": [
+        {
+          "signature": "getState() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the current UI state, e.g., `READY`, `RUNNING_CMD`, etc.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getState",
+      "javadoc_description": "Gets the current UI state.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTable",
+      "overloads": [
+        {
+          "signature": "getTable() -> SNTTable",
+          "params": [],
+          "return_type": "SNTTable",
+          "java_return_type": "SNTTable",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTable",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTracingCanvas",
+      "overloads": [
+        {
+          "signature": "getTracingCanvas() -> TracerCanvas",
+          "params": [],
+          "return_type": "TracerCanvas",
+          "java_return_type": "TracerCanvas",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTracingCanvas",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTracingCanvasPopupMenu",
+      "overloads": [
+        {
+          "signature": "getTracingCanvasPopupMenu() -> JPopupMenu",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "JPopupMenu",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTracingCanvasPopupMenu",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isOtherBigViewerEditing",
+      "overloads": [
+        {
+          "signature": "isOtherBigViewerEditing(AbstractBigViewer) -> boolean",
+          "params": [
+            {
+              "name": "viewer",
+              "type": "Any",
+              "java_type": "AbstractBigViewer",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether a Bvv/Bdv other than `viewer` is still open and in Edit Mode",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isOtherBigViewerEditing",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isReady",
+      "overloads": [
+        {
+          "signature": "isReady() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the UI is currently unblocked, i.e., ready for tracing/editing/analysis *",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isReady",
+      "javadoc_description": "Assesses whether the UI is blocked.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "launchSigmaPaletteAround",
+      "overloads": [
+        {
+          "signature": "launchSigmaPaletteAround(int, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int",
+              "description": "- pixel X position (0-based)",
+              "javadoc_name": "x"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: launchSigmaPaletteAround",
+      "javadoc_description": "Crops a small region around the given point and launches the `SigmaPalette` preview grid, exactly as if the user had clicked at that position on the classic-mode tracing canvas (see `InteractiveTracerCanvas#startSigmaWizard`). Public (rather than the previous `protected`) so it can also be triggered from a Bdv/Bvv viewer action, since there is no classic canvas to click on in Stream mode (see `AbstractBigViewer.Actions#pickSigmaPointAction()`).",
       "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "launchSigmaPaletteAroundStreamed",
+      "overloads": [
+        {
+          "signature": "launchSigmaPaletteAroundStreamed(int, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int",
+              "description": "- pixel X position (0-based), in SNT.getFullSourceData()'s own grid",
+              "javadoc_name": "x"
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "SNT.getFullSourceData()"
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: launchSigmaPaletteAroundStreamed",
+      "javadoc_description": "Crop-independent counterpart of `launchSigmaPaletteAround(int, int, int)`: sources its bounds from `SNT.getFullSourceData()` instead of `SNT.getLoadedData()`, so a BDV/BVV click that lands outside a materialized crop's (smaller) bounds still previews the region actually clicked, instead of silently clamping to the crop's edge. See `AbstractBigViewer.Actions#pickSigmaPointAction()`, which pairs this with `SNT.getDefaultCanvasPixelOffset()` to convert the click.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "pause",
+      "overloads": [
+        {
+          "signature": "pause(boolean) -> void",
+          "params": [
+            {
+              "name": "pause",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether SNT should be paused/resumed",
+              "javadoc_name": "pause"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: pause",
+      "javadoc_description": "Pauses/Resume SNT (equivalent to command in image contextual menu).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "pauseTracing",
+      "overloads": [
+        {
+          "signature": "pauseTracing(boolean) -> void",
+          "params": [
+            {
+              "name": "pause",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether tracing functions should be paused/resumed",
+              "javadoc_name": "pause"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: pauseTracing",
+      "javadoc_description": "Pauses/Resume tracing functions (equivalent to command in image contextual menu).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "refresh",
+      "overloads": [
+        {
+          "signature": "refresh() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: refresh",
+      "javadoc_description": "Updates the dialog, including status bar and 'computation settings' widget.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "registerActiveCmdWorker",
+      "overloads": [
+        {
+          "signature": "registerActiveCmdWorker(SwingWorker) -> void",
+          "params": [
+            {
+              "name": "worker",
+              "type": "Any",
+              "java_type": "SwingWorker",
+              "description": "- the worker to register, or",
+              "javadoc_name": "worker"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: registerActiveCmdWorker",
+      "javadoc_description": "Registers (or clears, if `worker` is `null`) the `SwingWorker` currently executing a long-running `CommonDynamicCmd`. Unlike commands launched via `DynamicCmdRunner`, these keep running on their own background thread long after the initiating dialog has closed and `currentState` has reverted to whatever it was before the dialog opened, so they cannot rely on the switch inside `abortCurrentOperation()`. Cancellation is not forcible: the running code must itself poll `Thread.isInterrupted()` (see `AbstractGWDTTracer`'s hot loops) for this to have any effect.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resetUI",
+      "overloads": [
+        {
+          "signature": "resetUI() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the reset completed; false if it was aborted (e.g. the current image has unsaved changes and the user did not resolve ImageJ's own \"Save Changes?\" prompt), in which case nothing else was changed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resetUI",
+      "javadoc_description": "Full reset: closes any tethered `Bvv`/`Bdv` viewer (via `closeBigViewers()`) and the current image, and clears all paths, restoring the UI to its initial, blank-canvas state. Intended for callers that need a guaranteed-fresh session regardless of whatever was open before.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runAutotracingWizard",
+      "overloads": [
+        {
+          "signature": "runAutotracingWizard() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runAutotracingWizard",
+      "javadoc_description": "Launches the autotracing wizard for the active image.\n\nThe tracer implementation is selected based on image type:\n\n- **Binary images** : `BinaryTracerCmd` (topology-based skeletonization)\n\n- **Grayscale images** : `GWDTTracerCmd` (intensity-weighted distance transform)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "BinaryTracerCmd",
+        "GWDTTracerCmd"
+      ],
+      "examples": []
+    },
+    {
+      "name": "runCommand",
+      "overloads": [
+        {
+          "signature": "runCommand(String) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "str",
+              "java_type": "String",
+              "description": "- The command class to be run, exactly as listed in SNTUI's menu bar",
+              "javadoc_name": "cmd"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "runCommand(Class, HashMap) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "type",
+              "java_type": "Class",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "inputs",
+              "type": "Dict[str, Any]",
+              "java_type": "HashMap",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "runCommand(String, String[]) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runCommand",
+      "javadoc_description": "Runs a Scijava command associated with SNT.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runSecondaryLayerWizard",
+      "overloads": [
+        {
+          "signature": "runSecondaryLayerWizard() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "runSecondaryLayerWizard(String, double[]) -> void",
+          "params": [
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String",
+              "description": "- either \"Frangi Vesselness\", \"Tubeness\", or \"Gaussian Blur\"",
+              "javadoc_name": "filter"
+            },
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if no valid image data is currently loaded"
+          }
+        }
+      ],
+      "documentation": "Java method: runSecondaryLayerWizard",
+      "javadoc_description": "Runs the 'secondary layer wizard' in the background, without displaying prompt.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "selectTab",
+      "overloads": [
+        {
+          "signature": "selectTab(String) -> void",
+          "params": [
+            {
+              "name": "tabTitle",
+              "type": "str",
+              "java_type": "String",
+              "description": "- The tab title (e.g., \"Main\", \"3D\");",
+              "javadoc_name": "tabTitle"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: selectTab",
+      "javadoc_description": "Activates the specified tab.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBdv",
+      "overloads": [
+        {
+          "signature": "setBdv(Bdv) -> void",
+          "params": [
+            {
+              "name": "bdv",
+              "type": "Bdv",
+              "java_type": "Bdv",
+              "description": "- the Bdv instance to tether, or null to detach",
+              "javadoc_name": "bdv"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBdv",
+      "javadoc_description": "Registers (or clears, if `bdv` is null) the `Bdv` instance tethered to this UI.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvv",
+      "overloads": [
+        {
+          "signature": "setBvv(Bvv) -> void",
+          "params": [
+            {
+              "name": "bvv",
+              "type": "Bvv",
+              "java_type": "Bvv",
+              "description": "- the Bvv instance to tether, or null to detach",
+              "javadoc_name": "bvv"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvv",
+      "javadoc_description": "Registers (or clears, if `bvv` is null) the `Bvv` instance tethered to this UI.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnableDebugMode",
+      "overloads": [
+        {
+          "signature": "setEnableDebugMode(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable debug mode, otherwise false",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnableDebugMode",
+      "javadoc_description": "Enables/disables debug mode",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLookAndFeel",
+      "overloads": [
+        {
+          "signature": "setLookAndFeel(String) -> void",
+          "params": [
+            {
+              "name": "lookAndFeelName",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLookAndFeel",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRenderingScale",
+      "overloads": [
+        {
+          "signature": "setRenderingScale(double) -> void",
+          "params": [
+            {
+              "name": "scale",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the scale value (-1 for default scale)",
+              "javadoc_name": "scale"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRenderingScale",
+      "javadoc_description": "Sets rendering scale of Paths as per respective widget in dialog.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSigmaPaletteListener",
+      "overloads": [
+        {
+          "signature": "setSigmaPaletteListener(SigmaPaletteListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "SigmaPaletteListener",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSigmaPaletteListener",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setVisibilityFilter",
+      "overloads": [
+        {
+          "signature": "setVisibilityFilter(String, boolean) -> void",
+          "params": [
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String",
+              "description": "- a reference to the visibility filter checkbox. Either the checkbox complete label or relevant keyword, e.g., \"selected\", \"Z-slices\", \"channel\", etc. \"all\" can also be used to toggle all checkboxes in the widget",
+              "javadoc_name": "filter"
+            },
+            {
+              "name": "state",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setVisibilityFilter",
+      "javadoc_description": "Sets filters for visibility of paths, as per respective widget in dialog.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showMessage",
+      "overloads": [
+        {
+          "signature": "showMessage(String, String) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "title",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showMessage",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showStatus",
+      "overloads": [
+        {
+          "signature": "showStatus(String, boolean) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the text to displayed. Set it to null (or empty String) to reset the status bar.",
+              "javadoc_name": "msg"
+            },
+            {
+              "name": "temporary",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showStatus",
+      "javadoc_description": "Updates the status bar.",
+      "category": "Visualization",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -1295,16 +1215,33 @@
           "signature": "SNTUI(SNT)",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
+              "name": "plugin",
+              "type": "SNT",
               "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNTUI(SNT, boolean)",
+          "params": [
+            {
+              "name": "plugin",
+              "type": "SNT",
+              "java_type": "SNT"
+            },
+            {
+              "name": "bigDataMode",
+              "type": "bool",
+              "java_type": "boolean"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SNTUI"
+      "documentation": "Constructors of SNTUI"
     }
   ],
   "javadoc_description": "Implements SNT's main dialog.",
@@ -1319,26 +1256,26 @@
   "since_version": null,
   "see_also": [
     "Constant Field Values",
+    "GWDTTracerCmd",
     "JDialog",
-    "Serialized Form",
     "BinaryTracerCmd",
-    "GWDTTracerCmd"
+    "Serialized Form"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 79,
-      "total_json_methods": 36,
-      "total_matches": 51,
-      "exact_matches": 2,
-      "signature_matches": 49,
+      "total_javadoc_methods": 84,
+      "total_json_methods": 45,
+      "total_matches": 48,
+      "exact_matches": 48,
+      "signature_matches": 0,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 28,
-      "unmatched_json": -15,
-      "match_percentage": 64.6
+      "unmatched_javadoc": 36,
+      "unmatched_json": -3,
+      "match_percentage": 57.1
     },
-    "unmatched_javadoc_methods": 28,
-    "unmatched_json_methods": 31,
-    "enhancement_quality_score": 0.351
+    "unmatched_javadoc_methods": 36,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 0.685
   }
 }

@@ -64,35 +64,11 @@ Fields
     No description available.
 
 
-**onPath** : ``Path``
-    No description available.
-
-
 **parent** : ``int``
     No description available.
 
 
-**radius** : ``float``
-    No description available.
-
-
 **type** : ``int``
-    No description available.
-
-
-**v** : ``float``
-    No description available.
-
-
-**x** : ``float``
-    No description available.
-
-
-**y** : ``float``
-    No description available.
-
-
-**z** : ``float``
     No description available.
 
 
@@ -148,7 +124,7 @@ Getters Methods
    Gets the tags associated with this point.
 
 
-.. py:method:: getUnscaledPoint(int)
+.. py:method:: getUnscaledPoint()
 
    
 
@@ -164,6 +140,11 @@ Getters Methods
 
 
 .. py:method:: getZ()
+
+   
+
+
+.. py:method:: hashCode()
 
    
 
@@ -184,7 +165,7 @@ Setters Methods
 
 .. py:method:: setAnnotation(BrainAnnotation)
 
-   Description copied from interface: SNTPoint
+   Description copied from interface: ``SNTPoint``
 
 
 .. py:method:: setColor(Color)
@@ -231,7 +212,7 @@ Other Methods
    
 
 
-.. py:method:: static collectionAsReader(Collection)
+.. py:method:: collectionAsReader(Collection)
 
    Converts a collection of SWC points into a Reader.
 
@@ -251,12 +232,17 @@ Other Methods
    
 
 
+.. py:method:: equals(Object)
+
+   
+
+
 .. py:method:: euclideanDxTo(PointInImage)
 
    
 
 
-.. py:method:: static flush(Collection, PrintWriter)
+.. py:method:: flush(Collection, PrintWriter)
 
    Prints a list of points as space-separated values.
 
@@ -267,6 +253,11 @@ Other Methods
 
 
 .. py:method:: scale(double, double, double)
+
+   
+
+
+.. py:method:: toString()
 
    
 

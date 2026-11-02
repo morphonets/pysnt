@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-An OBJMesh stores information about a Wavefront .obj mesh loaded into Viewer3D, with access points to its OBJFile and DrawableVBO
+An OBJMesh stores information about a Wavefront .obj mesh loaded into ``Viewer3D``, with access points to its ``OBJFile`` and ``DrawableVBO``
 
 
 Methods
@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getAngleWithLocalDirection(SNTPoint, [D, String, int)
+.. py:method:: getAngleWithLocalDirection(SNTPoint, double[], String, int)
 
    Computes the angle between a direction vector and the local mesh direction at a point. This is useful for e.g., analyzing how neuronal processes align with the local curvature of surfaces (neuropil meshes).
 
@@ -86,7 +86,7 @@ Getters Methods
 
 .. py:method:: getDrawable()
 
-   Returns the DrawableVBO associated with this mesh
+   Returns the ``DrawableVBO`` associated with this mesh
 
 
 .. py:method:: getLabel()
@@ -101,7 +101,7 @@ Getters Methods
 
 .. py:method:: getObj()
 
-   Returns the OBJFile associated with this mesh
+   Returns the ``OBJFile`` associated with this mesh
 
 
 .. py:method:: getPrincipalAxes(String)
@@ -111,7 +111,7 @@ Getters Methods
 
 .. py:method:: getSourceAnnotation()
 
-   Returns the BrainAnnotation (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.
+   Returns the ``BrainAnnotation`` (atlas compartment) from which this mesh was retrieved, or null if this mesh was loaded from a standalone file.
 
 
 .. py:method:: getSymmetryAxis()
@@ -129,11 +129,16 @@ Getters Methods
    Gets the volume of this mesh.
 
 
+.. py:method:: hasFileColor()
+
+   Returns whether the color of this mesh was defined in the material (.mtl) file associated with the imported .obj file.
+
+
 Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setBoundingBoxColor(String)
+.. py:method:: setBoundingBoxColor(ColorRGB)
 
    Determines whether the mesh bounding box should be displayed.
 
@@ -155,7 +160,7 @@ Setters Methods
 
 .. py:method:: setSourceAnnotation(BrainAnnotation)
 
-   Associates this mesh with the BrainAnnotation (atlas compartment) it was retrieved from.
+   Associates this mesh with the ``BrainAnnotation`` (atlas compartment) it was retrieved from.
 
 
 .. py:method:: setSymmetryAxis(int)
@@ -179,7 +184,7 @@ Analysis Methods
 
 .. py:method:: computePrincipalAxes(String)
 
-   Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated `getPrincipalAxes(String)` method.
+   Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated ``getPrincipalAxes(String)`` method.
 
 
 Other Methods
@@ -194,6 +199,11 @@ Other Methods
 .. py:method:: label()
 
    Gets this mesh label.
+
+
+.. py:method:: toMesh()
+
+   Returns a copy of this mesh as an imglib2-mesh ``Mesh`` (vertices and triangles only, in the coordinates of this mesh).
 
 
 .. py:method:: translate(SNTPoint)

@@ -53,11 +53,11 @@
 
 **Package:** ``sc.fiji.snt.util``
 
-Rasterizes a Tree into a 3D image using frustum (truncated-cone) geometry with partial-volume supersampling. Each segment between consecutive nodes is modeled as a frustum whose radii are linearly interpolated from the node radii. This produces a volumetric rendering that respects the thickness of each neurite, unlike the skeleton-based rasterization in Tree.getSkeleton().
+Rasterizes a ``Tree`` into a 3D image using frustum (truncated-cone) geometry with partial-volume supersampling. Each segment between consecutive nodes is modeled as a frustum whose radii are linearly interpolated from the node radii. This produces a volumetric rendering that respects the thickness of each neurite, unlike the skeleton-based rasterization in ``Tree.getSkeleton()``.
 
 Optionally, Poisson shot noise and Gaussian blur (to simulate spatially correlated noise) can be applied, producing realistic synthetic fluorescence microscopy images.
 
-Optionally, voxel intensities can be modulated by local neurite thickness via `setThicknessModulation(double)`, producing brighter thick neurites and dimmer thin ones.
+Optionally, voxel intensities can be modulated by local neurite thickness via ``setThicknessModulation(double)``, producing brighter thick neurites and dimmer thin ones.
 
 Pass 2 (partial-volume supersampling) and subsequent passes are parallelized across z-slices for improved performance. A spatial grid is used for frustum lookups to reduce computation costs.
 
@@ -87,6 +87,16 @@ Getters Methods
    Gets the uniform radius multiplier applied to node radii.
 
 
+.. py:method:: getRasterOrigin()
+
+   Gets the position, in the tree's coordinate system, of the center of voxel (0, 0, 0) of the image returned by ``rasterize()``. The rasterized image is not calibrated with an origin, so this is needed to place it (e.g., a mesh extracted from it) back on the tree. The result depends on the current resolution and reference bounds settings, which should be set before calling this method.
+
+
+.. py:method:: getRasterVoxelCount()
+
+   Gets the number of voxels of the image ``rasterize()`` would allocate with the current settings, so that callers can avoid oversized requests.
+
+
 Setters Methods
 ~~~~~~~~~~~~~~~
 
@@ -95,7 +105,7 @@ Setters Methods
 
    Sets the axial (z) voxel size.
 
-A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree are ignored (every node is projected onto the z = 0 plane) and the output image is a single slice. In-plane (x, y) thickness from node radii is preserved.
+   A value of ``0`` switches the rasterizer to 2D mode: the z coordinates of the tree are ignored (every node is projected onto the ``z = 0`` plane) and the output image is a single slice. In-plane (x, y) thickness from node radii is preserved.
 
 
 .. py:method:: setDefaultRadius(double)
@@ -105,7 +115,7 @@ A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree a
 
 .. py:method:: setGaussianBlur(double)
 
-   Enables Gaussian blurring of the (optionally noisy) image, simulating spatially correlated noise and optical blur. Note that Gaussian blurring is ignored when using `rasterizePathLabels()`.
+   Enables Gaussian blurring of the (optionally noisy) image, simulating spatially correlated noise and optical blur. Note that Gaussian blurring is ignored when using ``rasterizePathLabels()``.
 
 
 .. py:method:: setLateralRes(double)
@@ -117,17 +127,17 @@ A value of 0 switches the rasterizer to 2D mode: the z coordinates of the tree a
 
    Enables Poisson shot noise on the rasterized image, simulating photon counting noise typical of fluorescence microscopy.
 
-The peak intensity is derived from the SNR and background using the photon-counting model: `SNR = (peak - bg) / sqrt(peak)`. Note that Poisson shot noise is ignored when using `rasterizePathLabels()`
+   The peak intensity is derived from the SNR and background using the photon-counting model: ``SNR = (peak - bg) / sqrt(peak)``. Note that Poisson shot noise is ignored when using ``rasterizePathLabels()``
 
 
 .. py:method:: setRadiusScale(double)
 
    Sets a uniform multiplier applied to every node radius (and to the default radius for nodes without radii) when rasterizing. Values above 1 dilate the rendered neurites, e.g. to make thin or sparse structures cover more voxels; values below 1 erode them. Because scaling is uniform, the relative thickness order (and thus thickest-wins label priority) is unchanged.
 
-Note that larger radii increase the rasterized extent and the per-voxel supersampling cost.
+   Note that larger radii increase the rasterized extent and the per-voxel supersampling cost.
 
 
-.. py:method:: setReferenceBounds(int, int, int)
+.. py:method:: setReferenceBounds(ImagePlus)
 
    Sets reference bounds explicitly, so the output image matches the specified dimensions. When set, the rasterized image will have exactly the given width, height, and depth, with the origin at (0, 0, 0) in pixel coordinates.
 
@@ -136,9 +146,9 @@ Note that larger radii increase the rasterized extent and the per-voxel supersam
 
    Enables intensity modulation based on local neurite thickness. When enabled, thicker neurites are rendered brighter and thinner neurites dimmer, proportional to the local radius.
 
-The modulation factor defines what fraction of the intensity range is used for thickness variation. For example, a factor of 0.2 means the thickest frustum receives full intensity (1.0) while the thinnest receives 80% of the maximum (0.8).
+   The modulation factor defines what fraction of the intensity range is used for thickness variation. For example, a factor of 0.2 means the thickest frustum receives full intensity (1.0) while the thinnest receives 80% of the maximum (0.8).
 
-Note: This option incurs additional computation since the local radius must be resolved for every sub-voxel hit during supersampling. Also, a factor of 1.0 maps the thinnest structure to zero intensity, effectively wiping it.
+   Note: This option incurs additional computation since the local radius must be resolved for every sub-voxel hit during supersampling. Also, a factor of 1.0 maps the thinnest structure to zero intensity, effectively wiping it.
 
 
 Other Methods
@@ -147,32 +157,32 @@ Other Methods
 
 .. py:method:: rasterize()
 
-   Rasterizes the tree into a 32-bit (float) image using partial-volume supersampling. Voxel values represent the fraction of the supersampled sub-voxels that fall inside the neuron structure (0.0 = background, 1.0 = fully inside), unless noise has been enabled via `setPoissonNoise(double, double)`, in which case values represent simulated photon counts.
+   Rasterizes the tree into a 32-bit (float) image using partial-volume supersampling. Voxel values represent the fraction of the supersampled sub-voxels that fall inside the neuron structure (0.0 = background, 1.0 = fully inside), unless noise has been enabled via ``setPoissonNoise(double, double)``, in which case values represent simulated photon counts.
 
 
 .. py:method:: rasterizeLabels()
 
-   Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it (as ordered by Tree.list()). Background voxels are 0.
+   Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the ``Path`` that owns it (as ordered by ``Tree.list()``). Background voxels are 0.
 
 
 .. py:method:: rasterizeNodeValueLabels()
 
-   Rasterizes the tree into a 16-bit label image where each voxel is assigned the node value of the nearest path node (as stored via `Path.setNodeValue(double, int)`). This enables per-node labeling, e.g., from delineation assignments, atlas annotations, or other node-level classifications.
+   Rasterizes the tree into a 16-bit label image where each voxel is assigned the *node value* of the nearest path node (as stored via ``Path.setNodeValue(double, int)``). This enables per-node labeling, e.g., from delineation assignments, atlas annotations, or other node-level classifications.
 
-Node values are expected to be negative integers (as used by DelineationsManager); they are negated to produce positive labels in the output image. Nodes with NaN or non-negative values are treated as background (0).
+   Node values are expected to be negative integers (as used by ``DelineationsManager``); they are negated to produce positive labels in the output image. Nodes with ``NaN`` or non-negative values are treated as background (0).
 
-Each frustum (segment between consecutive nodes) inherits the label of its start node. At intersection sites, the frustum with the largest local radius wins (thickest-wins), consistent with `rasterizePathLabels()`.
+   Each frustum (segment between consecutive nodes) inherits the label of its start node. At intersection sites, the frustum with the largest local radius wins (thickest-wins), consistent with ``rasterizePathLabels()``.
 
-Note: The output is 16-bit unsigned (short), so label values above 65535 will overflow. In practice this is not a concern when the source is a label/segmentation image with a bounded class count, but callers should be aware of this limit.
+   **Note:** The output is 16-bit unsigned (``short``), so label values above 65535 will overflow. In practice this is not a concern when the source is a label/segmentation image with a bounded class count, but callers should be aware of this limit.
 
 
 .. py:method:: rasterizePathLabels()
 
-   Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the Path that owns it (as ordered by Tree.list()). Background voxels are 0.
+   Rasterizes the tree into a 16-bit label image where each voxel is assigned the 1-based index of the ``Path`` that owns it (as ordered by ``Tree.list()``). Background voxels are 0.
 
-At intersection sites where multiple paths overlap, the path with the largest local radius wins (thickest-wins priority), ensuring that thin branches crossing a thick trunk do not overwrite it.
+   At intersection sites where multiple paths overlap, the path with the largest local radius wins (thickest-wins priority), ensuring that thin branches crossing a thick trunk do not overwrite it.
 
-The returned image has the same dimensions and calibration as the density image produced by rasterize(), so the two can be used as overlays. Noise and blur settings are ignored for label images.
+   The returned image has the same dimensions and calibration as the density image produced by ``rasterize()``, so the two can be used as overlays. Noise and blur settings are ignored for label images.
 
 
 See Also

@@ -1,19 +1,19 @@
 {
   "class_name": "VFBUtils",
   "package": "sc.fiji.snt.annotation",
-  "extracted_at": "2026-01-02T22:36:45.059194",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.367797",
+  "extracted_at": "2026-11-02T00:24:01.762566",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.308682",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static brainBarycentre",
+      "name": "brainBarycentre",
       "overloads": [
         {
-          "signature": "static brainBarycentre(String) -> SNTPoint",
+          "signature": "brainBarycentre(String) -> SNTPoint",
           "params": [
             {
-              "name": "arg0",
+              "name": "templateBrain",
               "type": "str",
               "java_type": "String",
               "description": "- the template brain to be loaded (case-insensitive). Either \"JFRC2\" (AKA JFRC2010, VFB), \"JFRC3\" (AKA JFRC2013), \"JFRC2018\" or \"FCWB\" (FlyCircuit Whole Brain Template)",
@@ -26,80 +26,80 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static brainBarycentre",
+      "documentation": "Java method: brainBarycentre",
       "javadoc_description": "Returns the spatial centroid of an adult Drosophila template brain.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getMesh",
+      "name": "getMesh",
       "overloads": [
         {
-          "signature": "static getMesh(String, ColorRGB) -> OBJMesh",
+          "signature": "getMesh(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorRGB",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "OBJMesh",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static getMesh(String) -> OBJMesh",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "vfbId",
               "type": "str",
               "java_type": "String",
               "description": "- the VFB id, e.g., VFB_00017894, 00017894",
               "javadoc_name": "vfbId"
             }
           ],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "a reference to the retrieved mesh",
           "throws": {}
+        },
+        {
+          "signature": "getMesh(String, ColorRGB) -> OBJMesh",
+          "params": [
+            {
+              "name": "vfbId",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "ColorRGB",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "OBJMesh",
+          "java_return_type": "OBJMesh",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static getMesh",
+      "documentation": "Java method: getMesh",
       "javadoc_description": "Retrieves the mesh associated with the specified VFB id.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getRefBrain",
+      "name": "getRefBrain",
       "overloads": [
         {
-          "signature": "static getRefBrain(String) -> OBJMesh",
+          "signature": "getRefBrain(String) -> OBJMesh",
           "params": [
             {
-              "name": "arg0",
+              "name": "templateBrain",
               "type": "str",
               "java_type": "String",
               "description": "- the template brain to be loaded (case-insensitive). Either \"JFRC2\" (AKA JFRC2010, VFB), \"JFRC3\" (AKA JFRC2013), \"JFRC2018\", or \"FCWB\" (FlyCircuit Whole Brain Template)",
               "javadoc_name": "templateBrain"
             }
           ],
-          "return_type": "Any",
+          "return_type": "OBJMesh",
           "java_return_type": "OBJMesh",
           "return_description": "the template mesh.",
           "throws": {
@@ -107,39 +107,39 @@
           }
         }
       ],
-      "documentation": "Java method: static getRefBrain",
+      "documentation": "Java method: getRefBrain",
       "javadoc_description": "Retrieves the surface mesh of an adult Drosophila template brain. No Internet connection is required, as these meshes (detailed on the nat.flybrains documentation) are bundled with SNT.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static getXYZLabels",
+      "name": "getXYZLabels",
       "overloads": [
         {
-          "signature": "static getXYZLabels() -> String;",
+          "signature": "getXYZLabels() -> String[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "String;",
+          "return_type": "List[str]",
+          "java_return_type": "String[]",
           "return_description": "the anatomical descriptions associated with the Cartesian X,Y,Z axes",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getXYZLabels",
+      "documentation": "Java method: getXYZLabels",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static isDatabaseAvailable",
+      "name": "isDatabaseAvailable",
       "overloads": [
         {
-          "signature": "static isDatabaseAvailable() -> boolean",
+          "signature": "isDatabaseAvailable() -> boolean",
           "params": [],
           "return_type": "bool",
           "java_return_type": "boolean",
@@ -147,24 +147,24 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static isDatabaseAvailable",
+      "documentation": "Java method: isDatabaseAvailable",
       "javadoc_description": "Checks whether a connection to the Virtual Fly Brain database can be established.",
-      "category": "Static Methods",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -175,9 +175,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],

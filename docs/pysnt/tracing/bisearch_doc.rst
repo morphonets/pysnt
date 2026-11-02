@@ -55,23 +55,7 @@
 
 A flexible implementation of the bidirectional heuristic search algorithm described in Pijls, W.H.L.M., Post, H., 2009. "Yet another bidirectional algorithm for shortest paths," Econometric Institute Research Papers EI 2009-10, Erasmus University Rotterdam, Erasmus School of Economics (ESE), Econometric Institute.
 
-The search distance function (Cost) and heuristic estimate (Heuristic) are supplied by the caller.
-
-
-Fields
-------
-
-
-**imgDepth** : ``int``
-    No description available.
-
-
-**imgHeight** : ``int``
-    No description available.
-
-
-**imgWidth** : ``int``
-    No description available.
+The search distance function (``Cost``) and heuristic estimate (``Heuristic``) are supplied by the caller.
 
 
 Methods
@@ -98,17 +82,17 @@ Other Methods
 
 .. py:method:: addProgressListener(SearchProgressCallback)
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: pointsConsideredInSearch()
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: printStatus()
 
-   Description copied from class: AbstractSearch
+   Description copied from class: ``AbstractSearch``
 
 
 .. py:method:: reportFinished(boolean)

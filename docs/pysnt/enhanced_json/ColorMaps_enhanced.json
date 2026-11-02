@@ -1,49 +1,19 @@
 {
   "class_name": "ColorMaps",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-01-02T22:36:44.481559",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.432062",
+  "extracted_at": "2026-11-02T00:24:01.600629",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.378857",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static applyPlasma",
+      "name": "applyPlasma",
       "overloads": [
         {
-          "signature": "static applyPlasma(ImagePlus, int, boolean) -> void",
+          "signature": "applyPlasma(ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static applyPlasma(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "- A non-RGB image",
@@ -54,54 +24,54 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "applyPlasma(ImagePlus, int, boolean) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "backgroundGray",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "inverted",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static applyPlasma",
+      "documentation": "Java method: applyPlasma",
       "javadoc_description": "Applies the \"plasma\" colormap to the specified (non-RGB) image",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static applyViridis",
+      "name": "applyViridis",
       "overloads": [
         {
-          "signature": "static applyViridis(ImagePlus, int, boolean) -> void",
+          "signature": "applyViridis(ImagePlus) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static applyViridis(ImagePlus) -> void",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "- A non-RGB image",
@@ -112,44 +82,74 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "applyViridis(ImagePlus, int, boolean) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "backgroundGray",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "inverted",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static applyViridis",
+      "documentation": "Java method: applyViridis",
       "javadoc_description": "Applies the \"viridis\" colormap to the specified (non-RGB) image",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static discreteColors",
+      "name": "discreteColors",
       "overloads": [
         {
-          "signature": "static discreteColors(ColorTable, int) -> ColorRGB;",
+          "signature": "discreteColors(ColorTable, int) -> ColorRGB[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "n",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "ColorRGB;",
+          "return_type": "List[Any]",
+          "java_return_type": "ColorRGB[]",
           "return_description": "",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static discreteColors",
+      "documentation": "Java method: discreteColors",
       "javadoc_description": "",
       "category": "Visualization",
       "deprecated": false,
@@ -158,33 +158,33 @@
       "examples": []
     },
     {
-      "name": "static discreteColorsAWT",
+      "name": "discreteColorsAWT",
       "overloads": [
         {
-          "signature": "static discreteColorsAWT(ColorTable, int) -> Color;",
+          "signature": "discreteColorsAWT(ColorTable, int) -> Color[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "n",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_1"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Color;",
+          "return_type": "List[Any]",
+          "java_return_type": "Color[]",
           "return_description": "",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static discreteColorsAWT",
+      "documentation": "Java method: discreteColorsAWT",
       "javadoc_description": "",
       "category": "Visualization",
       "deprecated": false,
@@ -193,13 +193,13 @@
       "examples": []
     },
     {
-      "name": "static get",
+      "name": "get",
       "overloads": [
         {
-          "signature": "static get(String) -> ColorTable",
+          "signature": "get(String) -> ColorTable",
           "params": [
             {
-              "name": "arg0",
+              "name": "name",
               "type": "str",
               "java_type": "String",
               "description": "- the color table name (e.g., \"fire\", \"viridis\", etc)",
@@ -212,35 +212,35 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static get",
+      "documentation": "Java method: get",
       "javadoc_description": "Returns a 'core' color table from its title",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static glasbeyColorsAWT",
+      "name": "glasbeyColorsAWT",
       "overloads": [
         {
-          "signature": "static glasbeyColorsAWT(int) -> Color;",
+          "signature": "glasbeyColorsAWT(int) -> Color[]",
           "params": [
             {
-              "name": "arg0",
+              "name": "n",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": "param_0"
             }
           ],
-          "return_type": "Any",
-          "java_return_type": "Color;",
+          "return_type": "List[Any]",
+          "java_return_type": "Color[]",
           "return_description": "",
           "throws": {}
         }
       ],
-      "documentation": "Java method: static glasbeyColorsAWT",
+      "documentation": "Java method: glasbeyColorsAWT",
       "javadoc_description": "",
       "category": "Visualization",
       "deprecated": false,
@@ -261,7 +261,7 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for ColorMaps"
+      "documentation": "Constructors of ColorMaps"
     }
   ],
   "javadoc_description": "Utilities for colormaps and IJ lookup tables",

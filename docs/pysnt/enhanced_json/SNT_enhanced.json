@@ -1,9 +1,9 @@
 {
   "class_name": "SNT",
   "package": "sc.fiji.snt",
-  "extracted_at": "2026-01-02T22:36:44.802339",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.392792",
+  "extracted_at": "2026-11-02T00:24:01.692034",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.337980",
   "enhancement_version": "1.0.0",
   "methods": [
     {
@@ -33,7 +33,7 @@
           "signature": "addFillerThread(FillerThread) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "filler",
               "type": "FillerThread",
               "java_type": "FillerThread",
               "description": "",
@@ -61,7 +61,7 @@
           "signature": "addListener(SNTListener) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "listener",
               "type": "Any",
               "java_type": "SNTListener",
               "description": "",
@@ -86,47 +86,17 @@
       "name": "autoTrace",
       "overloads": [
         {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "PointInImage",
-              "java_type": "PointInImage",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Path",
-          "java_return_type": "Path",
-          "return_description": "",
-          "throws": {}
-        },
-        {
           "signature": "autoTrace(List, PointInImage) -> Path",
           "params": [
             {
-              "name": "arg0",
+              "name": "pointList",
               "type": "List[Any]",
               "java_type": "List",
               "description": "- the list of PointInImage containing the nodes to be used as target goals during the search. If the search cannot converge into a target point, such point is omitted from path, if Successful, target point will be included in the final path. The final path. The first point in the list is the start of the path, the last its terminus. Null objects not allowed.",
               "javadoc_name": "pointList"
             },
             {
-              "name": "arg1",
+              "name": "forkPoint",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
@@ -139,31 +109,24 @@
           "throws": {}
         },
         {
-          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "signature": "autoTrace(List, PointInImage, boolean) -> Path",
           "params": [
             {
-              "name": "arg0",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
+              "name": "pointList",
+              "type": "List[Any]",
+              "java_type": "List",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "SNTPoint",
-              "java_type": "SNTPoint",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
+              "name": "forkPoint",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
+              "name": "headless",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -176,26 +139,107 @@
           "throws": {}
         },
         {
-          "signature": "autoTrace(List, PointInImage, boolean) -> Path",
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
           "params": [
             {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "List",
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, boolean) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "forkPoint",
               "type": "PointInImage",
               "java_type": "PointInImage",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "headless",
               "type": "bool",
               "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "autoTrace(SNTPoint, SNTPoint, PointInImage, SearchProgressCallback, Consumer) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "progressCallback",
+              "type": "Any",
+              "java_type": "SearchProgressCallback",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "onSubmit",
+              "type": "Any",
+              "java_type": "Consumer",
               "description": "",
               "javadoc_name": null
             }
@@ -214,6 +258,125 @@
       "see_also": [
         "autoTrace(List, PointInImage)"
       ],
+      "examples": []
+    },
+    {
+      "name": "autoTraceSync",
+      "overloads": [
+        {
+          "signature": "autoTraceSync(List, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "pointList",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- the waypoints to connect, start to end",
+              "javadoc_name": "pointList"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the stitched path, or null if any segment failed to produce a result",
+          "throws": {}
+        },
+        {
+          "signature": "autoTraceSync(List, PointInImage, SearchSettingsSnapshot) -> Path",
+          "params": [
+            {
+              "name": "pointList",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "settings",
+              "type": "Any",
+              "java_type": "SearchSettingsSnapshot",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: autoTraceSync",
+      "javadoc_description": "Variant of `autoTraceSync(List, PointInImage)` that uses a frozen `SNT.SearchSettingsSnapshot` instead of the live cost function/data structure/secondary-image settings, so every segment of every path in a long-running batch (e.g. `AStarRefiner`) is traced with identical settings, immune to changes made mid-run via the (deliberately still enabled) A* controls.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "buildMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "buildMaterializedCrop(BoundingBox) -> MaterializedCrop",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MaterializedCrop",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "buildMaterializedCrop(BoundingBox, boolean) -> MaterializedCrop",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "- if true, crops getSecondaryData() instead of the main streamed source",
+              "javadoc_name": "useSecondary"
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "getSecondaryData()"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "MaterializedCrop",
+          "return_description": "",
+          "throws": {
+            "IllegalStateException": "- if",
+            "useSecondary": "is true but no secondary image is loaded"
+          }
+        }
+      ],
+      "documentation": "Java method: buildMaterializedCrop",
+      "javadoc_description": "As `buildMaterializedCrop(BoundingBox)`, but reading from either this session's main streamed source or its secondary (filtered) image.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
       "examples": []
     },
     {
@@ -243,7 +406,7 @@
           "signature": "cancelSearch(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "cancelFillToo",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -291,14 +454,14 @@
           "signature": "captureView(String, ColorRGB) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "str",
               "java_type": "String",
               "description": "- A case-insensitive string specifying the canvas to be captured. Either \"xy\" (or \"main\"), \"xz\", \"zy\" or \"3d\" (for legacy's 3D Viewer).",
               "javadoc_name": "view"
             },
             {
-              "name": "arg1",
+              "name": "backgroundColor",
               "type": "Any",
               "java_type": "ColorRGB",
               "description": "",
@@ -316,14 +479,14 @@
           "signature": "captureView(String, boolean) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "view",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "project",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -351,7 +514,7 @@
           "signature": "changeUIState(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "newState",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -367,6 +530,26 @@
       "documentation": "Java method: changeUIState",
       "javadoc_description": "",
       "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "clearIsolatedTreeID() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearIsolatedTreeID",
+      "javadoc_description": "Convenience for `setIsolatedTreeID(-1)`: lifts any active tree isolation.",
+      "category": "Setters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -393,13 +576,55 @@
       "examples": []
     },
     {
+      "name": "computeImgStats",
+      "overloads": [
+        {
+          "signature": "computeImgStats(Iterable, ImageStatistics, CostType) -> ImageStatistics",
+          "params": [
+            {
+              "name": "in",
+              "type": "List[Any]",
+              "java_type": "Iterable",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "imgStats",
+              "type": "Any",
+              "java_type": "ImageStatistics",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "costType",
+              "type": "Any",
+              "java_type": "CostType",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: computeImgStats",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "confirmTemporary",
       "overloads": [
         {
           "signature": "confirmTemporary(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "updateTracingViewers",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -427,14 +652,14 @@
           "signature": "createCanvas(ImagePlus, int) -> InteractiveTracerCanvas",
           "params": [
             {
-              "name": "arg0",
+              "name": "imagePlus",
               "type": "Any",
               "java_type": "ImagePlus",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "plane",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -443,29 +668,6 @@
           ],
           "return_type": "Any",
           "java_return_type": "InteractiveTracerCanvas",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "createCanvas(ImagePlus, int) -> MultiDThreePanesCanvas",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImagePlus",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "Any",
-          "java_return_type": "MultiDThreePanesCanvas",
           "return_description": "",
           "throws": {}
         }
@@ -479,17 +681,37 @@
       "examples": []
     },
     {
+      "name": "deselectLastPath",
+      "overloads": [
+        {
+          "signature": "deselectLastPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the path that was deselected, or null if there was nothing to deselect",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: deselectLastPath",
+      "javadoc_description": "Removes the most recently selected path from the current selection (so nothing remains selected if only one path was selected). Does nothing in edit mode, in which a single path is always selected",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "disableEventsAllPanes",
       "overloads": [
         {
           "signature": "disableEventsAllPanes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "disable",
               "type": "bool",
               "java_type": "boolean",
-              "description": "- 1-based channel, or null to clear the lock",
-              "javadoc_name": "channel"
+              "description": "- new default color for selected paths",
+              "javadoc_name": "newSelectedColor"
             }
           ],
           "return_type": "None",
@@ -499,7 +721,7 @@
         }
       ],
       "documentation": "Java method: disableEventsAllPanes",
-      "javadoc_description": "Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.",
+      "javadoc_description": "Sets default path colors.",
       "category": "Setters",
       "deprecated": false,
       "since_version": null,
@@ -513,7 +735,7 @@
           "signature": "disableZoomAllPanes(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "disable",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -561,7 +783,7 @@
           "signature": "enableAstar(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean",
               "description": "- true to enable A* search, false otherwise",
@@ -583,69 +805,13 @@
       "examples": []
     },
     {
-      "name": "enableAutoActivation",
-      "overloads": [
-        {
-          "signature": "enableAutoActivation(boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: enableAutoActivation",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
-      "name": "enableAutoSelectionOfFinishedPath",
-      "overloads": [
-        {
-          "signature": "enableAutoSelectionOfFinishedPath(boolean) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "bool",
-              "java_type": "boolean",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        }
-      ],
-      "documentation": "Java method: enableAutoSelectionOfFinishedPath",
-      "javadoc_description": "",
-      "category": "Setters",
-      "deprecated": false,
-      "since_version": null,
-      "see_also": [],
-      "examples": []
-    },
-    {
       "name": "enableSecondaryLayerTracing",
       "overloads": [
         {
           "signature": "enableSecondaryLayerTracing(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -673,7 +839,7 @@
           "signature": "enableSnapCursor(boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "enable",
               "type": "bool",
               "java_type": "boolean",
               "description": "- whether cursor snapping should be enabled",
@@ -695,36 +861,128 @@
       "examples": []
     },
     {
+      "name": "enterEditMode",
+      "overloads": [
+        {
+          "signature": "enterEditMode(Path) -> boolean",
+          "params": [
+            {
+              "name": "pathToEdit",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "- the path to be edited. It is selected (replacing the current selection) if not already the single selected path, since all edit operations require the editing path to be selected. If null, the single selected path is used",
+              "javadoc_name": "pathToEdit"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if 'Edit Mode' was enabled. See `getEditModeBlocker()` if not",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: enterEditMode",
+      "javadoc_description": "Enables 'Edit Mode' on all front-ends (tracing canvas, Bdv and Bvv)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "estimateMaterializationBytes",
+      "overloads": [
+        {
+          "signature": "estimateMaterializationBytes(long, long, long) -> long",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "long",
+              "description": "- the crop's width, in voxels",
+              "javadoc_name": "width"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the estimated byte count, or -1 if no streamed source is available to estimate from",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: estimateMaterializationBytes",
+      "javadoc_description": "Estimates the number of bytes required to materialize a crop of the given voxel dimensions from this session's streamed source (see `materializeDisplayCanvas(BoundingBox)`), using the source's actual pixel type.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "isStreamMode()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "exitEditMode",
+      "overloads": [
+        {
+          "signature": "exitEditMode() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: exitEditMode",
+      "javadoc_description": "Disables 'Edit Mode' on all front-ends (tracing canvas, Bdv and Bvv)",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "findPointInStack",
       "overloads": [
         {
-          "signature": "findPointInStack(int, int, int, [I) -> void",
+          "signature": "findPointInStack(int, int, int, int[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_in_pane",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "y_in_pane",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "plane",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "[I",
+              "name": "point",
+              "type": "List[int]",
+              "java_type": "int[]",
               "description": "",
               "javadoc_name": null
             }
@@ -747,33 +1005,33 @@
       "name": "findPointInStackPrecise",
       "overloads": [
         {
-          "signature": "findPointInStackPrecise(double, double, int, [D) -> void",
+          "signature": "findPointInStackPrecise(double, double, int, double[]) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "x_in_pane",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "y_in_pane",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "plane",
               "type": "int",
               "java_type": "int",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg3",
-              "type": "Any",
-              "java_type": "[D",
+              "name": "point",
+              "type": "List[float]",
+              "java_type": "double[]",
               "description": "",
               "javadoc_name": null
             }
@@ -799,14 +1057,14 @@
           "signature": "finished(SearchInterface, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "source",
               "type": "Any",
               "java_type": "SearchInterface",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "success",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -848,6 +1106,26 @@
       "examples": []
     },
     {
+      "name": "getActiveCanvasPixelOffset",
+      "overloads": [
+        {
+          "signature": "getActiveCanvasPixelOffset() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "return_description": "the pixel offset (in whatever grid `ctSlice3d`/`getLoadedData()` is currently indexed by - the crop-local grid when a materialized crop is active, or the raw streamed source's own voxel grid otherwise) of (0,0,0) in the true/world grid `Path` node coordinates are stored in",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getActiveCanvasPixelOffset",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getAverageSeparation",
       "overloads": [
         {
@@ -860,6 +1138,74 @@
         }
       ],
       "documentation": "Java method: getAverageSeparation",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBatchRetraceChannelFrame",
+      "overloads": [
+        {
+          "signature": "getBatchRetraceChannelFrame() -> int[]",
+          "params": [],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "return_description": "`{channel, frame}` (1-based) the active batch re-trace is running against, or `null` if none is active. See `setBatchRetraceChannelFrame(java.lang.Integer, java.lang.Integer)`.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBatchRetraceChannelFrame",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> Calibration",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Calibration",
+          "return_description": "this session's current spatial calibration (pixel width/height/depth and unit), for converting between pixel and world/calibrated coordinates without affecting world origin: see `setWorldOriginOffset(double, double, double)` for the separate mechanism that handles a non-zero-anchored source.\n\nCalibration is trusted from initialized ImagePlus (traditional mode) or from the stream source in Stream mode (`isSpacingKnownFromSource()`); If the streamed N5/Zarr source whose own `getVoxelDimensions()` returned null (see `BigDataLoaderCmd#applyFallbackCalibration` ), this falls back to a representative loaded `Path`'s own calibration.\n\nThat fallback is inherently a guess SNT cannot verify: nothing guarantees a loaded Path (e.g. imported from an SWC/traces file) was actually traced against the currently streamed source, so its calibration could be wrong for this data. Callers driving user-facing operations should warn accordingly, see `SNTUI#materializeDisplayCanvas()`'s use of `isSpacingKnownFromSource()`.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCalibration",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCanvas",
+      "overloads": [
+        {
+          "signature": "getCanvas(int) -> TracerCanvas",
+          "params": [
+            {
+              "name": "pane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "TracerCanvas",
+          "java_return_type": "TracerCanvas",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCanvas",
       "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
@@ -911,10 +1257,10 @@
       "name": "getCostType",
       "overloads": [
         {
-          "signature": "getCostType() -> SNT$CostType",
+          "signature": "getCostType() -> CostType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$CostType",
+          "java_return_type": "CostType",
           "return_description": "",
           "throws": {}
         }
@@ -960,7 +1306,27 @@
         }
       ],
       "documentation": "Java method: getDataset",
-      "javadoc_description": "Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per getLoadedDataAsImp(). If no resident ImagePlus exists at all (e.g., data streamed from disk/network, backed only by ctSlice3d), a Dataset is instead built directly from `getLoadedDataAsImg(boolean)`, so Dataset-only commands. Null is returned if no image data exists at all.\n\nNB: in the streamed-data fallback, the returned Dataset only ever contains a single channel/ frame (whichever is currently active): ctSlice3d is a single C/T slice by construction. Commands that need every channel or frame simultaneously will still require a resident ImagePlus.\n\nNB2: a materialized crop (see isMaterializedCrop()) always has a resident ImagePlus (the crop itself), so it never takes the streamed-data fallback above, returning the crop's own Dataset as-is, matching whatever `buildMaterializedCrop(BoundingBox)` captured (see `getMaterializedCropChannel()`/`getMaterializedCropFrame()`).",
+      "javadoc_description": "Gets the Image being traced as Dataset. If the loaded image has been closed, cached pixel data is returned as per `getLoadedDataAsImp()`. If no resident `ImagePlus` exists at all (e.g., data streamed from disk/network, backed only by `ctSlice3d`), a Dataset is instead built directly from `getLoadedDataAsImg(boolean)`, so Dataset-only commands. Null is returned if no image data exists at all.\n\nNB: in the streamed-data fallback, the returned Dataset only ever contains a single channel/ frame (whichever is currently active): `ctSlice3d` is a single C/T slice by construction. Commands that need every channel or frame simultaneously will still require a resident `ImagePlus`.\n\nNB2: a materialized crop (see `isMaterializedCrop()`) always has a resident `ImagePlus` (the crop itself), so it never takes the streamed-data fallback above, returning the crop's own Dataset as-is, matching whatever `buildMaterializedCrop(BoundingBox)` captured (see `getMaterializedCropChannel()`/`getMaterializedCropFrame()`).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDefaultCanvasPixelOffset",
+      "overloads": [
+        {
+          "signature": "getDefaultCanvasPixelOffset() -> PointInCanvas",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PointInCanvas",
+          "return_description": "the same value as `getActiveCanvasPixelOffset()` whenever no crop is materialized; the crop-independent baseline otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDefaultCanvasPixelOffset",
+      "javadoc_description": "Public wrapper around `defaultCanvasPixelOffset()`, for callers outside this class that need the crop-independent baseline offset even while a materialized crop is active on the classic 2D canvas - e.g. a BDV/BVV interaction that should behave the same regardless of what the classic canvas currently has materialized, mirroring how \n```\ncreateSearch(double, double, double, double, double, double, SearchSettingsSnapshot, boolean)\n```\n's `useStreamedSource` parameter picks between the two.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1000,6 +1366,62 @@
         }
       ],
       "documentation": "Java method: getDrawDiameters",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getEditModeBlocker",
+      "overloads": [
+        {
+          "signature": "getEditModeBlocker() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "getEditModeBlocker(boolean) -> String",
+          "params": [
+            {
+              "name": "autoSelect",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, not having a single selected path is not considered a blocker",
+              "javadoc_name": "autoSelect"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "a user-friendly message, or null if 'Edit Mode' can be enabled",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getEditModeBlocker",
+      "javadoc_description": "As `getEditModeBlocker()`, for front-ends that select the path to be edited themselves (e.g., the one nearest to the cursor) when no single path is selected",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFillThreshold",
+      "overloads": [
+        {
+          "signature": "getFillThreshold() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFillThreshold",
       "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
@@ -1088,13 +1510,43 @@
       "examples": []
     },
     {
+      "name": "getFilledMeshes",
+      "overloads": [
+        {
+          "signature": "getFilledMeshes(double) -> Map",
+          "params": [
+            {
+              "name": "smoothing",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the sigma (in calibrated units) of a Gaussian blur applied before meshing. 0 disables smoothing. Note that thin fills shrink and may vanish if smoothed",
+              "javadoc_name": "smoothing"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "the (non-empty) meshes, mapped by name (that of the source path(s) of each fill, or \"Fill_1\", \"Fill_2\", etc. if undefined). Empty if no fills are loaded",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFilledMeshes",
+      "javadoc_description": "Converts the currently loaded fills to meshes, one per fill, in the spatially calibrated coordinates of the image (the same space as path nodes). Only voxels within each fill's threshold are included.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "MeshUtils.fromFills(Collection, double[], double[], double)"
+      ],
+      "examples": []
+    },
+    {
       "name": "getFilterType",
       "overloads": [
         {
-          "signature": "getFilterType() -> SNT$FilterType",
+          "signature": "getFilterType() -> FilterType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$FilterType",
+          "java_return_type": "FilterType",
           "return_description": "",
           "throws": {}
         }
@@ -1128,6 +1580,66 @@
       "examples": []
     },
     {
+      "name": "getFullImageDimensions",
+      "overloads": [
+        {
+          "signature": "getFullImageDimensions() -> int[]",
+          "params": [],
+          "return_type": "List[int]",
+          "java_return_type": "int[]",
+          "return_description": "`{width, height, depth}` of the full dataset",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFullImageDimensions",
+      "javadoc_description": "Returns the dimensions of the full loaded image/dataset, even while a materialized crop (see `materializeDisplayCanvas(BoundingBox)`) is installed as this session's own canvas. Unlike `width`/`height`/`depth`, which temporarily reflect the crop's own (small) size for as long as it stays open (see `installMaterializedCrop(sc.fiji.snt.SNT.MaterializedCrop)`), this always resolves against `streamedSourceData` (the pristine, pre-crop source) when one is cached, falling back to width/height/depth otherwise (i.e. no crop is open, or this is a classic/non-streamed session where streamedSourceData is never populated).\n\nIntended for callers that need the true dataset extent regardless of any transient crop, e.g. `PathAndFillManager.writeXML(java.lang.String, boolean)` when writing the `<imagesize>` element of a .traces file.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFullSourceData",
+      "overloads": [
+        {
+          "signature": "getFullSourceData() -> RandomAccessibleInterval",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "the same data as `getStreamedOrLoadedData()`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFullSourceData",
+      "javadoc_description": "Non-generic wrapper around `getStreamedOrLoadedData()`, for callers outside this class that need the full, crop-independent source data - e.g. BDV/BVV's own tracing/search (shared by both viewers, see `AbstractBigViewer`) or the Sigma preview palette, which must show data around the point actually clicked, not clamped to whatever (possibly smaller) crop happens to be materialized on the classic canvas at the same time. In classic (non-streamed) sessions this is simply `getLoadedData()`, since no crop can ever be materialized there. Pair with `getDefaultCanvasPixelOffset()` for converting a click into a pixel index into this data.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getFullSourceDataAsImp",
+      "overloads": [
+        {
+          "signature": "getFullSourceDataAsImp() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the full source data, or null if no image data has been loaded",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getFullSourceDataAsImp",
+      "javadoc_description": "Crop-independent counterpart of `getLoadedDataAsImp()`: the full source data (`getFullSourceData()`) as an ImagePlus, e.g., for a preview that must show the region actually clicked in BDV/BVV regardless of the crop that may be materialized on the classic canvas. Its pixel grid is the one described by `getDefaultCanvasPixelOffset()`. Same as `getLoadedDataAsImp()` if no crop is materialized.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "getHeight",
       "overloads": [
         {
@@ -1151,16 +1663,36 @@
       "name": "getHeuristicType",
       "overloads": [
         {
-          "signature": "getHeuristicType() -> SNT$HeuristicType",
+          "signature": "getHeuristicType() -> HeuristicType",
           "params": [],
           "return_type": "Any",
-          "java_return_type": "SNT$HeuristicType",
+          "java_return_type": "HeuristicType",
           "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getHeuristicType",
       "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getImageFilenamePrefix",
+      "overloads": [
+        {
+          "signature": "getImageFilenamePrefix() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the sanitized, extension-stripped image basename, or a fallback placeholder (\"streamed_data\"/\"snt_data\") if unavailable",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getImageFilenamePrefix",
+      "javadoc_description": "Returns a filesystem-safe basename identifying the image currently being traced, for use as a prefix when generating output filenames (backups, exported bookmarks, notes, etc). Handles both standard mode (title of `getImagePlus()`) and `stream mode` (title of the source loaded in the active `big viewer`, if any).",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1182,7 +1714,7 @@
           "signature": "getImagePlus(int) -> ImagePlus",
           "params": [
             {
-              "name": "arg0",
+              "name": "pane",
               "type": "int",
               "java_type": "int",
               "description": "- the flag specifying the view either MultiDThreePanes.XY_PLANE, MultiDThreePanes.XZ_PLANE or MultiDThreePanes.ZY_PLANE.",
@@ -1191,12 +1723,52 @@
           ],
           "return_type": "Any",
           "java_return_type": "ImagePlus",
-          "return_description": "the image associate with the specified view, or null if the view is not available. If the view is XY_PLANE, and the image has been closed, cached pixel data is returned as per getLoadedDataAsImp()",
+          "return_description": "the image associate with the specified view, or null if the view is not available. If the view is XY_PLANE, and the image has been closed, cached pixel data is returned as per `getLoadedDataAsImp()`",
           "throws": {}
         }
       ],
       "documentation": "Java method: getImagePlus",
       "javadoc_description": "Gets the Image associated with a view pane.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "getIsolatedTreeID() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the ID of the currently isolated tree, or -1 if no isolation is active",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getIsolatedTreeID",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLastTracedPath",
+      "overloads": [
+        {
+          "signature": "getLastTracedPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the path, or null if no path has been traced yet or it no longer exists",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLastTracedPath",
+      "javadoc_description": "Returns the path most recently traced interactively in this session, as opposed to paths loaded from file or created by other means.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -1216,6 +1788,34 @@
         }
       ],
       "documentation": "Java method: getLoadedData",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLoadedDataAsImg",
+      "overloads": [
+        {
+          "signature": "getLoadedDataAsImg(boolean) -> ImgPlus",
+          "params": [
+            {
+              "name": "secondaryLayer",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImgPlus",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLoadedDataAsImg",
       "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
@@ -1262,6 +1862,3519 @@
       "since_version": null,
       "see_also": [],
       "examples": []
+    },
+    {
+      "name": "getMaterializationMemoryBudget",
+      "overloads": [
+        {
+          "signature": "getMaterializationMemoryBudget() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "the number of bytes currently available for a `materializeDisplayCanvas(BoundingBox)` call, i.e. `MEM_FRACTION` of free heap. `Long.MAX_VALUE` if the JVM's max memory cannot be determined.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMaterializationMemoryBudget",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "isStreamMode()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMaterializedCropChannel",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropChannel() -> Integer",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "Integer",
+          "return_description": "the (1-based) channel the currently materialized crop (see `materializeDisplayCanvas(BoundingBox)`) was actually read from, or `null` if no crop is active, or if the crop is genuinely multichannel - in that case every one of its channels is resident, so there is no single \"the channel it came from\" to report, and callers should instead treat it like any other resident multichannel image with no restriction.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropChannel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getMaterializedCropFrame()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMaterializedCropFrame",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropFrame() -> Integer",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "Integer",
+          "return_description": "the (1-based) frame the currently materialized crop (see `materializeDisplayCanvas(BoundingBox)`) as actually read from, or `null` if no crop is active. A materialized crop is always single-frame regardless of how many channels it captures (see `SNT.MaterializedCrop.frame()` - a single int, set by `installMaterializedCropOnEDT()`), so this stays meaningful even for a multichannel crop, where `getMaterializedCropChannel()` returns `null`. Callers that only care about frame should use this rather than falling back to `getFrame()` (reset to 1 by any materialized crop, single- or multichannel, regardless of its true source frame) when `getMaterializedCropChannel()` is null.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropFrame",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getMaterializedCropChannel()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getMaterializedCropWorldBounds",
+      "overloads": [
+        {
+          "signature": "getMaterializedCropWorldBounds() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "the world-space (calibrated) extent of the currently materialized crop (see `materializeDisplayCanvas(BoundingBox)`), or `null` if none is active. Useful for callers (e.g. `SkeletonizerCmd`) that want to restrict an operation to the region actually materialized, since BDV/BVV have no ROI equivalent. Derived from `getActiveCanvasPixelOffset()` and the live `width`/`height`/`depth` (the crop's own small dimensions while materialized - see `getFullImageDimensions()`): since \n```\nvoxelIndex =\n         world/spacing + canvasOffset\n```\n (see `defaultCanvasPixelOffset()`), the crop's local voxel 0 and voxel `width`/`height`/`depth` map back to world coordinates via \n```\nworld =\n         (voxelIndex - canvasOffset) * spacing\n```\n - `getWorldOriginOffset()` cancels out of that algebra, so it does not need to be looked up separately here.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMaterializedCropWorldBounds",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMinimumSeparation",
+      "overloads": [
+        {
+          "signature": "getMinimumSeparation() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMinimumSeparation",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNodeEditor",
+      "overloads": [
+        {
+          "signature": "getNodeEditor() -> PathNodeEditor",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PathNodeEditor",
+          "return_description": "the node editor",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNodeEditor",
+      "javadoc_description": "Returns the node editor shared by all front-ends of this instance (tracing canvas, Bdv and Bvv). It holds the path being edited, its active node and the undo history of 'Edit Mode'.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPathAndFillManager",
+      "overloads": [
+        {
+          "signature": "getPathAndFillManager() -> PathAndFillManager",
+          "params": [],
+          "return_type": "PathAndFillManager",
+          "java_return_type": "PathAndFillManager",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPathAndFillManager",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPixelDepth",
+      "overloads": [
+        {
+          "signature": "getPixelDepth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPixelDepth",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPixelHeight",
+      "overloads": [
+        {
+          "signature": "getPixelHeight() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPixelHeight",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPixelWidth",
+      "overloads": [
+        {
+          "signature": "getPixelWidth() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPixelWidth",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPrefs",
+      "overloads": [
+        {
+          "signature": "getPrefs() -> SNTPrefs",
+          "params": [],
+          "return_type": "SNTPrefs",
+          "java_return_type": "SNTPrefs",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrefs",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSearchImageType",
+      "overloads": [
+        {
+          "signature": "getSearchImageType() -> SearchImageType",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchImageType",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSearchImageType",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSearchType",
+      "overloads": [
+        {
+          "signature": "getSearchType() -> SearchType",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchType",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSearchType",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSecondaryData",
+      "overloads": [
+        {
+          "signature": "getSecondaryData() -> RandomAccessibleInterval",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSecondaryData",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSecondaryDataAsImp",
+      "overloads": [
+        {
+          "signature": "getSecondaryDataAsImp() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the loaded data or null if no image has been loaded.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSecondaryDataAsImp",
+      "javadoc_description": "Retrieves the 'secondary image' data currently loaded in memory as an ImagePlus object. Returned image is always of 32-bit type.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "isSecondaryDataAvailable()",
+        "loadSecondaryImage(ImagePlus)",
+        "loadSecondaryImage(File)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "getSecondaryImageMinMax",
+      "overloads": [
+        {
+          "signature": "getSecondaryImageMinMax() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSecondaryImageMinMax",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSeedOverlay",
+      "overloads": [
+        {
+          "signature": "getSeedOverlay() -> SeedOverlay",
+          "params": [],
+          "return_type": "SeedOverlay",
+          "java_return_type": "SeedOverlay",
+          "return_description": "the seed overlay (never `null`)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSeedOverlay",
+      "javadoc_description": "Returns the `SeedOverlay` associated with this SNT instance. The overlay holds candidate `SeedPoint`s (e.g., output of upstream point detectors) and is rendered on the tracing canvas when non-empty.\n\nThe overlay is **transient**: it is automatically cleared when the active image changes (see `initialize(ImagePlus)`) and is not persisted with the `.traces` file. Importers should use `SeedOverlay.addAll(java.util.Collection)` for bulk loads.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSelectedPaths",
+      "overloads": [
+        {
+          "signature": "getSelectedPaths() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSelectedPaths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSinglePane",
+      "overloads": [
+        {
+          "signature": "getSinglePane() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSinglePane",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSingleSelectedPath",
+      "overloads": [
+        {
+          "signature": "getSingleSelectedPath() -> Path",
+          "params": [],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSingleSelectedPath",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSpacingUnits",
+      "overloads": [
+        {
+          "signature": "getSpacingUnits() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSpacingUnits",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStats",
+      "overloads": [
+        {
+          "signature": "getStats() -> ImageStatistics",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStats",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStatsSecondary",
+      "overloads": [
+        {
+          "signature": "getStatsSecondary() -> ImageStatistics",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImageStatistics",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStatsSecondary",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUI",
+      "overloads": [
+        {
+          "signature": "getUI() -> SNTUI",
+          "params": [],
+          "return_type": "SNTUI",
+          "java_return_type": "SNTUI",
+          "return_description": "the main dialog of SNT's UI",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUI",
+      "javadoc_description": "Gets the main UI.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUseSubVolumeStats",
+      "overloads": [
+        {
+          "signature": "getUseSubVolumeStats() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUseSubVolumeStats",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getWidth",
+      "overloads": [
+        {
+          "signature": "getWidth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getWidth",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getWorldOriginOffset",
+      "overloads": [
+        {
+          "signature": "getWorldOriginOffset() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "the world-space origin offset (calibrated units) previously set via `setWorldOriginOffset(double, double, double)`, as `{xOffset, yOffset, zOffset}`. All-zero (the default) unless explicitly set. See `setWorldOriginOffset(double, double, double)` for why this is distinct from `ij.measure.Calibration`'s own `xOrigin/yOrigin/zOrigin` fields.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getWorldOriginOffset",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getZYXZ",
+      "overloads": [
+        {
+          "signature": "getZYXZ(ImagePlus, int) -> ImagePlus[]",
+          "params": [
+            {
+              "name": "xy",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "ImagePlus[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getZYXZ",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "initPathsToFill",
+      "overloads": [
+        {
+          "signature": "initPathsToFill(Set, boolean) -> void",
+          "params": [
+            {
+              "name": "fromPaths",
+              "type": "Set[Any]",
+              "java_type": "Set",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "splitFillerThreads",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: initPathsToFill",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "initialize",
+      "overloads": [
+        {
+          "signature": "initialize(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "initialize(ImagePlus, int) -> void",
+          "params": [
+            {
+              "name": "imagePlus",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "initialize(boolean, int, int) -> void",
+          "params": [
+            {
+              "name": "singlePane",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "initialize(boolean, int, int, boolean) -> void",
+          "params": [
+            {
+              "name": "singlePane",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "computeStackStats",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: initialize",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "installMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "installMaterializedCrop(MaterializedCrop) -> void",
+          "params": [
+            {
+              "name": "crop",
+              "type": "Any",
+              "java_type": "MaterializedCrop",
+              "description": "- the crop to install, from buildMaterializedCrop(BoundingBox)",
+              "javadoc_name": "crop"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalStateException": "- if this session is not in Stream mode (see isStreamMode()): classic mode already holds its full image resident, so installing a crop as this session's canvas is untested and not a supported combination",
+            "isStreamMode()": ""
+          }
+        }
+      ],
+      "documentation": "Java method: installMaterializedCrop",
+      "javadoc_description": "Installs a crop built by `buildMaterializedCrop(BoundingBox)` as this session's own XY canvas, in place, the same mechanism `rebuildDisplayCanvases()` uses for the blank placeholder, but with real pixel data instead of an empty image. This allows right-click editing (extend/fork/join/delete nodes, wired into `InteractiveTracerCanvas`) real pixel context in Stream mode, where BDV/BVV have no equivalent context menu.\n\nDeliberately scoped to editing, not tracing: this reuses the normal `initialize(ImagePlus)` pipeline, which also replaces `ctSlice3d` with the crop's own (small) pixel data. A* search/GWDT tracing initiated after materializing is therefore scoped to the crop's own bounds, not the full streamed volume, until a different region is materialized (or the session is reconnected). There is no path for pixel edits to write back into the canonical streamed source: only geometry/paths persist, pixel edits are local to this session.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "is2D",
+      "overloads": [
+        {
+          "signature": "is2D() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the image currently loaded does not have a depth (Z) dimension",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: is2D",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isAstarEnabled",
+      "overloads": [
+        {
+          "signature": "isAstarEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if A* search is enabled, otherwise false",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isAstarEnabled",
+      "javadoc_description": "Checks if A* search is enabled",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isEditModeEnabled",
+      "overloads": [
+        {
+          "signature": "isEditModeEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if 'Edit Mode' is currently enabled, i.e., the path returned by `getEditingPath()` is being edited on all front-ends",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isEditModeEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isMaterializedCrop",
+      "overloads": [
+        {
+          "signature": "isMaterializedCrop() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this stream session's own XY canvas is currently a materialized crop (see `materializeDisplayCanvas(BoundingBox)`), i.e. `ctSlice3d` holds the crop's own (small) pixel data rather than the full Stream-mode source. Checked by `AbstractBigViewer`'s click-tracer to refuse tracing against stale pixel data while its own rendering still shows the full (unaffected) volume, and by pixel-scoped commands to warn that they will run against the crop's bounds only.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isMaterializedCrop",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isOnlySelectedPathsVisible",
+      "overloads": [
+        {
+          "signature": "isOnlySelectedPathsVisible() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isOnlySelectedPathsVisible",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSecondaryDataAvailable",
+      "overloads": [
+        {
+          "signature": "isSecondaryDataAvailable() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if image has been loaded into memory.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSecondaryDataAvailable",
+      "javadoc_description": "Assesses if the 'secondary image' has been loaded into memory. Note that while some tracer Threads will load the image into memory, others may waive the loading to third party libraries",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isShowOnlyActiveCTposPaths",
+      "overloads": [
+        {
+          "signature": "isShowOnlyActiveCTposPaths() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether only paths matching the current channel/frame position are being displayed (classic canvas), or, for Bvv/Bdv, only paths matching the current timepoint",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isShowOnlyActiveCTposPaths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSpacingKnownFromSource",
+      "overloads": [
+        {
+          "signature": "isSpacingKnownFromSource() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if `getCalibration()` can trust this session's own spacing fields outright (the streamed source itself reported real voxel dimensions at some point); false if it instead has to fall back to a loaded Path's own (unverifiable) calibration, or this session's hardwired 1-unit default. Used by `SNTUI` to warn before an operation that depends on this calibration being correct (e.g. materializing a region), since SNT itself cannot confirm that a loaded Path was actually traced against the currently streamed source.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSpacingKnownFromSource",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isStreamMode",
+      "overloads": [
+        {
+          "signature": "isStreamMode() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if in stream mode",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isStreamMode",
+      "javadoc_description": "Returns whether this session is running in stream mode (\"SNT Stream\"), i.e., without access to a full in-core materialized image but rather a lazily-loaded BDV/BVV-backed source (typically an OME-Zarr/N5 dataset; see `BigDataLoaderCmd`).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTracingActive",
+      "overloads": [
+        {
+          "signature": "isTracingActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether tracing functions are currently allowed",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTracingActive",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTracingOnSecondaryImageActive",
+      "overloads": [
+        {
+          "signature": "isTracingOnSecondaryImageActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTracingOnSecondaryImageActive",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTracingPaused",
+      "overloads": [
+        {
+          "signature": "isTracingPaused() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether tracing functions are currently paused (see `SNTUI.pauseTracing(boolean)`)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTracingPaused",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTreeIsolationActive",
+      "overloads": [
+        {
+          "signature": "isTreeIsolationActive() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether a single tree is currently isolated for display (see `setIsolatedTreeID(int)`)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTreeIsolationActive",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isZoomAllPanesDisabled",
+      "overloads": [
+        {
+          "signature": "isZoomAllPanesDisabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isZoomAllPanesDisabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadLabelsFile",
+      "overloads": [
+        {
+          "signature": "loadLabelsFile(String) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: loadLabelsFile",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadSecondaryImage",
+      "overloads": [
+        {
+          "signature": "loadSecondaryImage(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "loadSecondaryImage(ImagePlus) -> void",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "loadSecondaryImage(RandomAccessibleInterval, boolean) -> void",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "computeStatistics",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: loadSecondaryImage",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "loadTracings",
+      "overloads": [
+        {
+          "signature": "loadTracings(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: loadTracings",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "main",
+      "overloads": [
+        {
+          "signature": "main(String[]) -> void",
+          "params": [
+            {
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: main",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "makePathVolume",
+      "overloads": [
+        {
+          "signature": "makePathVolume(Collection, boolean) -> ImagePlus",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "- If true, each path has a unique intensity; otherwise all nodes are set to 255 (8-bit Binary)",
+              "javadoc_name": "labelsImage"
+            },
+            {
+              "name": "labelsImage",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the ImagePlus with embedded centerlines",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: makePathVolume",
+      "javadoc_description": "Rasterizes centerline of paths into an ImagePlus",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "manualTrace",
+      "overloads": [
+        {
+          "signature": "manualTrace(SNTPoint, SNTPoint, PointInImage) -> Path",
+          "params": [
+            {
+              "name": "start",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "- the SNTPoint start of the path",
+              "javadoc_name": "start"
+            },
+            {
+              "name": "end",
+              "type": "SNTPoint",
+              "java_type": "SNTPoint",
+              "description": "",
+              "javadoc_name": "SNTPoint"
+            },
+            {
+              "name": "forkPoint",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "Path",
+          "java_return_type": "Path",
+          "return_description": "the path a reference to the computed path.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: manualTrace",
+      "javadoc_description": "Manually traces a straight path from a point A to a point B, bypassing A* (or any other configured `SearchInterface`) entirely: the two points are simply connected via `ManualTracerThread`. Unlike `autoTrace(SNTPoint, SNTPoint, PointInImage, boolean)`, this method does not depend on, or alter, `isAstarEnabled()`. Runs headless (no SNTUI state changes) and, since it does not search the image, is cheap enough to be safely called off the EDT.\n\nThe returned path is *not* added to the Path Manager: callers are responsible for that (see `PathAndFillManager.addPath(Path, boolean, boolean)`).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "materializeDisplayCanvas",
+      "overloads": [
+        {
+          "signature": "materializeDisplayCanvas(BoundingBox) -> void",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "materializeDisplayCanvas(BoundingBox, boolean) -> void",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: materializeDisplayCanvas",
+      "javadoc_description": "As `materializeDisplayCanvas(BoundingBox)`, but reading from either this session's main streamed source or its secondary (filtered) image - see `buildMaterializedCrop(BoundingBox, boolean)`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "mouseMovedTo",
+      "overloads": [
+        {
+          "signature": "mouseMovedTo(double, double, int, boolean) -> void",
+          "params": [
+            {
+              "name": "off_screen_x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "off_screen_y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "shift_down",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "mouseMovedTo(double, double, int, boolean, boolean) -> void",
+          "params": [
+            {
+              "name": "x_in_pane",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y_in_pane",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "sync_panes_modifier_down",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "join_modifier_down",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: mouseMovedTo",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "notifyActiveNodeChanged",
+      "overloads": [
+        {
+          "signature": "notifyActiveNodeChanged(AbstractBigViewer) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "AbstractBigViewer",
+              "description": "- the viewer that originated the change, which is not notified. null if the change was not made by a viewer",
+              "javadoc_name": "source"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: notifyActiveNodeChanged",
+      "javadoc_description": "Refreshes the active-node (and lock) markers of the Bdv/Bvv viewers after the active node of the editing path was changed or (un)locked by another front-end",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "notifyEditingPathChanged",
+      "overloads": [
+        {
+          "signature": "notifyEditingPathChanged() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: notifyEditingPathChanged",
+      "javadoc_description": "Refreshes the Bdv/Bvv rendering of the path being edited after it was modified by the tracing canvas. Throttled so that continuous gestures (e.g., dragging a node) do not flood the viewers",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "notifyListeners",
+      "overloads": [
+        {
+          "signature": "notifyListeners(SNTEvent) -> void",
+          "params": [
+            {
+              "name": "event",
+              "type": "Any",
+              "java_type": "SNTEvent",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: notifyListeners",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "panEventOccurred",
+      "overloads": [
+        {
+          "signature": "panEventOccurred(int, int, int) -> void",
+          "params": [
+            {
+              "name": "off_screen_x",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "off_screen_y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: panEventOccurred",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "pointsInSearch",
+      "overloads": [
+        {
+          "signature": "pointsInSearch(SearchInterface, long, long) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "SearchInterface",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "inOpen",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "inClosed",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: pointsInSearch",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "proportionDone",
+      "overloads": [
+        {
+          "signature": "proportionDone(double) -> void",
+          "params": [
+            {
+              "name": "proportion",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: proportionDone",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "rebuildDisplayCanvases",
+      "overloads": [
+        {
+          "signature": "rebuildDisplayCanvases() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if valid image data exists"
+          }
+        }
+      ],
+      "documentation": "Java method: rebuildDisplayCanvases",
+      "javadoc_description": "Rebuilds display canvases, i.e., the placeholder canvases used when no valid image data exists (a single-canvas is rebuilt if only the XY view is active).\n\nUseful when multiple files are imported and imported paths 'fall off' the dimensions of current canvas(es). If there is not enough memory to accommodate enlarged dimensions, the resulting canvas will be a 2D image.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "rebuildZYXZpanes",
+      "overloads": [
+        {
+          "signature": "rebuildZYXZpanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: rebuildZYXZpanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reloadImage",
+      "overloads": [
+        {
+          "signature": "reloadImage(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reloadImage",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reloadZYXZpanes",
+      "overloads": [
+        {
+          "signature": "reloadZYXZpanes(int) -> void",
+          "params": [
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reloadZYXZpanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeMIPOverlayAllPanes",
+      "overloads": [
+        {
+          "signature": "removeMIPOverlayAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeMIPOverlayAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "repaintAllPanes",
+      "overloads": [
+        {
+          "signature": "repaintAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: repaintAllPanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resolveVoxelBounds",
+      "overloads": [
+        {
+          "signature": "resolveVoxelBounds(BoundingBox, Calibration) -> VoxelBounds",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "- if true, resolves against getSecondaryData() instead of the main streamed source",
+              "javadoc_name": "useSecondary"
+            },
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration",
+              "description": "",
+              "javadoc_name": "getSecondaryData()"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VoxelBounds",
+          "return_description": "",
+          "throws": {
+            "IllegalStateException": "- if",
+            "useSecondary": "is true but no secondary image is loaded"
+          }
+        },
+        {
+          "signature": "resolveVoxelBounds(BoundingBox, Calibration, boolean) -> VoxelBounds",
+          "params": [
+            {
+              "name": "worldBox",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "cal",
+              "type": "Any",
+              "java_type": "Calibration",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "useSecondary",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "VoxelBounds",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resolveVoxelBounds",
+      "javadoc_description": "As `resolveVoxelBounds(BoundingBox, Calibration)`, but resolving against either this session's main streamed source or its secondary (filtered) image - see `buildMaterializedCrop(BoundingBox, boolean)`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "sameXYZDimensionsAsTracingData",
+      "overloads": [
+        {
+          "signature": "sameXYZDimensionsAsTracingData(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the candidate image data",
+              "javadoc_name": "data"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if dimensions match; false if they don't, or if no tracing data is loaded to compare against",
+          "throws": {}
+        },
+        {
+          "signature": "sameXYZDimensionsAsTracingData(RandomAccessibleInterval) -> boolean",
+          "params": [
+            {
+              "name": "data",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: sameXYZDimensionsAsTracingData",
+      "javadoc_description": "RAI-based overload of `sameXYZDimensionsAsTracingData(ImagePlus)`, for candidate sources that never go through an `ImagePlus` at all (e.g. a big-data secondary layer resolved via `SpimDataUtils.resolvePathToSource(String)`). Compares XYZ dimensions directly against `getLoadedData()`, so unlike the `ImagePlus` overload this works the same regardless of whether `MultiDThreePanes.xy` exists.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "seedStatsFromSubVolume",
+      "overloads": [
+        {
+          "signature": "seedStatsFromSubVolume(ImagePlus) -> boolean",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the sub-volume",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if main image statistics are available after this call",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: seedStatsFromSubVolume",
+      "javadoc_description": "In Stream mode, seeds unknown main image statistics (min, max) from a small sub-volume already in memory (e.g., the Sigma Palette crop). Computing them from the whole image would require reading every chunk of lazy/remote data. Statistics from a sub-volume are local estimates. Does nothing if statistics are already known.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "invalidStatsError(boolean)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "selectNone",
+      "overloads": [
+        {
+          "signature": "selectNone() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if any path was deselected",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: selectNone",
+      "javadoc_description": "Clears the current path selection. Does nothing in edit mode",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "selectPath",
+      "overloads": [
+        {
+          "signature": "selectPath(Path, boolean) -> void",
+          "params": [
+            {
+              "name": "p",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "addToExistingSelection",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: selectPath",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAnnotationsColorAllPanes",
+      "overloads": [
+        {
+          "signature": "setAnnotationsColorAllPanes(Color) -> void",
+          "params": [
+            {
+              "name": "newColor",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnnotationsColorAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAnnotationsVisible",
+      "overloads": [
+        {
+          "signature": "setAnnotationsVisible(boolean) -> void",
+          "params": [
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- whether overlays should be rendered",
+              "javadoc_name": "visible"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAnnotationsVisible",
+      "javadoc_description": "Enables/Disables SNT overlays over tracing views. Note that disabling overlays will also suppress most GUI-related operations.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBatchRetraceChannelFrame",
+      "overloads": [
+        {
+          "signature": "setBatchRetraceChannelFrame(Integer, Integer) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "Integer",
+              "description": "- 1-based channel, or null to clear the lock",
+              "javadoc_name": "channel"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "Integer",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBatchRetraceChannelFrame",
+      "javadoc_description": "Sets or clears the channel/frame lock described in `getBatchRetraceChannelFrame()`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCanvasLabelAllPanes",
+      "overloads": [
+        {
+          "signature": "setCanvasLabelAllPanes(String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCanvasLabelAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setChannelAndFrame",
+      "overloads": [
+        {
+          "signature": "setChannelAndFrame(int, int) -> void",
+          "params": [
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the channel (1-based index; coerced to 1 if ≤0)",
+              "javadoc_name": "channel"
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setChannelAndFrame",
+      "javadoc_description": "Sets the channel/frame (1-based, IJ hyperstack convention) to be associated with subsequently traced paths (via `Path.setCTposition(int, int)`), and, for \n```\nmanualTrace(sc.fiji.snt.util.SNTPoint, sc.fiji.snt.util.SNTPoint, sc.fiji.snt.util.PointInImage)\n```\n, with the pixel data A* search reads (see `setImageData(net.imglib2.RandomAccessibleInterval<?>)`).\n\nUseful alongside `setImageData(net.imglib2.RandomAccessibleInterval<?>)`/`setImageMetadata(int, int, int, double, double, double, java.lang.String)` when pixel data comes from a source with no single, already-loaded multichannel/multi-timepoint array to index into (e.g. each channel of a BigDataViewer/SpimData or N5/Zarr source is its own separate object): callers are responsible for keeping the three in sync when the active channel/timepoint changes.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCostType",
+      "overloads": [
+        {
+          "signature": "setCostType(CostType) -> void",
+          "params": [
+            {
+              "name": "costType",
+              "type": "Any",
+              "java_type": "CostType",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCostType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCurrentPath",
+      "overloads": [
+        {
+          "signature": "setCurrentPath(Path) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCurrentPath",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCursorTextAllPanes",
+      "overloads": [
+        {
+          "signature": "setCursorTextAllPanes(String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCursorTextAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDrawCrosshairsAllPanes",
+      "overloads": [
+        {
+          "signature": "setDrawCrosshairsAllPanes(boolean) -> void",
+          "params": [
+            {
+              "name": "drawCrosshairs",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDrawCrosshairsAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDrawDiameters",
+      "overloads": [
+        {
+          "signature": "setDrawDiameters(boolean) -> void",
+          "params": [
+            {
+              "name": "draw",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDrawDiameters",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFillList",
+      "overloads": [
+        {
+          "signature": "setFillList(List) -> void",
+          "params": [
+            {
+              "name": "fillList",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFillList",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFillThreshold",
+      "overloads": [
+        {
+          "signature": "setFillThreshold(double) -> void",
+          "params": [
+            {
+              "name": "distance",
+              "type": "float",
+              "java_type": "double",
+              "description": "- the new threshold distance. Set it to",
+              "javadoc_name": "distance"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- If distance is not a valid positive value"
+          }
+        }
+      ],
+      "documentation": "Java method: setFillThreshold",
+      "javadoc_description": "Sets the fill threshold distance. Typically, this value is set before a filling operation as a starting value for the `FillerThread`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFillThresholdFrom",
+      "overloads": [
+        {
+          "signature": "setFillThresholdFrom(double, double, double) -> void",
+          "params": [
+            {
+              "name": "world_x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "world_y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "world_z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFillThresholdFrom",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFilterType",
+      "overloads": [
+        {
+          "signature": "setFilterType(FilterType) -> void",
+          "params": [
+            {
+              "name": "filterType",
+              "type": "Any",
+              "java_type": "FilterType",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFilterType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setHeuristicType",
+      "overloads": [
+        {
+          "signature": "setHeuristicType(HeuristicType) -> void",
+          "params": [
+            {
+              "name": "heuristicType",
+              "type": "Any",
+              "java_type": "HeuristicType",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setHeuristicType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setImageData",
+      "overloads": [
+        {
+          "signature": "setImageData(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "data",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "- the (possibly lazily-backed) image data, in the same pixel/voxel grid implied by the dimensions/calibration set via setImageMetadata(int, int, int, double, double, double, java.lang.String)",
+              "javadoc_name": "data"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setImageData",
+      "javadoc_description": "Directly sets the image data backing A* search, without requiring an `ImgPlus` wrapper. Useful when pixel data comes from a source whose `RandomAccessibleInterval` is already resolved elsewhere (e.g., a BigDataViewer/SpimData `ImgLoader`, or a BDV/BVV `Source`), and building/discarding a full `ImgPlus` just to satisfy `SNT(ImgPlus)` would be wasteful, or would not preserve lazy/chunked access the way the original object does.\n\nCallers remain responsible for also calling `setImageMetadata(int, int, int, double, double, double, java.lang.String)` (or equivalent) with matching dimensions/calibration; this method does not attempt to infer them from `data`.\n\n`data`'s pixel type must be a `RealType`; other types (e.g. `ARGBType`) will throw a `ClassCastException` later, e.g., the first time A* search accesses a pixel.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setImageMetadata",
+      "overloads": [
+        {
+          "signature": "setImageMetadata(int, int, int, double, double, double, String) -> void",
+          "params": [
+            {
+              "name": "width",
+              "type": "int",
+              "java_type": "int",
+              "description": "- width in pixels (ignored if ≤0)",
+              "javadoc_name": "width"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "depth",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "xSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_3"
+            },
+            {
+              "name": "ySpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_4"
+            },
+            {
+              "name": "zSpacing",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_5"
+            },
+            {
+              "name": "units",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_6"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setImageMetadata",
+      "javadoc_description": "Sets image dimensions and calibration without providing actual pixel data. Useful when the source image is not directly accessible as random-access data (e.g., a BigDataViewer `AbstractSpimData`/IMS source, or an ambiguous N5/Zarr layout) but its metadata (size, voxel spacing) is still known. This allows features that only need bounds/scale (e.g., manual tracing, bounds/distance checks) to work correctly with the image's real dimensions, even though `accessToValidImageData()` keeps reporting no data is available (this does NOT set `ctSlice3d`, so A* search remains unavailable).",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setIsolatedTreeID",
+      "overloads": [
+        {
+          "signature": "setIsolatedTreeID(int) -> void",
+          "params": [
+            {
+              "name": "treeID",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the ID of the tree to isolate (see Tree.getTreeID()), or -1 to show all",
+              "javadoc_name": "treeID"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setIsolatedTreeID",
+      "javadoc_description": "Isolates a single tree (arbor) for display across every tracing viewer, hiding paths belonging to any other tree. Orthogonal to `setShowOnlySelectedPaths(boolean)`: does not touch path selection or rendered colors, it only restricts which trees are candidates for display at all. Pass -1 (or call `clearIsolatedTreeID()`) to lift the restriction.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "PathManagerUI"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setPathList",
+      "overloads": [
+        {
+          "signature": "setPathList(Path, boolean) -> void",
+          "params": [
+            {
+              "name": "justAdded",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "expandAll",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setPathList",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSearchImageType",
+      "overloads": [
+        {
+          "signature": "setSearchImageType(SearchImageType) -> void",
+          "params": [
+            {
+              "name": "searchImageType",
+              "type": "Any",
+              "java_type": "SearchImageType",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSearchImageType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSearchType",
+      "overloads": [
+        {
+          "signature": "setSearchType(SearchType) -> void",
+          "params": [
+            {
+              "name": "searchType",
+              "type": "Any",
+              "java_type": "SearchType",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSearchType",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSecondaryImage",
+      "overloads": [
+        {
+          "signature": "setSecondaryImage(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "- The file containing the 'secondary image'",
+              "javadoc_name": "file"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSecondaryImage",
+      "javadoc_description": "Specifies the 'secondary image' to be used during a tracing session.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSecondaryImageMinMax",
+      "overloads": [
+        {
+          "signature": "setSecondaryImageMinMax(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSecondaryImageMinMax",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSelectedPaths",
+      "overloads": [
+        {
+          "signature": "setSelectedPaths(Collection, Object) -> void",
+          "params": [
+            {
+              "name": "selectedPathsSet",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSelectedPaths",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setShowOnlySelectedPaths",
+      "overloads": [
+        {
+          "signature": "setShowOnlySelectedPaths(boolean) -> void",
+          "params": [
+            {
+              "name": "showOnlySelectedPaths",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setShowOnlySelectedPaths",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSinglePane",
+      "overloads": [
+        {
+          "signature": "setSinglePane(boolean) -> void",
+          "params": [
+            {
+              "name": "single_pane",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSinglePane",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setStopFillAtThreshold",
+      "overloads": [
+        {
+          "signature": "setStopFillAtThreshold(boolean) -> void",
+          "params": [
+            {
+              "name": "stopFillAtThreshold",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setStopFillAtThreshold",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setStoreExtraFillNodes",
+      "overloads": [
+        {
+          "signature": "setStoreExtraFillNodes(boolean) -> void",
+          "params": [
+            {
+              "name": "storeExtraFillNodes",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setStoreExtraFillNodes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTemporaryPath",
+      "overloads": [
+        {
+          "signature": "setTemporaryPath(Path) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTemporaryPath",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setUseSubVolumeStats",
+      "overloads": [
+        {
+          "signature": "setUseSubVolumeStats(boolean) -> void",
+          "params": [
+            {
+              "name": "useSubVolumeStatistics",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setUseSubVolumeStats",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setWorldOriginOffset",
+      "overloads": [
+        {
+          "signature": "setWorldOriginOffset(double, double, double) -> void",
+          "params": [
+            {
+              "name": "xOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "- x offset, in calibrated units",
+              "javadoc_name": "xOffset"
+            },
+            {
+              "name": "yOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "zOffset",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setWorldOriginOffset",
+      "javadoc_description": "Sets a rigid world-space origin offset (in calibrated units) to be applied on top of the usual `voxelIndex * spacing` coordinate mapping. Not needed for a normally-loaded `ImgPlus` (its calibration/origin is assumed anchored at world (0,0,0)), but required when pixel data was wired in via `setImageData(net.imglib2.RandomAccessibleInterval<?>)`/`setImageMetadata(int, int, int, double, double, double, java.lang.String)` from a source whose own coordinate frame is *not* anchored at (0,0,0) - e.g. a BigDataViewer/N5 `Source` whose `sourceTransform` carries a translation (see `BigDataLoaderCmd#applyFallbackCalibration`).\n\nThis offset is not applied automatically to coordinates read elsewhere in this class (e.g. manual tracing, A* search); callers that produce `Tree`/`Path` results from such a source are responsible for applying it themselves, e.g. via `Tree.translate(double, double, double)`.\n\n**Not the same thing as `ij.measure.Calibration#xOrigin/yOrigin/zOrigin`** (nor a drop-in replacement for it), despite the similar name/purpose. The two use different conventions and are not numerically interchangeable:\n\n- This offset is applied in **world** space, after scaling: `world = voxelIndex * spacing + offset` .\n\n- `Calibration` 's origin is applied in **pixel** space, before scaling (see `Calibration#getRawX/Y/Z` , and `ShollPoint#rawZ` for the equivalent hand-written formula): `world = (voxelIndex - origin) * spacing` , i.e. `voxelIndex = world / spacing + origin` .\n\nConverting between the two requires the spacing too (`offset = -origin * spacing`); they are not the same number and must not be assigned to/read from each other directly. `getCalibration()` always returns spacing-only calibration objects with `xOrigin/yOrigin/zOrigin` left at their default of 0, regardless of this offset; callers needing pixel<->world conversions that account for this offset must use `getWorldOriginOffset()` directly (see `BookmarkManager#pixelToWorld`/ `#worldToPixel` for a worked example), not `getCalibration()` alone.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getWorldOriginOffset()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setZPositionAllPanes",
+      "overloads": [
+        {
+          "signature": "setZPositionAllPanes(int, int, int) -> void",
+          "params": [
+            {
+              "name": "new_x",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "new_y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "new_z",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setZPositionAllPanes",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showCorrespondencesTo",
+      "overloads": [
+        {
+          "signature": "showCorrespondencesTo(File, Color, double) -> void",
+          "params": [
+            {
+              "name": "tracesFile",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "c",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "maxDistance",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showCorrespondencesTo",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": true,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showMIPOverlays",
+      "overloads": [
+        {
+          "signature": "showMIPOverlays(double) -> void",
+          "params": [
+            {
+              "name": "opacity",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showMIPOverlays",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showStatus",
+      "overloads": [
+        {
+          "signature": "showStatus(int, int, String) -> void",
+          "params": [
+            {
+              "name": "progress",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the current progress value",
+              "javadoc_name": "progress"
+            },
+            {
+              "name": "maximum",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "status",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showStatus",
+      "javadoc_description": "Description copied from interface: `PaneOwner`",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "snapshotSearchSettings",
+      "overloads": [
+        {
+          "signature": "snapshotSearchSettings() -> SearchSettingsSnapshot",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "SearchSettingsSnapshot",
+          "return_description": "an immutable snapshot of the current cost function, data structure, and secondary (filtered) image state",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: snapshotSearchSettings",
+      "javadoc_description": "Captures the search settings currently configured on this instance, for use by long-running batch callers that need to stay internally consistent even if these settings are changed (via the UI) partway through the run. See `SNT.SearchSettingsSnapshot`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "startHessian",
+      "overloads": [
+        {
+          "signature": "startHessian(String, double, double, boolean) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the image to filter, either \"primary\" or \"secondary\".",
+              "javadoc_name": "image"
+            },
+            {
+              "name": "sigma",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            },
+            {
+              "name": "wait",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_3"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "startHessian(String, String, double[], String, int) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "strategy",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nThreads",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "startHessian(String, String, double[], double, double, String, int) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "filter",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "scales",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "strategy",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nThreads",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: startHessian",
+      "javadoc_description": "Constructs and enables an instance of a hessian eigenvalue filter. If the strategy is \"preprocess\", the entire filtered image is pre-computed and stored in memory. If the strategy is \"lazy\", the image is filtered locally during path searches, and filtered data is stored in a disk cache when memory runs full. If you are tracing over a large image or if you are in a memory-limited environment, you should choose \"lazy\".",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "startSholl",
+      "overloads": [
+        {
+          "signature": "startSholl(PointInImage) -> void",
+          "params": [
+            {
+              "name": "centerScaled",
+              "type": "PointInImage",
+              "java_type": "PointInImage",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: startSholl",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "startUI",
+      "overloads": [
+        {
+          "signature": "startUI() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "startUI(boolean) -> void",
+          "params": [
+            {
+              "name": "bigDataMode",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: startUI",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "threadStatus",
+      "overloads": [
+        {
+          "signature": "threadStatus(SearchInterface, int) -> void",
+          "params": [
+            {
+              "name": "source",
+              "type": "Any",
+              "java_type": "SearchInterface",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "status",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: threadStatus",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "unzoomAllPanes",
+      "overloads": [
+        {
+          "signature": "unzoomAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: unzoomAllPanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateAllViewers",
+      "overloads": [
+        {
+          "signature": "updateAllViewers() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateAllViewers",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateDisplayCanvases",
+      "overloads": [
+        {
+          "signature": "updateDisplayCanvases() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateDisplayCanvases",
+      "javadoc_description": "Rebuilds display canvas(es) to ensure all paths are contained in the image. Does nothing if placeholder canvas(es) are not being used.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "rebuildDisplayCanvases()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "zoom100PercentAllPanes",
+      "overloads": [
+        {
+          "signature": "zoom100PercentAllPanes() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: zoom100PercentAllPanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "zoomAllPanes",
+      "overloads": [
+        {
+          "signature": "zoomAllPanes(double) -> void",
+          "params": [
+            {
+              "name": "zoomFactor",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: zoomAllPanes",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "zoomEventOccurred",
+      "overloads": [
+        {
+          "signature": "zoomEventOccurred(boolean, int, int, int) -> void",
+          "params": [
+            {
+              "name": "in",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "off_screen_x",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "off_screen_y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "in_plane",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: zoomEventOccurred",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
     }
   ],
   "fields": [],
@@ -1270,51 +5383,12 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "SNT(Context, PathAndFillManager)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Context"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "PathAndFillManager"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "SNT(ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "sourceImage",
               "type": "Any",
               "java_type": "ImagePlus"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
-          "signature": "SNT(ImgPlus, int, int)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "ImgPlus"
-            },
-            {
-              "name": "arg1",
-              "type": "int",
-              "java_type": "int"
-            },
-            {
-              "name": "arg2",
-              "type": "int",
-              "java_type": "int"
             }
           ],
           "return_type": "None",
@@ -1324,7 +5398,7 @@
           "signature": "SNT(ImgPlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "sourceImage",
               "type": "Any",
               "java_type": "ImgPlus"
             }
@@ -1336,21 +5410,60 @@
           "signature": "SNT(Context, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             },
             {
-              "name": "arg1",
+              "name": "sourceImage",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(Context, PathAndFillManager)",
+          "params": [
+            {
+              "name": "context",
+              "type": "Any",
+              "java_type": "Context"
+            },
+            {
+              "name": "pathAndFillManager",
+              "type": "PathAndFillManager",
+              "java_type": "PathAndFillManager"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "SNT(ImgPlus, int, int)",
+          "params": [
+            {
+              "name": "sourceImage",
+              "type": "Any",
+              "java_type": "ImgPlus"
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int"
+            },
+            {
+              "name": "timePoint",
+              "type": "int",
+              "java_type": "int"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for SNT"
+      "documentation": "Constructors of SNT"
     }
   ],
   "javadoc_description": "Implements the SNT plugin.",
@@ -1378,40 +5491,42 @@
   "deprecated": true,
   "since_version": null,
   "see_also": [
-    "loadSecondaryImage(File)",
-    "showCanvasInfo(String, int)",
-    "showCanvasError(String, int)",
-    "SearchProgressCallback",
+    "MultiDThreePanes",
+    "autoTrace(List, PointInImage)",
+    "MeshUtils.fromFills(Collection, double[], double[], double)",
+    "invalidStatsError(boolean)",
+    "loadSecondaryImage(ImagePlus)",
+    "getMaterializedCropFrame()",
     "isStreamMode()",
     "Constant Field Values",
-    "loadSecondaryImage(ImagePlus)",
+    "showCanvasInfo(String, int)",
+    "showCanvasWarning(String, int)",
+    "PathManagerUI",
+    "SearchProgressCallback",
+    "loadSecondaryImage(File)",
+    "HessianGenerationCallback",
     "getMaterializedCropChannel()",
-    "getMaterializedCropFrame()",
-    "autoTrace(List, PointInImage)",
     "rebuildDisplayCanvases()",
     "isSecondaryDataAvailable()",
-    "PathManagerUI",
     "getWorldOriginOffset()",
-    "HessianGenerationCallback",
-    "showCanvasWarning(String, int)",
-    "getSecondaryDataAsImp()",
-    "MultiDThreePanes"
+    "showCanvasError(String, int)",
+    "getSecondaryDataAsImp()"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 241,
-      "total_json_methods": 44,
-      "total_matches": 61,
-      "exact_matches": 46,
-      "signature_matches": 15,
+      "total_javadoc_methods": 255,
+      "total_json_methods": 181,
+      "total_matches": 240,
+      "exact_matches": 185,
+      "signature_matches": 55,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
-      "unmatched_javadoc": 180,
-      "unmatched_json": -17,
-      "match_percentage": 25.3
+      "unmatched_javadoc": 15,
+      "unmatched_json": -59,
+      "match_percentage": 94.1
     },
-    "unmatched_javadoc_methods": 180,
-    "unmatched_json_methods": 5,
-    "enhancement_quality_score": -0.009
+    "unmatched_javadoc_methods": 15,
+    "unmatched_json_methods": 19,
+    "enhancement_quality_score": 1.0
   }
 }

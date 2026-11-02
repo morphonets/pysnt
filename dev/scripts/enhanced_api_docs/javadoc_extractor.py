@@ -36,7 +36,13 @@ class JavaDocExtractor:
             return False
         
         # Check if already extracted
-        if not force and self.extract_dir.exists() and self._is_extracted():
+        stamp = self.extract_dir / '.javadoc_source'
+        current = f"{self.zip_path.name}:{int(self.zip_path.stat().st_mtime)}"
+        try:
+            same_source = stamp.exists() and stamp.read_text().strip() == current
+        except OSError:
+            same_source = False
+        if not force and self.extract_dir.exists() and self._is_extracted() and same_source:
             logger.info(f"JavaDoc already extracted to: {self.extract_dir}")
             self.extracted = True
             return True
@@ -72,6 +78,7 @@ class JavaDocExtractor:
                     if len(html_files) > 5:
                         logger.debug(f"  ... and {len(html_files) - 5} more")
             
+            (self.extract_dir / '.javadoc_source').write_text(current)
             self.extracted = True
             logger.info("JavaDoc extraction completed successfully")
             return True

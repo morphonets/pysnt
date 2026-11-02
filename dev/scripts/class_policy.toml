@@ -29,9 +29,6 @@ skip_packages = [
 # Per-class overrides, key is the fully qualified outer class
 # Values: curated | extended | skip
 [classes]
-# Static render() is scripting API living in a command class
-# Remove once it moves out of gui.cmds
-"sc.fiji.snt.gui.cmds.FigCreatorCmd" = "extended"
 
 # Curated: placeholder class, stubs and docs
 "sc.fiji.snt.util.TreeUtils" = "curated"
@@ -43,6 +40,7 @@ skip_packages = [
 "sc.fiji.snt.SeedManager" = "curated"
 "sc.fiji.snt.viewer.Bdv" = "curated"
 "sc.fiji.snt.viewer.Bvv" = "curated"
+"sc.fiji.snt.viewer.FigureUtils" = "curated"
 "sc.fiji.snt.viewer.AbstractBigViewer" = "extended"
 # Optional dependency (sciview/scenery) not on the default Maven classpath
 "sc.fiji.snt.SciViewSNT" = "extended"

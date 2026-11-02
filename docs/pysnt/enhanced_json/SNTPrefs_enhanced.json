@@ -1,0 +1,1808 @@
+{
+  "class_name": "SNTPrefs",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-11-02T00:24:01.706372",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.285015",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "clearAll",
+      "overloads": [
+        {
+          "signature": "clearAll() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearAll",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearBvvPrefs",
+      "overloads": [
+        {
+          "signature": "clearBvvPrefs() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearBvvPrefs",
+      "javadoc_description": "Restores the defaults of all BVV preferences",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "deselectedPathColor",
+      "overloads": [
+        {
+          "signature": "deselectedPathColor() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: deselectedPathColor",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "ensureWorkspaceExists",
+      "overloads": [
+        {
+          "signature": "ensureWorkspaceExists() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if directory exists or was created successfully",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: ensureWorkspaceExists",
+      "javadoc_description": "Creates workspace directory if it doesn't exist.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "firstRun",
+      "overloads": [
+        {
+          "signature": "firstRun() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true only the very first time this is ever called (or after preferences have been cleared)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: firstRun",
+      "javadoc_description": "Checks if SNT has ever been run before on this system, consuming the check in the process: the very first call ever made to this method returns `true`; every call after that returns `false`.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "firstRunAfterUpdate",
+      "overloads": [
+        {
+          "signature": "firstRunAfterUpdate() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if this is the first run after an update, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: firstRunAfterUpdate",
+      "javadoc_description": "Checks if this is the first run after an SNT update.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "get",
+      "overloads": [
+        {
+          "signature": "get(String, String) -> String",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the preference key",
+              "javadoc_name": "key"
+            },
+            {
+              "name": "defaultValue",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the string preference value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: get",
+      "javadoc_description": "Gets a string preference value.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAutoLoadToolbarButton",
+      "overloads": [
+        {
+          "signature": "getAutoLoadToolbarButton() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if the button is loaded at startup (the default)",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAutoLoadToolbarButton",
+      "javadoc_description": "Gets whether the SNT button is auto-installed in the IJ toolbar at Fiji startup.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAutoSelectionOfFinishedPath",
+      "overloads": [
+        {
+          "signature": "getAutoSelectionOfFinishedPath() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAutoSelectionOfFinishedPath",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getAutosaveFile",
+      "overloads": [
+        {
+          "signature": "getAutosaveFile() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAutosaveFile",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBackupDir",
+      "overloads": [
+        {
+          "signature": "getBackupDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBackupDir",
+      "javadoc_description": "Returns the backup directory, or null if workspace doesn't exist. Does NOT create directories.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBigViewerPickRadius",
+      "overloads": [
+        {
+          "signature": "getBigViewerPickRadius() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the screen-space radius (pixels) within which Bdv/Bvv interactions snap to existing paths",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBigViewerPickRadius",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoolean",
+      "overloads": [
+        {
+          "signature": "getBoolean(String, boolean) -> boolean",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the preference key",
+              "javadoc_name": "key"
+            },
+            {
+              "name": "defaultValue",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "the boolean preference value",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoolean",
+      "javadoc_description": "Gets a boolean preference value.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBvvCacheMB",
+      "overloads": [
+        {
+          "signature": "getBvvCacheMB() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the persisted BVV GPU tile cache size (MB). 0 means automatic",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBvvCacheMB",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBvvFetchers",
+      "overloads": [
+        {
+          "signature": "getBvvFetchers() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the persisted number of BVV tile fetcher threads. 0 means automatic",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBvvFetchers",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBvvMaxStep",
+      "overloads": [
+        {
+          "signature": "getBvvMaxStep() -> double",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "double",
+          "return_description": "the persisted BVV maximum ray-marching step (voxels), within its limits",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBvvMaxStep",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBvvRenderQuality",
+      "overloads": [
+        {
+          "signature": "getBvvRenderQuality() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the name of the persisted BVV render quality preset, or null if none has been set",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBvvRenderQuality",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDefaultLookAndFeel",
+      "overloads": [
+        {
+          "signature": "getDefaultLookAndFeel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDefaultLookAndFeel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDisplayCustomPathColors",
+      "overloads": [
+        {
+          "signature": "getDisplayCustomPathColors() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDisplayCustomPathColors",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLookAndFeel",
+      "overloads": [
+        {
+          "signature": "getLookAndFeel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the look and feel class name",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLookAndFeel",
+      "javadoc_description": "Gets the current look and feel preference.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNextImgExtensions",
+      "overloads": [
+        {
+          "signature": "getNextImgExtensions() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "a non-null, non-empty list of suffixes; defaults to `[\".tif\", \".tiff\"]` if no preference has been set",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNextImgExtensions",
+      "javadoc_description": "Returns the list of filename suffixes used to identify images when navigating to the next/previous image in a folder (see `SNTUI`). Matching is case-insensitive and applied to the end of the filename (i.e., `endsWith`). Suffixes may include a leading dot (e.g., `\".tif\"`) or a partial filename suffix (e.g., `\"_max.tif\"`).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPref",
+      "overloads": [
+        {
+          "signature": "getPref(int) -> boolean",
+          "params": [
+            {
+              "name": "key",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPref",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRecentDir",
+      "overloads": [
+        {
+          "signature": "getRecentDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRecentDir",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRequireShiftToFork",
+      "overloads": [
+        {
+          "signature": "getRequireShiftToFork() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRequireShiftToFork",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSessionsDir",
+      "overloads": [
+        {
+          "signature": "getSessionsDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSessionsDir",
+      "javadoc_description": "Returns the sessions directory, or null if workspace doesn't exist. Does NOT create directories.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getTemp",
+      "overloads": [
+        {
+          "signature": "getTemp(String, String) -> String",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the preference key",
+              "javadoc_name": "key"
+            },
+            {
+              "name": "defaultValue",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the string preference value",
+          "throws": {}
+        },
+        {
+          "signature": "getTemp(String, boolean) -> boolean",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "defaultValue",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getTemp",
+      "javadoc_description": "Gets a temporary string preference value that will be cleared at session end.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getThreads",
+      "overloads": [
+        {
+          "signature": "getThreads() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of threads",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getThreads",
+      "javadoc_description": "Gets the current number of threads setting.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getUseNativeFileChooser",
+      "overloads": [
+        {
+          "signature": "getUseNativeFileChooser() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if native OS file dialogs should be used when possible",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getUseNativeFileChooser",
+      "javadoc_description": "Gets whether SNT's open/save dialogs should use the OS native file dialogs (FlatLaf's `SystemFileChooser`) instead of SNT's own `FileChooser`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getWorkspaceDir",
+      "overloads": [
+        {
+          "signature": "getWorkspaceDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getWorkspaceDir",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "is2DDisplayCanvas",
+      "overloads": [
+        {
+          "signature": "is2DDisplayCanvas() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if 2D display canvas is forced, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: is2DDisplayCanvas",
+      "javadoc_description": "Checks if 2D display canvas is forced.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isBvvCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "isBvvCachePromptSuppressed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether the user opted out of BVV's GPU tile cache prompt",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isBvvCachePromptSuppressed",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isCanvasAutoActivationEnabled",
+      "overloads": [
+        {
+          "signature": "isCanvasAutoActivationEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isCanvasAutoActivationEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isFastCropMaterializationEnabled",
+      "overloads": [
+        {
+          "signature": "isFastCropMaterializationEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "whether `SNT.buildMaterializedCrop(sc.fiji.snt.util.BoundingBox)` should attempt the faster, single-copy \n```\nImgUtils.raiToImpFast(net.imglib2.RandomAccessibleInterval<T>, java.lang.String)\n```\n path before falling back to `ImgUtils.raiToImp(net.imglib2.RandomAccessibleInterval<T>, java.lang.String)`+`ImagePlus.duplicate()`. Default: `true`.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isFastCropMaterializationEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSaveCompressedTraces",
+      "overloads": [
+        {
+          "signature": "isSaveCompressedTraces() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if compressed traces are enabled, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSaveCompressedTraces",
+      "javadoc_description": "Checks if traces should be saved in compressed format.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSaveWinLocations",
+      "overloads": [
+        {
+          "signature": "isSaveWinLocations() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if window locations are saved, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSaveWinLocations",
+      "javadoc_description": "Checks if window locations should be saved and restored.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isScrollDiameterEnabled",
+      "overloads": [
+        {
+          "signature": "isScrollDiameterEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isScrollDiameterEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isSomaDisplayTriangle",
+      "overloads": [
+        {
+          "signature": "isSomaDisplayTriangle() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if triangular shape is enable, false otherwise",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isSomaDisplayTriangle",
+      "javadoc_description": "Sets whether single-node paths tagged as are rendered w/ triangular shape.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "lastKnownDir",
+      "overloads": [
+        {
+          "signature": "lastKnownDir() -> File",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "File",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: lastKnownDir",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "selectedPathColor",
+      "overloads": [
+        {
+          "signature": "selectedPathColor() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: selectedPathColor",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "set",
+      "overloads": [
+        {
+          "signature": "set(String, String) -> void",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the preference key",
+              "javadoc_name": "key"
+            },
+            {
+              "name": "value",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "set(String, boolean) -> void",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "defaultValue",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: set",
+      "javadoc_description": "Sets a boolean preference value.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "set2DDisplayCanvas",
+      "overloads": [
+        {
+          "signature": "set2DDisplayCanvas(boolean) -> void",
+          "params": [
+            {
+              "name": "bool",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to force 2D display canvas, false otherwise",
+              "javadoc_name": "bool"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: set2DDisplayCanvas",
+      "javadoc_description": "Sets whether to force 2D display canvas.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAutoLoadToolbarButton",
+      "overloads": [
+        {
+          "signature": "setAutoLoadToolbarButton(boolean) -> void",
+          "params": [
+            {
+              "name": "autoLoad",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the new preference",
+              "javadoc_name": "autoLoad"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAutoLoadToolbarButton",
+      "javadoc_description": "Sets whether the SNT button should be auto-installed in the IJ toolbar at Fiji startup.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getAutoLoadToolbarButton()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setAutoSelectionOfFinishedPath",
+      "overloads": [
+        {
+          "signature": "setAutoSelectionOfFinishedPath(boolean) -> void",
+          "params": [
+            {
+              "name": "activateFinishedPath",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAutoSelectionOfFinishedPath",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setAutosaveFile",
+      "overloads": [
+        {
+          "signature": "setAutosaveFile(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setAutosaveFile",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvvCacheMB",
+      "overloads": [
+        {
+          "signature": "setBvvCacheMB(int) -> void",
+          "params": [
+            {
+              "name": "mb",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the BVV GPU tile cache size (MB) to persist. 0 means automatic",
+              "javadoc_name": "mb"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvvCacheMB",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvvCachePromptSuppressed",
+      "overloads": [
+        {
+          "signature": "setBvvCachePromptSuppressed(boolean) -> void",
+          "params": [
+            {
+              "name": "suppress",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvvCachePromptSuppressed",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvvFetchers",
+      "overloads": [
+        {
+          "signature": "setBvvFetchers(int) -> void",
+          "params": [
+            {
+              "name": "n",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of BVV tile fetcher threads to persist. 0 means automatic",
+              "javadoc_name": "n"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvvFetchers",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvvMaxStep",
+      "overloads": [
+        {
+          "signature": "setBvvMaxStep(double) -> void",
+          "params": [
+            {
+              "name": "step",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvvMaxStep",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setBvvRenderQuality",
+      "overloads": [
+        {
+          "signature": "setBvvRenderQuality(String) -> void",
+          "params": [
+            {
+              "name": "name",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the name of the BVV render quality preset to persist, or null to restore the default",
+              "javadoc_name": "name"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setBvvRenderQuality",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCanvasAutoActivation",
+      "overloads": [
+        {
+          "signature": "setCanvasAutoActivation(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCanvasAutoActivation",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDeselectedPathColor",
+      "overloads": [
+        {
+          "signature": "setDeselectedPathColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDeselectedPathColor",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDisplayCustomPathColors",
+      "overloads": [
+        {
+          "signature": "setDisplayCustomPathColors(boolean) -> void",
+          "params": [
+            {
+              "name": "displayCustomPathColors",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDisplayCustomPathColors",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setFastCropMaterialization",
+      "overloads": [
+        {
+          "signature": "setFastCropMaterialization(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- see isFastCropMaterializationEnabled()",
+              "javadoc_name": "enable"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setFastCropMaterialization",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLastKnownDir",
+      "overloads": [
+        {
+          "signature": "setLastKnownDir(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLastKnownDir",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setLookAndFeel",
+      "overloads": [
+        {
+          "signature": "setLookAndFeel(String) -> void",
+          "params": [
+            {
+              "name": "laf",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the look and feel class name",
+              "javadoc_name": "laf"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setLookAndFeel",
+      "javadoc_description": "Sets the look and feel preference.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setNextImgExtensions",
+      "overloads": [
+        {
+          "signature": "setNextImgExtensions(List) -> void",
+          "params": [
+            {
+              "name": "extensions",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- a comma-separated string of filename suffixes (e.g.,",
+              "javadoc_name": "csvString"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setNextImgExtensions(String) -> void",
+          "params": [
+            {
+              "name": "csvString",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setNextImgExtensions",
+      "javadoc_description": "Convenience method for setting filename suffixes from a comma-separated string. Whitespace around entries is trimmed and blank entries are ignored. Delegates to `setNextImgExtensions(List)`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "setNextImgExtensions(List)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setRecentDir",
+      "overloads": [
+        {
+          "signature": "setRecentDir(File) -> void",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRecentDir",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRequireShiftToFork",
+      "overloads": [
+        {
+          "signature": "setRequireShiftToFork(boolean) -> void",
+          "params": [
+            {
+              "name": "requireShiftToFork",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRequireShiftToFork",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSaveCompressedTraces",
+      "overloads": [
+        {
+          "signature": "setSaveCompressedTraces(boolean) -> void",
+          "params": [
+            {
+              "name": "bool",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable compressed traces, false otherwise",
+              "javadoc_name": "bool"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSaveCompressedTraces",
+      "javadoc_description": "Sets whether to save traces in compressed format.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSaveWinLocations",
+      "overloads": [
+        {
+          "signature": "setSaveWinLocations(boolean) -> void",
+          "params": [
+            {
+              "name": "value",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to save window locations, false otherwise",
+              "javadoc_name": "value"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSaveWinLocations",
+      "javadoc_description": "Sets whether window locations should be saved and restored.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setScrollDiameterEnabled",
+      "overloads": [
+        {
+          "signature": "setScrollDiameterEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enable",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setScrollDiameterEnabled",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSelectedPathColor",
+      "overloads": [
+        {
+          "signature": "setSelectedPathColor(Color) -> void",
+          "params": [
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSelectedPathColor",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setSomaDisplayTriangle",
+      "overloads": [
+        {
+          "signature": "setSomaDisplayTriangle(boolean) -> void",
+          "params": [
+            {
+              "name": "bool",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to enable triangular shape, false for default representation",
+              "javadoc_name": "bool"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setSomaDisplayTriangle",
+      "javadoc_description": "Sets whether single-node paths tagged as soma should render w/ triangular shape.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTemp",
+      "overloads": [
+        {
+          "signature": "setTemp(String, String) -> void",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the preference key",
+              "javadoc_name": "key"
+            },
+            {
+              "name": "value",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setTemp(String, boolean) -> void",
+          "params": [
+            {
+              "name": "key",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "value",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTemp",
+      "javadoc_description": "Sets a temporary string preference value that will be cleared at session end.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setThreads",
+      "overloads": [
+        {
+          "signature": "setThreads(int) -> void",
+          "params": [
+            {
+              "name": "n",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the number of threads (if less than 1, uses available processors)",
+              "javadoc_name": "n"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setThreads",
+      "javadoc_description": "Sets the number of threads to use for multi-threaded operations.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setUseNativeFileChooser",
+      "overloads": [
+        {
+          "signature": "setUseNativeFileChooser(boolean) -> void",
+          "params": [
+            {
+              "name": "useNative",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- the new preference",
+              "javadoc_name": "useNative"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setUseNativeFileChooser",
+      "javadoc_description": "Sets whether SNT's simple open/save dialogs should use native OS file dialogs.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "getUseNativeFileChooser()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setWorkspaceDir",
+      "overloads": [
+        {
+          "signature": "setWorkspaceDir(File) -> void",
+          "params": [
+            {
+              "name": "dir",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setWorkspaceDir",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "workspaceIsValid",
+      "overloads": [
+        {
+          "signature": "workspaceIsValid() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if workspace directory exists and has write permissions.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: workspaceIsValid",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "SNTPrefs(SNT)",
+          "params": [
+            {
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of SNTPrefs"
+    }
+  ],
+  "javadoc_description": "Class handling SNT preferences.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": true,
+  "since_version": null,
+  "see_also": [
+    "Constant Field Values",
+    "getNextImgExtensions()",
+    "getAutoLoadToolbarButton()",
+    "getUseNativeFileChooser()",
+    "Object",
+    "setNextImgExtensions(List)"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 82,
+      "total_json_methods": 68,
+      "total_matches": 72,
+      "exact_matches": 72,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 10,
+      "unmatched_json": -4,
+      "match_percentage": 87.8
+    },
+    "unmatched_javadoc_methods": 10,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

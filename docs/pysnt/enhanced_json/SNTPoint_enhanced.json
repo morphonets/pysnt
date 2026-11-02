@@ -1,19 +1,19 @@
 {
   "class_name": "SNTPoint",
   "package": "sc.fiji.snt.util",
-  "extracted_at": "2026-09-27T23:01:07.075778",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.415523",
+  "extracted_at": "2026-11-02T00:24:01.705833",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.366985",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static average",
+      "name": "average",
       "overloads": [
         {
-          "signature": "static average(Collection) -> PointInImage",
+          "signature": "average(Collection) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "points",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "- the collection of points to average",
@@ -26,22 +26,22 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static average",
+      "documentation": "Java method: average",
       "javadoc_description": "Computes the average position of a collection of SNTPoints.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
       "examples": []
     },
     {
-      "name": "static fromString",
+      "name": "fromString",
       "overloads": [
         {
-          "signature": "static fromString(String) -> PointInImage",
+          "signature": "fromString(String) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
+              "name": "string",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -54,9 +54,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static fromString",
+      "documentation": "Java method: fromString",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -89,7 +89,7 @@
           "signature": "getCoordinateOnAxis(int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "axis",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -191,45 +191,15 @@
       "examples": []
     },
     {
-      "name": "static of",
+      "name": "of",
       "overloads": [
         {
-          "signature": "static of(Number, Number, Number) -> PointInImage",
+          "signature": "of(Number[]) -> PointInImage",
           "params": [
             {
-              "name": "arg0",
-              "type": "Union[int, float]",
-              "java_type": "Number",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "Union[int, float]",
-              "java_type": "Number",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Union[int, float]",
-              "java_type": "Number",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "PointInImage",
-          "java_return_type": "PointInImage",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static of(Number;) -> PointInImage",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "Number;",
+              "name": "coords",
+              "type": "List[Union[int, float]]",
+              "java_type": "Number[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -238,11 +208,41 @@
           "java_return_type": "PointInImage",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "of(Number, Number, Number) -> PointInImage",
+          "params": [
+            {
+              "name": "x",
+              "type": "Union[int, float]",
+              "java_type": "Number",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "Union[int, float]",
+              "java_type": "Number",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "Union[int, float]",
+              "java_type": "Number",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "PointInImage",
+          "java_return_type": "PointInImage",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static of",
+      "documentation": "Java method: of",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -255,7 +255,7 @@
           "signature": "setAnnotation(BrainAnnotation) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "annotation",
               "type": "Any",
               "java_type": "BrainAnnotation",
               "description": "- the annotation to be assigned to this point",
@@ -283,7 +283,7 @@
           "signature": "setHemisphere(char) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "lr",
               "type": "str",
               "java_type": "char",
               "description": "",

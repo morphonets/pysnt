@@ -1,0 +1,1112 @@
+{
+  "class_name": "BookmarkManager",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-11-02T00:24:01.591950",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.296344",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(Map, String) -> void",
+          "params": [
+            {
+              "name": "map",
+              "type": "Dict[str, Any]",
+              "java_type": "Map",
+              "description": "- the map of [k=Path, v=list of node indices] from which node positions are extracted",
+              "javadoc_name": "map"
+            },
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Path, int) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(String, List) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(String, List, Color) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(double, double, double) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(String, List, int, int) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "locations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(String, List, int, int, String) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "locations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "frame",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(double, double, double, Color, float) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(double, double, double, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "c",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "t",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(int, int, int, int, int) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "c",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "t",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(String, double, double, double, Color, float) -> void",
+          "params": [
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "java_type": "float",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: add",
+      "javadoc_description": "Adds multiple bookmarks from selected path nodes",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addViewerToolbarButton",
+      "overloads": [
+        {
+          "signature": "addViewerToolbarButton(JComponent) -> void",
+          "params": [
+            {
+              "name": "component",
+              "type": "Any",
+              "java_type": "JComponent",
+              "description": "- the component to add; must not be",
+              "javadoc_name": "component"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addViewerToolbarButton",
+      "javadoc_description": "Adds a component to the viewer toolbar section of this panel. The component is appended after a separator the first time this method is called. Viewer subclasses use this to inject context-specific controls (e.g. a slab-clip toggle).",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearSelection",
+      "overloads": [
+        {
+          "signature": "clearSelection() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearSelection",
+      "javadoc_description": "Clears the selection of bookmarks in the table. Does nothing if no selection exists.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "Should be called when the panel is removed from the UI.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCount",
+      "overloads": [
+        {
+          "signature": "getCount() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "the number of bookmarks currently stored in the manager.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCount",
+      "javadoc_description": "Returns the number of bookmarks.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLastPosition",
+      "overloads": [
+        {
+          "signature": "getLastPosition() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "the position of the last bookmark, or `null` if none have been added",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLastPosition",
+      "javadoc_description": "Returns the position of the most recently added bookmark/marker, in spatially calibrated (\"world\") coordinates (canonical storage format).\n\nIn viewer mode (BVV/BDV), this is the last marker placed with the `M` key (or added programmatically). In SNT-UI mode, this is the last entry added to the Bookmark Manager pane. Since new entries are always appended, this reflects placement order in the common case; it can become stale relative to placement order after an explicit list-reordering operation (e.g. the table's \"Sort by Distance...\" menu, or a Merge/Colocalize operation, both of which re-write the backing list).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPixelPositions",
+      "overloads": [
+        {
+          "signature": "getPixelPositions(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, only selected rows are included; otherwise, all bookmarks in the manager are included",
+              "javadoc_name": "onlySelectedRows"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of Points (fresh `PointInImage` copies) of the bookmarks, in pixel/voxel coordinates",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPixelPositions",
+      "javadoc_description": "Returns bookmark/marker positions in **pixel/voxel** coordinates, converted from this manager's canonical world/calibrated storage via `worldToPixel(Bookmark)`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPositions",
+      "overloads": [
+        {
+          "signature": "getPositions(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, only selected rows are included; otherwise, all bookmarks in the manager are included",
+              "javadoc_name": "onlySelectedRows"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of Points representing the bookmarks, in calibrated (\"world\") coordinates",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPositions",
+      "javadoc_description": "Returns bookmark/marker positions in spatially calibrated (**\"world\"**) coordinates, i.e., this manager's canonical storage format, returned as-is (fresh copies) in both modes.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getROIs",
+      "overloads": [
+        {
+          "signature": "getROIs(boolean) -> List",
+          "params": [
+            {
+              "name": "onlySelectedRows",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- if true, only selected rows are included; otherwise, all ROIs in the manager are included",
+              "javadoc_name": "onlySelectedRows"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "the list of ROIs (PointRoi) representing the bookmarks",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getROIs",
+      "javadoc_description": "Returns a list of ROIs representing the bookmarks.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRois",
+      "overloads": [
+        {
+          "signature": "getRois(String, List) -> List",
+          "params": [
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the label prefix for each ROI",
+              "javadoc_name": "commonLabel"
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "list of PointRoi objects",
+          "throws": {}
+        },
+        {
+          "signature": "getRois(String, List, Color) -> List",
+          "params": [
+            {
+              "name": "commonLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "xyzctLocations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "color",
+              "type": "Any",
+              "java_type": "Color",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRois",
+      "javadoc_description": "Creates a list of `PointRoi`s from XYZCT locations with a color tag.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerDialogPanel",
+      "overloads": [
+        {
+          "signature": "getViewerDialogPanel() -> JDialog",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "JDialog",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerDialogPanel",
+      "javadoc_description": "Returns the floating dialog for viewer mode, creating it on first call.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasBookmarks",
+      "overloads": [
+        {
+          "signature": "hasBookmarks() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if there is at least one bookmark",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasBookmarks",
+      "javadoc_description": "Returns whether any bookmarks exist.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isVisible",
+      "overloads": [
+        {
+          "signature": "isVisible() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true if markers are shown, false if hidden",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isVisible",
+      "javadoc_description": "Returns whether this manager's markers are currently rendered in the big-viewer's shared `AbstractBigViewer.AnnotationOverlay`, independently of the paths and seed-annotation layers.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "load",
+      "overloads": [
+        {
+          "signature": "load(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "load(List) -> void",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "load(Roi[]) -> void",
+          "params": [
+            {
+              "name": "rois",
+              "type": "List[Any]",
+              "java_type": "Roi[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "load(String) -> boolean",
+          "params": [
+            {
+              "name": "filePathOrURL",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: load",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "load(List)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "remove",
+      "overloads": [
+        {
+          "signature": "remove(Path, int) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": "param_0"
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: remove",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "reset",
+      "overloads": [
+        {
+          "signature": "reset() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: reset",
+      "javadoc_description": "Clears all bookmarks.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resyncOverlay",
+      "overloads": [
+        {
+          "signature": "resyncOverlay() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resyncOverlay",
+      "javadoc_description": "Re-pushes all markers onto the viewer's shared `AbstractBigViewer.AnnotationOverlay`. A no-op in SNT-UI mode (`viewer == null`). Meant to be called by `Bvv`/`Bdv` right after (re)creating that overlay, so markers added while `syncViewerOverlay()` was still no-op-ing on a null `AbstractBigViewer.annotations()` (i.e. before the viewer window existed) get rendered instead of silently staying buffered in the model.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "save",
+      "overloads": [
+        {
+          "signature": "save(File) -> boolean",
+          "params": [
+            {
+              "name": "file",
+              "type": "str",
+              "java_type": "File",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "save(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: save",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "save(File)"
+      ],
+      "examples": []
+    },
+    {
+      "name": "setVisible",
+      "overloads": [
+        {
+          "signature": "setVisible(boolean) -> void",
+          "params": [
+            {
+              "name": "visible",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "- true to show, false to hide",
+              "javadoc_name": "visible"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setVisible",
+      "javadoc_description": "Shows or hides this manager's markers in the big-viewer overlay without touching the model itself (bookmarks are neither added nor removed), leaving every other owner's layer (paths, seed annotations) untouched. Mirrors `SeedOverlay.isVisible()`'s role for `SeedOverlayBigViewerHandler`.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showPanel",
+      "overloads": [
+        {
+          "signature": "showPanel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showPanel",
+      "javadoc_description": "Shows the marker panel, bringing it to front if already visible.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toOverlay",
+      "overloads": [
+        {
+          "signature": "toOverlay(Overlay) -> void",
+          "params": [
+            {
+              "name": "overlay",
+              "type": "Any",
+              "java_type": "Overlay",
+              "description": "- the overlay to add the bookmarks to. Null not allowed",
+              "javadoc_name": "overlay"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toOverlay",
+      "javadoc_description": "Adds the bookmark ROIs to the specified overlay. If no bookmarks are selected, all bookmarks are added, otherwise only the selected bookmarks are added.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toRoiManager",
+      "overloads": [
+        {
+          "signature": "toRoiManager() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toRoiManager",
+      "javadoc_description": "Adds the bookmarks to the ROI Manager. If no bookmarks are selected, all bookmarks are added, otherwise only the selected bookmarks are added.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toggleViewerPanel",
+      "overloads": [
+        {
+          "signature": "toggleViewerPanel() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toggleViewerPanel",
+      "javadoc_description": "Shows or hides this marker manager's UI: redirects to SNTUI's \"Bookmarks\" tab whenever when SNTUI is present (e.g., in stream mode, see `insideSNTUI()`), otherwise toggles the floating viewer dialog.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "BookmarkManager(AbstractBigViewer)",
+          "params": [
+            {
+              "name": "viewer",
+              "type": "Any",
+              "java_type": "AbstractBigViewer"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "BookmarkManager(SNTUI)",
+          "params": [
+            {
+              "name": "sntui",
+              "type": "SNTUI",
+              "java_type": "SNTUI"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of BookmarkManager"
+    }
+  ],
+  "javadoc_description": "Implements the *Bookmark Manager* pane.",
+  "inheritance": {
+    "extends": [
+      "Object"
+    ],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "Object",
+    "save(File)",
+    "load(List)"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 41,
+      "total_json_methods": 23,
+      "total_matches": 39,
+      "exact_matches": 39,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 2,
+      "unmatched_json": -16,
+      "match_percentage": 95.1
+    },
+    "unmatched_javadoc_methods": 2,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

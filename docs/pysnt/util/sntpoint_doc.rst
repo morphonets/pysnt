@@ -112,17 +112,17 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static average(Collection)
+.. py:method:: average(Collection)
 
    Computes the average position of a collection of SNTPoints.
 
 
-.. py:method:: static fromString(String)
+.. py:method:: fromString(String)
 
    
 
 
-.. py:method:: static of(Number, Number, Number)
+.. py:method:: of(Number[])
 
    
 

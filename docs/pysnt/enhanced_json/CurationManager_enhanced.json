@@ -1,0 +1,264 @@
+{
+  "class_name": "CurationManager",
+  "package": "sc.fiji.snt",
+  "extracted_at": "2026-11-02T00:24:01.604123",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.313049",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addWarnings",
+      "overloads": [
+        {
+          "signature": "addWarnings(List) -> void",
+          "params": [
+            {
+              "name": "warnings",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- entries to append;",
+              "javadoc_name": "warnings"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addWarnings",
+      "javadoc_description": "Appends warnings to the table without replacing existing ones. Used by external producers that want to inject items into the warnings log alongside the ones already produced by the live/deep checks. The severity filter is re-applied automatically; entries whose severity is currently hidden are accepted into the underlying list but stay invisible until the user re-enables their severity in the toolbar.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "calibrateFromTrees",
+      "overloads": [
+        {
+          "signature": "calibrateFromTrees(List) -> void",
+          "params": [
+            {
+              "name": "trees",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- the freshly traced trees to calibrate from",
+              "javadoc_name": "trees"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: calibrateFromTrees",
+      "javadoc_description": "Calibrates thresholds from the given in-memory trees, enables live monitoring, runs a full scan, and switches SNTUI to the Assistant tab. Intended to be called programmatically after autotracing completes.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "Unregisters this panel from the monitor. Should be called when the panel is removed from the UI to avoid listener leaks.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPanel",
+      "overloads": [
+        {
+          "signature": "getPanel() -> JPanel",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "JPanel",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPanel",
+      "javadoc_description": "Builds and returns the panel to be added as a tab in SNTUI.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getStatusSummary",
+      "overloads": [
+        {
+          "signature": "getStatusSummary() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the summary string, or `null` if no warnings exist",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getStatusSummary",
+      "javadoc_description": "Generates a summary string for the status bar: shows the most severe warning, suitable for display in the QUERY_KEEP status text.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "refreshFromMonitor",
+      "overloads": [
+        {
+          "signature": "refreshFromMonitor() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: refreshFromMonitor",
+      "javadoc_description": "Refreshes all UI controls (spinners, checkboxes, toggle) from the monitor's current state. Called after loading a preset or restoring a session.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "severityColor",
+      "overloads": [
+        {
+          "signature": "severityColor(Severity) -> Color",
+          "params": [
+            {
+              "name": "severity",
+              "type": "Any",
+              "java_type": "Severity",
+              "description": "",
+              "javadoc_name": "param_0"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "the per-severity accent color used in the Assistant tab's table, filter menu, and severity icons.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: severityColor",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "warningsUpdated",
+      "overloads": [
+        {
+          "signature": "warningsUpdated(List) -> void",
+          "params": [
+            {
+              "name": "warnings",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "- the current (immutable) list of warnings",
+              "javadoc_name": "warnings"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: warningsUpdated",
+      "javadoc_description": "Description copied from interface: `PlausibilityMonitor.WarningListener`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "CurationManager(SNTUI, PlausibilityMonitor)",
+          "params": [
+            {
+              "name": "sntui",
+              "type": "SNTUI",
+              "java_type": "SNTUI"
+            },
+            {
+              "name": "monitor",
+              "type": "PlausibilityMonitor",
+              "java_type": "PlausibilityMonitor"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of CurationManager"
+    }
+  ],
+  "javadoc_description": "Implements the *Curation Assistant* pane in SNT's UI. Provides morphological plausibility feedback during tracing and editing operations.\n\nThe panel is organized into:\n\n- **Live Monitoring Parameters** configures checks that run inline during interactive tracing (fork, segment, finalization hooks).\n\n- **On-demand Monitoring Parameters** configures heavier checks that scan the full reconstruction.\n\n- **Action buttons** toggle live monitoring on/off, or trigger a full on-demand scan (which runs *both* parameter sets across all paths).\n\n- **Warnings table** displays current issues; double-click to navigate to the issue location.",
+  "inheritance": {
+    "extends": [
+      "Object",
+      "PlausibilityMonitor.WarningListener"
+    ],
+    "implements": [
+      "PlausibilityMonitor.WarningListener"
+    ]
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "PlausibilityMonitor",
+    "PlausibilityCheck",
+    "PlausibilityMonitor.WarningListener",
+    "Object"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 9,
+      "total_json_methods": 8,
+      "total_matches": 8,
+      "exact_matches": 8,
+      "signature_matches": 0,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 1,
+      "unmatched_json": 0,
+      "match_percentage": 88.9
+    },
+    "unmatched_javadoc_methods": 1,
+    "unmatched_json_methods": 0,
+    "enhancement_quality_score": 1.0
+  }
+}

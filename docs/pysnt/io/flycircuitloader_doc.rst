@@ -88,7 +88,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 

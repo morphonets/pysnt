@@ -64,17 +64,17 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getRefBrain()
+.. py:method:: getRefBrain()
 
    Retrieves the surface mesh (outline) of the zebrafish template brain.
 
 
-.. py:method:: static getXYZLabels()
+.. py:method:: getXYZLabels()
 
    
 
 
-.. py:method:: static isDatabaseAvailable()
+.. py:method:: isDatabaseAvailable()
 
    Checks whether a connection to the FishAtlas database can be established.
 
@@ -83,7 +83,7 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static brainBarycentre()
+.. py:method:: brainBarycentre()
 
    Returns the spatial centroid of the template brain.
 

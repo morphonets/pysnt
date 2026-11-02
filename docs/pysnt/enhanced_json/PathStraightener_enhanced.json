@@ -1,21 +1,21 @@
 {
   "class_name": "PathStraightener",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-01-02T22:36:44.770170",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.306937",
+  "extracted_at": "2026-11-02T00:24:01.680384",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.281076",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "- command line arguments (not used)",
               "javadoc_name": "args"
             }
@@ -26,9 +26,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "Main method for testing and demonstration purposes.\n\nCreates a PathStraightener instance using demo data and displays the straightened path result. This method is primarily used for development and debugging.",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -41,7 +41,7 @@
           "signature": "setWidth(int) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "width",
               "type": "int",
               "java_type": "int",
               "description": "- the width in pixels",
@@ -77,7 +77,7 @@
           "signature": "straighten(int) -> ImageProcessor",
           "params": [
             {
-              "name": "arg0",
+              "name": "channel",
               "type": "int",
               "java_type": "int",
               "description": "- the channel to bes straightened",
@@ -107,41 +107,41 @@
       "name": "__init__",
       "overloads": [
         {
-          "signature": "PathStraightener(Path, SNT)",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Path",
-              "java_type": "Path"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "SNT"
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void"
-        },
-        {
           "signature": "PathStraightener(Path, ImagePlus)",
           "params": [
             {
-              "name": "arg0",
+              "name": "path",
               "type": "Path",
               "java_type": "Path"
             },
             {
-              "name": "arg1",
+              "name": "imp",
               "type": "Any",
               "java_type": "ImagePlus"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
+        },
+        {
+          "signature": "PathStraightener(Path, SNT)",
+          "params": [
+            {
+              "name": "path",
+              "type": "Path",
+              "java_type": "Path"
+            },
+            {
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for PathStraightener"
+      "documentation": "Constructors of PathStraightener"
     }
   ],
   "javadoc_description": "Command to \"straighten\" an image using Path coordinates.",

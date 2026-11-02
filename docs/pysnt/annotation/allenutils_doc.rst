@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.annotation``
 
-Utility methods for accessing/handling AllenCompartments
+Utility methods for accessing/handling `AllenCompartment`s
 
 
 Methods
@@ -64,57 +64,57 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static getAnatomicalPlane(String)
+.. py:method:: getAnatomicalPlane(String)
 
    Retrieves the anatomical plane matching the specified cartesian plane.
 
 
-.. py:method:: static getAxisDefiningSagittalPlane()
+.. py:method:: getAxisDefiningSagittalPlane()
 
    Gets the axis defining the sagittal plane.
 
 
-.. py:method:: static getCartesianPlane(String)
+.. py:method:: getCartesianPlane(String)
 
    Retrieves the Cartesian plane matching the specified anatomical plane.
 
 
-.. py:method:: static getCompartment(int)
+.. py:method:: getCompartment(String)
 
    Constructs a compartment from its CCF name or acronym
 
 
-.. py:method:: static getHemisphere(Tree)
+.. py:method:: getHemisphere(Tree)
 
    Checks the hemisphere a neuron belongs to.
 
 
-.. py:method:: static getHighestOntologyDepth()
+.. py:method:: getHighestOntologyDepth()
 
    Gets the maximum number of ontology levels in the Allen CCF.
 
 
-.. py:method:: static getOntologies()
+.. py:method:: getOntologies()
 
    Gets a flat (non-hierarchical) list of all the compartments of the specified ontology depth.
 
 
-.. py:method:: static getRootMesh(ColorRGB)
+.. py:method:: getRootMesh(ColorRGB)
 
    Retrieves the surface contours for the Allen Mouse Brain Atlas (CCF), bundled with SNT.
 
 
-.. py:method:: static getTreeModel(boolean)
+.. py:method:: getTreeModel(boolean)
 
    Retrieves the Allen CCF hierarchical tree data.
 
 
-.. py:method:: static getXYZLabels()
+.. py:method:: getXYZLabels()
 
    
 
 
-.. py:method:: static isLeftHemisphere(double, double, double)
+.. py:method:: isLeftHemisphere(SNTPoint)
 
    
 
@@ -123,48 +123,48 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static assignAnnotationsFromNodeValues(Tree)
+.. py:method:: assignAnnotationsFromNodeValues(Tree)
 
    Assigns brain annotations (interpreted as CCF IDs) to node values for all paths in a Tree.
 
-This method is the inverse operation of `transferAnnotationIdsToNodeValues(Tree)`.
+   This method is the inverse operation of ``transferAnnotationIdsToNodeValues(Tree)``.
 
 
-.. py:method:: static assignHemisphereTags(DirectedWeightedGraph)
+.. py:method:: assignHemisphereTags(DirectedWeightedGraph)
 
    
 
 
-.. py:method:: static assignToLeftHemisphere(Tree)
+.. py:method:: assignToLeftHemisphere(Tree)
 
    Assigns a tree to the left hemisphere by mirroring it if necessary.
 
 
-.. py:method:: static assignToRightHemisphere(Tree)
+.. py:method:: assignToRightHemisphere(Tree)
 
    Assigns a tree to the right hemisphere by mirroring it if necessary.
 
 
-.. py:method:: static brainCenter()
+.. py:method:: brainCenter()
 
    Returns the spatial centroid of the Allen CCF.
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 
 
-.. py:method:: static splitByHemisphere(DirectedWeightedGraph)
+.. py:method:: splitByHemisphere(DirectedWeightedGraph)
 
    
 
 
-.. py:method:: static transferAnnotationIdsToNodeValues(Tree)
+.. py:method:: transferAnnotationIdsToNodeValues(Tree)
 
    Transfers brain annotation IDs to node values for all paths in a Tree.
 
-This is useful for preserving annotation information when saving data to TRACES files. Note that this method overwrites any existing node values. Nodes without annotations (null) are assigned BRAIN_ROOT_ID.
+   This is useful for preserving annotation information when saving data to TRACES files. Note that this method overwrites any existing node values. Nodes without annotations (null) are assigned ``BRAIN_ROOT_ID``.
 
 
 See Also

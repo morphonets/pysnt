@@ -64,7 +64,7 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: static get(String)
+.. py:method:: get(String)
 
    Returns a 'core' color table from its title
 
@@ -73,27 +73,27 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: static applyPlasma(ImagePlus, int, boolean)
+.. py:method:: applyPlasma(ImagePlus)
 
    Applies the "plasma" colormap to the specified (non-RGB) image
 
 
-.. py:method:: static applyViridis(ImagePlus, int, boolean)
+.. py:method:: applyViridis(ImagePlus)
 
    Applies the "viridis" colormap to the specified (non-RGB) image
 
 
-.. py:method:: static discreteColors(ColorTable, int)
+.. py:method:: discreteColors(ColorTable, int)
 
    
 
 
-.. py:method:: static discreteColorsAWT(ColorTable, int)
+.. py:method:: discreteColorsAWT(ColorTable, int)
 
    
 
 
-.. py:method:: static glasbeyColorsAWT(int)
+.. py:method:: glasbeyColorsAWT(int)
 
    
 

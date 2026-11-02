@@ -1,11 +1,31 @@
 {
   "class_name": "TreeColorMapper",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:11.594650",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.310752",
+  "extracted_at": "2026-11-02T00:24:01.751394",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.287648",
   "enhancement_version": "1.0.0",
   "methods": [
+    {
+      "name": "getAvailableHeatmapLuts",
+      "overloads": [
+        {
+          "signature": "getAvailableHeatmapLuts() -> Set",
+          "params": [],
+          "return_type": "Set[Any]",
+          "java_return_type": "Set",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getAvailableHeatmapLuts",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
     {
       "name": "getAvailableLuts",
       "overloads": [
@@ -14,12 +34,12 @@
           "params": [],
           "return_type": "Set[Any]",
           "java_return_type": "Set",
-          "return_description": "the set of keys, corresponding to the set of LUTs available",
+          "return_description": "",
           "throws": {}
         }
       ],
       "documentation": "Java method: getAvailableLuts",
-      "javadoc_description": "Gets the available LUTs.",
+      "javadoc_description": "",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -33,7 +53,7 @@
           "signature": "getColor(double) -> Color",
           "params": [
             {
-              "name": "arg0",
+              "name": "mappedValue",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -61,7 +81,7 @@
           "signature": "getColorRGB(double) -> ColorRGB",
           "params": [
             {
-              "name": "arg0",
+              "name": "mappedValue",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -86,24 +106,24 @@
       "name": "getColorTable",
       "overloads": [
         {
-          "signature": "getColorTable(String) -> ColorTable",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
+          "signature": "getColorTable() -> ColorTable",
+          "params": [],
           "return_type": "Any",
           "java_return_type": "ColorTable",
           "return_description": "",
           "throws": {}
         },
         {
-          "signature": "getColorTable() -> ColorTable",
-          "params": [],
+          "signature": "getColorTable(String) -> ColorTable",
+          "params": [
+            {
+              "name": "lut",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
           "return_type": "Any",
           "java_return_type": "ColorTable",
           "return_description": "",
@@ -119,10 +139,50 @@
       "examples": []
     },
     {
-      "name": "static getMetrics",
+      "name": "getMeasurement",
       "overloads": [
         {
-          "signature": "static getMetrics() -> List",
+          "signature": "getMeasurement() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the unit, or an empty string if unknown/not applicable",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMeasurement",
+      "javadoc_description": "Description copied from class: `ColorMapper`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMeasurementLabel",
+      "overloads": [
+        {
+          "signature": "getMeasurementLabel() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMeasurementLabel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMetrics",
+      "overloads": [
+        {
+          "signature": "getMetrics() -> List",
           "params": [],
           "return_type": "List[Any]",
           "java_return_type": "List",
@@ -130,9 +190,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static getMetrics",
+      "documentation": "Java method: getMetrics",
       "javadoc_description": "Gets the list of supported mapping metrics.",
-      "category": "Analysis",
+      "category": "Getters",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -142,10 +202,10 @@
       "name": "getMinMax",
       "overloads": [
         {
-          "signature": "getMinMax() -> [D",
+          "signature": "getMinMax() -> double[]",
           "params": [],
-          "return_type": "Any",
-          "java_return_type": "[D",
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
           "return_description": "",
           "throws": {}
         }
@@ -171,7 +231,7 @@
         }
       ],
       "documentation": "Java method: getMultiViewer",
-      "javadoc_description": "Assembles a Multi-pane viewer using all the Trees mapped so far.",
+      "javadoc_description": "Assembles a `Multi-pane viewer` using all the Trees mapped so far.",
       "category": "Getters",
       "deprecated": false,
       "since_version": null,
@@ -239,15 +299,15 @@
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -258,9 +318,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -270,26 +330,49 @@
       "name": "map",
       "overloads": [
         {
-          "signature": "map(Tree, Profile, ColorTable) -> void",
+          "signature": "map(String, ColorTable) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
-              "description": "",
-              "javadoc_name": null
+              "name": "measurement",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the tree to be mapped",
+              "javadoc_name": "tree"
             },
             {
-              "name": "arg1",
-              "type": "Profile",
-              "java_type": "Profile",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "map(Collection, String, String) -> void",
+          "params": [
+            {
+              "name": "points",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "measurement",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "lut",
+              "type": "str",
+              "java_type": "String",
               "description": "",
               "javadoc_name": null
             }
@@ -303,21 +386,81 @@
           "signature": "map(Tree, LinearProfileStats, ColorTable) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
-              "type": "Any",
+              "name": "stats",
+              "type": "LinearProfileStats",
               "java_type": "LinearProfileStats",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "map(Tree, Profile, ColorTable) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "profile",
+              "type": "Profile",
+              "java_type": "Profile",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "colorTable",
+              "type": "Any",
+              "java_type": "ColorTable",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "map(Tree, String, ColorTable) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "measurement",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "colorTable",
               "type": "Any",
               "java_type": "ColorTable",
               "description": "",
@@ -333,108 +476,25 @@
           "signature": "map(Tree, String, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "measurement",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg2",
+              "name": "lut",
               "type": "str",
               "java_type": "String",
               "description": "",
               "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "map(Tree, String, ColorTable) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "Any",
-              "java_type": "ColorTable",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "map(Collection, String, String) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "List[Any]",
-              "java_type": "Collection",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg1",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            },
-            {
-              "name": "arg2",
-              "type": "str",
-              "java_type": "String",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "map(String, ColorTable) -> void",
-          "params": [
-            {
-              "name": "arg0",
-              "type": "str",
-              "java_type": "String",
-              "description": "- the tree to be mapped",
-              "javadoc_name": "tree"
-            },
-            {
-              "name": "arg1",
-              "type": "Any",
-              "java_type": "ColorTable",
-              "description": "",
-              "javadoc_name": "param_1"
             }
           ],
           "return_type": "None",
@@ -458,14 +518,14 @@
           "signature": "mapTrees(List, String) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "trees",
               "type": "List[Any]",
               "java_type": "List",
               "description": "- the list of trees to be colorized",
               "javadoc_name": "trees"
             },
             {
-              "name": "arg1",
+              "name": "lut",
               "type": "str",
               "java_type": "String",
               "description": "",
@@ -487,20 +547,55 @@
       "examples": []
     },
     {
+      "name": "setMaxPercentileClipped",
+      "overloads": [
+        {
+          "signature": "setMaxPercentileClipped(double[], double) -> void",
+          "params": [
+            {
+              "name": "values",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "clipPercent",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMaxPercentileClipped",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "setMinMax",
       "overloads": [
         {
           "signature": "setMinMax(double, double) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "min",
               "type": "float",
               "java_type": "double",
               "description": "",
               "javadoc_name": null
             },
             {
-              "name": "arg1",
+              "name": "max",
               "type": "float",
               "java_type": "double",
               "description": "",
@@ -522,13 +617,83 @@
       "examples": []
     },
     {
+      "name": "setMinMaxPercentileClipped",
+      "overloads": [
+        {
+          "signature": "setMinMaxPercentileClipped(double[], double) -> void",
+          "params": [
+            {
+              "name": "values",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "clipPercent",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMinMaxPercentileClipped",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setMinPercentileClipped",
+      "overloads": [
+        {
+          "signature": "setMinPercentileClipped(double[], double) -> void",
+          "params": [
+            {
+              "name": "values",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "clipPercent",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setMinPercentileClipped",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
       "name": "setNaNColor",
       "overloads": [
         {
           "signature": "setNaNColor(Color) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "nanColor",
               "type": "Any",
               "java_type": "Color",
               "description": "",
@@ -550,29 +715,13 @@
       "examples": []
     },
     {
-      "name": "static unMap",
+      "name": "unMap",
       "overloads": [
         {
-          "signature": "static unMap(Tree) -> void",
+          "signature": "unMap(Collection) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Tree",
-              "java_type": "Tree",
-              "description": "",
-              "javadoc_name": null
-            }
-          ],
-          "return_type": "None",
-          "java_return_type": "void",
-          "return_description": "",
-          "throws": {}
-        },
-        {
-          "signature": "static unMap(Collection) -> void",
-          "params": [
-            {
-              "name": "arg0",
+              "name": "paths",
               "type": "List[Any]",
               "java_type": "Collection",
               "description": "",
@@ -583,11 +732,27 @@
           "java_return_type": "void",
           "return_description": "",
           "throws": {}
+        },
+        {
+          "signature": "unMap(Tree) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
         }
       ],
-      "documentation": "Java method: static unMap",
+      "documentation": "Java method: unMap",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -600,28 +765,28 @@
       "name": "__init__",
       "overloads": [
         {
+          "signature": "TreeColorMapper()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
           "signature": "TreeColorMapper(Context)",
           "params": [
             {
-              "name": "arg0",
+              "name": "context",
               "type": "Any",
               "java_type": "Context"
             }
           ],
           "return_type": "None",
           "java_return_type": "void"
-        },
-        {
-          "signature": "TreeColorMapper()",
-          "params": [],
-          "return_type": "None",
-          "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for TreeColorMapper"
+      "documentation": "Constructors of TreeColorMapper"
     }
   ],
-  "javadoc_description": "Class for color coding Trees.",
+  "javadoc_description": "Class for color coding `Tree`s.",
   "inheritance": {
     "extends": [
       "ColorMapper"
@@ -632,24 +797,24 @@
   "deprecated": false,
   "since_version": null,
   "see_also": [
-    "ColorMapper",
-    "Constant Field Values"
+    "Constant Field Values",
+    "ColorMapper"
   ],
   "enhancement_metadata": {
     "matching_statistics": {
-      "total_javadoc_methods": 14,
-      "total_json_methods": 16,
-      "total_matches": 12,
-      "exact_matches": 12,
-      "signature_matches": 0,
+      "total_javadoc_methods": 13,
+      "total_json_methods": 22,
+      "total_matches": 11,
+      "exact_matches": 10,
+      "signature_matches": 1,
       "fuzzy_matches": 0,
       "name_only_matches": 0,
       "unmatched_javadoc": 2,
-      "unmatched_json": 4,
-      "match_percentage": 85.7
+      "unmatched_json": 11,
+      "match_percentage": 84.6
     },
     "unmatched_javadoc_methods": 2,
-    "unmatched_json_methods": 8,
+    "unmatched_json_methods": 15,
     "enhancement_quality_score": 1.0
   }
 }

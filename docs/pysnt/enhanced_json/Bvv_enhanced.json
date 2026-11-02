@@ -1,0 +1,2739 @@
+{
+  "class_name": "Bvv",
+  "package": "sc.fiji.snt.viewer",
+  "extracted_at": "2026-11-02T00:24:01.595406",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.379313",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "add",
+      "overloads": [
+        {
+          "signature": "add(File[]) -> void",
+          "params": [
+            {
+              "name": "reconstructionFiles",
+              "type": "List[str]",
+              "java_type": "File[]",
+              "description": "- the reconstruction files (SWC, JSON, etc.) to load",
+              "javadoc_name": "reconstructionFiles"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "add(Object) -> void",
+          "params": [
+            {
+              "name": "object",
+              "type": "Any",
+              "java_type": "Object",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: add",
+      "javadoc_description": "Loads reconstruction files and adds them to the viewer with live progress feedback. Files are loaded one at a time on a background thread; the viewer scene is updated after each file so the user sees trees appearing incrementally. The progress bar in the SNT Annotations card tracks progress.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addMouseListenerToDisplay",
+      "overloads": [
+        {
+          "signature": "addMouseListenerToDisplay(MouseListener) -> void",
+          "params": [
+            {
+              "name": "ml",
+              "type": "Any",
+              "java_type": "MouseListener",
+              "description": "- the listener to add",
+              "javadoc_name": "ml"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addMouseListenerToDisplay",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "addTree",
+      "overloads": [
+        {
+          "signature": "addTree(Tree) -> void",
+          "params": [
+            {
+              "name": "tree",
+              "type": "Tree",
+              "java_type": "Tree",
+              "description": "- the transform to be applied",
+              "javadoc_name": "target"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addTree",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "annotations",
+      "overloads": [
+        {
+          "signature": "annotations() -> AnnotationOverlay",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AnnotationOverlay",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: annotations",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "captureKeyframe",
+      "overloads": [
+        {
+          "signature": "captureKeyframe() -> Keyframe",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Keyframe",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: captureKeyframe",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearAllTrees",
+      "overloads": [
+        {
+          "signature": "clearAllTrees() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearAllTrees",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "dispose",
+      "overloads": [
+        {
+          "signature": "dispose() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: dispose",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "enableTracing",
+      "overloads": [
+        {
+          "signature": "enableTracing(boolean) -> void",
+          "params": [
+            {
+              "name": "manual",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: enableTracing",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findCenterRay",
+      "overloads": [
+        {
+          "signature": "findCenterRay() -> double[][]",
+          "params": [],
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "return_description": "a 2x3 array { nearWorld, farWorld } in world coordinates, or null if the viewer state is unavailable",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findCenterRay",
+      "javadoc_description": "Returns the world-space endpoints of the perspective ray through the center of the viewer's display (its optical axis). Unlike `findClickRay()`, this does not depend on the mouse cursor.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findClickRay",
+      "overloads": [
+        {
+          "signature": "findClickRay() -> double[][]",
+          "params": [],
+          "return_type": "List[List[float]]",
+          "java_return_type": "double[][]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findClickRay",
+      "javadoc_description": "Returns the world-space endpoints of the perspective ray through the current mouse cursor position: result[0] = near-clip world point, result[1] = far-clip world point. Returns null if the mouse is outside the display or the viewer is not initialized.\n\nThe ray correctly accounts for BVV's perspective projection (`pf = dCam/(dCam+viewerZ)`), giving a well-defined 3D ray for every screen pixel regardless of where the volume's focal plane sits. Use this instead of `getGlobalMouseCoordinates(net.imglib2.RealPoint)` when the Z coordinate of the picked point is important (e.g. landmark placement).",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findClickRayMaxima",
+      "overloads": [
+        {
+          "signature": "findClickRayMaxima() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "world-space [x, y, z] of the intensity maximum, or null if the ray misses the volume, the mouse is outside the display, or no source is loaded",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findClickRayMaxima",
+      "javadoc_description": "Finds the world-space point of maximum intensity along the perspective ray through the current mouse cursor position.\n\nCasts a ray from the near clip plane to the far clip plane, samples the active source at 0.5-voxel intervals, and refines the peak location to sub-voxel accuracy via a 3-point parabola fit. Use this for landmark placement when the Z coordinate from the focal plane alone is unreliable.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "findSceneCenterMaxima",
+      "overloads": [
+        {
+          "signature": "findSceneCenterMaxima() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "world-space [x, y, z] of the intensity maximum, or null if the ray misses the volume, the viewer is unavailable, or no source is loaded",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: findSceneCenterMaxima",
+      "javadoc_description": "Finds the world-space point of maximum intensity along the perspective ray through the center of the viewer's display, i.e. whatever is actually visible at the middle of the screen right now, at whatever depth its signal peaks. Same search as `findClickRayMaxima()`, but along the optical axis rather than through the mouse.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "flyTo",
+      "overloads": [
+        {
+          "signature": "flyTo(BoundingBox) -> boolean",
+          "params": [
+            {
+              "name": "box",
+              "type": "BoundingBox",
+              "java_type": "BoundingBox",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "flyTo(double, double, double, int, String) -> void",
+          "params": [
+            {
+              "name": "x",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "y",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "z",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "t",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "label",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: flyTo",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getBoundingBox",
+      "overloads": [
+        {
+          "signature": "getBoundingBox() -> BoundingBox",
+          "params": [],
+          "return_type": "BoundingBox",
+          "java_return_type": "BoundingBox",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getBoundingBox",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCalibration",
+      "overloads": [
+        {
+          "signature": "getCalibration() -> double[]",
+          "params": [],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "calibrated (x,y,z) position, or null if it could not be resolved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCalibration",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCurrentTimepoint",
+      "overloads": [
+        {
+          "signature": "getCurrentTimepoint() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCurrentTimepoint",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDefaultMarkerColor",
+      "overloads": [
+        {
+          "signature": "getDefaultMarkerColor() -> Color",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Color",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDefaultMarkerColor",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDefaultMarkerSize",
+      "overloads": [
+        {
+          "signature": "getDefaultMarkerSize() -> float",
+          "params": [],
+          "return_type": "float",
+          "java_return_type": "float",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDefaultMarkerSize",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDefaultRenderingStyle",
+      "overloads": [
+        {
+          "signature": "getDefaultRenderingStyle() -> Style",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Style",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDefaultRenderingStyle",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDisplayRadii",
+      "overloads": [
+        {
+          "signature": "getDisplayRadii() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "`true` if frustum/radius rendering is active",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDisplayRadii",
+      "javadoc_description": "Returns whether paths are currently rendered with per-node radii as tapered frusta (`true`) or as simple lines (`false`).",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDisplayRange",
+      "overloads": [
+        {
+          "signature": "getDisplayRange(int) -> double[]",
+          "params": [
+            {
+              "name": "sourceIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDisplayRange",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDownsamplingFactors",
+      "overloads": [
+        {
+          "signature": "getDownsamplingFactors(int, int) -> double[]",
+          "params": [
+            {
+              "name": "sourceIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "level",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[float]",
+          "java_return_type": "double[]",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDownsamplingFactors",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getGlobalMouseCoordinates",
+      "overloads": [
+        {
+          "signature": "getGlobalMouseCoordinates(RealPoint) -> void",
+          "params": [
+            {
+              "name": "pos",
+              "type": "Any",
+              "java_type": "RealPoint",
+              "description": "- 3D point to receive the world-space cursor position",
+              "javadoc_name": "pos"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getGlobalMouseCoordinates",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getInstance",
+      "overloads": [
+        {
+          "signature": "getInstance() -> Bvv",
+          "params": [],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "the last initialised Bvv, or `null`",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getInstance",
+      "javadoc_description": "Returns the most recently created `Bvv` instance, or `null` if none has been created yet. Convenience accessor for scripts.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMarkerManager",
+      "overloads": [
+        {
+          "signature": "getMarkerManager() -> BookmarkManager",
+          "params": [],
+          "return_type": "BookmarkManager",
+          "java_return_type": "BookmarkManager",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMarkerManager",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getMultiSources",
+      "overloads": [
+        {
+          "signature": "getMultiSources() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "unmodifiable list of `BvvMultiSource` groups",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getMultiSources",
+      "javadoc_description": "Returns all `BvvMultiSource` groups currently managed by this viewer. This includes multichannel images and any grouped multi-image sources.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getNumResolutionLevels",
+      "overloads": [
+        {
+          "signature": "getNumResolutionLevels(int) -> int",
+          "params": [
+            {
+              "name": "sourceIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getNumResolutionLevels",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getOptions",
+      "overloads": [
+        {
+          "signature": "getOptions() -> BvvOptions",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BvvOptions",
+          "return_description": "a reference to the viewer's options.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getOptions",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPhysicalUnit",
+      "overloads": [
+        {
+          "signature": "getPhysicalUnit() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "the physical unit. Checks (in order): `calUnit` field, first source's VoxelDimensions (same source used by the scale bar renderer), and SNT spacing units. Returns `BoundingBox.UNSET_SPACING_UNIT` if unit is unknown or unset.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPhysicalUnit",
+      "javadoc_description": "Resolves the physical unit string for the currently loaded volume.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getPrimarySourcePath",
+      "overloads": [
+        {
+          "signature": "getPrimarySourcePath() -> String",
+          "params": [],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getPrimarySourcePath",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRenderSettleTime",
+      "overloads": [
+        {
+          "signature": "getRenderSettleTime() -> long",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "long",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRenderSettleTime",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRenderedTrees",
+      "overloads": [
+        {
+          "signature": "getRenderedTrees() -> Collection",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "Collection",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRenderedTrees",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getRenderingOptions",
+      "overloads": [
+        {
+          "signature": "getRenderingOptions() -> PathRenderingOptions",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "PathRenderingOptions",
+          "return_description": "the rendering options",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getRenderingOptions",
+      "javadoc_description": "Gets the path rendering options for controlling thickness, transparency, etc.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSNT",
+      "overloads": [
+        {
+          "signature": "getSNT() -> SNT",
+          "params": [],
+          "return_type": "SNT",
+          "java_return_type": "SNT",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSNT",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSceneCenter",
+      "overloads": [
+        {
+          "signature": "getSceneCenter() -> SNTPoint",
+          "params": [],
+          "return_type": "SNTPoint",
+          "java_return_type": "SNTPoint",
+          "return_description": "the world-space scene center, or `null` if the viewport has not yet been realized",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSceneCenter",
+      "javadoc_description": "The world-space point currently at the center of this viewer's display: the intensity-peak result of `findSceneCenterMaxima()` when available, otherwise the same focal-plane fallback used by `AbstractBigViewer.getSceneCenter()`.",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSourceData",
+      "overloads": [
+        {
+          "signature": "getSourceData(int, int) -> RandomAccessibleInterval",
+          "params": [
+            {
+              "name": "sourceIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "level",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "RandomAccessibleInterval",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSourceData",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSourceName",
+      "overloads": [
+        {
+          "signature": "getSourceName(int) -> String",
+          "params": [
+            {
+              "name": "sourceIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the action key (e.g., \"align XY plane\")",
+              "javadoc_name": "name"
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSourceName",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getSourcePaths",
+      "overloads": [
+        {
+          "signature": "getSourcePaths() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getSourcePaths",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewer",
+      "overloads": [
+        {
+          "signature": "getViewer() -> BigVolumeViewer",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "BigVolumeViewer",
+          "return_description": "a reference to the underlying BigVolumeViewer instance.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewer",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerCanvas",
+      "overloads": [
+        {
+          "signature": "getViewerCanvas() -> Component",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "Component",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerCanvas",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerFrame",
+      "overloads": [
+        {
+          "signature": "getViewerFrame() -> VolumeViewerFrame",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "VolumeViewerFrame",
+          "return_description": "a reference to the viewer's frame.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerFrame",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerHeight",
+      "overloads": [
+        {
+          "signature": "getViewerHeight() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerHeight",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerPanel",
+      "overloads": [
+        {
+          "signature": "getViewerPanel() -> VolumeViewerPanel",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "VolumeViewerPanel",
+          "return_description": "a reference to the viewer's panel.",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerPanel",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerTransform",
+      "overloads": [
+        {
+          "signature": "getViewerTransform() -> AffineTransform3D",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "AffineTransform3D",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerTransform",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getViewerWidth",
+      "overloads": [
+        {
+          "signature": "getViewerWidth() -> int",
+          "params": [],
+          "return_type": "int",
+          "java_return_type": "int",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getViewerWidth",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hasMarkerManager",
+      "overloads": [
+        {
+          "signature": "hasMarkerManager() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hasMarkerManager",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "hideSecondaryData",
+      "overloads": [
+        {
+          "signature": "hideSecondaryData() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: hideSecondaryData",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "SNT.flushSecondaryData()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "isDisposed",
+      "overloads": [
+        {
+          "signature": "isDisposed() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isDisposed",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isEditModeEnabled",
+      "overloads": [
+        {
+          "signature": "isEditModeEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isEditModeEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isOpen",
+      "overloads": [
+        {
+          "signature": "isOpen() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isOpen",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isPathInProgress",
+      "overloads": [
+        {
+          "signature": "isPathInProgress() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isPathInProgress",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isTracingEnabled",
+      "overloads": [
+        {
+          "signature": "isTracingEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isTracingEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onSntActiveNodeChanged",
+      "overloads": [
+        {
+          "signature": "onSntActiveNodeChanged() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onSntActiveNodeChanged",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onSntEditModeChanged",
+      "overloads": [
+        {
+          "signature": "onSntEditModeChanged(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onSntEditModeChanged",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onSntEditedPathModified",
+      "overloads": [
+        {
+          "signature": "onSntEditedPathModified() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onSntEditedPathModified",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onSntEditingPathChanged",
+      "overloads": [
+        {
+          "signature": "onSntEditingPathChanged() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onSntEditingPathChanged",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "open",
+      "overloads": [
+        {
+          "signature": "open(AbstractSpimData) -> Bvv",
+          "params": [
+            {
+              "name": "spimData",
+              "type": "Any",
+              "java_type": "AbstractSpimData",
+              "description": "- one or more file paths or URLs to open",
+              "javadoc_name": "paths"
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "the fully initialised `Bvv` instance",
+          "throws": {
+            "IllegalArgumentException": "- if any file cannot be opened or an",
+            ".ims": "directory is not writable"
+          }
+        },
+        {
+          "signature": "open(ImagePlus[]) -> Bvv",
+          "params": [
+            {
+              "name": "imps",
+              "type": "List[Any]",
+              "java_type": "ImagePlus[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "open(ImgPlus[]) -> Bvv",
+          "params": [
+            {
+              "name": "imgs",
+              "type": "List[Any]",
+              "java_type": "ImgPlus[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "open(List) -> Bvv",
+          "params": [
+            {
+              "name": "imgs",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "open(SNT) -> Bvv",
+          "params": [
+            {
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "open(String) -> Bvv",
+          "params": [
+            {
+              "name": "filePathOrUrl",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "open(String[]) -> Bvv",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Bvv",
+          "java_return_type": "Bvv",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: open",
+      "javadoc_description": "Convenience factory: opens one or more file paths into the same BVV viewer window, choosing the most appropriate loading strategy per file:\n\n- **.ims** Imaris HDF5: creates a BDV XML sidecar file next to the `.ims` file (using the same base name, e.g. `dataset.xml` ), then loads it via `XmlIoSpimDataMinimal` . BVV's pyramid-aware GPU cache manager is used, so the full volume is never loaded into RAM. If the directory is not writable, an `IllegalArgumentException` is thrown with instructions to create the XML manually using `Plugins > BigDataViewer > Create XML for Imaris file` .\n\n- **.xml** BDV XML/HDF5: loaded directly via `XmlIoSpimDataMinimal` and displayed using BVV's cache manager. This covers BDV HDF5 and BDV N5 datasets.\n\n- **.n5 / .zarr** directories: opened directly via `n5-viewer_fiji` (no XML sidecar) and displayed using BVV's cache manager. This covers plain N5 multiscale groups and OME-NGFF (OME-Zarr) containers.\n\n- **anything else** delegated to `ImgUtils.open(String)` and displayed via the standard `ImgPlus` path. Very large flat volumes will fail with a descriptive error rather than a GL crash.\n\nTypical Groovy/PySNT usage: `def bvv = Bvv.open(\"/path/to/reference.xml\", \"/path/to/moving.ims\")`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "def bvv = Bvv.open(\"/path/to/reference.xml\", \"/path/to/moving.ims\")"
+      ]
+    },
+    {
+      "name": "playPaths",
+      "overloads": [
+        {
+          "signature": "playPaths(Collection, double, double) -> PathPlayer",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "fov",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "PathPlayer",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: playPaths",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "playback",
+      "overloads": [
+        {
+          "signature": "playback(List) -> void",
+          "params": [
+            {
+              "name": "keyframes",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "playback(List, int, int) -> void",
+          "params": [
+            {
+              "name": "keyframes",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "from",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "to",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: playback",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "promptGoTo",
+      "overloads": [
+        {
+          "signature": "promptGoTo() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: promptGoTo",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "registerOmeZarrSource",
+      "overloads": [
+        {
+          "signature": "registerOmeZarrSource(String) -> void",
+          "params": [
+            {
+              "name": "path",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: registerOmeZarrSource",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeTree",
+      "overloads": [
+        {
+          "signature": "removeTree(String) -> boolean",
+          "params": [
+            {
+              "name": "treeLabel",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeTree",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "renderFrames",
+      "overloads": [
+        {
+          "signature": "renderFrames(List, String) -> void",
+          "params": [
+            {
+              "name": "keyframes",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "outputDir",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: renderFrames",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "repaint",
+      "overloads": [
+        {
+          "signature": "repaint() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: repaint",
+      "javadoc_description": "Forces a repaint of the viewer, updating volume renderings but not overlays.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resetView",
+      "overloads": [
+        {
+          "signature": "resetView() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resetView",
+      "javadoc_description": "Resets the viewer to a fit-to-viewport transform, centering the loaded volume in the canvas. Equivalent to the Reset button in Camera Controls. Does nothing if no volume has been loaded.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "resyncCalibrationFromActiveSource",
+      "overloads": [
+        {
+          "signature": "resyncCalibrationFromActiveSource() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: resyncCalibrationFromActiveSource",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [
+        "AbstractBigViewer.resyncCalibrationFromActiveSource()"
+      ],
+      "examples": []
+    },
+    {
+      "name": "revealContextCommand",
+      "overloads": [
+        {
+          "signature": "revealContextCommand(ContextMenuCommand) -> void",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "Any",
+              "java_type": "ContextMenuCommand",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: revealContextCommand",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "revealContextItem",
+      "overloads": [
+        {
+          "signature": "revealContextItem(JMenuItem) -> void",
+          "params": [
+            {
+              "name": "canvasItem",
+              "type": "Any",
+              "java_type": "JMenuItem",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: revealContextItem",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runContextCommand",
+      "overloads": [
+        {
+          "signature": "runContextCommand(ContextMenuCommand) -> String",
+          "params": [
+            {
+              "name": "cmd",
+              "type": "Any",
+              "java_type": "ContextMenuCommand",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runContextCommand",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runContextItem",
+      "overloads": [
+        {
+          "signature": "runContextItem(JMenuItem) -> String",
+          "params": [
+            {
+              "name": "canvasItem",
+              "type": "Any",
+              "java_type": "JMenuItem",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "str",
+          "java_return_type": "String",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runContextItem",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "saveSnapshot",
+      "overloads": [
+        {
+          "signature": "saveSnapshot(String) -> boolean",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the absolute path of the destination file",
+              "javadoc_name": "filePath"
+            }
+          ],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "true, if file was successfully saved",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: saveSnapshot",
+      "javadoc_description": "Saves a snapshot of current scene as a PNG image to the specified path.",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setCalibration",
+      "overloads": [
+        {
+          "signature": "setCalibration(double[], String) -> void",
+          "params": [
+            {
+              "name": "spacing",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "- voxel size in {x, y, z} order",
+              "javadoc_name": "spacing"
+            },
+            {
+              "name": "unit",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCalibration",
+      "javadoc_description": "Overrides the voxel calibration (spacing and unit) for all loaded sources. This is useful when the image metadata does not carry the correct spatial calibration (e.g., ND2 files opened via SCIFIO/Bio-Formats where the unit string is lost). The change takes effect immediately: the scale bar, distance measurements, and slab-thickness controls will all use the new values.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setChannelColors",
+      "overloads": [
+        {
+          "signature": "setChannelColors(Color[]) -> void",
+          "params": [
+            {
+              "name": "colors",
+              "type": "List[Any]",
+              "java_type": "Color[]",
+              "description": "- colors assigned sequentially across all channels in all groups",
+              "javadoc_name": "colors"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setChannelColors(String[]) -> void",
+          "params": [
+            {
+              "name": "colorNames",
+              "type": "List[str]",
+              "java_type": "String[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "setChannelColors(BvvMultiSource, Color[]) -> void",
+          "params": [
+            {
+              "name": "group",
+              "type": "BvvMultiSource",
+              "java_type": "BvvMultiSource",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "colors",
+              "type": "List[Any]",
+              "java_type": "Color[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setChannelColors",
+      "javadoc_description": "Sets per-channel colors across all source groups, assigning colors sequentially by global channel order across all groups. For example, with two 3-channel images and colors [R, G, B, C, M, Y], image 1 gets R/G/B and image 2 gets C/M/Y. With a single multichannel image or a dataset where each setup is its own group (e.g. IMS), colors are assigned one-to-one in load order.\n\nTo apply the same color pattern to every group independently, call `setChannelColors(BvvMultiSource, Color...)` per group.\n\nTypical script usage: \n```\ndef bvv = Bvv.open(img)\n   bvv.setChannelColors(Color.RED, Color.GREEN, Color.BLUE)\n```\n",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": [
+        "def bvv = Bvv.open(img)\n   bvv.setChannelColors(Color.RED, Color.GREEN, Color.BLUE)"
+      ]
+    },
+    {
+      "name": "setCurrentTimepoint",
+      "overloads": [
+        {
+          "signature": "setCurrentTimepoint(int) -> void",
+          "params": [
+            {
+              "name": "timepoint",
+              "type": "int",
+              "java_type": "int",
+              "description": "- the 1-based timepoint to navigate to; values < 1 are coerced to 1",
+              "javadoc_name": "timepoint"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setCurrentTimepoint",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDisplayRadii",
+      "overloads": [
+        {
+          "signature": "setDisplayRadii(boolean) -> void",
+          "params": [
+            {
+              "name": "display",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "-",
+              "javadoc_name": "display"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDisplayRadii",
+      "javadoc_description": "Sets whether paths are rendered as tapered frusta with per-node radii (`true`) or as anti-aliased lines (`false`). Line rendering is significantly faster for datasets with many paths. Automatically invalidates the overlay cache and repaints.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setDisplayRange",
+      "overloads": [
+        {
+          "signature": "setDisplayRange(BvvMultiSource, double, double) -> void",
+          "params": [
+            {
+              "name": "group",
+              "type": "BvvMultiSource",
+              "java_type": "BvvMultiSource",
+              "description": "- the target source group, obtained from getMultiSources()",
+              "javadoc_name": "group"
+            },
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "getMultiSources()"
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setDisplayRange",
+      "javadoc_description": "Sets the display range (min/max intensity) for all channels of a specific source group.",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setPathOverlayOffset",
+      "overloads": [
+        {
+          "signature": "setPathOverlayOffset(double, double, double) -> void",
+          "params": [
+            {
+              "name": "offsetX",
+              "type": "float",
+              "java_type": "double",
+              "description": "- X offset (calibrated distance)",
+              "javadoc_name": "offsetX"
+            },
+            {
+              "name": "offsetY",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_1"
+            },
+            {
+              "name": "offsetZ",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": "param_2"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setPathOverlayOffset",
+      "javadoc_description": "Offsets all paths being rendered. This allows for 'dislodging' paths from their underlying signal without altering their coordinates.\n\nRendering-only: stored purely in `renderingOptions.pathOffset` and read directly by `OverlayRenderer#computeScreenData`. Does NOT touch `Path`/`Tree` state",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setRenderSettleTime",
+      "overloads": [
+        {
+          "signature": "setRenderSettleTime(long) -> void",
+          "params": [
+            {
+              "name": "millis",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setRenderSettleTime",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setTracingLockedByPause",
+      "overloads": [
+        {
+          "signature": "setTracingLockedByPause(boolean) -> void",
+          "params": [
+            {
+              "name": "locked",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setTracingLockedByPause",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setViewerTransform",
+      "overloads": [
+        {
+          "signature": "setViewerTransform(AffineTransform3D, long) -> void",
+          "params": [
+            {
+              "name": "target",
+              "type": "Any",
+              "java_type": "AffineTransform3D",
+              "description": "- the desired world-to-screen transform",
+              "javadoc_name": "target"
+            },
+            {
+              "name": "durationMs",
+              "type": "int",
+              "java_type": "long",
+              "description": "",
+              "javadoc_name": "param_1"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setViewerTransform",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "show",
+      "overloads": [
+        {
+          "signature": "show(AbstractSpimData) -> List",
+          "params": [
+            {
+              "name": "spimData",
+              "type": "Any",
+              "java_type": "AbstractSpimData",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(ImagePlus) -> BvvSource",
+          "params": [
+            {
+              "name": "imp",
+              "type": "Any",
+              "java_type": "ImagePlus",
+              "description": "- the ImagePlus to display",
+              "javadoc_name": "imp"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BvvSource",
+          "return_description": "the BvvSource representing the displayed image",
+          "throws": {
+            "IllegalArgumentException": "- if the image type is unsupported (COLOR_256)"
+          }
+        },
+        {
+          "signature": "show(ImgPlus) -> BvvSource",
+          "params": [
+            {
+              "name": "rawImgPlus",
+              "type": "Any",
+              "java_type": "ImgPlus",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BvvSource",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(N5Sources) -> List",
+          "params": [
+            {
+              "name": "n5Sources",
+              "type": "Any",
+              "java_type": "N5Sources",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(AbstractSpimData, String) -> List",
+          "params": [
+            {
+              "name": "spimData",
+              "type": "Any",
+              "java_type": "AbstractSpimData",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "sourcePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(List, List) -> List",
+          "params": [
+            {
+              "name": "imgs",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "calibrations",
+              "type": "List[Any]",
+              "java_type": "List",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(N5Sources, String) -> List",
+          "params": [
+            {
+              "name": "n5Sources",
+              "type": "Any",
+              "java_type": "N5Sources",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "sourcePath",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "show(RandomAccessibleInterval, double[]) -> BvvSource",
+          "params": [
+            {
+              "name": "img",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "calibration",
+              "type": "List[float]",
+              "java_type": "double[]",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "BvvSource",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: show",
+      "javadoc_description": "Displays the BVV viewer with the specified image.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showCalibrationDialog",
+      "overloads": [
+        {
+          "signature": "showCalibrationDialog(Component) -> void",
+          "params": [
+            {
+              "name": "parent",
+              "type": "Any",
+              "java_type": "Component",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showCalibrationDialog",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showLoadedData",
+      "overloads": [
+        {
+          "signature": "showLoadedData() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if this is a standalone viewer or no valid image data is available"
+          }
+        }
+      ],
+      "documentation": "Java method: showLoadedData",
+      "javadoc_description": "Displays the main tracing data from the associated SNT instance. This method is only available for BVV instances that are tethered to an SNT instance.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showSecondaryData",
+      "overloads": [
+        {
+          "signature": "showSecondaryData() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if this is a standalone viewer or no valid image data is available"
+          }
+        }
+      ],
+      "documentation": "Java method: showSecondaryData",
+      "javadoc_description": "Displays the secondary tracing data from the associated SNT instance. This method is only available for BVV instances that are tethered to an SNT instance.",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showViewerBanner",
+      "overloads": [
+        {
+          "signature": "showViewerBanner(String) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showViewerBanner",
+      "javadoc_description": "",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "showViewerMessage",
+      "overloads": [
+        {
+          "signature": "showViewerMessage(String) -> void",
+          "params": [
+            {
+              "name": "msg",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the message to show",
+              "javadoc_name": "msg"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: showViewerMessage",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Visualization",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "snapshot",
+      "overloads": [
+        {
+          "signature": "snapshot() -> ImagePlus",
+          "params": [],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "snapshot(String) -> ImagePlus",
+          "params": [
+            {
+              "name": "viewMode",
+              "type": "str",
+              "java_type": "String",
+              "description": "- the view mode (case-insensitive):",
+              "javadoc_name": "viewMode"
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImagePlus",
+          "return_description": "the bitmap image of the scene view, or `null` if the viewer is not initialized",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: snapshot",
+      "javadoc_description": "Retrieves the specified scene view as an image. **Must be called from a non-EDT thread** (e.g. a script or SwingWorker), otherwise the render latch will time out.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "stopPlayback",
+      "overloads": [
+        {
+          "signature": "stopPlayback() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: stopPlayback",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncOverlays",
+      "overloads": [
+        {
+          "signature": "syncOverlays() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: syncOverlays",
+      "javadoc_description": "Updates the viewer display to reflect changes in rendered trees and paths. This method should be called after modifying the collection of rendered objects to ensure the display is synchronized.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "syncPathManagerList",
+      "overloads": [
+        {
+          "signature": "syncPathManagerList() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: syncPathManagerList",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "toggleEditMode",
+      "overloads": [
+        {
+          "signature": "toggleEditMode() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: toggleEditMode",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateSecondaryLayerIndicator",
+      "overloads": [
+        {
+          "signature": "updateSecondaryLayerIndicator() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateSecondaryLayerIndicator",
+      "javadoc_description": "Description copied from class: `AbstractBigViewer`",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateSelection",
+      "overloads": [
+        {
+          "signature": "updateSelection() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {
+            "IllegalArgumentException": "- if this viewer is not tethered to a SNT instance"
+          }
+        }
+      ],
+      "documentation": "Java method: updateSelection",
+      "javadoc_description": "Lightweight alternative to `AbstractBigViewer.syncPathManagerList()` for pure selection changes. Patches color/thickness in place for already-rendered trees instead of rebuilding the Path Manager's tree grouping and recomputing screen-space geometry for the whole scene. Does nothing if paths haven't been rendered yet (e.g., before the first sync); The next `AbstractBigViewer.syncPathManagerList()` call renders and colors them correctly regardless.",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "updateStatus",
+      "overloads": [
+        {
+          "signature": "updateStatus(String, int, int) -> void",
+          "params": [
+            {
+              "name": "message",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "step",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nSteps",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: updateStatus",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "Bvv()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        },
+        {
+          "signature": "Bvv(SNT)",
+          "params": [
+            {
+              "name": "snt",
+              "type": "SNT",
+              "java_type": "SNT"
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of Bvv"
+    }
+  ],
+  "javadoc_description": "Support for Big Volume Viewer.",
+  "inheritance": {
+    "extends": [
+      "AbstractBigViewer"
+    ],
+    "implements": []
+  },
+  "nested_classes": [
+    "Bvv.AnnotationOverlay"
+  ],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [
+    "setChannelColors(Color...)",
+    "AbstractBigViewer",
+    "SNT.flushSecondaryData()",
+    "AbstractBigViewer.resyncCalibrationFromActiveSource()"
+  ],
+  "enhancement_metadata": {
+    "matching_statistics": {
+      "total_javadoc_methods": 85,
+      "total_json_methods": 94,
+      "total_matches": 80,
+      "exact_matches": 65,
+      "signature_matches": 15,
+      "fuzzy_matches": 0,
+      "name_only_matches": 0,
+      "unmatched_javadoc": 5,
+      "unmatched_json": 14,
+      "match_percentage": 94.1
+    },
+    "unmatched_javadoc_methods": 5,
+    "unmatched_json_methods": 40,
+    "enhancement_quality_score": 1.0
+  }
+}

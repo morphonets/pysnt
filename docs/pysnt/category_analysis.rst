@@ -3,15 +3,33 @@ Analysis Methods
 
 Methods that perform calculations, measurements, or statistical analysis.
 
-Total methods in this category: **25**
+Total methods in this category: **36**
 
 .. contents:: Classes in this Category
    :local:
 
+ArrayStorageBackend
+-------------------
+
+.. method:: computeGWDT(source, threshold, spacing, minIntensity, maxIntensity)
+
+   **Signature:** ``computeGWDT(RandomAccessibleInterval, double, double[], double, double) -> void``
+
+   **Parameters:**
+
+   * **source** (``Any``)
+   * **threshold** (``float``)
+   * **spacing** (``List[float]``)
+   * **minIntensity** (``float``)
+   * **maxIntensity** (``float``)
+
+   **Returns:** ``None``
+
+
 BoundingBox
 -----------
 
-.. method:: compute(arg0)
+.. method:: compute(iterator)
 
    Computes a new positioning so that this box encloses the specified point cloud.
 
@@ -19,7 +37,7 @@ BoundingBox
 
    **Parameters:**
 
-   * **arg0** (``Any``): - the iterator of the points Collection
+   * **iterator** (``Any``): - the iterator of the points Collection
 
    **Returns:** ``None``
 
@@ -29,7 +47,7 @@ ConvexHull2D
 
 .. method:: compute()
 
-   Description copied from class: AbstractConvexHull
+   Description copied from class: `AbstractConvexHull`
 
    **Signature:** ``compute() -> void``
 
@@ -41,7 +59,7 @@ ConvexHull3D
 
 .. method:: compute()
 
-   Description copied from class: AbstractConvexHull
+   Description copied from class: `AbstractConvexHull`
 
    **Signature:** ``compute() -> void``
 
@@ -51,186 +69,411 @@ ConvexHull3D
 ConvexHullAnalyzer
 ------------------
 
-.. method:: static supportedMetrics()
+.. method:: supportedMetrics()
 
    Gets the list of metrics supported by ConvexHullAnalyzer.
 
-   **Signature:** ``static supportedMetrics() -> List``
+   **Signature:** ``supportedMetrics() -> List``
 
    **Returns:** (``List[Any]``) the list of supported metric names that can be computed by this analyzer
+
+
+CrossSectionUtils
+-----------------
+
+.. method:: computeIsotropicScale(aBasis, bBasis, xSpacing, ySpacing, zSpacing)
+
+   Computes the isotropic scale for a cross-section plane given the tangent plane basis vectors and voxel spacing.
+
+   **Signature:** ``computeIsotropicScale(double[], double[], double, double, double) -> double``
+
+   **Parameters:**
+
+   * **aBasis** (``List[float]``): - first basis vector
+   * **bBasis** (``List[float]``)
+   * **xSpacing** (``float``)
+   * **ySpacing** (``float``)
+   * **zSpacing** (``float``)
+
+   **Returns:** (``float``) the isotropic scale (geometric mean of scales along both basis vectors)
+
+.. method:: computeScaleAlongVector(vx, vy, vz, xSpacing, ySpacing, zSpacing)
+
+   Computes the effective physical scale along an arbitrary direction vector given anisotropic voxel spacing.
+
+   **Signature:** ``computeScaleAlongVector(double, double, double, double, double, double) -> double``
+
+   **Parameters:**
+
+   * **vx** (``float``): - X component of direction vector
+   * **vy** (``float``)
+   * **vz** (``float``)
+   * **xSpacing** (``float``)
+   * **ySpacing** (``float``)
+   * **zSpacing** (``float``)
+
+   **Returns:** (``float``) effective scale (physical distance per unit in the given direction)
+
+.. method:: computeTangentPlaneBasis(nx, ny, nz)
+
+   Computes an orthonormal basis for the plane perpendicular to the given normal (tangent) vector.
+
+   **Signature:** ``computeTangentPlaneBasis(double, double, double) -> double[][]``
+
+   **Parameters:**
+
+   * **nx** (``float``): - X component of the normal vector
+   * **ny** (``float``)
+   * **nz** (``float``)
+
+   **Returns:** (``List[List[float]]``) `double[2][3]`: `[0]` is the first basis vector, `[1]` is the second basis vector
+
+
+DetectorUtils
+-------------
+
+.. method:: computeEDT(labelRAI, labelVal, spacing)
+
+   **Signature:** ``computeEDT(RandomAccessibleInterval, int, double[]) -> Img``
+
+   **Parameters:**
+
+   * **labelRAI** (``Any``)
+   * **labelVal** (``int``)
+   * **spacing** (``List[float]``)
+
+   **Returns:** ``Any``
+
+
+DiskBackedStorageBackend
+------------------------
+
+.. method:: computeGWDT(source, threshold, spacing, minIntensity, maxIntensity)
+
+   **Signature:** ``computeGWDT(RandomAccessibleInterval, double, double[], double, double) -> void``
+
+   **Parameters:**
+
+   * **source** (``Any``)
+   * **threshold** (``float``)
+   * **spacing** (``List[float]``)
+   * **minIntensity** (``float``)
+   * **maxIntensity** (``float``)
+
+   **Returns:** ``None``
 
 
 Frangi
 ------
 
-.. method:: compute(arg0, arg1)
+.. method:: compute(input, output)
 
-   **Signature:** ``compute(Object, Object) -> void``
+   **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
+   * **input** (``Any``)
+   * **output** (``Any``)
 
    **Returns:** ``None``
 
 
-MultiTreeColorMapper
---------------------
+GrowthAnalyzer
+--------------
 
-.. method:: static getMetrics(arg0)
+.. method:: analyze(paths, frameInterval, timeUnits)
 
-   Gets the list of supported mapping metrics.
-
-   **Signature:** ``static getMetrics(String) -> List``
+   **Signature:** ``analyze(Collection, double, String) -> GrowthAnalysisResults``
 
    **Parameters:**
 
-   * **arg0** (``str``): - Either 'all' (MultiTreeColorMapper and TreeColorMapper metrics) or 'default' (MultiTreeColorMapper only)
+   * **paths** (``List[Any]``)
+   * **frameInterval** (``float``)
+   * **timeUnits** (``str``)
 
-   **Returns:** (``List[Any]``) the list of mapping metrics.
+   **Returns:** ``GrowthAnalysisResults``
 
-.. method:: static getSingleValueMetrics()
 
-   Gets the list of single-value mapping metrics.
+ImgUtils
+--------
 
-   **Signature:** ``static getSingleValueMetrics() -> List``
+.. method:: computeIntensityStats(source)
 
-   **Returns:** (``List[Any]``) the list of single-value mapping metrics.
+   Computes basic intensity statistics of an image.
+
+   **Signature:** ``computeIntensityStats(RandomAccessibleInterval) -> double[]``
+
+   **Parameters:**
+
+   * **source** (``Any``): - the input image
+
+   **Returns:** (``List[float]``) array of [min, max, mean]
+
+.. method:: computeMeanIntensity(source)
+
+   Computes the mean intensity of an image.
+
+   **Signature:** ``computeMeanIntensity(RandomAccessibleInterval) -> double``
+
+   **Parameters:**
+
+   * **source** (``Any``): - the input image
+
+   **Returns:** (``float``) the mean intensity value
+
+.. method:: computePercentile(source, percentile)
+
+   Computes an approximate percentile by random sampling.
+
+   **Signature:** ``computePercentile(RandomAccessibleInterval, double) -> double``
+
+   **Parameters:**
+
+   * **source** (``Any``): - the input image
+   * **percentile** (``float``)
+
+   **Returns:** (``float``) the approximate percentile value
+
+
+LabelsToSeeds
+-------------
+
+.. method:: compute(imp, minConfidence, type, source)
+
+   **Signature:** ``compute(ImagePlus, double, String, String) -> List``
+
+   **Parameters:**
+
+   * **imp** (``Any``)
+   * **minConfidence** (``float``)
+   * **type** (``str``)
+   * **source** (``str``)
+
+   **Returns:** ``List[Any]``
+
+
+MultiSpectralRefiner
+--------------------
+
+.. method:: computeNodeCosts(imp, path)
+
+   Computes the cost at each node of a path without modifying it, where the path's node coordinates and imp's own pixel grid are related by a fixed offset. See `MultiSpectralRefiner(ImagePlus, Path, double, double, double)`.
+
+   **Signature:** ``computeNodeCosts(ImagePlus, Path) -> double[]``
+
+   **Parameters:**
+
+   * **imp** (``Any``): - the multichannel image
+   * **path** (``Path``)
+
+   **Returns:** (``List[float]``) per-node cost values (same length as path.size())
 
 
 MultiTreeStatistics
 -------------------
 
-.. method:: static getAllMetrics()
+.. method:: measure(metrics, groupByType)
 
-   Description copied from class: TreeStatistics
+   **Signature:** ``measure(Collection, boolean) -> void``
 
-   **Signature:** ``static getAllMetrics() -> List``
+   **Parameters:**
 
-   **Returns:** (``List[Any]``) the terminal branches. Note that as per `Path.getSection(int, int)`, these branches will not carry any connectivity information.
+   * **metrics** (``List[Any]``)
+   * **groupByType** (``bool``)
 
-.. method:: static getMetrics()
-
-   Gets the list of metrics supported by MultiTreeStatistics.
-
-Returns all the metrics that can be computed for groups of trees, including aggregate measures and group-specific statistics.
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** (``List[Any]``) the list of supported metric names
-
-
-NodeColorMapper
----------------
-
-.. method:: static getMetrics()
-
-   Gets the list of supported mapping metrics.
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** (``List[Any]``) the list of mapping metrics.
+   **Returns:** ``None``
 
 
 NodeStatistics
 --------------
 
-.. method:: static computeNearestNeighborDistances(arg0)
+.. method:: computeNearestNeighborDistances(points)
 
-   Computes nearest neighbor distances. Assigns the computed value to the v value of each point
+   Computes nearest neighbor distances. Assigns the computed value to the `v` value of each point
 
-   **Signature:** ``static computeNearestNeighborDistances(List) -> void``
+   **Signature:** ``computeNearestNeighborDistances(List) -> void``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the list of points
+   * **points** (``List[Any]``): - the list of points
 
    **Returns:** ``None``
-
-.. method:: static getMetrics()
-
-   Gets the list of supported metrics.
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** (``List[Any]``) the list of supported metrics
 
 
 OBJMesh
 -------
 
-.. method:: computePrincipalAxes(arg0)
+.. method:: computePrincipalAxes(hemiHalf)
 
    Computes the principal axes of this mesh using the new PCAnalyzer. This method replaces the deprecated `getPrincipalAxes(String)` method.
 
-   **Signature:** ``computePrincipalAxes(String) -> PCAnalyzer$PrincipalAxis;``
+   **Signature:** ``computePrincipalAxes(String) -> PrincipalAxis[]``
 
    **Parameters:**
 
-   * **arg0** (``str``): - either "left", "l", "right", "r", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh
+   * **hemiHalf** (``str``): - either "left", "l", "right", "r", otherwise principal axes are computed for both hemi-halves, i.e., the full mesh
 
-   **Returns:** (``Any``) array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails
+   **Returns:** (``List[Any]``) array of three PrincipalAxis objects ordered by decreasing variance (primary, secondary, tertiary), or null if computation fails
 
 
 PathStatistics
 --------------
 
-.. method:: static getAllMetrics()
+.. method:: measure(metrics, groupByType)
 
-   Gets the terminal branches from the analyzed paths.
+   **Signature:** ``measure(Collection, boolean) -> void``
 
-Returns paths that have children, representing non-terminal segments. Note: This implementation differs from typical terminal branch definition as it returns paths with children rather than leaf paths.
+   **Parameters:**
 
-   **Signature:** ``static getAllMetrics() -> List``
+   * **metrics** (``List[Any]``)
+   * **groupByType** (``bool``)
 
-   **Returns:** (``List[Any]``) the list of paths with children
+   **Returns:** ``None``
 
-.. method:: static getMetrics()
+.. method:: measureIndividualPaths(metrics, summarize)
 
-   **Signature:** ``static getMetrics() -> List``
+   Measures specified metrics for each individual path and creates a detailed table.
 
-   **Returns:** ``List[Any]``
+This method generates a comprehensive measurement table where each row represents an individual path and columns contain the requested morphometric measurements. This is particularly useful for comparative analysis of path properties or for exporting detailed morphometric data.
+
+The generated table includes:
+
+- Path identification information (name, SWC type)
+
+- All requested morphometric measurements
+
+- Optional summary statistics (if summarize is true)
+
+   **Signature:** ``measureIndividualPaths(Collection, boolean) -> void``
+
+   **Parameters:**
+
+   * **metrics** (``List[Any]``): - the collection of metric names to measure for each path. If null or empty, a default "safe" set of metrics is used
+   * **summarize** (``bool``)
+
+   **Returns:** ``None``
+
+
+PlausibilityMonitor
+-------------------
+
+.. method:: measure(deepCheck, paths)
+
+   **Signature:** ``measure(DeepCheck, Collection) -> Measurements``
+
+   **Parameters:**
+
+   * **deepCheck** (``Any``)
+   * **paths** (``List[Any]``)
+
+   **Returns:** ``Any``
 
 
 RootAngleAnalyzer
 -----------------
 
-.. method:: static supportedMetrics()
+.. method:: supportedMetrics()
 
-   **Signature:** ``static supportedMetrics() -> List``
+   **Signature:** ``supportedMetrics() -> List``
 
    **Returns:** ``List[Any]``
 
 
-SeedManager
------------
+SNT
+---
 
-.. method:: computeVisibleRect(arg0)
+.. method:: computeImgStats(in, imgStats, costType)
 
-   **Signature:** ``computeVisibleRect(Rectangle) -> void``
+   **Signature:** ``computeImgStats(Iterable, ImageStatistics, CostType) -> ImageStatistics``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
+   * **in** (``List[Any]``)
+   * **imgStats** (``Any``)
+   * **costType** (``Any``)
+
+   **Returns:** ``Any``
+
+
+SomaUtils
+---------
+
+.. method:: computeIntegratedDensity(mask, source)
+
+   **Signature:** ``computeIntegratedDensity(Img, RandomAccessibleInterval) -> double``
+
+   **Parameters:**
+
+   * **mask** (``Any``)
+   * **source** (``Any``)
+
+   **Returns:** ``float``
+
+.. method:: computeMaskArea(mask, spacing)
+
+   **Signature:** ``computeMaskArea(Img, double[]) -> double``
+
+   **Parameters:**
+
+   * **mask** (``Any``)
+   * **spacing** (``List[float]``)
+
+   **Returns:** ``float``
+
+.. method:: computeMaskCentroid(mask, spacing)
+
+   **Signature:** ``computeMaskCentroid(Img, double[]) -> double[]``
+
+   **Parameters:**
+
+   * **mask** (``Any``)
+   * **spacing** (``List[float]``)
+
+   **Returns:** ``List[float]``
+
+.. method:: computeMinimumThreshold(source)
+
+   **Signature:** ``computeMinimumThreshold(RandomAccessibleInterval) -> double``
+
+   **Parameters:**
+
+   * **source** (``Any``)
+
+   **Returns:** ``float``
+
+.. method:: computeOtsuThreshold(source)
+
+   **Signature:** ``computeOtsuThreshold(RandomAccessibleInterval) -> double``
+
+   **Parameters:**
+
+   * **source** (``Any``)
+
+   **Returns:** ``float``
+
+
+SparseStorageBackend
+--------------------
+
+.. method:: computeGWDT(source, threshold, spacing, minIntensity, maxIntensity)
+
+   **Signature:** ``computeGWDT(RandomAccessibleInterval, double, double[], double, double) -> void``
+
+   **Parameters:**
+
+   * **source** (``Any``)
+   * **threshold** (``float``)
+   * **spacing** (``List[float]``)
+   * **minIntensity** (``float``)
+   * **maxIntensity** (``float``)
 
    **Returns:** ``None``
-
-
-ShollAnalyzer
--------------
-
-.. method:: static getMetrics()
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** ``List[Any]``
 
 
 SpectralSimilarity
 ------------------
 
-.. method:: compute(arg0, arg1)
+.. method:: compute(input, output)
 
    Computes the spectral similarity map.
 
@@ -238,92 +481,75 @@ SpectralSimilarity
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
+   * **input** (``Any``): - 4D input image (X, Y, Z, C) where the last dimension is channels
+   * **output** (``Any``)
 
    **Returns:** ``None``
-
-
-TreeColorMapper
----------------
-
-.. method:: static getMetrics()
-
-   Gets the list of supported mapping metrics.
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** (``List[Any]``) the list of mapping metrics.
 
 
 TreeStatistics
 --------------
 
-.. method:: static getAllMetrics()
+.. method:: measure(metrics, groupByType)
 
-   Gets the list of supported metrics.
+   Measures this Tree, outputting the result to the measurements table. If a Context has been specified, the table is updated. Otherwise, table contents are printed to Console.
 
-   **Signature:** ``static getAllMetrics() -> List``
+   **Signature:** ``measure(Collection, boolean) -> void``
 
-   **Returns:** (``List[Any]``) the list of available metrics
+   **Parameters:**
+
+   * **metrics** (``List[Any]``): - the row header label
+   * **groupByType** (``bool``)
+
+   **Returns:** ``None``
 
 
 TreeUtils
 ---------
 
-.. method:: static analyzeEndpointClusters(arg0)
+.. method:: analyzeEndpointClusters(paths)
 
    Analyzes a collection of paths to determine which endpoint cluster (starts or ends) is more tightly grouped, suggesting the root location.
 
 This is useful for auto-orienting paths toward a common root when the user hasn't specified an explicit root location.
 
-   **Signature:** ``static analyzeEndpointClusters(Collection) -> TreeUtils$EndpointClusterAnalysis``
+   **Signature:** ``analyzeEndpointClusters(Collection) -> EndpointClusterAnalysis``
 
    **Parameters:**
 
-   * **arg0** (``List[Any]``): - the paths to analyze (must have at least 2)
+   * **paths** (``List[Any]``): - the paths to analyze (must have at least 2)
 
    **Returns:** (``Any``) analysis result, or null if paths is null or has fewer than 2 paths
 
-.. method:: static computeUprightAngle(arg0, arg1)
+.. method:: computeUprightAngle(tree, useCentroid)
 
    Computes the angle (in degrees) needed to make a tree appear upright in the XY viewing plane. The angle is derived from the extension angle of a reference path (the longest geodesic by default) using compass conventions where North is 0 degrees.
 
-   **Signature:** ``static computeUprightAngle(Tree, boolean) -> double``
+   **Signature:** ``computeUprightAngle(Tree, boolean) -> double``
 
    **Parameters:**
 
-   * **arg0** (``Tree``): - the tree to analyze
-   * **arg1** (``bool``)
+   * **tree** (``Tree``): - the tree to analyze
+   * **useCentroid** (``bool``)
 
-   **Returns:** (``float``) the rotation angle in degrees, or Double.NaN if it cannot be computed (e.g., single-node tree)
+   **Returns:** (``float``) the rotation angle in degrees, or `Double.NaN` if it cannot be computed (e.g., single-node tree, or tree with multiple roots)
 
 
 Tubeness
 --------
 
-.. method:: compute(arg0, arg1)
+.. method:: compute(input, output)
 
    **Signature:** ``compute(RandomAccessibleInterval, RandomAccessibleInterval) -> void``
 
    **Parameters:**
 
-   * **arg0** (``Any``)
-   * **arg1** (``Any``)
+   * **input** (``Any``)
+   * **output** (``Any``)
 
    **Returns:** ``None``
 
 
-Viewer2D
---------
-
-.. method:: static getMetrics()
-
-   **Signature:** ``static getMetrics() -> List``
-
-   **Returns:** ``List[Any]``
-
-
 ----
 
-*Category index generated on 2026-09-27 23:02:20*
+*Category index generated on 2026-11-02 07:57:40*

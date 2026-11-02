@@ -53,7 +53,7 @@
 
 **Package:** ``sc.fiji.snt.viewer``
 
-Class for rendering individual Viewer3Ds as a multi-panel montage.
+Class for rendering individual `Viewer3D`s as a multi-panel montage.
 
 
 Methods
@@ -89,7 +89,7 @@ Setters Methods
    Sets the title of the Viewer's frame.
 
 
-.. py:method:: setViewMode(Viewer3D$ViewMode)
+.. py:method:: setViewMode(ViewMode)
 
    
 
@@ -117,7 +117,7 @@ Other Methods
    
 
 
-.. py:method:: static main(String;)
+.. py:method:: main(String[])
 
    
 

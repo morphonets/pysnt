@@ -13,25 +13,25 @@ This directory contains scripts for:
 
 ## Prerequisites
 
-Access to a Fiji installation running SNT is required for most scripts:
+Scripts that need SNT start it from Maven (`pysnt.initialize(source="maven")`),
+so no Fiji install is required. You need:
 
-```python
-import pysnt.setup_utils as setup
+- `JAVA_HOME` pointing to a JDK 21
+- SNT built locally when working on a snapshot: `cd SNT && mvn clean install -DskipTests`
+- A fresh jgo cache after rebuilding a snapshot, otherwise the old jar is served:
+  `rm -rf ~/.jgo ~/.cache/jgo`
 
-# Configuration management
-setup.show_config_status()
-setup.set_fiji_path("/Applications/Fiji.app")
-setup.auto_detect_and_configure()
+Pass `--snt-version X.Y.Z` (or set `SNT_VERSION`) to target another SNT release.
 
-# Quick validation for scripts
-if not setup.is_fiji_valid():
-    print("Fiji not configured!")
-    exit(1)
+## Typical workflow after SNT changes
 
-# Detailed status
-status = setup.get_fiji_status()
-if not status['valid']:
-    print(f"Issues: {status['issues']}")
+```bash
+python dev/scripts/snt_inventory.py                     # what changed in SNT's API?
+python dev/scripts/sync_module_lists.py [--apply]       # update CURATED/EXTENDED lists (class_policy.toml)
+python dev/scripts/extract_class_signatures.py --all-classes --prune -v   # reflect curated classes -> STUBS/*.json
+python dev/scripts/generate_stubs.py src --overwrite -v                   # STUBS -> .pyi
+# docs: copy SNT/target/SNT-*-javadoc.jar (mvn javadoc:jar) to dev/scripts/, then
+python dev/scripts/deploy.py
 ```
 
 ## Core Scripts
@@ -174,7 +174,8 @@ Each JSON file follows this structure:
   "class_name": "Path",
   "package": "sc.fiji.snt",
   "extracted_at": "2025-11-02T07:56:02.398503",
-  "extractor_version": "1.0.0",
+  "extractor_version": "2.0.0",
+  "snt_version": "5.0.24",
   "methods": [
     {
       "name": "getLength",

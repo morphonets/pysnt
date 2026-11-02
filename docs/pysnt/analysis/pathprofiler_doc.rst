@@ -64,44 +64,19 @@ Getters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: getCancelReason()
+.. py:method:: getMultiFrameProfile(List, int, int, boolean)
 
-   
-
-
-.. py:method:: getContext()
-
-   
+   Builds a multi-frame intensity profile matrix from a list of matched paths (one per time frame, ordered by frame number), suitable for kymograph-style visualization via 
 
 
-.. py:method:: getDelegateObject()
+   ::
 
-   
-
-
-.. py:method:: getInfo()
-
-   
+       SNTChart.showHeatmap(double[][], net.imglib2.display.ColorTable, java.lang.String...)
 
 
-.. py:method:: getInput(String)
+   .
 
-   
-
-
-.. py:method:: getInputs()
-
-   
-
-
-.. py:method:: getOutput(String)
-
-   
-
-
-.. py:method:: getOutputs()
-
-   
+   The returned matrix has dimensions [nPaths][nSamples], where ``matrix[i][j]`` is the interpolated intensity at distance sample j for the i-th path. Entries beyond a path's actual length are ``Double.NaN``.
 
 
 .. py:method:: getPlot()
@@ -109,32 +84,27 @@ Getters Methods
    Gets the plot profile as an ImageJ plot (all channels included).
 
 
+.. py:method:: getResampledValues(Path, int, int, double)
+
+   Resamples the intensity profile of a path onto a uniform distance grid via linear interpolation. Entries beyond the path's actual length are set to ``Double.NaN``, which allows variable-length paths to be compared in the same matrix without padding with zeros.
+
+
+.. py:method:: getTimeProfile(Path, int)
+
+   Gets the time profile for the specified path as a list of ``getValues(Path, int, int)`` profiles, with one entry per frame of the dataset.
+
+
 .. py:method:: getValues(Path)
 
-   Gets the profile for the specified path as a map of lists, with distances (or indices) stored under X_VALUES ("x-values") and intensities under Y_VALUES ("y-values").
+   Gets the profile for the specified path as a map of lists, with distances (or indices) stored under ``X_VALUES`` ("x-values") and intensities under ``Y_VALUES`` ("y-values").
 
 
-.. py:method:: getXYPlot(int)
+.. py:method:: getXYPlot()
 
-   Gets the plot profile as an PlotService plot. It is recommended to call `DynamicCommand.setContext(org.scijava.Context)` beforehand.
+   Gets the plot profile as an ``PlotService`` plot. It is recommended to call ``DynamicCommand.setContext(org.scijava.Context)`` beforehand.
 
 
 .. py:method:: isCanceled()
-
-   
-
-
-.. py:method:: isInputResolved(String)
-
-   
-
-
-.. py:method:: isOutputResolved(String)
-
-   
-
-
-.. py:method:: isResolved(String)
 
    
 
@@ -143,39 +113,14 @@ Setters Methods
 ~~~~~~~~~~~~~~~
 
 
-.. py:method:: setContext(Context)
-
-   
-
-
-.. py:method:: setInput(String, Object)
-
-   
-
-
-.. py:method:: setInputs(Map)
-
-   
-
-
-.. py:method:: setMetric(ProfileProcessor$Metric)
+.. py:method:: setMetric(Metric)
 
    
 
 
 .. py:method:: setNodeIndicesAsDistances(boolean)
 
-   Sets whether the profile abscissae should be reported in real-word units (the default) or node indices (zero-based). Must be called before calling getValues(Path), getPlot() or getXYPlot().
-
-
-.. py:method:: setOutput(String, Object)
-
-   
-
-
-.. py:method:: setOutputs(Map)
-
-   
+   Sets whether the profile abscissae should be reported in real-word units (the default) or node indices (zero-based). Must be called before calling ``getValues(Path)``, ``getPlot()`` or ``getXYPlot()``.
 
 
 .. py:method:: setRadius(int)
@@ -183,11 +128,7 @@ Setters Methods
    
 
 
-Visualization Methods
-~~~~~~~~~~~~~~~~~~~~~
-
-
-.. py:method:: preview()
+.. py:method:: setShape(Shape)
 
    
 
@@ -196,27 +137,12 @@ Other Methods
 ~~~~~~~~~~~~~
 
 
-.. py:method:: addInput(String, Class)
+.. py:method:: assignValues()
 
-   
-
-
-.. py:method:: addOutput(ModuleItem)
-
-   
+   Retrieves pixel intensities at each node of the Path storing them as Path ``values``
 
 
-.. py:method:: assignValues(Path, int)
-
-   Retrieves pixel intensities at each node of the Path storing them as Path values
-
-
-.. py:method:: cancel(String)
-
-   
-
-
-.. py:method:: context()
+.. py:method:: cancel()
 
    
 
@@ -225,42 +151,17 @@ Other Methods
 
    Finds the maxima in the profile of the specified path.
 
-A maxima (peak) will only be considered if protruding more than the profile's standard deviation from the ridge to a higher maximum
+   A maxima (peak) will only be considered if protruding more than the profile's standard deviation from the ridge to a higher maximum
 
 
 .. py:method:: findMinima(Path, int)
 
    Finds the minima in the profile of the specified path.
 
-A maxima (peak) will only be considered if protruding less than the profile's standard deviation from the ridge to a lower minimum
+   A maxima (peak) will only be considered if protruding less than the profile's standard deviation from the ridge to a lower minimum
 
 
-.. py:method:: initialize()
-
-   
-
-
-.. py:method:: static main(String;)
-
-   
-
-
-.. py:method:: removeInput(ModuleItem)
-
-   
-
-
-.. py:method:: removeOutput(ModuleItem)
-
-   
-
-
-.. py:method:: resolveInput(String)
-
-   
-
-
-.. py:method:: resolveOutput(String)
+.. py:method:: main(String[])
 
    
 

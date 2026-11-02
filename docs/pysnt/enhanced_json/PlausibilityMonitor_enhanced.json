@@ -1,0 +1,629 @@
+{
+  "class_name": "PlausibilityMonitor",
+  "package": "sc.fiji.snt.analysis.curation",
+  "extracted_at": "2026-11-02T00:24:01.683323",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.322761",
+  "enhancement_version": "1.0.0",
+  "methods": [
+    {
+      "name": "addWarningListener",
+      "overloads": [
+        {
+          "signature": "addWarningListener(WarningListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "WarningListener",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: addWarningListener",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "clearForkContext",
+      "overloads": [
+        {
+          "signature": "clearForkContext() -> void",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: clearForkContext",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getCurrentWarnings",
+      "overloads": [
+        {
+          "signature": "getCurrentWarnings() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getCurrentWarnings",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDeepCheck",
+      "overloads": [
+        {
+          "signature": "getDeepCheck(Class) -> DeepCheck",
+          "params": [
+            {
+              "name": "type",
+              "type": "type",
+              "java_type": "Class",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "DeepCheck",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDeepCheck",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getDeepChecks",
+      "overloads": [
+        {
+          "signature": "getDeepChecks() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getDeepChecks",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLiveCheck",
+      "overloads": [
+        {
+          "signature": "getLiveCheck(Class) -> LiveCheck",
+          "params": [
+            {
+              "name": "type",
+              "type": "type",
+              "java_type": "Class",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "LiveCheck",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLiveCheck",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "getLiveChecks",
+      "overloads": [
+        {
+          "signature": "getLiveChecks() -> List",
+          "params": [],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: getLiveChecks",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "impactKindFor",
+      "overloads": [
+        {
+          "signature": "impactKindFor(String) -> ImpactKind",
+          "params": [
+            {
+              "name": "checkName",
+              "type": "str",
+              "java_type": "String",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "ImpactKind",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: impactKindFor",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isEnabled",
+      "overloads": [
+        {
+          "signature": "isEnabled() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isEnabled",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "isLastUpdateFromLiveCheck",
+      "overloads": [
+        {
+          "signature": "isLastUpdateFromLiveCheck() -> boolean",
+          "params": [],
+          "return_type": "bool",
+          "java_return_type": "boolean",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: isLastUpdateFromLiveCheck",
+      "javadoc_description": "",
+      "category": "Getters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "measure",
+      "overloads": [
+        {
+          "signature": "measure(DeepCheck, Collection) -> Measurements",
+          "params": [
+            {
+              "name": "deepCheck",
+              "type": "Any",
+              "java_type": "DeepCheck",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Measurements",
+          "return_description": "",
+          "throws": {}
+        },
+        {
+          "signature": "measure(LiveCheck, Collection) -> Measurements",
+          "params": [
+            {
+              "name": "liveCheck",
+              "type": "Any",
+              "java_type": "LiveCheck",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "Any",
+          "java_return_type": "Measurements",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: measure",
+      "javadoc_description": "",
+      "category": "Analysis",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onForkInitiated",
+      "overloads": [
+        {
+          "signature": "onForkInitiated(Path, int) -> void",
+          "params": [
+            {
+              "name": "parent",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "branchIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onForkInitiated",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onNodeEdited",
+      "overloads": [
+        {
+          "signature": "onNodeEdited(Path, int) -> List",
+          "params": [
+            {
+              "name": "editedPath",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "nodeIndex",
+              "type": "int",
+              "java_type": "int",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onNodeEdited",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onPathFinalized",
+      "overloads": [
+        {
+          "signature": "onPathFinalized(Path) -> List",
+          "params": [
+            {
+              "name": "completedChild",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onPathFinalized",
+      "javadoc_description": "",
+      "category": "I/O Operations",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "onSegmentCompleted",
+      "overloads": [
+        {
+          "signature": "onSegmentCompleted(Path) -> List",
+          "params": [
+            {
+              "name": "candidateChild",
+              "type": "Path",
+              "java_type": "Path",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: onSegmentCompleted",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "removeWarningListener",
+      "overloads": [
+        {
+          "signature": "removeWarningListener(WarningListener) -> void",
+          "params": [
+            {
+              "name": "listener",
+              "type": "Any",
+              "java_type": "WarningListener",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: removeWarningListener",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runDeepScan",
+      "overloads": [
+        {
+          "signature": "runDeepScan(Collection) -> List",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runDeepScan",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "runFullScan",
+      "overloads": [
+        {
+          "signature": "runFullScan(Collection) -> List",
+          "params": [
+            {
+              "name": "paths",
+              "type": "List[Any]",
+              "java_type": "Collection",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "List[Any]",
+          "java_return_type": "List",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: runFullScan",
+      "javadoc_description": "",
+      "category": "Utilities",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setEnabled",
+      "overloads": [
+        {
+          "signature": "setEnabled(boolean) -> void",
+          "params": [
+            {
+              "name": "enabled",
+              "type": "bool",
+              "java_type": "boolean",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setEnabled",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setImageData",
+      "overloads": [
+        {
+          "signature": "setImageData(RandomAccessibleInterval) -> void",
+          "params": [
+            {
+              "name": "image",
+              "type": "Any",
+              "java_type": "RandomAccessibleInterval",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setImageData",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    },
+    {
+      "name": "setImageStats",
+      "overloads": [
+        {
+          "signature": "setImageStats(double, double) -> void",
+          "params": [
+            {
+              "name": "min",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            },
+            {
+              "name": "max",
+              "type": "float",
+              "java_type": "double",
+              "description": "",
+              "javadoc_name": null
+            }
+          ],
+          "return_type": "None",
+          "java_return_type": "void",
+          "return_description": "",
+          "throws": {}
+        }
+      ],
+      "documentation": "Java method: setImageStats",
+      "javadoc_description": "",
+      "category": "Setters",
+      "deprecated": false,
+      "since_version": null,
+      "see_also": [],
+      "examples": []
+    }
+  ],
+  "fields": [],
+  "constructors": [
+    {
+      "name": "__init__",
+      "overloads": [
+        {
+          "signature": "PlausibilityMonitor()",
+          "params": [],
+          "return_type": "None",
+          "java_return_type": "void"
+        }
+      ],
+      "documentation": "Constructors of PlausibilityMonitor"
+    }
+  ],
+  "javadoc_description": "",
+  "inheritance": {
+    "extends": [],
+    "implements": []
+  },
+  "nested_classes": [],
+  "deprecated": false,
+  "since_version": null,
+  "see_also": [],
+  "enhancement_metadata": {
+    "javadoc_available": false,
+    "categorization_only": true
+  }
+}

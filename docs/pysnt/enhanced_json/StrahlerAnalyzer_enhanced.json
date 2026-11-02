@@ -1,26 +1,26 @@
 {
   "class_name": "StrahlerAnalyzer",
   "package": "sc.fiji.snt.analysis",
-  "extracted_at": "2026-09-27T23:01:10.928852",
-  "extractor_version": "1.0.0",
-  "enhancement_timestamp": "2026-09-27T23:02:20.420641",
+  "extracted_at": "2026-11-02T00:24:01.743219",
+  "extractor_version": "2.0.0",
+  "enhancement_timestamp": "2026-11-02T07:57:40.368961",
   "enhancement_version": "1.0.0",
   "methods": [
     {
-      "name": "static classify",
+      "name": "classify",
       "overloads": [
         {
-          "signature": "static classify(DirectedWeightedGraph, boolean) -> void",
+          "signature": "classify(DirectedWeightedGraph, boolean) -> void",
           "params": [
             {
-              "name": "arg0",
+              "name": "graph",
               "type": "DirectedWeightedGraph",
               "java_type": "DirectedWeightedGraph",
               "description": "",
               "javadoc_name": "param_0"
             },
             {
-              "name": "arg1",
+              "name": "reverseOrder",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -33,9 +33,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static classify",
+      "documentation": "Java method: classify",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -69,7 +69,7 @@
           "params": [],
           "return_type": "float",
           "java_return_type": "double",
-          "return_description": "the average bifurcation ratio of the parsed tree. In a complete binary tree, the bifurcation ratio is 2.",
+          "return_description": "the average `bifurcation ratio` of the parsed tree. In a complete binary tree, the bifurcation ratio is 2.",
           "throws": {}
         }
       ],
@@ -108,14 +108,14 @@
           "signature": "getAvgExtensionAngle(boolean, int) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean",
               "description": "- the Strahler order",
               "javadoc_name": "order"
             },
             {
-              "name": "arg1",
+              "name": "order",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -145,7 +145,7 @@
           "signature": "getAvgExtensionAngles(boolean) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -250,10 +250,18 @@
       "name": "getBranches",
       "overloads": [
         {
+          "signature": "getBranches() -> Map",
+          "params": [],
+          "return_type": "Dict[str, Any]",
+          "java_return_type": "Map",
+          "return_description": "",
+          "throws": {}
+        },
+        {
           "signature": "getBranches(int) -> List",
           "params": [
             {
-              "name": "arg0",
+              "name": "order",
               "type": "int",
               "java_type": "int",
               "description": "",
@@ -266,14 +274,6 @@
           "throws": {
             "IllegalArgumentException": ""
           }
-        },
-        {
-          "signature": "getBranches() -> Map",
-          "params": [],
-          "return_type": "Dict[str, Any]",
-          "java_return_type": "Map",
-          "return_description": "",
-          "throws": {}
         }
       ],
       "documentation": "Java method: getBranches",
@@ -291,7 +291,7 @@
           "signature": "getExtensionAngles(boolean) -> Map",
           "params": [
             {
-              "name": "arg0",
+              "name": "relative",
               "type": "bool",
               "java_type": "boolean",
               "description": "",
@@ -340,7 +340,7 @@
           "params": [],
           "return_type": "int",
           "java_return_type": "int",
-          "return_description": "the highest Horton-Strahler number associated with a branch in the parsed tree. Either getRootNumber() or getRootNumber()-1.",
+          "return_description": "the highest Horton-Strahler number associated with a branch in the parsed tree. Either `getRootNumber()` or `getRootNumber()-1`.",
           "throws": {}
         }
       ],
@@ -379,7 +379,7 @@
           "signature": "getRelativeExtensionAngle(Path) -> double",
           "params": [
             {
-              "name": "arg0",
+              "name": "branch",
               "type": "Path",
               "java_type": "Path",
               "description": "- the branch path to analyze",
@@ -441,15 +441,15 @@
       "examples": []
     },
     {
-      "name": "static main",
+      "name": "main",
       "overloads": [
         {
-          "signature": "static main(String;) -> void",
+          "signature": "main(String[]) -> void",
           "params": [
             {
-              "name": "arg0",
-              "type": "Any",
-              "java_type": "String;",
+              "name": "args",
+              "type": "List[str]",
+              "java_type": "String[]",
               "description": "",
               "javadoc_name": "param_0"
             }
@@ -460,9 +460,9 @@
           "throws": {}
         }
       ],
-      "documentation": "Java method: static main",
+      "documentation": "Java method: main",
       "javadoc_description": "",
-      "category": "Static Methods",
+      "category": "Utilities",
       "deprecated": false,
       "since_version": null,
       "see_also": [],
@@ -478,7 +478,7 @@
           "signature": "StrahlerAnalyzer(Tree)",
           "params": [
             {
-              "name": "arg0",
+              "name": "tree",
               "type": "Tree",
               "java_type": "Tree"
             }
@@ -487,10 +487,10 @@
           "java_return_type": "void"
         }
       ],
-      "documentation": "Java constructors for StrahlerAnalyzer"
+      "documentation": "Constructors of StrahlerAnalyzer"
     }
   ],
-  "javadoc_description": "Class to perform Horton-Strahler analysis on a Tree.",
+  "javadoc_description": "Class to perform Horton-Strahler analysis on a `Tree`.",
   "inheritance": {
     "extends": [
       "Object"
