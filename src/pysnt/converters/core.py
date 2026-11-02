@@ -22,12 +22,12 @@ except ImportError:
     cairosvg = None
 
 try:
-    import fitz  # noqa
+    import pymupdf  # noqa
 
-    HAS_FITZ = True
+    HAS_PYMUPDF = True
 except ImportError:
-    HAS_FITZ = False
-    fitz = None
+    HAS_PYMUPDF = False
+    pymupdf = None
 
 try:
     import pandas as pd  # noqa
@@ -101,7 +101,7 @@ ERROR_MISSING_PANDAS = (
 ERROR_MISSING_CAIROSVG = (
     "cairosvg is required for SVG conversion. Install with: pip install cairosvg"
 )
-ERROR_MISSING_FITZ = (
+ERROR_MISSING_PYMUPDF = (
     "PyMuPDF is required for PDF conversion. Install with: pip install PyMuPDF"
 )
 

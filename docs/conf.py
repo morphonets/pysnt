@@ -71,7 +71,7 @@ class MockModule(MagicMock):
 
 MOCK_MODULES = [
     'cairosvg',
-    'fitz',
+    'pymupdf',
     'install_jdk',
     'jdk',
     'jpype',

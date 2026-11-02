@@ -27,11 +27,11 @@ from .core import (
     DEFAULT_MAX_PANELS,
     DEFAULT_PANEL_LAYOUT,
     HAS_CAIROSVG,
-    HAS_FITZ,
+    HAS_PYMUPDF,
     cairosvg,
-    fitz,
+    pymupdf,
     ERROR_MISSING_CAIROSVG,
-    ERROR_MISSING_FITZ,
+    ERROR_MISSING_PYMUPDF,
     SNTObject
 )
 
@@ -551,7 +551,7 @@ def _svg_to_matplotlib(svg_file, dpi=None, figsize=None, background='white'):
 
 def _pdf_to_matplotlib(pdf_file, page=0, dpi=None, figsize=None):
     """
-    Convert a PDF file (or specific page) to a matplotlib Figure object using PyMuPDF (fitz).
+    Convert a PDF file (or specific page) to a matplotlib Figure object using PyMuPDF (pymupdf).
 
     Args:
         pdf_file: Path to the PDF file or file-like object
@@ -572,15 +572,15 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=None, figsize=None):
     """
     from ..config import get_option
     
-    if not HAS_FITZ:
-        raise ImportError(ERROR_MISSING_FITZ)
+    if not HAS_PYMUPDF:
+        raise ImportError(ERROR_MISSING_PYMUPDF)
 
     # Use config default if DPI not specified
     if dpi is None:
         dpi = get_option('display.chart_dpi')
 
     # Open PDF
-    doc = fitz.open(pdf_file)
+    doc = pymupdf.open(pdf_file)
 
     # Check if page exists
     if page >= len(doc):
@@ -593,7 +593,7 @@ def _pdf_to_matplotlib(pdf_file, page=0, dpi=None, figsize=None):
     # Calculate zoom factor for desired DPI
     # PyMuPDF default is 72 DPI
     zoom = dpi / 72.0
-    mat = fitz.Matrix(zoom, zoom)
+    mat = pymupdf.Matrix(zoom, zoom)
 
     # Render page to pixmap (image)
     # Try different rendering flags for better text handling

@@ -247,9 +247,11 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # pyimagej adds this option itself, but only if it can parse the requested Java version,
         # which fails for a constraint such as "21+" ("Failed to guess the Java version.")
         # and then surfaces as "Invalid service: net.imagej.legacy.LegacyService"
-        _add_opens = "--add-opens=java.base/java.lang=ALL-UNNAMED"
-        if _add_opens not in scyjava.config.get_options():
-            scyjava.config.add_option(_add_opens)
+        # JPype loads a native library: Java 24+ warns about it unless native access is enabled
+        for _opt in ("--add-opens=java.base/java.lang=ALL-UNNAMED",
+                     "--enable-native-access=ALL-UNNAMED"):
+            if _opt not in scyjava.config.get_options():
+                scyjava.config.add_option(_opt)
 
         # Decide where SNT comes from: a Fiji install, or Maven
         fiji_path = _select_source(fiji_path, source, interactive)
