@@ -64,9 +64,11 @@
 
 
 ## Limitations
-- **Bleeding Edge**: Requires building SNT from the main branch (stable release integration planned for SNT v5.0)
+- **Pre-release**: PySNT 5.0 is under active development and targets SNT 5.0.x: Expect bugs and API changes until
+  the first stable release
 
-- **Early Stage Software**: Limited test coverage and community validation: Expect potential bugs and breaking API changes
+- **Early Stage Software**: Limited community validation. Please [report](https://github.com/morphonets/pysnt/issues)
+  anything unexpected
 
 ## Getting Started for Users
 See [Install instructions](https://pysnt.readthedocs.io/en/latest/install.html).
@@ -80,88 +82,49 @@ See [Install instructions](https://pysnt.readthedocs.io/en/latest/install.html).
 git clone https://github.com/morphonets/pysnt.git
 cd pysnt
 
-# 2. Set up conda/mamba (if not already configured)
-mamba config append channels conda-forge
-mamba config set channel_priority strict
+# 2. Create and activate a virtual environment (Python 3.11+, JDK 21 available)
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 
-# 3. Create and activate the development environment
-mamba env create -f environment-dev.yml
-mamba activate pysnt-dev
+# 3. Install PySNT in development mode, with all optional and dev dependencies
+pip install -e ".[dev]"
 
-# 4. Install PySNT in development mode
-pip install -e .[dev]
+# 4. Verify the setup
+python -c "import pysnt; print(pysnt.version())"
+python -m pytest tests -q
 
-# 5. Verify the setup
-python -c "import pysnt; print('PySNT imported successfully!')"
-
-# 6. Have a look at ./dev/README.md for common workflows
+# 5. Have a look at ./dev/README.md for common workflows
 ```
-
-### IDE Configuration
-
-#### PyCharm
-1. Open this folder as a project in PyCharm
-2. Go to File → Settings → Project → Python Interpreter
-3. Select the 'pysnt' environment
-
-#### VS Code
-1. Open this folder in VS Code
-2. Install recommended extensions when prompted
-3. Select the 'pysnt' Python interpreter when prompted
-
-#### Spyder
-1. Make sure Spyder is installed in the 'pysnt' environment:
-   ```bash
-    mamba activate pysnt
-    mamba install spyder
-    mamba install spyder-notebook -c conda-forge # Optional: support for tutorials notebooks
-    ```
-2. Launch Spyder from the activated environment
-3. Open this folder as a project: Projects → New Project... → Existing Directory
+Prefer conda/mamba? `mamba env create -f environment-dev.yml && mamba activate pysnt-dev && pip install -e .[dev]`
+does the same. Select the resulting interpreter in your IDE (see the
+[install docs](https://pysnt.readthedocs.io/en/latest/install.html#choosing-an-interpreter-ides-and-notebooks)).
 
 ### Project Structure
 
 ```
 pysnt/
-├── src/pysnt/           # main package source
-├── tests/               # test suite
-├── dev/scripts/         # development scripts
-├── docs/                # documentation source
-├── dev/                 # development utilities and templates
-├── pyproject.toml       # packaging metadata and dependency groups
-├── requirements.txt     # pip core runtime dependencies
-├── requirements-gui.txt # pip optional runtime extras (display/gui/java/zarr)
-├── requirements-dev.txt # pip development stack (extends requirements-gui.txt)
-├── environment-min.yml  # minimal conda-compatible runtime environment
-├── environment.yml      # full-featured conda-compatible runtime environment
-└── environment-dev.yml  # full-featured conda-compatible development environment
+├── src/pysnt/           # main package source (one subpackage per curated SNT package)
+├── tests/               # test suite (JVM-dependent tests skip themselves if SNT cannot be resolved)
+├── docs/                # documentation source (Sphinx/MyST) and tutorial notebooks
+├── dev/                 # development utilities and templates (see dev/README.md)
+├── dev/scripts/         # SNT sync, stub generation, and documentation scripts
+├── .github/workflows/   # CI: tests, lowest-dependency tests, docs build
+├── pyproject.toml       # packaging metadata, dependency floors, and extras
+├── requirements*.txt    # pip equivalents (core, optional features, development)
+└── environment*.yml     # conda-compatible equivalents (min, full, development)
 ```
 
-### Dependency Files and Scope
-- `pyproject.toml`: canonical dependency definitions for packaging and extras
-- `requirements.txt`: core pip runtime set only
-- `requirements-gui.txt`: optional runtime features layered on top of core (`display`, `gui`, `java`, `zarr`)
-- `requirements-dev.txt`: development/test/docs tools layered on top of `requirements-gui.txt`
-- `environment-min.yml`: smallest conda-compatible runtime setup
-- `environment.yml`: full runtime conda-compatible setup with optional user-facing features
-- `environment-dev.yml`: full runtime plus development/test/docs tools
-
 ### Dependencies
-#### Core Dependencies (Required)
-- install-jdk - Java management
-- matplotlib - Plotting and figure creation
-- numpy - Array operations
-- pyimagej - ImageJ integration
-- scyjava - Core Java integration
-- xarray - Dataset operations
-- pyobjc-core; sys_platform == 'darwin' - macOS support
+`pyproject.toml` contains all details: core dependencies are listed under `dependencies`, and optional
+features under extras (`display`, `gui`, `java`, `zarr`, `info`, `all`, `dev`, `docs`). The `requirements*.txt` and
+`environment*.yml` files mirror it; The floors are verified by the "lowest declared dependencies" CI job.
 
-#### Optional Dependencies (Display/Conversion Features)
-- cairosvg - SNTChart SVG to matplotlib conversion
-- PyMuPDF  - SNTChart PDF to matplotlib conversion
-- pandas - DataFrame operations and SNTTable conversion
-- networkx - SNTGraph to NetworkX graph conversion
-- pandasgui - Interactive DataFrame display
+### Versioning and SNT
+PySNT's `major.minor` version matches the SNT release it targets (PySNT 5.1.x targets SNT 5.1.x); the patch number is
+independent, so PySNT can ship fixes without a new SNT release. By default, `pysnt.initialize()` downloads
+SNT from Maven at `DEFAULT_SNT_VERSION` (see `src/pysnt/_endpoints.py`). Users can override it with
+`initialize(snt_version=...)` or `SNT_VERSION`, or use a local Fiji instead. PySNT warns when the loaded SNT differs in
+`major.minor`. See [dev/README.md](dev/README.md#keeping-pysnt-in-sync-with-snt) for the update workflow.
 
 ### Need Help?
 

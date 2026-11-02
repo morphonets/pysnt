@@ -216,7 +216,6 @@ def _apply_enhanced_docstrings(enhanced_docstrings):
             'pysnt.annotation',
             'pysnt.converters',
             'pysnt.display',
-            'pysnt.gui',
             'pysnt.io',
             'pysnt.tracing',
             'pysnt.util',
