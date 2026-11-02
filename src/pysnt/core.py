@@ -18,6 +18,19 @@ except ImportError as e:
 
 logger = logging.getLogger(__name__)
 
+
+class _DropKnownPyImageJNoise(logging.Filter):
+    """Drop one known-harmless PyImageJ warning, leaving everything else untouched.
+
+    PyImageJ cannot parse PySNT's open-ended Java constraint ("21+"), logs
+    "Failed to guess the Java version." and, as a result, would not add its own
+    --add-opens option (PySNT adds it itself, see initialize())
+    """
+    _MESSAGES = ("Failed to guess the Java version.",)
+
+    def filter(self, record):
+        return record.getMessage() not in self._MESSAGES
+
 # Global state
 _ij = None
 _jvm_started = False
@@ -283,7 +296,13 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         
         # Initialize PyImageJ (Fiji install or Maven endpoints)
         logger.info(f"Initializing ImageJ from: {ij_source}")
-        _ij = imagej.init(ij_source, mode=mode)
+        _noise = _DropKnownPyImageJNoise()
+        _ij_logger = logging.getLogger("imagej")
+        _ij_logger.addFilter(_noise)
+        try:
+            _ij = imagej.init(ij_source, mode=mode)
+        finally:
+            _ij_logger.removeFilter(_noise)
         
         # Store the mode for later retrieval
         _mode = mode
