@@ -306,6 +306,33 @@ def _get_java_class_name(class_name: str) -> str:
     return class_name.replace("_", "$")
 
 
+def _describe_java_error(error) -> str:
+    """Return an error message including the Java cause chain (root cause last)."""
+    parts = []
+    seen = 0
+    last = None
+    while error is not None and seen < 8:
+        last = error
+        parts.append(str(error).strip() or type(error).__name__)
+        getter = getattr(error, "getCause", None)
+        try:
+            error = getter() if getter is not None else None
+        except Exception:
+            error = None
+        seen += 1
+    # Append the top frames of the root cause: usually pinpoints the failing line
+    try:
+        root = last
+        frames = [str(f) for f in root.getStackTrace()[:6]]
+        if frames:
+            parts.append("at " + " | ".join(frames))
+    except Exception:
+        pass
+    # Drop consecutive duplicates
+    unique = [p for i, p in enumerate(parts) if i == 0 or p != parts[i - 1]]
+    return " <- caused by: ".join(unique)
+
+
 def setup_module_classes(
     package_name: str,
     curated_classes: List[str],
@@ -386,6 +413,7 @@ def setup_module_classes(
             # Validate and register curated classes
             for class_name in curated_classes:
                 java_class = None
+                last_error = None
                 python_name = _normalize_class_name_for_python(class_name)
                 java_name = _get_java_class_name(class_name)
 
@@ -398,7 +426,13 @@ def setup_module_classes(
                             f"Validated curated class {python_name} (Java: {java_name}) from {pkg}"
                         )
                         break
-                    except Exception:
+                    except Exception as e:
+                        # Keep the first failure that is not a plain "class not found"
+                        # (e.g., a failed static initializer or a missing dependency)
+                        if last_error is None or (
+                            "ClassNotFound" in repr(last_error) and "ClassNotFound" not in repr(e)
+                        ):
+                            last_error = e
                         continue
 
                 if java_class is not None:
@@ -406,8 +440,9 @@ def setup_module_classes(
                     # Note: We don't replace the dynamic placeholder in globals_dict
                     # The dynamic placeholder will handle redirection automatically
                 else:
+                    reason = f": {_describe_java_error(last_error)}" if last_error is not None else ""
                     logger.warning(
-                        f"Failed to validate curated class {python_name} (Java: {java_name})"
+                        f"Failed to validate curated class {python_name} (Java: {java_name}){reason}"
                     )
                     # The dynamic placeholder will continue to show initialization errors
 
