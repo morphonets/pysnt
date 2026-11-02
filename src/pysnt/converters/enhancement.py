@@ -14,7 +14,6 @@ from typing import Any
 
 from .chart_converters import _is_snt_chart
 from .core import logger
-from .tree_converters import _is_snt_tree
 
 
 def _should_enhance_object(obj) -> bool:
@@ -139,46 +138,6 @@ class EnhancedJavaObject:
                 return None
 
 
-def _enhanced_show_method(original_obj):
-    """
-    Create an enhanced show() method that falls back to display() on failure.
-    
-    Parameters
-    ----------
-    original_obj : Any
-        The original Java object
-        
-    Returns
-    -------
-    callable
-        Enhanced show method with fallback logic
-    """
-
-    def enhanced_show(*args, **kwargs):
-        """
-        Enhanced show method with fallback to display().
-        
-        This method first tries the original Java show() method, and if that fails
-        (e.g., due to HeadlessException), it falls back to display() which should
-        handle SNT-specific conversions.
-        """
-        try:
-            # Try to call the original Java show method
-            # Get the original show method from the Java object
-            original_show = getattr(original_obj.__class__, 'show', None)
-            if original_show:
-                return original_show(original_obj, *args, **kwargs)
-            else:
-                # Fallback if no original show method
-                raise AttributeError("No original show method found")
-
-        except Exception as e:
-            logger.info(f"Original show() failed ({e}), falling back to auto-conversion")
-            # Fallback to auto-conversion
-            from .display import _display_with_auto_conversion
-            return _display_with_auto_conversion(original_obj, **kwargs)
-
-    return enhanced_show
 
 
 def enhance_java_object(obj: Any) -> Any:

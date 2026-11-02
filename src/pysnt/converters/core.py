@@ -66,16 +66,6 @@ def _get_pandasgui_show():
     return _pandasgui_show
 
 
-def has_pandasgui():
-    """
-    Check if pandasgui is available without triggering import.
-    
-    Returns
-    -------
-    bool
-        True if pandasgui is available, False otherwise
-    """
-    return _get_pandasgui_show() is not None
 
 try:
     import networkx as nx  # noqa
@@ -232,28 +222,6 @@ def _create_error_result(
     )
 
 
-def _extract_frame_parameter(kwargs: Dict[str, Any]) -> int:
-    """
-    Extract frame parameter from kwargs with standard logic.
-
-    Parameters
-    ----------
-    kwargs : dict
-        Keyword arguments that may contain frame parameters
-
-    Returns
-    -------
-    int
-        Frame number (default: 1)
-    """
-    kwargs_lower = {k.lower(): v for k, v in kwargs.items()}
-    for key in FRAME_PARAM_NAMES:
-        if key in kwargs_lower:
-            try:
-                return int(kwargs_lower[key])
-            except (ValueError, TypeError):
-                continue
-    return 1
 
 
 def _filter_matplotlib_kwargs(
@@ -432,39 +400,6 @@ def _create_standard_figure(
         return fig, ax, im
 
 
-@contextmanager
-def _temp_file(format_type, temp_dir=None, cleanup=True):
-    """
-    Context manager for temporary files with guaranteed cleanup.
-
-    Parameters
-    ----------
-    format_type : str
-        File format extension (e.g., 'svg', 'pdf', 'png')
-    temp_dir : str, optional
-        Directory for temporary files
-    cleanup : bool, default True
-        Whether to clean up the file on exit
-
-    Yields
-    ------
-    str
-        Path to the temporary file
-    """
-    with tempfile.NamedTemporaryFile(
-        suffix=f".{format_type}", delete=False, dir=temp_dir
-    ) as temp_file:
-        temp_path = temp_file.name
-
-    try:
-        yield temp_path
-    finally:
-        if cleanup and os.path.exists(temp_path):
-            try:
-                os.unlink(temp_path)
-                logger.debug(f"Cleaned up temporary file: {temp_path}")
-            except OSError as e:
-                logger.debug(f"Could not clean up temporary file {temp_path}: {e}")
 
 
 @contextmanager
