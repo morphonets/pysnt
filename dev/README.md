@@ -274,3 +274,10 @@ def handle_constructor_exceptions(java_class, class_name, *args, **kwargs):
     # No special handling needed
     return None
 ```
+
+## Tutorial notebooks: environment cell
+Every notebook in `docs/notebooks/` ends with a code cell (tagged `hide-input`) that prints the run date and the
+PySNT, SNT, Python and Java versions of the session that produced the stored outputs. Docs are built without
+executing notebooks (`nb_execution_mode = "off"`), so this is the notebook's "last tested" certificate. Before a
+release: use a fresh environment (see the install docs), restart the kernel, run all cells, save, and commit. The
+cell source lives in the existing notebooks: copy it from `01_single_cell_analysis.ipynb` when adding a new one.

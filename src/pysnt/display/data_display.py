@@ -731,28 +731,31 @@ def _display_dataset_as_heatmap_normalized(dataset: Any, **kwargs) -> bool:
         # Normalize each column to 0-1 range
         # Handle columns that are all NaN or have no variation
         df_normalized = df_numeric.copy()
+        all_nan_cols, constant_cols = [], []
         for col in df_numeric.columns:
             col_data = df_numeric[col]
-            # Skip normalization if column is all NaN or has no variation
-            if col_data.isna().all():
-                logger.warning(f"Column '{col}' is all NaN, skipping normalization")
-                continue
-            
             col_min = col_data.min()
             col_max = col_data.max()
-            
-            if pd.isna(col_min) or pd.isna(col_max):
-                logger.warning(f"Column '{col}' has NaN min/max values, skipping normalization")
-                continue
-                
-            if col_min == col_max:
-                # No variation in column - set to 0.5 (middle of 0-1 range)
-                logger.warning(f"Column '{col}' has no variation (min=max={col_min}), setting to 0.5")
+
+            if col_data.isna().all() or pd.isna(col_min) or pd.isna(col_max):
+                all_nan_cols.append(col)
+            elif col_min == col_max:
+                # No variation: set to middle of 0-1 range
+                constant_cols.append(col)
                 df_normalized[col] = 0.5
             else:
                 # Standard min-max normalization
                 df_normalized[col] = (col_data - col_min) / (col_max - col_min)
-        
+
+        # One summary instead of one message per column
+        if all_nan_cols or constant_cols:
+            logger.warning(
+                f"Normalized heatmap: {len(constant_cols)} constant column(s) set to 0.5 "
+                f"and {len(all_nan_cols)} all-NaN column(s) left as NaN "
+                f"(of {df_numeric.shape[1]}). Enable debug logging to list them")
+            logger.debug(f"Constant columns: {constant_cols}")
+            logger.debug(f"All-NaN columns: {all_nan_cols}")
+
         # Get display parameters
         config = _extract_display_config(**kwargs)
         figsize = config.get('figsize', get_option('plotting.figure_size'))
