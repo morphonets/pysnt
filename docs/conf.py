@@ -125,6 +125,7 @@ nb_execution_allow_errors = True
 nb_execution_excludepatterns = ["*"]  # Exclude all notebooks from execution
 
 # MyST configuration
+myst_heading_anchors = 3  # allow #heading-slug links within pages
 myst_enable_extensions = [
     "colon_fence",
     "deflist",

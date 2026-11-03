@@ -122,7 +122,7 @@ Overlap of axonal and dendritic arbors with NetworkX, trimesh, and NumPy.
 
 Cluster neurons using persistent homology and persistence landscapes.
 
-{bdg-warning}`Intermediate` {bdg-secondary-line}`30 min` {bdg-primary}`Classification` {bdg-info-line}`scikit-learn`
+{bdg-warning}`Intermediate` {bdg-secondary-line}`40 min` {bdg-primary}`Classification` {bdg-info-line}`scikit-learn`
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-crosshairs"></i> T07: Curvature Optimization with Automated Path Tracing
