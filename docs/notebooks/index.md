@@ -3,12 +3,12 @@
 ### Running Notebooks Locally
 1. **Install PySNT** following the [installation guide](../install.md)
 2. **Download notebooks**: Find them in the `./docs/notebooks/` directory of PySNT's source code, or use the download button (↓) at the top of each notebook page
-3. **Open in Jupyter Lab** or your preferred IDE within your pysnt environment
+3. **Open in Jupyter Lab** (`jupyter lab`) or your preferred IDE, within your pysnt environment
 
 ```{note}
-If you haven't installed PySNT's GUI dependencies, you'll need to install `ipykernel` first:
-```bash
-pip install ipykernel # or mamba install -n pysnt ipykernel
+Jupyter Lab is included in the pixi setup of the [installation guide](../install.md). Otherwise, run
+`python -m pip install jupyterlab` in your environment. For other IDEs and kernels, see
+[Choosing an interpreter](../install.md#choosing-an-interpreter-ides-and-notebooks).
 ```
 
 ```{seealso}

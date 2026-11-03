@@ -11,22 +11,30 @@ limitations
 api
 ```
 
-## Installation Requirements
+## Requirements
 
 PySNT needs Python 3.11+ and Java 21+ (a JDK). SNT itself is downloaded automatically the first time you call
-`pysnt.initialize()` (see [Attaching to SNT](#attaching-to-snt)), so no Fiji installation is required. Any
-Python environment manager works; we document pip and pixi.
+`pysnt.initialize()`, so no Fiji installation is required. Any Python environment manager works; we document pixi
+and pip.
 
 ```{tip}
-No Java? Leave `ensure_java=True` (the default) in `pysnt.initialize()`: if no suitable JDK is found, PySNT offers to download one.
+**New to Python?** Open a terminal (*Terminal* on macOS/Linux, *PowerShell* on Windows) and follow the *pixi* tab
+below: it installs Python, Java and native libraries for you in one go. To get pixi, run
+`curl -fsSL https://pixi.sh/install.sh | sh` (macOS/Linux) or
+`powershell -ExecutionPolicy ByPass -c "irm -useb https://pixi.sh/install.ps1 | iex"` (Windows), then reopen the
+terminal. See [pixi.sh](https://pixi.sh) for details.
 ```
 
-## Setting Up
+## Install
 
-Install into a *fresh, dedicated* environment: PySNT pulls in a large Java/Python stack and mixing it with other projects invites version conflicts.
+Install into a *fresh, dedicated* environment: PySNT pulls in a large Java/Python stack and mixing it with other
+projects invites version conflicts.
 
-```{tip}
-Starting afresh and with no preference for a package manager? We recommend **pixi**: it is fast, installs Python, a JDK, and native libraries (such as cairo) in a single step, and keeps each project's environment isolated and reproducible. [Install pixi](https://pixi.sh), then follow the *pixi* tab below.
+```{warning}
+PySNT will be available on PyPI. Until then, install it straight from GitHub: in the
+commands below, replace `pysnt[all]` with `pysnt[all] @ git+https://github.com/morphonets/pysnt`. This requires
+[git](https://git-scm.com/downloads) to be installed. To get a specific version, append `@<tag or branch>` to the
+URL (e.g., `.../pysnt@dev`).
 ```
 
 ::::{tab-set}
@@ -35,63 +43,87 @@ Starting afresh and with no preference for a package manager? We recommend **pix
 [pixi](https://pixi.sh) installs Python, a JDK and Maven from conda-forge and records the environment in a lock file.
 
 ```bash
-pixi init pysnt-project && cd pysnt-project
-pixi add python=3.12 openjdk=21 maven pip cairo
-pixi run pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
+pixi init pysnt-project
+cd pysnt-project
+pixi add python=3.12 openjdk=21 maven pip cairo jupyterlab
+pixi run pip install "pysnt[all]" # pixi run pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
 pixi shell
 ```
 
-Already use conda or mamba? Create an environment with the same `python`, `openjdk=21`, `maven` and `cairo` packages from
-conda-forge, then `pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"` inside it.
+Already use conda or mamba? Create an environment with the same `python`, `openjdk=21`, `maven` and `cairo`
+packages from conda-forge, then run `pip install "pysnt[all]"` inside it.
 :::
 
 :::{tab-item} pip
-Use a dedicated virtual environment (Python 3.11+):
+Use a dedicated virtual environment (Python 3.11+, JDK 21+ installed or let PySNT download one, see below):
 
 ```bash
 python -m venv pysnt-env
 source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
-pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
+python -m pip install "pysnt[all]"
 ```
 
-`pysnt[all]` includes all optional features. For the core install, drop the extras: `pip install "pysnt @ git+https://github.com/morphonets/pysnt"`. Or pick extras
-individually: `display`, `gui`, `java`, `zarr`, `info`. [uv](https://docs.astral.sh/uv/) users can run the same
-commands with `uv venv` and `uv pip install`.
+On macOS/Linux, use `python3` if `python` is not found. `pysnt[all]` includes all optional features. For the basic,
+core install, use `pysnt` instead. Or pick extras individually: `display`, `gui`, `java`, `zarr`, `info`.
+[uv](https://docs.astral.sh/uv/) users can run the same commands with `uv venv` and `uv pip install`.
 
 ```{note}
-The optional `display` extra (SVG chart conversion) needs the native *cairo* library, which pip cannot install: use `brew install cairo` (macOS) or `apt install libcairo2` (Linux). Without it PySNT still works, but SVG-based chart conversion is unavailable.
+No JDK? Leave `ensure_java=True` (the default) in `pysnt.initialize()`: if no suitable JDK is found, PySNT offers
+to download one.
+```
+
+```{note}
+The optional `display` extra (SVG chart conversion) needs the native *cairo* library, which pip cannot install: use
+`brew install cairo` (macOS) or `apt install libcairo2` (Linux). Without it PySNT still works, but SVG-based chart
+conversion is unavailable.
 ```
 :::
 
 ::::
 
-```{note}
-PySNT is installed directly from GitHub. Add `@ <tag or branch>` after the repository URL (e.g., `.../pysnt@dev`) to install a specific version.
-```
-
-Then check that PySNT is installed:
-
-```bash
-python -c "import pysnt; print(f'Using PySNT version: {pysnt.version()}')"
-```
-
 To contribute to PySNT (editable install from a clone), see
 [Install Instructions for Developers](https://github.com/morphonets/pysnt?tab=readme-ov-file#getting-started-for-developers).
-The `environment*.yml` files in the repository are meant for that use.
 
-### Choosing an interpreter (IDEs and notebooks)
+## Try it
+
+With the environment active, run the following in Python (or paste it in a notebook cell):
+
+```python
+import pysnt
+pysnt.initialize()                 # First run downloads SNT: this may take several minutes
+print(f"PySNT version: {pysnt.version()}")
+
+from pysnt import SNTService
+tree = SNTService().demoTree("fractal")   # a toy neuron
+pysnt.display(tree)                # Displays the reconstruction in a matplotlib figure
+```
+
+If a neuron is displayed, you are all set. Because SNT runs headless, `tree.show()` prints an ASCII rendering in the
+console instead. Run `pysnt.info()` for a report of your Python, Java and SNT setup.
+
+### Choosing an Interpreter (IDEs and Notebooks)
 
 Whatever you use, the one thing to get right is that it runs the Python of the environment above (and that
 `JAVA_HOME`, if set, points to a JDK 21+).
 
-- **Jupyter**: `pip install ipykernel` in the environment, then `python -m ipykernel install --user --name=pysnt`
-  and select the `pysnt` kernel.
+**Jupyter** is the simplest way to follow the [tutorials](notebooks/index.md). With the environment active:
+
+```bash
+python -m pip install jupyterlab   # not needed with the pixi setup above
+jupyter lab
+```
+
+::::{dropdown} Other IDEs, or an Existing Jupyter Installation
+
+- **Existing Jupyter**: `python -m pip install ipykernel` in the environment, then
+  `python -m ipykernel install --user --name=pysnt` and select the `pysnt` kernel.
 - **VS Code**: install the Python and Jupyter extensions, press `Ctrl/Cmd+Shift+P`, run *Python: Select
   Interpreter* and pick the environment (for notebooks, use the kernel picker at the top right).
 - **PyCharm**: *Settings > Project > Python Interpreter > Add Interpreter > Existing*, and select the
   environment's `python`.
 - **Spyder**: install `spyder-kernels` in the environment, then in *Preferences > Python interpreter* choose
   *Use the following interpreter* and select the environment's `python`.
+::::
 
 ```{note}
 The JVM can only be started once per Python process. If you change `initialize()` settings (heap size, source,
@@ -100,19 +132,13 @@ version), restart the kernel/console. In Spyder and Jupyter this means restartin
 
 ### Attaching to SNT
 
-`pysnt.initialize()` needs SNT in the JVM. By default it is **downloaded from [Maven](https://maven.scijava.org/)** the first time
-and cached for later runs, so no Fiji installation is required:
+By default, `pysnt.initialize()` downloads SNT from [Maven](https://maven.scijava.org/) the first time and caches
+it for later runs. `pysnt.snt_version()` returns the version in use.
 
-```python
-import pysnt
-pysnt.initialize()
-```
+::::{dropdown} Advanced: using a local Fiji, or a specific SNT version
 
-The first start may take several minutes while dependencies are resolved. Java 21 is required
-(`JAVA_HOME` must point to it, or let PySNT set it up with `ensure_java=True`).
-
-To use a local Fiji instead (e.g., to access your plugins or update sites), provide its path. PySNT picks
-the first source that applies:
+To use a local Fiji instead (e.g., to access your plugins or update sites), provide its path. PySNT picks the
+first source that applies:
 
 1. `pysnt.initialize(fiji_path="/path/to/Fiji.app")`
 2. The `FIJI_PATH` environment variable
@@ -128,20 +154,7 @@ Related options of `initialize()`:
 | `snt_version="5.0.24"` | Maven only: SNT version to download (also settable with the `SNT_VERSION` environment variable) |
 | `extras=[...]` | Maven only: additional Maven endpoints; `[]` skips the defaults (BigVolumeViewer) |
 
-PySNT warns if the loaded SNT differs in major.minor from the version it was written for (e.g., an outdated
-Fiji): classes or methods may then be missing. `pysnt.snt_version()` returns the version in use.
-
-```{note}
-For a Fiji install, subscribe to the [NeuroAnatomy update site](https://imagej.net/SNT#install) and run the
-Updater so that SNT is current.
-```
-
-```{tip}
-Developing against a local snapshot of SNT (`mvn install`)? Clear the cached environment so that the new
-jar is used: `rm -rf ~/.jgo ~/.cache/jgo`
-```
-
-### Configuring a local Fiji
+The Fiji location can also be configured from the command line:
 
 ```console
 pysnt setup               # interactive setup
@@ -149,152 +162,41 @@ pysnt setup --auto-detect # search common locations and save the first valid one
 pysnt setup --status      # show the current configuration
 ```
 
-## Verify Installation
+PySNT warns if the loaded SNT differs in major.minor from the version it was written for (e.g., an outdated
+Fiji): classes or methods may then be missing. For a Fiji install, subscribe to the
+[NeuroAnatomy update site](https://imagej.net/SNT#install) and run the Updater so that SNT is current.
 
-To check version and system info:
-
-```python
-import pysnt
-pysnt.initialize()  # Initialize first
-
-print(f"PySNT version: {pysnt.version()}")
-print("System info:")
-pysnt.info()
-```
-
-This will output detailed system information:
-
-```console
-PySNT version: 0.0.1
-System info:
-PySNT Version Information
-===================================
-PySNT version: 0.0.1
-Author: SNT contributors
-
-Python Environment:
-Python version: 3.13.9
-Python executable: /Users/user/mamba/envs/pysnt-dev/bin/python
-Platform: macOS-26.0.1-arm64-arm-64bit-Mach-O
-Architecture: arm64
-
-📦 Core Dependencies:
-  ✅ scyjava      1.12.1       (SciJava Python bridge)
-  ✅ imagej       1.7.0        (PyImageJ)
-  ✅ numpy        2.3.3        (NumPy)
-  ✅ jdk          unknown      (install-jdk library (OpenJDK installer))
-
-☕ Java Environment:
-  ✅ Java version: 21 (OpenJDK)
-  📍 Java executable: /Users/user/mamba/envs/pysnt-dev/lib/jvm/bin/java
-  🏠 JAVA_HOME: /Users/user/mamba/envs/pysnt-dev/lib/jvm
-
-🔬 SNT/Fiji Environment:
-  ✅ PySNT initialized: Yes
-  ℹ️ ImageJ version: 2.17.0/1.54p
-  ℹ️ SNT version: 4.9.9-SNAPSHOT-04cbcaef56cfd037a0bd9a2d9a73050b86049d3b
-
-📁 Installation:
-  📍 PySNT location: /Users/user/code/pysnt/src/pysnt
-
-💻 System Information:
-  OS: Darwin 25.0.0
-  CPU: arm
-  Memory: 48 GB total, 21 GB available
-```
-
-### Test SNT Functionality
-
-Now you can test that SNT access is fully functional:
-
-```python
-import pysnt
-from pysnt import SNTService, Tree
-pysnt.initialize()
-snt_service = SNTService()  # Start SNT's SciJava service
-print("✓ SNTService created successfully")
-
-# Retrieve and display a demo neuron
-tree = snt_service.demoTree('fractal')  # retrieve a toy neuron
-print(f"✓ Demo tree loaded: {type(tree)}")
-
-tree.show() # Display the reconstruction
-```
-
-Because SNT is running headless, the reconstruction is displayed as ascii art in the console.
-We can also display it in a matplotlib figure:
-
-```python
-pysnt.display(tree)
-```
-
-## Next Steps
-
-See [PySNT Overview](./overview.md) to learn the basics of PySNT.
+Developing against a local snapshot of SNT (`mvn install`)? Clear the cached environment so that the new jar is
+used: `rm -rf ~/.jgo ~/.cache/jgo`
+::::
 
 ## Troubleshooting
 
-### Java Issues
+| Symptom | Fix |
+|---|---|
+| `initialize()` seems stuck on first run | It is downloading SNT and its dependencies (several minutes). Subsequent runs use the cache |
+| `ModuleNotFoundError: pysnt`, or other import errors | Your shell/IDE is not using the environment PySNT was installed into. Activate it, or see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks). Use `python -m pip` rather than bare `pip` |
+| `pip install` from GitHub fails with a `git` error | Install [git](https://git-scm.com/downloads), reopen the terminal and retry (only needed until PySNT is on PyPI) |
+| Java not found, or wrong version | Leave `ensure_java=True` so PySNT offers to download a JDK, or install JDK 21+ and point `JAVA_HOME` to it (see below) |
+| `java.lang.OutOfMemoryError` | Increase the heap: `pysnt.initialize(max_heap="8g")` |
+| Changed `initialize()` settings have no effect | The JVM starts only once per session: restart the kernel/console |
+| "Fiji not found" (only when a Fiji is requested explicitly) | Check the path passed to `fiji_path` or the `FIJI_PATH` environment variable. Omit both to use Maven instead |
+| SVG chart conversion unavailable | Install the native *cairo* library (see the pip tab above) |
 
-PySNT includes Java management capabilities:
-
-```python
-# Check Java installation status
-from pysnt.java_utils import print_java_status
-print_java_status()
-```
-
-This will show detailed Java information:
-
-```console
-☕ Java Installation Status
-==============================
-✅ Java available: openjdk version "21.0.8" 2025-07-15 LTS
-📍 Executable: /Users/user/mamba/envs/pysnt-dev/lib/jvm/bin/java
-🏠 JAVA_HOME: /Users/user/mamba/envs/pysnt-dev/lib/jvm
-🏢 Vendor: OpenJDK
-✅ Version check: 21 >= 21 (recommended)
-```
-
-### Manual Java Setup
+::::{dropdown} Checking and fixing Java from Python
 
 ```python
-# Ensure Java 21 or newer is available
-from pysnt.java_utils import ensure_java_available
-ensure_java_available(required_version=21)
+from pysnt.java_utils import print_java_status, ensure_java_available
+print_java_status()                           # Shows the Java in use (version, JAVA_HOME, vendor)
+ensure_java_available(required_version=21)    # Makes sure Java 21+ is available
 ```
 
-```python
-# Interactive Java setup wizard (experimental)
-from pysnt.java_utils import setup_java_environment
-setup_java_environment()
-```
+An interactive wizard is also available (experimental): `from pysnt.java_utils import setup_java_environment`,
+then `setup_java_environment()`.
+::::
 
-### Common Issues
-
-1. **"Fiji not found" error** (only when a Fiji is requested explicitly): check the path passed to `fiji_path`,
-   or set the `FIJI_PATH` environment variable. Omit both to use Maven instead.
-2. **Java version issues**: Ensure Java 21+ is installed and accessible
-3. **Memory issues**: Use memory configuration:
-   ```python
-   import pysnt
-   pysnt.initialize(max_heap="8g")  # 8GB heap
-   ```
-4. **Import errors**: Make sure your shell or IDE uses the environment PySNT was installed into (see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks))
-
-### Getting Help
-
-```python
-# Show version and system information
-pysnt.show_version()
-pysnt.info()
-
-# Check configuration
-pysnt.show_config_status()
-
-# List available classes to verify SNT is working
-pysnt.list_classes()
-```
+Other diagnostics: `pysnt.show_version()`, `pysnt.info()`, `pysnt.show_config_status()` and `pysnt.list_classes()`
+(lists the SNT classes available).
 
 ```{tip}
 Do [reach out](https://forum.image.sc/tag/snt) if you run into issues!
@@ -302,13 +204,7 @@ Do [reach out](https://forum.image.sc/tag/snt) if you run into issues!
 
 ## Next Steps
 
-Once PySNT is installed and working:
-
-1. **[Quickstart](quickstart.md)** - Learn essential workflows and concepts
-2. **[PySNT Overview](overview.md)** - Dive deeper into core functionality and patterns
-3. **[API Reference](api.md)** - Documentation of all functions and classes
-
-[snt]: https://imagej.net/SNT
-[api]: https://morphonets.github.io/SNT
-[pyimagej]: https://github.com/imagej/pyimagej
-[pyimagejdocs]: https://pyimagej.readthedocs.io/en/latest/
+1. **[Quickstart](quickstart.md)**: Learn essential workflows and concepts
+2. **[PySNT Overview](overview.md)**: Dive deeper into core functionality and patterns
+3. **[Tutorials](notebooks/index.md)**: Worked examples as Jupyter notebooks
+4. **[API Reference](api.md)**: Documentation of all functions and classes
