@@ -191,11 +191,7 @@ To cite the series, use the following format (replace the tutorial accordingly):
 > *Computational Neuroanatomy with PySNT* (T0X). In T. A. Ferreira (Ed.),
 > <https://pysnt.readthedocs.io/en/latest/notebooks/index.html>
 
-To cite SNT itself, please cite:
-
-> Arshadi, C., Günther, U., Eddison, M. et al. SNT: a unifying toolbox for
-> quantification of neuronal anatomy. *Nat Methods* **18**, 374-377 (2021).
-> [doi:10.1038/s41592-021-01105-7](https://doi.org/10.1038/s41592-021-01105-7)
+See [SNT citation](https://imagej.net/plugins/snt/faq#how-do-i-cite-snt) for details on how to properly cite SNT.
 
 ```{toctree}
 :maxdepth: 1
