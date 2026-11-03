@@ -127,7 +127,8 @@ jupyter lab
 
 ```{note}
 The JVM can only be started once per Python process. If you change `initialize()` settings (heap size, source,
-version), restart the kernel/console. In Spyder and Jupyter this means restarting the kernel.
+version), restart the kernel/console. In Spyder and Jupyter this means restarting the kernel. A second
+`initialize()` call that asks for a different source (Maven vs. Fiji) logs a warning and is otherwise ignored.
 ```
 
 ### Attaching to SNT
@@ -152,7 +153,7 @@ Related options of `initialize()`:
 | `source="maven"` (alias `"remote"`) | Ignore any configured Fiji and use Maven |
 | `source="fiji"` (alias `"local"`) | Require a local Fiji: if none is configured, common install locations are searched and, when `interactive=True`, you are asked for the path |
 | `snt_version="5.0.24"` | Maven only: SNT version to download (also settable with the `SNT_VERSION` environment variable) |
-| `extras=[...]` | Maven only: additional Maven endpoints; `[]` skips the defaults (BigVolumeViewer) |
+| `extras=[...]` | Maven only: additional Maven endpoints; `[]` skips the defaults (BigVolumeViewer). The JogAmp natives for your platform (needed by `Viewer3D`) are always added |
 
 The Fiji location can also be configured from the command line:
 

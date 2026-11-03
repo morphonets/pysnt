@@ -3,7 +3,7 @@
 import pytest
 
 # Module-level state in pysnt.core mutated by initialize() and by tests that mock it
-_CORE_STATE = ("_ij", "_jvm_started", "_mode")
+_CORE_STATE = ("_ij", "_jvm_started", "_mode", "_source")
 
 
 @pytest.fixture(autouse=True)

@@ -6,6 +6,7 @@ patch levels are independent. Bump DEFAULT_SNT_VERSION when cutting a PySNT rele
 """
 
 import os
+import platform
 from typing import List, Optional
 
 SNT_GROUP_ARTIFACT = "org.morphonets:SNT"
@@ -22,6 +23,36 @@ DEFAULT_EXTRA_ENDPOINTS: List[str] = [
 
 ENV_SNT_VERSION = "SNT_VERSION"
 
+# JogAmp (jogl/gluegen) natives, needed by Viewer3D. Maven resolution does not
+# add them on its own (Fiji ships them in jars/), so we request the ones for the
+# running platform. Keep JOGAMP_VERSION equal to the version managed by SNT's pom
+JOGAMP_VERSION = "2.6.0"
+_JOGAMP_ARTIFACTS = ("org.jogamp.gluegen:gluegen-rt", "org.jogamp.jogl:jogl-all")
+
+
+def _jogamp_natives_classifier() -> Optional[str]:
+    """JogAmp natives classifier for this platform, or None if none is published."""
+    system = platform.system()
+    machine = platform.machine().lower()
+    if system == "Darwin":
+        return "natives-macosx-universal"  # arm64 and x86_64 share one jar
+    if system == "Linux":
+        if machine in ("x86_64", "amd64"):
+            return "natives-linux-amd64"
+        if machine in ("aarch64", "arm64"):
+            return "natives-linux-aarch64"
+    if system == "Windows" and machine in ("amd64", "x86_64"):
+        return "natives-windows-amd64"
+    return None
+
+
+def jogamp_natives_endpoints() -> List[str]:
+    """Maven endpoints for the JogAmp natives of this platform (empty if unsupported)."""
+    classifier = _jogamp_natives_classifier()
+    if classifier is None:
+        return []
+    return [f"{ga}:{JOGAMP_VERSION}:{classifier}" for ga in _JOGAMP_ARTIFACTS]
+
 
 def resolve_snt_version(snt_version: Optional[str] = None) -> str:
     """Explicit argument > SNT_VERSION environment variable > DEFAULT_SNT_VERSION."""
@@ -31,11 +62,13 @@ def resolve_snt_version(snt_version: Optional[str] = None) -> str:
 def build_endpoints(snt_version: Optional[str] = None,
                     extras: Optional[List[str]] = None) -> List[str]:
     """
-    Return the Maven endpoint list for pyimagej: SNT (pinned) plus extras.
+    Return the Maven endpoint list for pyimagej: SNT (pinned) plus extras and
+    the JogAmp natives of this platform.
 
     extras=None adds DEFAULT_EXTRA_ENDPOINTS; extras=[] adds nothing; any other
-    list replaces the defaults.
+    list replaces the defaults. The natives are always added.
     """
     endpoints = [f"{SNT_GROUP_ARTIFACT}:{resolve_snt_version(snt_version)}"]
     endpoints.extend(DEFAULT_EXTRA_ENDPOINTS if extras is None else extras)
+    endpoints.extend(jogamp_natives_endpoints())
     return endpoints

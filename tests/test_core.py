@@ -99,7 +99,9 @@ class TestInitialize:
             with patch('pysnt.core.imagej.init') as mock_init:
                 with patch('pysnt.core.scyjava.jvm_started', return_value=True):
                     initialize(snt_version="5.1.0", extras=[])
-                    mock_init.assert_called_once_with(["org.morphonets:SNT:5.1.0"], mode="headless")
+                    endpoints = mock_init.call_args[0][0]
+                    assert endpoints[0] == "org.morphonets:SNT:5.1.0"
+                    assert "sc.fiji:bigvolumeviewer" not in endpoints  # extras=[] skips the defaults
 
     def test_initialize_source_maven_ignores_fiji(self):
         """source='maven' skips a configured Fiji."""

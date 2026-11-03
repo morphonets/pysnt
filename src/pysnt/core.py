@@ -35,6 +35,7 @@ class _DropKnownPyImageJNoise(logging.Filter):
 _ij = None
 _jvm_started = False
 _mode = None
+_source = None  # 'maven' or 'fiji': where the running SNT came from
 
 
 class FijiNotFoundError(RuntimeError):
@@ -223,10 +224,20 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # Shift parameters: fiji_path is actually the mode
         mode = fiji_path
         fiji_path = None
-    global _ij, _jvm_started, _mode
+    global _ij, _jvm_started, _mode, _source
     
     if _jvm_started:
-        logger.info("SNT already initialized")
+        requested = None
+        if fiji_path:
+            requested = "fiji"
+        elif source:
+            requested = _SOURCE_ALIASES.get(str(source).lower())
+        if requested and requested != _source:
+            logger.warning(
+                f"SNT is already running from {_source}: the JVM cannot be restarted, so "
+                f"source='{requested}' was ignored. Restart the kernel/console to switch.")
+        else:
+            logger.info("SNT already initialized")
         return
         
     try:
@@ -268,6 +279,7 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
 
         # Decide where SNT comes from: a Fiji install, or Maven
         fiji_path = _select_source(fiji_path, source, interactive)
+        _source = "fiji" if fiji_path else "maven"
         if fiji_path:
             if not Path(fiji_path).expanduser().exists():
                 raise FijiNotFoundError(f"Fiji not found at: {fiji_path}")
@@ -328,6 +340,8 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         logger.info("SNT initialization complete")
         # An explicit Maven version pin is deliberate: no mismatch warning for it
         _check_snt_version(requested=not fiji_path and bool(snt_version or os.environ.get("SNT_VERSION")))
+        if _source == "maven":
+            _check_jogamp_version()
         
     except FijiNotFoundError:
         # Re-raise FijiNotFoundError as-is (it already has helpful messages)
@@ -381,6 +395,26 @@ def _check_snt_version(requested: bool) -> None:
             "some classes or methods may be missing or behave differently. "
             "Use source='maven' (default without a configured Fiji) or update Fiji."
         )
+
+
+def _check_jogamp_version() -> None:
+    """
+    Warn (never fail) when the jogl-all jar resolved by Maven differs from
+    JOGAMP_VERSION, i.e., the natives PySNT requests would not match it
+    """
+    import re
+    from ._endpoints import JOGAMP_VERSION, jogamp_natives_endpoints
+    if not jogamp_natives_endpoints():
+        return  # no natives published for this platform
+    try:
+        classpath = str(scyjava.jimport("java.lang.System").getProperty("java.class.path"))
+    except Exception:
+        return
+    found = {m.group(1) for m in re.finditer(r"jogl-all-(\d+(?:\.\d+)+)\.jar", classpath)}
+    if found and found != {JOGAMP_VERSION}:
+        logger.warning(
+            f"Resolved jogl-all {', '.join(sorted(found))}, but PySNT requests JogAmp natives "
+            f"{JOGAMP_VERSION}: 3D viewers may fail to load. Update JOGAMP_VERSION in pysnt/_endpoints.py")
 
 
 def _is_imagej_root(path: Path) -> bool:
