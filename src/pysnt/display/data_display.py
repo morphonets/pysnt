@@ -14,8 +14,6 @@ import numpy as np
 from .utils import (
     _extract_display_config,
     _handle_display_error,
-    _has_pandasgui,
-    _get_pandasgui_show,
     DEFAULT_CMAP,
     _setup_matplotlib_interactive,
 )
@@ -49,8 +47,8 @@ def _display_pandas_dataframe(df, show: bool = True, **kwargs):
     """
     Handler function for pandas DataFrame display.
     
-    This function displays a pandas DataFrame using the configured display method
-    (PandasGUI, console, etc.) based on the display.table_mode setting.
+    This function displays a pandas DataFrame according to the display.table_mode
+    setting ('summary' prints a summary, other modes print the table).
     
     Parameters
     ----------
@@ -78,45 +76,8 @@ def _display_pandas_dataframe(df, show: bool = True, **kwargs):
             _summarize_dataframe(df, title)
             return df
         
-        # Map table mode to display parameters
-        if table_mode == 'pandasgui':
-            kwargs['use_gui'] = True
-        else:
-            # For other modes (heatmap, heatmap_norm, etc.), use GUI if available
-            kwargs['use_gui'] = _has_pandasgui()
-        
-        # Use the existing DataFrame display function
-        success = _show_pandasgui_dataframe(df, title=kwargs.get('title', 'DataFrame'), **kwargs)
-        
-        if not success:
-            # Fallback to console display
-            config = _extract_display_config(**kwargs)
-            max_rows = config.get('max_rows', get_option('display.max_rows'))
-            max_cols = config.get('max_cols', get_option('display.max_columns'))
-            precision = config.get('precision', get_option('display.precision'))
-            
-            # Ensure precision is a valid integer (pandas can't handle None or invalid values)
-            if precision is None or not isinstance(precision, int) or precision < 0:
-                precision = 6  # Default fallback
-            
-            # Handle None values in DataFrame that can cause formatting issues
-            df_display = df.copy()
-            df_display = df_display.fillna('None')
-            
-            with pandas.option_context('display.max_rows', max_rows,
-                                     'display.max_columns', max_cols,
-                                     'display.precision', precision,
-                                     'display.width', None):
-                print("pandas.DataFrame:")
-                print(df_display)
-                print(f"Shape: {df.shape}")
-                if hasattr(df, 'describe'):
-                    print("\nSummary statistics:")
-                    try:
-                        print(df.describe())
-                    except Exception as e:
-                        print(f"Summary statistics unavailable: {e}")
-        
+        kwargs = dict(kwargs)
+        _print_dataframe(df, title=kwargs.pop('title', 'DataFrame'), **kwargs)
         return df
         
     except Exception as e:
@@ -134,79 +95,48 @@ def _display_pandas_dataframe(df, show: bool = True, **kwargs):
         return df
 
 
-def _show_pandasgui_dataframe(df, title="Dataset", **kwargs) -> bool:
+def _print_dataframe(df, title="DataFrame", **kwargs) -> None:
     """
-    Display a pandas DataFrame using PandasGUI with thread handling.
-    
-    This function provides a safe way to display DataFrames using PandasGUI
-    with proper thread management and fallback handling.
-    
+    Print a pandas DataFrame to the console, followed by summary statistics.
+
     Parameters
     ----------
     df : pandas.DataFrame
-        The DataFrame to display
-    title : str, default "Dataset"
-        Title for the PandasGUI window
+        The DataFrame to print
+    title : str
+        Title printed above the table
     **kwargs
-        Additional arguments:
-        - use_gui: bool, whether to use PandasGUI (default: True if available)
-        - gui_safe_mode: bool, whether to use safe mode for GUI (from config)
-        
-    Returns
-    -------
-    bool
-        True if PandasGUI display succeeded, False otherwise
+        Optional max_rows, max_cols and precision overrides (default: values of
+        pysnt.get_option('display.max_rows'), 'display.max_columns' and
+        'display.precision')
     """
-    # Check if GUI display is requested and available
-    use_gui = kwargs.get('use_gui', True)
-    if not use_gui or not _has_pandasgui():
-        return False
-    
-    try:
-        # Check if we should use safe mode
-        from ..config import get_option
-        gui_safe_mode = get_option('display.gui_safe_mode')
-        
-        # Check if we're on macOS
-        import platform
-        is_macos = platform.system() == 'Darwin'
-        
-        if gui_safe_mode and is_macos:
-            logger.info("GUI safe mode enabled on macOS - using console display")
-            return False
-        
-        # Import PandasGUI
-        pandasgui_show = _get_pandasgui_show()
-        
-        if pandasgui_show is None:
-            logger.debug("PandasGUI not available")
-            return False
-        
-        logger.info(f"Displaying DataFrame in PandasGUI: '{title}' (shape: {df.shape})")
-        
-        # Use threading to avoid blocking
-        import threading
-        import time
-        
-        def show_gui():
+    from ..config import get_option
+
+    config = _extract_display_config(**kwargs)
+    max_rows = config.get('max_rows', get_option('display.max_rows'))
+    max_cols = config.get('max_cols', get_option('display.max_columns'))
+    precision = config.get('precision', get_option('display.precision'))
+
+    # pandas can't handle None or invalid values for precision
+    if precision is None or not isinstance(precision, int) or precision < 0:
+        precision = 6
+
+    # Handle None values in DataFrame that can cause formatting issues
+    df_display = df.copy().fillna('None')
+
+    with pandas.option_context('display.max_rows', max_rows,
+                               'display.max_columns', max_cols,
+                               'display.precision', precision,
+                               'display.width', None):
+        print(f"{title}")
+        print(df_display)
+        print(f"Shape: {df.shape}")
+        if hasattr(df, 'describe'):
+            print("\nSummary statistics:")
             try:
-                pandasgui_show(df, title=title)
+                print(df.describe())
             except Exception as e:
-                logger.debug(f"PandasGUI display failed in thread: {e}")
-        
-        # Start GUI in separate thread
-        gui_thread = threading.Thread(target=show_gui, daemon=True)
-        gui_thread.start()
-        
-        # Give GUI time to start
-        time.sleep(0.5)
-        
-        logger.info("PandasGUI window should be opening...")
-        return True
-        
-    except Exception as e:
-        logger.debug(f"PandasGUI display failed: {e}")
-        return False
+                print(f"Summary statistics unavailable: {e}")
 
 
 def _display_xarray(xarr: Any, show: bool = True, **kwargs) -> None:
@@ -431,7 +361,6 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         - max_vars: Maximum number of variables to display (default: 10)
         - figsize: Figure size (default: uses pysnt.get_option('plotting.figure_size'))
         - title: Plot title (default: 'SNT Table Data')
-        - use_gui: Use PandasGUI for DataFrame display (default: False)
         - max_rows: Max rows for DataFrame display (default: uses pysnt.get_option('display.max_rows'))
         - max_cols: Max columns for DataFrame display (default: uses pysnt.get_option('display.max_columns'))
         - precision: Decimal precision for DataFrame display (default: uses pysnt.get_option('display.precision'))
@@ -466,17 +395,6 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
         # Limit number of variables for display
         display_vars = data_vars[:max_vars] if n_vars > max_vars else data_vars
 
-        # Map table mode to plot type
-        if plot_type == 'pandasgui':
-            plot_type = 'dataframe'
-            kwargs['use_gui'] = True
-        elif plot_type == 'heatmap':
-            # Keep as heatmap for special handling
-            pass
-        elif plot_type == 'heatmap_norm':
-            # Keep as heatmap_norm for special handling
-            pass
-        
         # Auto-select plot type based on data
         if plot_type == 'auto':
             plot_type = 'summary'
@@ -492,7 +410,7 @@ def _display_xarray_dataset(dataset: Any, **kwargs) -> Any:
             return _display_dataset_as_summary(dataset, **kwargs)
         else:
             logger.warning(
-                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'dataframe', 'pandasgui', 'heatmap', 'heatmap_norm', 'summary'")
+                f"Unknown plot_type: {plot_type}. Available options: 'auto', 'dataframe', 'heatmap', 'heatmap_norm', 'summary'")
             return False
 
     except Exception as e:
@@ -504,8 +422,8 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
     """
     Display xarray Dataset as a pandas DataFrame.
     
-    This function converts an xarray Dataset to a pandas DataFrame and displays it
-    using the configured display method (console or PandasGUI).
+    This function converts an xarray Dataset to a pandas DataFrame and prints it
+    to the console.
     
     Parameters
     ----------
@@ -513,11 +431,10 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
         The xarray Dataset to display
     **kwargs
         Additional arguments:
-        - use_gui: bool, whether to use PandasGUI (default: False)
         - max_rows: int, max rows for console display (default: uses pysnt.get_option('display.max_rows'))
         - max_cols: int, max columns for console display (default: uses pysnt.get_option('display.max_columns'))
         - precision: int, decimal precision for console display (default: uses pysnt.get_option('display.precision'))
-        - title: str, title for PandasGUI window (default: "SNT Dataset")
+        - title: str, title printed above the table (default: "SNT Dataset")
         
     Returns
     -------
@@ -529,20 +446,10 @@ def _display_dataset_as_dataframe(dataset: Any, **kwargs) -> bool:
 
         # Get display parameters with config defaults
         config = _extract_display_config(**kwargs)
-        use_gui = config.get('use_gui', False)
         title = kwargs.get('title', 'SNT Dataset')
 
         # Convert dataset to DataFrame
         df = dataset.to_dataframe()
-
-        if use_gui:
-            # Use PandasGUI
-            success = _show_pandasgui_dataframe(df, title=title, **kwargs)
-            if success:
-                logger.info(f"Successfully displayed Dataset as DataFrame in PandasGUI: '{title}'")
-                return True
-            else:
-                logger.info("PandasGUI display failed, falling back to console")
 
         # Console display
         max_rows = config.get('max_rows')

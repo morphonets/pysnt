@@ -23,7 +23,6 @@ from .utils import (
     _is_snt_tree,
     _is_snt_path,
     _is_xarray_object,
-    _has_pandasgui,
     _extract_display_config,
     _handle_display_error,
     _validate_display_kwargs,

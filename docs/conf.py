@@ -81,7 +81,6 @@ MOCK_MODULES = [
     'matplotlib.image',
     'numpy',
     'pandas',
-    'pandasgui',
     'psutil',
     'pyimagej',
     'pyobjc',

@@ -33,27 +33,6 @@ except ImportError:
     HAS_XARRAY = False
     xarray = None
 
-def _get_pandasgui_show():
-    """
-    Lazy import of pandasgui.show to avoid initialization issues.
-    
-    Returns
-    -------
-    callable or None
-        pandasgui.show function if available, None otherwise
-    """
-    try:
-        import pandasgui # noqa
-        return pandasgui.show
-    except ImportError:
-        return None
-
-
-def _has_pandasgui():
-    """Check if pandasgui is available using lazy import."""
-    return _get_pandasgui_show() is not None
-
-
 def _is_snt_object(obj: Any) -> bool:
     """Check if object is an SNTObject (TypedDict with required keys)."""
     return (isinstance(obj, dict) and 
@@ -139,11 +118,6 @@ def _extract_display_config(**kwargs) -> Dict[str, Any]:
     if 'figsize' in kwargs:
         config['figsize'] = kwargs.get('figsize', get_option('plotting.figure_size'))
     
-    # GUI options
-    if 'use_gui' in kwargs:
-        config['use_gui'] = kwargs.get('use_gui', False)
-        config['gui_safe_mode'] = get_option('display.gui_safe_mode')
-    
     # Visual options
     config.update({
         'cmap': kwargs.get('cmap', DEFAULT_CMAP),
@@ -204,7 +178,7 @@ def _validate_display_kwargs(**kwargs) -> Dict[str, Any]:
             validated.pop('figsize')
     
     # Validate boolean options
-    bool_options = ['use_gui', 'with_labels', 'add_colorbar', 'case_sensitive']
+    bool_options = ['with_labels', 'add_colorbar', 'case_sensitive']
     for option in bool_options:
         if option in validated and not isinstance(validated[option], bool):
             logger.warning(f"Converting {option} to boolean")

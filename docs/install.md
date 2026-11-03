@@ -63,8 +63,8 @@ source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
 python -m pip install "pysnt[all]" # python -m pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
 ```
 
-On macOS/Linux, use `python3` if `python` is not found. `pysnt[all]` includes all optional features. For the basic,
-core install, use `pysnt` instead. Or pick extras individually: `display`, `gui`, `java`, `zarr`, `info`.
+On macOS/Linux, use `python3` if `python` is not found. `pysnt[all]` includes all optional features except `napari` (heavy, Qt-based). For the basic,
+core install, use `pysnt` instead. Or pick extras individually: `display`, `gui`, `java`, `zarr`, `info`, `napari`.
 [uv](https://docs.astral.sh/uv/) users can run the same commands with `uv venv` and `uv pip install`.
 
 ```{note}

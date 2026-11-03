@@ -38,34 +38,6 @@ except ImportError:
     HAS_PANDAS = False
     pd = None
 
-# Lazy import for pandasgui to avoid initialization issues in PyCharm console
-HAS_PANDASGUI = None  # Will be determined on first use
-_pandasgui_show = None  # Cached import
-
-
-def _get_pandasgui_show():
-    """
-    Lazy import of pandasgui.show to avoid initialization issues.
-    
-    Returns
-    -------
-    callable or None
-        The pandasgui.show function if available, None otherwise
-    """
-    global HAS_PANDASGUI, _pandasgui_show
-    
-    if HAS_PANDASGUI is None:  # First time check
-        try:
-            from pandasgui import show as pandasgui_show
-            HAS_PANDASGUI = True
-            _pandasgui_show = pandasgui_show
-        except (ImportError, AttributeError):
-            # AttributeError can occur in PyCharm console where IPython magic methods aren't available
-            HAS_PANDASGUI = False
-            _pandasgui_show = None
-    
-    return _pandasgui_show
-
 
 
 try:

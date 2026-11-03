@@ -133,18 +133,18 @@ def test_integration_example():
 
     # Simulate user setting preferences
     pysnt.set_option('display.chart_format', 'svg')
-    pysnt.set_option('display.table_mode', 'pandasgui')
+    pysnt.set_option('display.table_mode', 'dataframe')
     pysnt.set_option('display.max_rows', 25)
 
     # Verify settings are applied
     assert pysnt.get_option('display.chart_format') == 'svg'
-    assert pysnt.get_option('display.table_mode') == 'pandasgui'
+    assert pysnt.get_option('display.table_mode') == 'dataframe'
     assert pysnt.get_option('display.max_rows') == 25
 
     # Test context override
     with pysnt.option_context(display_chart_format='pdf'):
         assert pysnt.get_option("display.chart_format") == "pdf"
-        assert pysnt.get_option('display.table_mode') == "pandasgui"  # unchanged
+        assert pysnt.get_option('display.table_mode') == "dataframe"  # unchanged
 
     # Back to original
     assert pysnt.get_option('display.chart_format') == 'svg'
@@ -153,3 +153,15 @@ def test_integration_example():
 if __name__ == "__main__":
     # Run tests if called directly
     pytest.main([__file__, "-v"])
+
+
+def test_table_mode_validation():
+    """The retired 'pandasgui' table mode is rejected; supported modes are accepted."""
+    import pytest
+    pysnt.reset_option('display.table_mode')
+    for mode in ('dataframe', 'heatmap', 'heatmap_norm', 'summary'):
+        pysnt.set_option('display.table_mode', mode)
+        assert pysnt.get_option('display.table_mode') == mode
+    with pytest.raises(ValueError):
+        pysnt.set_option('display.table_mode', 'pandasgui')
+    pysnt.reset_option('display.table_mode')

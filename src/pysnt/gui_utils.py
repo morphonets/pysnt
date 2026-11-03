@@ -47,7 +47,7 @@ def safe_gui_call(func: Callable, *args, fallback_func: Optional[Callable] = Non
     --------
     >>> def show_gui():
     ...     # Some GUI code that might fail on macOS
-    ...     return pandasgui.show(df)
+    ...     return some_gui.show(df)
     >>> 
     >>> def fallback():
     ...     print("GUI failed, showing in console")

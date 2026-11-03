@@ -76,7 +76,7 @@ PySNT provides a pandas-style configuration system that allows you to customize 
 | display.max_columns                | int   | Maximum number of columns to display in table outputs                             | 20       |
 | display.max_rows                   | int   | Maximum number of rows to display in table outputs                                | 100      |
 | display.precision                  | int   | Number of decimal places to display for floating point numbers                     | 6        |
-| display.table_mode                 | str   | Default display mode for SNTTables (pandasgui, heatmap, heatmap_norm, or summary) | summary  |
+| display.table_mode                 | str   | Default display mode for SNTTables (dataframe, heatmap, heatmap_norm, or summary) | summary  |
 | plotting.figure_size               | tuple | Default figure size for plots as (width, height) in inches                        | (8, 8)   |
 | pyplot.ion                         | bool  | Enable matplotlib interactive mode (plt.ion()) for better plot display            | True     |
 | graph.processing.warn_self_loops   | bool  | Warn when self-loops are detected in neural morphology graphs                     | True     |
@@ -89,11 +89,13 @@ PySNT provides a pandas-style configuration system that allows you to customize 
 | java.logging.*.silence             | bool  | Silence JPype, Log4j, SLF4J, or java.util.logging (jpype, log4j, slf4j, jul)      | True     |
 | java.logging.suppress_slf4j_warnings | bool | Suppress SLF4J multiple-provider warnings during initialization                 | True     |
 
-E.g., to have tables displayed in an interactive window, one can use:
+E.g., to print tables in full instead of summarizing them, one can use:
 
 ```python
-pysnt.set_option('display.table_mode', 'pandasgui')
+pysnt.set_option('display.table_mode', 'dataframe')
 ```
+
+For interactive exploration (sorting, filtering, plotting), convert the table to pandas with `pysnt.to_python(table).to_dataframe()` and use the viewer of your choice (e.g., [D-Tale](https://github.com/man-group/dtale), [itables](https://github.com/mwouts/itables), or your IDE's data viewer). Alternatively, `table.show()` opens SNT's own table window (not available in headless mode).
 
 To list available options or know more about them, you can use:
 

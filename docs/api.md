@@ -138,7 +138,7 @@ pysnt.initialize(max_heap="16g", min_heap="4g")  # 16GB max, 4GB initial
 
 ### Configuration
 ```python
-pysnt.set_option('display.table_mode', 'pandasgui')
+pysnt.set_option('display.table_mode', 'dataframe')
 pysnt.set_option('display.chart_format', 'svg')
 ```
 

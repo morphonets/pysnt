@@ -132,7 +132,7 @@ except Exception as e:
 
 ### GUI Threading Issues
 
-PySNT includes GUI components like PandasGUI for interactive data exploration. However, GUI applications can encounter threading issues, particularly on macOS where Qt applications must be created on the main thread.
+PySNT can open GUI windows (SNT's own viewers and tables, napari, etc.). However, GUI applications can encounter threading issues, particularly on macOS where Qt applications must be created on the main thread.
 
 **Workaround**:
 
@@ -171,6 +171,25 @@ print(f"macOS: {pysnt.is_macos()}")
 print(f"GUI safe mode: {pysnt.get_option('display.gui_safe_mode')}")
 ```
 
+
+### napari and Qt Bindings
+
+Recent napari versions require Qt6. If another package in your environment installs PyQt5, napari may fail to start with `ImportError: napari requires Qt >= 6...`, because Qt5 is picked up.
+
+**Workaround**:
+
+Install a Qt6 binding (`python -m pip install "napari[pyqt6]"`) and select it before importing napari or anything else that imports Qt:
+
+```python
+import os
+os.environ['QT_API'] = 'pyqt6'
+os.environ['FORCE_QT_API'] = '1'
+import napari
+```
+
+Do not mix Qt5 and Qt6 in the same Python session. Restart the kernel if Qt has already been imported.
+
+If the kernel crashes instead with `Could not find the Qt platform plugin "cocoa"` (macOS), the environment likely contains conda's Qt5 packages (e.g., installed by Spyder), which add a `bin/qt.conf` file that redirects Qt6 to Qt5 paths. Use an environment without Spyder (or Qt5 conda packages), or rename `<env>/bin/qt.conf`. Spyder is not recommended for running the tutorials.
 
 ### Disposal
 

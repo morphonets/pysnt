@@ -53,7 +53,7 @@ jobs:
           key: jgo-${{ runner.os }}-${{ hashFiles('src/pysnt/_endpoints.py') }}
           restore-keys: jgo-${{ runner.os }}-
       - name: Install
-        # pandasgui/pyobjc (extra "gui") are interactive-only and heavy: not needed here
+        # pyobjc (extra "gui") is interactive-only and heavy: not needed here
         run: pip install -e ".[display,zarr,info]" pytest pytest-cov pytest-timeout nbclient typing_extensions
       - name: Warm up SNT download
         # First start resolves SNT's whole Maven dependency tree (many minutes on a cold runner):

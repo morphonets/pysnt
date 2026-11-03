@@ -101,8 +101,10 @@ pysnt.display(chart)
 # Display all measurements in one go
 all_metrics = stats.getMetrics("common")
 stats.measure('some row description', all_metrics, True) # bool: split measurements by compartment (e.g., axon, dendrites)
-pysnt.set_option("display.table_mode", "pandasgui") # requires the optional GUI extras: pip install "pysnt[gui]"
-pysnt.display(stats.getTable()) # displays table in a pandasgui window
+table = stats.getTable()
+pysnt.display(table) # summarizes the table (see the display.table_mode option)
+df = pysnt.to_python(table).to_dataframe() # pandas DataFrame, to explore with the tool of your choice
+table.show() # SNT's own interactive table window (not available in headless mode)
 ```
 
 ## File I/O Essentials
@@ -163,8 +165,7 @@ for swc_file in swc_files:
 # Convert to DataFrame for analysis
 df = pd.DataFrame(results)
 
-# Instruct pysnt to display DataFrame in PandasGUI
-pysnt.set_option('display.table_mode', 'pandasgui')
+# Summarize the DataFrame (set display.table_mode to 'dataframe' to print it in full)
 pysnt.display(df)
 ```
 
@@ -240,7 +241,7 @@ Set up your preferred defaults early:
 import pysnt
 
 # Configure for your workflow
-pysnt.set_option('display.table_mode', 'pandasgui')  # Interactive tables
+pysnt.set_option('display.table_mode', 'dataframe')  # Print tables in full
 pysnt.set_option('plotting.figure_size', (10, 10))   # Larger plots
 
 # Initialize with memory for your data size
