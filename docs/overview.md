@@ -28,25 +28,23 @@ pysnt is only available *after* `pysnt.initialize()` is called.
 
 ### Java Logging Control
 
-You can use the PySNT configuration system to control Java-side logging verbosity:
+Java-side logging is kept quiet by default: the level is `ERROR` and the logging frameworks (JPype, Log4j, SLF4J, and java.util.logging) are silenced. You can use the PySNT configuration system to change this, e.g., for debugging:
 
 ```python
-# Configure logging levels and frameworks
-pysnt.set_option('java.logging.level', 'ERROR')        # Only show errors, change to 'INFO' for debugging
-pysnt.set_option('java.logging.jpype.silence', True)   # Silence JPype
-pysnt.set_option('java.logging.log4j.silence', True)   # Silence Log4j
-pysnt.set_option('java.logging.slf4j.silence', True)   # Silence SLF4J
-pysnt.set_option('java.logging.jul.silence', True)     # Silence java.util.logging
+# Configure logging levels and frameworks (set before initializing)
+pysnt.set_option('java.logging.level', 'INFO')          # One of OFF, ERROR, WARN, INFO, DEBUG, TRACE
+pysnt.set_option('java.logging.jpype.silence', False)   # Do not silence JPype
+pysnt.set_option('java.logging.log4j.silence', False)   # Do not silence Log4j
+pysnt.set_option('java.logging.slf4j.silence', False)   # Do not silence SLF4J
+pysnt.set_option('java.logging.jul.silence', False)     # Do not silence java.util.logging
 
 pysnt.initialize()
 ```
 
-**Note on SLF4J Warnings**: You may still see some SLF4J warnings about multiple providers during initialization. These occur during SLF4J's initialization phase before logging configuration takes effect. To minimize them:
+**Note on SLF4J Warnings**: SLF4J warnings about multiple providers occur during SLF4J's initialization phase, before logging configuration takes effect. PySNT suppresses them by default. To see them, set:
 
 ```python
-pysnt.set_option('java.logging.level', 'ERROR')
-# Enable aggressive SLF4J suppression
-pysnt.set_option('java.logging.suppress_slf4j_warnings', True)
+pysnt.set_option('java.logging.suppress_slf4j_warnings', False)
 pysnt.initialize()
 ```
 
@@ -60,26 +58,36 @@ There are also some advanced initialization options:
 | `pysnt.initialize(mode='interactive')` | See [pyimagej initialization mode](https://py.imagej.net/en/latest/Initialization.html#how-to-initialize-pyimagej) |
 | `pysnt.initialize(max_heap="8g")` | Configure JVM memory (8GB heap) |
 | `pysnt.initialize(max_heap="16g", min_heap="4g")` | Advanced memory configuration (16GB max, 4GB initial) |
-| `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](api_auto/pysnt.core.rst) |
+| `pysnt.initialize(source='maven')` | Force the SNT source: `'maven'` (aliases `'remote'`, `'online'`) downloads SNT, no Fiji needed. `'fiji'` (alias `'local'`) uses a local Fiji installation, prompting for its path if none is configured |
+| `pysnt.initialize(snt_version='...')` | Maven source only: SNT version to resolve (defaults to the `SNT_VERSION` environment variable, then to the version PySNT targets) |
+| `pysnt.initialize(jvm_args=['-XX:+UseG1GC'])` | Pass additional arguments to the JVM |
+| `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](api_auto/pysnt.core.rst) for all parameters, including `extras` |
 
 ## Setting Options
 
-PySNT provides a pandas-style configuration system that allows you to customize various preferences and settings. Here are some of the most common options:
+PySNT provides a pandas-style configuration system that allows you to customize various preferences and settings. Here are some of the most common options (see `pysnt.list_options()` for all of them):
 
 | Setting                            | Type  | Description                                                                       | Default  |
 |------------------------------------|-------|-----------------------------------------------------------------------------------|----------|
 | debug_mode                         | bool  | Toggle SNT's debug mode. May need to be called after `pysnt.initialize()`         | False    |
 | display.chart_format               | str   | Default export format for SNTChart (svg, png, or pdf)                             | png      |
+| display.chart_dpi                  | int   | Default rendering resolution (dpi) of charts                                      | 300      |
 | display.gui_safe_mode              | bool  | Use safe GUI mode to avoid threading issues on macOS                              | True     |
 | display.max_columns                | int   | Maximum number of columns to display in table outputs                             | 20       |
 | display.max_rows                   | int   | Maximum number of rows to display in table outputs                                | 100      |
 | display.precision                  | int   | Number of decimal places to display for floating point numbers                     | 6        |
 | display.table_mode                 | str   | Default display mode for SNTTables (pandasgui, heatmap, heatmap_norm, or summary) | summary  |
-| plotting.figure_size                | tuple | Default figure size for plots as (width, height) in inches                         | (8, 8)   |
+| plotting.figure_size               | tuple | Default figure size for plots as (width, height) in inches                        | (8, 8)   |
 | pyplot.ion                         | bool  | Enable matplotlib interactive mode (plt.ion()) for better plot display            | True     |
 | graph.processing.warn_self_loops   | bool  | Warn when self-loops are detected in neural morphology graphs                     | True     |
 | graph.layout.AnnotationGraph       | str   | Default layout algorithm for AnnotationGraph (brain regions)                      | circular |
 | graph.layout.DirectedWeightedGraph | str   | Default layout algorithm for DirectedWeightedGraph (neural morphology)            | spring   |
+| graph.layout.SWCPoint              | str   | Default layout algorithm for graphs of SWCPoints                                  | spring   |
+| graph.layout.BrainAnnotation       | str   | Default layout algorithm for graphs of BrainAnnotations                           | circular |
+| graph.layout.default               | str   | Fallback layout algorithm for other graph types                                   | spring   |
+| java.logging.level                 | str   | Java logging level (OFF, ERROR, WARN, INFO, DEBUG, TRACE)                         | ERROR    |
+| java.logging.*.silence             | bool  | Silence JPype, Log4j, SLF4J, or java.util.logging (jpype, log4j, slf4j, jul)      | True     |
+| java.logging.suppress_slf4j_warnings | bool | Suppress SLF4J multiple-provider warnings during initialization                 | True     |
 
 E.g., to have tables displayed in an interactive window, one can use:
 
@@ -162,11 +170,12 @@ snt_service = SNTService()  # Instantiate SNTService
 
 Extended classes are imported after a reference has been obtained:
 ```python
-PCAnalyzer = pysnt.analysis.get_class('PCAnalyzer')  # Obtain reference to extended class PCAnalyzer
-pc_analyzer = PCAnalyzer()  # Instantiate the extended class PCAnalyzer
-tree = (...)  # code to access a reconstruction
-principal_axes = pc_analyzer.getPrincipalAxes(tree)  # Use the instance as usual
+CircularModels = pysnt.analysis.get_class('CircularModels')  # Obtain reference to extended class CircularModels
+angle = CircularModels.norm360(-45)  # Static methods are called directly from the class (returns 315.0)
+kappa = CircularModels.kappaFromRBar(0.8)  # Von Mises concentration from a mean resultant length
 ```
+
+Classes that are not static utilities are instantiated as usual, once a reference has been obtained (e.g., `MyClass = pysnt.analysis.get_class('MyClass'); obj = MyClass()`).
 
 ### Inner Classes
 
@@ -278,7 +287,7 @@ case_sensitive = pysnt.find_members(CircModels, "Fit", case_sensitive=True)
 
 ### Converting Objects
 
-Common data types require no convertion at all. However, some operations return specialized SNT Java objects, that may require conversion to Python. When that happens, one can use the `to_python()` function:
+Common data types require no conversion at all. However, some operations return specialized SNT Java objects, that may require conversion to Python. When that happens, one can use the `to_python()` function:
 
 ```python
 # Only needed for specialized objects
@@ -290,7 +299,7 @@ Under the hood, `pysnt.to_python(java_result)` will use all of Java -> Python co
 
 ### Displaying Objects
 
-PySNT provides a convenient `display()` function that handles _any_ object you throw at it: It automatically chooses the "best" visualization based on the object type - DataFrames for tabulardata, Figures for charts, formatted lists for collections, etc.
+PySNT provides a convenient `display()` function that handles _any_ object you throw at it: It automatically chooses the "best" visualization based on the object type - DataFrames for tabular data, Figures for charts, formatted lists for collections, etc.
 
 ```python
 import pysnt
@@ -328,11 +337,11 @@ pysnt.display(table)  # Shows tabular data
 ```
 
 ```{tip}
-In addition, PYSNT can also patch the show() method of SNT objects, so that they can displayed in Python:
+In addition, PySNT can also patch the show() method of SNT objects, so that they can be displayed in Python:
 An example is the `Tree` class:
 
 When running from Java its `show()` method displays the tree in either
-[Reconstructing Plotter](https://imagej.net/plugins/snt/manual#reconstruction-plotter) or [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer) (depending if the reconstruction is 2D or 3D).
+[Reconstruction Plotter](https://imagej.net/plugins/snt/manual#reconstruction-plotter) or [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer) (depending if the reconstruction is 2D or 3D).
 In PySNT, calling `tree.show()` from a headless environment will print the tree as ASCII art to the console, while `pysnt.display(tree)` will display it as a matplotlib figure.
 ```
 
@@ -368,8 +377,8 @@ The JVM cannot be restarted once it has been shut down. You must restart your Py
 1. **Always initialize first**: Call `pysnt.initialize()` as early as possible, before using any pysnt functionality
 2. **Use curated classes when possible**: They provide better IDE support and autocompletion
 3. **Explore before coding**: Use `list_classes()`, `find_members()`, and `get_methods()` to discover available functionality
-5. **Use `pysnt.display()` for output**: It automatically handles any object type
-6. **Conversion is usually automatic**: Most results are already Python objects; only use `pysnt.to_python()` for specialized Java objects
+4. **Use `pysnt.display()` for output**: It automatically handles any object type
+5. **Conversion is usually automatic**: Most results are already Python objects; only use `pysnt.to_python()` for specialized Java objects
 
 ## Troubleshooting
 

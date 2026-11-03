@@ -8,6 +8,14 @@
            download="{{ pagename.split('/')[-1] }}.ipynb">
             <i class="fas fa-download"></i> Download .ipynb
         </a>
+        {% set nb = pagename.split('/')[-1] %}
+        {% if nb in colab_notebooks %}
+        <a href="https://colab.research.google.com/github/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}/{{ doc_path }}/notebooks/{{ nb }}.ipynb"
+           class="btn btn-outline-primary" target="_blank" rel="noopener"
+           title="Run this notebook in Google Colab">
+            <i class="fas fa-play"></i> Open in Colab
+        </a>
+        {% endif %}
     </div>
 </div>
 {% endif %}

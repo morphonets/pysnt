@@ -60,7 +60,7 @@ Use a dedicated virtual environment (Python 3.11+, JDK 21+ installed or let PySN
 ```bash
 python -m venv pysnt-env
 source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
-python -m pip install "pysnt[all]"
+python -m pip install "pysnt[all]" # python -m pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
 ```
 
 On macOS/Linux, use `python3` if `python` is not found. `pysnt[all]` includes all optional features. For the basic,

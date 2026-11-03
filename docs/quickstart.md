@@ -33,7 +33,7 @@ If this works without errors, you're ready to go! If not, see [troubleshooting](
   - **Tree**: A neuronal reconstruction. It is organized as a list of traced Paths. A Tree can be _any_ traced structure. A formal graph representation can be obtained using `tree.getGraph(bool)` where 'bool' indicates whether the  graph should be simplified
   - **BrainAnnotation**: Neuropil labels of a reference atlas defining brain regions. These are generic to any atlas (and species), but currently the Allen Brain Atlas is the most supported
   - **TreeStatistics**: Measures various properties of a tree, such as total length, number of branches, etc. There are variants of this class that measure MultipleTrees, or Groups of Trees. All of them provide immediate access to histograms, plots, etc.
-  - **Analyzers**: Provide specialized analysis like Strahler, Sholl, Persistene Homology, etc. There are _many_. See [tutorials](notebooks/index.md) for details
+  - **Analyzers**: Provide specialized analysis like Strahler, Sholl, Persistent Homology, etc. There are _many_. See [tutorials](notebooks/index.md) for details
   - **Viewers**: Provide 2D/3D visualizations for trees and brain annotations, designed for quantitative analysis
 
 ## Essential Workflows
@@ -83,12 +83,12 @@ stats = TreeStatistics(tree)
 
 # Get specialized metric
 all_metrics = stats.getMetrics('all') # Either 'safe', 'common', 'quick', or 'all'
-pysnt.display(all_metrics) # formated printing of list
+pysnt.display(all_metrics) # formatted printing of list
 metric = stats.getMetric("Complexity index: DCI") #TreeStatistics.COMPLEXITY_INDEX_DCI
 print(f"DCI: {metric}")
 ```
 
-### 3. Visualization and Export
+### 4. Visualization and Export
 
 ```python
 # Display tree
@@ -99,10 +99,10 @@ chart = stats.getHistogram("internode distance")
 pysnt.display(chart)
 
 # Display all measurements in one go
-all_metrics = stats.getMetrics()
-stats.measure('some row description', all_metrics, True) # bool: Split measurements by compartment (axon/dendrites!?)
-pysnt.set_option("display.table_mode", "pandasgui")
-pysnt.display(stats.getTable()) # displays Dataframe in a pandasgui window
+all_metrics = stats.getMetrics("common")
+stats.measure('some row description', all_metrics, True) # bool: split measurements by compartment (e.g., axon, dendrites)
+pysnt.set_option("display.table_mode", "pandasgui") # requires the optional GUI extras: pip install "pysnt[gui]"
+pysnt.display(stats.getTable()) # displays table in a pandasgui window
 ```
 
 ## File I/O Essentials
@@ -115,8 +115,8 @@ from pysnt import Tree
 tree = Tree("/path/to/your/reconstruction.swc") # single neuron
 
 # Load multiple reconstruction files
-trees = Tree.listFromDir("/path/to/directory/with/reconstruction.swc")
-trees = Tree.listFromDir("/path/to/directory/with/reconstruction.swc", "filename-pattern")
+trees = Tree.listFromDir("/path/to/directory/with/reconstructions")
+trees = Tree.listFromDir("/path/to/directory/with/reconstructions", "filename-pattern")
 ```
 
 ### Batch Processing Setup
@@ -284,6 +284,6 @@ Now that you understand the basics:
 
 1. **Explore pysnt**: Tour [pysnt’s architecture](overview.md)
 2. **Configure your environment**: Adjust [configurations](overview.md#setting-options) for your needs
-3. **Explore tutorials**: Check out [notebooks](notebooks/index.md) for specific analysis workflows
+3. **Follow the tutorials**: Work through the [Computational Neuroanatomy with PySNT](notebooks/index.md) curriculum for guided analysis workflows
 4. **Read the API**: Browse the [API reference](api.md) for detailed documentation
-5. **Join the community**: Ask questions on the [ImageJ Forum](https://forum.image.sc/tag/snt)
+5. **Join the community**: Ask questions on the [Image.sc Forum](https://forum.image.sc/tag/snt)

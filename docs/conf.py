@@ -197,7 +197,7 @@ html_theme_options = {
     # External links for navbar
     "external_links": [
         {
-            "name": '<i class="fas fa-book-open"></i>&hairsp;Guide',
+            "name": '<i class="fas fa-book-open"></i>&hairsp;User Manual',
             "url": "https://imagej.net/plugins/snt/",
         },
         {
@@ -237,6 +237,8 @@ html_context = {
     "github_version": "main",
     "doc_path": "docs",
     "display_github": True,
+    # Notebooks offering an Open in Colab button (file stems)
+    "colab_notebooks": [],
     "google_site_verification": "v1xvVIrbqEYvulUApAPA3ZgLi7RtkwdppWQ00Kk_sjQ",
 }
 

@@ -19,7 +19,7 @@ title: "PySNT: Quantification of neuronal anatomy in Python"
         </div>
     </div>
     <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">
-    PySNT brings <a href="https://github.com/morphonets/SNT" target="_blank">SNT</a>'s tracing tools and neuroanatomy analytics to Python, providing a unified toolkit for morphometry that works interactively in notebooks or for automating large-scale studies.
+    PySNT brings <a href="https://github.com/morphonets/SNT" target="_blank">SNT</a>'s tracing tools and neuroanatomy analytics to Python, providing a unified toolkit for morphometry that works interactively in notebooks or for automating large-scale studies. A series of <a href="notebooks/index.html">hands-on tutorials</a> guides you from your first reconstruction to atlas-scale analysis.
     </p>
     </div>
 
@@ -58,6 +58,7 @@ title: "PySNT: Quantification of neuronal anatomy in Python"
 ```{raw} html
 <div class="hero-buttons">
     <a href="install.html" class="btn-secondary-custom">Get Started</a>
+    <a href="notebooks/index.html" class="btn-secondary-custom"> Tutorials</a>
     <a target="_blank" href="https://imagej.net/plugins/snt/#overview" class="btn-secondary-custom"> See Gallery</a>
 </div>
 <a href="api.html" class="api-link">
@@ -169,5 +170,5 @@ Sholl, Strahler, persistence diagrams, graph theory, growth dynamics, and full a
 
 install
 quickstart
-notebooks/index
+Tutorials <notebooks/index>
 ```
