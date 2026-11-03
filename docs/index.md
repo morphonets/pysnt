@@ -87,7 +87,7 @@ Quantify, transform, and compare neuronal morphology at single-cell and populati
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-brain"></i> Atlas & Circuit Analysis
-:link: notebooks/02_hemisphere_analysis
+:link: notebooks/03_hemisphere_analysis
 :link-type: doc
 :img-top: _static/front_page/tutorial03a.png
 
@@ -95,7 +95,7 @@ Integrate reference brains, atlases, public databases, and whole-brain projectom
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-cube"></i> 3D Visualization
-:link: notebooks/03_convex_hull
+:link: notebooks/04_convex_hull
 :link-type: doc
 :img-top: _static/intersection-overview.png
 
@@ -103,7 +103,7 @@ Generate publication-ready figures and interactive 3D renderings of neuronal mor
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-ruler-combined"></i> Geometric Analysis
-:link: notebooks/04_tree_intersection
+:link: notebooks/05_tree_intersection
 :link-type: doc
 :img-top: _static/martinotti_intersection.png
 
@@ -111,7 +111,7 @@ Measure spatial extent, arbor overlap, and three-dimensional arrangements of den
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-plug"></i> Python Ecosystem
-:link: notebooks/05_napari_viewer
+:link: notebooks/02_napari_viewer
 :link-type: doc
 :img-top: _static/op1_napari.png
 

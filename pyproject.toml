@@ -53,6 +53,10 @@ gui = [
 java = [
     "install-jdk>=1.0",
 ]
+# Visualization of reconstructions in napari (see tutorial T02)
+napari = [
+    "napari[all]",
+]
 # Optional OME-Zarr support
 zarr = [
     "zarr>=2.16",
@@ -68,7 +72,7 @@ all = [
 ]
 # Development dependencies
 dev = [
-    "pysnt[all]",
+    "pysnt[all,napari]",
     "pytest>=8.0",
     "pytest-cov",
     "nbclient",
@@ -77,6 +81,12 @@ dev = [
     "mypy",
     "isort",
     "typing_extensions",
+    # Packages required by the tutorial notebooks (docs/notebooks)
+    "trimesh",
+    "manifold3d",
+    "rtree",
+    "scipy",
+    "scikit-learn",
 ]
 # Documentation dependencies
 docs = [

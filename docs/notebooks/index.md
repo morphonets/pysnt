@@ -75,8 +75,18 @@ Load reconstructions, measure morphology, map and plot metrics, and transform tr
 {bdg-success}`Beginner` {bdg-secondary-line}`20-30 min` {bdg-primary}`Fundamentals`
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-brain"></i> T02: Hemisphere Analysis
-:link: 02_hemisphere_analysis
+::::{grid-item-card} <i class="fa-solid fa-plug"></i> T02: Visualizing Reconstructions in napari
+:link: 02_napari_viewer
+:link-type: doc
+:img-top: ../_static/op1_napari.png
+
+Render reconstructions in napari as centerlines, nodes, or color-coded 3D surfaces, and overlay them on images.
+
+{bdg-success}`Beginner` {bdg-secondary-line}`10-15 min` {bdg-primary}`Interop` {bdg-info-line}`napari`
+::::
+
+::::{grid-item-card} <i class="fa-solid fa-brain"></i> T03: Hemisphere Analysis
+:link: 03_hemisphere_analysis
 :link-type: doc
 :img-top: ../_static/front_page/tutorial03a.png
 
@@ -85,8 +95,8 @@ Quantify ipsilateral and contralateral projections of MouseLight neurons using t
 {bdg-success}`Beginner` {bdg-secondary-line}`30 min` {bdg-primary}`Fundamentals`
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-cube"></i> T03: Volumetric Quantifications
-:link: 03_convex_hull
+::::{grid-item-card} <i class="fa-solid fa-cube"></i> T04: Volumetric Quantifications
+:link: 04_convex_hull
 :link-type: doc
 :img-top: ../_static/intersection-overview.png
 
@@ -95,24 +105,14 @@ Convex hulls and PCA of axonal terminals, compared against brain-region volumes.
 {bdg-warning}`Intermediate` {bdg-secondary-line}`30-40 min` {bdg-primary}`Fundamentals`
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-ruler-combined"></i> T04: Spatial Intersection Between Trees
-:link: 04_tree_intersection
+::::{grid-item-card} <i class="fa-solid fa-ruler-combined"></i> T05: Spatial Intersection Between Trees
+:link: 05_tree_intersection
 :link-type: doc
 :img-top: ../_static/martinotti_intersection.png
 
 Overlap of axonal and dendritic arbors with NetworkX, trimesh, and NumPy.
 
 {bdg-warning}`Intermediate` {bdg-secondary-line}`30-40 min` {bdg-primary}`Spatial analysis` {bdg-primary}`Interop` {bdg-info-line}`NeuroMorpho.org`
-::::
-
-::::{grid-item-card} <i class="fa-solid fa-plug"></i> T05: Visualizing Reconstructions in napari
-:link: 05_napari_viewer
-:link-type: doc
-:img-top: ../_static/op1_napari.png
-
-Render trees as 3D meshes alongside image data in napari.
-
-{bdg-warning}`Intermediate` {bdg-secondary-line}`15-20 min` {bdg-primary}`Interop` {bdg-info-line}`napari`
 ::::
 
 ::::{grid-item-card} <i class="fa-solid fa-sitemap"></i> T06: Unsupervised Classification of Projection Neurons
@@ -203,11 +203,12 @@ To cite SNT itself, please cite:
 
 Overview <self>
 01_single_cell_analysis
-02_hemisphere_analysis
-03_convex_hull
-04_tree_intersection
-05_napari_viewer
+02_napari_viewer
+03_hemisphere_analysis
+04_convex_hull
+05_tree_intersection
 06_persistence_landscape
 07_curvature_optimization
 08_crossover_detection
+09_big_data
 ```

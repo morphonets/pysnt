@@ -11,6 +11,7 @@ The converters module is organized into the following submodules:
 - graph_converters: SNTGraph to NetworkX conversion
 - chart_converters: SNTChart to matplotlib conversion
 - structured_data_converters: SNTTable/Path/ImagePlus to xarray conversion and metadata extraction
+- napari_converters: Tree to napari layer data (Shapes, Points, Surface)
 - display: Display and visualization functions
 - enhancement: Java object enhancement functionality
 """
@@ -32,6 +33,13 @@ from .structured_data_converters import (
 
 # Import tree converter functions
 from .tree_converters import tree_to_points
+
+# Import napari converter functions
+from .napari_converters import (
+    tree_to_napari_paths,
+    tree_to_napari_points,
+    tree_to_napari_surface,
+)
 
 # Import graph converter functions for backward compatibility
 from .graph_converters import (
@@ -200,6 +208,9 @@ __all__ = [
     
     # Tree converter functions
     "tree_to_points",
+    "tree_to_napari_paths",
+    "tree_to_napari_points",
+    "tree_to_napari_surface",
     
     # Constants
     "HAS_NETWORKX"

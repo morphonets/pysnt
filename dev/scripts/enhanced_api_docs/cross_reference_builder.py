@@ -694,7 +694,7 @@ class CrossReferenceBuilder:
             'TreeStatistics': [
                 {
                     'title': 'Tree Statistics and Analysis',
-                    'url': '../notebooks/02_hemisphere_analysis.html', 
+                    'url': '../notebooks/03_hemisphere_analysis.html', 
                     'description': 'Statistical analysis of neuronal morphology',
                     'type': 'tutorial',
                     'relevance': 'statistics'
@@ -703,7 +703,7 @@ class CrossReferenceBuilder:
             'ConvexHull': [
                 {
                     'title': 'Convex Hull Analysis',
-                    'url': '../notebooks/2_convex_hull.html',
+                    'url': '../notebooks/04_convex_hull.html',
                     'description': 'Computing and analyzing convex hulls of neuronal structures',
                     'type': 'tutorial',
                     'relevance': 'geometry'

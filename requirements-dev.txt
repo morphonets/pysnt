@@ -1,6 +1,14 @@
 # Include all optional dependencies for development
 -r requirements-gui.txt
 
+# Tutorial notebooks (docs/notebooks): napari (T02), trimesh stack (T05), scikit-learn/SciPy (T06, T07)
+napari[all]
+trimesh
+manifold3d
+rtree
+scipy
+scikit-learn
+
 # Testing dependencies
 pytest>=8.0
 pytest-cov

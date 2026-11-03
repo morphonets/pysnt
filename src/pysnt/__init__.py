@@ -22,7 +22,8 @@ from .core import to_python, from_java, show, extract_figure
 
 # Import converter utilities
 from .converters import (
-    register_snt_converters, register_display_handler, list_converters, display, enhance_java_object, tree_to_points
+    register_snt_converters, register_display_handler, list_converters, display, enhance_java_object, tree_to_points,
+    tree_to_napari_paths, tree_to_napari_points, tree_to_napari_surface
 )
 
 # Import Java utilities
@@ -375,6 +376,9 @@ __all__ = [
     "display",
     "enhance_java_object",
     "tree_to_points",
+    "tree_to_napari_paths",
+    "tree_to_napari_points",
+    "tree_to_napari_surface",
     # Configuration system
     "get_option",
     "set_option", 

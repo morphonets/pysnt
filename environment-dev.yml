@@ -25,12 +25,24 @@ dependencies:
   - zarr>=2.16
   - fsspec>=2023.1.0
 
+  # Tutorial notebooks (docs/notebooks): napari (T02), trimesh stack (T05),
+  # scikit-learn and SciPy (T06, T07). manifold3d is pip-only (see below)
+  - napari
+  - pyqt
+  - trimesh
+  - rtree
+  - scipy
+  - scikit-learn
+
   # Pip dependencies
   - pip
   - pip:
     # Optional Java auto-install support
     - install-jdk>=1.0
-    
+
+    # Tutorial notebooks: boolean operations in T05 (not on conda-forge)
+    - manifold3d
+
     # Optional GUI dependencies
     - pyobjc-core>=10.0; sys_platform == "darwin"
     - pyobjc-framework-cocoa>=10.0; sys_platform == "darwin"
