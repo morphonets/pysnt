@@ -7,7 +7,7 @@ import logging
 import scyjava
 from typing import Dict, Any, List
 
-from ..common_module import setup_module_classes
+from ...common_module import setup_module_classes
 
 logger = logging.getLogger(__name__)
 
