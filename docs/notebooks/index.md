@@ -138,6 +138,7 @@ Refine coarse traces and assign radii by re-tracing along image signal.
 ::::{grid-item-card} <i class="fa-solid fa-code-merge"></i> T08: Crossover Detection
 :link: 08_crossover_detection
 :link-type: doc
+:img-top: ../_static/front_page/tutorial08a.png
 
 Find neurites that pass close without connecting, for QC of traces.
 

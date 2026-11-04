@@ -7,6 +7,7 @@ Fiji integration required for SNT functionality.
 
 import logging
 import os
+import platform
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 
@@ -272,8 +273,16 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         # which fails for a constraint such as "21+" ("Failed to guess the Java version.")
         # and then surfaces as "Invalid service: net.imagej.legacy.LegacyService"
         # JPype loads a native library: Java 24+ warns about it unless native access is enabled
-        for _opt in ("--add-opens=java.base/java.lang=ALL-UNNAMED",
-                     "--enable-native-access=ALL-UNNAMED"):
+        _jvm_opts = ["--add-opens=java.base/java.lang=ALL-UNNAMED",
+                     "--enable-native-access=ALL-UNNAMED"]
+        # On macOS, ImageJ1 (IJ1Helper) reflectively accesses com.apple.eawt (dock icon, menu
+        # bar, etc.) when the legacy GUI is initialized ("gui"/"interactive" modes). Java 17+
+        # does not export that package to unnamed modules by default, which otherwise fails with
+        # "IllegalAccessException: ... module java.desktop does not export com.apple.eawt"
+        # (the same option is added by the Fiji launcher)
+        if platform.system() == "Darwin":
+            _jvm_opts.append("--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED")
+        for _opt in _jvm_opts:
             if _opt not in scyjava.config.get_options():
                 scyjava.config.add_option(_opt)
 
