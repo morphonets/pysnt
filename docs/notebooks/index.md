@@ -148,8 +148,9 @@ Find neurites that pass close without connecting, for QC of traces.
 ::::{grid-item-card} <i class="fa-solid fa-database"></i> T09: Handling Large-Scale Neuronal Data
 :link: 09_big_data
 :link-type: doc
+:img-top: ../_static/front_page/tutorial09.png
 
-Stream and trace OME-ZARR volumes that exceed RAM, with GPU rendering.
+Inspect, crop and trace remote OME-ZARR volumes that exceed RAM, render them in BVV, and share SNT links.
 
 {bdg-danger}`Advanced` {bdg-secondary-line}`30 min` {bdg-primary}`Scale` {bdg-info-line}`OME-ZARR`
 ::::
