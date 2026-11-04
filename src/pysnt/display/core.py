@@ -677,6 +677,10 @@ def _get_display_handler(obj: Any) -> Tuple[str, Optional[Callable]]:
     if _is_viewer3d(obj):
         return 'viewer3d', _display_viewer3d
 
+    # Check for Bvv/Bdv objects
+    if _is_bigviewer(obj):
+        return 'bigviewer', _display_bigviewer
+
     # Check for Viewer2D objects
     if _is_viewer2d(obj):
         return 'viewer2d', _display_viewer2d
@@ -836,6 +840,11 @@ def _is_viewer3d(obj) -> bool:
     return 'Viewer3D' in class_name and hasattr(obj, 'snapshot')
 
 
+def _is_bigviewer(obj) -> bool:
+    """Check if object is a Bvv or Bdv viewer."""
+    return _is_java_type(obj, 'viewer.Bvv\'', 'viewer.Bdv\'') and hasattr(obj, 'snapshot')
+
+
 def _is_viewer2d(obj) -> bool:
     """Check if object is a Viewer2D."""
     class_name = str(type(obj))
@@ -871,6 +880,24 @@ def _display_viewer3d(obj, show: bool = True, **kwargs):
     from .data_display import _display_imageplus
     _display_imageplus(snapshot, show=show, **kwargs)
 
+    return snapshot
+
+
+@handle_display_errors("display BVV/BDV")
+def _display_bigviewer(obj, show: bool = True, **kwargs):
+    """Handler function for Bvv/Bdv display (snapshot of the current scene)."""
+    snapshot = obj.snapshot()
+    if snapshot is None:
+        logger.error("Bvv/Bdv snapshot() returned None (is the viewer open?)")
+        return None
+
+    kind = 'BVV' if _is_java_type(obj, 'viewer.Bvv\'') else 'BDV'
+    kwargs = _add_metadata(kwargs, source_type=kind, is_rgb=True)
+    if 'title' not in kwargs:
+        kwargs['title'] = f"{kind} Snapshot"
+
+    from .data_display import _display_imageplus
+    _display_imageplus(snapshot, show=show, **kwargs)
     return snapshot
 
 
