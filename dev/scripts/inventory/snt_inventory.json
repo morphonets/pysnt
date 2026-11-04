@@ -51905,436 +51905,6 @@
     "pysnt": "extended"
    },
    {
-    "name": "SpimDataUtils_CalibratedSource",
-    "binary": "sc.fiji.snt.io.SpimDataUtils$CalibratedSource",
-    "public": true,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "getSource",
-      "static": false,
-      "returns": "RandomAccessibleInterval",
-      "params": [
-       [
-        "t",
-        "int"
-       ],
-       [
-        "level",
-        "int"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "getInterpolatedSource",
-      "static": false,
-      "returns": "RealRandomAccessible",
-      "params": [
-       [
-        "t",
-        "int"
-       ],
-       [
-        "level",
-        "int"
-       ],
-       [
-        "method",
-        "Interpolation"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "getVoxelDimensions",
-      "static": false,
-      "returns": "VoxelDimensions",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "setCalibration",
-      "static": false,
-      "returns": "void",
-      "params": [
-       [
-        "cal",
-        "double[]"
-       ],
-       [
-        "unit",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "SpimDataUtils_ChannelData",
-    "binary": "sc.fiji.snt.io.SpimDataUtils$ChannelData",
-    "public": true,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "name",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "unit",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "spacing",
-      "static": false,
-      "returns": "double[]",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "nChannels",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "img",
-      "static": false,
-      "returns": "RandomAccessibleInterval",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "SpimDataUtils_N5Sources",
-    "binary": "sc.fiji.snt.io.SpimDataUtils$N5Sources",
-    "public": true,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "name",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "sources",
-      "static": false,
-      "returns": "List",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "numTimepoints",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "chunkShape",
-      "static": false,
-      "returns": "int[]",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "remote",
-      "static": false,
-      "returns": "boolean",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "SpimDataUtils",
-    "binary": "sc.fiji.snt.io.SpimDataUtils",
-    "public": true,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "lockImarisReads",
-      "static": true,
-      "returns": "AbstractSpimData",
-      "params": [
-       [
-        "spimData",
-        "AbstractSpimData"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "restoreUrlScheme",
-      "static": true,
-      "returns": "String",
-      "params": [
-       [
-        "url",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "resolveN5Selection",
-      "static": true,
-      "returns": "N5Sources",
-      "params": [
-       [
-        "selection",
-        "DataSelection"
-       ],
-       [
-        "name",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "resolvePathToSource",
-      "static": true,
-      "returns": "Object",
-      "params": [
-       [
-        "filePathOrUrl",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "patchImsXml",
-      "static": true,
-      "returns": "void",
-      "params": [
-       [
-        "xmlPath",
-        "String"
-       ],
-       [
-        "base",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "writeBdvN5Xml",
-      "static": true,
-      "returns": "void",
-      "params": [
-       [
-        "xmlFile",
-        "File"
-       ],
-       [
-        "n5DirName",
-        "String"
-       ],
-       [
-        "levelDims",
-        "long[][]"
-       ],
-       [
-        "voxelSize",
-        "double[]"
-       ],
-       [
-        "unit",
-        "String"
-       ],
-       [
-        "nTimepoints",
-        "int"
-       ],
-       [
-        "setupName",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "writeBdvN5Xml",
-      "static": true,
-      "returns": "void",
-      "params": [
-       [
-        "xmlFile",
-        "File"
-       ],
-       [
-        "n5DirName",
-        "String"
-       ],
-       [
-        "levelDims",
-        "long[][]"
-       ],
-       [
-        "voxelSize",
-        "double[]"
-       ],
-       [
-        "unit",
-        "String"
-       ],
-       [
-        "nTimepoints",
-        "int"
-       ],
-       [
-        "setupName",
-        "String"
-       ],
-       [
-        "nChannels",
-        "int"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "openChannel",
-      "static": true,
-      "returns": "ChannelData",
-      "params": [
-       [
-        "path",
-        "String"
-       ],
-       [
-        "channelIdx",
-        "int"
-       ],
-       [
-        "timepoint",
-        "int"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "isRemoteUrl",
-      "static": true,
-      "returns": "boolean",
-      "params": [
-       [
-        "path",
-        "String"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
     "name": "TracesFileFormatException",
     "binary": "sc.fiji.snt.io.TracesFileFormatException",
     "public": true,
@@ -62591,6 +62161,436 @@
   ],
   "sc.fiji.snt.util": [
    {
+    "name": "BigDataUtils",
+    "binary": "sc.fiji.snt.util.BigDataUtils",
+    "public": true,
+    "kind": "class",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "lockImarisReads",
+      "static": true,
+      "returns": "AbstractSpimData",
+      "params": [
+       [
+        "spimData",
+        "AbstractSpimData"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "restoreUrlScheme",
+      "static": true,
+      "returns": "String",
+      "params": [
+       [
+        "url",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "resolveN5Selection",
+      "static": true,
+      "returns": "N5Sources",
+      "params": [
+       [
+        "selection",
+        "DataSelection"
+       ],
+       [
+        "name",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "resolvePathToSource",
+      "static": true,
+      "returns": "Object",
+      "params": [
+       [
+        "filePathOrUrl",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "patchImsXml",
+      "static": true,
+      "returns": "void",
+      "params": [
+       [
+        "xmlPath",
+        "String"
+       ],
+       [
+        "base",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "writeBdvN5Xml",
+      "static": true,
+      "returns": "void",
+      "params": [
+       [
+        "xmlFile",
+        "File"
+       ],
+       [
+        "n5DirName",
+        "String"
+       ],
+       [
+        "levelDims",
+        "long[][]"
+       ],
+       [
+        "voxelSize",
+        "double[]"
+       ],
+       [
+        "unit",
+        "String"
+       ],
+       [
+        "nTimepoints",
+        "int"
+       ],
+       [
+        "setupName",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "writeBdvN5Xml",
+      "static": true,
+      "returns": "void",
+      "params": [
+       [
+        "xmlFile",
+        "File"
+       ],
+       [
+        "n5DirName",
+        "String"
+       ],
+       [
+        "levelDims",
+        "long[][]"
+       ],
+       [
+        "voxelSize",
+        "double[]"
+       ],
+       [
+        "unit",
+        "String"
+       ],
+       [
+        "nTimepoints",
+        "int"
+       ],
+       [
+        "setupName",
+        "String"
+       ],
+       [
+        "nChannels",
+        "int"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "openChannel",
+      "static": true,
+      "returns": "ChannelData",
+      "params": [
+       [
+        "path",
+        "String"
+       ],
+       [
+        "channelIdx",
+        "int"
+       ],
+       [
+        "timepoint",
+        "int"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "isRemoteUrl",
+      "static": true,
+      "returns": "boolean",
+      "params": [
+       [
+        "path",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "curated"
+   },
+   {
+    "name": "BigDataUtils_CalibratedSource",
+    "binary": "sc.fiji.snt.util.BigDataUtils$CalibratedSource",
+    "public": true,
+    "kind": "class",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "getSource",
+      "static": false,
+      "returns": "RandomAccessibleInterval",
+      "params": [
+       [
+        "t",
+        "int"
+       ],
+       [
+        "level",
+        "int"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "getInterpolatedSource",
+      "static": false,
+      "returns": "RealRandomAccessible",
+      "params": [
+       [
+        "t",
+        "int"
+       ],
+       [
+        "level",
+        "int"
+       ],
+       [
+        "method",
+        "Interpolation"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "getVoxelDimensions",
+      "static": false,
+      "returns": "VoxelDimensions",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "setCalibration",
+      "static": false,
+      "returns": "void",
+      "params": [
+       [
+        "cal",
+        "double[]"
+       ],
+       [
+        "unit",
+        "String"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "extended"
+   },
+   {
+    "name": "BigDataUtils_ChannelData",
+    "binary": "sc.fiji.snt.util.BigDataUtils$ChannelData",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "name",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "unit",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "spacing",
+      "static": false,
+      "returns": "double[]",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "nChannels",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "img",
+      "static": false,
+      "returns": "RandomAccessibleInterval",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "extended"
+   },
+   {
+    "name": "BigDataUtils_N5Sources",
+    "binary": "sc.fiji.snt.util.BigDataUtils$N5Sources",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "name",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "sources",
+      "static": false,
+      "returns": "List",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "numTimepoints",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "chunkShape",
+      "static": false,
+      "returns": "int[]",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "remote",
+      "static": false,
+      "returns": "boolean",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "extended"
+   },
+   {
     "name": "BoundingBox",
     "binary": "sc.fiji.snt.util.BoundingBox",
     "public": true,
@@ -63021,6 +63021,34 @@
     "pysnt": "curated"
    },
    {
+    "name": "BundleDetector",
+    "binary": "sc.fiji.snt.util.BundleDetector",
+    "public": true,
+    "kind": "class",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "find",
+      "static": true,
+      "returns": "List",
+      "params": [
+       [
+        "paths",
+        "Collection"
+       ],
+       [
+        "cfg",
+        "Config"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
     "name": "BundleDetector_Config",
     "binary": "sc.fiji.snt.util.BundleDetector$Config",
     "public": true,
@@ -63103,42 +63131,6 @@
      }
     ],
     "pysnt": "missing"
-   },
-   {
-    "name": "BundleDetector",
-    "binary": "sc.fiji.snt.util.BundleDetector",
-    "public": true,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "find",
-      "static": true,
-      "returns": "List",
-      "params": [
-       [
-        "paths",
-        "Collection"
-       ],
-       [
-        "cfg",
-        "Config"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "CircleCursor3D_Octant",
-    "binary": "sc.fiji.snt.util.CircleCursor3D$Octant",
-    "public": false,
-    "kind": "enum",
-    "deprecated": false,
-    "for_removal": false
    },
    {
     "name": "CircleCursor3D",
@@ -63325,6 +63317,14 @@
     "pysnt": "extended"
    },
    {
+    "name": "CircleCursor3D_Octant",
+    "binary": "sc.fiji.snt.util.CircleCursor3D$Octant",
+    "public": false,
+    "kind": "enum",
+    "deprecated": false,
+    "for_removal": false
+   },
+   {
     "name": "ColorMaps",
     "binary": "sc.fiji.snt.util.ColorMaps",
     "public": true,
@@ -63455,6 +63455,34 @@
        [
         "n",
         "int"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "curated"
+   },
+   {
+    "name": "CrossoverFinder",
+    "binary": "sc.fiji.snt.util.CrossoverFinder",
+    "public": true,
+    "kind": "class",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "find",
+      "static": true,
+      "returns": "List",
+      "params": [
+       [
+        "paths",
+        "Collection"
+       ],
+       [
+        "cfg",
+        "Config"
        ]
       ],
       "deprecated": false,
@@ -63712,18 +63740,18 @@
     "pysnt": "missing"
    },
    {
-    "name": "CrossoverFinder_HashGrid3D_Cell",
-    "binary": "sc.fiji.snt.util.CrossoverFinder$HashGrid3D$Cell",
-    "public": false,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
     "name": "CrossoverFinder_HashGrid3D",
     "binary": "sc.fiji.snt.util.CrossoverFinder$HashGrid3D",
     "public": false,
     "kind": "class",
+    "deprecated": false,
+    "for_removal": false
+   },
+   {
+    "name": "CrossoverFinder_HashGrid3D_Cell",
+    "binary": "sc.fiji.snt.util.CrossoverFinder$HashGrid3D$Cell",
+    "public": false,
+    "kind": "record",
     "deprecated": false,
     "for_removal": false
    },
@@ -63758,34 +63786,6 @@
     "kind": "record",
     "deprecated": false,
     "for_removal": false
-   },
-   {
-    "name": "CrossoverFinder",
-    "binary": "sc.fiji.snt.util.CrossoverFinder",
-    "public": true,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "find",
-      "static": true,
-      "returns": "List",
-      "params": [
-       [
-        "paths",
-        "Collection"
-       ],
-       [
-        "cfg",
-        "Config"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "curated"
    },
    {
     "name": "DiskCursor3D",
@@ -63829,6 +63829,25 @@
      }
     ],
     "pysnt": "extended"
+   },
+   {
+    "name": "GLUtils",
+    "binary": "sc.fiji.snt.util.GLUtils",
+    "public": true,
+    "kind": "class",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "getInfo",
+      "static": true,
+      "returns": "Info",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
    },
    {
     "name": "GLUtils_Info",
@@ -63904,57 +63923,6 @@
       "static": false,
       "returns": "String",
       "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "GLUtils",
-    "binary": "sc.fiji.snt.util.GLUtils",
-    "public": true,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "getInfo",
-      "static": true,
-      "returns": "Info",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "IOUtils_ReconstructionFormat",
-    "binary": "sc.fiji.snt.util.IOUtils$ReconstructionFormat",
-    "public": true,
-    "kind": "enum",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "values",
-      "static": true,
-      "returns": "ReconstructionFormat[]",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "valueOf",
-      "static": true,
-      "returns": "ReconstructionFormat",
-      "params": [
-       [
-        "name",
-        "String"
-       ]
-      ],
       "deprecated": false,
       "for_removal": false
      }
@@ -64054,175 +64022,31 @@
     "pysnt": "missing"
    },
    {
-    "name": "ImgUtils_MaxProjection",
-    "binary": "sc.fiji.snt.util.ImgUtils$MaxProjection",
+    "name": "IOUtils_ReconstructionFormat",
+    "binary": "sc.fiji.snt.util.IOUtils$ReconstructionFormat",
     "public": true,
-    "kind": "record",
+    "kind": "enum",
     "deprecated": false,
     "for_removal": false,
     "methods": [
      {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
+      "name": "values",
+      "static": true,
+      "returns": "ReconstructionFormat[]",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "valueOf",
+      "static": true,
+      "returns": "ReconstructionFormat",
       "params": [
        [
-        "o",
-        "Object"
+        "name",
+        "String"
        ]
       ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "max",
-      "static": false,
-      "returns": "Img",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "depth",
-      "static": false,
-      "returns": "Img",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "ImgUtils_OmeZarrCalibration",
-    "binary": "sc.fiji.snt.util.ImgUtils$OmeZarrCalibration",
-    "public": true,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "unit",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "spacing",
-      "static": false,
-      "returns": "double[]",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "ImgUtils_SliceResult",
-    "binary": "sc.fiji.snt.util.ImgUtils$SliceResult",
-    "public": true,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "channelIndex",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "timeIndex",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "img",
-      "static": false,
-      "returns": "ImgPlus",
-      "params": [],
       "deprecated": false,
       "for_removal": false
      }
@@ -65578,6 +65402,182 @@
     "pysnt": "curated"
    },
    {
+    "name": "ImgUtils_MaxProjection",
+    "binary": "sc.fiji.snt.util.ImgUtils$MaxProjection",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "max",
+      "static": false,
+      "returns": "Img",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "depth",
+      "static": false,
+      "returns": "Img",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
+    "name": "ImgUtils_OmeZarrCalibration",
+    "binary": "sc.fiji.snt.util.ImgUtils$OmeZarrCalibration",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "unit",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "spacing",
+      "static": false,
+      "returns": "double[]",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
+    "name": "ImgUtils_SliceResult",
+    "binary": "sc.fiji.snt.util.ImgUtils$SliceResult",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "channelIndex",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "timeIndex",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "img",
+      "static": false,
+      "returns": "ImgPlus",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
     "name": "ImpUtils",
     "binary": "sc.fiji.snt.util.ImpUtils",
     "public": true,
@@ -66902,94 +66902,6 @@
     "pysnt": "extended"
    },
    {
-    "name": "MeshUtils_Material",
-    "binary": "sc.fiji.snt.util.MeshUtils$Material",
-    "public": true,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "opacity",
-      "static": false,
-      "returns": "double",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "b",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "g",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "r",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toColor",
-      "static": false,
-      "returns": "Color",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
-   },
-   {
-    "name": "MeshUtils_VertexKey",
-    "binary": "sc.fiji.snt.util.MeshUtils$VertexKey",
-    "public": false,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
     "name": "MeshUtils",
     "binary": "sc.fiji.snt.util.MeshUtils",
     "public": true,
@@ -67352,6 +67264,94 @@
     "pysnt": "missing"
    },
    {
+    "name": "MeshUtils_Material",
+    "binary": "sc.fiji.snt.util.MeshUtils$Material",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "opacity",
+      "static": false,
+      "returns": "double",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "b",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "g",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "r",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toColor",
+      "static": false,
+      "returns": "Color",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
+    "name": "MeshUtils_VertexKey",
+    "binary": "sc.fiji.snt.util.MeshUtils$VertexKey",
+    "public": false,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false
+   },
+   {
     "name": "PathCursor",
     "binary": "sc.fiji.snt.util.PathCursor",
     "public": true,
@@ -67536,14 +67536,6 @@
     "pysnt": "extended"
    },
    {
-    "name": "PointDeduplicator_ScoredPoint",
-    "binary": "sc.fiji.snt.util.PointDeduplicator$ScoredPoint",
-    "public": false,
-    "kind": "record",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
     "name": "PointDeduplicator",
     "binary": "sc.fiji.snt.util.PointDeduplicator",
     "public": true,
@@ -67569,6 +67561,14 @@
      }
     ],
     "pysnt": "missing"
+   },
+   {
+    "name": "PointDeduplicator_ScoredPoint",
+    "binary": "sc.fiji.snt.util.PointDeduplicator$ScoredPoint",
+    "public": false,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false
    },
    {
     "name": "PointInCanvas",
@@ -68825,30 +68825,6 @@
     "pysnt": "extended"
    },
    {
-    "name": "TreeToRaster_Frustum",
-    "binary": "sc.fiji.snt.util.TreeToRaster$Frustum",
-    "public": false,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
-    "name": "TreeToRaster_FrustumGrid",
-    "binary": "sc.fiji.snt.util.TreeToRaster$FrustumGrid",
-    "public": false,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
-    "name": "TreeToRaster_RasterContext",
-    "binary": "sc.fiji.snt.util.TreeToRaster$RasterContext",
-    "public": false,
-    "kind": "class",
-    "deprecated": false,
-    "for_removal": false
-   },
-   {
     "name": "TreeToRaster",
     "binary": "sc.fiji.snt.util.TreeToRaster",
     "public": true,
@@ -69062,148 +69038,28 @@
     "pysnt": "missing"
    },
    {
-    "name": "TreeUtils_ChildBranchInfo",
-    "binary": "sc.fiji.snt.util.TreeUtils$ChildBranchInfo",
+    "name": "TreeToRaster_Frustum",
+    "binary": "sc.fiji.snt.util.TreeToRaster$Frustum",
     "public": false,
-    "kind": "record",
+    "kind": "class",
     "deprecated": false,
     "for_removal": false
    },
    {
-    "name": "TreeUtils_EndpointClusterAnalysis",
-    "binary": "sc.fiji.snt.util.TreeUtils$EndpointClusterAnalysis",
-    "public": true,
-    "kind": "record",
+    "name": "TreeToRaster_FrustumGrid",
+    "binary": "sc.fiji.snt.util.TreeToRaster$FrustumGrid",
+    "public": false,
+    "kind": "class",
     "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "clusterCentroid",
-      "static": false,
-      "returns": "PointInImage",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "useStartNodes",
-      "static": false,
-      "returns": "boolean",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "variance",
-      "static": false,
-      "returns": "double",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
+    "for_removal": false
    },
    {
-    "name": "TreeUtils_EndpointMatch",
-    "binary": "sc.fiji.snt.util.TreeUtils$EndpointMatch",
-    "public": true,
-    "kind": "record",
+    "name": "TreeToRaster_RasterContext",
+    "binary": "sc.fiji.snt.util.TreeToRaster$RasterContext",
+    "public": false,
+    "kind": "class",
     "deprecated": false,
-    "for_removal": false,
-    "methods": [
-     {
-      "name": "equals",
-      "static": false,
-      "returns": "boolean",
-      "params": [
-       [
-        "o",
-        "Object"
-       ]
-      ],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "toString",
-      "static": false,
-      "returns": "String",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "hashCode",
-      "static": false,
-      "returns": "int",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "distance",
-      "static": false,
-      "returns": "double",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "p2AtStart",
-      "static": false,
-      "returns": "boolean",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "p1AtStart",
-      "static": false,
-      "returns": "boolean",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     },
-     {
-      "name": "isNaturalOrder",
-      "static": false,
-      "returns": "boolean",
-      "params": [],
-      "deprecated": false,
-      "for_removal": false
-     }
-    ],
-    "pysnt": "missing"
+    "for_removal": false
    },
    {
     "name": "TreeUtils",
@@ -69757,6 +69613,150 @@
         "PointInImage"
        ]
       ],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
+    "name": "TreeUtils_ChildBranchInfo",
+    "binary": "sc.fiji.snt.util.TreeUtils$ChildBranchInfo",
+    "public": false,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false
+   },
+   {
+    "name": "TreeUtils_EndpointClusterAnalysis",
+    "binary": "sc.fiji.snt.util.TreeUtils$EndpointClusterAnalysis",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "clusterCentroid",
+      "static": false,
+      "returns": "PointInImage",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "useStartNodes",
+      "static": false,
+      "returns": "boolean",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "variance",
+      "static": false,
+      "returns": "double",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     }
+    ],
+    "pysnt": "missing"
+   },
+   {
+    "name": "TreeUtils_EndpointMatch",
+    "binary": "sc.fiji.snt.util.TreeUtils$EndpointMatch",
+    "public": true,
+    "kind": "record",
+    "deprecated": false,
+    "for_removal": false,
+    "methods": [
+     {
+      "name": "equals",
+      "static": false,
+      "returns": "boolean",
+      "params": [
+       [
+        "o",
+        "Object"
+       ]
+      ],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "toString",
+      "static": false,
+      "returns": "String",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "hashCode",
+      "static": false,
+      "returns": "int",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "distance",
+      "static": false,
+      "returns": "double",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "p2AtStart",
+      "static": false,
+      "returns": "boolean",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "p1AtStart",
+      "static": false,
+      "returns": "boolean",
+      "params": [],
+      "deprecated": false,
+      "for_removal": false
+     },
+     {
+      "name": "isNaturalOrder",
+      "static": false,
+      "returns": "boolean",
+      "params": [],
       "deprecated": false,
       "for_removal": false
      }

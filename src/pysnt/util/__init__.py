@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Curated classes - always available for direct import
 CURATED_CLASSES = [
+    "BigDataUtils",
     "BoundingBox",
     "BundleDetector",
     "ColorMaps",

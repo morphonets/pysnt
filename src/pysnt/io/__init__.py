@@ -30,7 +30,6 @@ EXTENDED_CLASSES = [
     "NDFImporter",
     "SWCExportException",
     "TracesFileFormatException",
-    "SpimDataUtils"
 ]
 
 # =============================================================================
