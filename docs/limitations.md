@@ -85,7 +85,7 @@ PySNT has some limitations that may not be addressed in future releases. However
 
 SNT provides several interactive 3D visualization tools: [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer), [SciView](https://imagej.net/plugins/snt/modeling), and [Big Volume Viewer](https://imagej.net/plugins/snt/manual#big-volume-viewer). While these viewers can be launched from Python, their usage remains experimental with several limitations:
 
-- Viewers may not be able to run in non-blocking mode on macOS (see [GUI Threading Issues](#gui-threading-issues))
+- On macOS, Java viewers (e.g., Big Volume Viewer) need interactive mode and must be launched on the event dispatch thread (see [GUI Threading Issues](#gui-threading-issues))
 - For some viewers, the ImageJ GUI may need to linger in the background, even if it is not needed nor used
 
 **Workaround**:
@@ -132,9 +132,41 @@ except Exception as e:
 
 ### GUI Threading Issues
 
-PySNT can open GUI windows (SNT's own viewers and tables, napari, etc.). However, GUI applications can encounter threading issues, particularly on macOS where Qt applications must be created on the main thread.
+PySNT can open GUI windows (SNT's own viewers and tables, napari, etc.). On macOS, GUI toolkits require window creation on the AppKit main thread, which the Python kernel owns. This has two consequences: Java GUI calls may hang, and only one GUI event loop can be active per kernel.
 
-**Workaround**:
+#### Java GUIs on macOS (e.g., Big Volume Viewer)
+
+Java windows can only be created on macOS if PySNT is initialized in interactive mode, which enables IPython's `osx` event loop (`%gui osx`). That loop is serviced only while the kernel is idle, so the call that opens the window must not block the kernel. In particular, never wait for the Java event dispatch thread (EDT) from the kernel thread: it deadlocks (the cell appears to run forever). Instead, use `pysnt.run_on_edt()`, which _queues_ the GUI code on the EDT without waiting for it (on Linux and Windows it simply calls the function):
+
+```python
+import pysnt
+pysnt.initialize(mode='interactive')
+
+def show_viewer():
+    bvv = pysnt.Bvv()  # any Java GUI code
+    bvv.add(tree)
+    bvv.show(image)
+
+pysnt.run_on_edt(show_viewer)
+```
+
+Notes:
+
+- Wrap every Java GUI call (creating, showing or updating a window) in `run_on_edt()`. The queued code runs once the cell finishes.
+- Do not rely on return values from queued code in the same cell. Assign results to global variables if you need them afterwards.
+- `run_on_edt()` raises an error on macOS if PySNT was not initialized in interactive mode.
+- `mode='interactive:force'` does not work around this: it is not supported by PyImageJ.
+
+#### Qt-based viewers (napari) and Java GUIs
+
+IPython/ipykernel allows a single GUI event loop per kernel. Interactive mode uses `osx`, napari uses `qt`, so on macOS they cannot be used in the same kernel (attempting to do so raises `RuntimeError: Cannot activate multiple GUI eventloops`). Choose one:
+
+- **Java GUIs** (Big Volume Viewer, etc.): initialize with `mode='interactive'` and skip napari
+- **napari**: initialize with `mode='headless'` (the default) and skip Java GUIs
+
+The [crossover detection tutorial](./notebooks/08_crossover_detection.ipynb) implements this with a single switch (`BVV_ON_MACOS`) that selects the mode at initialization. Restart the kernel after changing it.
+
+#### GUI safe mode
 
 PySNT automatically enables GUI safe mode on macOS, which falls back to console display when GUI operations would be unsafe:
 

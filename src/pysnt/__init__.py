@@ -53,7 +53,7 @@ from .config import (
 
 # Import GUI utilities
 from .gui_utils import (
-    configure_gui_safety, safe_gui_call, is_main_thread, is_macos
+    configure_gui_safety, safe_gui_call, run_on_edt, is_main_thread, is_macos
 )
 
 # Curated classes from root sc.fiji.snt package - always available for direct import
@@ -390,6 +390,7 @@ __all__ = [
     # GUI utilities
     "configure_gui_safety",
     "safe_gui_call",
+    "run_on_edt",
     "is_main_thread",
     "is_macos",
     # Exceptions

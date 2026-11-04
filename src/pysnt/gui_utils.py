@@ -20,6 +20,56 @@ def is_macos() -> bool:
     return sys.platform == 'darwin'
 
 
+def run_on_edt(func: Callable, *args, **kwargs) -> None:
+    """
+    Run Java GUI code in a way that is safe on every platform.
+
+    On macOS, Java windows can only be created if PySNT was initialized in
+    ``interactive`` mode, and the code must run on the Java event dispatch
+    thread (EDT) without the kernel waiting for it (waiting deadlocks). This
+    function queues ``func`` on the EDT and returns immediately. On other
+    platforms, ``func`` is simply called directly.
+
+    Because queued code runs after the current cell/statement finishes,
+    its return value is NOT available. Assign results to global variables
+    if you need them afterwards.
+
+    Parameters
+    ----------
+    func : callable
+        Function containing the Java GUI calls (e.g., creating a viewer)
+    *args, **kwargs
+        Arguments passed to ``func``
+
+    Raises
+    ------
+    RuntimeError
+        If PySNT is not initialized, or if running on macOS without
+        ``interactive`` mode.
+
+    Examples
+    --------
+    >>> pysnt.initialize(mode='interactive')
+    >>> def show_viewer():
+    ...     bvv = pysnt.Bvv()
+    ...     bvv.add(tree)
+    ...     bvv.show()
+    >>> pysnt.run_on_edt(show_viewer)
+    """
+    if not is_macos():
+        func(*args, **kwargs)
+        return
+    from .core import get_mode, ij
+    mode = get_mode()
+    if mode is None:
+        raise RuntimeError("PySNT not initialized. Call initialize() first.")
+    if not str(mode).startswith("interactive"):
+        raise RuntimeError(
+            "Java GUIs on macOS require pysnt.initialize(mode='interactive') "
+            f"(current mode: '{mode}'). See the 'Quirks and Limitations' page.")
+    ij().thread().queue(lambda: func(*args, **kwargs))
+
+
 def safe_gui_call(func: Callable, *args, fallback_func: Optional[Callable] = None, **kwargs) -> Any:
     """
     Safely call a GUI function with proper thread handling.
