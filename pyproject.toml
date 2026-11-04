@@ -57,18 +57,13 @@ java = [
 napari = [
     "napari[all]",
 ]
-# Optional OME-Zarr support
-zarr = [
-    "zarr>=2.16",
-    "fsspec>=2023.1.0",
-]
 # Memory/CPU details in pysnt.version(detailed=True)
 info = [
     "psutil>=5.9",
 ]
 # All optional features
 all = [
-    "pysnt[display,gui,java,zarr,info]",
+    "pysnt[display,gui,java,info]",
 ]
 # Development dependencies
 dev = [

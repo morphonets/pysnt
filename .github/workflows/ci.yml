@@ -54,7 +54,7 @@ jobs:
           restore-keys: jgo-${{ runner.os }}-
       - name: Install
         # pyobjc (extra "gui") is interactive-only and heavy: not needed here
-        run: pip install -e ".[display,zarr,info]" pytest pytest-cov pytest-timeout nbclient typing_extensions
+        run: pip install -e ".[display,info]" pytest pytest-cov pytest-timeout nbclient typing_extensions
       - name: Warm up SNT download
         # First start resolves SNT's whole Maven dependency tree (many minutes on a cold runner):
         # do it once here, outside the per-test timeout. Also exercises the documented user flow
@@ -95,7 +95,7 @@ jobs:
           # lowest-direct applies to every direct requirement given on the command line, so it
           # must only see PySNT's own declared dependencies (unpinned test tools would resolve
           # to ancient releases that cannot even build)
-          uv pip install --resolution lowest-direct -e ".[display,zarr,info]"
+          uv pip install --resolution lowest-direct -e ".[display,info]"
           # Test tooling: regular (latest) resolution; already-installed floors are kept
           uv pip install pytest pytest-cov nbclient typing_extensions
       - name: Test

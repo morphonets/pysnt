@@ -116,7 +116,7 @@ pysnt/
 
 ### Dependencies
 `pyproject.toml` contains all details: core dependencies are listed under `dependencies`, and optional
-features under extras (`display`, `gui`, `java`, `zarr`, `info`, `all`, `dev`, `docs`). The `requirements*.txt` and
+features under extras (`display`, `gui`, `java`, `info`, `all`, `dev`, `docs`). The `requirements*.txt` and
 `environment*.yml` files mirror it; The floors are verified by the "lowest declared dependencies" CI job.
 
 ### Versioning and SNT
