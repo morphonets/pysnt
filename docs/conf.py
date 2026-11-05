@@ -169,8 +169,7 @@ master_doc = 'index'
 # Global toctree for navigation - let theme handle it automatically
 html_static_path = ["_static"]
 html_css_files = [
-    "custom.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    "custom.css",  # NB: Font Awesome 6 (Free) is bundled with the PyData theme: no need to load it from a CDN
 ]
 html_title = "PySNT: Quantification of neuronal anatomy in Python"
 

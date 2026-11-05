@@ -1,7 +1,6 @@
 /* Custom styles for PySNT documentation */
 
-/* Import Font Awesome */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+/* NB: Font Awesome 6 (Free) is bundled with the PyData theme (no CDN import needed) */
 
 /* PyData Sphinx Theme fonts */
 :root {
@@ -826,6 +825,35 @@ html[data-mode="dark"] .article-header-buttons .btn-outline-primary:hover {
     height: 180px;
     object-fit: contain;
     padding: 0.5rem;
+}
+
+/* Tutorial cards: pin the badge row (last paragraph of the card body) to the bottom, so that it lines up across
+   cards of a row regardless of how much text each card has */
+.bd-content .sd-card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-content .sd-card-body > p.sd-card-text:last-of-type {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+/* Top navbar: graduation cap for "Tutorials". The other entries get their icon from their page title, but this one
+   has an explicit (plain text) title in the toctree, which cannot carry HTML. NB: the theme uses the ::before of
+   nav links for its hover/active underline, so the icon goes in ::after, moved in front of the text with flex order. Matched by position (3rd entry) because the link's href is
+   'index.html' or '#' on the tutorial pages themselves */
+.bd-navbar .navbar-nav > li.nav-item:nth-child(3) > a.nav-link.nav-internal {
+    display: inline-flex;
+    align-items: center;
+}
+
+.bd-navbar .navbar-nav > li.nav-item:nth-child(3) > a.nav-link.nav-internal::after {
+    content: "\f19d";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    order: -1;
+    margin-right: 0.4rem;
 }
 
 /* Tutorials byline */
