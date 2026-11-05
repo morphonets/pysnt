@@ -20,7 +20,8 @@
 </header>
 ```
 
-## Preface
+:::{dropdown} Preface
+:animate: fade-in-slide-down
 
 Quantitative neuroanatomy has outgrown the single-cell, single-software
 workflow. Reconstructions now come from many sources (manual tracing, automated
@@ -59,6 +60,8 @@ estimated time, and any extra requirements at the top.
 page has a clickable outline of its sections on the right. Notebook pages offer
 a download button for the `.ipynb` file, and the theme switcher in the top bar
 toggles dark mode. Class and method names link to the [API reference](../api.md).
+
+:::
 
 ## Curriculum
 
