@@ -12,7 +12,7 @@ from typing import List, Optional
 SNT_GROUP_ARTIFACT = "org.morphonets:SNT"
 
 # SNT version resolved from Maven Central/SciJava when none is requested.
-DEFAULT_SNT_VERSION = "5.0.24-SNAPSHOT"
+DEFAULT_SNT_VERSION = "5.0.24"
 
 # Optional runtime dependencies that are not declared by SNT's pom (provided by
 # Fiji when running against a Fiji install). Bvv/Bdv curated classes need them.
