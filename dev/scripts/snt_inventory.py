@@ -48,6 +48,9 @@ def start_jvm(endpoint):
     # ImageJ1 must be patched before any ij.* class loads (Java 17+ needs add-opens)
     sj.config.add_option("--add-opens=java.base/java.lang=ALL-UNNAMED")
     sj.config.add_option("-Djava.awt.headless=true")
+    # scyjava's defaults (fetch="always", version="11") ignore JAVA_HOME and download a Java 11, which cannot load
+    # classes compiled for Java 21: use an existing JDK instead (see core.py)
+    sj.config.set_java_constraints(fetch="auto", version="21+")
     sj.start_jvm()
     sj.jimport("net.imagej.patcher.LegacyInjector").preinit()
     return sj
