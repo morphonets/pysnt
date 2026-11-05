@@ -3,6 +3,17 @@
 from typing import Any, List, Dict, Optional, Union, overload, Set, Callable, Tuple, ClassVar
 from typing_extensions import deprecated
 
+class BigDataUtils:
+    """
+    BigDataUtils - No cached signatures available.
+    
+    Run: python dev/scripts/extract_class_signatures.py --all-classes
+    """
+    
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
 class BoundingBox:
     """sc.fiji.snt.util.BoundingBox  (SNT 5.0.24-SNAPSHOT-0d7f17d3180fcfd922d2dc15890b4a8e99f9d7e3)"""
     UNSET_SPACING_UNIT: ClassVar[str]

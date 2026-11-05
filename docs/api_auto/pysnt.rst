@@ -17,7 +17,6 @@ Subpackages
    pysnt.converters
    pysnt.display
    pysnt.filter
-   pysnt.gui
    pysnt.io
    pysnt.seed
    pysnt.tracing

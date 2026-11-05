@@ -17,5 +17,6 @@ Submodules
    pysnt.converters.enhancement
    pysnt.converters.extractors
    pysnt.converters.graph_converters
+   pysnt.converters.napari_converters
    pysnt.converters.structured_data_converters
    pysnt.converters.tree_converters
