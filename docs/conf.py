@@ -173,6 +173,32 @@ html_css_files = [
 ]
 html_title = "PySNT: Quantification of neuronal anatomy in Python"
 
+def _release_announcement():
+    """Banner text linking to the latest release (version from __init__.py)"""
+    import re
+    import json
+    import urllib.request
+    init = os.path.join(os.path.dirname(__file__), '..', 'src', 'pysnt', '__init__.py')
+    try:
+        with open(init, encoding='utf-8') as f:
+            ver = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', f.read()).group(1)
+    except Exception:
+        return "Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>"
+    # Release date from PyPI (absent for unreleased/dev versions or if offline)
+    date = ''
+    try:
+        url = f'https://pypi.org/pypi/pysnt/{ver}/json'
+        with urllib.request.urlopen(url, timeout=5) as r:
+            files = json.load(r).get('urls', [])
+        if files:
+            date = ' (' + files[0]['upload_time'][:10] + ')'
+    except Exception:
+        pass
+    return (f"PySNT <a href='https://github.com/morphonets/pysnt/releases/tag/v{ver}' target='_blank'>{ver}</a>"
+            f"{date} is out. Beta software: <a href='https://github.com/morphonets/pysnt/issues' "
+            "target='_blank'>feedback welcome</a>!")
+
+
 html_theme_options = {
     "navigation_with_keys": True,
     "show_prev_next": True,
@@ -223,8 +249,8 @@ html_theme_options = {
             "type": "fontawesome",
         },
     ],
-    # Work in progress banner
-    "announcement": "🚧 Experimental project - <a href='https://github.com/morphonets/pysnt/issues' target='_blank'>feedback welcome</a>! 🚧",
+    # Latest release banner (computed at build time)
+    "announcement": _release_announcement(),
     # GitHub integration for edit buttons
     "use_edit_page_button": True,
 }
