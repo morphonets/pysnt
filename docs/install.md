@@ -27,14 +27,15 @@ terminal. See [pixi.sh](https://pixi.sh) for details.
 
 ## Install
 
+```{important}
+**Read this section before installing.** PySNT is not a regular Python package: it runs SNT, a Java application, inside your Python process (via JPype). Running `pip install pysnt` on its own is rarely enough. You also need a JDK 21+, and (for SVG chart conversion) the native *cairo* library. A dedicated environment is strongly recommended, since PySNT pulls in a large Java/Python stack that could conflict with other packages. The first call to `pysnt.initialize()` downloads SNT and may take several minutes.
+```
+
 Install into a *fresh, dedicated* environment: PySNT pulls in a large Java/Python stack and mixing it with other
 projects invites version conflicts.
 
-```{warning}
-PySNT will be available on PyPI. Until then, install it straight from GitHub: in the
-commands below, replace `pysnt[all]` with `pysnt[all] @ git+https://github.com/morphonets/pysnt`. This requires
-[git](https://git-scm.com/downloads) to be installed. To get a specific version, append `@<tag or branch>` to the
-URL (e.g., `.../pysnt@dev`).
+```{note}
+PySNT is available on [PyPI](https://pypi.org/project/pysnt/). To try unreleased changes instead, replace `pysnt[all]` in the commands below with `pysnt[all] @ git+https://github.com/morphonets/pysnt` (requires [git](https://git-scm.com/downloads)). To get a specific version, append `@<tag or branch>` to the URL (e.g., `.../pysnt@dev`).
 ```
 
 ::::{tab-set}
@@ -46,7 +47,7 @@ URL (e.g., `.../pysnt@dev`).
 pixi init pysnt-project
 cd pysnt-project
 pixi add python=3.12 openjdk=21 maven pip cairo jupyterlab
-pixi run pip install "pysnt[all]" # pixi run pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
+pixi run pip install "pysnt[all]"
 pixi shell
 ```
 
@@ -60,7 +61,7 @@ Use a dedicated virtual environment (Python 3.11+, JDK 21+ installed or let PySN
 ```bash
 python -m venv pysnt-env
 source pysnt-env/bin/activate      # Windows: pysnt-env\Scripts\activate
-python -m pip install "pysnt[all]" # python -m pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"
+python -m pip install "pysnt[all]"
 ```
 
 On macOS/Linux, use `python3` if `python` is not found. `pysnt[all]` includes all optional features except `napari` (heavy, Qt-based). For the basic,
@@ -177,7 +178,7 @@ used: `rm -rf ~/.jgo ~/.cache/jgo`
 |---|---|
 | `initialize()` seems stuck on first run | It is downloading SNT and its dependencies (several minutes). Subsequent runs use the cache |
 | `ModuleNotFoundError: pysnt`, or other import errors | Your shell/IDE is not using the environment PySNT was installed into. Activate it, or see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks). Use `python -m pip` rather than bare `pip` |
-| `pip install` from GitHub fails with a `git` error | Install [git](https://git-scm.com/downloads), reopen the terminal and retry (only needed until PySNT is on PyPI) |
+| `pip install` from GitHub fails with a `git` error | Install [git](https://git-scm.com/downloads), reopen the terminal and retry (only needed when installing the development version from GitHub) |
 | Java not found, or wrong version | Leave `ensure_java=True` so PySNT offers to download a JDK, or install JDK 21+ and point `JAVA_HOME` to it (see below) |
 | `java.lang.OutOfMemoryError` | Increase the heap: `pysnt.initialize(max_heap="8g")` |
 | Changed `initialize()` settings have no effect | The JVM starts only once per session: restart the kernel/console |

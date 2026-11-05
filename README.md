@@ -1,7 +1,11 @@
-<p align="center"><img src="./docs/_static/snt_logo.svg" alt="SNT" width="150"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/morphonets/pysnt/main/docs/_static/snt_logo.svg" alt="SNT" width="150"></p>
 <h1 align="center">PySNT</h1>
 <h2 align="center">Python wrapper for SNT, the framework for quantification of neuronal anatomy</h2>
 <div align="center">
+  <!-- PyPI -->
+  <a href="https://pypi.org/project/pysnt/">
+    <img alt="PyPI version" src="https://img.shields.io/pypi/v/pysnt">
+  </a>
   <!-- License -->
   <a href="https://github.com/morphonets/SNT/blob/master/LICENSE.txt">
     <img alt="GitHub license" src="https://img.shields.io/github/license/morphonets/SNT">
@@ -34,6 +38,13 @@
   </h3>
 </div>
 
+
+> **Please read the [installation instructions](https://pysnt.readthedocs.io/en/latest/install.html) before installing PySNT.**
+>
+> PySNT is not a regular Python package: it runs SNT, a Java application, inside your Python process. Besides
+> the Python package, it needs a Java JDK (21+) and a properly configured environment, and the first call to
+> `pysnt.initialize()` downloads SNT (this may take several minutes). A bare `pip install pysnt` into an existing
+> environment could fail or conflict with other packages.
 
 ## Technical Features
 
@@ -71,7 +82,17 @@
   anything unexpected
 
 ## Getting Started for Users
-See [Install instructions](https://pysnt.readthedocs.io/en/latest/install.html).
+Read the [install instructions](https://pysnt.readthedocs.io/en/latest/install.html) first (PySNT needs a JDK, and a dedicated environment is strongly
+recommended). In short, from a fresh environment with Python 3.11+ and JDK 21+:
+
+```bash
+python -m pip install "pysnt[all]"
+```
+
+```python
+import pysnt
+pysnt.initialize()  # First run downloads SNT: this may take several minutes
+```
 
 
 ## Getting Started for Developers
@@ -124,7 +145,7 @@ PySNT's `major.minor` version matches the SNT release it targets (PySNT 5.1.x ta
 independent, so PySNT can ship fixes without a new SNT release. By default, `pysnt.initialize()` downloads
 SNT from Maven at `DEFAULT_SNT_VERSION` (see `src/pysnt/_endpoints.py`). Users can override it with
 `initialize(snt_version=...)` or `SNT_VERSION`, or use a local Fiji instead. PySNT warns when the loaded SNT differs in
-`major.minor`. See [dev/README.md](dev/README.md#keeping-pysnt-in-sync-with-snt) for the update workflow.
+`major.minor`. See [dev/README.md](https://github.com/morphonets/pysnt/blob/main/dev/README.md#keeping-pysnt-in-sync-with-snt) for the update workflow.
 
 ### Need Help?
 
