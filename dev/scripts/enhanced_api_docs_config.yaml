@@ -1,9 +1,10 @@
 # Enhanced API Documentation Configuration
-# This file allows customization of the documentation generation process
+# NOTE: this file is currently NOT loaded (enhanced_api_docs/config.py builds its configuration from defaults, and
+# picks the newest dev/scripts/SNT-*-javadoc.jar, or $PYSNT_JAVADOC). Kept as a reference of the available options
 
 javadoc:
-  # Path to JavaDoc ZIP file (relative to dev/scripts/)
-  source_zip: "SNT-v5.0.18_javadocs.zip"
+  # Path to the JavaDoc jar (relative to dev/scripts/). Default: newest SNT-*-javadoc.jar
+  source_zip: "SNT-javadoc.jar"
   # Directory to extract JavaDoc files
   extract_dir: "javadoc_extracted"
   # Base URL for online JavaDoc links

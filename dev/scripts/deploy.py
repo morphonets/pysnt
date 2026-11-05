@@ -15,6 +15,7 @@ Placeholder classes are created automatically at runtime via setup_module_classe
 import argparse
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 
@@ -112,9 +113,12 @@ def main():
         
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-            if "Missing cache:" in result.stdout and "45/88" in result.stdout:
-                print("⚠️  Many cached signatures are missing!")
-                print("💡 Consider running: python dev/scripts/extract_class_signatures.py --all-classes")
+            import re
+            missing = [ln.strip() for ln in result.stdout.splitlines()
+                       if re.search(r"Missing cache: [1-9]\d*/", ln)]  # the summary also prints "0/N"
+            if missing:
+                print("⚠️  Some cached signatures are missing: " + "; ".join(missing))
+                print("💡 Consider running: python dev/scripts/extract_class_signatures.py --all-classes --prune")
                 print("🔄 Proceeding with available caches...")
         except:
             pass  # Continue anyway
@@ -173,6 +177,10 @@ def main():
                         'toctree_maxdepth': 3
                     }
                     
+                    javadoc_jar = enhanced_config.get_path('javadoc.source_zip')
+                    print(f"📚 JavaDoc source: {javadoc_jar.name} "
+                          f"(modified {datetime.fromtimestamp(javadoc_jar.stat().st_mtime):%Y-%m-%d %H:%M}). "
+                          "Copy a fresh SNT-*-javadoc.jar to dev/scripts (or set PYSNT_JAVADOC) if the API changed")
                     print("🚀 Generating enhanced API documentation...")
                     success, results = orchestrator.generate_documentation(generation_options)
                     
@@ -242,7 +250,8 @@ def main():
             print("  • View class index: docs/_build/html/class_index.html")
             print("  • View constants index: docs/_build/html/constants_index.html")
             print("  • Detailed class docs: docs/pysnt/*_doc.rst")
-            print("  • To update JavaDoc: See dev/scripts/enhanced_api_docs/MAINTENANCE.md")
+            print("  • To update JavaDoc: copy a fresh SNT-*-javadoc.jar (mvn javadoc:jar) to dev/scripts, "
+                  "or set PYSNT_JAVADOC (see dev/scripts/README.md)")
 
         print(f"\nDone.")
         return 0
