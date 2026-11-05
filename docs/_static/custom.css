@@ -1,6 +1,24 @@
 /* Custom styles for PySNT documentation */
 
-/* NB: Font Awesome 6 (Free) is bundled with the PyData theme (no CDN import needed) */
+/* Font Awesome 6 Free (v6.5.2, fonts licensed under the SIL OFL 1.1: https://fontawesome.com/license/free).
+   Icons used as <i class="fa-..."> are styled by the theme, but the ones added here with ::before/::after depend on
+   these font families being declared. Self-hosted so that they do not depend on the (unpinned) theme version, nor on
+   a CDN */
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("fonts/fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("fonts/fa-brands-400.woff2") format("woff2");
+}
 
 /* PyData Sphinx Theme fonts */
 :root {
