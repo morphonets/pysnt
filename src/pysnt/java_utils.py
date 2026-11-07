@@ -171,11 +171,13 @@ def _parse_java_version(version_output: str) -> Dict[str, Any]:
     if not version_output:
         return result
     
-    lines = version_output.strip().split('\n')
+    # The JVM prints "Picked up JAVA_TOOL_OPTIONS: ..." (also _JAVA_OPTIONS, JDK_JAVA_OPTIONS) before the
+    # version when such environment variables are set: it is not the version line
+    lines = [ln for ln in version_output.strip().split('\n') if ln.strip() and not ln.startswith('Picked up ')]
     if not lines:
         return result
     
-    # First line usually contains version
+    # First remaining line usually contains version
     first_line = lines[0]
     result['version_string'] = first_line
     
@@ -191,11 +193,10 @@ def _parse_java_version(version_output: str) -> Dict[str, Any]:
     if match:
         result['version'] = int(match.group(1))
     else:
-        # Try modern format (Java 9+): "21.0.1"
-        match = re.search(r'"(\d+)\.(\d+)\.(\d+)', first_line)
+        # Try modern format (Java 9+): "21.0.1", but also "21" (first GA release) or "22-ea"
+        match = re.search(r'"(\d+)(?:[.\-+]|")', first_line)
         if match:
-            major = int(match.group(1))
-            result['version'] = major
+            result['version'] = int(match.group(1))
     
     # Extract vendor information
     if 'openjdk' in first_line.lower():

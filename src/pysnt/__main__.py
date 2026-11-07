@@ -18,11 +18,17 @@ def main():
         from .setup_utils import main as setup_main
         return setup_main(sys.argv[2:])
 
+    # "pysnt doctor ..." checks the installation (non-interactive report)
+    if len(sys.argv) > 1 and sys.argv[1] == 'doctor':
+        from ._doctor import main as doctor_main
+        return doctor_main(sys.argv[2:])
+
     parser = argparse.ArgumentParser(
         prog='pysnt',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description='pySNT: Python interface for SNT',
-        epilog='Fiji configuration: pysnt setup [--status|--auto-detect|--set PATH|--clear|--reset|--check]\n'
+        epilog='Installation check: pysnt doctor [--no-sanity-test] [--no-network] [--timeout SECONDS]\n'
+               'Fiji configuration: pysnt setup [--status|--auto-detect|--set PATH|--clear|--reset|--check]\n'
                'For more information, visit: https://github.com/morphonets/pysnt'
     )
     
@@ -143,4 +149,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

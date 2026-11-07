@@ -14,6 +14,9 @@ from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
+# Installation check (also available as the 'pysnt doctor' command)
+from ._doctor import doctor
+
 # Import main initialization
 from .core import initialize, dispose, FijiNotFoundError, ij, is_initialized, get_mode, snt_version
 

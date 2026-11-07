@@ -177,6 +177,32 @@ class TestParseJavaVersion:
         assert result["version_string"] is None
         assert result["vendor"] is None
 
+    def test_parse_ignores_picked_up_lines(self):
+        """JAVA_TOOL_OPTIONS and friends make the JVM print a 'Picked up' line before the version."""
+        version_output = ('Picked up JAVA_TOOL_OPTIONS: -Xmx2g\n'
+                          'Picked up _JAVA_OPTIONS: -Dfoo=bar\n'
+                          'openjdk version "21.0.1" 2023-10-17\n'
+                          'OpenJDK Runtime Environment (build 21.0.1+12)')
+        result = _parse_java_version(version_output)
+
+        assert result["version"] == 21
+        assert result["version_string"] == 'openjdk version "21.0.1" 2023-10-17'
+        assert result["vendor"] == "OpenJDK"
+
+    def test_parse_only_picked_up_lines(self):
+        result = _parse_java_version("Picked up JAVA_TOOL_OPTIONS: -Xmx2g")
+
+        assert result["version"] is None
+        assert result["version_string"] is None
+
+    def test_parse_version_without_dots(self):
+        """The first GA release of a Java version prints e.g. "21" (and early access builds "22-ea")."""
+        assert _parse_java_version('openjdk version "21" 2023-09-19')["version"] == 21
+        assert _parse_java_version('openjdk version "22-ea" 2024-03-19')["version"] == 22
+
+    def test_parse_legacy_java8_version(self):
+        assert _parse_java_version('java version "1.8.0_391"')["version"] == 8
+
     def test_parse_malformed_version_output(self):
         """Test parsing malformed version output."""
         version_output = "Some random text without version info"
