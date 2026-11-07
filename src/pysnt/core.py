@@ -319,6 +319,8 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         if not scyjava.jvm_started():
             if "headless" == mode:
                 scyjava.config.enable_headless_mode() # System.setProperty("java.awt.headless", "true");
+                from ._headless_hint import install as _install_headless_hint
+                _install_headless_hint()  # hint for the cryptic "Offscreen canvas" error of SNT windows
             scyjava.start_jvm()
             
         # Configure Java logging after JVM starts
