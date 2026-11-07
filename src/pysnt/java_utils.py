@@ -1520,7 +1520,6 @@ def _scan_pysnt_modules_for_classes(package_name: str) -> List[str]:
         List of class names found in matching pysnt modules
     """
     import os
-    import importlib.util
     from pathlib import Path
     
     # Get the pysnt source directory

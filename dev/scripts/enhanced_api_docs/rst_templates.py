@@ -871,7 +871,6 @@ class RSTTemplateEngine:
                 'methods': [],
                 'description': 'Test description',
                 'methods_by_class': {},
-                'method_categories': {},
                 'methods_by_return_type': {},
                 'methods_alphabetical': {},
                 'related_methods': [],

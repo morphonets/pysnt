@@ -1302,7 +1302,6 @@ def _display_imageplus_list(imageplus_list: list, show: bool = True, **kwargs) -
         return None
 
     # Create multi-panel figure
-    import matplotlib.pyplot as plt
     from .utils import _create_subplot_grid
 
     num_panels = len(xarray_data_list)
