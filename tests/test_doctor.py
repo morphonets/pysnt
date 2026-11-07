@@ -4,8 +4,6 @@ import importlib.metadata
 import json
 import subprocess
 
-import pytest
-
 from pysnt import _doctor
 from pysnt._doctor import (
     FAIL, OK, WARN, DoctorReport, normalize_arch, parse_sanity_output, RESULT_PREFIX,

@@ -75,15 +75,23 @@
 
 
 ## Limitations
-- **Pre-release**: PySNT 5.0 is under active development and targets SNT 5.0.x: Expect bugs and API changes until
-  the first stable release
-
-- **Early Stage Software**: Limited community validation. Please [report](https://github.com/morphonets/pysnt/issues)
+**Early Stage Software** with limited community validation. Please [report](https://github.com/morphonets/pysnt/issues)
   anything unexpected
 
 ## Getting Started for Users
 Read the [install instructions](https://pysnt.readthedocs.io/en/latest/install.html) first (PySNT needs a JDK, and a dedicated environment is strongly
-recommended). In short, from a fresh environment with Python 3.11+ and JDK 21+:
+recommended). The easiest route is [pixi](https://pixi.sh), which sets up Python, a JDK and cairo (optional, for SVG
+chart conversion) for you:
+
+```bash
+pixi init pysnt-project
+cd pysnt-project
+pixi add python=3.12 openjdk=21 pip cairo jupyterlab
+pixi run pip install "pysnt[all]"
+pixi shell
+```
+
+Or, from an existing fresh environment with Python 3.11+ and JDK 21+ (cairo needs a separate install, see the docs):
 
 ```bash
 python -m pip install "pysnt[all]"
@@ -93,6 +101,8 @@ python -m pip install "pysnt[all]"
 import pysnt
 pysnt.initialize()  # First run downloads SNT: this may take several minutes
 ```
+
+Something not working? Run `pysnt doctor` in a terminal for a report of your setup, with a hint for each problem found.
 
 
 ## Getting Started for Developers
@@ -138,12 +148,12 @@ pysnt/
 ### Dependencies
 `pyproject.toml` contains all details: core dependencies are listed under `dependencies`, and optional
 features under extras (`display`, `gui`, `java`, `info`, `all`, `dev`, `docs`). The `requirements*.txt` and
-`environment*.yml` files mirror it; The floors are verified by the "lowest declared dependencies" CI job.
+`environment*.yml` files mirror it. The floors are verified by the "lowest declared dependencies" CI job.
 
 ### Versioning and SNT
 PySNT's `major.minor` version matches the SNT release it targets (PySNT 5.1.x targets SNT 5.1.x); the patch number is
 independent, so PySNT can ship fixes without a new SNT release. By default, `pysnt.initialize()` downloads
-SNT from Maven at `DEFAULT_SNT_VERSION` (see `src/pysnt/_endpoints.py`). Users can override it with
+SNT from [Maven](https://pysnt.readthedocs.io/en/latest/limitations.html#maven-and-other-java-tooling) at `DEFAULT_SNT_VERSION` (see `src/pysnt/_endpoints.py`). Users can override it with
 `initialize(snt_version=...)` or `SNT_VERSION`, or use a local Fiji instead. PySNT warns when the loaded SNT differs in
 `major.minor`. See [dev/README.md](https://github.com/morphonets/pysnt/blob/main/dev/README.md#keeping-pysnt-in-sync-with-snt) for the update workflow.
 

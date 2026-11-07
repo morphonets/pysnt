@@ -26,6 +26,24 @@ Accessing Java classes and methods may feel awkward due to differences in naming
 PySNT intentionally preserves Java naming conventions to maintain consistency with SNT's documentation and make examples translatable between languages. Use your IDE's autocomplete to discover available methods. For frequently used operations, consider creating your own Pythonic wrapper functions if preferred.
 
 
+### Maven and Other Java Tooling
+
+SNT is a Java application, so PySNT relies on a few Java tools that have Python counterparts. You rarely run them
+yourself: `pysnt.initialize()` uses them behind the scenes.
+
+| Java                                  | Python counterpart  | What it is                                                                 |
+|---------------------------------------|---------------------|----------------------------------------------------------------------------|
+| JDK                                   | Python interpreter  | Runs SNT (Java 21+ is needed)                                              |
+| JAR                                   | wheel               | A bundle of compiled code: how SNT and its dependencies are distributed    |
+| Maven                                 | pip                 | Downloads a package together with everything it depends on                 |
+| maven.scijava.org, Maven Central      | PyPI                | The repositories where those packages are hosted                           |
+| `pom.xml`                             | `pyproject.toml`    | Declares a project's dependencies                                          |
+| `mvn install`                         | `pip install .`     | Builds and installs a local copy of a project                              |
+
+In practice: the first call to `pysnt.initialize()` downloads SNT and its dependencies from a Maven repository (the
+"Maven source") and caches them, much like `pip install` fetches from PyPI. The alternative is to use a local Fiji
+installation, see [Attaching to SNT](install.md#attaching-to-snt).
+
 ### _self_ in Method Signatures
 
 Python type stubs follow Python conventions and show `self` arguments for type checking and IDE autocompletion.
@@ -83,9 +101,10 @@ PySNT has some limitations that may not be addressed in future releases. However
 
 ### Interactive Viewers
 
-SNT provides several interactive 3D visualization tools: [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer), [SciView](https://imagej.net/plugins/snt/modeling), and [Big Volume Viewer](https://imagej.net/plugins/snt/manual#big-volume-viewer). While these viewers can be launched from Python, their usage remains experimental with several limitations:
+SNT provides several interactive 3D visualization tools: [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer) (`Viewer3D`, also opened by `tree.show3D()`), [SciView](https://imagej.net/plugins/snt/modeling), and [Big Volume Viewer](https://imagej.net/plugins/snt/manual#big-volume-viewer). While these viewers can be launched from Python, their usage remains experimental with several limitations:
 
-- On macOS, Java viewers (e.g., Big Volume Viewer) need interactive mode and must be launched on the event dispatch thread (see [GUI Threading Issues](#gui-threading-issues))
+- PySNT starts in headless mode by default, in which SNT native windows cannot open: viewers fail with `IllegalArgumentException: Offscreen canvas cannot be displayed`. Initialize with `pysnt.initialize(mode='interactive')` to use them
+- On macOS, Java viewers (e.g., Reconstruction Viewer, Big Volume Viewer) must also be launched on the event dispatch thread (see [GUI Threading Issues](#gui-threading-issues))
 - For some viewers, the ImageJ GUI may need to linger in the background, even if it is not needed nor used
 
 **Workaround**:

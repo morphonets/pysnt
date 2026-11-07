@@ -58,7 +58,7 @@ There are also some advanced initialization options:
 | `pysnt.initialize(mode='interactive')` | See [pyimagej initialization mode](https://py.imagej.net/en/latest/Initialization.html#how-to-initialize-pyimagej) |
 | `pysnt.initialize(max_heap="8g")` | Configure JVM memory (8GB heap) |
 | `pysnt.initialize(max_heap="16g", min_heap="4g")` | Advanced memory configuration (16GB max, 4GB initial) |
-| `pysnt.initialize(source='maven')` | Force the SNT source: `'maven'` (aliases `'remote'`, `'online'`) downloads SNT, no Fiji needed. `'fiji'` (alias `'local'`) uses a local Fiji installation, prompting for its path if none is configured |
+| `pysnt.initialize(source='maven')` | Force the SNT source: `'maven'` (aliases `'remote'`, `'online'`) downloads SNT from [Maven](limitations.md#maven-and-other-java-tooling), no Fiji needed. `'fiji'` (alias `'local'`) uses a local Fiji installation, prompting for its path if none is configured |
 | `pysnt.initialize(snt_version='...')` | Maven source only: SNT version to resolve (defaults to the `SNT_VERSION` environment variable, then to the version PySNT targets) |
 | `pysnt.initialize(jvm_args=['-XX:+UseG1GC'])` | Pass additional arguments to the JVM |
 | `pysnt.initialize('/path/to/Fiji.app', interactive=True, ensure_java=True, mode='headless')` | See [API](api_auto/pysnt.core.rst) for all parameters, including `extras` |

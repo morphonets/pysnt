@@ -14,7 +14,11 @@ try:
     import scyjava
     import imagej
 except ImportError as e:
-    raise ImportError("Required dependencies not found.") from e
+    raise ImportError(
+        f"PySNT could not import a required dependency ({e}). Make sure you are using the environment PySNT "
+        "was installed into, or reinstall it there: python -m pip install \"pysnt[all]\" "
+        "(see https://pysnt.readthedocs.io/en/latest/install.html)"
+    ) from e
 
 logger = logging.getLogger(__name__)
 

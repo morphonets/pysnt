@@ -200,7 +200,7 @@ def _check_source(report: DoctorReport) -> None:
     if fiji:
         report.add("SNT source", OK, f"local Fiji configured: {fiji}")
     else:
-        report.add("SNT source", OK, "Maven (default): SNT is downloaded on first initialize()")
+        report.add("SNT source", OK, "Maven (default): downloaded once on the first initialize(), then cached")
 
 
 # ---------------------------------------------------------------------------------------------------------------
