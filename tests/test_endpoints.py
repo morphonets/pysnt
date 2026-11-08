@@ -24,6 +24,18 @@ def test_natives_classifier(system, machine, expected):
         assert _endpoints._jogamp_natives_classifier() == expected
 
 
+def test_natives_classifier_x64_python_emulated_on_windows_arm():
+    """An x64 Python on Windows ARM reports platform.machine() == 'ARM64': the interpreter build must decide."""
+    with patch("pysnt._endpoints.platform.system", return_value="Windows"), \
+            patch("pysnt._endpoints.platform.machine", return_value="ARM64"), \
+            patch("pysnt._platform.sysconfig.get_platform", return_value="win-amd64"):
+        assert _endpoints._jogamp_natives_classifier() == "natives-windows-amd64"
+    with patch("pysnt._endpoints.platform.system", return_value="Windows"), \
+            patch("pysnt._endpoints.platform.machine", return_value="ARM64"), \
+            patch("pysnt._platform.sysconfig.get_platform", return_value="win-arm64"):
+        assert _endpoints._jogamp_natives_classifier() is None  # no native ARM64 natives published
+
+
 def test_natives_always_in_maven_endpoints():
     with patch("pysnt._endpoints._jogamp_natives_classifier", return_value="natives-x"):
         for extras in (None, []):

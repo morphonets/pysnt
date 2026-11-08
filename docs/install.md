@@ -34,7 +34,7 @@ terminal. See [pixi.sh](https://pixi.sh) for details.
 ```
 
 ```{note}
-PySNT is available on [PyPI](https://pypi.org/project/pysnt/). To try unreleased changes instead, replace `pysnt[all]` in the commands below with `pysnt[all] @ git+https://github.com/morphonets/pysnt` (requires [git](https://git-scm.com/downloads)). To get a specific version, append `@<tag or branch>` to the URL (e.g., `.../pysnt@dev`).
+PySNT is available on [PyPI](https://pypi.org/project/pysnt/). To try unreleased changes instead, replace `pysnt[all]` in the commands below with `pysnt[all] @ git+https://github.com/morphonets/pysnt` (requires [git](https://git-scm.com/downloads)). Keep the quotes around the whole requirement, e.g. `pixi run pip install "pysnt[all] @ git+https://github.com/morphonets/pysnt"` (without them, PowerShell fails on the `@`). To get a specific version, append `@<tag or branch>` to the URL (e.g., `.../pysnt@dev`).
 ```
 
 ::::{tab-set}
@@ -227,6 +227,20 @@ in the console instead. Run `pysnt.info()` for a report of your Python, Java and
 SNT windows (e.g., the 3D viewer opened by `tree.show3D()`) need extra settings. See
 [Interactive Viewers](limitations.md#interactive-viewers).
 ```
+
+::::{dropdown} Messages printed during the first initialization
+
+The first `pysnt.initialize()` may print lines such as:
+
+```console
+No version available for dependency org.jogamp.jogl:jogl-all:jar:natives-macosx-aarch64
+No version available for dependency org.lwjgl:lwjgl:jar:${lwjgl.natives}:test
+```
+
+They come from the dependency resolver, which looks up platform-specific or test-only artifacts that SNT does not
+need, and they appear only the first time: the result is cached, so later runs are silent. In our tests they were
+harmless and can be ignored. If an SNT window fails to open, see [Troubleshooting](#troubleshooting) instead.
+::::
 
 ### Choosing an Interpreter (IDEs and Notebooks)
 

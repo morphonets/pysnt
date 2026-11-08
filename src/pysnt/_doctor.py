@@ -22,6 +22,8 @@ import urllib.request
 from dataclasses import dataclass, field
 from typing import Callable, List, Optional
 
+from ._platform import python_arch
+
 OK, WARN, FAIL = "OK", "WARN", "FAIL"
 MAVEN_URL = "https://maven.scijava.org"
 FORUM_URL = "https://forum.image.sc/tag/snt"
@@ -94,7 +96,7 @@ def normalize_arch(arch: str) -> str:
 
 def _check_python(report: DoctorReport) -> None:
     v = sys.version_info
-    detail = (f"{v.major}.{v.minor}.{v.micro} ({platform.python_implementation()}, {platform.machine()}, "
+    detail = (f"{v.major}.{v.minor}.{v.micro} ({platform.python_implementation()}, {python_arch()}, "
               f"{platform.system()}), {_environment_kind()}: {sys.prefix}")
     if v < (3, 11):
         report.add("Python", FAIL, detail, "PySNT needs Python 3.11 or newer")
@@ -158,9 +160,9 @@ def _check_java(report: DoctorReport) -> None:
     java_arch = _java_arch(info["executable"])
     if java_arch is None:
         return
-    py_arch, jv_arch = normalize_arch(platform.machine()), normalize_arch(java_arch)
+    py_arch, jv_arch = normalize_arch(python_arch()), normalize_arch(java_arch)
     if py_arch != jv_arch:
-        report.add("Architecture", FAIL, f"Python is {platform.machine()} but Java is {java_arch}",
+        report.add("Architecture", FAIL, f"Python is {python_arch()} but Java is {java_arch}",
                    "Python and the JDK must have the same architecture: use the pixi or conda/mamba route, "
                    "which keeps them consistent")
     else:

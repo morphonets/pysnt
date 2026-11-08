@@ -9,6 +9,8 @@ import os
 import platform
 from typing import List, Optional
 
+from ._platform import python_arch
+
 SNT_GROUP_ARTIFACT = "org.morphonets:SNT"
 
 # SNT version resolved from Maven Central/SciJava when none is requested.
@@ -33,7 +35,7 @@ _JOGAMP_ARTIFACTS = ("org.jogamp.gluegen:gluegen-rt", "org.jogamp.jogl:jogl-all"
 def _jogamp_natives_classifier() -> Optional[str]:
     """JogAmp natives classifier for this platform, or None if none is published."""
     system = platform.system()
-    machine = platform.machine().lower()
+    machine = python_arch()  # not platform.machine(): wrong for emulated Python on Windows ARM
     if system == "Darwin":
         return "natives-macosx-universal"  # arm64 and x86_64 share one jar
     if system == "Linux":
