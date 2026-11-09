@@ -200,7 +200,11 @@ Corrections, new tutorials, and feedback are welcome on the
 To cite the series, use the following format (replace the tutorial accordingly):
 
 > Ferreira TA, PySNT and SNT contributors. *Computational Neuroanatomy: A Hands-on Curriculum in Python*.
-> <https://pysnt.readthedocs.io/en/latest/notebooks/index.html>
+> <https://pysnt.readthedocs.io/en/latest/notebooks/index.html>, [doi:10.5281/zenodo.24090107](https://doi.org/10.5281/zenodo.24090107)
+
+The curriculum is archived as part of PySNT. You can cite all versions by using the DOI [10.5281/zenodo.24090107](https://doi.org/10.5281/zenodo.24090107). This DOI tracks all versions, and resolves to the latest one.
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24090107.svg)](https://doi.org/10.5281/zenodo.24090107)
 
 See [SNT citation](https://imagej.net/plugins/snt/faq#how-do-i-cite-snt) for details on how to properly cite SNT.
 

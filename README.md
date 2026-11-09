@@ -22,6 +22,10 @@
   <a href="https://github.com/morphonets/SNT/blob/master/LICENSE.txt">
     <img alt="GitHub license" src="https://img.shields.io/github/license/morphonets/SNT">
   </a>
+  <!-- DOI -->
+  <a href="https://doi.org/10.5281/zenodo.24090107">
+    <img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24090107.svg">
+  </a>
   <!-- Forum -->
   <a href="https://forum.image.sc/tags/snt">
     <img alt="Forum.sc topics" src="https://img.shields.io/badge/dynamic/json.svg?label=forum&url=https%3A%2F%2Fforum.image.sc%2Ftag%2Fsnt.json&query=%24.topic_list.tags.0.topic_count&suffix=%20topics">
