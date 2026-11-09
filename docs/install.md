@@ -347,7 +347,7 @@ Interactive viewers (e.g., `Viewer3D`) are not tested.
 | `ModuleNotFoundError: pysnt`, or other import errors | Your shell/IDE is not using the environment PySNT was installed into. Activate it, or see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks). Use `python -m pip` rather than bare `pip` |
 | `pip install` from GitHub fails with a `git` error | Install [git](https://git-scm.com/downloads), reopen the terminal and retry (only needed when installing the development version from GitHub) |
 | Java not found, or wrong version | Leave `ensure_java=True` so PySNT offers to download a JDK, or install JDK 21+ and point `JAVA_HOME` to it (see below) |
-| `java.lang.OutOfMemoryError` | Increase the heap: `pysnt.initialize(max_heap="8g")` |
+| `java.lang.OutOfMemoryError` | Increase the heap (the default is 50% of the available RAM): `pysnt.initialize(max_heap="8g")` |
 | Changed `initialize()` settings have no effect | The JVM starts only once per session: restart the kernel/console |
 | "Fiji not found" (only when a Fiji is requested explicitly) | Check the path passed to `fiji_path` or the `FIJI_PATH` environment variable. Omit both to use Maven instead |
 | SVG chart conversion unavailable | Install the native *cairo* library (see [Optional: SVG chart conversion](#optional-svg-chart-conversion)) |

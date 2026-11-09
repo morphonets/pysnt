@@ -7,6 +7,7 @@ Fiji integration required for SNT functionality.
 
 import logging
 import os
+import sys
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 
@@ -49,6 +50,25 @@ class FijiNotFoundError(RuntimeError):
     pass
 
 
+# Default JVM heap ceiling when the user did not set one. Fiji uses 75%, but here the JVM shares RAM with the
+# Python process. The flag (unlike a computed -Xmx) respects container limits (Docker, SLURM, Colab)
+DEFAULT_MAX_RAM_PERCENT = 50
+
+
+def _heap_is_configured(max_heap: Optional[str], jvm_args: Optional[List[str]]) -> bool:
+    """Whether the user already chose a heap ceiling (argument, scyjava option or JAVA_TOOL_OPTIONS-like env var)."""
+    if max_heap is not None:
+        return True
+    options = list(jvm_args or [])
+    try:
+        options += list(scyjava.config.get_options())
+    except Exception:
+        pass
+    for var in ("JAVA_TOOL_OPTIONS", "JDK_JAVA_OPTIONS", "_JAVA_OPTIONS"):
+        options += os.environ.get(var, "").split()
+    return any(str(o).startswith(("-Xmx", "-XX:MaxRAMPercentage", "-XX:MaxRAM=")) for o in options)
+
+
 def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = None, jvm_args: Optional[List[str]] = None) -> None:
     """
     Configure JVM parameters before startup.
@@ -62,8 +82,12 @@ def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = Non
     jvm_args : List[str], optional
         Additional JVM arguments
     """
+    if not _heap_is_configured(max_heap, jvm_args):
+        scyjava.config.add_option(f"-XX:MaxRAMPercentage={DEFAULT_MAX_RAM_PERCENT}")
+        logger.info(f"No heap size set: limiting it to {DEFAULT_MAX_RAM_PERCENT}% of the available RAM")
+
     if max_heap is None and min_heap is None and (jvm_args is None or len(jvm_args) == 0):
-        return  # Nothing to configure
+        return  # Nothing else to configure
     
     logger.info("Configuring JVM parameters...")
     
@@ -136,6 +160,50 @@ def _configure_jvm(max_heap: Optional[str] = None, min_heap: Optional[str] = Non
         logger.debug(f"Failed to add logging properties: {e}")
     
     logger.info("JVM configuration complete")
+
+
+def _env_label() -> str:
+    """Short, neutral label for the kind of Python environment in use."""
+    prefix = sys.prefix
+    if os.sep + ".pixi" + os.sep in prefix:
+        return "pixi environment"
+    if os.environ.get("CONDA_PREFIX") and os.path.realpath(prefix) == os.path.realpath(os.environ["CONDA_PREFIX"]):
+        return "conda environment"
+    if prefix != getattr(sys, "base_prefix", prefix):
+        return "virtual environment"
+    return "system Python"
+
+
+def _announce_to_java(mode: str) -> None:
+    """
+    Publishes where SNT is running from as ``pysnt.*`` JVM system properties, so that SNT's
+    own diagnostics can describe the session. Purely informational and never fatal. No paths
+    are published (reports are often pasted into forum posts).
+    """
+    try:
+        import platform
+        from importlib import metadata
+        from . import __version__ as pysnt_version
+
+        libs = []
+        for dist, label in (("pyimagej", "pyimagej"), ("scyjava", "scyjava"), ("JPype1", "JPype")):
+            try:
+                libs.append(f"{label} {metadata.version(dist)}")
+            except Exception:
+                pass
+        props = {
+            "pysnt.version": pysnt_version,
+            "pysnt.python": platform.python_version(),
+            "pysnt.source": _source or "",
+            "pysnt.mode": mode or "",
+            "pysnt.env": _env_label(),
+            "pysnt.libs": ", ".join(libs),
+        }
+        system = scyjava.jimport("java.lang.System")
+        for key, value in props.items():
+            system.setProperty(key, str(value))
+    except Exception as e:
+        logger.debug(f"Failed to set PySNT system properties: {e}")
 
 
 def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure_java: bool = True, mode: str = "headless", 
@@ -329,6 +397,10 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
                 _install_headless_hint()  # hint for the cryptic "Offscreen canvas" error of SNT windows
             scyjava.start_jvm()
             
+        # Breadcrumb for the Java side (read by sc.fiji.snt.util.SNTDoctor). Set here, and not
+        # through -D options, so that it also works if the JVM was started by someone else
+        _announce_to_java(mode)
+
         # Configure Java logging after JVM starts
         try:
             from .java_utils import configure_java_logging

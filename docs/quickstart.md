@@ -171,7 +171,8 @@ pysnt.display(df)
 
 ## Memory Management
 
-For large datasets, configure memory appropriately at startup:
+By default, PySNT limits the Java heap to 50% of the available RAM. For large datasets, configure memory
+explicitly at startup:
 
 ```python
 # For large datasets (recommended)

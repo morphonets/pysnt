@@ -116,6 +116,18 @@ For programmatic visualization, you can extract static snapshots from 3D scenes 
 
 
 
+### Memory
+
+PySNT caps the Java heap at 50% of the available RAM by default (Fiji uses 75%), because Java shares memory with the
+Python process (arrays, plots, other notebook kernels). The limit respects container and job limits (Docker, SLURM,
+Colab). If you run into a `java.lang.OutOfMemoryError`, increase the heap explicitly when initializing:
+
+```python
+pysnt.initialize(max_heap="16g")
+```
+
+The heap is fixed when the JVM starts: restart the kernel/console to change it.
+
 ### Exception Handling
 
 When calling Java methods through PySNT, exception handling may require a different approach than pure Python code. Java exceptions are wrapped by the Python-Java bridge, which loses some type granularity in the process.
