@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=84.2.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -31,31 +31,31 @@ classifiers = [
 # Floors are the oldest versions PySNT is expected to work with; the CI "minimum" job
 # (installing exactly these) keeps them honest. Upper bounds only where something breaks.
 dependencies = [
-    "scyjava>=1.12.3",  # 1.12.1/2 import a jgo name removed in jgo 2.x
-    "pyimagej>=1.7.0",
-    "JPype1>=1.5.0",
-    "numpy>=1.26",
-    "matplotlib>=3.8",
-    "xarray>=2023.12",
-    "pandas>=2.1",
+    "scyjava>=1.12.5",  # 1.12.1/2 import a jgo name removed in jgo 2.x
+    "pyimagej>=1.8.0",
+    "JPype1>=1.7.1",
+    "numpy>=2.4.6",
+    "matplotlib>=3.11.2",
+    "xarray>=2026.9.0",
+    "pandas>=3.1.1",
 ]
 
 [project.optional-dependencies]
 # Enhanced display and conversion features (SVG conversion also needs the native cairo library)
 display = [
-    "networkx>=3.0",
-    "cairosvg>=2.7",
-    "PyMuPDF>=1.24.3",
+    "networkx>=3.6.1",
+    "cairosvg>=2.9.1",
+    "PyMuPDF>=2.1",
 ]
 # Interactive GUI features
 gui = [
-    "ipykernel>=6.0",
-    "pyobjc-core>=10.0; sys_platform == 'darwin'",
-    "pyobjc-framework-cocoa>=10.0; sys_platform == 'darwin'",
+    "ipykernel>=7.4.0",
+    "pyobjc-core>=13.0; sys_platform == 'darwin'",
+    "pyobjc-framework-cocoa>=13.0; sys_platform == 'darwin'",
 ]
 # Optional Java auto-install support (scyjava can also fetch a JDK on its own)
 java = [
-    "install-jdk>=1.0",
+    "install-jdk>=1.1.0",
 ]
 # Visualization of reconstructions in napari (see tutorial T02)
 napari = [
@@ -63,7 +63,7 @@ napari = [
 ]
 # Memory/CPU details in pysnt.version(detailed=True)
 info = [
-    "psutil>=5.9",
+    "psutil>=7.2.2",
 ]
 # All optional features
 all = [
@@ -72,7 +72,7 @@ all = [
 # Development dependencies
 dev = [
     "pysnt[all,napari]",
-    "pytest>=8.0",
+    "pytest>=9.2.0",
     "pytest-cov",
     "nbclient",
     "black",
@@ -89,9 +89,9 @@ dev = [
 ]
 # Documentation dependencies
 docs = [
-    "sphinx>=5.0,<9.0",
+    "sphinx>=9.0.4,<10.0",
     "sphinx-design",
-    "myst-nb>=0.15.0,<1.5.0",
+    "myst-nb>=1.4.0,<1.5.0",
     "sphinx-copybutton",
     "pydata-sphinx-theme",
 ]
