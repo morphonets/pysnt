@@ -1,10 +1,10 @@
-# Computational Neuroanatomy with PySNT
+# Computational Neuroanatomy
 
 ```{raw} html
 <style>.bd-article h1:first-of-type { display: none; }</style>
 <header class="paper-header">
-  <h1 class="paper-title">Computational Neuroanatomy with PySNT</h1>
-  <p class="paper-subtitle">A Hands-on, Self-paced Curriculum for Neuroanatomy in Python</p>
+  <h1 class="paper-title">Computational Neuroanatomy</h1>
+  <p class="paper-subtitle">A Hands-on Curriculum in Python, Powered by PySNT</p>
   <p class="paper-authors">
     Tiago A. Ferreira<sup>1,<a href="https://orcid.org/0000-0001-6866-1540" target="_blank" rel="noopener" title="ORCID" class="orcid-link"><i class="fa-brands fa-orcid"></i></a></sup>,
     <a href="https://github.com/morphonets/pysnt/graphs/contributors">PySNT</a>, and 
@@ -183,8 +183,14 @@ Jupyter Lab is included in the pixi setup of the [installation guide](../install
 
 The source of every tutorial is available on
 [GitHub](https://github.com/morphonets/pysnt/tree/main/docs/notebooks), along
-with the PySNT code it exercises. Licensing terms are described in the
-repository's [license file](https://github.com/morphonets/pysnt/blob/main/LICENSE.md).
+with the PySNT code it exercises.
+
+- **Text and figures** are licensed under
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Code** is licensed under the PySNT
+  [license](https://github.com/morphonets/pysnt/blob/main/LICENSE.md)
+- **Datasets** used in the tutorials are subject to their original terms
+
 Corrections, new tutorials, and feedback are welcome on the
 [forum](https://forum.image.sc/tag/snt) or as
 [issues](https://github.com/morphonets/pysnt/issues).
@@ -193,7 +199,7 @@ Corrections, new tutorials, and feedback are welcome on the
 
 To cite the series, use the following format (replace the tutorial accordingly):
 
-> *Computational Neuroanatomy with PySNT* (T0X). In T. A. Ferreira (Ed.),
+> Ferreira TA, PySNT and SNT contributors. *Computational Neuroanatomy: A Hands-on Curriculum in Python*.
 > <https://pysnt.readthedocs.io/en/latest/notebooks/index.html>
 
 See [SNT citation](https://imagej.net/plugins/snt/faq#how-do-i-cite-snt) for details on how to properly cite SNT.

@@ -285,6 +285,6 @@ Now that you understand the basics:
 
 1. **Explore pysnt**: Tour [pysnt’s architecture](overview.md)
 2. **Configure your environment**: Adjust [configurations](overview.md#setting-options) for your needs
-3. **Follow the tutorials**: Work through the [Computational Neuroanatomy with PySNT](notebooks/index.md) curriculum for guided analysis workflows
+3. **Follow the tutorials**: Work through the [Computational Neuroanatomy: A Hands-on Curriculum in Python](notebooks/index.md) series for guided analysis workflows
 4. **Read the API**: Browse the [API reference](api.md) for detailed documentation
 5. **Join the community**: Ask questions on the [Image.sc Forum](https://forum.image.sc/tag/snt)
