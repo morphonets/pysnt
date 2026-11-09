@@ -10,6 +10,9 @@ updates:
     schedule:
       interval: "weekly"
       time: "01:00"
+    # Our requirements are lower bounds (e.g. numpy>=1.26) that already allow the latest releases:
+    # only touch them if a new release would fall outside the allowed range.
+    versioning-strategy: increase-if-necessary
     groups:
       python-packages:
         patterns:

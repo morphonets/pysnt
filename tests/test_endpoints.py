@@ -20,7 +20,8 @@ from pysnt import _endpoints
 ])
 def test_natives_classifier(system, machine, expected):
     with patch("pysnt._endpoints.platform.system", return_value=system), \
-            patch("pysnt._endpoints.platform.machine", return_value=machine):
+            patch("pysnt._endpoints.platform.machine", return_value=machine), \
+            patch("pysnt._platform.sysconfig.get_platform", return_value="unknown"):  # do not depend on the CI host
         assert _endpoints._jogamp_natives_classifier() == expected
 
 
