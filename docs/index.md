@@ -134,11 +134,19 @@ Cluster and classify neurons using morphometric and topological features.
 Build quality-controlled training datasets: refine traces, detect crossovers, and validate reconstructions.
 ::::
 
-::::{grid-item-card} <i class="fa-solid fa-ellipsis"></i> And More
-:link: https://imagej.net/plugins/snt/#overview
-:img-top: _static/front_page/sankey-flow-plot-with-tooltip.png
+::::{grid-item-card} <i class="fa-solid fa-database"></i> Big Data
+:link: notebooks/09_big_data
+:link-type: doc
+:img-top: _static/front_page/tutorial09.png
 
-Sholl, Strahler, persistence diagrams, graph theory, growth dynamics, and full access to the SNT/Fiji ecosystem.
+Explore and trace volumes that do not fit in memory: browse remote OME-Zarr pyramids, process regions on demand, and continue tracing out-of-core in SNT Stream.
+::::
+
+::::{grid-item-card} <i class="fa-solid fa-ellipsis"></i> And More
+:columns: 12
+:link: https://imagej.net/plugins/snt/#overview
+
+Sholl, Strahler, persistence diagrams, graph theory, growth dynamics, and full access to the SNT ecosystem.
 ::::
 
 :::::

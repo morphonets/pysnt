@@ -6,6 +6,18 @@
   <a href="https://pypi.org/project/pysnt/">
     <img alt="PyPI version" src="https://img.shields.io/pypi/v/pysnt">
   </a>
+  <!-- Python versions -->
+  <a href="https://pypi.org/project/pysnt/">
+    <img alt="Python versions" src="https://img.shields.io/pypi/pyversions/pysnt">
+  </a>
+  <!-- Tests -->
+  <a href="https://github.com/morphonets/pysnt/actions/workflows/ci.yml">
+    <img alt="Tests" src="https://github.com/morphonets/pysnt/actions/workflows/ci.yml/badge.svg?branch=main">
+  </a>
+  <!-- Code quality -->
+  <a href="https://www.codefactor.io/repository/github/morphonets/pysnt">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/morphonets/pysnt/badge">
+  </a>
   <!-- License -->
   <a href="https://github.com/morphonets/SNT/blob/master/LICENSE.txt">
     <img alt="GitHub license" src="https://img.shields.io/github/license/morphonets/SNT">
