@@ -37,11 +37,13 @@ yourself: `pysnt.initialize()` uses them behind the scenes.
 | JAR                                   | wheel               | A bundle of compiled code: how SNT and its dependencies are distributed    |
 | Maven                                 | pip                 | Downloads a package together with everything it depends on                 |
 | maven.scijava.org, Maven Central      | PyPI                | The repositories where those packages are hosted                           |
+| jgo                                   | pip (and its cache) | Resolves Maven packages from Python (no `mvn` needed) and caches them in `~/.jgo` |
 | `pom.xml`                             | `pyproject.toml`    | Declares a project's dependencies                                          |
 | `mvn install`                         | `pip install .`     | Builds and installs a local copy of a project                              |
 
 In practice: the first call to `pysnt.initialize()` downloads SNT and its dependencies from a Maven repository (the
-"Maven source") and caches them, much like `pip install` fetches from PyPI. The alternative is to use a local Fiji
+"Maven source") and caches them in `~/.jgo`, much like `pip install` fetches from PyPI. Delete that folder to force a
+fresh download. The alternative is to use a local Fiji
 installation, see [Attaching to SNT](install.md#attaching-to-snt).
 
 ### _self_ in Method Signatures
@@ -104,6 +106,7 @@ PySNT has some limitations that may not be addressed in future releases. However
 SNT provides several interactive 3D visualization tools: [Reconstruction Viewer](https://imagej.net/plugins/snt/reconstruction-viewer) (`Viewer3D`, also opened by `tree.show3D()`), [SciView](https://imagej.net/plugins/snt/modeling), and [Big Volume Viewer](https://imagej.net/plugins/snt/manual#big-volume-viewer). While these viewers can be launched from Python, their usage remains experimental with several limitations:
 
 - PySNT starts in headless mode by default, in which SNT native windows cannot open: viewers fail with `IllegalArgumentException: Offscreen canvas cannot be displayed`. Initialize with `pysnt.initialize(mode='interactive')` to use them
+- 3D viewers need a working OpenGL driver. They may not work in virtual machines or remote desktops without GPU acceleration (e.g., Windows on ARM running in a VM on Apple Silicon), where they fail with `GLException: Unable to determine GraphicsConfiguration`
 - On macOS, Java viewers (e.g., Reconstruction Viewer, Big Volume Viewer) must also be launched on the event dispatch thread (see [GUI Threading Issues](#gui-threading-issues))
 - For some viewers, the ImageJ GUI may need to linger in the background, even if it is not needed nor used
 

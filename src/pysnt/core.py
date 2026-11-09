@@ -312,7 +312,9 @@ def initialize(fiji_path: Optional[str] = None, interactive: bool = True, ensure
         _ij_logger = logging.getLogger("imagej")
         _ij_logger.addFilter(_noise)
         try:
-            _ij = imagej.init(ij_source, mode=mode)
+            from ._progress import init_feedback
+            with init_feedback():
+                _ij = imagej.init(ij_source, mode=mode)
         finally:
             _ij_logger.removeFilter(_noise)
         

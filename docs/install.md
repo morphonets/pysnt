@@ -51,7 +51,9 @@ pixi run pip install "pysnt[all]"
 pixi shell
 ```
 
-`pixi shell` activates the environment: run `python` or `jupyter lab` from there.
+`pixi shell` activates the environment: run `python` or `jupyter lab` from there. On Windows PowerShell, if it fails
+with "running scripts is disabled on this system", run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once
+and retry.
 
 **Coming back later?** Open a terminal and re-enter the environment:
 
@@ -336,9 +338,10 @@ Interactive viewers (e.g., `Viewer3D`) are not tested.
 | Symptom | Fix |
 |---|---|
 | `pixi: command not found` (or `'pixi' is not recognized`) | Close and reopen the terminal after installing pixi, so that it is on your `PATH` |
-| `Activate.ps1 cannot be loaded because running scripts is disabled` (Windows) | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once, then activate the environment again |
+| `... cannot be loaded because running scripts is disabled on this system` (Windows PowerShell, e.g., from `Activate.ps1` or `pixi shell`) | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once, then activate the environment again |
 | `initialize()` seems stuck on first run | It is downloading SNT and its dependencies. This only happens once: subsequent runs use the cache |
 | `IllegalArgumentException: Offscreen canvas cannot be displayed` when opening `Viewer3D`, `tree.show3D()`, etc. | PySNT starts in headless mode by default, in which SNT windows cannot open (PySNT prints a hint after the error). Initialize with `pysnt.initialize(mode='interactive')`; on macOS, also open the window with `pysnt.run_on_edt()` (see [GUI Threading Issues](limitations.md#gui-threading-issues)) |
+| `GLException: Unable to determine GraphicsConfiguration` when opening `Viewer3D`, `tree.show3D()`, etc. | The 3D viewers need a working OpenGL driver. This is typical of virtual machines and remote desktops without GPU acceleration: install/update the graphics driver, or run PySNT on a machine with a GPU. In a VM without OpenGL support the 3D viewers may simply not be available. Static plots (e.g., `pysnt.display(tree)`) do not need OpenGL |
 | `initialize()` hangs or fails with a network or SSL error | Check that your network (proxy/firewall) allows access to <https://maven.scijava.org>, and retry |
 | JVM not found or cannot be loaded, although Java is installed | Python and the JDK must share the same architecture (e.g., both arm64 on Apple Silicon). The pixi and conda/mamba routes keep them consistent |
 | `ModuleNotFoundError: pysnt`, or other import errors | Your shell/IDE is not using the environment PySNT was installed into. Activate it, or see [Choosing an interpreter](#choosing-an-interpreter-ides-and-notebooks). Use `python -m pip` rather than bare `pip` |
