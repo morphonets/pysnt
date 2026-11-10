@@ -194,7 +194,7 @@ def _release_announcement():
             date = ' (' + files[0]['upload_time'][:10] + ')'
     except Exception:
         pass
-    return (f"PySNT <a href='https://github.com/morphonets/pysnt/releases/tag/v{ver}' target='_blank'>{ver}</a>"
+    return (f"PySNT <a href='https://github.com/morphonets/pysnt/releases/' target='_blank'>{ver}</a>"
             f"{date} is out. Beta software: <a href='https://github.com/morphonets/pysnt/issues' "
             "target='_blank'>feedback welcome</a>!")
 

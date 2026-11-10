@@ -18,6 +18,7 @@
   <a href="https://www.codefactor.io/repository/github/morphonets/pysnt">
     <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/morphonets/pysnt/badge">
   </a>
+<br>
   <!-- License -->
   <a href="https://github.com/morphonets/SNT/blob/master/LICENSE.txt">
     <img alt="GitHub license" src="https://img.shields.io/github/license/morphonets/SNT">
